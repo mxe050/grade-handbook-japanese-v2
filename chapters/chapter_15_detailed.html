@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="chapters/chapter_common.css">
+<div class="chapter-detail">
+
+<h3>Chapter 15：閾値とユーティリティ（Thresholds and Utility）</h3>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f4d6;</span> Core Concept</div>
+  <p>閾値（Threshold）は、<strong>介入の効果が「臨床的に重要」と判断される境界値</strong>です。Core GRADEは、不精確さの評価とEtDフレームワークの両方で閾値を中心的な概念として位置づけています。閾値の計算には<strong>ユーティリティ（効用値）</strong>が用いられますが、ユーティリティの概念には重要な注意点があります。</p>
+  <div class="en-note">Thresholds represent the boundary values at which an intervention's effect becomes "clinically important." Core GRADE uses utility-based approaches to calculate these thresholds.</div>
+</div>
+
+<h3>閾値の種類</h3>
+
+<div class="grid-3">
+  <div class="grid-item" style="border-left: 4px solid #27ae60;"><h5>利益の閾値</h5><p>介入の効果が<strong>臨床的に重要な利益</strong>と判断される最小の効果量。MIDに基づいて設定。</p></div>
+  <div class="grid-item" style="border-left: 4px solid #e74c3c;"><h5>害の閾値</h5><p>介入の副作用が<strong>臨床的に重要な害</strong>と判断される最小の効果量。</p></div>
+  <div class="grid-item" style="border-left: 4px solid #3498db;"><h5>正味の閾値</h5><p>利益と害を<strong>ユーティリティで重み付け</strong>して統合した閾値。</p></div>
+</div>
+
+<h3>ユーティリティ（効用値）の基本概念</h3>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f4a1;</span> ユーティリティとは</div>
+  <p>ユーティリティは、<strong>健康状態に対する個人の選好を0から1のスケールで表現した値</strong>です。</p>
+  <table class="styled-table" style="margin-top: 15px;">
+    <thead><tr><th>値</th><th>意味</th><th>例</th></tr></thead>
+    <tbody>
+      <tr><td style="font-size: 1.5em; font-weight: bold; color: #27ae60;">1.0</td><td><strong>完全な健康</strong></td><td>健康な成人の通常の状態</td></tr>
+      <tr><td style="font-size: 1.5em; font-weight: bold; color: #f39c12;">0.5</td><td>中程度の健康障害</td><td>中等度の慢性疼痛</td></tr>
+      <tr><td style="font-size: 1.5em; font-weight: bold; color: #e74c3c;">0.0</td><td><strong>死亡</strong></td><td>---</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>ユーティリティと重要度の違い</h3>
+
+<div class="danger-card">
+  <div class="card-label">&#x274c; 混同してはいけない2つの概念</div>
+  <p>ユーティリティ（0-1スケール）と<strong>アウトカムの重要度</strong>は<strong>本質的に異なる概念</strong>です。</p>
+</div>
+
+<div class="grid-2">
+  <div class="grid-item" style="border-left: 4px solid #e74c3c;"><h5>ユーティリティ（0-1スケール）</h5><p>健康状態の<strong>「良さ」</strong>を表す。1 = 完全な健康、0 = 死亡。</p></div>
+  <div class="grid-item" style="border-left: 4px solid #3498db;"><h5>アウトカムの重要度</h5><p>アウトカムが患者にとって<strong>どれだけ重要か</strong>を表す。死亡も完全な健康もどちらも極めて重要。</p></div>
+</div>
+
+<h3>ユーティリティ = 1 でそのまま計算すると閾値がおかしくなる問題</h3>
+
+<div class="danger-card">
+  <div class="card-label">&#x274c; 重大な計算上の問題</div>
+  <p>完全な健康状態（ユーティリティ = 1）をそのまま使用すると、不効用が0になり、<strong>閾値が無限大</strong>になってしまいます。</p>
+</div>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f4a1;</span> なぜ問題が生じるのか</div>
+  <table class="styled-table" style="margin-top: 15px;">
+    <thead><tr><th>健康状態</th><th>ユーティリティ</th><th>不効用（1-ユーティリティ）</th><th>問題</th></tr></thead>
+    <tbody>
+      <tr><td>死亡</td><td>0.0</td><td><strong>1.0</strong></td><td>正常に機能</td></tr>
+      <tr><td>重度の障害</td><td>0.3</td><td><strong>0.7</strong></td><td>正常に機能</td></tr>
+      <tr><td>軽度の不快感</td><td>0.9</td><td><strong>0.1</strong></td><td>閾値が大きくなる</td></tr>
+      <tr><td style="background: #fff3cd;"><strong>完全な健康</strong></td><td style="background: #fff3cd;"><strong>1.0</strong></td><td style="background: #fff3cd;"><strong>0.0</strong></td><td style="background: #fff3cd;"><strong>閾値が無限大に！</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>Guyatt先生とSchunemann先生のアプローチの違い</h3>
+
+<table class="styled-table">
+  <thead><tr><th>特徴</th><th>Guyatt先生（Core GRADE）</th><th>Schunemann先生（Guidance 42）</th></tr></thead>
+  <tbody>
+    <tr><td><strong>基本的なアプローチ</strong></td><td>パネル調査ベース</td><td>ユーティリティベース</td></tr>
+    <tr><td><strong>閾値の設定方法</strong></td><td>パネルメンバーが直接MIDを設定</td><td>ユーティリティ値から数学的に計算</td></tr>
+    <tr><td><strong>直感の役割</strong></td><td><strong>大きい</strong></td><td><strong>限定的</strong></td></tr>
+    <tr><td><strong>利点</strong></td><td>柔軟性が高い</td><td>再現性が高い</td></tr>
+    <tr><td><strong>限界</strong></td><td>パネル構成に依存</td><td>ユーティリティ = 1の問題</td></tr>
+  </tbody>
+</table>
+
+<h3>閾値計算ツール</h3>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f517;</span> オンラインツール</div>
+  <p>Guidance 42の閾値計算を実行するためのShinyアプリが公開されています：</p>
+  <p style="text-align: center; margin: 15px 0;">
+    <a href="https://fmup.shinyapps.io/dt_calc" target="_blank" style="display: inline-block; padding: 12px 24px; background: #3498db; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">閾値計算ツール（Shiny App）を開く</a>
+  </p>
+</div>
+
+<div class="success-card">
+  <div class="card-label">&#x2705; Chapter 15のまとめ</div>
+  <ul>
+    <li>閾値は<strong>利益の閾値、害の閾値、正味の閾値</strong>の3種類。</li>
+    <li>ユーティリティは<strong>0（死亡）から1（完全な健康）</strong>のスケール。</li>
+    <li><strong>ユーティリティと重要度は異なる概念</strong>。</li>
+    <li><strong>ユーティリティ = 1で計算すると閾値が無限大に</strong>。</li>
+    <li>Guyatt先生は<strong>パネル調査ベース</strong>、Schunemann先生は<strong>ユーティリティベース</strong>。</li>
+    <li>閾値の不確実性を認識し、<strong>「もっともらしい範囲」</strong>として幅を持たせることが重要。</li>
+  </ul>
+</div>
+
+<div class="ref-box">
+  <h4>参考文献</h4>
+  <ol>
+    <li>Schunemann HJ, et al. GRADE Guidance 42: Thresholds for imprecision and Evidence to Decision. J Clin Epidemiol. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE 2: Imprecision. BMJ. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE 7: Evidence-to-Decision. BMJ. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE 1: Overview. BMJ. 2025.</li>
+    <li>Guyatt GH. Core GRADE Unpacked. Evidence Synthesis Ireland Webinar. December 2025.</li>
+  </ol>
+</div>
+
+</div>
