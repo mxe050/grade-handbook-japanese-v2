@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="chapters/chapter_common.css">
+<div class="chapter-detail">
+
+<h3>Chapter 7：ランダム化試験のデザインまたは実施における限界（バイアスリスク）</h3>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f4d6;</span> Core Concept</div>
+  <p>バイアスリスク（Risk of Bias, RoB）は、GRADEの5つのグレードダウンドメインの一つであり、<strong>研究のデザインや実施における系統的な偏りが効果推定値を歪める可能性</strong>を評価します。Core GRADEは、従来のRoB 2.0ツールに代わる新しい<strong>ROBUST-RCTツール</strong>を導入し、GRADEの確実性評価との整合性を高めています。</p>
+  <div class="en-note">Core GRADE introduces ROBUST-RCT, a new tool for assessing risk of bias in randomized trials that is specifically designed to align with GRADE certainty of evidence assessments.</div>
+</div>
+
+<h3>ROBUST-RCT ― 新しいバイアスリスク評価ツール</h3>
+
+<p>ROBUST-RCTは、「Risk Of Bias Unified by Structured Transparency for Randomized Controlled Trials」の略称で、Core GRADEシリーズの一環として開発されました。従来のCochrane RoB 2.0ツールとの主な違いは以下の通りです。</p>
+
+<table class="styled-table">
+  <thead><tr><th>特徴</th><th>RoB 2.0</th><th>ROBUST-RCT</th></tr></thead>
+  <tbody>
+    <tr><td><strong>評価の焦点</strong></td><td>個々の研究のバイアスリスク</td><td>エビデンス全体（body of evidence）のバイアスリスク</td></tr>
+    <tr><td><strong>GRADEとの統合</strong></td><td>間接的（別途GRADE評価が必要）</td><td><strong>直接的</strong>（GRADE確実性評価に直結）</td></tr>
+    <tr><td><strong>評価の粒度</strong></td><td>詳細なシグナリング質問</td><td>より簡潔で実用的</td></tr>
+    <tr><td><strong>判断の透明性</strong></td><td>アルゴリズムベース</td><td><strong>構造化された判断</strong>（gestalt要素を含む）</td></tr>
+  </tbody>
+</table>
+
+<h3>ROBUST-RCTの6つのドメイン</h3>
+
+<div class="step-flow">
+  <div class="step-item"><div class="step-num">1</div><div class="step-body"><h5>ランダム化プロセス</h5><p>ランダム化の方法、割付の隠蔽（allocation concealment）、ベースラインの不均衡の有無を評価します。適切なランダム化は、既知および未知の交絡因子を均等に分布させるための基盤です。</p></div></div>
+  <div class="step-item"><div class="step-num">2</div><div class="step-body"><h5>意図された介入からの逸脱</h5><p>プロトコルからの逸脱、クロスオーバー、共介入（co-interventions）の有無と影響を評価します。ITT（intention-to-treat）解析とper-protocol解析の選択も考慮します。</p></div></div>
+  <div class="step-item"><div class="step-num">3</div><div class="step-body"><h5>アウトカムデータの欠損</h5><p>追跡不能（loss to follow-up）の割合と理由、欠損データの処理方法を評価します。20%以上の欠損は一般的に懸念事項とされますが、欠損の理由がランダムかどうかが重要です。</p></div></div>
+  <div class="step-item"><div class="step-num">4</div><div class="step-body"><h5>アウトカムの測定</h5><p>盲検化（blinding）の有無と適切性、アウトカム評価者のバイアスの可能性を評価します。主観的アウトカム（痛み、QOLなど）では盲検化の欠如がより深刻な問題となります。</p></div></div>
+  <div class="step-item"><div class="step-num">5</div><div class="step-body"><h5>報告されたアウトカムの選択</h5><p>事前登録されたプロトコルと実際の報告の一致性、複数の測定方法や時点からの選択的報告の有無を評価します。</p></div></div>
+  <div class="step-item"><div class="step-num">6</div><div class="step-body"><h5>全体的なバイアスリスク</h5><p>上記5つのドメインを統合した全体的な判断。ここで<strong>「教育された直感（gestalt）」</strong>が重要な役割を果たします。個々のドメインの評価を機械的に合算するのではなく、エビデンス全体としてのバイアスの方向性と大きさを総合的に判断します。</p></div></div>
+</div>
+
+<h3>バイアスリスクの判断カテゴリー</h3>
+
+<div class="grid-3">
+  <div class="grid-item" style="border-left: 4px solid #27ae60;"><h5>低リスク（Low Risk）</h5><p>研究のデザインと実施に重大な欠陥がなく、効果推定値が実質的に歪められている可能性は低い。グレードダウンなし。</p></div>
+  <div class="grid-item" style="border-left: 4px solid #f39c12;"><h5>中程度のリスク（Some Concerns）</h5><p>いくつかの懸念事項があるが、効果推定値への影響は限定的と判断される。1段階のグレードダウンを検討。</p></div>
+  <div class="grid-item" style="border-left: 4px solid #e74c3c;"><h5>高リスク（High Risk）</h5><p>重大な欠陥があり、効果推定値が実質的に歪められている可能性が高い。1-2段階のグレードダウン。</p></div>
+</div>
+
+<h3>盲検化の問題 ― Core GRADEの視点</h3>
+
+<div class="warning-card">
+  <div class="card-label">&#x26a0;&#xfe0f; 重要なポイント</div>
+  <p>Core GRADEは、盲検化の欠如が自動的にバイアスリスクの増加を意味するわけではないことを強調しています。<strong>客観的なアウトカム</strong>（死亡率、検査値など）では、盲検化の欠如がバイアスに与える影響は限定的です。一方、<strong>主観的なアウトカム</strong>（痛み、QOL、機能評価など）では、盲検化の欠如が重大なバイアスの原因となり得ます。</p>
+</div>
+
+<h3>感度分析の活用</h3>
+
+<p>バイアスリスクの評価において、Core GRADEは<strong>感度分析</strong>の活用を推奨しています。高リスクの研究を除外した場合に効果推定値が大きく変化するかどうかを確認することで、バイアスの影響の大きさを推定できます。</p>
+
+<div class="concept-card">
+  <div class="card-label"><span class="icon">&#x1f4a1;</span> 実践的なアドバイス</div>
+  <p>バイアスリスクの評価は、<strong>アウトカムごとに</strong>行うべきです。同じ研究であっても、アウトカムによってバイアスリスクの程度が異なる場合があります。例えば、盲検化されていない試験では、死亡率（客観的）のバイアスリスクは低いが、QOL（主観的）のバイアスリスクは高いと判断される場合があります。</p>
+</div>
+
+<div class="success-card">
+  <div class="card-label">&#x2705; Chapter 7のまとめ</div>
+  <ul>
+    <li>Core GRADEは<strong>ROBUST-RCT</strong>という新しいバイアスリスク評価ツールを導入。</li>
+    <li>ROBUST-RCTは<strong>6つのドメイン</strong>で構成され、GRADE確実性評価と直接統合される。</li>
+    <li>盲検化の欠如は自動的にバイアスリスク増加を意味しない ― <strong>アウトカムの客観性</strong>が重要。</li>
+    <li>全体的なバイアスリスク判断には<strong>「教育された直感」</strong>が重要な役割を果たす。</li>
+    <li><strong>感度分析</strong>の活用により、バイアスの影響の大きさを推定できる。</li>
+    <li>バイアスリスクの評価は<strong>アウトカムごと</strong>に行うべき。</li>
+  </ul>
+</div>
+
+<div class="ref-box">
+  <h4>参考文献</h4>
+  <ol>
+    <li>Guyatt GH, et al. Core GRADE 4: Risk of Bias. BMJ. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE 4: Risk of Bias Appendix. BMJ. 2025.</li>
+    <li>ROBUST-RCT Development Group. ROBUST-RCT: A new tool for assessing risk of bias in randomized trials. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE 1: Overview. BMJ. 2025.</li>
+    <li>Guyatt GH, et al. Core GRADE Unpacked. Evidence Synthesis Ireland. 2025.</li>
+  </ol>
+</div>
+
+</div>
