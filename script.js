@@ -84,6 +84,32 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // 初期表示
-  showPage(0);
+
+  // タブ切り替えロジック
+  function switchTab(btn, tabIndex) {
+    const page = btn.closest('.page');
+    if (!page) return;
+
+    const nav = btn.closest('.tabs-nav');
+    const btns = nav.querySelectorAll('.tab-btn');
+    const content = page.querySelector('.tab-content');
+    const panes = content.querySelectorAll('.tab-pane');
+
+    // ボタンの状態更新
+    btns.forEach((b, i) => b.classList.toggle('active', i === tabIndex));
+    // パネの状態更新
+    panes.forEach((p, i) => p.classList.toggle('active', i === tabIndex));
+
+    // スムーズにタブの先頭へスクロール（ヘッダー考慮）
+    const headerOffset = 130;
+    const elementPosition = nav.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+
+  window.switchTab = switchTab;
 });

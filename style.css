@@ -657,3 +657,88 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
   .cover-description { font-size: 1rem; }
   .hero-btn { padding: 16px; }
 }
+
+/* ===== タブナビゲーション（Tabs Nav） ===== */
+.tabs-nav {
+  display: flex;
+  gap: 8px;
+  background: #f0f4f8;
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  position: sticky;
+  top: calc(var(--header-height) + 3px);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: rgba(255,255,255,0.5);
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* タブコンテンツ制御 */
+.tab-content {
+  position: relative;
+  min-height: 200px;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* プレースホルダーの装飾 */
+.placeholder-msg {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-light);
+  background: #f9fbfd;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.placeholder-msg i {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .tabs-nav {
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0;
+    padding: 8px 16px;
+  }
+}
