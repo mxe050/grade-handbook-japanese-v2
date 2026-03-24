@@ -713,10 +713,213 @@ function checkAuth(){
 
           </div>
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <!-- CoreGRADEフローチャート: 第1章 -->
+            <div class="max-w-4xl mx-auto py-8">
+              
+              <!-- Section 1: Comparison -->
+              <div class="mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                  <i data-lucide="arrow-left-right" class="w-8 h-8 text-blue-600"></i>
+                  従来のGRADEとCore GRADEの徹底比較
+                </h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">
+                  従来のGRADE（GRADEpro ハンドブック）と、BMJ誌で新たに提唱されたCore GRADEは、どちらも「エビデンスの確実性」と「推奨の強さ」を評価するシステムですが、その<strong>「目的（どこまでカバーするか）」と「複雑さ（使いやすさ）」</strong>において明確な違いがあります。
+                </p>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm mb-8">
+                  <table class="w-full text-left border-collapse bg-white">
+                    <thead class="bg-slate-50 border-b border-slate-200">
+                      <tr>
+                        <th class="p-4 text-sm font-bold text-slate-700 w-1/4">比較項目</th>
+                        <th class="p-4 text-sm font-bold text-slate-700 w-3/8">従来のGRADE</th>
+                        <th class="p-4 text-sm font-bold text-blue-700 w-3/8">Core GRADE</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 italic-none">
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">位置づけ</td>
+                        <td class="p-4 text-sm text-slate-600">網羅的な完全版。あらゆる状況に対応。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap">実務に必要な「中核」を抽出したシンプル版。</td>
+                      </tr>
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">対象シナリオ</td>
+                        <td class="p-4 text-sm text-slate-600">介入、診断、予後、公衆衛生など多岐にわたる。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap">介入効果の<strong>ペア比較</strong>（単一介入 vs 単一対照）に特化。</td>
+                      </tr>
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">視点</td>
+                        <td class="p-4 text-sm text-slate-600">公衆衛生や医療システム全体の視点を含む。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap"><strong>個々の患者</strong>（individual patient）の視点に特化。</td>
+                      </tr>
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">観察研究(NRSI)</td>
+                        <td class="p-4 text-sm text-slate-600">初期評価で「高」スタートを許容（ROBINS-I等）。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap">必ず<strong>「低（Low）」</strong>からスタートさせる。</td>
+                      </tr>
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">評価の手法</td>
+                        <td class="p-4 text-sm text-slate-600">統計的異質性（I²）や高度な点数化を使用。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap">統計数値よりフォレストプロットの<strong>視覚的評価</strong>を重視。</td>
+                      </tr>
+                      <tr>
+                        <td class="p-4 text-sm font-bold text-slate-900 bg-slate-50/50">推奨の決定 (EtD)</td>
+                        <td class="p-4 text-sm text-slate-600">公平性、受容性など複雑なEtDフレームワーク。</td>
+                        <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap"><strong>4つの核となる要素</strong>にフォーカスして決定。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Section 2: Flowchart Detail -->
+              <div class="mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                  <i data-lucide="file-text" class="w-8 h-8 text-blue-600"></i>
+                  Core GRADE「Fig 2」の極めて詳しい解説
+                </h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">
+                  Core GRADEの論文における「Fig 2（介入効果におけるエビデンスの確実性評価アプローチ）」は、複数の研究結果がどれくらい信用できるか（確実性）を、最終的に4段階に分類するための思考プロセスを示したものです。
+                </p>
+
+                <!-- Figure 2 image -->
+                <figure class="my-10 p-6 bg-slate-50 rounded-3xl border border-slate-200">
+                  <img src="coreGRADE/images/1-2.jpg" alt="Core GRADE Fig 2: エビデンスの確実性評価プロセス" class="w-full h-auto rounded-xl shadow-lg border border-white">
+                  <figcaption class="text-center text-sm text-slate-500 mt-6 font-medium">
+                    図: 介入効果におけるエビデンスの確実性評価プロセス（BMJ Core GRADE Fig 2）
+                  </figcaption>
+                </figure>
+
+                <!-- Steps -->
+                <div class="space-y-12 mt-12">
+                  <div class="relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" style="border:none;padding:0;color:#0f172a;">ステップ①：研究デザインによる「出発点」の決定</h3>
+                    <p class="text-slate-600 text-sm sm:text-base mb-4">スタートラインを厳格に決定します。</p>
+                    <ul class="space-y-3 list-none ml-0">
+                      <li class="bg-white p-3 rounded-lg border border-slate-100 shadow-sm border-l-4 border-l-blue-600 text-sm sm:text-base">
+                        <strong>ランダム化比較試験（RCT）:</strong> バイアスが最も少ない状態とみなされ、最高の確実性である<span class="text-blue-700 font-bold">「高（High）」</span>からスタート。
+                      </li>
+                      <li class="bg-white p-3 rounded-lg border border-slate-100 shadow-sm border-l-4 border-l-rose-500 text-sm sm:text-base">
+                        <strong>非ランダム化介入研究・観察研究（NRSI）:</strong> 背景の偏りが本質的に存在するため、2段階低い<span class="text-rose-600 font-bold">「低（Low）」</span>からスタート。
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" style="border:none;padding:0;color:#0f172a;">ステップ②：確実性を下げる（ダウングレード）5つのドメイン</h3>
+                    <p class="text-slate-600 text-sm mb-4">以下の5要因をチェック。懸念があれば確実性を引き下げます。</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                      <div class="p-4 bg-white border border-slate-200 rounded-xl">
+                        <h4 class="font-bold text-slate-800">1. バイアスリスク</h4>
+                        <p class="text-xs text-slate-500 mt-1">盲検化の欠如や脱落者の多さなど、研究の質をチェック。</p>
+                      </div>
+                      <div class="p-4 bg-white border border-slate-200 rounded-xl">
+                        <h4 class="font-bold text-slate-800">2. 非一貫性</h4>
+                        <p class="text-xs text-slate-500 mt-1">研究結果がバラバラで、同じ方向を示していない場合。</p>
+                      </div>
+                      <div class="p-4 bg-white border border-slate-200 rounded-xl">
+                        <h4 class="font-bold text-slate-800">3. 非直接性</h4>
+                        <p class="text-xs text-slate-500 mt-1">臨床疑問（PICO）と、研究の対象がズレている場合。</p>
+                      </div>
+                      <div class="p-4 bg-white border border-slate-200 rounded-xl">
+                        <h4 class="font-bold text-slate-800">4. 不精確性</h4>
+                        <p class="text-xs text-slate-500 mt-1">データ不足で推定値の幅（95%信頼区間）が広すぎる場合。</p>
+                      </div>
+                      <div class="p-4 bg-white border border-slate-200 rounded-xl sm:col-span-2">
+                        <h4 class="font-bold text-slate-800">5. 出版バイアス</h4>
+                        <p class="text-xs text-slate-500 mt-1">都合の良い結果の研究ばかりが発表されている疑いがある場合。</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" style="border:none;padding:0;color:#0f172a;">ステップ③：確実性を上げる（アップグレード）3つのドメイン</h3>
+                    <p class="text-slate-600 text-sm mb-4">主に観察研究に適用。厳しい条件を満たす場合に引き上げます。</p>
+                    <ul class="space-y-2 text-sm list-none ml-0">
+                      <li class="flex items-start gap-2"><i data-lucide="chevrons-up" class="w-4 h-4 text-emerald-500 mt-1"></i> <div><strong>大きな効果:</strong> ノイズを考慮してもなお、非常に大きな効果がある場合。</div></li>
+                      <li class="flex items-start gap-2"><i data-lucide="chevrons-up" class="w-4 h-4 text-emerald-500 mt-1"></i> <div><strong>用量反応関係:</strong> 薬の量が増えるほど、効果も比例して大きくなる場合。</div></li>
+                      <li class="flex items-start gap-2"><i data-lucide="chevrons-up" class="w-4 h-4 text-emerald-500 mt-1"></i> <div><strong>残余交絡の逆転:</strong> ノイズのせいで本当の効果が過小評価されている場合。</div></li>
+                    </ul>
+                  </div>
+
+                  <div class="relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" style="border:none;padding:0;color:#0f172a;">ステップ④：最終的な確実性の決定</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+                      <div class="p-3 bg-blue-600 text-white rounded-xl text-center">
+                        <div class="text-lg font-black tracking-tighter">HIGH</div>
+                        <div class="text-[10px] opacity-80">高い</div>
+                      </div>
+                      <div class="p-3 bg-blue-400 text-white rounded-xl text-center">
+                        <div class="text-lg font-black tracking-tighter">MODERATE</div>
+                        <div class="text-[10px] opacity-80">中程度</div>
+                      </div>
+                      <div class="p-3 bg-rose-300 text-slate-900 rounded-xl text-center border border-rose-200">
+                        <div class="text-lg font-black tracking-tighter">LOW</div>
+                        <div class="text-[10px] opacity-80">低い</div>
+                      </div>
+                      <div class="p-3 bg-slate-200 text-slate-600 rounded-xl text-center border border-slate-300">
+                        <div class="text-[10px] font-black tracking-tighter leading-none">VERY LOW</div>
+                        <div class="text-[10px] opacity-80">非常に低い</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 3: Paradigm Shift -->
+              <div class="mt-20 shadow-2xl shadow-blue-900/10 rounded-3xl p-1 bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden">
+                <div class="bg-white rounded-[calc(1.5rem-1px)] p-8">
+                  <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                    <i data-lucide="zap" class="w-8 h-8 text-amber-500"></i>
+                    Core GRADEと従来GRADEの決定的な違い
+                  </h2>
+                  <p class="text-slate-600 mb-8 leading-relaxed">
+                    Fig 2のフローチャート自体は、一見すると従来のGRADEと同じように見えます。しかし、Core GRADEはその<strong>「運用ルール（評価の哲学）」において、従来のGRADEから劇的なパラダイムシフト（原点回帰）</strong>を起こしています。
+                  </p>
+                  
+                  <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+                    <table class="w-full text-left border-collapse bg-white">
+                      <thead class="bg-amber-50 border-b border-amber-100">
+                        <tr>
+                          <th class="p-4 text-sm font-bold text-amber-900 w-1/4">決定的な違い</th>
+                          <th class="p-4 text-sm font-bold text-amber-800 w-3/8">従来のGRADEの問題点</th>
+                          <th class="p-4 text-sm font-bold text-amber-950 w-3/8">Core GRADEの革新</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-amber-100 italic-none">
+                        <tr>
+                          <td class="p-4 text-sm font-bold text-slate-900 bg-amber-50/30">① NRSIの開始点</td>
+                          <td class="p-4 text-sm text-slate-600">複雑なツール使用で「高」スタートも。難解で意見が割れやすかった。</td>
+                          <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap"><strong>「強制的な原点回帰」</strong>。どんなツールでも、観察研究は必ず「低」から開始。</td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 text-sm font-bold text-slate-900 bg-amber-50/30">② 評価のターゲット</td>
+                          <td class="p-4 text-sm text-slate-600">不精確性の判断に、評価者の主観に基づく漠然とした判断が含まれがちだった。</td>
+                          <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap"><strong>「ターゲットの明示と必須化」</strong>。閾値を跨ぐか否かのみで客観的に判定。</td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 text-sm font-bold text-slate-900 bg-amber-50/30">③ 評価の手法</td>
+                          <td class="p-4 text-sm text-slate-600">統計指標（I²等）を盲信するあまり、臨床的文脈が無視されることがあった。</td>
+                          <td class="p-4 text-sm text-slate-700 font-medium whitespace-pre-wrap text-wrap"><strong>「統計から視覚評価へ」</strong>。フォレストプロットの視覚的な重なりを最優先。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  <div class="mt-8 bg-slate-900 text-white p-6 rounded-2xl">
+                    <h4 class="font-bold mb-2 flex items-center gap-2" style="border:none;padding:0;color:#fff;">
+                      <i data-lucide="award" class="w-5 h-5 text-amber-400"></i> まとめ
+                    </h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                      Core GRADEは、過去20年間で「方法論の迷宮」と化してしまった従来のGRADEシステムから、「臨床家が目の前の患者のために意思決定を行う」という本来の目的に立ち返り、最もシンプルかつ論理的な判断を下せるように贅肉を削ぎ落とした、実践的なフレームワークと言えます。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
