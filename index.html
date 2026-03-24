@@ -7,6 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRADEアプローチ ハンドブック（日本語版）</title>
 
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -419,11 +422,274 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            
+            <!-- CoreGrade解説: GRADEアプローチの概要 -->
+            <div class="max-w-4xl mx-auto">
+              
+              <!-- Hero Title -->
+              <div class="mb-12">
+                <span class="inline-block py-1 px-3 rounded bg-blue-100 text-blue-700 text-sm font-bold mb-4">論文徹底解説</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-6" style="border:none;padding:0;margin-bottom:1.5rem;">
+                    Core GRADE 1: <br>
+                    <span class="text-blue-600">Core GRADEアプローチの概要</span>
+                </h1>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                    <div class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> Gordon Guyatt, Thomas Agoritsas ら</div>
+                    <div class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> 2025年4月</div>
+                    <div class="flex items-center gap-1"><i data-lucide="book" class="w-4 h-4"></i> The BMJ</div>
+                </div>
+              </div>
+
+              <!-- Content Sections -->
+              <article class="space-y-16 text-slate-700 leading-relaxed text-base">
+                
+                <!-- Section 1 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">1</span>
+                        Core GRADEとは何か？（背景と目的）
+                    </h2>
+                    <p class="mb-4">
+                        GRADE（Grading of Recommendations Assessment, Development and Evaluation）アプローチは、システマティックレビューの著者やガイドライン作成者が「エビデンスの確実性」を評価し、「推奨」を作成するための世界的な標準ツールです。
+                    </p>
+                    <p class="mb-6">
+                        しかし、過去20年間で50以上の関連論文が発表された結果、その体系は非常に複雑で難解なものとなってしまいました。この課題を解決するために登場したのが<strong>「Core GRADE」</strong>です。The BMJ誌で発表された全7回のシリーズ論文の第1報である本論文は、GRADEの原点に立ち返り、<strong class="text-slate-900">「厳密さを保ちながら、可能な限りシンプルにする」</strong>ことを目指した新しい統合アプローチの全体像を提示しています。
+                    </p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-lg">
+                        <h4 class="font-bold text-amber-800 mb-2 flex items-center gap-2" style="border:none;padding:0;color:#92400e;">
+                            <i data-lucide="lightbulb" class="w-5 h-5"></i> ここがポイント
+                        </h4>
+                        <p class="text-amber-900 text-sm">
+                            Core GRADEは新しい基準を作ったわけではありません。既存の複雑化したGRADEシステムの中から、臨床現場の意思決定に「本当に必要な中核（Core）」を抽出し、一貫性のある実用的なガイドとして再構築したものです。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">2</span>
+                        適用範囲と基本パラダイム
+                    </h2>
+                    <p class="mb-4">Core GRADEは、以下の特定のスコープに焦点を絞ることでシンプルさを実現しています。</p>
+                    <ul class="space-y-4 mb-6 list-none ml-0">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 block">1対1のペア比較</strong>
+                                複数の介入を同時に比較するネットワークメタアナリシスのような複雑なものではなく、「単一の介入」対「単一の比較対照（プラセボや標準治療など）」の比較に特化しています。
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 block">個々の患者視点（Individual Patient Perspective）</strong>
+                                公衆衛生施策や医療システム全体の視点ではなく、目の前の「患者個人のケア」に適用するための推奨を作成することを主眼としています。
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 3 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">3</span>
+                        GRADEを支える2つの基本プロセスと全体像
+                    </h2>
+                    <p class="mb-6">Core GRADEのアプローチは、大きく分けて「システマティックレビュー側」と「ガイドライン作成側」の2つの根本的なプロセスがジグソーパズルのように噛み合うことで成り立っています。</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-blue-600">
+                                <i data-lucide="bar-chart" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3" style="border:none;padding:0;color:#0f172a;">システマティックレビュー<br><span class="text-sm font-normal text-slate-500">（エビデンスの確実性の判定）</span></h3>
+                            <p class="text-sm text-slate-600">PICOで疑問を設定し、重要なアウトカムのそれぞれについて、得られたエビデンスの確からしさ（確実性）を評価します。</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 text-emerald-600">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3" style="border:none;padding:0;color:#0f172a;">ガイドライン作成<br><span class="text-sm font-normal text-slate-500">（推奨への移行）</span></h3>
+                            <p class="text-sm text-slate-600">まとめられたエビデンスをもとに、意思決定者が利益と害のバランス、患者の価値観、コストなどを総合的に考慮し、推奨の方向と強さを決定します。</p>
+                        </div>
+                    </div>
+
+                    <!-- Figure 1-1 image -->
+                    <figure class="my-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-200">
+                        <img src="coreGRADE/images/1-1.jpg" alt="Core GRADEの全体像" class="w-full h-auto rounded-lg" style="max-width:100%;border-radius:8px;">
+                        <figcaption class="text-center text-sm text-slate-500 mt-4 px-4 font-medium">
+                            図1: Core GRADEの全体像。左側がシステマティックレビューによるエビデンスの統合と確実性評価。右側がガイドラインパネルによる推奨の形成。
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- Section 4 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">4</span>
+                        最初のステップ：PICOフォーマットによる定式化
+                    </h2>
+                    <p class="mb-6">質の高い評価は、極めて正確な疑問の設定から始まります。Core GRADEでは、有名な「PICO」フォーマットを使用して臨床疑問を厳密に定義することを求めています。</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+                            <div class="w-16 h-16 flex-shrink-0 bg-rose-100 text-rose-600 font-black text-2xl rounded-lg flex items-center justify-center">P</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg mb-1" style="border:none;padding:0;">Population/Patient (対象患者)</h4>
+                                <p class="text-sm">極めて具体的である必要があります。「COVID-19で入院を要し、酸素投与が必要な成人患者」のように、適用対象を明確に絞り込みます。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+                            <div class="w-16 h-16 flex-shrink-0 bg-blue-100 text-blue-600 font-black text-2xl rounded-lg flex items-center justify-center">I</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg mb-1" style="border:none;padding:0;">Intervention (介入)</h4>
+                                <p class="text-sm">評価したい治療法や薬（例：デキサメタゾン 6mg/日の10日間投与）。投与量や期間も可能な限り明記します。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+                            <div class="w-16 h-16 flex-shrink-0 bg-emerald-100 text-emerald-600 font-black text-2xl rounded-lg flex items-center justify-center">C</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg mb-1" style="border:none;padding:0;">Comparison (比較対照)</h4>
+                                <p class="text-sm">プラセボ、または現在の標準治療（Standard of Care）など。何と比較して優れているかを定めます。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-blue-200 text-blue-800 text-xs font-bold px-2 py-1 rounded-bl-lg">最重要</div>
+                            <div class="w-16 h-16 flex-shrink-0 bg-blue-600 text-white font-black text-2xl rounded-lg flex items-center justify-center">O</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg mb-1" style="border:none;padding:0;">Outcome (アウトカム)</h4>
+                                <p class="text-sm mb-2">介入によって生じる結果。Core GRADEでは、すべてのアウトカムを以下の3つにランク付けすることが必須です：</p>
+                                <ul class="list-disc list-inside text-sm text-slate-700 ml-2">
+                                    <li><strong>クリティカル（Critical）：</strong> 意思決定を左右する決定的な結果（例：死亡）。</li>
+                                    <li><strong>重要（Important）：</strong> 考慮はするが、単独で推奨を変えるほどではないもの。</li>
+                                    <li><strong>重要でない（Not important）：</strong> 評価対象に含めない。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">5</span>
+                        ステップ2：疑問の洗練とサブグループの考慮
+                    </h2>
+                    <p class="mb-4">PICOを設定した後、Core GRADEが特に強調しているのが「サブグループ」と「ベースラインリスク」の徹底的な事前検討です。</p>
+
+                    <h3 class="font-bold text-xl text-slate-800 mt-8 mb-3 border-b pb-2" style="color:#1e293b;">1. 相対的効果（Relative Effect）の違い</h3>
+                    <p class="mb-6">ある薬が、若い患者にはよく効くが、高齢者には全く効かないといったように、「生物学的な効き目」自体が異なる集団が存在しないかを事前に特定します。</p>
+
+                    <h3 class="font-bold text-xl text-slate-800 mt-8 mb-3 border-b pb-2" style="color:#1e293b;">2. ベースラインリスクの違いと絶対的効果</h3>
+                    <p class="mb-4">たとえ薬の相対的効果が同じでも、元々の死亡率（ベースラインリスク）が違えば、<strong>絶対的効果</strong>は大きく変わります。</p>
+                    <div class="bg-slate-800 text-slate-100 p-6 rounded-xl mb-6 shadow-inner">
+                        <h4 class="font-bold text-blue-400 mb-3" style="border:none;padding:0;color:#60a5fa;"><i data-lucide="info" class="inline w-5 h-5 mr-1 mb-1"></i> 具体例：リスク半減の薬</h4>
+                        <ul class="space-y-4 text-sm list-none ml-0">
+                            <li class="flex flex-col md:flex-row gap-2 md:gap-4 border-b border-slate-700 pb-4">
+                                <span class="md:w-1/3 font-semibold text-slate-300">重症患者グループ：</span>
+                                <span class="md:w-2/3">元々の死亡率が <strong>20%</strong>。薬を使うと 10% に減少。<br><span class="text-emerald-400 font-bold">⇒ 100人中 10人 の命を救う</span></span>
+                            </li>
+                            <li class="flex flex-col md:flex-row gap-2 md:gap-4 pt-2">
+                                <span class="md:w-1/3 font-semibold text-slate-300">軽症患者グループ：</span>
+                                <span class="md:w-2/3">元々の死亡率が <strong>2%</strong>。薬を使うと 1% に減少。<br><span class="text-amber-400 font-bold">⇒ 100人中 1人 しか救えない</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">6</span>
+                        エビデンス確実性の評価メカニズム
+                    </h2>
+                    <p class="mb-6">各アウトカムに対するエビデンスが出揃った後、それがどれくらい信じられるか（確実性：Certainty）を評価します。</p>
+
+                    <!-- Figure 1-3 image -->
+                    <figure class="my-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-200">
+                        <img src="coreGRADE/images/1-3.jpg" alt="エビデンスの確実性のスケール" class="w-full h-auto rounded-lg" style="max-width:100%;border-radius:8px;">
+                        <figcaption class="text-center text-sm text-slate-500 mt-4 px-4 font-medium">
+                            図2: エビデンスの確実性のスケール。「Very low」から「High」までの4段階。
+                        </figcaption>
+                    </figure>
+
+                    <p class="mb-6 mt-10">この4段階の確実性を決定するための体系的なプロセスが、GRADEの心臓部です。</p>
+
+                    <!-- Figure 1-2 image -->
+                    <figure class="my-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-200">
+                        <img src="coreGRADE/images/1-2.jpg" alt="確実性評価のプロセス" class="w-full h-auto rounded-lg" style="max-width:100%;border-radius:8px;">
+                        <figcaption class="text-center text-sm text-slate-500 mt-4 px-4 font-medium">
+                            図3: 確実性評価のプロセス。初期評価からダウングレード/アップグレードを経て、最終的な確実性が導き出されます。
+                        </figcaption>
+                    </figure>
+
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-white p-4 border border-slate-200 rounded-xl">
+                            <h4 class="font-bold text-slate-900 mb-2 border-b pb-1" style="padding-left:0;">1. 初期評価</h4>
+                            <p class="text-sm">RCTは「High」からスタート。観察研究は「Low」からスタートします。</p>
+                        </div>
+                        <div class="bg-white p-4 border-rose-200 border-2 rounded-xl">
+                            <h4 class="font-bold text-rose-700 mb-2 border-b border-rose-100 pb-1" style="padding-left:0;color:#be123c;">2. ダウングレード（5要素）</h4>
+                            <p class="text-sm">Risk of bias、Imprecision、Indirectness、Inconsistency、Publication biasに深刻な問題があれば評価を下げます。</p>
+                        </div>
+                        <div class="bg-white p-4 border-emerald-200 border-2 rounded-xl">
+                            <h4 class="font-bold text-emerald-700 mb-2 border-b border-emerald-100 pb-1" style="padding-left:0;color:#047857;">3. アップグレード</h4>
+                            <p class="text-sm">主に観察研究において、Large effectやDose-responseが見られる場合は例外的に評価を上げます。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">7</span>
+                        エビデンスの「全体的」な確実性の決定ルール
+                    </h2>
+                    <p class="mb-4">個々のアウトカムに対する確実性が決まった後、<strong>介入全体としてのエビデンスの確実性</strong>をどのように決定するかが重要です。</p>
+                    <div class="p-6 bg-rose-50 border border-rose-200 rounded-xl mb-6">
+                        <p class="text-rose-900 font-bold text-lg mb-2 text-center">
+                            全体的な確実性は「クリティカルなアウトカムの中で、最も低い確実性のスコア」によって決定される。
+                        </p>
+                    </div>
+                    <p class="mb-4">なぜ最も低いスコアに合わせるのでしょうか？ それは<strong>「利益と害を同等に扱うため」</strong>です。</p>
+                    <p>例えば、ある新薬が「死亡率を下げる」ことに関しては「確実性：高」のエビデンスを持っていても、「重篤な脳出血を引き起こす」ことに関するエビデンスが「確実性：低」だった場合、全体のエビデンスの確実性は「低」となります。</p>
+                </section>
+
+                <!-- Section 8 -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3" style="border:none;padding:0;color:#0f172a;">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">8</span>
+                        まとめ：シンプルさと厳密さの両立
+                    </h2>
+                    <p class="mb-6">Core GRADEシリーズの第1報は、複雑な森のようになっていたGRADEシステムに再び明確な道標を立てるものです。</p>
+                    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                            <i data-lucide="target" class="w-8 h-8 mx-auto text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-slate-800 mt-2" style="border:none;padding:0;">明確なターゲット</h4>
+                            <p class="text-sm text-slate-600 mt-1">1対1の比較と患者視点への回帰。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                            <i data-lucide="layers" class="w-8 h-8 mx-auto text-emerald-500 mb-2"></i>
+                            <h4 class="font-bold text-slate-800 mt-2" style="border:none;padding:0;">厳格なPICO</h4>
+                            <p class="text-sm text-slate-600 mt-1">アウトカムの重要度の事前定義。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                            <i data-lucide="scale" class="w-8 h-8 mx-auto text-purple-500 mb-2"></i>
+                            <h4 class="font-bold text-slate-800 mt-2" style="border:none;padding:0;">リスクの層別化</h4>
+                            <p class="text-sm text-slate-600 mt-1">ベースラインリスクによる絶対的効果の考慮。</p>
+                        </div>
+                    </div>
+                    <p>システマティックレビュー作成者やガイドライン委員会のメンバーは、この「Core GRADE」のアプローチに従うことで、より透明性が高く、臨床現場の医師や患者にとって真に役立つ実践的な推奨事項を作成できるようになります。</p>
+                </section>
+
+              </article>
+
+              <footer class="mt-12 pt-6 border-t border-slate-200 text-slate-500 text-sm text-center pb-4">
+                <p>この解説はBMJに掲載された「Core GRADE 1: overview of the Core GRADE approach (2025)」の論文内容に基づき構成されています。</p>
+              </footer>
             </div>
+
           </div>
           <div class="tab-pane">
             <div class="placeholder-msg">
@@ -2194,5 +2460,24 @@ function checkAuth(){
 <button class="scroll-top" id="scrollTop" aria-label="トップへ">↑</button>
 
 
+
+<script>
+// Initialize Lucide Icons for CoreGrade tabs
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+});
+// Re-init icons after tab switch
+var origSwitchTab = window.switchTab;
+if (origSwitchTab) {
+  window.switchTab = function(btn, idx) {
+    origSwitchTab(btn, idx);
+    setTimeout(function() {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }, 100);
+  };
+}
+</script>
 </body>
 </html>
