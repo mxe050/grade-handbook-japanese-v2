@@ -36,10 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // プログレスバー更新
     const progress = ((index + 1) / pages.length) * 100;
-    progressFill.style.width = `${progress}%`;
-
-    // URLハッシュ更新（オプション）
-    // history.replaceState(null, null, `#page-${index + 1}`);
+    if (progressFill) progressFill.style.width = `${progress}%`;
 
     // スクロールをトップへ
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -47,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // モバイルメニューを閉じる
     if (sidebar.classList.contains('show')) toggleMenu();
   }
+
+  // グローバルに公開
+  window.showPage = showPage;
 
   // 目次ボタンイベント
   tocBtns.forEach(btn => {

@@ -526,3 +526,134 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
   .main-content { margin-left: 0 !important; }
   .page { display: block !important; page-break-after: always; }
 }
+
+/* ===== 表紙（Cover Page） ===== */
+.cover-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, rgba(41, 128, 185, 0.1), transparent),
+              radial-gradient(circle at bottom left, rgba(230, 126, 34, 0.05), transparent);
+  padding: 40px 20px;
+}
+
+.cover-content {
+  max-width: 800px;
+  text-align: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cover-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.cover-description {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.link-button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.hero-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn.primary {
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.hero-btn.secondary {
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.hero-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border-color: var(--primary-light);
+}
+
+.btn-icon {
+  font-size: 2rem;
+  background: #f0f4f8;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover .btn-icon {
+  background: var(--primary-light);
+  color: white;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.sub-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.start-journey {
+  margin-top: 20px;
+}
+
+.start-journey .nav-btn {
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(26, 82, 118, 0.3);
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 600px) {
+  .cover-title { font-size: 2rem; }
+  .cover-description { font-size: 1rem; }
+  .hero-btn { padding: 16px; }
+}

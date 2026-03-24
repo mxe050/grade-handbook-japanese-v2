@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -563,7 +563,16 @@
     <div class="sidebar-header">目次 / Table of Contents</div>
     <ul class="toc-list" id="tocList">
       <li class="toc-item">
-        <button class="toc-btn" data-idx="0">
+        <button class="toc-btn active" data-idx="0">
+          <span class="toc-num">0</span>
+          <span class="toc-text">
+            表紙
+            <span class="en">Cover</span>
+          </span>
+        </button>
+      </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="1">
           <span class="toc-num">1</span>
           <span class="toc-text">
             GRADEアプローチの概要
@@ -572,7 +581,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="1">
+        <button class="toc-btn" data-idx="2">
           <span class="toc-num">2</span>
           <span class="toc-text">
             GRADEの開発方法
@@ -581,7 +590,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="2">
+        <button class="toc-btn" data-idx="3">
           <span class="toc-num">3</span>
           <span class="toc-text">
             GRADEの使用を主張するための要件
@@ -590,7 +599,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="3">
+        <button class="toc-btn" data-idx="4">
           <span class="toc-num">4</span>
           <span class="toc-text">
             介入・診断検査・予後・曝露に関する質問
@@ -599,7 +608,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="4">
+        <button class="toc-btn" data-idx="5">
           <span class="toc-num">5</span>
           <span class="toc-text">
             アウトカム（Outcomes）
@@ -608,7 +617,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="5">
+        <button class="toc-btn" data-idx="6">
           <span class="toc-num">6</span>
           <span class="toc-text">
             介入の確実性評価の原則
@@ -617,7 +626,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="6">
+        <button class="toc-btn" data-idx="7">
           <span class="toc-num">7</span>
           <span class="toc-text">
             Risk of bias（ランダム化試験）
@@ -626,7 +635,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="7">
+        <button class="toc-btn" data-idx="8">
           <span class="toc-num">8</span>
           <span class="toc-text">
             不一致性（Inconsistency）
@@ -635,7 +644,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="8">
+        <button class="toc-btn" data-idx="9">
           <span class="toc-num">9</span>
           <span class="toc-text">
             非直接性（Indirectness）
@@ -644,7 +653,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="9">
+        <button class="toc-btn" data-idx="10">
           <span class="toc-num">10</span>
           <span class="toc-text">
             不確実性（Imprecision）
@@ -653,7 +662,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="10">
+        <button class="toc-btn" data-idx="11">
           <span class="toc-num">11</span>
           <span class="toc-text">
             Dissemination bias（情報発信バイアス）
@@ -662,7 +671,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="11">
+        <button class="toc-btn" data-idx="12">
           <span class="toc-num">12</span>
           <span class="toc-text">
             Evidence to Decisionフレームワーク入門
@@ -671,7 +680,7 @@
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="12">
+        <button class="toc-btn" data-idx="13">
           <span class="toc-num">13</span>
           <span class="toc-text">
             GRADE推奨
@@ -684,6 +693,33 @@
 
   <!-- メインコンテンツ -->
   <main class="main-content" id="mainContent">
+    <div class="page active" id="page-0">
+      <div class="cover-page">
+        <div class="cover-content">
+          <h1 class="cover-title">GRADEアプローチ ハンドブック</h1>
+          <p class="cover-description">本アプリはGRADE Bookと CoreGradeを日本語訳とポイントの解説です</p>
+          <div class="link-button-container">
+            <a href="https://book.gradepro.org/" target="_blank" class="hero-btn primary" id="btn-gradepro">
+              <span class="btn-icon">📚</span>
+              <div class="btn-text">
+                <span class="main-label">GRADEpro Book</span>
+                <span class="sub-label">公式モバイルブックを表示</span>
+              </div>
+            </a>
+            <a href="https://www.clarityresearch.ca/frequently-asked-questions" target="_blank" class="hero-btn secondary" id="btn-clarity">
+              <span class="btn-icon">❓</span>
+              <div class="btn-text">
+                <span class="main-label">Clarity Research FAQ</span>
+                <span class="sub-label">よくある質問を確認</span>
+              </div>
+            </a>
+          </div>
+          <div class="start-journey">
+            <button class="nav-btn" onclick="showPage(1)">解説を読む <span style="margin-left:8px">→</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="page" id="page-1">
       <div class="page-header">
         <div class="chapter-badge">Chapter 1 / 13</div>
