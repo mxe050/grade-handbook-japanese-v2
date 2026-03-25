@@ -1,0 +1,174 @@
+Problem with Applying GRADE to a Single Study
+Question from Lukman Thalib <l.thalib@griffith.edu.au>
+
+I am currently working on updating a systematic review. As you are aware, Cochrane now requires a GRADE assessment for all outcomes, including those based on a single study. While we are fully supportive of the principles and value of GRADE, we are encountering some challenges with its application with single studies. 
+
+For example, in one outcome, there is only a single RCT evaluating a newer intervention, with very few events overall—only a handful in the control arm and just one in the intervention arm. This resulted in a small relative risk, and while the confidence interval did not cross 1, the data are clearly sparse and highly uncertain. However, as we cannot rate down for heterogeneity or publication bias in a single-study context, the resulting GRADE assessment over-estimated the certainty of evidence—something that feels misleading given the limited data and early nature of the intervention.
+
+Our group lead feels strongly that GRADE should primarily be applied to a body of evidence rather than to individual studies in isolation, particularly in situations like this. However, Cochrane’s expectations are quite firm.
+
+Given your leadership being the developer of GRADE, we would greatly appreciate any insights or guidance you might be able to offer. Specifically, do you believe GRADE can or should be adapted in such contexts, or are there ways within the current framework to appropriately reflect the uncertainty in these situations?
+
+ 
+
+ 
+
+Response
+
+Lukman, if you are thinking of undertaking a review of the intervention, it means that people are thinking of using it. And if they are, they should be aware of the best estimates of effect and the certainty of those estimates. That is true however many studies are available.
+
+The challenge is to get the certainty rating correct. If your intuition tells you that the certainty is lower than what your impression of the GRADE rating would indicate then your impression of the GRADE rating is incorrect (a fundamental principle of GRADE is that GRADE ratings should reflect the educated, thoughtful gestalts of the people making the ratings).
+
+From what you tell me, the evidence is clearly low certainty and quite possibly very low. Further, from what you tell me the point estimate of the effect is large. Whenever the effect is large (and for binary outcomes this can mean a relative risk reduction greater than 30%) this means you should consider invoking assessment with the optimal information size (see https://www.bmj.com/content/389/bmj-2024-081904). As described in the article, the OIS is the sample size
+
+calculation that would be undertaken when planning a single randomised controlled trial. For binary outcomes, these involve
+
+specifying the acceptable error rates: α (typically 0.05)and β (typically 0.20), the control group event rate (chosen from the context), and a modest relative risk reduction, typically 20% or 25%. From what you tell me, it is a sure thing that your study will fail the OIS criterion.
+
+Moreover, if the sample size is a long way from the OIS (and for the OIS calculation you can use a conservative 20% RRR) then you can rate down twice for imprecision. From what you tell me about the situation that is almost certainly the case. So now we’ve arrived at low certainty of evidence.
+
+Your enlightened gestalt may well be that this represents very low certainty. In that case, we need to think how to apply GRADE to come to the correct conclusion. One possibility is that you think the number of events is so small you are very uncertain whether there is any effect at all. If the sample size is sufficiently far from the OIS you may consider rating down three levels for imprecision.
+
+Alternatively, there may be other reasons for your judgment that the evidence is very low certainty. Are their risk of bias concerns? Or do you suspect that there may be one or more other studies out there that failed to show an effect and so were not published (no reason not to invoke publication bias concerns when there is only a single study)? Rating down for either of these reasons (or for the combination if there are concerns in both but neither sufficient to rate down by itself) would also get you to a GRADE rating of very low certainty if that is your judgment of what is appropriate.
+
+
+Generating a priori hypotheses regarding differences in baseline risk and absolute effects
+Question from Xiaomei Yao <yaoxia@mcmaster.ca>
+
+I have a question regarding Table 1 in Core GRADE Paper 1. The table lists “Large baseline risk in unvaccinated people” as an example of varying baseline risk leading to different absolute effects, and “Large beneficial effects in unvaccinated people” as an example of varying relative risk.
+
+For a single factor like vaccination, it seems it could be considered either a baseline risk factor or an effect modifier. My question is:
+
+At the project planning stage, how do we decide whether to categorize a factor as influencing baseline risk or relative risk?
+Should we consider listing the same factor under both categories?
+
+ 
+
+
+Response
+
+Let’s consider the two issues separately.
+
+First, baseline risk.
+
+One tries to think of easily identifiable patient characteristics that are likely to associated with big differences in risk of a patient-important outcome that one is considering. Typical such characteristics would be age, disease severity, and presence of comorbidity. For such factors, one considers whether it is plausible that an investigator – ideally in well done cohort studies, but if that’s not available, less well done cohort studies or randomized trials – might have provided data for your groups of patients (the old and the young; greater and less disease severity; with and without comorbidity). If the answer is yes, and you suspect differences in baseline risk might be large enough so that the optimal action (and in a guideline the recommendations) might differ for the different groups of patients one includes this as an a priori hypothesis and seeks the evidence.
+
+Second, relative effects
+
+One considers patient characteristics that might modify the relative effect of the intervention. Might the relative effect be larger in the old versus the young, those with greater versus less disease severity, or with comorbidity versus without (or in each case, vice versa: larger in the young versus the old, etc.).
+
+In considering these possible effect modifications (synonyms: subgroup effects, interactions) one remembers that relative subgroup effects are much, much rarer than differences in baseline risk. Bearing that in mind, one considers the direction of any effect modification that might be present. Is there a compelling biological rationale that the relative effect will be larger in the old than the young (or the opposite). Is there a compelling biological rationale that the relative effect will be larger in those with greater versus less severe diseae (or the opposite). Are you ready to state explicitly the direction of your subgroup hypothesis? If you think: well, age might modify the effect, but it could go either way (bigger effect in the old or the young), you reject this candidate relative subgroup hypothesis. Similarly with disease severity or comorbidity. In other words: no compelling biological reason that dictates the direction of effect, dismiss that hypothesis.
+
+The upshot of this process is that it is more likely that one will have one or more hypotheses about the impact of baseline risk on magnitude of effect than hypotheses about relative effect. It is possible, however, as in the example, that the same variable will generate a hypothesis about baseline risk (larger baseline risk in the unvaccinated) and a hypothesis about relative effect modification (larger relative effect in the unvaccinated).
+
+
+
+
+How much to rate down for imprecision
+Question from Shirpada Rao Rao <Shripada.Rao@health.wa.gov.au>
+
+In a hypothetical robust systematic review that included two large and well conducted RCTs, the results were as follows for the outcome of mortality: Relative Risk: 0.88, 95% CI 0.75 to 1.13. The total sample size was 2950.
+
+On GRADE-PRO, should we downgrade evidence by one level, two level or three levels for imprecision? Or should we not downgrade at all?
+
+ 
+
+
+Response
+
+Dr. Rao, not sure why you refer to GRADEpro. If I were going to use software to assist with the presentation I’d use the MAGICapp
+
+But neither software programs provides answers to interpretation issues that go beyond the basics (and may sometimes mislead with respect to these). So I’d be disinclined to refer to the programs when discussing methods issues such as the ones you raise.
+
+To begin to address your issues, the first step in deciding whether to rate down for imprecision is to decide what it is in which we are rating our certainty – that is, the target of certainty rating. The process of deciding on the target begins with setting a threshold. Using Core GRADE, the two possible thresholds are the null and the minimally important difference (MID). I’ll address the null first.
+
+When one chooses the null as the threshold one begins by rating the certainty in a non-zero effect (i.e. that is the target). In this case, if the point estimate represents the truth, then the intervention results in a 12% relative risk reduction, clearly a non-zero effect. One then examines the confidence interval to see whether it overlaps the chosen threshold, the null. In this case, it does. When there is such an overlap, one will always rate down for imprecision at least once. So, that’s settled, and the only remaining issue is whether one rates down once or twice. Deciding whether to rate down once or twice involves a judgement of whether, considering imprecision alone, one would conclude “the intervention probably provides a non-zero effect” (in this case a non-zero benefit) or whether the more appropriate conclusion is less certain “the intervention possibly provides a non-zero effect”.
+
+That is a matter of intuitive judgment regarding the message one feels is most appropriate for one’s target audience. Personally, I am reluctant to convey the “probably” message when there is a substantial possibility of harm, and to me the 13% increase in relative risks constitutes a substantial possibility of harm. Therefore, if there were no other domains (risk of bias, inconsistency, indirectness, publication bias) in which one has rated down, I’ve be inclined to rate down twice.
+
+However, as Core GRADE 1 emphasizes, one must ultimately step back and take a gestalt look at the final certainty rating. If one had already decided to rate down for one of the other domains, then the best possible certainty rating would be low, and rating down twice for imprecision would result in a rating of very low. Looking at the whole picture of the evidence, one may feel that low is the more appropriate certainty rating rather than very low. If that were the case, then rating down only once for imprecision would be the way to ensure the most appropriate final certainty rating.
+
+Consider now the alternative choice of threshold, the MID. Using the MID for the threshold would involve deciding on a baseline risk, applying the relative risk point estimate and confidence intervals to that baseline risk, and proceeding from there. Since you’ve provided only the relative effect, it seems implicit that you are interested in rating certainty in a non-zero effect, and I won’t proceed farther in the MID direction here.
+
+
+
+Uncertainty when addressing publication bias
+Question from Shirpada Rao Rao <Shripada.Rao@health.wa.gov.au>
+
+Since there were only two RCTs, we could not conduct formal tests for publication bias or generate funnel plots. In that case how to decide publication bias was undetected or strongly suspected?
+
+ 
+
+
+Response
+
+Barring compelling evidence of publication bias, we conclude “undetected” (the usual situation). Core GRADE 4 that deals with bias issues provides a suggestion of circumstances when one might rate down for publication bias irrespective of the number of studies (including two). The focus there is on commercial funding and, if you like, you can have a look at what we write in the “commercial funding” section of Core GRADE 4.
+
+
+What should a guideline panel do when they suspect baseline difference in risk warrant different recommendations in two groups, but no review of prognosis available?
+Question from Xiaomei Yao <yaoxia@mcmaster.ca>
+
+In my group, for intervention guideline topics, if we only include RCTs in our systematic reviews, we currently list only effect modifiers (i.e., subgroup analysis considerations) in the project plan template. I am updating this template soon and considering whether to require colleagues to also list baseline risk factors.
+
+However, my concern is that if we do not plan a separate prognostic SR, listing factors under the “baseline risk” category may be unnecessary because it is unlikely we can test them using RCT-only data. For example, if I list vaccination as a potential baseline risk factor, answering whether vaccination truly predicts baseline risk would require a prognostic SR including non-randomized studies. If my working group only wants to include RCTs, I cannot find comprehensive data to test this. In that situation, listing vaccination as a baseline risk factor at the project planning stage seems unhelpful. If I list it, I should try to find data to test it—conduct a separate prognostic SR.
+
+If we decide to include non-randomized studies, then it makes sense to consider and list baseline risk factors in the project plan. Do you agree with this reasoning?
+
+ 
+
+
+Response
+
+Thanks, Xiaomei, excellent question.
+
+Let’s say that a guideline panel faces a situation in which there is obvious differences in baseline risk that would mandate different recommendations for groups of patients at different risk. A quick look finds no systematic reviews of prognosis available and the group doesn’t have the time or resources to conduct such a review. They should certainly check to see if the randomized trials provide the information, but they usually will not. What should they do then?
+
+Our answer is that they should take an expedited look at the information that is available from observational studies of prognosis. They would find one or more studies that would identify one or more key prognostic factors on which to make their judgment.
+
+Consider for instance a panel making a recommendation regarding use of nirmatrelvir-ritonavir for acute COVID in 2025. The vast majority of patients are at sufficiently low risk of severe illness and hospitalization that they do not need the drug. On the other hand, immunosuppressed individuals are at high enough risk that they should. There may be groups of patients with multimorbidity who are in between, and who may or may not receive overall net benefit by drug use.
+
+Such a panel would be very unwise to issue a single recommendation for all groups. If they did not have the resources or time to do the systematic review, they would conduct a less systematic review of the limited prognostic information available and proceed according to the results.
+
+Baseline risk (prognosis) versus effect modification (subgroup effect, interaction)
+Question from Siyu Yan <15927071586@163.com>
+
+We’d like to confirm with you whether subgroup analysis focuses on the effects of different interventions (I vs. C). Differently, baseline risk typically examines the impact of different patient characteristics on outcomes. Is this right?
+
+ 
+
+
+Response
+
+Regarding distinguishing between prognostic factors (in the context of treatment effects, baseline risk) and effect modification (synonyms subgroup effect, interaction), I have an exercise that may help. The slide attached depicts three scenarios. For each, you need to say whether age is a prognostic factor (clue, look at the control group), an effect modifier (synonyms relative subgroup effect, interaction), or both prognostic factor and effect modifier.
+
+
+
+In scenario A, looking at the control group, age is a prognostic factor: old patients die twice as often as young patients. The baseline risk of dying in the old is twice that in the young. In this scenario, age is not an effect modifier: the effect of treatment in both old and young is to cut the risk of dying in half (50% relative risk reduction).
+
+In scenario B, looking at the control group, age is a not a prognostic factor: old and young patients have the same risk of dying. The baseline risk in both groups is the same. In this scenario, age is an effect modifier: in young patients treatment cuts the risk of dying in half (50% relative risk reduction) while it has no impact on risk in the old (relative risk 1.0).
+
+In scenario C, looking at the control group, age is a prognostic factor: old patients die twice as often as young patients. The baseline risk of dying in the old is twice that in the young. In this scenario, age is also an effect modifier: in young patients treatment cuts the risk of dying in half (50% relative risk reduction) while it has no impact on risk in the old (relative risk 1.0).
+
+
+Baseline risk versus prognosis in the context of guidelines
+Question from Siyu Yan <15927071586@163.com>
+
+While differences in baseline risk may indeed lead to different recommendations for subgroups, if guideline developers do not focus on prognosis, they might overlook the issue of baseline risk. As you mentioned in your email, there should be evidence from prognostic studies to support this. Should the consideration of baseline risk form an independent prognostic question, or is it a subsidiary issue in each PICO that all guidelines should consider (even if the guideline does not focus on prognosis)?
+
+ 
+
+
+Response
+
+Prognosis has to do with patient characteristics that are associated with outcomes of interest. For instance, older age, severe disease, and lower socioeconomic status are all typically associated with prognosis. Patients are often interested in their prognosis: how quickly will I recover from this injury? with my new cancer diagnosis, how long do I have to live.
+
+The issue of baseline risk in the context of guidelines is a particular application of prognostic information. Given that relative effects are almost always similar across prognostic categories (and thus baseline risk) absolute treatment effects will be greater in the old than the young, those more severely versus less severely diseased, and those who are poorer than richer. Thus, given the same adverse effects and burden, the patients with poorer prognosis will have larger treatment effects than those with better prognosis. Given the resultant greater net benefit, we are more likely to recommend treatment to the older, sicker, and poorer.
+
+To your question: Should the consideration of baseline risk form an independent prognostic question, or is it a subsidiary issue in each PICO that all guidelines should consider (even if the guideline does not focus on prognosis)? The answer is yes: all guideline panels should bear in mind issues of baseline risk (that is, issues of prognosis) and it is thus a potential independent prognostic question in each guideline recommendation. And yes, baseline risk/prognosis is a subsidiary or secondary issue that all guidelines consider even if their focus is not on prognosis.
+
+
+
+
+
+
+

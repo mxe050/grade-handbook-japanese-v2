@@ -1,0 +1,549 @@
+
+https://www.bmj.com/content/389/bmj-2024-081905
+https://book.gradepro.org/guideline/inconsistency
+
+
+#1
+Chapter 8 / 13
+不一致性（Inconsistency）
+を
+Chapter 8 / 13
+非一貫性（Inconsistency）
+と変えてください。
+
+#2
+Chapter 8 / 13
+非一貫性（Inconsistency）
+の
+CoreGrade解説
+のところに、以下のコードにある解説を組み込んで。
+図は、3-1から3-4
+C:\Users\yuasa\.gemini\antigravity\scratch\grade-handbook-japanese-v2\coreGRADE\images
+にあります。
+
+
+import React, { useState } from 'react';
+import { BookOpen, GitBranch, Activity, BarChart2, ZoomIn, ExternalLink, AlertCircle, CheckCircle2 } from 'lucide-react';
+
+export default function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // 画像拡大用のコンポーネント
+  const ImageWithZoom = ({ src, alt }) => (
+    <div className="relative group cursor-pointer" onClick={() => setSelectedImage(src)}>
+      <img 
+        src={src} 
+        alt={alt} 
+        className="w-full bg-white rounded-lg border border-slate-200 shadow-sm transition-all duration-300 group-hover:shadow-md" 
+      />
+      <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center backdrop-blur-[1px]">
+        <span className="text-white flex items-center gap-2 bg-slate-900/80 px-4 py-2 rounded-full font-medium shadow-lg">
+          <ZoomIn size={18} /> 拡大表示
+        </span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-blue-200">
+      
+      {/* モーダル (画像拡大表示) */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-slate-900/90 z-50 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+            <img 
+              src={selectedImage} 
+              alt="Enlarged view" 
+              className="max-w-full max-h-[85vh] object-contain bg-white rounded-md shadow-2xl" 
+            />
+            <p className="text-white mt-4 flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-full">
+              クリックで元に戻る
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* ヘッダー */}
+      <header className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-12 px-4 shadow-lg">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-3 mb-4 text-blue-200">
+            <BookOpen size={24} />
+            <span className="font-semibold tracking-wider text-sm uppercase">Evidence-Based Medicine</span>
+          </div>
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+            GRADEガイドライン 3:<br/>エビデンスの非一貫性(Inconsistency)の評価
+          </h1>
+          <p className="text-blue-100 text-lg max-w-3xl leading-relaxed mb-6">
+            メタアナリシスにおいて研究間の結果がばらつく「非一貫性」。本アプリでは BMJ 2025;389:e081905 の論文で示された4つの図表を用い、確実性をどのように評価・判断するかを解説します。
+          </p>
+          <a 
+            href="https://www.bmj.com/content/389/bmj-2024-081905" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-2 bg-white text-blue-900 hover:bg-blue-50 px-5 py-2.5 rounded-lg font-semibold transition-colors shadow-sm"
+          >
+            <ExternalLink size={18} />
+            論文原文を読む (BMJ)
+          </a>
+        </div>
+      </header>
+
+      {/* メインコンテンツ */}
+      <main className="max-w-5xl mx-auto py-12 px-4 space-y-16">
+
+        {/* イントロダクション */}
+        <section className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60">
+          <div className="flex items-start gap-4">
+            <div className="bg-blue-100 p-3 rounded-xl text-blue-700 mt-1 shrink-0">
+              <AlertCircle size={28} />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-3 text-slate-900">非一貫性（Inconsistency）とは？</h2>
+              <p className="text-slate-600 leading-relaxed text-lg mb-4">
+                システマティックレビューにおいて、組み込まれた複数の研究間で「効果の推定値（方向や大きさ）」に説明のつかない大きなばらつきがある状態を指します。異質性（Heterogeneity）とも関連します。
+              </p>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                GRADEアプローチでは、研究間で結果に深刻な非一貫性が見られる場合、統合された結果に対する<strong>エビデンスの確実性（Certainty of evidence）を「レートダウン（引き下げ）」</strong>する必要があります。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 1: フローチャート */}
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-blue-600 text-white p-2 rounded-lg"><GitBranch size={24} /></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">1. 非一貫性の評価フローと「意思決定の閾値」</h2>
+          </div>
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/60 flex flex-col lg:flex-row gap-10 items-start">
+            <div className="lg:w-1/2 w-full">
+              <ImageWithZoom src="3-2.jpg" alt="非一貫性評価のフローチャート" />
+              <p className="text-sm text-slate-500 mt-3 text-center">図3-2: 非一貫性を評価するためのフローチャート</p>
+            </div>
+            <div className="lg:w-1/2 w-full space-y-6">
+              <p className="text-slate-700 leading-relaxed text-lg">
+                単純に点推定値がばらついているかだけで機械的に判断するのではなく、<strong>臨床的な「意思決定の閾値（Threshold）」</strong>を考慮することが推奨されています。
+              </p>
+              <div className="space-y-4">
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-1" />
+                  <p className="text-slate-700 leading-relaxed"><strong>ステップ1：</strong> 各研究の点推定値に重要な違いがあり、信頼区間（CI）の重なりが少ないかを確認します。重なりが十分ならレートダウンは不要です。</p>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-1" />
+                  <p className="text-slate-700 leading-relaxed"><strong>ステップ2：</strong> 重なりが少ない場合、点推定値が「治療を推奨するかしないかが変わる境界線（閾値）」をまたいでいるかを評価します。</p>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-1" />
+                  <p className="text-slate-700 leading-relaxed"><strong>ステップ3：</strong> 結果がばらついていても、大部分が「閾値の片側（例：全て有効側）」にあれば、推奨は変わらないためレートダウンしないと判断できます。</p>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-1" />
+                  <p className="text-slate-700 leading-relaxed"><strong>ステップ4：</strong> 閾値の両側に結果が分かれている場合、その原因を<strong>サブグループ分析</strong>で説明できるか検討します。説明できなければ「非一貫性あり」としてレートダウンします。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: フォレストプロット比較 */}
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-indigo-600 text-white p-2 rounded-lg"><Activity size={24} /></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">2. 一貫性のある結果 vs 非一貫な結果の視覚的比較</h2>
+          </div>
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/60 flex flex-col lg:flex-row gap-10 items-start">
+            <div className="lg:w-1/2 w-full">
+              <ImageWithZoom src="3-3.jpg" alt="ConsistentとInconsistentのフォレストプロット" />
+              <p className="text-sm text-slate-500 mt-3 text-center">図3-3: 視覚的な非一貫性の評価例</p>
+            </div>
+            <div className="lg:w-1/2 w-full space-y-6">
+              <p className="text-slate-700 leading-relaxed text-lg">
+                フォレストプロットを見ることで、非一貫性の程度を直感的に把握することができます。
+              </p>
+              
+              <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                <h3 className="text-lg font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  上段：Consistent（一貫している）
+                </h3>
+                <p className="text-emerald-900/80 leading-relaxed">
+                  4つの研究の点推定値（青いひし形）が近くに集まっており、それぞれの横線（95%信頼区間）が互いによく重なり合っています。統計的異質性を示す <strong>I²統計量は 0.0%</strong> と全く異質性がなく、結果は一貫しています。
+                </p>
+              </div>
+
+              <div className="bg-rose-50 p-5 rounded-xl border border-rose-100">
+                <h3 className="text-lg font-bold text-rose-800 mb-2 flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500"></div>
+                  下段：Inconsistent（非一貫性あり）
+                </h3>
+                <p className="text-rose-900/80 leading-relaxed">
+                  研究結果がバラバラです（0.44〜1.25）。研究1, 2はリスク低下を示していますが、研究3, 4はリスク増加側にあります。信頼区間の重なりも非常に少なく、<strong>I² = 92.9%</strong> と極めて高い異質性を示しています。この統合結果（Overall）の確実性は引き下げる必要があります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: 高い異質性の実例 */}
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-orange-500 text-white p-2 rounded-lg"><BarChart2 size={24} /></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">3. 極めて高い異質性を示す実例と対応</h2>
+          </div>
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/60 flex flex-col lg:flex-row gap-10 items-start">
+            <div className="lg:w-1/2 w-full">
+              <ImageWithZoom src="3-4.jpg" alt="高い異質性を示すフォレストプロット" />
+              <p className="text-sm text-slate-500 mt-3 text-center">図3-4: 連続値アウトカムでの著しい非一貫性</p>
+            </div>
+            <div className="lg:w-1/2 w-full space-y-5 text-slate-700 leading-relaxed text-lg">
+              <p>
+                この図は連続値（平均値の差）のメタアナリシス例ですが、<strong>I² = 94.5%</strong> と極端に高い異質性が存在しています。
+              </p>
+              <p>
+                すべての研究結果が「0のライン（効果なし）」より左側（マイナス方向）にあるため、効果の方向性自体は一致しているように見えます。しかし、その<strong>効果の大きさのばらつき（-36.00 から 0.00 まで）が尋常ではありません。</strong>
+              </p>
+              
+              <div className="bg-amber-50 p-5 rounded-xl border border-amber-200 mt-6">
+                <h3 className="font-bold text-amber-900 mb-3">このような場合どう対応すべきか？</h3>
+                <p className="text-amber-800/90 text-base">
+                  結果をそのまま統合するのではなく、<strong>なぜこれほど違いが生じたのかを探求すること</strong>が極めて重要です。<br/><br/>
+                  患者の重症度、介入の用量や期間、対照群の治療内容（PICOの違い）、または研究のバイアスリスクなどを調べ、サブグループ分析等を用いてそのばらつきの原因を特定する試みが求められます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: 相対リスク vs 絶対リスク */}
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-teal-600 text-white p-2 rounded-lg"><GitBranch size={24} /></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">4. 相対リスクと絶対リスク：ベースラインの影響</h2>
+          </div>
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/60 flex flex-col lg:flex-row gap-10 items-center">
+            <div className="lg:w-1/2 w-full">
+              <ImageWithZoom src="3-1.jpg" alt="相対リスクと絶対リスクの棒グラフ" />
+              <p className="text-sm text-slate-500 mt-3 text-center">図3-1: ベースラインリスクによる絶対的効果の違い</p>
+            </div>
+            <div className="lg:w-1/2 w-full space-y-6">
+              <p className="text-slate-700 leading-relaxed text-lg">
+                治療効果を評価する際、「相対的効果」と「絶対的効果」の違いを区別することが意思決定において決定的に重要です。
+              </p>
+              
+              <div className="space-y-4">
+                <div className="border-l-4 border-blue-500 pl-4 py-1">
+                  <h4 className="font-bold text-blue-800 text-lg mb-1">相対リスク（Relative risk）</h4>
+                  <p className="text-slate-600">
+                    グラフの下部を見ると、高・中・低リスクの3集団すべてで、<strong>相対リスクは0.67で一定</strong>です（治療によりリスクが33%減少）。通常、メタアナリシスでは相対的効果は集団間で一貫していると仮定されます。
+                  </p>
+                </div>
+                
+                <div className="border-l-4 border-amber-500 pl-4 py-1">
+                  <h4 className="font-bold text-amber-800 text-lg mb-1">絶対リスク差（Risk difference）</h4>
+                  <p className="text-slate-600">
+                    しかし、コントロール群の元のイベント発生率（ベースラインリスク）が異なるため、治療で実際に減らせるイベントの割合（絶対リスク差）は、<strong>10%、3.3%、1%と全く異なります。</strong>
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-slate-100 p-5 rounded-xl mt-4">
+                <p className="text-slate-700 font-medium leading-relaxed text-sm">
+                  💡 <strong>臨床応用へのヒント：</strong> 実際の意思決定（患者に治療を勧めるかどうか）においては「絶対的効果」が重要です。そのため、ベースラインリスクが異なる集団に対しては、全体の統合結果ではなく、集団（サブグループ）ごとに絶対的効果を見積もり、個別に推奨を行う必要があります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* フッター */}
+      <footer className="bg-slate-900 text-slate-400 py-8 text-center mt-12 border-t border-slate-800">
+        <div className="max-w-5xl mx-auto px-4">
+          <p className="mb-2">※本アプリケーションは BMJ 2025;389:e081905 の内容を図解・解説した学習用ツールです。</p>
+          <p className="text-sm">Built with React, Tailwind CSS, and Lucide Icons.</p>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
+
+
+
+
+#3
+Chapter 8 / 13
+非一貫性（Inconsistency）
+の
+CoreGRADEフローチャート
+のところに、以下の解説かコードを組み込んで。
+Core GRADE「Fig 2」の図は、
+C:\Users\yuasa\.gemini\antigravity\scratch\grade-handbook-japanese-v2\coreGRADE\images
+のところの、
+3-2
+なので、これを解説で見えるようにして。
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core GRADE 非一貫性(Inconsistency) 評価ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .flow-line {
+            width: 2px;
+            background-color: #cbd5e1;
+            margin: 0 auto;
+            height: 20px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-6 shadow-md">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-2xl font-bold"><i class="fas fa-project-diagram mr-2"></i>Core GRADE 非一貫性評価 完全ガイド</h1>
+            <p class="text-sm mt-1 text-blue-200">BMJ 2024;389:e081905 に基づく最新のアプローチ（全ステップ一覧）</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto mt-6 mb-12 space-y-8">
+        
+        <!-- Section 1: Comparison Table -->
+        <section class="bg-white shadow-lg rounded-xl p-8">
+            <h2 class="text-xl font-bold mb-4 text-blue-800 border-l-4 border-blue-500 pl-3">1. 新旧アプローチ比較</h2>
+            <p class="mb-4 text-gray-600">Core GRADEは「統計学的指標（I²など）」への依存を減らし、「臨床的な閾値」を基準とした意思決定への影響（臨床的異質性）を最重要視するシンプルなフローを採用しています。</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-blue-50 text-blue-900 border-b-2 border-blue-200">
+                            <th class="p-3 border-r border-gray-200 font-bold w-1/4">比較項目</th>
+                            <th class="p-3 border-r border-gray-200 font-bold w-3/8 text-blue-700"><i class="fas fa-star text-yellow-500 mr-1"></i>BMJ Core GRADE (新アプローチ)</th>
+                            <th class="p-3 font-bold w-3/8 text-gray-600">GRADEpro Handbook (従来アプローチ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-3 border-r border-gray-200 font-medium bg-gray-50">評価の主眼</td>
+                            <td class="p-3 border-r border-gray-200">臨床的閾値（MIDなど）を基準とした**「臨床的異質性」**。推定値が意思決定の境界線をまたぐかが最重要。</td>
+                            <td class="p-3">点推定値のばらつき、CIの重なり、統計学的異質性の**総合評価**。</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-3 border-r border-gray-200 font-medium bg-gray-50">統計学的指標 (I², P値)</td>
+                            <td class="p-3 border-r border-gray-200 font-bold text-red-600">ほぼ使用しない。視覚的・臨床的判断に特化。</td>
+                            <td class="p-3">重要な判断材料（I²が50%以上等はダウングレードの強い要因）。</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-3 border-r border-gray-200 font-medium bg-gray-50">閾値 (Threshold)</td>
+                            <td class="p-3 border-r border-gray-200">**極めて重要**。フローチャートの分岐の核となる。</td>
+                            <td class="p-3">考慮はされるが、明示的なフローチャート化はされていない。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-r border-gray-200 font-medium bg-gray-50 rounded-bl-lg">サブグループ解析</td>
+                            <td class="p-3 border-r border-gray-200">ICEMANツール等を用いて「信用性」を厳格に評価。</td>
+                            <td class="p-3 rounded-br-lg">仮説を立てて検証するが、専用ツールの使用は義務化されていない。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 2: Flowchart Guide -->
+        <section class="bg-white shadow-lg rounded-xl p-8">
+            <h2 class="text-xl font-bold mb-6 text-blue-800 border-l-4 border-blue-500 pl-3">2. 非一貫性評価 フローチャート詳細解説 (Fig 2)</h2>
+            
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50 relative">
+                    <div class="absolute -top-3 -left-3 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">1</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 ml-4">各研究の点推定値に重要な違いがあり、信頼区間（CI）の重なりが乏しいか？</h3>
+                    <p class="text-gray-600 text-sm mb-4 ml-4">フォレストプロット全体を視覚的に確認します。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Branch: No -->
+                        <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+                            <div class="font-bold text-green-800 mb-2 border-b border-green-200 pb-1">
+                                <i class="fas fa-arrow-right mr-1"></i> いいえ (No)
+                            </div>
+                            <div class="flex items-center text-green-900 font-bold bg-green-100 px-3 py-2 rounded">
+                                <i class="fas fa-check-circle mr-2"></i> ダウングレードしない (Do not rate down)
+                            </div>
+                            <p class="text-xs text-green-700 mt-2">研究結果は一貫しているとみなされ、評価はここで終了です。</p>
+                        </div>
+                        
+                        <!-- Branch: Yes -->
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                            <div class="font-bold text-blue-800 mb-2 border-b border-blue-200 pb-1">
+                                <i class="fas fa-arrow-right mr-1"></i> はい (Yes)
+                            </div>
+                            <div class="text-blue-900 font-bold flex items-center">
+                                次のステップ（閾値との関係評価）へ進む <i class="fas fa-arrow-down ml-2 animate-bounce"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow down -->
+                <div class="text-center text-blue-400 text-2xl my-2"><i class="fas fa-long-arrow-alt-down"></i></div>
+
+                <!-- Step 2 -->
+                <div class="border-2 border-blue-200 rounded-lg p-5 bg-white relative">
+                    <div class="absolute -top-3 -left-3 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">2</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 ml-4">設定した「閾値（Threshold）」との関係で、各研究の点推定値を評価する</h3>
+                    
+                    <!-- Calculator Box -->
+                    <div class="ml-4 bg-indigo-50 border border-indigo-100 rounded p-4 mb-4">
+                        <h4 class="font-bold text-indigo-800 flex items-center text-sm mb-2"><i class="fas fa-calculator mr-2"></i>【付録1】相対リスク(RR)の閾値計算ツール</h4>
+                        <p class="text-xs text-gray-600 mb-3">アウトカムが二値変数の場合、絶対リスクの「最小重要差（MID）」を相対リスク（RR）の閾値に変換し、フォレストプロットに縦線を引いて評価します。</p>
+                        <div class="flex flex-wrap items-end gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">絶対MID (%)</label>
+                                <input type="number" id="abs-mid" class="w-32 border border-gray-300 rounded px-2 py-1 text-sm" placeholder="例: 1" step="0.1">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">ベースラインリスク (%)</label>
+                                <input type="number" id="base-risk" class="w-32 border border-gray-300 rounded px-2 py-1 text-sm" placeholder="例: 7" step="0.1">
+                            </div>
+                            <button onclick="calculateRR()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded text-sm transition-colors">
+                                RR閾値を計算
+                            </button>
+                        </div>
+                        <div id="calc-result" class="hidden mt-3 bg-white border border-indigo-200 p-2 rounded text-sm text-gray-800"></div>
+                    </div>
+
+                    <p class="text-gray-700 font-medium mb-3 ml-4">各研究の点推定値は、引いた閾値（線）に対してどう分布していますか？</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ml-4">
+                        <!-- Branch: Majority -->
+                        <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+                            <div class="font-bold text-green-800 mb-2 border-b border-green-200 pb-1">
+                                大多数の点推定値が閾値の片側にある
+                            </div>
+                            <div class="flex items-center text-green-900 font-bold bg-green-100 px-3 py-2 rounded mt-2">
+                                <i class="fas fa-check-circle mr-2"></i> ダウングレードしない
+                            </div>
+                            <p class="text-xs text-green-700 mt-2">臨床的な意思決定（閾値を超えるかどうか）という観点では結果が一致しているため、問題視しません。</p>
+                        </div>
+                        
+                        <!-- Branch: Opposite sides -->
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                            <div class="font-bold text-blue-800 mb-2 border-b border-blue-200 pb-1">
+                                かなりの割合の研究の点推定値が、閾値の反対側にまたがっている
+                            </div>
+                            <div class="text-blue-900 font-bold flex items-center mt-2">
+                                次のステップ（サブグループ解析の評価）へ進む <i class="fas fa-arrow-down ml-2 animate-bounce"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow down -->
+                <div class="flex justify-end pr-1/4 md:pr-48">
+                    <div class="text-blue-400 text-2xl my-2"><i class="fas fa-long-arrow-alt-down"></i></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="border-2 border-blue-200 rounded-lg p-5 bg-white relative ml-auto w-full md:w-3/4">
+                    <div class="absolute -top-3 -left-3 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">3</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 ml-4">その非一貫性は、信用できる（Credible）サブグループ解析によって説明可能か？</h3>
+                    
+                    <!-- ICEMAN Box -->
+                    <div class="ml-4 bg-gray-50 border border-gray-200 rounded p-4 mb-4">
+                        <h4 class="font-bold text-gray-800 text-sm mb-2"><i class="fas fa-clipboard-check mr-2"></i>【付録2】サブグループの信用性評価 (ICEMAN 基準)</h4>
+                        <p class="text-xs text-gray-600 mb-2">論文で提示されたサブグループ解析が偶然ではないか、以下の基準を満たすか確認します（満たすものが多いほど信用性が高い）。</p>
+                        <ul class="list-disc pl-5 text-xs text-gray-700 space-y-1">
+                            <li>事前に（A priori）正しい方向の仮説が立てられていたか？</li>
+                            <li>交互作用のテスト（Interaction P-value）が十分に小さいか？（例: < 0.05等）</li>
+                            <li>テストしたサブグループ修飾因子の数は少ないか？（数が多いほど偶然の確率上昇）</li>
+                            <li>試験間（Between-trial）の比較ではなく、試験内（Within-trial）の比較に基づいているか？</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 ml-4">
+                        <!-- Branch: No -->
+                        <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+                            <div class="font-bold text-red-800 mb-2 border-b border-red-200 pb-1">
+                                いいえ (No) <span class="text-xs font-normal">/ 信用できない</span>
+                            </div>
+                            <div class="flex items-center text-red-900 font-bold bg-red-100 px-3 py-2 rounded mt-2">
+                                <i class="fas fa-exclamation-triangle mr-2"></i> ダウングレードする (Rate down)
+                            </div>
+                            <p class="text-xs text-red-700 mt-2">非一貫性を合理的に説明できないため、エビデンスの確実性を下げます。</p>
+                        </div>
+                        
+                        <!-- Branch: Yes -->
+                        <div class="bg-teal-50 border border-teal-200 p-4 rounded-lg">
+                            <div class="font-bold text-teal-800 mb-2 border-b border-teal-200 pb-1">
+                                はい (Yes) <span class="text-xs font-normal">/ 信用できる</span>
+                            </div>
+                            <div class="flex items-start text-teal-900 font-bold bg-teal-100 px-3 py-2 rounded mt-2">
+                                <i class="fas fa-sitemap mr-2 mt-1"></i> 
+                                <div>
+                                    結果をサブグループごとに分けて提示し、個別に評価する
+                                </div>
+                            </div>
+                            <p class="text-xs text-teal-700 mt-2">（例：重症群と軽症群に分けて別々のエビデンスプロファイルを作成する）</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center text-gray-500 text-sm pb-8">
+        &copy; 2026 Core GRADE Inconsistency Guide Tool based on BMJ 2024;389:e081905
+    </footer>
+
+    <script>
+        // Appendix 1 Calculator Logic
+        function calculateRR() {
+            const absMid = parseFloat(document.getElementById('abs-mid').value);
+            const baseRisk = parseFloat(document.getElementById('base-risk').value);
+            const resultDiv = document.getElementById('calc-result');
+
+            if (isNaN(absMid) || isNaN(baseRisk) || baseRisk === 0) {
+                resultDiv.innerHTML = '<span class="text-red-600"><i class="fas fa-exclamation-circle mr-1"></i>有効な数値を入力してください。</span>';
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+
+            const rrr = absMid / baseRisk; 
+            let rrThreshold = 1 - rrr;
+
+            const rrrPercent = (rrr * 100).toFixed(1);
+            rrThreshold = rrThreshold.toFixed(2);
+
+            resultDiv.innerHTML = `
+                <div class="font-bold mb-1">計算結果:</div>
+                <div class="ml-2">
+                    ・相対リスク減少率 (RRR) = ${absMid}% / ${baseRisk}% ≒ <strong>${rrrPercent}%</strong><br>
+                    ・相対リスク閾値 (RR) = 1 - ${rrr.toFixed(2)} = <strong class="text-indigo-700 text-lg border-b border-indigo-500">${rrThreshold}</strong>
+                </div>
+                <div class="mt-2 text-indigo-800 bg-indigo-100 p-1.5 rounded inline-block text-xs font-bold">
+                    👉 フォレストプロットの <strong>RR = ${rrThreshold}</strong> の位置に縦線を引いて評価します。
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
+
+

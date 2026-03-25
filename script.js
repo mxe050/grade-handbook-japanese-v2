@@ -112,4 +112,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.switchTab = switchTab;
+
+  // RR 閾値計算機ロジック (Chapter 8 用)
+  function calculateRR() {
+    const absMidInput = document.getElementById('abs-mid');
+    const baseRiskInput = document.getElementById('base-risk');
+    const resultDiv = document.getElementById('calc-result');
+
+    if (!absMidInput || !baseRiskInput || !resultDiv) return;
+
+    const absMid = parseFloat(absMidInput.value);
+    const baseRisk = parseFloat(baseRiskInput.value);
+
+    if (isNaN(absMid) || isNaN(baseRisk) || baseRisk === 0) {
+      resultDiv.innerHTML = '<span style="color: #ef4444;">⚠️ 有効な数値を入力してください（ベースラインリスクは0以外）。</span>';
+      resultDiv.classList.remove('hidden');
+      return;
+    }
+
+    const rrr = absMid / baseRisk;
+    let rrThreshold = 1 - rrr;
+    const rrrPercent = (rrr * 100).toFixed(1);
+    
+    // アニメーション効果を伴う結果表示
+    resultDiv.innerHTML = `
+      <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #e0e7ff; padding-bottom: 4px;">計算結果:</div>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li>・相対リスク減少率 (RRR) ≒ <strong>${rrrPercent}%</strong></li>
+        <li style="margin-top: 8px;">・相対リスク閾値 (RR) = <strong>${rrThreshold.toFixed(2)}</strong></li>
+      </ul>
+      <div style="margin-top: 12px; background: #eef2ff; padding: 10px; border-radius: 8px; font-size: 0.85rem; color: #4338ca; font-weight: bold;">
+        👉 フォレストプロットの <strong>RR = ${rrThreshold.toFixed(2)}</strong> の位置に縦線を引いて評価します。
+      </div>
+    `;
+    resultDiv.classList.remove('hidden');
+  }
+
+  window.calculateRR = calculateRR;
 });

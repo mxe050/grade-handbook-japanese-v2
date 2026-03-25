@@ -1,0 +1,617 @@
+
+
+
+
+#1
+
+
+Chapter 10 不確実性（Imprecision）
+を、
+不精確さ（Imprecision）
+に変更
+
+
+#2
+
+Chapter 10 不確実性（Imprecision）　（不精確さ）
+の
+CoreGrade解説
+のところに、以下のコードにある解説を組み込んで。
+図は、2-1 から　2-8
+C:\Users\yuasa\.gemini\antigravity\scratch\grade-handbook-japanese-v2\coreGRADE\images
+にあります。
+
+
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, BookOpen, Info, ZoomIn, X, AlertTriangle, CheckCircle, HelpCircle } from 'lucide-react';
+
+// --- データ定義 ---
+const sections = [
+  {
+    id: 'intro',
+    title: 'はじめに：不精確さ(Imprecision)とは？',
+    icon: <BookOpen className="w-5 h-5" />,
+    content: (
+      <div className="space-y-4 text-gray-700">
+        <p>
+          医療における意思決定では、「ある治療法が本当に効果があるのか？」という<strong>エビデンスの確実性（Certainty of Evidence）</strong>を評価することが不可欠です。GRADEアプローチでは、この確実性を下げる（ダウングレードする）5つの要因の1つに<strong>「不精確さ（Imprecision）」</strong>があります。
+        </p>
+        <p>
+          不精確さとは、簡単に言えば「結果のバラツキ（信頼区間：CI）が大きすぎて、臨床的な意思決定に迷いが生じる状態」を指します。
+        </p>
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+          <h4 className="font-bold text-blue-800 mb-2">本論文（BMJアップデート）の重要ポイント</h4>
+          <ul className="list-disc list-inside space-y-1 text-sm">
+            <li>単に「統計的に有意か（Null効果をまたぐか）」だけでなく、<strong>「臨床的に意味のある差（MID: Minimal Important Difference）」</strong>を重視する。</li>
+            <li>「重要な効果がある」ことを証明したいのか、「効果がない（同等である）」ことを証明したいのかによって、評価のアプローチが変わる。</li>
+            <li>最適な情報量（OIS: Optimal Information Size）という概念を用いて、サンプルサイズが十分かどうかも評価に組み込む。</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    images: []
+  },
+  {
+    id: 'step1',
+    title: '1. 効果の大きさの境界線と閾値',
+    icon: <Info className="w-5 h-5" />,
+    content: (
+      <div className="space-y-4 text-gray-700">
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2">効果のスペクトラムとMID</h3>
+        <p>
+          効果の大きさは「ある・なし」の二元論ではなく、スペクトラム（連続体）として捉える必要があります。
+        </p>
+        <ul className="list-disc list-inside space-y-2 ml-4">
+          <li><strong>Null effect（効果なし）:</strong> 介入群と対照群に全く差がない点。</li>
+          <li><strong>MID（最小重要差）:</strong> 患者にとって「意味がある」と感じられる最小の効果の大きさ。有益性（Benefit）のMIDと、害（Harm）のMIDがあります。</li>
+          <li><strong>Little to no effect（ほとんど、または全く効果がない）:</strong> Null効果を挟んで、有益性のMIDと害のMIDの間のゾーンです。ここにある効果は、統計的に差があっても「臨床的には重要ではない」とみなされます。</li>
+        </ul>
+        <p>
+          図が示すように、MIDを超えると「重要な効果（Important benefit/harm）」となり、さらにその大きさに応じてSmall, Moderate, Largeと分類されます。不精確さを評価する際、<strong>CI（信頼区間）がこれらのどの境界（閾値）をまたいでいるか</strong>が決定的に重要になります。
+        </p>
+      </div>
+    ),
+    images: [{ src: '2-1.jpg', caption: '図1: 効果の大きさの境界（MIDとNull効果）' }]
+  },
+  {
+    id: 'step2',
+    title: '2. 評価の目的（ターゲット）を設定する',
+    icon: <HelpCircle className="w-5 h-5" />,
+    content: (
+      <div className="space-y-6 text-gray-700">
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2">何を確かめたいのか？（図2）</h3>
+        <p>
+          評価を始める前に、「何に対する確実性を評価したいのか（Threshold of interest）」を明確にします。
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white p-4 border rounded shadow-sm">
+            <h4 className="font-bold text-green-700 mb-2">A. 重要な効果があるか？</h4>
+            <p className="text-sm">臨床的に意味のある差があるかどうかが関心事の場合、<strong>MID（最小重要差）</strong>を閾値として選びます。</p>
+          </div>
+          <div className="bg-white p-4 border rounded shadow-sm">
+            <h4 className="font-bold text-purple-700 mb-2">B. 真の効果（少しでも）があるか？</h4>
+            <p className="text-sm">ごくわずかでも効果が存在するかどうかが関心事の場合、<strong>Null（効果ゼロ）</strong>を閾値として選びます。</p>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2 mt-6">点推定値に基づくターゲットの決定（図3）</h3>
+        <p>
+          閾値を選んだら、実際のデータ（点推定値）がどこにあるかを確認します。図3は「MIDを閾値とした場合」の例です。
+        </p>
+        <ul className="list-disc list-inside space-y-2 ml-4">
+          <li><strong>(a)のケース:</strong> 点推定値がMIDを超えて「Important（重要）」の領域にあります。この場合、「重要な効果がある」ことに対する確実性を評価します。</li>
+          <li><strong>(b)のケース:</strong> 点推定値がMIDとNullの間の「Unimportant（重要ではない）」領域にあります。この場合、「重要な効果がない（ほとんど差がない）」ことに対する確実性を評価します。</li>
+        </ul>
+      </div>
+    ),
+    images: [
+      { src: '2-2.jpg', caption: '図2: ターゲットとする確実性を選択するためのフローチャート' },
+      { src: '2-3.jpg', caption: '図3: 点推定値の位置関係と効果の解釈' }
+    ]
+  },
+  {
+    id: 'step3',
+    title: '3. ダウングレード判定アルゴリズム',
+    icon: <AlertTriangle className="w-5 h-5" />,
+    content: (
+      <div className="space-y-4 text-gray-700">
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2">ダウングレードすべきか否かのフロー（図4）</h3>
+        <p>
+          これが不精確さ評価の核心となるアルゴリズムです。
+        </p>
+        <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r mb-4">
+          <h4 className="font-bold text-red-800">最初の問い：「CI（信頼区間）は選んだ閾値をまたいでいるか？」</h4>
+        </div>
+        
+        <h4 className="font-bold mt-4">【Yes（またいでいる）の場合】</h4>
+        <p>基本的に<strong>「1段階ダウングレード（Rate down one level）」</strong>します。<br/>
+        ※ただし、CIが「重要な有益性」の閾値と「重要な害」の閾値の両方をまたぐような極端に広い場合などは「2段階ダウングレード」を検討します。</p>
+
+        <h4 className="font-bold mt-4">【No（またいでいない）の場合】</h4>
+        <p>すぐに「ダウングレードなし」とするのは危険です。サンプルサイズが十分に大きいか（OIS: Optimal Information Size基準を満たすか）を確認する必要があります。</p>
+        <ul className="list-disc list-inside space-y-2 ml-4 text-sm">
+          <li><strong>OISを満たしている（N ≥ OIS）:</strong> ダウングレードしない（確実性は高い）。</li>
+          <li><strong>OISを満たしていない（N &lt; OIS）:</strong> たとえCIが閾値をまたいでいなくても、結果がまぐれである可能性（脆弱性）を考慮して<strong>「1段階ダウングレード」</strong>します。</li>
+        </ul>
+      </div>
+    ),
+    images: [{ src: '2-4.jpg', caption: '図4: 不精確さによるダウングレードを判断するアルゴリズム' }]
+  },
+  {
+    id: 'step4',
+    title: '4. 信頼区間(CI)のパターンと判定例',
+    icon: <CheckCircle className="w-5 h-5" />,
+    content: (
+      <div className="space-y-6 text-gray-700">
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2">単一の介入の評価（図5）</h3>
+        <p>Risk difference（リスク差）のCIと閾値（NullとMID）の関係を見てみましょう。</p>
+        <ul className="space-y-3">
+          <li className="bg-gray-50 p-3 rounded"><strong>(a):</strong> CIがNullもMIDもまたいでいません。「効果があり、かつそれが重要な効果である」という確実性が高いです（ダウングレードなし）。</li>
+          <li className="bg-gray-50 p-3 rounded"><strong>(b):</strong> CIはNullはまたいでいませんが、<strong>MIDをまたいでいます</strong>。つまり「効果があることは確かだが、それが『臨床的に重要』なレベルかは不確実」なため、重要な効果に対する確実性はダウングレードされます。</li>
+          <li className="bg-gray-50 p-3 rounded"><strong>(c):</strong> CIがNullもMIDもまたいでいます。効果の有無も、その重要性も非常に不確実です（ダウングレードあり）。</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2 mt-6">複数の閾値が絡む複雑なケース（図7）</h3>
+        <p>Benefit（利益）のMIDとHarm（害）のMIDの両方が設定されている場合の解釈です。</p>
+        <ul className="space-y-3 text-sm">
+          <li><strong>(a):</strong> CIが「利益のMID」と「害のMID」の間に完全に収まっています。これは<strong>「重要な利益も重要な害もない（両群は同等である）」</strong>ことを強く支持します。</li>
+          <li><strong>(b):</strong> 点推定値は「重要でない」領域にありますが、CIの左端が「利益のMID」をまたいでいます。つまり「重要な利益がある可能性」を否定しきれないため、同等性の証明としてはダウングレードされます。</li>
+          <li><strong>(c):</strong> (b)の逆で、「重要な害がある可能性」を否定しきれません。</li>
+          <li><strong>(d):</strong> CIが非常に広く、利益のMIDも害のMIDもまたいでいます。結果は完全に不確実です（通常2段階ダウングレード）。</li>
+        </ul>
+      </div>
+    ),
+    images: [
+      { src: '2-5.jpg', caption: '図5: CIとMID/Nullの関係性による判定例' },
+      { src: '2-7.jpg', caption: '図7: 利益と害の両方のMIDを考慮した場合のCIの解釈' }
+    ]
+  },
+  {
+    id: 'step5',
+    title: '5. 実際の臨床データでの適用',
+    icon: <ZoomIn className="w-5 h-5" />,
+    content: (
+      <div className="space-y-6 text-gray-700">
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2">事例1：確実な「有益性」（図6）</h3>
+        <p>
+          コルチコステロイド投与の試験例です。点推定値は-30（1000人あたり30人のイベント減少）と大きな効果を示していますが、CIは[-50 から -7]とかなり広いです。
+        </p>
+        <div className="bg-green-50 p-4 rounded border border-green-200">
+          <p><strong>評価：</strong> ここで2つの異なるMID（-10 または -5）が想定されています。しかし、CIの上限（最も効果が小さいワーストケース）である -7 は、MID 1（-10）はまたいでいますが、もし専門家パネルが「MIDは-5である」と合意していれば、CIはMIDをまたいでいません。この場合、CIは広いものの「重要な効果がある」という結論は揺るがないため、<strong>ダウングレードは行いません。</strong></p>
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 border-b pb-2 mt-6">事例2：確実な「同等性（効果なし）」（図8）</h3>
+        <p>
+          グルココルチコイドの低用量vs標準用量の試験例です。点推定値は-2でNull（0）に非常に近いです。
+        </p>
+        <div className="bg-blue-50 p-4 rounded border border-blue-200">
+          <p><strong>評価：</strong> 専門家が利益のMIDを-1、害のMIDを1と設定したとします。CIは[-6 から 3]となっており、両方のMIDを完全にまたいでいます。つまり、重要な利益をもたらす可能性も、重要な害をもたらす可能性も否定できません。したがって、「効果が同等である」と結論づけるには不精確であり、<strong>ダウングレードが必要</strong>になります。（※注：もしCIが[-0.5 から 0.5]のように狭くMID内に収まっていればダウングレードなしで「同等」と言えます）</p>
+        </div>
+      </div>
+    ),
+    images: [
+      { src: '2-6.jpg', caption: '図6: 事例 - 広範なCIでもダウングレードしないケース' },
+      { src: '2-8.jpg', caption: '図8: 事例 - MIDをまたぐためダウングレードするケース' }
+    ]
+  }
+];
+
+export default function App() {
+  const [activeSection, setActiveSection] = useState(sections[0].id);
+  const [modalImage, setModalImage] = useState(null);
+
+  const currentSectionData = sections.find(s => s.id === activeSection);
+
+  // モーダルを閉じる処理（ESCキー対応）
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setModalImage(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col font-sans">
+      {/* Header */}
+      <header className="bg-slate-900 text-white p-6 shadow-md">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">
+            GRADEアプローチ: 不精確さ(Imprecision)評価の最新アップデート
+          </h1>
+          <p className="text-slate-300 text-sm md:text-base">
+            BMJ論文に基づく、効果推定値の確実性を評価するための実践ガイド
+          </p>
+        </div>
+      </header>
+
+      <div className="flex-grow flex flex-col md:flex-row max-w-6xl mx-auto w-full p-4 gap-6">
+        
+        {/* Sidebar Navigation */}
+        <nav className="w-full md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden h-fit sticky top-4">
+          <div className="p-4 bg-gray-50 border-b font-bold text-gray-700">
+            目次・ステップ
+          </div>
+          <ul className="divide-y divide-gray-100">
+            {sections.map((section) => (
+              <li key={section.id}>
+                <button
+                  onClick={() => setActiveSection(section.id)}
+                  className={`w-full text-left px-4 py-4 flex items-center justify-between transition-colors duration-200 ${
+                    activeSection === section.id
+                      ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600'
+                      : 'hover:bg-gray-50 text-gray-600 hover:text-gray-900 border-l-4 border-transparent'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={`${activeSection === section.id ? 'text-blue-600' : 'text-gray-400'}`}>
+                      {section.icon}
+                    </span>
+                    <span className="font-medium text-sm">{section.title}</span>
+                  </div>
+                  <ChevronRight className={`w-4 h-4 transition-transform ${activeSection === section.id ? 'transform translate-x-1 text-blue-600' : 'text-gray-300'}`} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Main Content Area */}
+        <main className="w-full md:w-2/3 lg:w-3/4 space-y-6">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8 min-h-[600px] animate-fadeIn">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              {currentSectionData.icon}
+              {currentSectionData.title}
+            </h2>
+            
+            <div className="prose prose-blue max-w-none">
+              {currentSectionData.content}
+            </div>
+
+            {/* Images associated with the section */}
+            {currentSectionData.images.length > 0 && (
+              <div className="mt-8 pt-8 border-t border-gray-100">
+                <h3 className="text-lg font-bold text-gray-800 mb-4">関連する図表</h3>
+                <div className={`grid gap-6 ${currentSectionData.images.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                  {currentSectionData.images.map((img, idx) => (
+                    <div key={idx} className="flex flex-col items-center">
+                      <div 
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg p-2 cursor-pointer hover:shadow-md transition-shadow relative group"
+                        onClick={() => setModalImage(img)}
+                      >
+                        <img 
+                          src={img.src} 
+                          alt={img.caption} 
+                          className="w-full h-auto object-contain max-h-64"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all flex items-center justify-center rounded-lg">
+                          <ZoomIn className="text-white opacity-0 group-hover:opacity-100 w-8 h-8 drop-shadow-md" />
+                        </div>
+                      </div>
+                      <p className="mt-2 text-sm text-gray-500 font-medium text-center">{img.caption}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+
+      {/* Image Modal */}
+      {modalImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4 backdrop-blur-sm"
+          onClick={() => setModalImage(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full bg-white rounded-lg overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center p-4 border-b bg-gray-50">
+              <h3 className="font-bold text-gray-800">{modalImage.caption}</h3>
+              <button 
+                onClick={() => setModalImage(null)}
+                className="p-1 hover:bg-gray-200 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+            <div className="p-4 overflow-auto flex justify-center bg-gray-200">
+              <img 
+                src={modalImage.src} 
+                alt={modalImage.caption} 
+                className="max-w-full max-h-[80vh] object-contain shadow-sm"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+
+
+
+#3
+
+Chapter 10 不精確さ（Imprecision）
+の
+CoreGRADEフローチャート
+のところに、以下の解説を組み込んで。
+Core GRADE「Fig 4」の図は、
+C:\Users\yuasa\.gemini\antigravity\scratch\grade-handbook-japanese-v2\coreGRADE\images
+のところの、
+2-4
+なので、これを解説で見えるようにして。
+
+import React from 'react';
+import { BookOpen, Table as TableIcon, AlertTriangle, CheckCircle, ArrowRight, Info, FileText, ChevronDown } from 'lucide-react';
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-slate-50 text-gray-800 font-sans pb-12">
+      <header className="bg-blue-900 text-white p-6 shadow-md sticky top-0 z-10">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="w-6 h-6" />
+            GRADE 不精確性(Imprecision) 最新評価ガイド
+          </h1>
+          <p className="text-blue-200 mt-1 text-sm">
+            BMJ 2024 (Update 36) Figure 4 & 付録資料 徹底解説
+          </p>
+        </div>
+      </header>
+
+      <main className="max-w-5xl mx-auto mt-8 px-4 space-y-12">
+        
+        {/* SECTION 1: 旧基準との違い */}
+        <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-slate-100 border-b border-gray-200 p-4 flex items-center gap-2">
+            <TableIcon className="w-5 h-5 text-blue-700" />
+            <h2 className="text-xl font-bold text-gray-800">1. 旧基準(GRADE Handbook)とBMJ 2024(Fig 4)の違い</h2>
+          </div>
+          <div className="p-6">
+            <p className="text-gray-600 mb-6 text-sm">
+              従来のGRADEアプローチと比較し、2024年のアップデート（Figure 4）では、評価プロセスがより階層化され、定性的な判断に「定量的な基準（閾値）」が明確に導入されました。
+            </p>
+            <div className="overflow-x-auto">
+              <table className="min-w-full border-collapse border border-gray-200 text-sm">
+                <thead>
+                  <tr className="bg-gray-50 text-gray-700">
+                    <th className="border border-gray-200 px-4 py-3 text-left w-1/4">比較項目</th>
+                    <th className="border border-gray-200 px-4 py-3 text-left w-2/5">従来のGRADE (GRADEpro等)</th>
+                    <th className="border border-gray-200 px-4 py-3 text-left w-2/5 bg-blue-50 text-blue-900">BMJ 2024 (Fig 4 & 付録)</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white">
+                  <tr>
+                    <td className="border border-gray-200 px-4 py-3 font-semibold bg-gray-50">フローの階層化</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-600">CIの閾値交差とOIS（至適情報量）を並列して評価しがちだった。</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-800 bg-blue-50/30">
+                      <strong>完全なステップ制。</strong><br/>閾値を跨ぐか？ → 効果は大きいか？ → (大きい場合のみ) OISは十分か？ の順で評価。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 px-4 py-3 font-semibold bg-gray-50">OISの適用場面</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-600">閾値を跨いでいなくても、常にOISを満たすか確認することが推奨された。</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-800 bg-blue-50/30">
+                      CIが閾値を跨がない場合、<strong>「効果が大きい(Large effect)」場合のみ</strong>脆弱性(Fragility)確認のためOISを評価。中等度(Moderate)ならOIS評価は不要。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 px-4 py-3 font-semibold bg-gray-50">2段階ダウンの基準</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-600">「サンプルサイズが非常に小さい」「CIが極めて広い」など主観的。</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-800 bg-blue-50/30">
+                      <strong>具体的数値の導入（付録5より）:</strong><br/>
+                      ・連続変数：NがOISの30%未満<br/>
+                      ・二値変数：CI比がRR≧3 または OR≧2.5
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 px-4 py-3 font-semibold bg-gray-50">サンプルサイズの目安</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-600">連続変数において経験則としてN=400などが使われることがあった。</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-800 bg-blue-50/30">
+                      連続変数の目安として<strong>「N=800 (各群400)」</strong>が明記された。これを満たせばOIS計算なしでダウングレード回避可能。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 2: Fig 4 詳細解説 */}
+        <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-slate-100 border-b border-gray-200 p-4 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-blue-700" />
+            <h2 className="text-xl font-bold text-gray-800">2. Figure 4 超詳細解説 (付録資料に基づく実践ガイド)</h2>
+          </div>
+          <div className="p-6 space-y-10">
+            
+            {/* Step 1 */}
+            <div>
+              <h3 className="text-lg font-bold text-blue-900 border-b-2 border-blue-200 pb-2 mb-4 flex items-center gap-2">
+                <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">1</span>
+                Does CI cross threshold? (CIは閾値を跨ぐか？)
+              </h3>
+              <p className="text-sm text-gray-700 mb-4">
+                評価の出発点です。95%信頼区間(CI)が、事前に設定した「臨床的に重要な差の最小値(MID)」や「効果の閾値」を跨いでいるかを確認します。
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-red-50 p-4 rounded-lg border border-red-100">
+                  <h4 className="font-bold text-red-800 flex items-center gap-1"><ArrowRight className="w-4 h-4"/> Yes (跨ぐ) の場合</h4>
+                  <p className="text-sm mt-2 text-gray-700">
+                    原則として <strong>「1段階ダウングレード (Rate down 1 level)」</strong> となります。
+                  </p>
+                  
+                  <div className="mt-4 bg-white p-3 rounded border border-red-200">
+                    <h5 className="text-xs font-bold text-red-900 mb-2 flex items-center gap-1">
+                      <Info className="w-4 h-4" /> 【付録1】2段階ダウングレードを検討するケース
+                    </h5>
+                    <ul className="text-xs text-gray-600 space-y-2 list-disc pl-4">
+                      <li>
+                        <strong>複数の閾値を跨ぐ場合:</strong> 例えば、CIが「重要な利益の閾値」と「重要な害の閾値」の両方を跨いでおり、結果が全く不確実な場合。
+                      </li>
+                      <li>
+                        <strong>平易な言葉（Plain language）での判断:</strong> 他の4ドメインに問題がないと仮定した場合、患者への説明が「効果がある可能性が高い(likely)」ではなく、「効果がある<strong>かもしれない(may)</strong>」という弱い表現しかできないほど不確実な場合は、2段階ダウンが妥当です。
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-2 bg-white p-3 rounded border border-red-200">
+                    <h5 className="text-xs font-bold text-red-900 mb-2 flex items-center gap-1">
+                      <Info className="w-4 h-4" /> 【付録4】「効果なし(Null)」をターゲットにする場合の工夫
+                    </h5>
+                    <p className="text-xs text-gray-600">
+                      点推定値がNull(ゼロ)に非常に近い場合、無理に単一のMIDを設定するのではなく、「考えうるMIDの範囲」をCIの両端が超えているかどうかでダウングレードを判定してよいとされています（価値観への過度な依存を避けるため）。
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+                  <h4 className="font-bold text-green-800 flex items-center gap-1"><ArrowRight className="w-4 h-4"/> No (跨がない) の場合</h4>
+                  <p className="text-sm mt-2 text-gray-700">
+                    直ちに「ダウングレードなし」とはせず、次に<strong>「効果の大きさ(Effect Size)」</strong>を確認します。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div>
+              <h3 className="text-lg font-bold text-blue-900 border-b-2 border-blue-200 pb-2 mb-4 flex items-center gap-2">
+                <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">2</span>
+                効果の大きさの判定 (CIが跨がない場合)
+              </h3>
+              <p className="text-sm text-gray-700 mb-4">
+                CIが閾値を跨いでいなくても、少数のサンプルで偶然「極端に大きな効果」が出ている可能性があります。
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-800">Moderate effect (中等度の効果)</h4>
+                  <p className="text-sm mt-2 text-gray-600">
+                    効果が極端でない場合、結果は堅牢（Robust）とみなされます。<br/>
+                    👉 <strong>ダウングレードしない (Do not rate down)</strong>。<br/>ここで評価は終了です。
+                  </p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 className="font-bold text-blue-800">Large effect (大きな効果)</h4>
+                  <p className="text-sm mt-2 text-gray-600">
+                    効果が非常に大きい場合、結果が少数のイベント数に依存している「脆弱性（Fragility）」を疑います。<br/>
+                    👉 <strong>OISアプローチへ進む (Proceed to OIS approach)</strong>。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div>
+              <h3 className="text-lg font-bold text-blue-900 border-b-2 border-blue-200 pb-2 mb-4 flex items-center gap-2">
+                <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">3</span>
+                OISアプローチ (至適情報量の確認)
+              </h3>
+              <p className="text-sm text-gray-700 mb-4">
+                「大きな効果」が偶然によるものではないか、サンプルサイズ(N)やイベント数がOIS（至適情報量）を満たしているかを確認します。アウトカムの種類で分かれます。
+              </p>
+
+              <div className="space-y-6">
+                {/* Binary Outcome */}
+                <div className="border-l-4 border-indigo-500 bg-indigo-50/50 p-5 rounded-r-lg">
+                  <h4 className="font-bold text-indigo-900 mb-3 text-lg flex items-center gap-2">
+                    Binary outcome (二値アウトカム：死亡、入院など)
+                  </h4>
+                  <p className="text-sm text-gray-700 mb-4">二値変数の場合、OISの計算の前に、まず**「CI比（上限÷下限）」**という簡便な指標で極端な不精確性を除外します。</p>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white p-4 rounded border border-indigo-100 shadow-sm">
+                      <h5 className="font-bold text-gray-800 mb-1">① CI ratio (信頼区間の比) の確認</h5>
+                      <p className="text-xs text-gray-500 mb-2">計算: CI上限値 ÷ CI下限値</p>
+                      <ul className="text-sm space-y-2">
+                        <li className="flex items-start gap-2">
+                          <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                          <div>
+                            <strong>RR比 ≧ 3、または OR比 ≧ 2.5 の場合:</strong><br/>
+                            <span className="text-red-700 font-medium">👉 2段階ダウングレードを検討 (Consider rating down two levels)</span>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          <div>
+                            <strong>上記未満の場合:</strong><br/>
+                            <span className="text-gray-700">👉 ②のOIS計算へ進む</span>
+                          </div>
+                        </li>
+                      </ul>
+                      <div className="mt-3 bg-indigo-50 p-3 rounded text-xs text-indigo-900">
+                        <strong>【付録5 実例】急性膵炎における乳酸リンゲル液 vs 生理食塩水（ICU入室）</strong><br/>
+                        OR 0.33 (95% CI 0.13 - 0.81)。総イベント数わずか26。<br/>
+                        CI比 = 0.81 ÷ 0.13 = <strong>6.2</strong> (&gt; 2.5)。<br/>
+                        このように総サンプルがOISから程遠く、CI比が基準を超える場合、OISを計算するまでもなく「2段階ダウン」が推奨されます。
+                      </div>
+                    </div>
+
+                    <div className="bg-white p-4 rounded border border-indigo-100 shadow-sm">
+                      <h5 className="font-bold text-gray-800 mb-1">② OISの計算・イベント数の確認</h5>
+                      <p className="text-xs text-gray-500 mb-2">CI比が許容範囲であれば、実際のOIS（または必要イベント数）を計算式やノモグラムで確認します。</p>
+                      <ul className="text-sm space-y-2">
+                        <li><strong>N ≧ OIS:</strong> サンプルは十分。 👉 <strong>ダウングレードしない</strong></li>
+                        <li><strong>N &lt; OIS:</strong> サンプル不足。 👉 <strong className="text-orange-600">1段階ダウングレード</strong></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Continuous Outcome */}
+                <div className="border-l-4 border-teal-500 bg-teal-50/50 p-5 rounded-r-lg">
+                  <h4 className="font-bold text-teal-900 mb-3 text-lg flex items-center gap-2">
+                    Continuous outcome (連続アウトカム：スコア、血圧など)
+                  </h4>
+                  
+                  <ul className="text-sm space-y-3 bg-white p-4 rounded border border-teal-100 shadow-sm">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <strong>N ≧ OIS (または総サンプル N ≧ 800):</strong><br/>
+                        <span className="text-gray-700">👉 <strong>ダウングレードしない</strong></span><br/>
+                        <span className="text-xs text-gray-500">※OISが計算できない場合、「合計800人（各群400人）」が十分なサンプルサイズのルール・オブ・サム（経験則）となります。</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <AlertTriangle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <strong>N &lt; OIS (30%以上は満たす):</strong><br/>
+                        <span className="text-orange-700 font-medium">👉 1段階ダウングレード</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <strong>N &lt; 30% of OIS:</strong><br/>
+                        <span className="text-red-700 font-medium">👉 2段階ダウングレードを検討</span>
+                      </div>
+                    </li>
+                  </ul>
+                  
+                  <div className="mt-3 bg-teal-50 p-3 rounded text-xs text-teal-900 border border-teal-100">
+                    <strong>【付録5 実例】慢性肝疾患に対する幹細胞治療（MELDスコアの低下）</strong><br/>
+                    MD -1.75 (95% CI -2.45 to -1.05)。CIは狭く不精確には見えない。<br/>
+                    しかし、4試験の総サンプル数は <strong>N=248</strong> のみ。<br/>
+                    連続変数のルール・オブ・サム（N=800）を大きく下回っており、OISを満たしていないため、1段階（またはOISの30%未満であれば2段階）のダウングレードの根拠となります。
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  );
+}
