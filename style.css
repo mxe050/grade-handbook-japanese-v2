@@ -1,6 +1,9 @@
 /* ===== リセット & ベース ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* iOS Safari のフォント自動拡大を抑制（ただし pinch-zoom は維持） */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
 :root {
   --primary: #1a5276;
   --primary-light: #2980b9;
@@ -271,6 +274,8 @@ body {
   max-width: 860px;
   margin: 0 auto;
   padding: 36px 48px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ===== 著者情報 ===== */
@@ -341,6 +346,7 @@ li strong { color: var(--primary-dark); }
 /* ===== テーブル ===== */
 .table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 20px 0;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -380,6 +386,8 @@ td {
   border-radius: 10px;
   padding: 20px;
   box-shadow: var(--shadow);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .figure img {
@@ -389,6 +397,9 @@ td {
   display: block;
   margin: 0 auto;
 }
+
+/* 全画像が親要素からはみ出さないよう保証 */
+img { max-width: 100%; height: auto; }
 
 .figure-missing {
   color: var(--text-light);
@@ -404,6 +415,12 @@ code {
   font-size: 0.88em;
   color: #c0392b;
   font-family: 'Consolas', 'Monaco', monospace;
+}
+
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 /* ===== ナビゲーション ===== */
@@ -500,6 +517,27 @@ code {
 
   /* タブボタンの最小幅を縮小 */
   .tab-btn { min-width: 100px; font-size: 0.82rem; padding: 9px 10px; }
+
+  /* はみ出し防止：横スクロールバーを出さない */
+  body { overflow-x: hidden; }
+
+  /* pre・コードブロックが画面外にはみ出さないよう */
+  pre, code { font-size: 0.78rem; }
+  pre { white-space: pre; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* 行間を少し詰めてモバイルで縦に読みやすく */
+  p { line-height: 1.75; }
+
+  /* スクロールトップボタン：ナビボタンに被らない位置に */
+  .scroll-top { bottom: 72px; right: 14px; width: 40px; height: 40px; font-size: 1rem; }
+
+  /* インラインの小さなフォントサイズが 12px 未満にならないよう底上げ */
+  /* （0.82rem × 15px base = 12.3px なので許容範囲） */
+  /* 極端に小さい箇所だけ底上げ */
+  [style*="font-size:0.7rem"], [style*="font-size: 0.7rem"] { font-size: 0.82rem !important; }
+  [style*="font-size:0.72rem"], [style*="font-size: 0.72rem"] { font-size: 0.82rem !important; }
+  [style*="font-size:0.75rem"], [style*="font-size: 0.75rem"] { font-size: 0.82rem !important; }
+  [style*="font-size:0.78rem"], [style*="font-size: 0.78rem"] { font-size: 0.82rem !important; }
 }
 
 @media (min-width: 769px) {
