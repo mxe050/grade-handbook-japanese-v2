@@ -1731,41 +1731,201 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
+            <div class="card">
               <h2>Risk of Bias（バイアス・リスク）とエビデンス全体の評価の徹底解説</h2>
-              <p>指定されたBMJ論文および添付された図解（図4-1、図4-2）、そして新しい評価ツールである「ROBUST-RCT」の概念について解説します。</p>
-              
+              <p>BMJ論文および添付図解（図4-1、図4-2）、新しい評価ツール「ROBUST-RCT」の概念を詳細に解説します。</p>
+
+              <hr class="section-divider">
               <h3>1. Risk of Bias（バイアス・リスク）の基本と種類</h3>
-              <p><strong>バイアス（Bias）</strong>とは、研究のデザイン、実施、あるいはデータの分析段階で生じる「真の効果からの系統的なズレ（誤差）」を指します。偶然による誤差とは異なり、サンプルサイズを増やしても解消されません。</p>
+              <p><strong>バイアス（Bias）</strong>とは、研究のデザイン、実施、あるいはデータの分析段階で生じる「真の効果からの系統的なズレ（誤差）」を指します。偶然による誤差（ランダムエラー）とは異なり、サンプルサイズを増やしても解消されません。</p>
+              <p>ランダム化比較試験（RCT）は交絡因子を均等に分散させることでバイアスを最小限に抑える最も強力な研究デザインですが、実施過程に不備があると以下のような深刻なバイアスが生じます。</p>
+
               <div class="table-container">
                 <table>
-                  <thead><tr><th>バイアスの種類</th><th>説明</th></tr></thead>
+                  <thead><tr><th>バイアスの種類</th><th>原因</th><th>具体例・評価ポイント</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>選択バイアス</strong></td><td>割付プロセスに問題がある場合に発生。割付の隠蔽が不十分な場合など。</td></tr>
-                    <tr><td><strong>実行バイアス</strong></td><td>参加者や医療従事者が割付を知っている場合に発生。</td></tr>
-                    <tr><td><strong>検出バイアス</strong></td><td>アウトカム評価者が割付を知っている場合に発生。主観的なアウトカムで顕著。</td></tr>
-                    <tr><td><strong>減少バイアス</strong></td><td>脱落患者やプロトコル逸脱者の除外（ITT解析の原則違反）時に発生。</td></tr>
-                    <tr><td><strong>報告バイアス</strong></td><td>有意な差が出た結果だけを選択的に報告する場合に発生。</td></tr>
+                    <tr>
+                      <td><strong>選択バイアス<br>（Selection bias）</strong></td>
+                      <td>参加者を各グループに割り付けるプロセスに問題がある場合に発生</td>
+                      <td>ランダム化の順序が予測可能・割付の隠蔽が不十分な場合、無意識に特定の患者を特定のグループに割り付けてしまい、ベースラインの患者背景に偏りが生じる</td>
+                    </tr>
+                    <tr>
+                      <td><strong>実行バイアス<br>（Performance bias）</strong></td>
+                      <td>参加者や医療従事者が、どの治療を受けているか（提供しているか）を知っている場合に発生</td>
+                      <td>参加者が新薬と知っていればプラセボ効果が高まる。医療従事者が対照群に追加治療（コインターベンション）を手厚く行ってしまうと、純粋な介入の効果が測れなくなる</td>
+                    </tr>
+                    <tr>
+                      <td><strong>検出バイアス<br>（Detection bias）</strong></td>
+                      <td>アウトカム評価者が患者の割付グループを知っている場合に発生</td>
+                      <td>痛みのスコアやQOLなど主観的な評価の際、評価者が介入群に無意識に良いスコアをつける。死亡率のような客観的指標ではこのバイアスは生じにくい</td>
+                    </tr>
+                    <tr>
+                      <td><strong>減少バイアス<br>（Attrition bias）</strong></td>
+                      <td>研究途中で脱落した患者や、プロトコルから逸脱した患者のデータが解析から除外される場合に発生</td>
+                      <td>副作用で途中で薬をやめた患者（通常、予後が悪い）を除外すると、薬の効果が実際よりも高く見積もられてしまう（Intention-to-treat: ITT解析の原則違反）</td>
+                    </tr>
+                    <tr>
+                      <td><strong>報告バイアス<br>（Reporting bias）</strong></td>
+                      <td>複数のアウトカムを測定したにもかかわらず、統計的に有意な差が出た結果だけを選択的に報告する場合に発生</td>
+                      <td>都合の良い結果だけを論文に記載する「選択的報告」。Core GRADEではこれをRisk of biasドメインで評価するようルール変更された</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
+
               <hr class="section-divider">
-              <h3>2. メタアナリシスにおけるエビデンス全体の評価</h3>
+              <h3>2. 添付図の解説：メタアナリシスにおけるエビデンス全体の評価</h3>
+
               <h4>図4-1：バイアス・リスクのスペクトラムと閾値（Threshold）</h4>
               <div class="figure">
-                <img src="coreGRADE/images/4-1.jpg" alt="バイアス・リスクのスペクトラム" loading="lazy">
-                <p class="caption">図4-1：Minimal（最小限）から Extremely serious（極めて深刻）までのスペクトラム</p>
+                <img src="coreGRADE/images/4-1.jpg" alt="バイアス・リスクのスペクトラムと閾値" loading="lazy" style="max-width:100%;">
+                <p class="caption">図4-1：Minimal（最小限）から Extremely serious（極めて深刻）までのスペクトラム。青い縦線がダウングレード閾値。</p>
               </div>
+              <p>バイアス・リスクは「ある」か「ない」かの二元論ではなく、グラデーション（スペクトラム）です。左端の「Minimal（最小限）」から右端の「Extremely serious（極めて深刻）」までの一本の線が引かれており、青い縦線と赤い矢印は<strong>「ここを超えたらエビデンスの確実性を1段階下げる（Rate down）」</strong>という閾値を示しています。</p>
+
+              <h4>図4-2：レーティングダウンの判断アルゴリズム（フローチャート）</h4>
+              <div class="figure">
+                <img src="coreGRADE/images/4-2.jpg" alt="バイアスリスクによるダウングレード判断フローチャート" loading="lazy" style="max-width:100%;">
+                <p class="caption">図4-2：「エビデンス全体に対してバイアス・リスクを理由に確実性を下げるべきか否か」を判断するフローチャート</p>
+              </div>
+
+              <div style="background:#f0f7ff; border-left:4px solid #2563eb; padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0;">
+                <h4 style="margin-top:0; color:#1e40af;">第一の問い：「エビデンスは高バイアスリスク研究に支配されているか？」</h4>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+                  <div style="background:#fff3cd; border:1px solid #ffc107; border-radius:8px; padding:12px;">
+                    <strong style="color:#856404;">Yes（支配されている）→ バイアスの方向を確認</strong>
+                    <ul style="margin:8px 0 0; padding-left:20px; font-size:0.9em;">
+                      <li><strong style="color:#dc3545;">ダウングレードする：</strong>バイアスが効果を過大または過小評価している可能性がある場合</li>
+                      <li><strong style="color:#198754;">ダウングレードしない：</strong>バイアスが「保守的な方向」に働いているにもかかわらず強い効果が出ている場合</li>
+                    </ul>
+                  </div>
+                  <div style="background:#d1f5d3; border:1px solid #28a745; border-radius:8px; padding:12px;">
+                    <strong style="color:#155724;">No（低リスク研究が十分に存在）→ 高・低リスク研究を比較</strong>
+                    <ul style="margin:8px 0 0; padding-left:20px; font-size:0.9em;">
+                      <li><strong style="color:#155724;">違いがある：</strong>低リスク研究の結果のみを採用し、ダウングレードしない</li>
+                      <li><strong style="color:#155724;">違いがない：</strong>すべての研究を使用し、ダウングレードしない</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               <hr class="section-divider">
               <h3>3. ROBUST-RCTの詳細解説</h3>
-              <p>ROBUST-RCTの最大の特長は、各評価項目について明確な2段階のステップを踏むことです。<b>Step 1 (事実の確認)</b> と <b>Step 2 (リスクの判断)</b> により、より論理的な判断が可能になります。</p>
+              <p>ROBUST-RCT（Risk Of Bias instrument for Use in SysTematic reviews - for Randomised Controlled Trials）は、「シンプルさ」と「方法論的な厳密さ」の最適なバランスを目指して新しく開発された評価ツールです。</p>
+
+              <div style="background:#fff8e1; border:1px solid #ffd54f; border-radius:8px; padding:16px; margin:12px 0;">
+                <h4 style="margin-top:0; color:#6d4c41;">最大の特徴：2ステップアプローチ</h4>
+                <p style="margin:0;"><strong>Step 1（事実の確認）</strong>：「何が起きたか？」を評価（Definitely Yes / Probably Yes / Probably No / Definitely No）<br>
+                <strong>Step 2（リスクの判断）</strong>：「それがバイアスを生んでいるか？」を判断（Definitely Low / Probably Low / Probably High / Definitely High）<br>
+                これにより「実施に不備があった（Step 1がNo）」としても、「アウトカムの性質上バイアスには繋がらない（Step 2はLow）」という柔軟かつ論理的な判断が可能になります。</p>
+              </div>
+
+              <h4>6つのコア項目（Core items）</h4>
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>項目</th><th>評価のポイント</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Item 1</strong><br>ランダム化の順序生成</td><td>コンピューター生成の乱数など適切な方法が明記されているか。生年月日の偶数・奇数等は「擬似ランダム化」でNG。</td></tr>
+                    <tr><td><strong>Item 2</strong><br>割付の隠付</td><td>中央割付方式（Webや電話）や薬局管理の同一外観の薬剤容器などが使用されているか。中身が透けて見える封筒は不適切。</td></tr>
+                    <tr><td><strong>Item 3</strong><br>参加者の盲検化</td><td>非盲検でも客観的な生存期間などのアウトカムの場合は「Probably Low」と判断できる。主観的な痛みのスコアではHigh riskになりやすい。</td></tr>
+                    <tr><td><strong>Item 4</strong><br>医療従事者の盲検化</td><td>非盲検の場合、追加の治療（Co-interventions）が均等に行われていたことが記録されていればLow risk。</td></tr>
+                    <tr><td><strong>Item 5</strong><br>アウトカム評価者の盲検化</td><td>全死亡のような判断の余地が全くない客観的アウトカムなら、評価者が非盲検でもバイアスは生じないため「Definitely Low」。</td></tr>
+                    <tr><td><strong>Item 6</strong><br>解析に含まれなかったアウトカムデータ</td><td>各グループで解析から除外された参加者の数を抽出し、全体的な割合が許容できるほど低いかを判断。感度分析（最悪シナリオ）の実施も推奨。</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>Risk of Bias（バイアス・リスク）解説</h2>
-              <p>研究のデザイン、実施、あるいはデータの分析段階で生じる「真の効果からの系統的なズレ（誤差）」を評価します。</p>
-              <div class="figure"><img src="coreGRADE/images/4-1.jpg" alt="4-1" loading="lazy"></div>
+            <div class="card">
+              <h2>GRADEアプローチにおけるバイアスリスク(RoB)評価：従来法とCore GRADEの比較</h2>
+
+              <h3>1. 従来法とCore GRADEのバイアスリスク(RoB)評価の比較表</h3>
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>比較項目</th><th>従来法（GRADE Handbook）</th><th>Core GRADE（BMJ 2024）</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>個々の研究のRoB判定</strong></td>
+                      <td>低(Low)、高(High)、不明(Unclear)など、ツールのカテゴリをそのまま利用することが多い</td>
+                      <td>「低(Low)」か「高(High)」の<strong>2択に強制的に二値化</strong>する。曖昧な評価を排除し判断をシンプルにする</td>
+                    </tr>
+                    <tr>
+                      <td><strong>評価ツールの指定</strong></td>
+                      <td>特定のツールに限定しないが、Cochrane RoBツール（RoB 1.0/2.0）などが一般的に使用される</td>
+                      <td>具体的な推奨ツール（ROBUST-RCT等）を提示しつつ、最終的にLow/Highの2択に落とし込むことを求める</td>
+                    </tr>
+                    <tr>
+                      <td><strong>全体のダウングレード判断</strong></td>
+                      <td>個々の研究のRoBの割合や影響度を総合的に見て判断。主観が入りやすい</td>
+                      <td><strong>専用フローチャート（Fig 4-2）</strong>に従い、機械的かつ論理的に「ダウングレードする」か「しない」かを決定</td>
+                    </tr>
+                    <tr>
+                      <td><strong>高リスク研究の扱い</strong></td>
+                      <td>重みが大きくても、全体として深刻でなければ許容されることもある。感度分析を推奨</td>
+                      <td>高リスク研究が「支配的（>65%等）」かどうかで明確にルートを分岐させる</td>
+                    </tr>
+                    <tr>
+                      <td><strong>バイアスの方向性の考慮</strong></td>
+                      <td>考慮することは推奨されているが、具体的な判断フローに組み込まれていないことが多い</td>
+                      <td><strong>フローチャートの核心部分に組み込まれている</strong>。バイアスが過大評価か過小評価かで判断が分かれる</td>
+                    </tr>
+                    <tr>
+                      <td><strong>非ランダム化研究(NRSI)の扱い</strong></td>
+                      <td>すべて「低(Low)の確実性」からスタートし、条件を満たせばアップグレード</td>
+                      <td>効果サイズが大きい場合などは、初期段階から「中(Moderate)」や「高(High)」からスタートさせることを許容（付録2）</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr class="section-divider">
+              <h3>2. Core GRADE Fig 4-2：エビデンス全体の確実性ダウングレード決定フロー</h3>
+              <div class="figure">
+                <img src="coreGRADE/images/4-2.jpg" alt="バイアスリスクによるダウングレード判断フローチャート（Fig 4-2）" loading="lazy" style="max-width:100%;">
+                <p class="caption">Fig 4-2：メタアナリシスに対して「バイアスリスクを理由に確実性をダウングレードするかどうか」を決定する決定木</p>
+              </div>
+
+              <div style="background:#f8f9fa; border-radius:12px; padding:20px; margin-top:16px;">
+                <h4 style="margin-top:0; color:#1a237e;">フローチャート 詳細解説</h4>
+
+                <div style="border-left:4px solid #1976d2; padding-left:16px; margin:12px 0;">
+                  <h5 style="color:#1976d2; margin:0 0 6px;">最初の問い：高リスク研究が支配的か？（目安：重み &gt;65%）</h5>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;">
+                  <div style="border:2px solid #ef5350; border-radius:8px; padding:14px;">
+                    <strong style="color:#c62828;">ルートA：Yes（高リスク研究が支配的）</strong>
+                    <p style="font-size:0.9em; margin:8px 0 0;">→ バイアスの方向性を確認</p>
+                    <ul style="font-size:0.85em; margin:8px 0 0; padding-left:18px;">
+                      <li><span style="color:#c62828;">ダウングレードする</span>：バイアスが見かけ上の効果の原因である可能性がある場合</li>
+                      <li><span style="color:#2e7d32;">ダウングレードしない</span>：バイアスが存在しても効果を保守的な方向に引っ張っている場合（例：介入群に不利なバイアスがあるにもかかわらず明らかに有効）</li>
+                    </ul>
+                  </div>
+                  <div style="border:2px solid #43a047; border-radius:8px; padding:14px;">
+                    <strong style="color:#2e7d32;">ルートB：No（低リスク研究も十分に存在）</strong>
+                    <p style="font-size:0.9em; margin:8px 0 0;">→ 高・低リスク研究間で効果の推定値に実質的な違いがあるか？</p>
+                    <ul style="font-size:0.85em; margin:8px 0 0; padding-left:18px;">
+                      <li><span style="color:#2e7d32;">Yes（違いがある）</span>：低リスク研究の結果のみを採用し、ダウングレードしない</li>
+                      <li><span style="color:#2e7d32;">No（違いがない）</span>：すべての研究を使用し、ダウングレードしない（結果が頑健）</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+              <h3>3. 付録：欠落データの高度な評価法と非ランダム化研究への応用</h3>
+              <div style="background:#e8f5e9; border-radius:8px; padding:16px; margin-bottom:12px;">
+                <h4 style="margin-top:0; color:#1b5e20;">付録1：欠落データの感度分析</h4>
+                <p style="margin:0; font-size:0.9em;">最悪のシナリオ（介入群の脱落者は全員結果が悪く、対照群は全員結果が良かったと仮定）を代入し再度メタアナリシスを行う。極端だが「現実に起こりうる」最悪の仮定を置いても結論が覆らなければダウングレード不要。覆るならダウングレードが必要。</p>
+              </div>
+              <div style="background:#e3f2fd; border-radius:8px; padding:16px;">
+                <h4 style="margin-top:0; color:#0d47a1;">付録2：非ランダム化研究（NRSI）のスタート地点の変更</h4>
+                <ul style="margin:0; font-size:0.9em; padding-left:20px;">
+                  <li>大きな効果（RR &gt; 2.0 または &lt; 0.5）や用量反応関係が明確なNRSI → 初期確実性「中（Moderate）」からスタート</li>
+                  <li>非常に大きな効果（RR &gt; 5.0 または &lt; 0.2）またはその両方 → 初期確実性「高（High）」からスタート</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1792,7 +1952,7 @@ function checkAuth(){
           <div class="tab-pane active">
 
         <div class="author-info">著者: Ignacio Neumann, Bernardo Sousa-Pinto, Joerg Meerpohl, Philipp Dahm, Sue Brennan, Pablo Alonso, Elie Akl, Miranda Langendam, Gordon Guyatt, Holger J. Schünemann<br>グラフィック作成者: Carlos Cuello<br>最終更新日: 2025年7月26日</div>
-        <h1 class="chapter-title">不一致性（Inconsistency）</h1>
+        <h1 class="chapter-title">非一貫性（Inconsistency）</h1>
 <p>著者: Ignacio Neumann, Bernardo Sousa-Pinto, Joerg Meerpohl, Philipp Dahm, Sue Brennan, Pablo Alonso, Elie Akl, Miranda Langendam, Gordon Guyatt, Holger J. Schünemann</p>
 <p>グラフィック作成者: Carlos Cuello</p>
 <p>最終更新日: 2025年7月26日</p>
@@ -1871,45 +2031,202 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
+            <div class="card">
               <h2>非一貫性（Inconsistency）の評価：意思決定の閾値を考慮したアプローチ</h2>
-              <p>最新の Core GRADE では、統計的指標（I²）に依存しすぎず、臨床的な「意思決定の閾値（Threshold）」を基準とした判断を重視します。</p>
-              
-              <div class="calculator-card bg-indigo-50 border border-indigo-200 p-6 rounded-2xl mb-8" style="background: #f0f7ff; border: 1px solid #cce3ff; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0;">🧮 相対リスク(RR)の閾値計算ツール</h3>
-                <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                  <div style="flex: 1;">
-                    <label style="display: block; font-size: 12px;">絶対MID (%)</label>
-                    <input type="number" id="abs-mid" style="width: 100%; padding: 5px;" placeholder="1">
-                  </div>
-                  <div style="flex: 1;">
-                    <label style="display: block; font-size: 12px;">ベースラインリスク (%)</label>
-                    <input type="number" id="base-risk" style="width: 100%; padding: 5px;" placeholder="7">
-                  </div>
-                </div>
-                <button onclick="calculateRR()" style="width: 100%; padding: 10px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer;">計算する</button>
-                <div id="calc-result" style="margin-top: 15px; padding: 10px; background: white; border: 1px border #eee; border-radius: 5px; display: none;"></div>
+              <p>BMJ 2025;389:e081905 に基づき、4つの図表（3-1〜3-4）を用いて非一貫性をどのように評価・判断するかを解説します。</p>
+
+              <div style="background:#e8f4fd; border-left:4px solid #2196f3; padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0;">
+                <h4 style="margin-top:0; color:#1565c0;">非一貫性（Inconsistency）とは？</h4>
+                <p style="margin:0;">システマティックレビューにおいて、組み込まれた複数の研究間で「効果の推定値（方向や大きさ）」に説明のつかない大きなばらつきがある状態を指します。GRADEアプローチでは、深刻な非一貫性が見られる場合、エビデンスの確実性（Certainty of evidence）を<strong>ダウングレード（引き下げ）</strong>する必要があります。</p>
               </div>
 
-              <div class="figure">
-                <img src="coreGRADE/images/3-2.jpg" alt="非一貫性評価のフローチャート" loading="lazy">
-                <p class="caption">図3-2: 非一貫性を評価するためのフローチャート</p>
+              <hr class="section-divider">
+              <h3>1. 非一貫性の評価フローと「意思決定の閾値」（図3-2）</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+                <div style="flex:1; min-width:280px;">
+                  <div class="figure">
+                    <img src="coreGRADE/images/3-2.jpg" alt="非一貫性評価のフローチャート" loading="lazy" style="max-width:100%;">
+                    <p class="caption">図3-2：非一貫性を評価するためのフローチャート（Core GRADE）</p>
+                  </div>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                  <p>単純に点推定値がばらついているかだけで機械的に判断するのではなく、<strong>臨床的な「意思決定の閾値（Threshold）」</strong>を考慮することが推奨されています。</p>
+                  <ul style="line-height:1.9;">
+                    <li><strong>ステップ1：</strong>各研究の点推定値に重要な違いがあり、信頼区間（CI）の重なりが少ないかを確認。重なりが十分ならダウングレード不要。</li>
+                    <li><strong>ステップ2：</strong>重なりが少ない場合、点推定値が「治療を推奨するかしないかが変わる境界線（閾値）」をまたいでいるかを評価。</li>
+                    <li><strong>ステップ3：</strong>結果がばらついても大部分が「閾値の片側（例：全て有効側）」にあれば、推奨は変わらないためダウングレードしないと判断できる。</li>
+                    <li><strong>ステップ4：</strong>閾値の両側に結果が分かれている場合、サブグループ分析で説明できるか検討。説明できなければ「非一貫性あり」としてダウングレード。</li>
+                  </ul>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+              <h3>2. 一貫性のある結果 vs 非一貫な結果の視覚的比較（図3-3）</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+                <div style="flex:1; min-width:280px;">
+                  <div class="figure">
+                    <img src="coreGRADE/images/3-3.jpg" alt="ConsistentとInconsistentのフォレストプロット" loading="lazy" style="max-width:100%;">
+                    <p class="caption">図3-3：視覚的な非一貫性の評価例</p>
+                  </div>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                  <p>フォレストプロットを見ることで、非一貫性の程度を直感的に把握できます。</p>
+                  <div style="background:#ecfdf5; border:1px solid #86efac; border-radius:8px; padding:14px; margin-bottom:12px;">
+                    <strong style="color:#166534;">上段：Consistent（一貫している）</strong>
+                    <p style="margin:6px 0 0; font-size:0.9em;">4つの研究の点推定値が近くに集まり、信頼区間がよく重なり合っている。<strong>I²統計量は 0.0%</strong> と全く異質性がなく、結果は一貫している。</p>
+                  </div>
+                  <div style="background:#fff1f2; border:1px solid #fca5a5; border-radius:8px; padding:14px;">
+                    <strong style="color:#991b1b;">下段：Inconsistent（非一貫性あり）</strong>
+                    <p style="margin:6px 0 0; font-size:0.9em;">研究結果がバラバラ（RR: 0.44〜1.25）。研究1・2はリスク低下を示すが、研究3・4はリスク増加側。信頼区間の重なりも非常に少なく、<strong>I² = 92.9%</strong> と極めて高い異質性。統合結果の確実性はダウングレードが必要。</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+              <h3>3. 極めて高い異質性を示す実例と対応（図3-4）</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+                <div style="flex:1; min-width:280px;">
+                  <div class="figure">
+                    <img src="coreGRADE/images/3-4.jpg" alt="高い異質性を示すフォレストプロット" loading="lazy" style="max-width:100%;">
+                    <p class="caption">図3-4：連続値アウトカムでの著しい非一貫性（I²=94.5%）</p>
+                  </div>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                  <p>この図は連続値（平均値の差）のメタアナリシス例で、<strong>I² = 94.5%</strong> と極端に高い異質性が存在しています。</p>
+                  <p>すべての研究結果が「0のライン（効果なし）」より左側（マイナス方向）にあるため効果の方向性自体は一致しているように見えますが、<strong>効果の大きさのばらつき（-36.00〜0.00）が尋常ではありません。</strong></p>
+                  <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:14px; margin-top:8px;">
+                    <strong style="color:#92400e;">このような場合どう対応すべきか？</strong>
+                    <p style="margin:6px 0 0; font-size:0.9em;">結果をそのまま統合するのではなく、<strong>なぜこれほど違いが生じたのかを探求すること</strong>が極めて重要です。患者の重症度、介入の用量や期間、対照群の治療内容（PICOの違い）、またはバイアスリスクなどを調べ、サブグループ分析等でそのばらつきの原因を特定する試みが求められます。</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+              <h3>4. 相対リスクと絶対リスク：ベースラインの影響（図3-1）</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+                <div style="flex:1; min-width:280px;">
+                  <div class="figure">
+                    <img src="coreGRADE/images/3-1.jpg" alt="相対リスクと絶対リスクの棒グラフ" loading="lazy" style="max-width:100%;">
+                    <p class="caption">図3-1：ベースラインリスクによる絶対的効果の違い</p>
+                  </div>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                  <p>治療効果を評価する際、「相対的効果」と「絶対的効果」の違いを区別することが意思決定において決定的に重要です。</p>
+                  <div style="border-left:4px solid #3b82f6; padding-left:14px; margin:10px 0;">
+                    <strong style="color:#1e40af;">相対リスク（Relative risk）</strong>
+                    <p style="font-size:0.9em; margin:4px 0 0;">高・中・低リスクの3集団すべてで<strong>相対リスクは0.67で一定</strong>（治療によりリスクが33%減少）。通常、メタアナリシスでは相対的効果は集団間で一貫していると仮定される。</p>
+                  </div>
+                  <div style="border-left:4px solid #f59e0b; padding-left:14px; margin:10px 0;">
+                    <strong style="color:#92400e;">絶対リスク差（Risk difference）</strong>
+                    <p style="font-size:0.9em; margin:4px 0 0;">コントロール群の元のイベント発生率（ベースラインリスク）が異なるため、治療で実際に減らせるイベントの割合は<strong>10%・3.3%・1%と全く異なる。</strong></p>
+                  </div>
+                  <div style="background:#f1f5f9; border-radius:8px; padding:12px; font-size:0.9em;">
+                    💡 <strong>臨床応用へのヒント：</strong>実際の意思決定では「絶対的効果」が重要。ベースラインリスクが異なる集団に対しては集団（サブグループ）ごとに絶対的効果を見積もり、個別に推奨を行う必要があります。
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>非一貫性（Inconsistency）の評価</h2>
-              <div class="calculator-card" style="background:#f0f7ff; padding:20px; border-radius:12px; border:1px solid #cce3ff; margin-bottom:20px;">
-                <h3>🧮 RR 閾値計算ツール</h3>
-                <div style="display:flex; gap:10px; margin-bottom:10px;">
-                  <input type="number" id="abs-mid" placeholder="絶対MID (%)" style="width:50%; padding:8px;">
-                  <input type="number" id="base-risk" placeholder="ベースラインリスク (%)" style="width:50%; padding:8px;">
-                </div>
-                <button onclick="calculateRR()" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer;">計算</button>
-                <div id="calc-result" style="margin-top:10px; display:none; background:white; padding:10px; border-radius:4px;"></div>
+            <div class="card">
+              <h2>非一貫性（Inconsistency）評価 完全ガイド</h2>
+              <p style="color:#555;">BMJ 2024;389:e081905 に基づく最新のアプローチ（全ステップ一覧）</p>
+
+              <hr class="section-divider">
+              <h3>1. 新旧アプローチ比較</h3>
+              <p>Core GRADEは「統計学的指標（I²など）」への依存を減らし、「臨床的な閾値」を基準とした意思決定への影響（臨床的異質性）を最重要視するシンプルなフローを採用しています。</p>
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>比較項目</th><th>BMJ Core GRADE（新アプローチ）</th><th>GRADEpro Handbook（従来アプローチ）</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>評価の主眼</strong></td><td>臨床的閾値（MIDなど）を基準とした<strong>「臨床的異質性」</strong>。推定値が意思決定の境界線をまたぐかが最重要</td><td>点推定値のばらつき、CIの重なり、統計学的異質性の総合評価</td></tr>
+                    <tr><td><strong>統計学的指標（I²、P値）</strong></td><td><strong style="color:#dc2626;">ほぼ使用しない。</strong>視覚的・臨床的判断に特化</td><td>重要な判断材料（I²が50%以上等はダウングレードの強い要因）</td></tr>
+                    <tr><td><strong>閾値（Threshold）</strong></td><td><strong>極めて重要。</strong>フローチャートの分岐の核となる</td><td>考慮はされるが、明示的なフローチャート化はされていない</td></tr>
+                    <tr><td><strong>サブグループ解析</strong></td><td>ICEMANツール等を用いて「信用性」を厳格に評価</td><td>仮説を立てて検証するが、専用ツールの使用は義務化されていない</td></tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="figure"><img src="coreGRADE/images/3-2.jpg" alt="3-2" loading="lazy"></div>
+
+              <hr class="section-divider">
+              <h3>2. 非一貫性評価フローチャート詳細解説（Fig 3-2）</h3>
+              <div class="figure">
+                <img src="coreGRADE/images/3-2.jpg" alt="非一貫性評価フローチャート" loading="lazy" style="max-width:100%;">
+                <p class="caption">Fig 3-2：Core GRADE 非一貫性評価フローチャート</p>
+              </div>
+
+              <div style="background:#f8f9fa; border-radius:12px; padding:20px; margin-top:16px;">
+
+                <div style="border:2px solid #cbd5e1; border-radius:10px; padding:18px; margin-bottom:16px; position:relative;">
+                  <div style="position:absolute; top:-14px; left:-14px; background:#2563eb; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px;">1</div>
+                  <h4 style="margin-top:0; color:#1e293b;">各研究の点推定値に重要な違いがあり、信頼区間（CI）の重なりが乏しいか？</h4>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+                    <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:12px;">
+                      <strong style="color:#15803d;">いいえ → ダウングレードしない</strong>
+                      <p style="font-size:0.85em; margin:6px 0 0;">研究結果は一貫しているとみなされ、評価はここで終了です。</p>
+                    </div>
+                    <div style="background:#eff6ff; border:1px solid #93c5fd; border-radius:8px; padding:12px;">
+                      <strong style="color:#1d4ed8;">はい → 次のステップ（閾値との関係評価）へ</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="border:2px solid #93c5fd; border-radius:10px; padding:18px; margin-bottom:16px; position:relative;">
+                  <div style="position:absolute; top:-14px; left:-14px; background:#2563eb; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px;">2</div>
+                  <h4 style="margin-top:0; color:#1e293b;">設定した「閾値（Threshold）」との関係で、各研究の点推定値を評価する</h4>
+
+                  <div style="background:#eef2ff; border:1px solid #a5b4fc; border-radius:8px; padding:14px; margin:10px 0;">
+                    <h5 style="margin-top:0; color:#4338ca;">【付録1】RR閾値計算ツール</h5>
+                    <p style="font-size:0.85em; margin-bottom:10px;">絶対リスクの「最小重要差（MID）」を相対リスク（RR）の閾値に変換します。</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end;">
+                      <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:4px;">絶対MID (%)</label>
+                        <input type="number" id="abs-mid-ch8" style="width:120px; border:1px solid #a5b4fc; border-radius:6px; padding:6px 8px;" placeholder="例: 1" step="0.1">
+                      </div>
+                      <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:4px;">ベースラインリスク (%)</label>
+                        <input type="number" id="base-risk-ch8" style="width:140px; border:1px solid #a5b4fc; border-radius:6px; padding:6px 8px;" placeholder="例: 7" step="0.1">
+                      </div>
+                      <button onclick="(function(){var mid=parseFloat(document.getElementById('abs-mid-ch8').value);var br=parseFloat(document.getElementById('base-risk-ch8').value);if(!mid||!br){alert('数値を入力してください');return;}var rr=(br-mid)/br;var res=document.getElementById('calc-result-ch8');res.style.display='block';res.innerHTML='<strong>RR閾値 = '+(rr.toFixed(3))+'</strong><br>（ベースラインリスク'+br+'%のとき、絶対MID '+mid+'%に相当するRR）';})()" style="background:#4f46e5; color:white; border:none; border-radius:6px; padding:8px 16px; cursor:pointer; font-size:0.9em;">RR閾値を計算</button>
+                    </div>
+                    <div id="calc-result-ch8" style="display:none; margin-top:10px; background:white; border:1px solid #a5b4fc; border-radius:6px; padding:10px; font-size:0.9em;"></div>
+                  </div>
+
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+                    <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:12px;">
+                      <strong style="color:#15803d;">大多数の点推定値が閾値の片側にある → ダウングレードしない</strong>
+                      <p style="font-size:0.85em; margin:6px 0 0;">臨床的な意思決定という観点では結果が一致しているため、問題視しません。</p>
+                    </div>
+                    <div style="background:#eff6ff; border:1px solid #93c5fd; border-radius:8px; padding:12px;">
+                      <strong style="color:#1d4ed8;">かなりの割合の研究が閾値の反対側にまたがっている → 次のステップへ</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="border:2px solid #93c5fd; border-radius:10px; padding:18px; position:relative;">
+                  <div style="position:absolute; top:-14px; left:-14px; background:#2563eb; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px;">3</div>
+                  <h4 style="margin-top:0; color:#1e293b;">その非一貫性は、信用できる（Credible）サブグループ解析によって説明可能か？</h4>
+
+                  <div style="background:#f9fafb; border:1px solid #e2e8f0; border-radius:8px; padding:14px; margin:10px 0;">
+                    <h5 style="margin-top:0;">【付録2】ICEMAN基準によるサブグループ信用性評価</h5>
+                    <ul style="font-size:0.9em; margin:0; padding-left:18px; line-height:1.9;">
+                      <li>事前に（A priori）正しい方向の仮説が立てられていたか？</li>
+                      <li>交互作用のテスト（Interaction P-value）が十分に小さいか？（例: &lt; 0.05）</li>
+                      <li>テストしたサブグループ修飾因子の数は少ないか？（数が多いほど偶然の確率上昇）</li>
+                      <li>試験間（Between-trial）ではなく試験内（Within-trial）の比較に基づいているか？</li>
+                    </ul>
+                  </div>
+
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+                    <div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:8px; padding:12px;">
+                      <strong style="color:#dc2626;">いいえ（信用できない）→ ダウングレードする</strong>
+                      <p style="font-size:0.85em; margin:6px 0 0;">非一貫性を合理的に説明できないため、エビデンスの確実性を下げます。</p>
+                    </div>
+                    <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:12px;">
+                      <strong style="color:#15803d;">はい（信用できる）→ 結果をサブグループごとに分けて提示し、個別に評価する</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1997,16 +2314,166 @@ function checkAuth(){
         
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>CoreGrade解説: 非直接性</h2>
-              <p>このセクションの内容を順次統合しています。</p>
+            <div class="card">
+              <h2>GRADEアプローチにおける「非直接性（Indirectness）」の実践的解説</h2>
+              <p>非直接性とは、エビデンス（論文の研究結果）を目の前の患者や目的とする状況に当てはめる際の「ズレ」を指します。大きく<strong>①間接比較</strong>と<strong>②PICOの非直接性</strong>の2カテゴリーに分類されます。</p>
+
+              <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; margin-top:16px;">
+                <div style="flex:1; min-width:280px;">
+                  <div class="figure">
+                    <img src="coreGRADE/images/5-1.jpg" alt="非直接性の概念図（間接比較とPICOの非直接性）" loading="lazy" style="max-width:100%;">
+                    <p class="caption">図5-1：間接比較（左）とPICOの非直接性（右）の概念図</p>
+                  </div>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                  <div style="background:#eff6ff; border-left:4px solid #3b82f6; padding:14px; border-radius:0 8px 8px 0; margin-bottom:12px;">
+                    <strong style="color:#1e40af;">① 間接比較（Indirect comparisons）：図の左側</strong>
+                    <p style="margin:4px 0 0; font-size:0.9em;">「比較の経路」に関する非直接性。直接比較試験がない場合に共通の対照（C）を介して推測する。</p>
+                  </div>
+                  <div style="background:#fdf4ff; border-left:4px solid #a855f7; padding:14px; border-radius:0 8px 8px 0;">
+                    <strong style="color:#6b21a8;">② PICOの非直接性（右側・赤枠）：GRADEの最大の焦点</strong>
+                    <p style="margin:4px 0 0; font-size:0.9em;">「臨床疑問と論文データのズレ」。Target PICOとStudy PICOのギャップを評価する。</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+              <h3>① 間接比較（Indirect comparisons）とネットワークメタ分析</h3>
+              <p>新薬AとBのどちらが優れているかを知りたいが、A vs Bの直接比較試験が存在しない場合、共通の対照Cを介して数学的に「AとB」を比較する手法です。</p>
+
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>用語</th><th>意味</th><th>図での表現</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>直接比較（Direct comparison）</strong></td><td>2つの治療法を同じ1つの臨床試験の中で直接戦わせて比較すること。別名：Head-to-Head比較</td><td>太い青色の実線。最も信頼性が高い</td></tr>
+                    <tr><td><strong>間接比較（Indirect comparison）</strong></td><td>共通の対照（C）を介して間接的に効果の差を計算・推測すること</td><td>青色の点線。「AとCの差」と「BとCの差」を引き算して「AとBの差」を導く</td></tr>
+                    <tr><td><strong>共通対照（Common comparator）</strong></td><td>間接比較の「橋渡し」となる治療法。過去の標準治療薬やプラセボが多い</td><td>円「C」</td></tr>
+                    <tr><td><strong>ネットワークメタ分析（NMA）</strong></td><td>直接・間接比較のデータをすべて統合し、3つ以上の治療法を同時に比較する高度な統計手法</td><td>—</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="background:#fef3c7; border-left:4px solid #f59e0b; padding:12px 16px; border-radius:0 8px 8px 0; margin-top:10px;">
+                <strong style="color:#78350f;">なぜ間接比較は確実性が下がるのか？</strong>
+                <p style="margin:4px 0 0; font-size:0.9em;">間接比較が成立するには「A vs C」と「B vs C」の試験の患者背景が非常に似通っていることが必要（「推移性の仮定」）。しかし現実には完全一致は稀なため、<strong>GRADEアプローチでは間接比較のエビデンスは原則として直接比較より確実性を1段階下げる</strong>。</p>
+              </div>
+
+              <hr class="section-divider">
+              <h3>② PICOの非直接性（PICO indirectness）【最重要】</h3>
+              <p>「Target PICO（知りたい疑問）」と「Search results（実際に見つかった論文）」のズレを表します。的（まと）と矢のメタファーで説明されます：論文がど真ん中に刺されば「直接（Direct）」、端の方なら「間接（Indirect）」。</p>
+
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>PICO要素</th><th>ズレの例</th><th>実践的判断</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>P（患者）のズレ</strong></td>
+                      <td>重症COVID患者に対する効果を知りたいが、軽症〜中等症の患者対象の論文しかない</td>
+                      <td>軽症者に効くからといって重症者にも効くとは限らない</td>
+                    </tr>
+                    <tr>
+                      <td><strong>I（介入）のズレ</strong></td>
+                      <td>薬剤Xを「1日3回」投与した効果を知りたいが「1日1回」の論文しかない。または同系統の別薬の論文</td>
+                      <td>投与量・方法の違い、同クラスの別薬使用は非直接性となりうる</td>
+                    </tr>
+                    <tr>
+                      <td><strong>C（比較対照）のズレ</strong></td>
+                      <td>新薬Aと「現在の標準治療薬B」を比較したいが、プラセボとの比較論文しかない</td>
+                      <td>プラセボより優れていても標準治療から乗り換えるべきかは別問題</td>
+                    </tr>
+                    <tr>
+                      <td><strong>O（アウトカム）のズレ ★現場で最も頻出</strong></td>
+                      <td>「死亡率・心筋梗塞」（真のアウトカム）を知りたいが「血圧・コレステロール値」（代用アウトカム）のデータしかない</td>
+                      <td>検査値が良くなっても患者の寿命が延びるとは限らない。代用アウトカムは非直接性と強く疑う</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="background:#f0fdf4; border-radius:8px; padding:14px; margin-top:12px;">
+                <h4 style="margin-top:0; color:#15803d;">現場でのアクション：どう評価するか？</h4>
+                <ul style="margin:0; padding-left:20px; font-size:0.9em;">
+                  <li><strong>ズレがない、または非常に小さい（Direct）：</strong>ダウングレードしない</li>
+                  <li><strong>少しズレがあるが推測可能（Indirect）：</strong>確実性を「1段階下げる」</li>
+                  <li><strong>ズレが大きすぎて参考にしづらい（Very Indirect）：</strong>確実性を「2段階下げる」</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card">
+              <h2>非直接性（Indirectness）の評価手順：従来GRADEとCore GRADE 5の比較</h2>
+
+              <h3>1. 従来のGRADEとCore GRADE 5の違い</h3>
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>比較項目</th><th>GRADE Handbook（旧来の基準）</th><th>Core GRADE 5（最新の基準）BMJ 2025;389</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>間接性の定義と範囲</strong></td><td>PICOのズレによる間接性に加え、直接比較（Head-to-head）がないことによる「間接比較（NMAなど）」も同じIndirectnessドメイン内で広く議論する</td><td>「間接比較（NMA等）」と「PICO要素の不一致による間接性」を明確に区別。Core GRADEでは単一介入・単一対照の「PICO要素のズレ」に焦点を絞って評価する</td></tr>
+                    <tr><td><strong>評価のプロセス</strong></td><td>概念的・定性的。評価者の主観的・総合的な判断に委ねられる部分が大きい</td><td><strong>アルゴリズム化（構造化）</strong>されている。PICOの各要素について「違いの有無」→「効果への影響の類似性（生物学的・社会的要因）」へとステップバイステップで判断する</td></tr>
+                    <tr><td><strong>サロゲート指標の扱い</strong></td><td>サロゲートアウトカムを用いた場合は間接性としてダウングレードの対象、という原則的な記載</td><td>ターゲットとする真のアウトカムに至る<strong>因果経路上の距離（Very close / Close / Far）</strong>に応じて、ダウングレードしない〜2段階下げる、という具体的な基準を提示</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr class="section-divider">
+              <h3>2. Core GRADEにおける非直接性の評価フローチャート（Fig 5-2）</h3>
+              <div class="figure">
+                <img src="coreGRADE/images/5-2.jpg" alt="非直接性評価フローチャート（Fig 5-2）" loading="lazy" style="max-width:100%;">
+                <p class="caption">Fig 5-2：Core GRADE 非直接性評価フローチャート（P/I/CとOの評価ルート）</p>
+              </div>
+
+              <div style="background:#f8f9fa; border-radius:12px; padding:20px; margin-top:16px;">
+                <h4 style="margin-top:0; color:#1a237e;">ステップ1：P / I / C（集団・介入・対照）の差異の特定</h4>
+                <p>対象集団（P）、介入（I）、対照（C）のそれぞれについて、ターゲットと実際の研究との間に違いがあるかを確認。</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                  <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:12px;">
+                    <strong style="color:#15803d;">No（違いはない）→ ダウングレードしない</strong>
+                  </div>
+                  <div style="background:#eff6ff; border:1px solid #93c5fd; border-radius:8px; padding:12px;">
+                    <strong style="color:#1d4ed8;">Yes（違いがある）→ ステップ2へ</strong>
+                  </div>
+                </div>
+
+                <h4 style="color:#1a237e; margin-top:20px;">ステップ2：生物学的・社会的要因による影響の評価</h4>
+                <p style="font-size:0.9em;">「研究対象とターゲットの間に違いはあるが、生物学的または社会的な要因は十分に類似しており、ターゲットとなるアウトカムに対して同様の影響を与えると予想できるか？」</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+                  <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:10px;">
+                    <strong style="color:#15803d; font-size:0.9em;">Yes（影響は同じと予想）→ ダウングレードしない</strong>
+                  </div>
+                  <div style="background:#fff7ed; border:1px solid #fdba74; border-radius:8px; padding:10px;">
+                    <strong style="color:#c2410c; font-size:0.9em;">No（Dissimilar：似ていない）→ 1段階ダウングレード</strong>
+                  </div>
+                  <div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:8px; padding:10px;">
+                    <strong style="color:#dc2626; font-size:0.9em;">No（Very dissimilar：全く似ていない）→ 2段階ダウングレード</strong>
+                  </div>
+                </div>
+
+                <h4 style="color:#1a237e; margin-top:20px;">ステップ3：Outcome（アウトカム）の評価</h4>
+                <p style="font-size:0.9em;">アウトカムはP/I/Cとは別の評価ルート。まずサロゲート（代用）アウトカムかどうかを確認。</p>
+
+                <div style="border:1px solid #d1d5db; border-radius:8px; padding:14px; margin-top:8px; background:white;">
+                  <strong>ルートA：サロゲートアウトカムである場合（Yes）</strong>
+                  <p style="font-size:0.85em; margin:6px 0;">因果経路上の距離を評価：</p>
+                  <ul style="font-size:0.85em; margin:0; padding-left:18px; line-height:1.9;">
+                    <li><strong>Very close（非常に近い）→ ダウングレードしない</strong><br><span style="color:#6b7280;">例：骨折のX線診断（必然的に痛みや治療の必要性をもたらす）</span></li>
+                    <li><strong>Close（近い）→ 1段階ダウングレード</strong></li>
+                    <li><strong>Far（遠い）→ 2段階ダウングレード</strong><br><span style="color:#6b7280;">例：血圧値や骨密度から「死亡率・骨折率」を推測する場合</span></li>
+                  </ul>
+                </div>
+
+                <div style="border:1px solid #d1d5db; border-radius:8px; padding:14px; margin-top:10px; background:white;">
+                  <strong>ルートB：サロゲートアウトカムではない場合（No）</strong>
+                  <p style="font-size:0.85em; margin:6px 0;">研究で用いられたアウトカムの定義や測定のタイムフレームがターゲットと類似しているか？</p>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px;">
+                    <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:6px; padding:8px; font-size:0.85em;">
+                      <strong style="color:#15803d;">Yes → ダウングレードしない</strong>
+                    </div>
+                    <div style="background:#fff7ed; border:1px solid #fdba74; border-radius:6px; padding:8px; font-size:0.85em;">
+                      <strong style="color:#c2410c;">No → 1段階ダウングレード</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2022,7 +2489,7 @@ function checkAuth(){
     <div class="page" id="page-10">
       <div class="page-header">
         <div class="chapter-badge">Chapter 10 / 13</div>
-        <h1>不確実性（Imprecision）</h1>
+        <h1>不精確さ（Imprecision）</h1>
         <div class="en-title">Imprecision</div>
       </div>
       <div class="page-body">
@@ -2035,7 +2502,7 @@ function checkAuth(){
           <div class="tab-pane active">
 
         <div class="author-info">**著者**: M. Hassan Murad, Ignacio Neumann, Jan Brozek, Miranda Langendam, Philipp Dahm, Holger J. Schünemann<br>**グラフィックス著者**: Carlos Cuello<br>**最終更新日**: 2025年8月21日</div>
-        <h1 class="chapter-title">不確実性（Imprecision）</h1>
+        <h1 class="chapter-title">不精確さ（Imprecision）</h1>
 <p><strong>著者</strong>: M. Hassan Murad, Ignacio Neumann, Jan Brozek, Miranda Langendam, Philipp Dahm, Holger J. Schünemann</p>
 <p><strong>グラフィックス著者</strong>: Carlos Cuello</p>
 <p><strong>最終更新日</strong>: 2025年8月21日</p>
@@ -2154,16 +2621,310 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>CoreGrade解説: 不精確さ</h2>
-              <p>このセクションの内容を順次統合しています。</p>
+            <!-- CoreGrade解説: 不精確さ -->
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGrade解説：不精確さ（Imprecision）</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">BMJアップデートに基づく、効果推定値の確実性を評価するための実践ガイド</p>
+            </div>
+
+            <!-- はじめに -->
+            <div class="card" style="border-left:4px solid #2563eb;margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">はじめに：不精確さ(Imprecision)とは？</h3>
+              <p style="color:#374151;margin-bottom:0.75rem;">医療における意思決定では、「ある治療法が本当に効果があるのか？」という<strong>エビデンスの確実性（Certainty of Evidence）</strong>を評価することが不可欠です。GRADEアプローチでは、この確実性を下げる（ダウングレードする）5つの要因の1つに<strong>「不精確さ（Imprecision）」</strong>があります。</p>
+              <p style="color:#374151;margin-bottom:1rem;">不精確さとは、簡単に言えば「結果のバラツキ（信頼区間：CI）が大きすぎて、臨床的な意思決定に迷いが生じる状態」を指します。</p>
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:0 8px 8px 0;">
+                <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">本論文（BMJアップデート）の重要ポイント</h4>
+                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.9rem;color:#374151;">
+                  <li style="margin-bottom:0.25rem;">単に「統計的に有意か（Null効果をまたぐか）」だけでなく、<strong>「臨床的に意味のある差（MID: Minimal Important Difference）」</strong>を重視する。</li>
+                  <li style="margin-bottom:0.25rem;">「重要な効果がある」ことを証明したいのか、「効果がない（同等である）」ことを証明したいのかによって、評価のアプローチが変わる。</li>
+                  <li>最適な情報量（OIS: Optimal Information Size）という概念を用いて、サンプルサイズが十分かどうかも評価に組み込む。</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Step 1: 効果のスペクトラムとMID -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">1. 効果の大きさの境界線と閾値</h3>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">効果のスペクトラムとMID</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">効果の大きさは「ある・なし」の二元論ではなく、スペクトラム（連続体）として捉える必要があります。</p>
+              <ul style="list-style:disc;padding-left:1.25rem;color:#374151;margin-bottom:1rem;">
+                <li style="margin-bottom:0.5rem;"><strong>Null effect（効果なし）:</strong> 介入群と対照群に全く差がない点。</li>
+                <li style="margin-bottom:0.5rem;"><strong>MID（最小重要差）:</strong> 患者にとって「意味がある」と感じられる最小の効果の大きさ。有益性（Benefit）のMIDと、害（Harm）のMIDがあります。</li>
+                <li style="margin-bottom:0.5rem;"><strong>Little to no effect（ほとんど、または全く効果がない）:</strong> Null効果を挟んで、有益性のMIDと害のMIDの間のゾーンです。ここにある効果は、統計的に差があっても「臨床的には重要ではない」とみなされます。</li>
+              </ul>
+              <p style="color:#374151;margin-bottom:1rem;">MIDを超えると「重要な効果（Important benefit/harm）」となり、さらにその大きさに応じてSmall, Moderate, Largeと分類されます。不精確さを評価する際、<strong>CI（信頼区間）がこれらのどの境界（閾値）をまたいでいるか</strong>が決定的に重要になります。</p>
+              <div class="figure" style="text-align:center;">
+                <img src="coreGRADE/images/2-1.jpg" alt="図1: 効果の大きさの境界（MIDとNull効果）" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図1: 効果の大きさの境界（MIDとNull効果）</p>
+              </div>
+            </div>
+
+            <!-- Step 2: 評価のターゲット -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">2. 評価の目的（ターゲット）を設定する</h3>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">何を確かめたいのか？（図2）</h4>
+              <p style="color:#374151;margin-bottom:1rem;">評価を始める前に、「何に対する確実性を評価したいのか（Threshold of interest）」を明確にします。</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">A. 重要な効果があるか？</h4>
+                  <p style="font-size:0.9rem;color:#374151;">臨床的に意味のある差があるかどうかが関心事の場合、<strong>MID（最小重要差）</strong>を閾値として選びます。</p>
+                </div>
+                <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#6b21a8;margin-bottom:0.5rem;">B. 真の効果（少しでも）があるか？</h4>
+                  <p style="font-size:0.9rem;color:#374151;">ごくわずかでも効果が存在するかどうかが関心事の場合、<strong>Null（効果ゼロ）</strong>を閾値として選びます。</p>
+                </div>
+              </div>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">点推定値に基づくターゲットの決定（図3）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">閾値を選んだら、実際のデータ（点推定値）がどこにあるかを確認します。図3は「MIDを閾値とした場合」の例です。</p>
+              <ul style="list-style:disc;padding-left:1.25rem;color:#374151;margin-bottom:1rem;">
+                <li style="margin-bottom:0.5rem;"><strong>(a)のケース:</strong> 点推定値がMIDを超えて「Important（重要）」の領域にあります。この場合、「重要な効果がある」ことに対する確実性を評価します。</li>
+                <li><strong>(b)のケース:</strong> 点推定値がMIDとNullの間の「Unimportant（重要ではない）」領域にあります。この場合、「重要な効果がない（ほとんど差がない）」ことに対する確実性を評価します。</li>
+              </ul>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-2.jpg" alt="図2: ターゲットとする確実性を選択するためのフローチャート" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図2: ターゲット選択フローチャート</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-3.jpg" alt="図3: 点推定値の位置関係と効果の解釈" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図3: 点推定値の位置関係と効果の解釈</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: ダウングレード判定アルゴリズム -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">3. ダウングレード判定アルゴリズム</h3>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">ダウングレードすべきか否かのフロー（図4）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">これが不精確さ評価の核心となるアルゴリズムです。</p>
+              <div style="background:#fff1f2;border-left:4px solid #ef4444;padding:1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#991b1b;">最初の問い：「CI（信頼区間）は選んだ閾値をまたいでいるか？」</h4>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">【Yes（またいでいる）の場合】</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">基本的に<strong>「1段階ダウングレード」</strong>します。</p>
+                  <p style="font-size:0.85rem;color:#6b7280;">※CIが「重要な有益性」と「重要な害」の両閾値をまたぐ極端な場合は「2段階ダウングレード」を検討。</p>
+                </div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">【No（またいでいない）の場合】</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">すぐに「ダウングレードなし」とするのは危険です。OIS基準を満たすか確認します。</p>
+                  <ul style="list-style:disc;padding-left:1rem;font-size:0.85rem;color:#374151;">
+                    <li><strong>N ≥ OIS:</strong> ダウングレードしない</li>
+                    <li><strong>N &lt; OIS:</strong> 1段階ダウングレード</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="figure" style="text-align:center;">
+                <img src="coreGRADE/images/2-4.jpg" alt="図4: 不精確さによるダウングレードを判断するアルゴリズム" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図4: ダウングレード判断アルゴリズム（Fig 4）</p>
+              </div>
+            </div>
+
+            <!-- Step 4: CIパターンと判定例 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">4. 信頼区間(CI)のパターンと判定例</h3>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">単一の介入の評価（図5）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">Risk difference（リスク差）のCIと閾値（NullとMID）の関係を見てみましょう。</p>
+              <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;">
+                <div style="background:#f8fafc;border-radius:8px;padding:0.75rem;border:1px solid #e2e8f0;"><strong>(a):</strong> CIがNullもMIDもまたいでいません。「効果があり、かつそれが重要な効果である」という確実性が高いです（ダウングレードなし）。</div>
+                <div style="background:#f8fafc;border-radius:8px;padding:0.75rem;border:1px solid #e2e8f0;"><strong>(b):</strong> CIはNullはまたいでいませんが、<strong>MIDをまたいでいます</strong>。「効果があることは確かだが、それが臨床的に重要なレベルかは不確実」なため、重要な効果に対する確実性はダウングレードされます。</div>
+                <div style="background:#f8fafc;border-radius:8px;padding:0.75rem;border:1px solid #e2e8f0;"><strong>(c):</strong> CIがNullもMIDもまたいでいます。効果の有無も、その重要性も非常に不確実です（ダウングレードあり）。</div>
+              </div>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">複数の閾値が絡む複雑なケース（図7）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">Benefit（利益）のMIDとHarm（害）のMIDの両方が設定されている場合の解釈です。</p>
+              <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;font-size:0.9rem;">
+                <div style="background:#f8fafc;padding:0.75rem;border-radius:8px;border:1px solid #e2e8f0;"><strong>(a):</strong> CIが「利益のMID」と「害のMID」の間に完全に収まっています。「重要な利益も重要な害もない（両群は同等）」ことを強く支持します。</div>
+                <div style="background:#f8fafc;padding:0.75rem;border-radius:8px;border:1px solid #e2e8f0;"><strong>(b):</strong> 点推定値は「重要でない」領域にありますが、CIの左端が「利益のMID」をまたいでいます。「重要な利益がある可能性」を否定しきれないため、ダウングレードされます。</div>
+                <div style="background:#f8fafc;padding:0.75rem;border-radius:8px;border:1px solid #e2e8f0;"><strong>(c):</strong> (b)の逆で、「重要な害がある可能性」を否定しきれません。</div>
+                <div style="background:#f8fafc;padding:0.75rem;border-radius:8px;border:1px solid #e2e8f0;"><strong>(d):</strong> CIが非常に広く、利益のMIDも害のMIDもまたいでいます。完全に不確実（通常2段階ダウングレード）。</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-5.jpg" alt="図5: CIとMID/Nullの関係性による判定例" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図5: CIとMID/Nullの関係性による判定例</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-7.jpg" alt="図7: 利益と害の両方のMIDを考慮した場合のCIの解釈" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図7: 利益と害の両方のMIDを考慮した場合のCIの解釈</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5: 実際の臨床データでの適用 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">5. 実際の臨床データでの適用</h3>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">事例1：確実な「有益性」（図6）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">コルチコステロイド投与の試験例です。点推定値は-30（1000人あたり30人のイベント減少）と大きな効果を示していますが、CIは[-50 から -7]とかなり広いです。</p>
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;margin-bottom:1.5rem;">
+                <p><strong>評価：</strong> 2つの異なるMID（-10 または -5）が想定されています。しかし、CIの上限（最も効果が小さいワーストケース）である -7 は、MID 1（-10）はまたいでいますが、もし専門家パネルが「MIDは-5である」と合意していれば、CIはMIDをまたいでいません。この場合、CIは広いものの「重要な効果がある」という結論は揺るがないため、<strong>ダウングレードは行いません。</strong></p>
+              </div>
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">事例2：確実な「同等性（効果なし）」（図8）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">グルココルチコイドの低用量vs標準用量の試験例です。点推定値は-2でNull（0）に非常に近いです。</p>
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <p><strong>評価：</strong> 専門家が利益のMIDを-1、害のMIDを1と設定したとします。CIは[-6 から 3]となっており、両方のMIDを完全にまたいでいます。つまり、重要な利益をもたらす可能性も、重要な害をもたらす可能性も否定できません。したがって、「効果が同等である」と結論づけるには不精確であり、<strong>ダウングレードが必要</strong>になります。（※もしCIが[-0.5 から 0.5]のように狭くMID内に収まっていればダウングレードなしで「同等」と言えます）</p>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-6.jpg" alt="図6: 事例 - 広範なCIでもダウングレードしないケース" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図6: 事例 - 広範なCIでもダウングレードしないケース</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/2-8.jpg" alt="図8: 事例 - MIDをまたぐためダウングレードするケース" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図8: 事例 - MIDをまたぐためダウングレードするケース</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- CoreGRADEフローチャート -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGRADEフローチャート：不精確さ（Imprecision）</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">BMJ 2024 (Update 36) Figure 4 &amp; 付録資料 徹底解説</p>
+            </div>
+
+            <!-- 旧vs新 比較表 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">1. 旧基準(GRADE Handbook)とBMJ 2024(Fig 4)の違い</h3>
+              <p style="color:#6b7280;font-size:0.9rem;margin-bottom:1rem;">従来のGRADEアプローチと比較し、2024年のアップデートでは評価プロセスがより階層化され、定性的な判断に「定量的な基準（閾値）」が明確に導入されました。</p>
+              <div class="table-container">
+                <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                  <thead>
+                    <tr style="background:#f1f5f9;color:#374151;">
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:20%;">比較項目</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:40%;">従来のGRADE (GRADEpro等)</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:40%;background:#eff6ff;color:#1e40af;">BMJ 2024 (Fig 4 &amp; 付録)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">フローの階層化</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">CIの閾値交差とOISを並列して評価しがちだった。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;"><strong>完全なステップ制。</strong><br>閾値を跨ぐか？ → 効果は大きいか？ → (大きい場合のみ) OISは十分か？ の順で評価。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">OISの適用場面</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">閾値を跨いでいなくても、常にOISを満たすか確認することが推奨された。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;">CIが閾値を跨がない場合、<strong>「効果が大きい(Large effect)」場合のみ</strong>脆弱性確認のためOISを評価。中等度ならOIS評価は不要。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">2段階ダウンの基準</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">「サンプルサイズが非常に小さい」など主観的。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;"><strong>具体的数値の導入（付録5より）:</strong><br>・連続変数：NがOISの30%未満<br>・二値変数：CI比がRR≧3 または OR≧2.5</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">サンプルサイズの目安</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">連続変数において経験則としてN=400などが使われることがあった。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;">連続変数の目安として<strong>「N=800 (各群400)」</strong>が明記された。これを満たせばOIS計算なしでダウングレード回避可能。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Fig 4 フローチャート本体 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">2. Figure 4 超詳細解説（付録資料に基づく実践ガイド）</h3>
+              <div class="figure" style="text-align:center;margin-bottom:1.5rem;">
+                <img src="coreGRADE/images/2-4.jpg" alt="Figure 4: 不精確さによるダウングレードを判断するアルゴリズム" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">Figure 4: CoreGRADE不精確さ評価フローチャート（BMJ 2024 Update 36）</p>
+              </div>
+
+              <!-- Step 1 -->
+              <div style="margin-bottom:1.5rem;">
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">1</span>
+                  Does CI cross threshold? (CIは閾値を跨ぐか？)
+                </h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">評価の出発点です。95%信頼区間(CI)が、事前に設定した「臨床的に重要な差の最小値(MID)」や「効果の閾値」を跨いでいるかを確認します。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                    <h5 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">▶ Yes（跨ぐ）の場合</h5>
+                    <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">原則として<strong>「1段階ダウングレード」</strong>となります。</p>
+                    <div style="background:#fff;border:1px solid #fca5a5;border-radius:6px;padding:0.75rem;margin-bottom:0.5rem;">
+                      <p style="font-size:0.8rem;font-weight:bold;color:#7f1d1d;margin-bottom:0.25rem;">【付録1】2段階ダウングレードを検討するケース</p>
+                      <ul style="font-size:0.8rem;color:#6b7280;list-style:disc;padding-left:1rem;">
+                        <li style="margin-bottom:0.25rem;"><strong>複数の閾値を跨ぐ場合:</strong> CIが「重要な利益の閾値」と「重要な害の閾値」の両方を跨ぐような場合。</li>
+                        <li><strong>Plain language判断:</strong> 説明が「likely（おそらく効果がある）」ではなく「may（効果があるかもしれない）」という弱い表現しかできないほど不確実な場合。</li>
+                      </ul>
+                    </div>
+                    <div style="background:#fff;border:1px solid #fca5a5;border-radius:6px;padding:0.75rem;">
+                      <p style="font-size:0.8rem;font-weight:bold;color:#7f1d1d;margin-bottom:0.25rem;">【付録4】「効果なし(Null)」をターゲットにする場合の工夫</p>
+                      <p style="font-size:0.8rem;color:#6b7280;">点推定値がNull(ゼロ)に非常に近い場合、「考えうるMIDの範囲」をCIの両端が超えているかどうかでダウングレードを判定してよいとされています。</p>
+                    </div>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                    <h5 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">▶ No（跨がない）の場合</h5>
+                    <p style="font-size:0.9rem;color:#374151;">直ちに「ダウングレードなし」とはせず、次に<strong>「効果の大きさ(Effect Size)」</strong>を確認します。</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div style="margin-bottom:1.5rem;">
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">2</span>
+                  効果の大きさの判定（CIが跨がない場合）
+                </h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">CIが閾値を跨いでいなくても、少数のサンプルで偶然「極端に大きな効果」が出ている可能性があります。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;">
+                    <h5 style="font-weight:bold;color:#374151;margin-bottom:0.5rem;">Moderate effect（中等度の効果）</h5>
+                    <p style="font-size:0.9rem;color:#6b7280;">効果が極端でない場合、結果は堅牢（Robust）とみなされます。<br><strong>→ ダウングレードしない</strong>。評価はここで終了です。</p>
+                  </div>
+                  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:1rem;">
+                    <h5 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">Large effect（大きな効果）</h5>
+                    <p style="font-size:0.9rem;color:#6b7280;">効果が非常に大きい場合、少数のイベント数に依存している「脆弱性（Fragility）」を疑います。<br><strong>→ OISアプローチへ進む</strong></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: OIS -->
+              <div>
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">3</span>
+                  OISアプローチ（至適情報量の確認）
+                </h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:1rem;">「大きな効果」が偶然によるものではないか、サンプルサイズ(N)やイベント数がOIS（至適情報量）を満たしているかを確認します。</p>
+
+                <!-- Binary -->
+                <div style="border-left:4px solid #6366f1;background:#f5f3ff;padding:1.25rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+                  <h5 style="font-weight:bold;color:#3730a3;font-size:1rem;margin-bottom:0.75rem;">Binary outcome（二値アウトカム：死亡、入院など）</h5>
+                  <p style="font-size:0.85rem;color:#374151;margin-bottom:0.75rem;">二値変数の場合、まず<strong>「CI比（上限÷下限）」</strong>という簡便な指標で極端な不精確性を除外します。</p>
+                  <div style="background:#fff;border:1px solid #c7d2fe;border-radius:6px;padding:0.75rem;margin-bottom:0.75rem;">
+                    <p style="font-size:0.85rem;font-weight:bold;color:#374151;margin-bottom:0.5rem;">① CI ratio（信頼区間の比）の確認　計算: CI上限値 ÷ CI下限値</p>
+                    <ul style="font-size:0.85rem;color:#374151;list-style:none;padding:0;">
+                      <li style="padding:0.4rem 0;border-bottom:1px solid #e2e8f0;"><strong>RR比 ≧ 3、または OR比 ≧ 2.5 の場合:</strong> <span style="color:#dc2626;font-weight:600;">→ 2段階ダウングレードを検討</span></li>
+                      <li style="padding:0.4rem 0;"><strong>上記未満の場合:</strong> → ②のOIS計算へ進む</li>
+                    </ul>
+                    <div style="background:#eef2ff;border-radius:6px;padding:0.5rem;margin-top:0.5rem;font-size:0.8rem;color:#3730a3;">
+                      <strong>【付録5 実例】</strong>急性膵炎における乳酸リンゲル液 vs 生理食塩水（ICU入室）<br>
+                      OR 0.33 (95% CI 0.13 - 0.81)。総イベント数わずか26。<br>
+                      CI比 = 0.81 ÷ 0.13 = <strong>6.2</strong> (&gt; 2.5) → OISを計算するまでもなく「2段階ダウン」が推奨。
+                    </div>
+                  </div>
+                  <div style="background:#fff;border:1px solid #c7d2fe;border-radius:6px;padding:0.75rem;">
+                    <p style="font-size:0.85rem;font-weight:bold;color:#374151;margin-bottom:0.5rem;">② OISの計算・イベント数の確認</p>
+                    <ul style="font-size:0.85rem;color:#374151;list-style:disc;padding-left:1rem;">
+                      <li><strong>N ≥ OIS:</strong> サンプルは十分。→ <strong>ダウングレードしない</strong></li>
+                      <li><strong>N &lt; OIS:</strong> サンプル不足。→ <strong style="color:#ea580c;">1段階ダウングレード</strong></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Continuous -->
+                <div style="border-left:4px solid #0d9488;background:#f0fdfa;padding:1.25rem;border-radius:0 8px 8px 0;">
+                  <h5 style="font-weight:bold;color:#134e4a;font-size:1rem;margin-bottom:0.75rem;">Continuous outcome（連続アウトカム：スコア、血圧など）</h5>
+                  <div style="background:#fff;border:1px solid #99f6e4;border-radius:6px;padding:0.75rem;">
+                    <ul style="font-size:0.85rem;color:#374151;list-style:none;padding:0;">
+                      <li style="padding:0.4rem 0;border-bottom:1px solid #e2e8f0;"><strong>N ≥ OIS（または総サンプル N ≥ 800）:</strong> → <strong>ダウングレードしない</strong><br><span style="font-size:0.8rem;color:#6b7280;">※OISが計算できない場合、「合計800人（各群400人）」が十分なサンプルサイズの経験則となります。</span></li>
+                      <li style="padding:0.4rem 0;border-bottom:1px solid #e2e8f0;"><strong>N &lt; OIS（30%以上は満たす）:</strong> → <strong style="color:#ea580c;">1段階ダウングレード</strong></li>
+                      <li style="padding:0.4rem 0;"><strong>N &lt; 30% of OIS:</strong> → <strong style="color:#dc2626;">2段階ダウングレードを検討</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2310,16 +3071,201 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>CoreGrade解説: 出版バイアス</h2>
-              <p>このセクションの内容を順次統合しています。</p>
+            <!-- CoreGrade解説: 出版バイアス -->
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGrade解説：出版バイアス（Publication Bias）</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">BMJ論文 Core GRADE 4 に基づく、出版バイアス評価と確実性アップの理由</p>
+            </div>
+
+            <!-- 出版バイアスとは -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">1. 出版バイアス（Publication Bias）とは</h3>
+              <p style="color:#374151;margin-bottom:0.75rem;">出版バイアスとは、「統計的に有意な結果（ポジティブな結果）が出た研究の方が、有意差が出なかった研究（ネガティブな結果）に比べて、論文として出版されやすい」という現象を指します。これにより、出版されている論文だけを集めてメタアナリシスを行うと、実際の効果よりも治療効果が<strong>過大評価</strong>されてしまう危険性があります。</p>
+
+              <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">ファネルプロットによる視覚的評価（図 4-3, 4-4）</h4>
+              <p style="color:#374151;margin-bottom:0.75rem;">出版バイアスの有無を視覚的に評価するための代表的なツールが<strong>ファネルプロット（漏斗プロット）</strong>です。</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                  <h5 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">出版バイアスを示唆しない場合</h5>
+                  <p style="font-size:0.9rem;color:#374151;">左右対称のきれいな漏斗（ファネル）型になっています。小規模研究（図の下部）は偶然誤差によって左右に広くバラつきますが、出版バイアスがなければ全体として対称になります。</p>
+                </div>
+                <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                  <h5 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">出版バイアスを示唆する場合</h5>
+                  <p style="font-size:0.9rem;color:#374151;">右下の部分（効果が小さく、精度の低い小規模研究）が欠けており、非対称になっています。「小規模でネガティブな結果の研究が出版されていない」ことを強く示唆しています。</p>
+                </div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/4-3.jpg" alt="図 4-3: ファネルプロット（理論的モデル）" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 4-3: ファネルプロット（理論的モデル）</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/4-4.jpg" alt="図 4-4: ファネルプロット（実際のデータ例）" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 4-4: ファネルプロット（実際のデータ例）</p>
+                </div>
+              </div>
+
+              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:1rem;border-radius:0 8px 8px 0;">
+                <p style="font-size:0.9rem;color:#374151;"><strong>図 4-4 の解説:</strong> 実際の臨床試験データをプロットしたものです。点線（統合された効果推定値）の右下部分に明らかにプロットが欠如しており、著しい非対称性が見られます。これは強い出版バイアスの存在を示唆しています。</p>
+              </div>
+            </div>
+
+            <!-- 確実性を上げる理由 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">2. 確実性を上げる理由（Reasons for Rating Up Certainty）</h3>
+              <p style="color:#374151;margin-bottom:0.75rem;">観察研究（コホート研究やケースコントロール研究など）は初期状態で「低（Low）」から評価を始めますが、特定の特徴を満たす場合はエビデンスの確実性を<strong>1段階または2段階グレードアップ</strong>することがあります。</p>
+
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+                <!-- 理由1 -->
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;border-left:4px solid #2563eb;">
+                  <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">① 効果の大きさが非常に大きい（Large magnitude of effect）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">観察された効果が極めて大きい場合、多少の交絡因子が存在したとしても、その効果が完全に覆る可能性は非常に低くなります。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;">
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#1e40af;">1段階アップ:</strong><br>交絡因子等に大きな問題がない状態で、<strong>RRまたはOR ≥ 2.0（または ≤ 0.5）</strong>と一貫して大きな効果が示される場合。
+                    </div>
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#1e40af;">2段階アップ:</strong><br>同様の条件下で、<strong>RRまたはOR ≥ 5.0（または ≤ 0.2）</strong>と極めて顕著な効果が示される場合。
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 理由2 -->
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;border-left:4px solid #059669;">
+                  <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.5rem;">② 用量反応関係（勾配）がある（Dose-response gradient）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">曝露の量（薬の投与量、喫煙量など）が増えるにつれて、効果（またはリスク）の大きさも比例して増減している場合、因果関係の存在が強く示唆されます。</p>
+                  <div style="background:#ecfdf5;border-radius:6px;padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <strong>例:</strong> 「ワーファリンの投与量が増えるほど、出血リスクが高まる」といった一貫した傾向が見られる場合、これは単なる偶然や交絡ではなく真の因果関係を支持するため、確実性を上げる理由になります。
+                  </div>
+                </div>
+
+                <!-- 理由3 -->
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;border-left:4px solid #7c3aed;">
+                  <h4 style="font-weight:bold;color:#4c1d95;margin-bottom:0.5rem;">③ 残存交絡がすべて効果を弱める方向に働く（All plausible confounding would reduce the effect）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">「もし交絡因子の影響を完全に排除できたとしたら、今見えている結果はさらに強くなるはずだ」と論理的に言える場合です。</p>
+                  <div style="background:#f5f3ff;border-radius:6px;padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <strong>具体例（効果が過小評価されている場合）:</strong> 厳格な治療を受けた患者群（実はより重症度の高い患者ばかり）の死亡率が低かった場合、重症度という交絡因子を調整すれば治療の本当の有効性はさらに高くなるはず。現在の効果推定値に自信を持てるため、確実性をグレードアップします。
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- CoreGRADEフローチャート -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGRADEフローチャート：出版バイアス（Publication Bias）</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">BMJ 2024 Fig 5 に基づく評価フローチャートの詳細解説</p>
+            </div>
+
+            <!-- 旧vs新 概念の違い -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">1. 「Dissemination bias」と「Publication Bias」の扱いの違い</h3>
+              <div class="table-container">
+                <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                  <thead>
+                    <tr style="background:#f1f5f9;color:#374151;">
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:20%;">項目</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:40%;">従来（GRADEpro等）</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.75rem;text-align:left;width:40%;background:#eff6ff;color:#1e40af;">BMJ 2024 新ガイダンス</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">上位概念</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">「Dissemination bias（普及バイアス）」という広い概念を使用。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;"><strong>「Publication bias（出版バイアス）」</strong>に特化。用語と評価する場所を厳格に分離。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;font-weight:600;background:#f8fafc;">評価対象</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;color:#6b7280;">Publication biasとSelective reporting biasの両方を同じドメインで評価。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.75rem;background:#eff6ff;"><strong>Publication bias（研究全体の未出版）</strong>のみを独立ドメインとして評価。Selective reportingは「Risk of bias」ドメインへ移行。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:0 8px 8px 0;margin-top:1rem;font-size:0.9rem;color:#374151;">
+                <strong>【結論】</strong> 従来は「Dissemination bias」として「研究全体の未出版」と「結果の一部の隠蔽」をまとめて評価していましたが、最新のBMJ 2024論文では評価の重複や混乱を避けるため、「Publication bias（研究全体）」のみを独立したドメインとして残し、「一部の隠蔽」はRisk of biasの評価へ移行させました。
+              </div>
+            </div>
+
+            <!-- Fig 5 フローチャート -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">2. BMJ 2024 Fig 5: 出版バイアス評価フローチャートの詳細解説</h3>
+              <div class="figure" style="text-align:center;margin-bottom:1.5rem;">
+                <img src="coreGRADE/images/4-5.jpg" alt="Figure 5: 出版バイアス評価フローチャート" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">Figure 5: 出版バイアスによりエビデンスの確実性をダウングレードすべきかを決定するフローチャート（FDA=Food and Drug Administration）</p>
+              </div>
+
+              <!-- Step 1 -->
+              <div style="margin-bottom:1.5rem;">
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">1</span>
+                  研究の規模と資金源の確認
+                </h4>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                  <p style="font-size:0.9rem;color:#374151;font-weight:600;margin-bottom:0.5rem;">質問：「ほとんど、あるいはすべての研究が小規模かつ企業スポンサー（営利企業主導）であるか？」</p>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                    <strong style="color:#991b1b;">Yes → Rate down（ダウングレード）</strong>
+                    <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">小規模研究は偶然誤差が大きく、企業主導の研究は有利な結果を出そうとする動機が働きやすいです。この2条件が揃う場合、都合の悪い結果が出た研究が出版されていない可能性が極めて高いと判断し、直ちにダウングレードします。</p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                    <strong style="color:#166534;">No → 次のステップへ</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div style="margin-bottom:1.5rem;">
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">2</span>
+                  統計学的分析の可否（研究数 ≥ 10 か？）
+                </h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">出版バイアスを客観的に評価するには、ファンネルプロット等の統計的手法を使います。しかし、研究数が少ないと精度が出ません（一般的に10研究以上必要）。</p>
+              </div>
+
+              <!-- Step 3A -->
+              <div style="margin-bottom:1.5rem;">
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">3A</span>
+                  統計学的分析が可能な場合（研究数 ≥ 10）
+                </h4>
+                <p style="font-size:0.9rem;font-weight:600;color:#374151;margin-bottom:0.75rem;">質問：「ファネルプロットの視覚的な非対称性、および/または統計学的検定が出版バイアスを強く示唆しているか？」</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                    <strong style="color:#991b1b;">Yes → Rate down（ダウングレード）</strong>
+                    <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">ファネルプロットの形が左右非対称である、またはEggerの検定などで統計的に有意なバイアスが検出された場合は、出版バイアスが存在するとみなしダウングレードします。</p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                    <strong style="color:#166534;">No → Do not rate down（ダウングレードしない）</strong>
+                    <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">プロットが対称であり、統計的にも問題がなければ、出版バイアスの懸念は低いと判断します。</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3B -->
+              <div>
+                <h4 style="font-size:1rem;font-weight:bold;color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#2563eb;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">3B</span>
+                  統計学的分析が不可能な場合（研究数 &lt; 10）
+                </h4>
+                <p style="font-size:0.9rem;font-weight:600;color:#374151;margin-bottom:0.75rem;">質問：「未出版の研究が存在するという文書的証拠があるか？（例：FDAのレジストリ、ClinicalTrials.gov）」</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">研究数が少なくグラフや統計で調べられない場合は、「実際に隠されている研究がないか」を直接調査します。試験開始の登録はされているのに、結果が論文発表されていない研究があるかを探します。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                    <strong style="color:#991b1b;">Yes → Rate down（ダウングレード）</strong>
+                    <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">レジストリに登録されているのに結果が隠されている研究が見つかった場合、意図的な出版バイアスが存在するとみなし、ダウングレードします。</p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                    <strong style="color:#166534;">No → Do not rate down（ダウングレードしない）</strong>
+                    <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">徹底的に調査しても隠されている未出版研究の証拠が見つからなかった場合は、ダウングレードは行いません。</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2425,16 +3371,264 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>CoreGrade解説: 効果の大きさ</h2>
-              <p>このセクションの内容を順次統合しています。</p>
+            <!-- CoreGrade解説: EtD -->
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGrade解説：Evidence to Decisionフレームワーク</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">Core GRADE 第6回・第7回 — エビデンスの提示から推奨へ</p>
+            </div>
+
+            <!-- Core GRADE 6: SoFテーブル -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">Core GRADE 6: エビデンス総括表（SoFテーブル）でのエビデンス提示</h3>
+              <p style="color:#374151;margin-bottom:1rem;">集められたエビデンスをどのように分かりやすく、かつ透明性をもって読者に伝えるかに焦点を当てています。その中核となるのが<strong>エビデンス総括表（Summary of Findings: SoFテーブル）</strong>です。</p>
+
+              <!-- SoFテーブル必須構成要素 -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">実践的ポイント①：SoFテーブルの必須構成要素</h4>
+                <ul style="list-style:disc;padding-left:1.25rem;color:#374151;font-size:0.9rem;">
+                  <li style="margin-bottom:0.4rem;"><strong>対象患者数と研究数</strong></li>
+                  <li style="margin-bottom:0.4rem;"><strong>相対効果（Relative Effect）:</strong> 相対リスク（RR）やオッズ比（OR）など。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>絶対効果（Absolute Effect）:</strong> 「1000人あたり何人減るか/増えるか」という絶対リスク差を示します。（最も重要）</li>
+                  <li style="margin-bottom:0.4rem;"><strong>エビデンスの確実性（Certainty of Evidence）:</strong> 高・中・低・非常に低の4段階。</li>
+                  <li><strong>平易な言葉による要約（Plain Language Summary）:</strong> 誰もが直感的に理解できるテキストでの要約。</li>
+                </ul>
+              </div>
+
+              <!-- 絶対効果の重要性 -->
+              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">実践的ポイント②：「絶対効果」を計算して示す</h4>
+                <p style="font-size:0.9rem;color:#374151;">「リスクが半分になる（相対リスク0.5）」と言われても、元のリスク（ベースラインリスク）が10%なのか0.1%なのかで、実際の恩恵は全く異なります。コントロール群のイベント発生率に相対リスクを掛け合わせることで絶対効果を算出します。高リスク群・低リスク群がいる場合は行を分けて提示することが推奨されます。</p>
+              </div>
+
+              <!-- 標準化された言い回し -->
+              <div style="margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">実践的ポイント③：標準化された「平易な言葉による要約」</h4>
+                <div class="table-container">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                    <thead>
+                      <tr style="background:#f1f5f9;">
+                        <th style="border:1px solid #e2e8f0;padding:0.6rem 1rem;text-align:left;width:20%;">確実性</th>
+                        <th style="border:1px solid #e2e8f0;padding:0.6rem 1rem;text-align:left;">言い回し</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;font-weight:600;color:#1d4ed8;">高（High）</td><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;color:#374151;">「介入は、アウトカムを増加（減少）させる」</td></tr>
+                      <tr style="background:#f8fafc;"><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;font-weight:600;color:#15803d;">中（Moderate）</td><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;color:#374151;">「介入は、おそらくアウトカムを増加（減少）させる（probably increases/reduces）」</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;font-weight:600;color:#b45309;">低（Low）</td><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;color:#374151;">「介入は、アウトカムを増加（減少）させるかもしれない（may increase/reduce）」</td></tr>
+                      <tr style="background:#f8fafc;"><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;font-weight:600;color:#991b1b;">非常に低（Very low）</td><td style="border:1px solid #e2e8f0;padding:0.6rem 1rem;color:#374151;">「介入のアウトカムに対する効果は非常に不確実である」</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- SoF画像 -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/6-1.jpg" alt="図 6-1: SoFテーブルの例" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 6-1: エビデンス総括表（SoFテーブル）の例</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/7-1.jpg" alt="図 7-1: EtDフレームワークの概要" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 7-1: EtDフレームワークの概要</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Core GRADE 7: 推奨の決定 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">Core GRADE 7: エビデンスから推奨・意思決定への移行</h3>
+              <p style="color:#374151;margin-bottom:1rem;">SoFテーブルで整理されたエビデンスをもとに、ガイドラインパネルが「だからどうすべきか」という<strong>推奨（Recommendation）</strong>を決定するプロセス（Evidence to Decision: EtDフレームワーク）を解説します。</p>
+
+              <!-- 推奨の4分類 -->
+              <div style="margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">実践的ポイント①：推奨の「方向」と「強さ」</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.75rem;text-align:center;">
+                    <p style="font-weight:bold;color:#1e40af;font-size:0.9rem;">介入を<strong>強く推奨する</strong></p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.75rem;text-align:center;">
+                    <p style="font-weight:bold;color:#166534;font-size:0.9rem;">介入を<strong>条件付きで（弱く）推奨する</strong></p>
+                  </div>
+                  <div style="background:#fefce8;border:1px solid #fef08a;border-radius:8px;padding:0.75rem;text-align:center;">
+                    <p style="font-weight:bold;color:#854d0e;font-size:0.9rem;">介入しないことを<strong>条件付きで（弱く）推奨する</strong></p>
+                  </div>
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem;text-align:center;">
+                    <p style="font-weight:bold;color:#991b1b;font-size:0.9rem;">介入しないことを<strong>強く推奨する</strong></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 強い推奨と条件付き推奨 -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">実践的ポイント②：「強い推奨」と「条件付き推奨」を分ける基準</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">単に「エビデンスの確実性が高いから強い推奨」となるわけではありません。以下の要素のバランスで決定されます。</p>
+                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.9rem;color:#374151;">
+                  <li style="margin-bottom:0.4rem;"><strong>利益と害のバランス:</strong> 介入の望ましい効果が望ましくない効果（害・負担）を明確に上回っているか。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>エビデンスの確実性:</strong> 通常、強い推奨を行うためには「高」または「中」の確実性が必要。</li>
+                  <li><strong>患者の価値観と選好:</strong> ここに大きなばらつきがある場合、推奨は「条件付き」になります。</li>
+                </ul>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;">
+                  <div style="background:#eff6ff;border-radius:6px;padding:0.75rem;font-size:0.85rem;">
+                    <strong style="color:#1e40af;">強い推奨:</strong> 情報を十分に与えられた患者の<strong>「ほぼ全員」</strong>がその介入を選ぶと確信できる場合。
+                  </div>
+                  <div style="background:#f0fdf4;border-radius:6px;padding:0.75rem;font-size:0.85rem;">
+                    <strong style="color:#166534;">条件付き推奨:</strong> 多くの患者はその介入を選ぶだろうが、「無視できない少数の患者」は別の選択をすると考えられる場合。
+                  </div>
+                </div>
+              </div>
+
+              <!-- 条件付き推奨の意味 -->
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">実践的ポイント③：臨床現場における「条件付き推奨」の意味</h4>
+                <p style="font-size:0.9rem;color:#374151;">「条件付き推奨（弱い推奨）」は「あまり効かない治療」ではありません。「患者の価値観によって最適な選択が異なるため、<strong>Shared Decision Making（共同意思決定）が必須</strong>である」という強いメッセージです。医師は患者にSoFテーブルのデータを分かりやすく説明し、患者の価値観を引き出す必要があります。</p>
+              </div>
+
+              <!-- 二次的考慮事項 -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">実践的ポイント④：二次的考慮事項（公衆衛生・集団レベルの視点）</h4>
+                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.9rem;color:#374151;">
+                  <li style="margin-bottom:0.4rem;"><strong>コスト（資源の利用）と費用対効果:</strong> 高額すぎる治療は条件付き推奨に下がる可能性があります。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>実現可能性（Feasibility）:</strong> 特殊な設備が必要でどこでもできるわけではない場合。</li>
+                  <li><strong>受容性（Acceptability）と公平性（Equity）:</strong> その推奨が健康格差を広げないか。</li>
+                </ul>
+              </div>
+
+              <!-- 画像 -->
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/7-3.jpg" alt="図 7-3: EtDフレームワーク詳細" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 7-3: EtDフレームワーク詳細</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/7-4.jpg" alt="図 7-4: 推奨決定プロセス" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 7-4: 推奨決定プロセス</p>
+                </div>
+                <div class="figure" style="text-align:center;">
+                  <img src="coreGRADE/images/7-5.jpg" alt="図 7-5: 推奨の強さと方向性" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                  <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 7-5: 推奨の強さと方向性</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- CoreGRADEフローチャート -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGRADEフローチャート：Evidence to Decision</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">Fig 2: エビデンスから推奨への移行プロセス（Core GRADE）</p>
+            </div>
+
+            <!-- 旧vs新 比較表 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">1. GRADE Handbook と BMJ Core GRADE の違い</h3>
+              <div class="table-container">
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                  <thead>
+                    <tr style="background:#f1f5f9;color:#374151;">
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:20%;">比較項目</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:40%;">GRADE Handbook / GRADEpro</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:40%;background:#eff6ff;color:#1e40af;">BMJ Core GRADE アプローチ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">主な目的と焦点</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;color:#6b7280;">包括的。臨床だけでなく公衆衛生、医療システム、診断検査など多様なコンテキストに対応する汎用的な枠組みの提供。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">臨床診療ガイドライン（CPG）における推奨策定プロセスの簡素化、明確化、合理化。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">評価項目の構造</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;color:#6b7280;">ドメインごとに並列で評価する。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;"><strong>一次要因（Primary）と二次要因（Secondary）</strong>に明確に階層化・分離する。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">MIDの位置づけ</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;color:#6b7280;">効果の解釈として評価されるが、設定手法の標準化された強いプロセス指定は少ない。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">MIDの設定を<strong>必須のコアステップ</strong>として中心に据える。パネルサーベイ等を用いて明示的にMIDを定義することを強く推奨。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">強い推奨の例外</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;color:#6b7280;">例外的な状況として存在することは示されているが、分散して記述されている。</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">明確に<strong>「5つのパラダイム（例外的な状況）」</strong>として類型化し、基準を厳格化・明示化している（付録4参照）。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Fig 2 フローチャート -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:1rem;">2. Fig 2: エビデンスから推奨への移行フローチャートの詳細解説</h3>
+              <div class="figure" style="text-align:center;margin-bottom:1.5rem;">
+                <img src="coreGRADE/images/7-2.jpg" alt="Figure 2: Core GRADEプロセス - エビデンスから推奨への移行" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">Figure 2: Core GRADE process for moving from evidence to recommendations（GRADE=Grading of Recommendations Assessment, Development and Evaluation; MID=minimal important difference）</p>
+              </div>
+
+              <!-- ステップ解説 -->
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+
+                <!-- Step 1 -->
+                <div style="border-left:4px solid #2563eb;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">ステップ1: 視点の決定（Decide on perspective）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">推奨を作成する際、どの立場からの視点を採用するかを最初に決定します。</p>
+                  <ul style="font-size:0.85rem;color:#374151;list-style:disc;padding-left:1rem;">
+                    <li style="margin-bottom:0.25rem;">個々の患者の視点のみ</li>
+                    <li style="margin-bottom:0.25rem;">個々の患者の視点 + 二次的な集団の視点（コスト、実現可能性、受容性、公平性）</li>
+                  </ul>
+                  <div style="background:#eff6ff;border-radius:6px;padding:0.5rem;margin-top:0.5rem;font-size:0.8rem;color:#1e40af;">
+                    <strong>【具体例】</strong> 市中肺炎の入院成人患者への短期全身性ステロイド投与のガイドラインでは、「個人の患者視点から臨床的推奨を提供するが、リソースの使用、実現可能性、受容性、公平性などの二次的な集団レベルの要因も考慮する」という視点を選択しました。
+                  </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div style="border-left:4px solid #059669;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.5rem;">ステップ2: MIDに関するエビデンスのレビュー（Review evidence regarding MID）</h4>
+                  <p style="font-size:0.9rem;color:#374151;">効果の大きさが「重要」か「些細（Trivial）」かを判断するための基準となる「最小重要差（MID）」について、関連文献、臨床医の経験、フォーカスグループなどからエビデンスをレビューします。</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div style="border-left:4px solid #7c3aed;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#4c1d95;margin-bottom:0.5rem;">ステップ3: MIDの選択とパネル調査の検討（Choose MIDs; Consider panel survey）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">必要な場合は、重要視するアウトカムごとにMIDを設定します。</p>
+                  <div style="background:#f5f3ff;border-radius:6px;padding:0.5rem;font-size:0.8rem;color:#4c1d95;">
+                    <strong>【パネル調査の革新的手法】</strong> 心筋梗塞リスク低減のMID決定事例では、「5年間でリスクが1/1000下がる」「20/1000下がる」といったシナリオを極端な値から徐々に狭めていくピンポン（ping-pong）アプローチのアンケートを実施。パネルメンバーの回答の中央値（12/1000）を最終的なMIDとして採用しました。
+                  </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div style="border-left:4px solid #d97706;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">ステップ4: 利益、害、負担のバランスをとる（Balance benefits, harms, and burdens）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">得られたエビデンスの効果量と、ステップ3で設定したMIDを照らし合わせ、介入と対照のどちらが支持されるかバランスを評価します。</p>
+                  <div style="background:#fffbeb;border-radius:6px;padding:0.5rem;font-size:0.8rem;color:#92400e;">
+                    <strong>【具体例】</strong> 肺炎パネルは、侵襲的機械換気の必要性が大きく減少すること（大きな利益）と、死亡率・二次感染・消化管出血への効果がMID未満（些細な害）であることを比較し、利益が些細な害を上回ると判断しました。
+                  </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div style="border-left:4px solid #dc2626;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">ステップ5: 推奨の方向性と強さの決定（Decide on direction and strength of recommendation）</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.75rem;font-size:0.85rem;">
+                      <strong style="color:#1e40af;">ルートA: 高または中等度の確実性</strong><br>
+                      ・純利益が明らかに一方を支持 → <strong>強い推奨</strong><br>
+                      ・純利益が僅差でバランス → <strong>条件付き推奨</strong>
+                    </div>
+                    <div style="background:#fef3c7;border-radius:6px;padding:0.75rem;font-size:0.85rem;">
+                      <strong style="color:#92400e;">ルートB: 低または非常に低い確実性</strong><br>
+                      ・純利益が支持 or 僅差でバランス → <strong>条件付き推奨</strong><br>
+                      ・例外的な状況 → <strong>強い推奨</strong>
+                    </div>
+                  </div>
+                  <div style="background:#fff1f2;border-radius:6px;padding:0.75rem;font-size:0.8rem;color:#991b1b;">
+                    <strong>【5つの例外的な強い推奨パラダイム（付録4）】</strong><br>
+                    1. 生命を脅かす状況（例：ビタミンK投与）<br>
+                    2. 低確実性の利益 + 高確実性の害/高コスト（例：全身CTスクリーニングに対する反対推奨）<br>
+                    3. 利益は同等（低確実性）だが害が少ない（高確実性）（例：H. pylori除菌療法）<br>
+                    4. 利益は同等（高確実性）だが一方に害（低確実性）（例：妊娠中の高血圧に対するACE阻害薬反対推奨）<br>
+                    5. 利益は控えめ（高確実性）だが壊滅的な害の可能性（低確実性）（例：テストステロン投与反対推奨）
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2455,7 +3649,7 @@ function checkAuth(){
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">Guyatt先生Q&amp;A</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -2703,16 +3897,252 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-                        <div class="card">
-              <h2>CoreGrade解説: 用量反応勾配</h2>
-              <p>このセクションの内容を順次統合しています。</p>
+            <!-- CoreGrade解説: 推奨 -->
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CoreGrade解説：推奨決定プロセス</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">Core GRADEにおける推奨決定プロセス：エビデンスから推奨への移行</p>
+            </div>
+
+            <!-- 1. 絶対的効果の重視 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">1. 推奨決定の前提：絶対的効果（Absolute Effects）の重視</h3>
+              <p style="color:#374151;margin-bottom:0.75rem;">エビデンスから推奨へと移行する際、最も重要になるのが<strong>「絶対的効果（Absolute Effects）」</strong>の評価です。系統的レビューでは相対リスク（RR）などの相対的効果が算出されますが、臨床的な意思決定においては「実際の患者にどれだけのメリット・デメリットがもたらされるか」という絶対的効果が決定打となります。</p>
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">ベースラインリスクによる推奨の細分化</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">相対的効果が同じであっても、ベースラインリスクが異なれば、推奨の方向や強さが変わる可能性があります。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:6px;padding:0.75rem;">
+                    <strong style="color:#991b1b;">重症化の高リスク患者（免疫不全など）</strong><br>
+                    ベースラインリスクが高く絶対的利益が大きい<br>→ <strong>強い推奨（Strong recommendation）</strong>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:0.75rem;">
+                    <strong style="color:#166534;">重症化の低リスク患者</strong><br>
+                    絶対的利益が極めて小さい（些細な利益）<br>→ <strong>使用しないことへの弱い推奨（Weak recommendation against）</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="figure" style="text-align:center;">
+                <img src="coreGRADE/images/8-1.jpg" alt="図 8-1: 推奨決定プロセス" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">図 8-1: Core GRADEにおける推奨決定プロセスの概要</p>
+              </div>
+            </div>
+
+            <!-- 2. MIDの役割 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">2. 最小重要差（MID）の決定的役割</h3>
+              <p style="color:#374151;margin-bottom:0.75rem;">エビデンスが示す効果の大きさが「推奨するに足るものか」を判断する基盤となるのが<strong>MID（最小重要差）</strong>です。MIDとは、「患者が重要だと感じる（価値を見出す）最小の変化量」を指します。</p>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.75rem;border-radius:0 8px 8px 0;font-size:0.9rem;"><strong style="color:#1e40af;">事前の設定:</strong> ガイドライン開発パネルは、各アウトカムに対するMIDをあらかじめ設定しておくことが推奨されます（プロトコル段階が理想的）。</div>
+                <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.75rem;border-radius:0 8px 8px 0;font-size:0.9rem;"><strong style="color:#1e40af;">パネルサーベイアプローチ:</strong> MIDを決定するための実践的な方法として、ガイドライン開発者や専門家を対象とした系統的な評価を用います。これにより、MIDが透明性を持ち、患者の価値観や好みを反映したものになります。</div>
+                <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.75rem;border-radius:0 8px 8px 0;font-size:0.9rem;"><strong style="color:#1e40af;">確実性評価への直結:</strong> 点推定値や信頼区間がこのMIDの閾値を超えているかどうか（重要な利益/害があるか、些細な効果にとどまるか）が、推奨の方向性に直接影響します。</div>
+              </div>
+            </div>
+
+            <!-- 3. 簡略化EtD -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">3. 簡略化されたEtDフレームワーク</h3>
+              <p style="color:#374151;margin-bottom:1rem;">Core GRADEでは<strong>「Simplified EtD Framework（簡略化されたEtDフレームワーク）」</strong>を採用し、ユーザーの視点に応じて本当に必要な要素のみに焦点を絞ります。</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">A. 個々の患者ケアの視点</h4>
+                  <ul style="list-style:disc;padding-left:1rem;font-size:0.85rem;color:#374151;">
+                    <li style="margin-bottom:0.4rem;"><strong>利益と害のバランス</strong>（MIDを基準に評価）</li>
+                    <li style="margin-bottom:0.4rem;"><strong>エビデンスの全体的な確実性</strong>（高・中・低・非常に低）</li>
+                    <li><strong>患者の価値観と好み</strong>（どのアウトカムをより重要視するか）</li>
+                  </ul>
+                </div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">B. 公衆衛生・医療システムの視点</h4>
+                  <ul style="list-style:disc;padding-left:1rem;font-size:0.85rem;color:#374151;">
+                    <li style="margin-bottom:0.4rem;">上記A の3要素に加えて：</li>
+                    <li style="margin-bottom:0.4rem;"><strong>資源の使用／コスト</strong>（費用対効果）</li>
+                    <li style="margin-bottom:0.4rem;"><strong>実現可能性</strong>（広く実施可能か）</li>
+                    <li style="margin-bottom:0.4rem;"><strong>受容性</strong>（医療従事者・社会に受け入れられるか）</li>
+                    <li><strong>公平性</strong>（健康格差の拡大・縮小）</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. ステップ -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">4. エビデンスから推奨を導き出すステップ</h3>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="border-left:4px solid #2563eb;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.25rem;">① エビデンスの要約</h4>
+                  <p style="font-size:0.9rem;color:#374151;">系統的レビューから提供された「絶対的効果の推定値」と「エビデンスの確実性」を、アウトカムごとに確認します。</p>
+                </div>
+                <div style="border-left:4px solid #059669;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.25rem;">② 利益と害の天秤掛け</h4>
+                  <p style="font-size:0.9rem;color:#374151;">MIDを基準にして、介入の利益が害を明確に上回っているか（またはその逆か）を評価します。</p>
+                </div>
+                <div style="border-left:4px solid #7c3aed;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#4c1d95;margin-bottom:0.5rem;">③ 推奨の方向の決定（Direction）</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem;">
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.5rem;"><strong style="color:#166534;">In favor（推奨する）:</strong> 利益が害を上回る場合。</div>
+                    <div style="background:#fff1f2;border-radius:6px;padding:0.5rem;"><strong style="color:#991b1b;">Against（推奨しない）:</strong> 害が利益を上回る、あるいは利益がMIDに満たず些細なものである場合。</div>
+                  </div>
+                </div>
+                <div style="border-left:4px solid #d97706;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">④ 推奨の強さの決定（Strength）</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem;">
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.5rem;"><strong style="color:#1e40af;">強い推奨:</strong> 利益と害のバランスが明確で、確実性が高く（または中等度）、患者の価値観にばらつきが少ない場合。「ほぼすべての患者がこの介入を選択すべき」という状況。</div>
+                    <div style="background:#fef3c7;border-radius:6px;padding:0.5rem;"><strong style="color:#92400e;">弱い／条件付き推奨:</strong> 利益と害のバランスが拮抗している、確実性が低い、あるいは患者によって価値観が大きく分かれる場合。「患者との共有意思決定（Shared decision-making）が必要」という状況。</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Guyatt先生Q&A -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">Guyatt先生 GRADE Q&amp;A集</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">GRADEの実践的な疑問に対するGordon Guyatt先生の回答</p>
+            </div>
+
+            <!-- Q1 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #2563eb;">
+              <div style="background:#eff6ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#1e40af;margin-bottom:0.25rem;">Q1: 単一の研究にGRADEを適用する際の問題点について</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Lukman Thalib</p>
+                <p style="font-size:0.9rem;color:#374151;">Cochraneでは単一の研究に基づくアウトカムを含め、すべてにGRADE評価が求められますが、単一のRCTしかなくイベント数が極端に少ない場合、データがまばらで不確実性が高いにもかかわらず、異質性や出版バイアスでダウングレードできないため、確実性を過大評価してしまいます。GRADEはエビデンスの総体に適用されるべきではありませんか。このような状況で不確実性を適切に反映するにはどうすればよいでしょうか。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">もしあなたがその介入のレビューを行おうと考えているのであれば、それは人々がその介入の使用を検討しているということを意味します。もしそうであれば、利用可能な研究がいくつであっても、人々は効果の最良の推定値とその推定値の確実性を認識しておくべきです。</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">課題は、確実性の評価を正確に行うことです。もし直感的に「GRADE評価から受ける印象よりも実際の確実性は低い」と感じるのであれば、あなたのGRADE評価の印象が間違っていることになります（GRADEの基本原則は、GRADE評価が、評価を行う人々の教養と深慮に基づく全体的な判断（ゲシュタルト）を反映すべきであるというものです）。</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">お話の内容からすると、エビデンスは明らかに「低（low）」または「非常に低（very low）」の確実性である可能性が高いです。効果が大きい場合（二値アウトカムの場合、相対リスク減少が30%を超えることがあります）、<strong>最適情報量（Optimal Information Size: OIS）</strong>を用いた評価の適用を検討すべきです。OISとは、単一のRCTを計画する際に行われるサンプルサイズ計算のことです。二値アウトカムの場合、許容できるエラー率（通常α=0.05、β=0.20）、コントロール群のイベント発生率、および控えめな相対リスク減少（通常20%または25%）を指定します。お話の内容からすると、あなたの研究がこのOISの基準を満たさないことは確実です。</p>
+                <div style="background:#fff1f2;border-radius:6px;padding:0.75rem;font-size:0.85rem;color:#991b1b;margin-bottom:0.75rem;">
+                  <strong>重要：</strong>サンプルサイズがOISから遠く離れている場合（OISの計算には控えめな20%の相対リスク減少を使用できます）、不精確性（imprecision）を理由に<strong>2段階ダウングレード</strong>することができます。お話しいただいた状況では、ほぼ間違いなくこれに当てはまります。したがって、この時点でエビデンスの確実性は「低（low）」になります。
+                </div>
+                <p style="font-size:0.9rem;color:#374151;">あなたの全体的判断が「非常に低い（very low）」確実性を表しているというものかもしれません。その場合、バイアスリスクへの懸念、または効果を示せずに未出版となった他の研究が存在するかどうか（単一の研究しかないからといって、出版バイアスの懸念を適用してはいけない理由はありません）。これらの理由のいずれか（またはその組み合わせ）によりダウングレードすることで、GRADE評価を「非常に低（very low）」の確実性とすることもできます。</p>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #059669;">
+              <div style="background:#f0fdf4;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#065f46;margin-bottom:0.25rem;">Q2: ベースラインリスクと相対的効果の違いに関する事前仮説の生成について</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Xiaomei Yao</p>
+                <p style="font-size:0.9rem;color:#374151;">ワクチン接種のような単一の要因は、ベースラインリスク要因とも効果修飾因子（effect modifier）ともみなすことができます。プロジェクトの計画段階で、ある要因をベースラインリスクに影響を与えるか、相対的効果に影響を与えるかをどのように決定すればよいのでしょうか。同じ要因を両方のカテゴリーに記載すべきでしょうか。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">2つの問題を分けて考えましょう。</p>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                  <h5 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">第一に、ベースラインリスクについて</h5>
+                  <p style="font-size:0.9rem;color:#374151;">患者にとって重要なアウトカムのリスクに大きな違いをもたらす可能性が高い、容易に特定できる患者の特性を考えます。典型的な特性としては、年齢、疾患の重症度、併存疾患の有無などがあります。ベースラインリスクの違いが、患者グループによって最適な行動が異なるほど十分に大きいと疑われる場合、これを事前仮説として含め、エビデンスを探します。</p>
+                </div>
+                <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                  <h5 style="font-weight:bold;color:#9a3412;margin-bottom:0.5rem;">第二に、相対的効果について</h5>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">介入の相対的効果を修飾する可能性のある患者の特性を考慮します。重要な点として、<strong>相対的なサブグループ効果は、ベースラインリスクの違いよりもはるかに稀である</strong>ことを忘れてはなりません。サブグループ仮説の方向性を明確に述べる準備ができていますか？ もし「年齢が効果を修飾するかもしれないが、どちらの方向にもなり得る」と考えるのであれば、この相対的サブグループ仮説の候補は却下します。言い換えれば、効果の方向性を決定づける説得力のある生物学的理由がない場合、その仮説は退けます。</p>
+                </div>
+                <p style="font-size:0.9rem;color:#374151;">あなたの例のように、同じ変数がベースラインリスクに関する仮説と相対的効果の修飾に関する仮説の両方を生み出すことは可能です。</p>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #7c3aed;">
+              <div style="background:#f5f3ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#4c1d95;margin-bottom:0.25rem;">Q3: 不精確性（imprecision）のダウングレードをどの程度行うべきか</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Shirpada Rao Rao</p>
+                <p style="font-size:0.9rem;color:#374151;">2つの大規模で優れたRCTを含むシステマティックレビューにおいて、死亡率に対する相対リスクが0.88（95%CI 0.75〜1.13）、合計サンプルサイズ2950だったとします。この場合、不精確性を理由に1段階、2段階、3段階ダウングレードすべきですか、それともダウングレードすべきではありませんか。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">不精確性でダウングレードするかどうかを決定する最初のステップは、<strong>「確実性評価のターゲット」を決定すること</strong>です。ターゲットを決定するプロセスは、閾値を設定することから始まります。考えられる閾値は「ゼロ（the null）」と「最小の重要な差（MID）」の2つです。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;font-size:0.85rem;">
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#991b1b;">閾値としてゼロを選択する場合</strong><br>
+                    <p style="margin-top:0.25rem;">この場合、点推定値が真実を表しているとすれば、介入は12%の相対リスク減少をもたらし明らかに非ゼロの効果があります。しかし信頼区間が閾値（ゼロ）と重なっています。<strong>このような重なりがある場合、不精確性のために必ず少なくとも1段階はダウングレードします</strong>。残る問題は1段階か2段階かだけです。</p>
+                  </div>
+                  <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#4c1d95;">1段階か2段階か</strong><br>
+                    <p style="margin-top:0.25rem;">「おそらく（probably）非ゼロの効果を提供する」か「もしかすると（possibly）非ゼロの効果を提供するかもしれない」かという直感的な判断。相対リスクが13%増加する（CI上限が1.13）ということは、害の可能性が十分にあることを構成します。したがって他にダウングレードドメインがなければ、2段階ダウングレードする方に傾きます。</p>
+                  </div>
+                </div>
+                <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:6px;padding:0.75rem;font-size:0.85rem;color:#92400e;">
+                  <strong>【ゲシュタルトの視点】</strong> 最終的な確実性の評価を行う際には、一歩下がって全体的（ゲシュタルト）な見方をしなければなりません。もしすでに他のドメインでダウングレードしていた場合、不精確性で2段階ダウングレードすると「非常に低（very low）」になってしまいます。全体像を見たとき「低い」の方が適切だと感じるなら、不精確性については1段階だけダウングレードすることが最も適切な最終評価を保証する方法となります。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #d97706;">
+              <div style="background:#fffbeb;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#92400e;margin-bottom:0.25rem;">Q4: 出版バイアスに対処する際の不確実性</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Shirpada Rao Rao</p>
+                <p style="font-size:0.9rem;color:#374151;">2つのRCTしかなかったため、出版バイアスの正式なテストを行ったり、ファンネルプロットを作成したりできませんでした。このような場合、出版バイアスが「検出されなかった」とするか「強く疑われる」とするかをどのように決定すればよいですか？</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">出版バイアスの説得力のある証拠がない限り、私たちは「検出されなかった（undetected）」（これが通常の状況です）と結論付けます。</p>
+                <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:0.75rem;font-size:0.9rem;color:#374151;">
+                  バイアスの問題を扱うCore GRADE 4では、研究の数（2つを含む）に関係なく出版バイアスのためにダウングレードするかもしれない状況の示唆を提供しています。そこでは<strong>商業的資金提供（commercial funding）</strong>に焦点を当てており、Core GRADE 4の「商業的資金提供」のセクションに記載された内容を参照してください。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #0891b2;">
+              <div style="background:#ecfeff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#0e7490;margin-bottom:0.25rem;">Q5: 予後に関するレビューがない場合、ガイドラインパネルはどうすべきか</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Xiaomei Yao</p>
+                <p style="font-size:0.9rem;color:#374151;">システマティックレビューにRCTのみを含める場合、ベースラインリスクの違いにより異なる推奨が必要と疑われる場合、非ランダム化研究を含めないと検証できないためリスト化は無意味に思えます。非ランダム化研究を含める場合にのみリストすべきでしょうか。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">私たちの答えは、<strong>予後に関する観察研究から得られる情報について、迅速な調査（expedited look）を行うべきだ</strong>ということです。1つ以上の主要な予後因子を特定する研究を見つけることができるでしょう。</p>
+                <div style="background:#ecfeff;border-radius:6px;padding:0.75rem;margin-bottom:0.75rem;font-size:0.85rem;color:#0e7490;">
+                  <strong>【具体例】</strong> 急性COVIDに対するニルマトレルビル・リトナビルの使用に関するパネルを考えてみてください。大多数の患者は重症化や入院のリスクが十分に低いため薬を必要としません。一方で免疫不全状態にある個人は薬を服用すべきと言えるほど十分にリスクが高いです。また、複数の併存疾患を持つ患者グループも存在する可能性があります。
+                </div>
+                <p style="font-size:0.9rem;color:#374151;">すべてのグループに対して単一の推奨事項を発表することは非常に賢明ではありません。システマティックレビューを行うリソースや時間がない場合でも、利用可能な限られた予後情報について簡易的（less systematic）なレビューを行い、その結果に従って進めるべきです。</p>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #dc2626;">
+              <div style="background:#fff1f2;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#991b1b;margin-bottom:0.25rem;">Q6: ベースラインリスク（予後）対 効果修飾（サブグループ効果、相互作用）</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Siyu Yan</p>
+                <p style="font-size:0.9rem;color:#374151;">サブグループ解析は異なる介入（I vs C）の効果に焦点を当てているのに対し、ベースラインリスクは通常、異なる患者特性がアウトカムに与える影響を調べている、ということで正しいでしょうか？</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">治療効果の文脈における予後因子（ベースラインリスク）と効果修飾（サブグループ効果、相互作用）を区別するために、3つのシナリオを考えてみましょう。</p>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.85rem;">
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#166534;">シナリオA：</strong> 対照群を見ると、年齢は予後因子です（高齢者は若年者の2倍死亡）。このシナリオでは、年齢は効果修飾因子ではありません。高齢者と若年者の両方において、治療効果は死亡リスクを半分にすること（50%の相対リスク減少）だからです。
+                  </div>
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#991b1b;">シナリオB：</strong> 対照群を見ると、年齢は予後因子ではありません（高齢・若年の死亡リスクは同じ）。このシナリオでは、年齢は効果修飾因子です。若年患者では治療によって死亡リスクが半分に減少しますが、高齢患者のリスクには影響を与えません（相対リスク1.0）。
+                  </div>
+                  <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#92400e;">シナリオC：</strong> 対照群を見ると、年齢は予後因子です（高齢者は若年者の2倍死亡）。このシナリオでは、年齢は効果修飾因子でもあります。若年患者では治療によって死亡リスクが半分に減少しますが、高齢患者のリスクには影響を与えません（相対リスク1.0）。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #4f46e5;">
+              <div style="background:#eef2ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#3730a3;margin-bottom:0.25rem;">Q7: ガイドラインにおけるベースラインリスクと予後の関係</h3>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.5rem;">質問者：Siyu Yan</p>
+                <p style="font-size:0.9rem;color:#374151;">ベースラインリスクの考慮は「独立した予後のQuestion」として形成すべきでしょうか、それともすべてのガイドライン（予後に焦点を当てていなくても）が各PICOにおいて考慮すべき「付随的な問題」でしょうか？</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">Guyatt先生の回答：</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">予後は、関心のあるアウトカムに関連する患者の特性に関係しています。ガイドラインの文脈におけるベースラインリスクの問題は、<strong>予後情報の特定の適用</strong>です。</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">相対的効果は予後カテゴリー全体でほぼ常に似ていることを考慮すると、絶対的な治療効果は、若年者よりも高齢者で、軽症者よりも重症者で、裕福な人よりも貧しい人において大きくなります。したがって、予後が悪い患者ほど、予後が良い患者よりも治療効果が大きくなります。結果として私たちは高齢者、より病状の重い人、より貧しい人に対して治療を推奨する可能性が高くなります。</p>
+                <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:0.75rem;font-size:0.9rem;color:#3730a3;">
+                  <strong>【答え：「はい」】</strong> すべてのガイドラインパネルはベースラインリスクの問題（すなわち予後の問題）を念頭に置くべきです。したがって、ベースラインリスク／予後は：<br>
+                  ・<strong>潜在的に独立した予後のQuestion</strong>（各ガイドライン推奨における）<br>
+                  ・<strong>付随的または二次的な問題</strong>（すべてのガイドラインが考慮すべき）<br>
+                  の両方です。
+                </div>
+              </div>
             </div>
           </div>
         </div>
