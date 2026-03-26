@@ -4401,7 +4401,7 @@ function checkAuth(){
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">MID/閾値・価値観・意向など</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">作成中</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">CPG作成を始めるにあたって</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">作成中</button>
         </div>
         <div class="tab-content">
@@ -4546,12 +4546,203 @@ function checkAuth(){
 
           </div>
 
-          <!-- Tab 2: 作成中 -->
+          <!-- Tab 2: CPG作成を始めるにあたって -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>🚧</i>
-              作成中
+
+            <div class="author-info">CPG（臨床診療ガイドライン）立ち上げにあたり、委員長として「一番最初に取り組むべきこと」から順を追って、Gordon Guyatt先生が著者・共著者の論文のみから作成しました。</div>
+
+            <!-- Phase 1 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #1e40af;">
+              <div style="background:#dbeafe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#1e3a8a;margin-bottom:0.25rem;">フェーズ1：もっとも最初に行うこと：GOBSATからの脱却と組織の全体構造の決定</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">組織を立ち上げる際の最初のステップは、単なる権威者や専門家の集まりである<strong>「GOBSAT（Good old boys sitting around a table：いつものお偉いさんたちがテーブルを囲んで決めること）」から脱却し、透明性のある構造化された科学的ルールに従う組織を構築すること</strong>です。</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">具体的には、ガイドライン作成グループ全体の構造を確立し、以下のような部門（サブグループ）の「役割、タスク、および関係性」を最初に決定・設置します。</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;font-size:0.88rem;">
+                  <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;">
+                    <strong style="color:#1e40af;">監督委員会（Oversight committee）：</strong> 優先順位の設定、トピックの選択、メンバーの構成を指揮・監督し、最終的なガイドラインを承認する機関です。
+                  </div>
+                  <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;">
+                    <strong style="color:#1e40af;">ワーキンググループ：</strong> エビデンスを統合するための専門家や方法論の専門家（メソドロジスト）で構成され、エビデンス要約（システマティックレビューなど）の作成といった技術的側面を担当します。
+                  </div>
+                  <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;">
+                    <strong style="color:#1e40af;">事務局（Secretariat）：</strong> 会議の調整や、後述する利益相反（COI）の宣言の取得など、管理・運営面のサポートを提供します。
+                  </div>
+                  <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;">
+                    <strong style="color:#1e40af;">ガイドラインパネル：</strong> 実際にガイドラインにおける推奨（Recommendation）を作成・同意する中心的なグループです。
+                  </div>
+                  <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;">
+                    <strong style="color:#1e40af;">ステークホルダーや消費者：</strong> 協議や意見聴取の対象として関与し、ガイドラインの影響を受ける人々の見解を反映させます。
+                  </div>
+                </div>
+                <div style="background:#dbeafe;border:1px solid #93c5fd;border-radius:6px;padding:0.75rem;font-size:0.88rem;color:#1e3a8a;">
+                  <strong>【立ち上げ時のコツ】</strong> この初期段階で、プロジェクトを最後までやり遂げるためのリソース（資金や時間的制約、スタッフのコミットメントなど）に関する実現可能性の評価や、予算の確保も行います。また、現代のガイドライン作成においては、最新のエビデンスを迅速に反映させる「Living guidelines（常に更新され続けるガイドライン）」の仕組みを構築することも視野に入れた役割分担が推奨されます。
+                </div>
+              </div>
             </div>
+
+            <!-- Phase 2 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #059669;">
+              <div style="background:#dcfce7;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#065f46;margin-bottom:0.25rem;">フェーズ2：スコープの作成とCQ（臨床疑問）の定式化における最重要ルール</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">組織の枠組みができたら、ガイドラインが対象とする範囲（スコープ）と、そこで解決すべきCQ（臨床疑問）を作成します。ガイドラインパネルは、CQの作成段階から作業の主体となります。</p>
+
+                <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:0.75rem;margin-bottom:0.75rem;">
+                  <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.5rem;">1. PICO形式による構造化</h4>
+                  <p style="font-size:0.9rem;color:#374151;">CQを作成する際、Guyatt先生が強調するのは<strong>「PICO（患者：Population、介入：Intervention、比較：Comparator、アウトカム：Outcome）」</strong>の形式を用いて疑問を明確に構造化することです。エビデンスを扱う「ワーキンググループ」は、パネルの作業を代行するのではなく、このPICO形式の疑問の定式化におけるパネルの「支援」を行う役割を担います。</p>
+                </div>
+
+                <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem;">
+                  <h4 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">2.【重要ポイント】サロゲート（代替）アウトカムの罠を避ける</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">スコープやCQのアウトカムを設定する際、Guyatt先生が極めて強く警告しているのが「サロゲート（代替）アウトカム（例：HbA1cの低下、HDLコレステロールの上昇など）」への過度な依存です。過去の医学の歴史では、生理学的な推論に基づいてサロゲートアウトカムを改善する薬が、実際には患者の死亡率を高めていたという事例（抗不整脈薬やホルモン補充療法など）が数多くあります。</p>
+                  <p style="font-size:0.9rem;color:#374151;">そのため、CQで設定するアウトカムは、<strong>「患者にとって真に重要なアウトカム（Patient-important outcomes：死亡率の低下、脳卒中の回避、生活の質の向上など）」</strong>でなければなりません。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #7c3aed;">
+              <div style="background:#ede9fe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#4c1d95;margin-bottom:0.25rem;">フェーズ3：どのような人を参加させるか（メンバーの構成と規模）</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">ガイドライン作成グループ（特にガイドラインパネル）は、特定の専門家に偏らない「多職種による代表制（Multidisciplinary representation）」とすることが極めて重要です。以下の人々を巻き込む必要があります。</p>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.75rem;font-size:0.88rem;">
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">ターゲットとなる読者（対象となるプライマリケア医など）</div>
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">患者およびその介護者</div>
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">現場の臨床医</div>
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">特定の対象領域（コンテンツ）の専門家</div>
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">方法論の専門家（メソドロジスト）</div>
+                  <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:0.5rem 0.75rem;color:#4c1d95;">医療経済の専門家</div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                  <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:0.75rem;font-size:0.88rem;">
+                    <strong style="color:#4c1d95;">【規模とバランスの最適化】</strong><br>
+                    <span style="color:#374151;">メンバー構成においては、専門性のバランスに加え、対象読者、性別、地理的な分布などを考慮し、トピックに適切な代表者を確保します。グループの「最適な規模（人数）」を慎重に検討する必要があり、少なすぎると十分な専門知識や幅広い視点が欠如し、多すぎるとグループの結束力や効果的な議論が損なわれる可能性があります。</span>
+                  </div>
+                  <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:0.75rem;font-size:0.88rem;">
+                    <strong style="color:#4c1d95;">【募集や選定のプロセス】</strong><br>
+                    <span style="color:#374151;">知人に直接声をかけるだけでなく、透明性を担保するために以下のような手段をあらかじめ決定しておきます：役職の広範な広告（Widespread advertising of posts）を通じた公募、面接による競争的任命（Competitive appointment by interview）。選定後は、各メンバーの役割を明確にし、選定プロセスとともに記録・文書化します。</span>
+                  </div>
+                  <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:0.75rem;font-size:0.88rem;">
+                    <strong style="color:#92400e;">【組織づくりのコツ：患者の価値観の代弁者を必ず入れる】</strong><br>
+                    <span style="color:#374151;">Guyatt先生は、「エビデンス単独では何をすべきかは決して教えてくれない。エビデンスは常に人々の価値観や好みの文脈の中で捉えられるべきである」と繰り返し強調しています。そのため、患者やその介護者の参加は「形だけ」であってはならず、実質的に患者の価値観をガイドラインに反映できる代表者を確実に確保することが不可欠です。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #dc2626;">
+              <div style="background:#fee2e2;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#991b1b;margin-bottom:0.25rem;">フェーズ4：委員長として最も注意すべき「利益相反（COI）」の管理</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">メンバーに声をかけ、パネルを設立する際に極めて重要なのが利益相反（COI）の管理です。</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;font-size:0.88rem;">
+                  <div style="background:#fff1f2;border-left:3px solid #dc2626;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;color:#374151;">
+                    参加を打診する潜在的なメンバーに対し、実際の関与が始まる前に、金銭的、知的、学術的、競争的な利益相反を申告させる方針を設定します。
+                  </div>
+                  <div style="background:#fff1f2;border-left:3px solid #dc2626;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;color:#374151;">
+                    COIがある個人をガイドライン作成から完全に排除するのではなく、「利益相反のある分野に関連する特定の推奨事項の投票からは除外する」といった管理方針を定めます。
+                  </div>
+                  <div style="background:#fff1f2;border-left:3px solid #dc2626;border-radius:0 6px 6px 0;padding:0.6rem 0.75rem;color:#374151;">
+                    パネルをまとめる委員長（議長）自身は、関連する利益相反を持ってはならないとされています。
+                  </div>
+                </div>
+                <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:6px;padding:0.75rem;font-size:0.88rem;color:#991b1b;">
+                  <strong>【COI管理のコツ：知的利益相反への警戒】</strong><br>
+                  製薬企業からの資金提供といった「金銭的COI」の排除は当然ですが、Guyatt先生は、研究者が自分自身の研究や特定の見解に強く固執するといった<strong>「非金銭的・知的利益相反（intellectual conflict of interest）」</strong>にも十分な注意を払うよう警告しています。また、「臨床医は、著者自身が書いた論文の『考察（Discussion）』を読むべきではなく、利害関係のない（unconflictedな）情報源からのガイドラインやシステマティックレビューに目を向けるべきだ」とも述べており、ガイドラインの推奨作成は、特定の研究に思い入れのない中立的なメンバーが主体となって行う必要があります。
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #d97706;">
+              <div style="background:#fef3c7;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#92400e;margin-bottom:0.25rem;">フェーズ5：資金規模に応じた「役割の兼任」について</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.88rem;">
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#065f46;">資金やリソースが豊富にある場合：</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">監督委員会、ワーキンググループ、ガイドラインパネルなどをそれぞれ独立したメンバーで構成することが理想的です。</p>
+                  </div>
+                  <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#92400e;">資金や人材が少なく、役割を重複させる場合：</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">メンバーの役割を兼任・重複させることは可能です。「ワーキンググループとガイドラインパネルのメンバーとしての臨床医科学者」といった兼任は認められています。</p>
+                  </div>
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#991b1b;">監督委員会との兼任の注意点：</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">ただし、プロセス全体を承認・監督する「監督委員会」のメンバーが、推奨を自ら作成するパネルや、エビデンスを統合するワーキンググループを兼任することは、独立性が損なわれる恐れがあります。兼任を行う場合でも、厳格なCOI管理方針に従い、「意思決定において中立性が保たれること」を遵守できる範囲にとどめるべきです。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 6 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #0891b2;">
+              <div style="background:#cffafe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#0e7490;margin-bottom:0.25rem;">フェーズ6：アウトカムの重要度の判定とエビデンスの評価（いつ・誰が・どう決めるか）</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">アウトカムの重要度の判定は、ガイドラインパネルが、ターゲットとなる患者や集団の価値観・好みを考慮しながら行います。</p>
+
+                <div style="background:#ecfeff;border:1px solid #a5f3fc;border-radius:8px;padding:0.75rem;margin-bottom:0.75rem;font-size:0.88rem;">
+                  <h4 style="font-weight:bold;color:#0e7490;margin-bottom:0.5rem;">1. エビデンスレビューの「前」（事前判定）</h4>
+                  <p style="color:#374151;margin-bottom:0.5rem;">システマティックレビューを始める前に、パネルは各アウトカムの相対的な重要性を1〜9点のスケールでランク付けします。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:0.85rem;">
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.4rem 0.6rem;"><strong style="color:#065f46;">7〜9点：</strong>意思決定にとって重大（Critical）</div>
+                    <div style="background:#fffbeb;border-radius:6px;padding:0.4rem 0.6rem;"><strong style="color:#92400e;">4〜6点：</strong>重要だが重大ではない（Important but not critical）</div>
+                    <div style="background:#f1f5f9;border-radius:6px;padding:0.4rem 0.6rem;"><strong style="color:#475569;">1〜3点：</strong>重要性が低い（Of limited importance）</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.88rem;">
+                  <div style="background:#ecfeff;border:1px solid #a5f3fc;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#0e7490;">2.【重要度判定のコツ】相対リスクではなく絶対リスク・ベースラインリスクで判断する</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">CQの重要性や効果を判断する際、Guyatt先生は「相対リスク（Relative risk）」だけで判断することは無意味であり、必ず「ベースラインリスク（患者が元々持っているリスク）」と「絶対リスクの減少（Absolute risk reduction）」を見なければならないと指摘しています。わずかなリスクしかない集団に対する介入は、相対的に半減したように見えても、患者にとっての絶対的な恩恵は無に等しい場合があるためです。</p>
+                  </div>
+                  <div style="background:#ecfeff;border:1px solid #a5f3fc;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#0e7490;">3.【評価のコツ】「間接性（Indirectness）」の評価</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">ターゲットとなるPICO（対象としたい患者群）と、実際に集まったエビデンスのPICO（研究された患者群）が大きく異なる場合、パネルはエビデンスの「間接性（Indirectness）」を評価し、エビデンスの確実性（品質）を格下げ（Rate down）するかどうかを判断しなければなりません。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 7 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #4f46e5;">
+              <div style="background:#e0e7ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#3730a3;margin-bottom:0.25rem;">フェーズ7：【作成のポイント】ガイドラインのフォーマットと未来への備え</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">推奨の方向（行うべきか、行わないべきか）と強さ（強い推奨か、条件付き推奨か）を決定した後の、アウトプットに関するコツです。</p>
+
+                <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.88rem;">
+                  <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#3730a3;">1. 強い推奨と条件付き（弱い）推奨の使い分け</strong>
+                    <p style="color:#374151;margin-top:0.25rem;">エビデンスの確実性が低い場合や、メリットとデメリットのバランスが拮抗している場合、あるいは患者によって価値観や好みが大きく分かれる場合には、パネルは「強い推奨」ではなく<strong>「条件付き（弱い）推奨」</strong>を提示します。Guyatt先生によれば、「強い推奨」は医師が時間をかけずに「これをすべきです」と伝えるためのものであり、「条件付き推奨」は、医師と患者が「共同意思決定（Shared decision-making）」を行うために時間を割くべきサインとなります。</p>
+                  </div>
+                  <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:8px;padding:0.75rem;">
+                    <strong style="color:#3730a3;">2. ガイドラインは「玉ねぎ（Onion）」のように階層化する</strong>
+                    <p style="color:#374151;margin-top:0.25rem;margin-bottom:0.5rem;">ガイドラインを最終的にまとめる際、Guyatt先生は<strong>「良いガイドラインは玉ねぎのようなものである」</strong>と表現しています。すべての医師が長大なエビデンスを読むわけではありません。</p>
+                    <div style="display:flex;flex-direction:column;gap:0.3rem;font-size:0.84rem;">
+                      <div style="background:#dbeafe;border-radius:6px;padding:0.4rem 0.6rem;color:#1e40af;"><strong>第1層：</strong>「ただ何をすべきか教えてほしい」医師向けの設定</div>
+                      <div style="background:#dbeafe;border-radius:6px;padding:0.4rem 0.6rem;color:#1e40af;"><strong>第2層：</strong>「推奨の強さと、共同意思決定が必要か知りたい」医師向けの設定</div>
+                      <div style="background:#dbeafe;border-radius:6px;padding:0.4rem 0.6rem;color:#1e40af;"><strong>第3層：</strong>「根拠となるエビデンスの要約（Summary of Findingsテーブルなど）を見たい」層</div>
+                      <div style="background:#dbeafe;border-radius:6px;padding:0.4rem 0.6rem;color:#1e40af;"><strong>第4層：</strong>「患者と一緒に使うための意思決定補助ツール（Decision aids）が欲しい」層</div>
+                    </div>
+                    <p style="color:#374151;margin-top:0.5rem;font-size:0.85rem;">このように、読者のニーズに合わせてアクセスできる多層的なフォーマット（アプリなどの電子プラットフォームの活用）で作成することが、現場で使われるガイドラインのポイントです。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- Tab 3: 作成中 -->
