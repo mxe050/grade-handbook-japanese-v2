@@ -4402,7 +4402,7 @@ function checkAuth(){
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">MID/閾値・価値観・意向など</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">CPG作成を始めるにあたって</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">作成中</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">P値と95%信頼区間など</button>
         </div>
         <div class="tab-content">
 
@@ -4745,12 +4745,189 @@ function checkAuth(){
 
           </div>
 
-          <!-- Tab 3: 作成中 -->
+          <!-- Tab 3: P値と95%信頼区間など統計学のトピックス -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>🚧</i>
-              作成中
+
+            <!-- リード文 -->
+            <div class="card" style="margin-bottom:1.5rem;background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;padding:1.5rem;border-radius:12px;">
+              <h2 style="font-size:1.2rem;font-weight:bold;margin-bottom:0.75rem;color:#fff;">「P値0.05」の呪縛からの解放：推計学的アプローチへの方針転換と95%信頼区間の真の理解</h2>
+              <p style="font-size:0.9rem;color:#bfdbfe;line-height:1.8;">あなたがこれまで「絶対的なルール」として信じて疑わなかった「P値が0.05未満なら有意、0.05以上なら非有意」という考え方は、現代の統計学や世界の主要な科学ジャーナルにおいて、明確に「有害な悪習」として否定されています。</p>
+              <p style="font-size:0.88rem;color:#93c5fd;margin-top:0.75rem;line-height:1.7;">アメリカ統計協会（ASA）は、2016年の声明で「P値は科学的推論の代用品として意図されたものでは決してない」と厳しく指摘しました。また、学術誌『The American Statistician』では「P&lt;0.05を超える世界へ移行せよ（Moving to a World Beyond "p &lt; 0.05"）」という特集が組まれるほど、世界の常識は完全にパラダイムシフトを起こしています。</p>
             </div>
+
+            <!-- 第1章 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #dc2626;">
+              <div style="background:#fee2e2;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#991b1b;margin-bottom:0.25rem;">第1章：あなたが陥っている「P値にまつわる3つの大罪」</h3>
+                <p style="font-size:0.85rem;color:#7f1d1d;">なぜ専門家たちはP値への過度な依存にこれほど怒っているのでしょうか？それは、P値を盲信するあまり、現場で以下のような「ごまかし」や「誤謬」が横行しているからです。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <div style="display:flex;flex-direction:column;gap:1rem;">
+
+                  <div style="background:#fff1f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;">罪その1：恣意的な「0.05」で白黒をつける「二分法の幻想」</h4>
+                    <p style="font-size:0.9rem;color:#374151;">P=0.049なら「大発見！」と喜び、P=0.051なら「失敗だ…」とお蔵入りにする。これは科学的に見て極めて滑稽です。そもそもP値は「帰無仮説が正しいと仮定したもとで、今回のような（あるいはそれ以上に極端な）データが得られる確率」に過ぎません。0.05という線引きには自然科学的な根拠は一切なく、結果を「有意」と「非有意」の二値に分断することは、生物医学的な複雑さを無視し、データの解釈を著しく歪めます。</p>
+                  </div>
+
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#9a3412;margin-bottom:0.5rem;">罪その2：「P=0.06だから有意な傾向がある」というズルいごまかし</h4>
+                    <p style="font-size:0.9rem;color:#374151;">P=0.06などが出た時に「有意な傾向がある（approaching significance）」と表現することは、全くのナンセンスです。P値はサンプルを抽出するたびに激しく乱高下する極めて不安定な指標であり（Geoff Cumming教授はこれを<strong>「P値のダンス（Dance of the p-values）」</strong>と呼んでいます）、P値が0.05に「向かって近づいている」わけではありません。単に結果を粉飾しているだけです。</p>
+                  </div>
+
+                  <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">罪その3：「P&gt;0.05だから、差がない（同等だ）」という致命的な勘違い</h4>
+                    <p style="font-size:0.9rem;color:#374151;">あなたが犯しがちな最も危険な間違いがこれです。P値が0.05を上回ったとき「A群とB群には差がないことが証明された」と結論づけるのは大間違いです。有名な医学研究の格言にあるように、<strong>「証拠の不在は、不在の証拠ではない（Absence of evidence is not evidence of absence）」</strong>のです。単にサンプルサイズが小さすぎて、真に存在する重要な効果を見つける「検出力」が足りなかっただけの可能性が高いのです。</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- 第2章 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #2563eb;">
+              <div style="background:#dbeafe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#1e40af;margin-bottom:0.25rem;">第2章：【本質的理解】「95%信頼区間（CI）」の本当の統計学的意味</h3>
+                <p style="font-size:0.85rem;color:#1e3a8a;">P値の代わりに世界中のガイドラインが強く推奨しているのが「効果量（Effect Size）」と「95%信頼区間（Confidence Interval: CI）」です。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                  <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">① 点推定値と区間推定（頻度主義的定義）</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.5rem;">多くの人が「真の値がこの区間に入る確率が95%である」と誤解していますが、これは統計学（頻度主義）的には不正確です。</p>
+                  <div style="background:#1e40af;color:#fff;border-radius:8px;padding:1rem;font-size:0.9rem;line-height:1.8;">
+                    <strong>【正しい定義】</strong><br>
+                    「全く同じ条件で実験や調査を100回繰り返し、その都度95%信頼区間を計算した場合、そのうちの約95回の区間には『真の母集団のパラメータ（真の値）』が含まれる」
+                  </div>
+                  <p style="font-size:0.88rem;color:#374151;margin-top:0.75rem;">つまり、今回あなたが計算した「たった1つの信頼区間」は、真の値を見事に捉えた95個のうちの1つか、運悪く外してしまった5個のうちの1つかのどちらかです。しかし、現実には1つの区間しか計算できないため、この幅は「私たちの推定がどの程度正確か（不確実性の幅）」を示す最良の目安となります。</p>
+                </div>
+
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:1rem;">
+                  <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">② 新しい解釈：「適合性区間（Compatibility Interval）」</h4>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">近年、統計学の最前線では「信頼区間」という言葉の代わりに<strong>「適合性区間（Compatibility Interval）」</strong>と呼ぶことが提唱されています。</p>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">95%信頼区間とは、<strong>「今回の観測データと『統計的に合理的なレベルで適合する（矛盾しない）』効果量のすべての値の範囲」</strong>を表しています。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.88rem;">
+                    <div style="background:#dbeafe;border-radius:6px;padding:0.5rem 0.75rem;color:#1e40af;"><strong>区間の中心（点推定値）：</strong>データと「最も適合する（P値がほぼ1）」値</div>
+                    <div style="background:#dbeafe;border-radius:6px;padding:0.5rem 0.75rem;color:#1e40af;"><strong>区間の境界（上限・下限）：</strong>データとの適合性が限界に近づく場所。この境界上の値に対するP値は「ぴったり0.05」になります</div>
+                    <div style="background:#dbeafe;border-radius:6px;padding:0.5rem 0.75rem;color:#1e40af;"><strong>区間の外側：</strong>データと適合しない（矛盾する）値。P値は0.05未満になります</div>
+                  </div>
+                  <p style="font-size:0.88rem;color:#374151;margin-top:0.75rem;">つまり、95%信頼区間を見れば、「有意かどうか」だけでなく、「他にどのような効果量がデータと矛盾しないのか」という、P値が隠してしまっている豊かな情報を一目で確認できるのです。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第3章 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #7c3aed;">
+              <div style="background:#ede9fe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#4c1d95;margin-bottom:0.25rem;">第3章：「P=0.05の閾値はダメ」なのに「MIDの閾値は良い」のは矛盾か？</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">「0.05というP値の閾値を作るなと言いながら、臨床的最小重要差異（MID）という臨床的閾値を作るのは矛盾しているのではないか？」という反論があるかもしれません。ここには天と地ほどの明確な違いがあります。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
+                  <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#991b1b;margin-bottom:0.5rem;font-size:0.9rem;">ダメな閾値（P=0.05）</h4>
+                    <p style="font-size:0.85rem;color:#374151;">単なる「サンプルのばらつきに関する数学的な確率」に対する、人間の<strong>思考停止のための恣意的な線引き</strong>です。これに依存することは、研究者の判断を自動マシーンに丸投げする行為です。</p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.5rem;font-size:0.9rem;">良い閾値（MID）</h4>
+                    <p style="font-size:0.85rem;color:#374151;">データから自動計算されるものではなく、「患者にとって本当に価値があるか？」「副作用やコストに見合うだけの効果があるか？」という、<strong>現実世界の専門的知識と文脈に基づく評価基準</strong>です。</p>
+                  </div>
+                </div>
+                <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:6px;padding:0.75rem;font-size:0.9rem;color:#4c1d95;">
+                  <strong>「数学的な自動判定（P=0.05）」を捨て、「人間の専門知識による判断基準（MID）」を取り入れよ</strong>、というのが現在の統計改革の真髄です。
+                </div>
+              </div>
+            </div>
+
+            <!-- 第4章 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #059669;">
+              <div style="background:#dcfce7;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#065f46;margin-bottom:0.25rem;">第4章：【ビジュアル解説】信頼区間とMIDを用いた正しい結果の解釈</h3>
+                <p style="font-size:0.85rem;color:#166534;">Cumming教授は、信頼区間内の値の「適合性」を<strong>「Cat's-eye（猫の目）」</strong>に例えてビジュアル化しています。区間の中心付近が最もぷっくりと膨らんでおり、両端にいくほどシュッと細くなる「猫の目」のような分布です。</p>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:1rem;">例：血圧を下げる新薬。専門家は「最低でも -5 mmHg 下がらないと臨床的に無意味（<strong>MID = -5</strong>）」と設定（0は「差がない: Null」）。</p>
+
+                <!-- 図解軸 -->
+                <div style="background:#f1f5f9;border-radius:8px;padding:1rem;font-size:0.82rem;margin-bottom:1rem;overflow-x:auto;">
+                  <pre style="font-family:monospace;line-height:1.6;color:#334155;white-space:pre;margin:0;">  【効果なし(Null)】        【臨床的に意味がある境界(MID)】
+        |                              |
+  0 mmHg|                      -5 mmHg|               -15 mmHg
+========|==============================|============================&gt;
+                                                  血圧の低下量（効果量）</pre>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.88rem;">
+
+                  <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#065f46;margin-bottom:0.5rem;">① 最高の勝利！（肯定的かつ決定的）</h4>
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.5rem;font-family:monospace;font-size:0.85rem;color:#166534;margin-bottom:0.5rem;overflow-x:auto;white-space:nowrap;">  0  |                       -5  |    [ーー●ーー]</div>
+                    <p style="color:#374151;">95%信頼区間の「下限」もMIDを余裕で超えている。統計的にも有意であり、<strong>「間違いなく臨床的に意味のある効果がある」</strong>と断言できます。</p>
+                  </div>
+
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#9a3412;margin-bottom:0.5rem;">② 統計的には有意だが、実用的には無価値</h4>
+                    <div style="background:#fef3c7;border-radius:6px;padding:0.5rem;font-family:monospace;font-size:0.85rem;color:#92400e;margin-bottom:0.5rem;overflow-x:auto;white-space:nowrap;">  0  | [ー●ー]               -5  |</div>
+                    <p style="color:#374151;">0を跨いでいないのでP&lt;0.05（統計的に有意）です。しかし、区間全体がMIDに全く届いていません。これは<strong>「統計的には差があるが、患者には意味がない微小な差」</strong>と判断すべきです。</p>
+                  </div>
+
+                  <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">③ 決着つかず（サンプルサイズ不足）</h4>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.5rem;font-family:monospace;font-size:0.85rem;color:#713f12;margin-bottom:0.5rem;overflow-x:auto;white-space:nowrap;">  0  |[ーーーーー●ーーーーー]  -5  |</div>
+                    <p style="color:#374151;">0を跨いでいるためP&gt;0.05（非有意）です。しかし、信頼区間の上限はMIDを超えています。つまり「効果がない」のではなく、<strong>「効果がないかもしれないし、臨床的に重要な効果があるかもしれない（不確実性が高すぎる）」</strong>が正解です。</p>
+                  </div>
+
+                  <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:1rem;">
+                    <h4 style="font-weight:bold;color:#1e40af;margin-bottom:0.5rem;">④ 【超重要】「本当に差がない」と断言できる条件（否定的かつ決定的）</h4>
+                    <div style="background:#dbeafe;border-radius:6px;padding:0.5rem;font-family:monospace;font-size:0.85rem;color:#1e40af;margin-bottom:0.5rem;overflow-x:auto;white-space:nowrap;">  0  |[ー●ー]|               -5  |</div>
+                    <p style="color:#374151;">信頼区間の幅がとても狭く、上限も下限もNull(0)の付近にすっぽり収まり、MIDをどちらの方向にも超えていない状態。この時初めて、<strong>「この薬には臨床的に意味のある効果を持たない（同等である）」</strong>という正しい結論を下すことができます。</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- 第5章 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #0891b2;">
+              <div style="background:#cffafe;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:1rem;font-weight:bold;color:#0e7490;margin-bottom:0.25rem;">第5章：まとめと方針転換のお願い</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">あなたが間違っていた最大の理由は、<strong>「科学の複雑な現実を、単一の数字（P値）と恣意的な閾値（0.05）で自動的に処理しようとし、データに対する『思慮深い判断』を放棄していたから」</strong>です。</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:1rem;">心理学や医学の分野で「新しい統計学（The New Statistics）」を提唱したCumming教授は、「ただNHST（帰無仮説有意性検定）を使わないでください」とまで明言し、推計へのシフトを求めています。</p>
+
+                <div style="background:#ecfeff;border:1px solid #a5f3fc;border-radius:8px;padding:1rem;">
+                  <p style="font-size:0.9rem;font-weight:bold;color:#0e7490;margin-bottom:0.75rem;">今日からは「P&lt;0.05の星印（*）を探すだけの有意性ハンティング」を卒業し、以下の「推計学的アプローチ」へ：</p>
+                  <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.9rem;">
+                    <div style="background:#cffafe;border-radius:6px;padding:0.5rem 0.75rem;color:#0e7490;"><strong>1. 効果量はどれくらいか？</strong>（点推定値を見る）</div>
+                    <div style="background:#cffafe;border-radius:6px;padding:0.5rem 0.75rem;color:#0e7490;"><strong>2. それはどの程度正確か？</strong>（95%信頼区間の幅と、データの適合性を見る）</div>
+                    <div style="background:#cffafe;border-radius:6px;padding:0.5rem 0.75rem;color:#0e7490;"><strong>3. それは現実世界でどんな意味を持つか？</strong>（MIDと比較して、専門知識に基づいて判断する）</div>
+                  </div>
+                </div>
+
+                <p style="font-size:0.88rem;color:#374151;margin-top:0.75rem;">科学の目的は、白黒の判定を下すことではなく、累積的かつ定量的な知識を築くことです。ぜひ、この新しいアプローチを取り入れ、より豊かで誠実なデータ解釈へと足を踏み出してください。</p>
+              </div>
+            </div>
+
+            <!-- 参考文献 -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #6b7280;">
+              <div style="background:#f1f5f9;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h3 style="font-size:0.95rem;font-weight:bold;color:#374151;margin-bottom:0;">参考文献</h3>
+              </div>
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                <ul style="font-size:0.82rem;color:#4b5563;line-height:1.9;margin:0;padding-left:1.25rem;">
+                  <li>Wasserstein RL, Lazar NA. "The ASA's Statement on p-Values: Context, Process, and Purpose." <em>The American Statistician</em>, 70(2), 129-133 (2016).</li>
+                  <li>Rafi Z, Greenland S. "Semantic and cognitive tools to aid statistical science: replace confidence and significance by compatibility and surprise." <em>BMC Med Res Methodol</em>, 20(1):244 (2020).</li>
+                  <li>Brożek J, Falavigna M. "Chapter 12.3: What Determines the Width of the Confidence Interval?" In <em>Users' Guides to the Medical Literature</em>, 3rd ed. McGraw-Hill Education (2015).</li>
+                  <li>Guyatt G, Jaeschke R, Heddle N, et al. "Basic statistics for clinicians: 2. Interpreting study results: confidence intervals." <em>CMAJ</em>, 152(2):169-173 (1995).</li>
+                  <li>Shyamal Kumar Das. "CONFIDENCE INTERVAL IS MORE INFORMATIVE THAN P-VALUE IN RESEARCH." <em>International Journal of Engineering Applied Sciences and Technology</em>, 4(6), 278-282 (2019).</li>
+                  <li>Altman DG, Bland JM. "Absence of evidence is not evidence of absence." <em>BMJ</em> (1995).</li>
+                  <li>Cumming G. "The New Statistics: Why and How." <em>Psychological Science</em>, 25(1) 7-29 (2014).</li>
+                  <li>Rovetta A, Piretta L, Mansournia MA. "p-Values and confidence intervals as compatibility measures: guidelines for interpreting statistical studies in clinical research." <em>Lancet Reg Health Southeast Asia</em>, 33:100534 (2025).</li>
+                  <li>土居淳子. "心理学研究における統計改革の進展状況について: p値・効果量・信頼区間から." (2019).</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
 
         </div>
