@@ -5662,16 +5662,327 @@ function checkAuth(){
       </div>
       <div class="page-body">
         <div class="tabs-nav">
-          <button class="tab-btn active" onclick="switchTab(this, 0)">概要</button>
+          <button class="tab-btn active" onclick="switchTab(this, 0)">統計トピックス</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">数式の解説</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">連続量メタ分析</button>
         </div>
         <div class="tab-content">
+
+          <!-- Tab 0: 統計トピックス -->
           <div class="tab-pane active">
-            <div class="placeholder-msg">
-              <i>🚧</i>
-              <h3>工事中</h3>
-              <p>このチャプターは現在作成中です。今後のアップデートをお待ちください。</p>
+            <div class="content-section">
+              <h2 class="section-title">統計学のトピックス</h2>
+              <p style="margin-bottom:1.2rem;color:#555;">メタ分析や系統的レビューを実施・読解する際に必須となる7つの統計的課題と解決策を解説します。</p>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. 非常に少ない研究数（Very Few Studies）でのメタ分析</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #3b82f6;padding:1rem;margin-bottom:0.8rem;background:#eff6ff;border-radius:6px;">
+                    <strong>【概念】</strong> ランダム効果モデルの計算にはDL法（DerSimonian &amp; Laird法）が長く使われてきたが、研究数が少ない場合（目安：5件未満）は異質性を過小評価し、信頼区間が不当に狭くなる。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】</strong> <span style="color:#16a34a;font-weight:bold;">Knapp-Hartung法（KH法）</span>に変更→不確実性を適切に反映した保守的な信頼区間を算出。<br>
+                    ただし2〜3件ではKH法でも「検出力不足」の恐れ→固定効果モデルまたは定性的記述（SRのみ）の選択も検討。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Bender R, et al. <em>Research Synthesis Methods</em>. 2018.</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2. 生存時間解析（ハザード比）と「比例ハザードの仮定」</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #f59e0b;padding:1rem;margin-bottom:0.8rem;background:#fffbeb;border-radius:6px;">
+                    <strong>【問題】</strong> Cox比例ハザードモデルの大前提「HRは時間が経っても一定」。免疫チェックポイント阻害薬など生存曲線が<strong>交差（クロス）</strong>する試験では仮定違反となり、HRを統合しても意味のない数値が出る。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】</strong>
+                    <ul style="margin:0.5rem 0 0 1.2rem;">
+                      <li>各論文でSchoenfeld残差検定など「比例ハザード仮定の確認」が行われているかチェック</li>
+                      <li>仮定が満たされない場合 → <strong>RMST（制限付き平均生存時間）の差</strong>を統合、またはGuyot法でKM曲線から患者データを復元して再解析</li>
+                    </ul>
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Batson S, et al. <em>PLoS ONE</em>. 2016.</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">3. 中央値と範囲しか報告されていないデータの救済（Hozo式）</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #f59e0b;padding:1rem;margin-bottom:0.8rem;background:#fffbeb;border-radius:6px;">
+                    <strong>【問題】</strong> 入院日数・コストなど歪んだ分布のデータは「中央値・範囲」で報告されることが多い。しかしメタ分析は「平均値・SD」が必須→除外すると情報損失・バイアスの原因に。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】Hozoの近似式</strong>で逆算：
+                    <div style="background:#1e293b;color:#e2e8f0;padding:0.8rem;border-radius:6px;font-family:monospace;margin:0.5rem 0;">
+                      平均値 ≈ (最小値 + 2×中央値 + 最大値) / 4<br>
+                      SD ≈ 範囲 / 4　（またはn大きければ範囲 / 6）
+                    </div>
+                    →「中央値・範囲・n」から「平均値・SD」を推定し、メタ分析に投入可能に。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Hozo SP, et al. <em>BMC Medical Research Methodology</em>. 2005.</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">4. 累積メタ分析（Cumulative Meta-analysis）と早期の熱狂・OIS</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #3b82f6;padding:1rem;margin-bottom:0.8rem;background:#eff6ff;border-radius:6px;">
+                    <strong>【概念】</strong> 論文が出るたびにメタ分析をやり直し、治療効果の推移をフォレストプロット上に積み重ねる手法。初期の小規模試験ほど「勝者の呪い（効果過大評価）」が起きやすい。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】OIS（Optimal Information Size）の確認</strong><br>
+                    Ioannidisらの知見：累計患者数500人段階でもORが0.6〜1.7倍変動する可能性あり。<strong>数千人規模（例：2,000人以上）</strong>になりグラフが安定するまで結論は保留または慎重な解釈を。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Ioannidis JPA, Lau J. <em>PNAS</em>. 2001.</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">5. 標準化平均差（SMD）の再表示（臨床現場への翻訳）</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #f59e0b;padding:1rem;margin-bottom:0.8rem;background:#fffbeb;border-radius:6px;">
+                    <strong>【問題】</strong> 異なる尺度を統合するため算出されたSMDは「標準偏差の○個分」という抽象的な表現で、臨床医・患者には直感的に意味が伝わらない。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】馴染みのある尺度に逆変換（Re-expressing）</strong><br>
+                    代表的な研究の対照群SDを統合SMDに掛け算：
+                    <div style="background:#1e293b;color:#e2e8f0;padding:0.8rem;border-radius:6px;font-family:monospace;margin:0.5rem 0;">
+                      例：SMD = -0.5 × ベックうつ病質問票のSD(10点) = <strong>-5点</strong>
+                    </div>
+                    →「ベックうつ病質問票のスコアが平均5点下がる」として SoFテーブルに記載。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 GRADEpro Help "Re-expressing SMD"</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">6. システマティックレビュー（SR）のIT化とツール活用</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #f59e0b;padding:1rem;margin-bottom:0.8rem;background:#fffbeb;border-radius:6px;">
+                    <strong>【問題】</strong> 10,000件の文献を2人の研究者がExcel＋手作業でスクリーニング→行ズレ、重複漏れ、不一致論文の特定に多大な時間→数年でエビデンスが陳腐化。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策】専用プラットフォームを活用</strong>
+                    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:0.5rem 0;">
+                      <span style="background:#3b82f6;color:white;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.85rem;">CADIMA</span>
+                      <span style="background:#3b82f6;color:white;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.85rem;">Rayyan</span>
+                      <span style="background:#3b82f6;color:white;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.85rem;">Covidence</span>
+                    </div>
+                    機能：自動重複除去 / ブラインドスワイプ式スクリーニング / 不一致自動リストアップ / AI自動スクリーニング提案→透明性・再現性を完璧に担保。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Kohl C, et al. <em>Environmental Evidence</em>. 2018.</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">7. 出版バイアスとファネルプロット・Trim and fill法</summary>
+                <div class="accordion-body">
+                  <div class="info-card" style="border-left:4px solid #ef4444;padding:1rem;margin-bottom:0.8rem;background:#fef2f2;border-radius:6px;">
+                    <strong>【問題】</strong> ネガティブデータ（効果なし）はお蔵入りになりやすい→世に出た論文だけを集めて統合すると効果が過大評価される（Garbage in, garbage out）。
+                  </div>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>【解決策①】ファネルプロット（漏斗型グラフ）</strong>で左右非対称を視覚的・統計的に確認。<br>
+                    <strong>【解決策②】Trim and fill法</strong>：欠けているネガティブ研究を仮想的に補完（Fill）→補完後に結果がひっくり返る場合は「エビデンスが脆い」と判断。<br>
+                    <strong>【解決策③】GRADEで最終格付け</strong>：出版バイアス・バイアスリスク・異質性を総合して「高・中・低・非常に低」に分類。
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;">📄 Phan K, et al. <em>Annals of Cardiothoracic Surgery</em>. 2015.</p>
+                </div>
+              </details>
             </div>
           </div>
+
+          <!-- Tab 1: 数式の解説 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">数式の解説：クロスオーバー・スプリットマウス・Becker-Balagtas法</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">すべての臨床試験・メタ分析の目的は「真の治療効果」を「誤差（ノイズ）」から切り離すこと。その「誤差（ばらつき）」を統計学では<strong>分散（Variance: Var）</strong>と呼ぶ。分散が小さいほど高精度。</p>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
+                <h3 style="color:#93c5fd;margin-bottom:1rem;">§1. なぜパラレル試験とクロスオーバー試験は全く違うのか？</h3>
+                <p>治療Aの結果をY<sub>A</sub>、治療Bの結果をY<sub>B</sub>とするとき、知りたいのは「差の分散」：</p>
+                <div style="background:#0f2942;border-radius:6px;padding:1rem;margin:0.8rem 0;font-family:monospace;font-size:1rem;text-align:center;color:#93c5fd;">
+                  Var(Y<sub>A</sub> − Y<sub>B</sub>) = Var(Y<sub>A</sub>) + Var(Y<sub>B</sub>) − <strong style="color:#fbbf24;">2 × Cov(Y<sub>A</sub>, Y<sub>B</sub>)</strong>
+                </div>
+                <p>ここで<strong>Cov（共分散）</strong>は「AとBの連動性」を示す。</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+                  <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;padding:1rem;">
+                    <h4 style="color:#60a5fa;margin-bottom:0.5rem;">パラレル（並行群間）試験</h4>
+                    <p style="font-size:0.9rem;">A群とB群は別人 → 連動性ゼロ</p>
+                    <div style="background:#0f2942;padding:0.6rem;border-radius:4px;font-family:monospace;text-align:center;color:#fca5a5;margin:0.5rem 0;">
+                      Cov = 0<br>
+                      → Var = Var(A) + Var(B)
+                    </div>
+                    <p style="font-size:0.85rem;">マイナス項が消える → ノイズが大きい</p>
+                  </div>
+                  <div style="background:#1e3a5f;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                    <h4 style="color:#4ade80;margin-bottom:0.5rem;">クロスオーバー / スプリットマウス</h4>
+                    <p style="font-size:0.9rem;">同じ患者（または同一個体）が両治療を受ける</p>
+                    <div style="background:#0f2942;padding:0.6rem;border-radius:4px;font-family:monospace;text-align:center;color:#86efac;margin:0.5rem 0;">
+                      Cov &gt; 0<br>
+                      → Var = Var(A) + Var(B) − <span style="color:#fbbf24;">2×Cov</span>
+                    </div>
+                    <p style="font-size:0.85rem;">マイナス項が機能 → ノイズが劇的に縮小</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
+                <h3 style="color:#93c5fd;margin-bottom:1rem;">§2. なぜクロスオーバーとスプリットマウスは「同じ」とみなされるのか？</h3>
+                <p>物理的には「時間をずらす（クロスオーバー）」か「空間をずらす（スプリットマウス：左右の歯など）」かで異なるが、<strong>統計モデル（混合効果モデル）では同一</strong>。</p>
+                <div style="background:#0f2942;border-radius:6px;padding:1rem;margin:0.8rem 0;font-family:monospace;font-size:1rem;text-align:center;color:#93c5fd;">
+                  Y<sub>ij</sub> = μ + τ<sub>j</sub> + <strong style="color:#fbbf24;">π<sub>i</sub></strong> + ε<sub>ij</sub>
+                </div>
+                <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.93rem;">
+                  <li><strong>μ</strong>：全体の平均</li>
+                  <li><strong>τ<sub>j</sub></strong>：治療効果（これを知りたい）</li>
+                  <li><strong style="color:#fbbf24;">π<sub>i</sub></strong>：患者iの個人差（強力なノイズ）</li>
+                  <li><strong>ε<sub>ij</sub></strong>：測定誤差</li>
+                </ul>
+                <p style="margin-top:0.8rem;">治療AとBの差を引き算すると：</p>
+                <div style="background:#0f2942;border-radius:6px;padding:0.8rem;font-family:monospace;color:#86efac;margin:0.5rem 0;">
+                  Y<sub>iA</sub> − Y<sub>iB</sub> = (τ<sub>A</sub> − τ<sub>B</sub>) + (<span style="color:#fbbf24;">π<sub>i</sub> − π<sub>i</sub></span>) + (ε<sub>iA</sub> − ε<sub>iB</sub>)
+                </div>
+                <p style="color:#fbbf24;font-weight:bold;">→ π<sub>i</sub>（個人差）が完全に消滅する！これが精度向上の数学的証明。</p>
+              </div>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
+                <h3 style="color:#93c5fd;margin-bottom:1rem;">§3. 二値データの「Becker-Balagtas法」の正体</h3>
+                <p>クロスオーバー等のペアデータで「成功/失敗」の二値データをメタ分析する際、通常のオッズ比の分散式（パラレル試験用）を使うと分散が不当に大きくなり「効果なし」という誤りが起きる。</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+                  <div style="background:#3b1f1f;border:1px solid #ef4444;border-radius:8px;padding:1rem;">
+                    <h4 style="color:#fca5a5;margin-bottom:0.5rem;">❌ 間違い（パラレル式）</h4>
+                    <div style="background:#0f2942;padding:0.6rem;border-radius:4px;font-family:monospace;font-size:0.85rem;color:#fca5a5;">
+                      Var(ln OR) = 1/a + 1/b + 1/c + 1/d
+                    </div>
+                    <p style="font-size:0.85rem;margin-top:0.5rem;">相関による引き算が無い → 分散が過大</p>
+                  </div>
+                  <div style="background:#1a3a1a;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                    <h4 style="color:#4ade80;margin-bottom:0.5rem;">✅ 正しい（Becker-Balagtas法）</h4>
+                    <div style="background:#0f2942;padding:0.6rem;border-radius:4px;font-family:monospace;font-size:0.85rem;color:#86efac;">
+                      Var(ln OR) = (1/a+1/b+1/c+1/d) <strong style="color:#fbbf24;">− 2Δ/n</strong>
+                    </div>
+                    <p style="font-size:0.85rem;margin-top:0.5rem;color:#fbbf24;">−2Δ/n が §1の「−2×Cov」の正体！</p>
+                  </div>
+                </div>
+                <p>同じ患者からのデータであることを数式に教え込み、不当に大きな分散から患者内の相関分を正しく引き算する。</p>
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">§4. Rコード生成用プロンプト（AIへのコード依頼テンプレート）</summary>
+                <div class="accordion-body">
+                  <p style="margin-bottom:0.8rem;">これらの数学的背景をAIに理解させ、正しい統計処理を実装させるためのプロンプト例：</p>
+                  <div style="background:#1e293b;color:#e2e8f0;padding:1.2rem;border-radius:8px;font-family:monospace;font-size:0.83rem;line-height:1.7;white-space:pre-wrap;">クロスオーバー試験（またはスプリットマウス試験）の二値データを用いた
+メタ分析をRで実行するコードを作成してください。
+これらの試験デザインはクラスター化されたペアデータであり、
+効果量の分散を計算する際に同一対象内（within-subject）の
+相関による共分散項の引き算を行う必要があります。
+
+以下の要件を厳密に満たすスクリプトを書いてください。
+
+1. 【データ構造】各研究のペアワイズ2×2表
+   - study: 研究名, s: 両方成功, t: AのみOK, u: BのみOK, v: 両方失敗, n: 総数
+
+2. 【効果量の計算】Becker-Balagtas法による限界オッズ比（Marginal OR）
+
+3. 【分散の補正（最重要）】
+   Var(log OR) = (パラレルとしての分散) - (相関による調整項)
+   ※Elbourne(2002)やStedman(2011)の補正分散式を使用
+
+4. 【メタ分析】metaまたはmetaforパッケージのmetagen（逆分散法）
+   ランダム効果モデルで統合、フォレストプロット出力
+
+5. 各ステップに詳細な日本語コメントを記述</div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <!-- Tab 2: 連続量メタ分析 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">連続量のメタ分析</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">連続変数（痛みスコア、QOL、血圧など）のメタ分析は、二値変数と比べて解釈に特別な課題が多い。以下5つの核心的問題とその対処法を解説する。</p>
+
+              <div class="info-card" style="background:#fef3c7;border-left:4px solid #f59e0b;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>前提の問題</strong>：うつ病を測る尺度だけでもBDI、HAM-D、CES-Dなど<strong>5つ以上</strong>が使われる。7点満点と100点満点の尺度を単純に足し合わせることは不可能。
+              </div>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. 連続変数メタ分析の本質的困難さ</summary>
+                <div class="accordion-body">
+                  <p>二値変数（死亡か生存か）はリスク比・オッズ比で直感的に統合できる。しかし連続変数は研究ごとに<strong>異なる測定尺度（測定機器・質問票）</strong>が使われるため、何らかの標準化が必要。その標準化の過程で「臨床的にどれくらい意味のある効果か」が見えにくくなるのが最大の難点。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2. データ報告パターン（術後値・変化量）の混在問題</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0.5rem 1.2rem;">
+                    <li><strong>パターンA</strong>：術後のみ（Post-test）のスコア</li>
+                    <li><strong>パターンB</strong>：術前からの変化量（Change score）</li>
+                  </ul>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>制約</strong>：変化量を扱う場合、結果がマイナス（負の値）になり得るため「平均の比（RoM）」が使えなくなる。報告形式によって採用できる統合手法が変わる。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">3. 分散（SD/SE）が欠損している場合の算出根拠</summary>
+                <div class="accordion-body">
+                  <p>メタ分析は「重み付け平均」を計算する。<strong>重み ∝ 分散の逆数</strong>なのでSDは必須。</p>
+                  <p style="margin-top:0.5rem;">しかし「平均値はあるのにSDがない」論文によく遭遇する。</p>
+                  <div style="background:#1e293b;color:#e2e8f0;border-radius:6px;padding:0.8rem;font-family:monospace;margin:0.5rem 0;">
+                    統合分散（Pooled variance）＝<br>
+                    　[(n1−1)×S1² + (n2−1)×S2²] / (n1+n2−2)
+                  </div>
+                  <p>さらに術前後の変化量SDが不明な場合は、術前と術後の<strong>相関係数（r）が別途必要</strong>。類似研究からのインピュテーションが必要なこともある。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">4. SMD（標準化平均差）の致命的な2つの欠点</summary>
+                <div class="accordion-body">
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>欠点①：対象集団の異質性への脆弱性</strong><br>
+                    SMDの分母はSD。重症患者が多いとSDが大きくなりSMDは小さく見える。同質患者ばかりだとSDが小さくなりSMDが不当に大きくなる。「治療が効いたか」より「どんな患者を集めたか」に依存してしまう。
+                  </div>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:1rem;border-radius:6px;">
+                    <strong>欠点②：Cohenの基準（0.2/0.5/0.8）の恣意性</strong><br>
+                    Cohen自身「他に基準が何もない時だけ使え」と言っていた。実証研究でも小規模研究のSMD平均0.38 → 大規模研究(n≥2000)では0.11に低下。基準を盲目的に使うのは危険。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">5. SMDの欠点を克服する4つの代替手法</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;">
+                    <div style="background:#eff6ff;border:1px solid #3b82f6;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#1d4ed8;margin-bottom:0.4rem;">手法A：Natural units（馴染み尺度変換）</h4>
+                      <p style="font-size:0.88rem;">代表的な尺度のSDをSMDに掛けて元の単位に変換。<br>例：SMD 0.79 × VAS SD(10) = <strong>8.1点の改善</strong></p>
+                    </div>
+                    <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#15803d;margin-bottom:0.4rem;">手法B：MID単位での表示</h4>
+                      <p style="font-size:0.88rem;">平均値の差をSDではなく<strong>MID（最小重要差）</strong>で割る。「MIDの何倍の効果か」として提示 → SDのバラツキ問題を回避。</p>
+                    </div>
+                    <div style="background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#b45309;margin-bottom:0.4rem;">手法C：二値変数への変換</h4>
+                      <p style="font-size:0.88rem;">正規分布仮定のもと閾値（MIDなど）を設定し「改善した / しなかった」に変換 → RDやNNTへ。ただし対照群確率が20%未満・80%超では不安定。</p>
+                    </div>
+                    <div style="background:#fdf4ff;border:1px solid #a855f7;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#7c3aed;margin-bottom:0.4rem;">手法D：平均の比（RoM）</h4>
+                      <p style="font-size:0.88rem;">介入群の平均 / 対照群の平均。SDを使わないため異質性の影響を回避。<strong>ただし変化量データ（マイナスあり）には使用不可。</strong></p>
+                    </div>
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;margin-top:0.8rem;">📄 GRADE guidelines: 13 (<em>J Clin Epidemiology</em>) / Thorlund 2011 (<em>Research Synthesis Methods</em>)</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="page-nav">
@@ -5690,16 +6001,348 @@ function checkAuth(){
       </div>
       <div class="page-body">
         <div class="tabs-nav">
-          <button class="tab-btn active" onclick="switchTab(this, 0)">概要</button>
+          <button class="tab-btn active" onclick="switchTab(this, 0)">マルチ介入（MC）</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">ネットワークメタ分析（NMA）</button>
         </div>
         <div class="tab-content">
+
+          <!-- Tab 0: マルチ介入 -->
           <div class="tab-pane active">
-            <div class="placeholder-msg">
-              <i>🚧</i>
-              <h3>工事中</h3>
-              <p>このチャプターは現在作成中です。今後のアップデートをお待ちください。</p>
+            <div class="content-section">
+              <h2 class="section-title">マルチ介入（複数介入比較：MC）</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">GRADEアプローチにおけるマルチ介入とは、与えられた健康問題に対するすべての妥当な介入選択肢を、EtDフレームワークの全基準にわたって同時に相互比較・評価する構造化されたプロセスである。</p>
+
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>なぜMCが必要か？</strong><br>
+                一対比較（ペアワイズ比較）の積み重ねだけでは「目の前の複数の選択肢の中でどれを最優先に選ぶべきか」という実務的な問いに答えられない。例：IPFの治療薬10種類以上、乳がんスクリーニングの間隔（毎年・2年・3年）、結核感染対策の換気システム4種類など。
+              </div>
+
+              <!-- NMAとMCの棲み分け -->
+              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;">マルチ介入（MC）とNMAの棲み分け</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;">
+                <div style="background:#fef2f2;border:1px solid #ef4444;border-radius:8px;padding:1rem;">
+                  <h4 style="color:#dc2626;margin-bottom:0.5rem;">NMAの役割と限界</h4>
+                  <p style="font-size:0.88rem;">定量的な効果推定（SUCRA等）を提供するが：<br>
+                  ・患者の価値観・選好を考慮しない<br>
+                  ・コスト・公平性・受容性・実施可能性を無視<br>
+                  ・単体でガイドラインの推奨は決定できない</p>
+                </div>
+                <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                  <h4 style="color:#15803d;margin-bottom:0.5rem;">MCはNMAを「包含」する</h4>
+                  <p style="font-size:0.88rem;">NMAが貢献できるのはEtDの12基準中「健康影響・エビデンス確実性」のみ。MCはNMAの定量データをベースに、コスト・公平性・受容性などを統合する「上位の包括的意思決定枠組み」。NMAがなくてもMCは実行可能。</p>
+                </div>
+              </div>
+
+              <!-- 7ステップ -->
+              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;">マルチ介入評価の7ステップ</h3>
+              <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem;">
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">1</span>
+                  <div><strong>優先順位の設定と計画</strong>：PICO設定時にMCの必要性を初期段階で特定</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">2</span>
+                  <div><strong>エビデンスの統合</strong>：可能かつ適格ならNMAを実施。不可能ならSR複数を活用</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">3</span>
+                  <div><strong>EtDフレームワーク適用方法の決定</strong>：アプローチA（ペアワイズ先行型・詳細だが負荷大） or B（同時比較型・効率的だがニュアンス喪失リスク）</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#ef4444;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">4</span>
+                  <div><strong>推移性（Transitivity）の評価</strong>（★重要）：すべての介入が本当に互いに比較可能か確認</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">5</span>
+                  <div><strong>各EtD基準でのレーティング</strong>：GRADEpro MCモジュールでリッカート1〜5スターを付与</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">6</span>
+                  <div><strong>全介入の推奨策定と順位付け</strong>：総括的推奨（Summary Recommendation）の合意</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">7</span>
+                  <div><strong>普及と透明性の確保</strong>：なぜその順位になったかをEtD基準ごとに文書化・公表</div>
+                </div>
+              </div>
+
+              <!-- EtD 12基準 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">EtDフレームワークの12の評価基準</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;">
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>1.</strong> 問題の優先度</div>
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>2.</strong> 望ましい健康影響</div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>3.</strong> 望ましくない健康影響</div>
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>4.</strong> エビデンスの確実性</div>
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>5.</strong> 患者の価値観</div>
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>6.</strong> 健康影響のバランス</div>
+                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>7.</strong> 必要な資源（コスト）</div>
+                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>8.</strong> 資源の確実性</div>
+                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>9.</strong> 費用対効果</div>
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>10.</strong> 健康の公平性</div>
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>11.</strong> 受容性</div>
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>12.</strong> 実施可能性</div>
+                  </div>
+                  <p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">NMAが貢献できるのは主に2・3・4。残りはEtDフレームワークが担う。</p>
+                </div>
+              </details>
+
+              <!-- 重大問題点 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">マルチ介入の4つの重大問題点と注意点</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.8rem;">
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                      <strong>①推移性の不成立（Intransitivity）</strong><br>
+                      A vs Bの試験が「軽症のみ」、B vs Cが「重症のみ」→効果修飾因子の分布が異なり推移性崩壊。MCを始める前に「すべての介入が真に同じPICOを共有しているか」を厳密に審査すること。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;">
+                      <strong>②重複カウント（Double Counting）のリスク</strong><br>
+                      既存の複数SRを単純に寄せ集めると、同一の一次研究データが複数SRに含まれ二重カウントされる→効果推定値と信頼区間が不当に歪む。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;">
+                      <strong>③レビューレベルの要約データの非互換性</strong><br>
+                      アウトカムの定義（30日死亡 vs 90日死亡など）や対象集団が微妙に異なる複数SRを無批判に比較するとミスリード→個々の一次研究レベルに立ち返りデータ同質性を確認した上で再統合が必要。
+                    </div>
+                    <div style="background:#fffbeb;border-left:4px solid #eab308;padding:0.8rem;border-radius:6px;">
+                      <strong>④介入ネットワークの範囲設定</strong><br>
+                      「古い薬剤」「プラセボ」をネットワークに含めるか否か→含めると間接比較の精度が向上するが、臨床的に意味のない選択肢にリソースを割くトレードオフが生じる。
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 事例 -->
+              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-top:1.2rem;">実際のガイドラインへの適用事例</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">事例1：WHO 結核（TB）感染予防管理ガイドライン（2019年）</summary>
+                <div class="accordion-body">
+                  <p><strong>【介入選択肢】</strong>自然換気 / 混合モード換気 / 機械換気 / HEPAフィルター再循環空気（4種類）</p>
+                  <p><strong>【エビデンス状況】</strong>完全なNMAネットワークは構築できず → 存在データを他の換気システムに外挿</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>【結論】</strong>機械換気・HEPAは効果的だが<strong>コスト・実施可能性・公平性</strong>が低い。EtD総合評価で<strong>「自然換気」が第一選択</strong>に→コスト・公平性・実施可能性で最高評価。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">事例2：特発性肺線維症（IPF）薬物治療ガイドライン</summary>
+                <div class="accordion-body">
+                  <p><strong>【介入】</strong>10種類の薬理学的介入（ピルフェニドン、ニンテダニブ、N-アセチルシステインなど）</p>
+                  <p><strong>【NMAの役割】</strong>2016年NMAがSUCRAランキング（健康効果の定量的順位）を提供</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>【結論】</strong>NMAで最も効果が高いとされたピルフェニドンが同時に最高額→EtDでコスト・バランスを考慮して推奨を絞り込み。条件付き推奨付きのマルチ推奨を策定。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">事例3：欧州委員会 乳がんスクリーニングガイドライン</summary>
+                <div class="accordion-body">
+                  <p><strong>【介入】</strong>マンモグラフィ検診の頻度：毎年 / 2年ごと / 3年ごと（3種類 × 3年齢群）</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>【結論】</strong>利益（乳がん死亡率低下）と害（偽陽性・過剰診断）のバランス、医療資源、女性の価値観をEtDで横断的評価→<strong>「2年ごとのスクリーニング」を推奨</strong>。
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
+
+          <!-- Tab 1: NMA -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">ネットワークメタ分析（NMA）完全実務マニュアル</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">NMAは直接比較と間接比較のエビデンスを数学的に統合し、直接比較が存在しない介入間の相対効果を推定してすべての治療法を同時に評価・順位付けする手法。WHOやNICEの標準的手法として定着している。</p>
+
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>なぜNMAが必要か？</strong><br>
+                ALLHAT試験（4種降圧薬の直接比較）：約4万人・莫大な費用・長期間が必要だった。NMAなら既存の研究を間接比較でつなぎ、大規模RCTなしに複数治療の相対評価が可能に。
+              </div>
+
+              <!-- 用語の変遷 -->
+              <details class="accordion-item" open>
+                <summary class="accordion-header">第1章：NMAにおける用語の変遷と厳密な定義</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.5rem;">手法を指す用語の歴史的変遷</h4>
+                  <div style="display:flex;gap:0.3rem;align-items:center;flex-wrap:wrap;margin-bottom:0.8rem;">
+                    <span style="background:#cbd5e1;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.85rem;">Indirect Comparison</span>
+                    <span>→</span>
+                    <span style="background:#93c5fd;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.85rem;">MTC（2000年代）</span>
+                    <span>→</span>
+                    <span style="background:#60a5fa;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.85rem;">MTM</span>
+                    <span>→</span>
+                    <span style="background:#2563eb;color:white;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.85rem;">NMA（現在の標準）</span>
+                  </div>
+
+                  <h4 style="margin-bottom:0.5rem;color:#dc2626;">⚠️ 最重要：3つの概念の厳密な区別</h4>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;">
+                      <strong>推移性（Transitivity）</strong>：<em>臨床的・疫学的</em>前提条件。A-BとB-Cの試験でBが同じ臨床的役割を果たしているかという論理的前提。<strong>統計モデルを回す前に</strong>質的に評価。
+                    </div>
+                    <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                      <strong>一貫性（Consistency）</strong>：<em>統計的・数学的</em>概念。ネットワーク上のすべてのパスで効果量の差が数学的に一致している状態（推移性が成り立つ前提でモデルを回した結果）。
+                    </div>
+                    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;">
+                      <strong>整合性/不整合性（Coherence / Incoherence）</strong>：GRADEの枠組みでは、ペアワイズのInconsistency（研究間異質性）との用語重複を避け、直接証拠と間接証拠の統計的ズレを「Incoherence」と呼ぶ。
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 歴史 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第2章：歴史的課題とNMA手法の進化</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div style="background:#f0f9ff;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#0369a1;margin-bottom:0.4rem;">ベイズ主義の台頭</h4>
+                      <p style="font-size:0.88rem;">Bucher法（頻度論的間接比較）の限界を克服。WinBUGS＋MCMCで直接・間接エビデンスを統一的に統合。全治療の順位付け確率を直接計算できる利点があるが、計算負荷が高く専門的プログラミング技術が必要。</p>
+                    </div>
+                    <div style="background:#f0fdf4;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#15803d;margin-bottom:0.4rem;">頻度論の逆襲（2015年〜）</h4>
+                      <p style="font-size:0.88rem;">Rの <code>netmeta</code> パッケージ、Stataの <code>network</code> コマンドが普及。多変量メタ回帰で頻度論的NMAが一般化。CochranのQ検定やI²統計量など親しみやすい異質性評価が利用可能に。</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 実践手法 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第3章：NMAの実践手法と図の作成・解釈</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.6rem;">1. ネットワーク図（Network Plot）</h4>
+                  <ul style="margin:0 0 0.8rem 1.2rem;font-size:0.9rem;">
+                    <li><strong>ノード（点）</strong>：各治療法。<strong>面積 ∝ 総サンプルサイズ</strong></li>
+                    <li><strong>エッジ（線）</strong>：直接比較試験の存在。<strong>太さ ∝ 研究数または直接比較のサンプルサイズ</strong></li>
+                    <li>どの治療にエビデンスが集中しているか（ハブ）・どの比較が間接証拠依存かが一目瞭然</li>
+                  </ul>
+
+                  <h4 style="margin-bottom:0.6rem;">2. Inconsistencyの検出</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem;">
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:0.8rem;font-size:0.87rem;">
+                      <strong>ループ特異的アプローチ（Local検定）</strong><br>
+                      A-B-Cのループで直接vs間接の効果量差をZ検定で評価。
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:0.8rem;font-size:0.87rem;">
+                      <strong>Node-splitting法（Side-splitting）</strong><br>
+                      特定ペアの直接エビデンスを除いて計算した間接エビデンスと比較。「どの直接比較がネットワーク歪みの原因か」を特定可能。
+                    </div>
+                  </div>
+
+                  <h4 style="margin-bottom:0.6rem;">3. SUCRA（Surface Under the Cumulative Ranking）</h4>
+                  <p style="font-size:0.9rem;">各治療の順位確率の累積曲線の下側面積（0〜1）。単純な順位付けと違い「僅差の2位」と「大差のついた2位」を区別できる。<strong>1に近いほど最良、0に近いほど最悪</strong>。三竦みパラドックス（わずかなデータ変化で順位が入れ替わる不安定さ）を連続量として定量評価する。</p>
+                </div>
+              </details>
+
+              <!-- GRADE評価5ステップ -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第4章：エビデンスの確実性評価（GRADEアプローチ5ステップ）</summary>
+                <div class="accordion-body">
+                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin-bottom:0.8rem;">
+                    ⚠️ このステップを怠ると低確実性データから「強い推奨」が生まれる危険性がある。
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#2563eb;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">1</span>
+                      <div><strong>直接推定値の評価</strong>：ペアワイズと同様にGRADEの5ドメインで評価。ただし<em>不精確性は一旦除外</em>（NMAで信頼区間を再計算するため）。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#2563eb;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">2</span>
+                      <div><strong>間接推定値の評価</strong>：構成する2つの直接比較のうち<em>確実性が低い方</em>を初期グレードに設定 + 推移性（Intransitivity）の評価でダウングレード判断。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#2563eb;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">3</span>
+                      <div><strong>ネットワーク推定値の初期評価</strong>：直接と間接のうち<em>確実性が高い方</em>を採用（情報の統合により確実性が増すため）。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#ef4444;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">4</span>
+                      <div><strong>不整合性（Incoherence）によるダウングレード</strong>：直接vs間接の統計的食い違いをNode-splitting法（p&lt;0.10）等で評価。ただし Step2でIntransitivityダウングレード済みなら二重ペナルティを避ける。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#2563eb;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">5</span>
+                      <div><strong>不精確性（Imprecision）の最終評価</strong>：95%信頼区間（CrI）が意思決定閾値（例：OR 0.8〜1.25）をまたいでいれば最終グレードをダウングレード。</div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- SoFテーブルと色分け -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第5章：NMA-SoFテーブルと利益・害の色分け（Color-coding）表現</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.6rem;">NMA-SoFテーブルの6コンポーネント</h4>
+                  <ol style="margin:0 0 1rem 1.2rem;font-size:0.9rem;">
+                    <li>PICOの詳細（Clinical question）</li>
+                    <li>ネットワーク構造のジオメトリ図（Network geometry plot）</li>
+                    <li>相対効果（Relative effect）と絶対効果（Absolute effect）</li>
+                    <li>エビデンスの確実性（Certainty of evidence）</li>
+                    <li>治療の順位付け（Ranking probabilities / SUCRA）</li>
+                    <li>結果の解釈（Interpretation of findings）</li>
+                  </ol>
+
+                  <h4 style="margin-bottom:0.6rem;">画期的な色分け表示（Stoplight Color-coding）</h4>
+                  <p style="font-size:0.88rem;margin-bottom:0.8rem;">Phillipsら（BMJ Open 2022）が26名のステークホルダーを対象にデザイン検証。有効性と安全性を同時に直感的に把握できる3グループ分類：</p>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#dcfce7;border-left:6px solid #16a34a;border-radius:6px;padding:1rem;">
+                      <strong style="color:#15803d;">🟢 AMONG THE BEST（最良グループ / 緑）</strong><br>
+                      <span style="font-size:0.88rem;">利益：リファレンスより「確実に（中〜高確実性）」優れ、他のどの治療にも劣らない。<br>害：リファレンスより有害でない。</span>
+                    </div>
+                    <div style="background:#fef9c3;border-left:6px solid #ca8a04;border-radius:6px;padding:1rem;">
+                      <strong style="color:#a16207;">🟡 INTERMEDIATE（中間グループ / 黄）</strong><br>
+                      <span style="font-size:0.88rem;">利益：リファレンスより優れているが最良グループには劣る（中〜高確実性）、または「かもしれない」（低〜非常に低確実性）。</span>
+                    </div>
+                    <div style="background:#fee2e2;border-left:6px solid #dc2626;border-radius:6px;padding:1rem;">
+                      <strong style="color:#b91c1c;">🔴 AMONG THE WORST（最悪グループ / 赤・グレー）</strong><br>
+                      <span style="font-size:0.88rem;">利益：リファレンスと同等以下（中〜高確実性）、または明確に害が多い。</span>
+                    </div>
+                  </div>
+
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-top:1rem;">
+                    <div>
+                      <img src="coreGRADE/images/nma-1.jpg" alt="NMA Color-coding 図1" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+                      <p style="font-size:0.78rem;text-align:center;color:#666;margin-top:0.3rem;">図1：色分けの概念図</p>
+                    </div>
+                    <div>
+                      <img src="coreGRADE/images/nma-2.jpg" alt="NMA Color-coding 図2" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+                      <p style="font-size:0.78rem;text-align:center;color:#666;margin-top:0.3rem;">図2：SoFテーブルの例</p>
+                    </div>
+                    <div>
+                      <img src="coreGRADE/images/nma-3.jpg" alt="NMA Color-coding 図3" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+                      <p style="font-size:0.78rem;text-align:center;color:#666;margin-top:0.3rem;">図3：推奨への結びつけ</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 推奨への結びつけ -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第6章：GRADEの枠組みから「推奨（Recommendation）」への結びつけ方</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.8rem;">
+                    <div style="background:#dcfce7;border-left:4px solid #16a34a;padding:0.8rem;border-radius:6px;">
+                      <strong>① 特定介入への強い推奨（Strong Recommendation）</strong><br>
+                      <span style="font-size:0.88rem;">色分け図で「緑（BEST）」に分類 + 利益が害を明確に上回る + 中〜高確実性 → 大多数の患者がその治療を選ぶべき状況。</span>
+                    </div>
+                    <div style="background:#fef9c3;border-left:4px solid #ca8a04;padding:0.8rem;border-radius:6px;">
+                      <strong>② 複数選択肢の同等提示と価値観への委ね（Weak/Conditional Recommendation）</strong><br>
+                      <span style="font-size:0.88rem;">「黄（INTERMEDIATE）」が多く各治療間の差が小さいか確実性が低い場合 → 「A、B、Cのいずれかを提案（条件付き推奨）」とし、副作用の許容度・投与経路の好み・コストなどを患者と共に決定。</span>
+                    </div>
+                    <div style="background:#fee2e2;border-left:4px solid #dc2626;padding:0.8rem;border-radius:6px;">
+                      <strong>③ 特定介入の「使用しないことへの推奨」</strong><br>
+                      <span style="font-size:0.88rem;">「赤（WORST）」に分類 + プラセボと変わらないか明確に有害事象リスクが高い → 「使用しないことを推奨する」と明記。</span>
+                    </div>
+                  </div>
+                  <div style="margin-top:1rem;padding:0.8rem;background:#f8fafc;border-radius:6px;font-size:0.85rem;color:#555;">
+                    <strong>📚 必読文献</strong><br>
+                    Bonner A, et al. J Clin Epidemiol 2018 / Yepes-Nuñez JJ, et al. J Clin Epidemiol 2019 / Phillips MR, et al. BMJ Open 2022
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="page-nav">
