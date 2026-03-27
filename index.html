@@ -90,8 +90,8 @@ function checkAuth(){
         <button class="toc-btn" data-idx="2">
           <span class="toc-num">2</span>
           <span class="toc-text">
-            GRADEの開発方法
-            <span class="en">The development methods of GRADE</span>
+            GRADEの開発方法・GRADE-ADOLOPMENT・エビデンスがない場合
+            <span class="en">The development methods of GRADE / GRADE-ADOLOPMENT / No Evidence</span>
           </span>
         </button>
       </li>
@@ -203,6 +203,24 @@ function checkAuth(){
           </span>
         </button>
       </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="15">
+          <span class="toc-num">★</span>
+          <span class="toc-text">
+            統計・連続量
+            <span class="en">Statistics / Continuous outcomes</span>
+          </span>
+        </button>
+      </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="16">
+          <span class="toc-num">★</span>
+          <span class="toc-text">
+            ネットワークメタ分析・マルチ介入
+            <span class="en">Network Meta-analysis / Multiple interventions</span>
+          </span>
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -240,7 +258,7 @@ function checkAuth(){
 
 <div class="page" id="page-1">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 1 / 14</div>
+        <div class="chapter-badge">Chapter 1 / 16</div>
         <h1>GRADEアプローチの概要</h1>
         <div class="en-title">Overview of the GRADE approach</div>
       </div>
@@ -934,21 +952,21 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" disabled>← 前の章</button>
-        <span class="page-indicator">1 / 14</span>
+        <span class="page-indicator">1 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-2">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 2 / 14</div>
-        <h1>GRADEの開発方法</h1>
-        <div class="en-title">The development methods of GRADE</div>
+        <div class="chapter-badge">Chapter 2 / 16</div>
+        <h1>GRADEの開発方法・GRADE-ADOLOPMENT・エビデンスがない場合</h1>
+        <div class="en-title">The development methods of GRADE / GRADE-ADOLOPMENT / No Evidence</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">GRADE-ADOLOPMENT</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">エビデンスがない場合</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -1036,39 +1054,326 @@ function checkAuth(){
 <hr class="section-divider">
       
           </div>
+          <!-- GRADE-ADOLOPMENT tab -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">GRADE-ADOLOPMENT：厳密な15ステップ</h2>
+              <p style="color:#bfdbfe;font-size:0.9rem;">GRADE guidance 39 — Adopt・Adapt・Develop De Novoの完全ガイド</p>
+            </div>
+
+            <div class="card" style="margin-bottom:1rem;background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:0 8px 8px 0;">
+              <p style="color:#374151;font-size:0.9rem;">本解説は「GRADE guidance 39」の論文内容を深く掘り下げ、より解像度の高い具体的な基準と手順を解説します。現実の複雑なシナリオに立ち向かうための、全15ステップの厳密なプロセスと具体的な評価ツール（AGREE IIやAMSTAR 2など）のカットオフ基準を整理しました。</p>
+            </div>
+
+            <!-- フローチャート図 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">1. GRADE-ADOLOPMENTの厳密な15ステップ・フローチャート</h3>
+              <div class="figure" style="text-align:center;margin-bottom:1rem;">
+                <img src="coreGRADE/images/ADOL.jpg" alt="GRADE-ADOLOPMENT 15ステップ・フローチャート" loading="lazy" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;">
+                <p class="caption" style="margin-top:0.5rem;font-size:0.85rem;color:#6b7280;">GRADE-ADOLOPMENT 15ステップ・フローチャート（GRADE guidance 39）</p>
+              </div>
+            </div>
+
+            <!-- フェーズA -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;background:#eff6ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">フェーズA：トピック選定と優先順位付け</h3>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="border-left:4px solid #3b82f6;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#1e40af;margin-bottom:0.3rem;">Step 1: ガイドラインのトピックの選択</p>
+                  <p style="font-size:0.9rem;color:#374151;">グループ、機関、または組織が、ガイドラインの優先トピックまたは一般的な関心分野を選択します。</p>
+                </div>
+                <div style="border-left:4px solid #3b82f6;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#1e40af;margin-bottom:0.3rem;">Step 2: 疑問（CQ）の優先順位付け</p>
+                  <p style="font-size:0.9rem;color:#374151;">コンテキストのニーズと優先順位に基づいて、ガイドラインの疑問を設定します。既存のガイドラインに存在する疑問だけに制限されるのではなく、関連する利害関係者の優先事項によって主導されるのが特徴です。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- フェーズB -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;background:#fef3c7;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">フェーズB：既存リソース（CPG/SR）の厳格なフィルタリング（既存CPGが多数ある場合）</h3>
+              <div style="border-left:4px solid #f59e0b;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                <p style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">Step 3: 適切なソースガイドラインの特定（★重要）</p>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">ここで既存のガイドラインが大量にある場合の選別を行います。特定されたガイドラインは、以下の明確な基準で評価する必要があります。</p>
+                <div class="table-container">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                    <thead>
+                      <tr style="background:#fef9c3;">
+                        <th style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;width:25%;">評価基準</th>
+                        <th style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;">詳細</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;font-weight:600;">関連性</td><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;">優先される疑問に適切に対処しているか</td></tr>
+                      <tr style="background:#f8fafc;"><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;font-weight:600;">信頼性</td><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;">AGREE II評価ツールの「作成の厳密性」および「編集の独立性」のドメインで<strong>60％以上</strong>を達成していることなどが基準</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;font-weight:600;">最新性</td><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;">情報が最新であるか、または更新に手間がかかりすぎないか</td></tr>
+                      <tr style="background:#f8fafc;"><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;font-weight:600;">GRADEの使用</td><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;">証拠プロファイル（Evidence Profile）や結果の概要（SoF）テーブル、EtDが含まれていることが理想的</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;font-weight:600;">直接性（Directness）</td><td style="border:1px solid #e2e8f0;padding:0.5rem 0.75rem;">疾患のベースラインリスクは状況によって異なる場合があるため、ターゲットとする状況との直接性を採用や翻案の前に評価する必要があります</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- フェーズC -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;background:#f0fdf4;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">フェーズC：マッチングとエビデンスの更新（既存SRが多数ある場合）</h3>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="border-left:4px solid #22c55e;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#166534;margin-bottom:0.3rem;">Step 4: ソースの推奨事項と優先される疑問のマッチング</p>
+                  <p style="font-size:0.9rem;color:#374151;">PICO（対象、介入、対照、アウトカム）の要素を使用して一致度を理解します。</p>
+                </div>
+                <div style="border-left:4px solid #22c55e;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#166534;margin-bottom:0.3rem;">Step 5: 一致する推奨事項が存在するか？</p>
+                  <p style="font-size:0.9rem;color:#374151;">存在する場合はStep 6へ、存在しない（または信頼できるガイドラインがない）場合はStep 14（De novo作成）へ進みます。</p>
+                </div>
+                <div style="border-left:4px solid #22c55e;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#166534;margin-bottom:0.3rem;">Step 6: 必要に応じたエビデンス統合（SR）の更新（★既存SRの扱い）</p>
+                  <p style="font-size:0.9rem;color:#374151;">既存のSRを使用する場合、特定のEtD基準（例：利益と害）に関する信頼できるSRが複数特定された場合、ガイドライングループはレビューからデータを統合（Combine）することを決定できます。または、独自のメタアナリシスを実施することもできます。基礎となるエビデンスを支えるシステマティックレビューの信頼性は、ROBISチェックリストやAMSTAR 2ツールなどで評価すべきです。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- フェーズD -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;background:#fdf4ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">フェーズD：EtD（Evidence to Decision）フレームワークの再評価と決定</h3>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="border-left:4px solid #a855f7;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#7e22ce;margin-bottom:0.3rem;">Step 7: ソースガイドラインにEtDが存在するか確認</p>
+                  <p style="font-size:0.9rem;color:#374151;">存在する場合はStep 9へ、存在しない、または不完全な場合はStep 8へ進みます。</p>
+                </div>
+                <div style="border-left:4px solid #a855f7;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#7e22ce;margin-bottom:0.3rem;">Step 8: EtDの開発</p>
+                  <p style="font-size:0.9rem;color:#374151;">存在しない場合は、ソースガイドライン内で明示的にラベル付けされていなくても、隠れた情報を利用して新しいEtDを作成します。</p>
+                </div>
+                <div style="border-left:4px solid #a855f7;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#7e22ce;margin-bottom:0.3rem;">Step 9: EtDの判断の再評価</p>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">既存のEtDの判断を見直すには、以下の3つの具体的なアプローチがあります。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
+                    <div style="background:#eff6ff;border-radius:8px;padding:0.75rem;font-size:0.82rem;">
+                      <strong style="color:#1e40af;display:block;margin-bottom:0.3rem;">①オープンアプローチ</strong>
+                      元の判断を確認した上で、ローカルパネルが同意するかどうかを決定する（時間の節約になるが、元の判断に影響されやすい）。
+                    </div>
+                    <div style="background:#fdf4ff;border-radius:8px;padding:0.75rem;font-size:0.82rem;">
+                      <strong style="color:#7e22ce;display:block;margin-bottom:0.3rem;">②ブラインドアプローチ</strong>
+                      元の判断を隠し、PanelVoiceアプリなどのツールを使用して、パネルが独立して判断を下す（時間はかかるが、元のソースに影響されにくい）。
+                    </div>
+                    <div style="background:#f0fdf4;border-radius:8px;padding:0.75rem;font-size:0.82rem;">
+                      <strong style="color:#166534;display:block;margin-bottom:0.3rem;">③混合アプローチ</strong>
+                      上記2つの組み合わせ。一部の判断はそのままにし、状況に大きく依存するドメイン（コストや価値観など）は議論の対象とする。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- フェーズE -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;background:#fff1f2;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">フェーズE：最終決定（3つのA/D）の厳密な定義</h3>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="border-left:4px solid #ef4444;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#b91c1c;margin-bottom:0.3rem;">Step 10: 推奨事項の開発</p>
+                  <p style="font-size:0.9rem;color:#374151;">文脈に応じたEtDフレームワークを完成させます。</p>
+                </div>
+                <div style="border-left:4px solid #ef4444;background:#f8fafc;padding:1rem;border-radius:0 8px 8px 0;">
+                  <p style="font-weight:bold;color:#b91c1c;margin-bottom:0.3rem;">Step 11: Adolopedされた推奨事項はソースと類似しているか？</p>
+                  <p style="font-size:0.9rem;color:#374151;">PICOに変更がなく、推奨の方向性や強さに変更がなく、EtDの情報（証拠や判断など）に実質的な変更がないかをチェックします。</p>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-top:0.25rem;">
+                  <div style="background:#eff6ff;border-radius:8px;padding:0.75rem;font-size:0.85rem;border:1px solid #bfdbfe;">
+                    <strong style="color:#1e40af;display:block;margin-bottom:0.4rem;">Step 12: Adopted（採用）</strong>
+                    推奨事項自体やEtDの情報に重要な変更がない場合。グループ名の変更や単語の順序の変更などは重要な変更とはみなされません。
+                  </div>
+                  <div style="background:#fef3c7;border-radius:8px;padding:0.75rem;font-size:0.85rem;border:1px solid #fde68a;">
+                    <strong style="color:#92400e;display:block;margin-bottom:0.4rem;">Step 13: Adapted（翻案）</strong>
+                    新しいエビデンスや判断に基づいて、対象集団・介入・比較・方向・強さを変更する場合や、EtDの理論的根拠に重要な変更がある場合。
+                  </div>
+                  <div style="background:#fff1f2;border-radius:8px;padding:0.75rem;font-size:0.85rem;border:1px solid #fecaca;">
+                    <strong style="color:#b91c1c;display:block;margin-bottom:0.4rem;">Step 14 &amp; 15: De Novo（新規作成）</strong>
+                    信頼できる情報源がない場合、信頼できるガイドライン作成プロセスに従って新しい推奨事項とEtDを作成します。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 既存SRのSR的アプローチ -->
+            <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #6b7280;padding-left:0;">
+              <div style="background:#f1f5f9;border-radius:8px 8px 0 0;padding:0.75rem 1rem;">
+                <h3 style="font-size:1.05rem;font-weight:bold;color:#374151;margin:0;">既存SRの内容が異なる場合の「SRのSR」的アプローチ</h3>
+              </div>
+              <div style="padding:1rem;">
+                <p style="font-size:0.9rem;color:#374151;">Step 6におけるエビデンス更新に関連して、AMSTAR 2等で評価した結果、高品質なSRが複数あり、かつ結果が矛盾している場合は、論文内でも言及されている通り、複数のレビューのデータを統合するか、独自にメタアナリシスをやり直す（独自の結合）判断が求められます。これが事実上のアンブレラレビュー的な思考プロセスに繋がります。データの異質性やPICOのわずかなズレを再評価し、最も文脈（ベースラインリスクや価値観）に適合するデータセットを再構築することが、質の高いAdaptation（翻案）の鍵となります。</p>
+                <div style="background:#fef9c3;border-radius:6px;padding:0.75rem;margin-top:0.75rem;font-size:0.85rem;color:#713f12;">
+                  <strong>★ 実践的ヒント：</strong> AGREE IIのスコア（60%以上）の確認、ブラインドでのEtD再評価アプローチ（PanelVoiceの利用）など、具体的な基準を適用し、特定のCQや評価対象のガイドラインがあれば、そのPICOに沿ってStep 3〜Step 6のフィルタリングプロセスを実施することを検討してください。
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- エビデンスがない場合 tab -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#0f766e);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">診療ガイドライン作成における「不確実性」と「定性的データ」の取り扱い</h2>
+              <p style="color:#99f6e4;font-size:0.9rem;">GRADEアプローチの最前線 — エビデンスがない、または極めて乏しい場合の推奨作成</p>
+            </div>
+
+            <div class="card" style="margin-bottom:1rem;background:#f0fdfa;border-left:4px solid #0d9488;padding:1rem;border-radius:0 8px 8px 0;">
+              <p style="color:#374151;font-size:0.9rem;">現代のEBM（根拠に基づく医療）において、診療ガイドライン開発者は2つの大きな壁に直面します。1つは「頼るべき定量的なエビデンス（RCTなど）が全くない、あるいは極めて乏しい壁（第1部）」、もう1つは「患者の価値観や生の声といった定性的なデータを、いかに科学的かつ客観的にガイドラインに組み込むかという壁（第2部）」です。本稿では、これら2つの課題に対し、ガイドライン委員会がどのように透明性を保ちながら「推奨」という形に昇華させていくのか、その具体的なフレームワークと実践例を解説します。</p>
+            </div>
+
+            <!-- 第1部 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#0f766e;background:#f0fdfa;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">【第1部】エビデンスがない、または極めて確実性が低い場合の推奨作成プロセス</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:1rem;">かつてのガイドラインは「質の高いランダム化比較試験（RCT）がなければ推奨できない」という学術的純粋主義に陥りがちでした。しかし、ガイドライン委員会が「エビデンス不足のため推奨なし（No recommendation）」と宣言することは、現場の混乱と独自ルールの蔓延、そして患者への害（不利益）を引き起こします。現代では、不確実性が高くても「現時点での最善の推測（ベスト・エフォート）」を透明な形で提示する社会的責任があるとされています。</p>
+
+              <!-- 構造化専門家意見 -->
+              <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#0f766e;margin-bottom:0.75rem;">1. エビデンスゼロからの錬金術①：パネルメンバーの経験の「構造化」</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">論文が全くない場合、専門家の意見に頼らざるを得ませんが、「声の大きい権威者の単なるコンセンサス」で決めるのは最悪です。これを防ぐための高度な手法が<strong>「構造化された専門家からのデータ抽出（Structured Expert Elicitation）」</strong>です。</p>
+                <ol style="padding-left:1.25rem;font-size:0.9rem;color:#374151;">
+                  <li style="margin-bottom:0.5rem;"><strong>利益相反（COI）の厳格な除外:</strong> 対象の推奨について製薬会社などから金銭的利益を得ている委員を意思決定から外します。</li>
+                  <li style="margin-bottom:0.5rem;"><strong>完全匿名・個別の事前アンケート:</strong> 同調バイアスを防ぐため、会議の前に各委員へアンケートを行います。</li>
+                  <li style="margin-bottom:0.5rem;"><strong>「意見」ではなく「数字」を抽出:</strong> 「A薬は効くか？」ではなく、「過去〇年で何人診て、A薬を使わずに再発したのは何人か？死亡したのは何人か？」と、頭の中のカルテ（記憶）を数値化させます。</li>
+                  <li><strong>データの集積と提示:</strong> 集まった数字（例：13名のパネルから集まった約9,000名分の経験データ）を合算し、「我々の経験則はこうなっているが、極めて不確実である」という前提を全員で共有した上で推奨文を練り上げます。</li>
+                </ol>
+              </div>
+
+              <!-- 未公表レジストリ -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#166534;margin-bottom:0.75rem;">2. エビデンスゼロからの錬金術②：未公表レジストリ（登録データ）の一次解析</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">小児や希少疾患などRCTが困難な領域では、未公表のリアルワールドデータ（患者登録レジストリ）を自分たちで解析して一次エビデンスを作成します。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                  <div style="background:#fff;border:1px solid #d1fae5;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                    <strong style="color:#166534;display:block;margin-bottom:0.4rem;">実例A：小児腹膜透析の「家庭訪問」効果（SCOPEレジストリ）</strong>
+                    <p style="color:#374151;margin-bottom:0.3rem;"><strong>状況:</strong> 家庭訪問が腹膜炎を減らすか、既存文献では不確実。</p>
+                    <p style="color:#374151;margin-bottom:0.3rem;"><strong>解析:</strong> レジストリデータを統計専門家がロジスティック回帰分析等で交絡因子を調整。</p>
+                    <p style="color:#374151;"><strong>結果:</strong> 訪問あり群の方がカテーテル終了までの期間が有意に長かった。「エビデンスの確実性は非常に低い（Very Low）」と明記しつつ、「家庭訪問を条件付きで推奨する」と決定。</p>
+                  </div>
+                  <div style="background:#fff;border:1px solid #d1fae5;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                    <strong style="color:#166534;display:block;margin-bottom:0.4rem;">実例B：抗生物質の投与期間（IPPNレジストリ）</strong>
+                    <p style="color:#374151;margin-bottom:0.3rem;"><strong>状況:</strong> 2週間か3週間か、比較文献がゼロ。</p>
+                    <p style="color:#374151;"><strong>結果:</strong> レジストリ解析の結果、両者で完全回復率に有意差なし（91% vs 88%）。差がないという不確実なエビデンスに基づき、不必要な長期投与による害を重く見て「2週間の投与を条件付きで推奨する」としました。</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5つの特例 -->
+              <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.75rem;">3. "Very Low Certainty" から「推奨」への変換と5つの特例</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">確実性が「非常に低い」データを推奨にする際、GRADEシステムではEtDフレームワークを用い、「利益と害のバランス」「患者の価値観」「コスト」「実行可能性」を総合評価します。通常は「条件付き推奨（弱い推奨）」になりますが、例外として<strong>「強い推奨」</strong>を出せる5つの特例が存在します。</p>
+                <ol style="padding-left:1.25rem;font-size:0.85rem;color:#374151;">
+                  <li style="margin-bottom:0.4rem;"><strong>致命的状況における唯一の希望:</strong> 未知の致死性ウイルスに対する未承認薬の緊急使用など。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>利益は不確実だが、害が確実で甚大:</strong> 根拠なく毒性の強い薬を長期投与し続けることへの強い非推奨など。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>同等の効果が見込まれるが、片方が圧倒的に安全/安価:</strong> 効果の確実性は低くても、新薬Bの方が圧倒的に副作用が少なく安い場合など。</li>
+                  <li style="margin-bottom:0.4rem;"><strong>致命的な合併症の回避:</strong> 「手術前に手指消毒をする」など、RCTは不可能だが破滅的リスクを避けるための強い推奨（Good Practice Statement的要素）。</li>
+                  <li><strong>高い確実性で同等だが、不確実な害の回避:</strong> 効果は同等だが、片方にだけ未知の深刻な副作用懸念がある場合、もう片方を強く推奨。</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 第2部 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.1rem;font-weight:bold;color:#0f766e;background:#f0fdfa;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">【第2部】定性的なレビュー（QES）のガイドラインへの組み込み</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:1rem;">第1部では「介入の有効性」に関する定量的データ不足への対応を論じましたが、ガイドラインの推奨は「有効性」だけで決まるわけではありません。患者の「価値観や選好」「受容性」「実現可能性」「公平性」を満たす必要があり、ここで極めて重要な役割を果たすのが、患者の生の声や文脈を統合した<strong>定性的証拠統合（QES: Qualitative Evidence Synthesis）</strong>です。</p>
+
+              <!-- GRADE-CERQual -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">1. 定性的レビューの信頼性評価：GRADE-CERQual</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">QESの知見を意思決定に用いる際、「ただの感想の寄せ集めではないか」という批判を避けるため、そのエビデンスがどの程度信頼できるかを評価する体系的な枠組みが<strong>GRADE-CERQual（Confidence in the Evidence from Reviews of Qualitative research）</strong>です。以下の4つの要素で評価します。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+                  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;font-size:0.82rem;"><strong>方法論的限界</strong><br>個別のレビュー所見に寄与した一次研究の設計や実施に、バイアスや重大な懸念がないか。</div>
+                  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;font-size:0.82rem;"><strong>一貫性</strong><br>一次研究からの生データと、統合して導き出されたレビュー所見（テーマ）との間に、説得力のあるつながりがあるか。</div>
+                  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;font-size:0.82rem;"><strong>データの妥当性/十分性</strong><br>レビュー所見を支持するデータが「薄っぺらい」ものではなく、十分に豊富で厚み（Richness and quantity）を持っているか。</div>
+                  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;font-size:0.82rem;"><strong>関連性</strong><br>抽出されたエビデンスが、ガイドラインが対象とする文脈（特定の患者層、環境、制度など）に直接的に適用可能か。</div>
+                </div>
+                <p style="font-size:0.85rem;color:#374151;margin-top:0.75rem;">これらに基づき、所見への確実性を「高」「中」「低」「非常に低」の4段階で判定し、「質的所見の要約（SoQF）テーブル」にまとめます。</p>
+              </div>
+
+              <!-- CPGへのQES組み込み -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#166534;margin-bottom:0.75rem;">2. 診療ガイドライン（CPG）へのQESの組み込みプロセス</h4>
+                <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">QESはEtDフレームワークを用いて以下の2つのフェーズで組み込まれます。</p>
+
+                <details style="margin-bottom:0.75rem;">
+                  <summary style="cursor:pointer;font-weight:bold;color:#166534;font-size:0.9rem;padding:0.5rem;background:#dcfce7;border-radius:6px;">A. ガイドラインのスコープ（対象範囲）の決定</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.5rem;">プロトコルが確定する前のスコーピング段階でQESを行うことで、対象となる集団にとって「本当に何が重要か」を特定し、ガイドラインの評価指標（アウトカム）そのものを決定・変更します。</p>
+                    <div style="background:#fff;border-left:3px solid #22c55e;padding:0.6rem;border-radius:0 6px 6px 0;">
+                      <strong>【WHOの産前・分娩ケアガイドラインの革新的実例】</strong><br>
+                      従来は「母子の生存（病理学的リスクの軽減）」だけがアウトカムでした。しかし事前のQESにより、女性にとって精神的・感情的な<strong>「前向きな体験（positive experience）」</strong>が極めて重要であることが証明されました。この定性的知見により、「前向きな妊娠体験」という新しい複合アウトカムが有効性レビューに採用され、ガイドラインの根底の理念を書き換えるに至りました。
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-weight:bold;color:#166534;font-size:0.9rem;padding:0.5rem;background:#dcfce7;border-radius:6px;">B. EtDフレームワークへの情報の入力と推奨の作成（驚異的な具体例）</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.5rem;">一次研究の「生データ」から最終的な「推奨」に至るまでのプロセスは、以下のステップで行われます。</p>
+                    <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                      <div style="background:#f0fdf4;border-left:3px solid #4ade80;padding:0.5rem;border-radius:0 4px 4px 0;font-size:0.82rem;"><strong>【ステップ1：一次研究の生データ】</strong>「ずっと知っている人に診てもらうようなものです。最初は世間話をして、それから本題に入ります。新しい人に診てもらうと、恥ずかしくて特定のことを話すのをためらってしまいます」（患者の語り）。</div>
+                      <div style="background:#f0fdf4;border-left:3px solid #4ade80;padding:0.5rem;border-radius:0 4px 4px 0;font-size:0.82rem;"><strong>【ステップ2：QESによるテーマ化】</strong>「女性は医療従事者との関係性を重視する」。</div>
+                      <div style="background:#f0fdf4;border-left:3px solid #4ade80;padding:0.5rem;border-radius:0 4px 4px 0;font-size:0.82rem;"><strong>【ステップ3：所見の要約ステートメント】</strong>「女性は、医療従事者と思いやりと信頼のある関係を築く機会となるため、毎回同じ専門家に診てもらうことを高く評価している」。</div>
+                      <div style="background:#f0fdf4;border-left:3px solid #4ade80;padding:0.5rem;border-radius:0 4px 4px 0;font-size:0.82rem;"><strong>【ステップ4：EtD「受容性」への入力】</strong>「多様な文脈の質的エビデンスは、女性が周産期を通じて助産師と支援的で思いやりのある関係を築く機会を歓迎していることを示している【確実性：高】」。</div>
+                      <div style="background:#dcfce7;border-left:3px solid #22c55e;padding:0.5rem;border-radius:0 4px 4px 0;font-size:0.82rem;"><strong>【ステップ5：最終推奨の完成】</strong>（有効性のデータと掛け合わせ）「十分に機能している助産プログラムがある環境において、妊娠中の女性に対して、顔なじみの助産師が産前・分娩・産後を通じて継続的にサポートする『助産師主導の継続ケアモデル』を推奨する」。</div>
+                    </div>
+                    <p style="margin-top:0.5rem;color:#166534;font-size:0.82rem;">患者の「恥ずかしい」という生の声が、GRADE-CERQualとEtDという厳密なフィルターを通ることで、全世界に向けた「助産師主導の継続ケアモデルの推奨」という科学的指針に昇華されたのです。</p>
+                  </div>
+                </details>
+              </div>
+
+              <!-- SWiM -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.5rem;">3. 補足：メタアナリシスができない場合の評価（SWiM）</h4>
+                <p style="font-size:0.85rem;color:#374151;margin-bottom:0.5rem;">定性研究に限らず、定量的な介入研究であっても、測定方法がバラバラで統合した単一の効果推定値（メタアナリシス）が算出できない場合があります。</p>
+                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.85rem;color:#374151;">
+                  <li style="margin-bottom:0.3rem;"><strong>GRADEの適用:</strong> このようなナラティブ（記述的）な要約のみが可能な場合でも、GRADEアプローチの各ドメイン（方法論的限界、非直接性、不精確性など）を適用し、確実性を判断することは可能です。</li>
+                  <li><strong>SWiMガイドライン:</strong> メタアナリシスなしの統合（Synthesis without meta-analysis）を行う際、そのプロセスの透明性を担保するために開発された報告ガイドラインです。研究のグループ化方法、標準化された指標、データの提示方法など9つのチェックリスト項目に従って報告することで、統合の信頼性を高めます。</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- まとめ -->
+            <div class="card" style="margin-bottom:1.5rem;background:#f0fdfa;border:1px solid #99f6e4;padding:1.25rem;border-radius:12px;">
+              <h3 style="font-size:1rem;font-weight:bold;color:#0f766e;margin-bottom:0.5rem;">まとめ</h3>
+              <p style="font-size:0.9rem;color:#374151;">第1部で見た「定量データがない場合の構造化と解析」、第2部で見た「定性データのCERQualを用いた科学的統合」。これらは一見対極のアプローチに見えますが、本質は全く同じです。それは、<strong>「利用可能なあらゆる知見（経験、レジストリ、患者の語り）を、透明で再現性のあるフレームワーク（EtD）に落とし込み、現場の医師と患者にとって真に価値のある『推奨』を紡ぎ出す」</strong>というガイドライン委員会の執念に他なりません。</p>
+            </div>
+
+            <!-- 参考文献 -->
+            <div class="card" style="margin-bottom:1rem;border-left:4px solid #6b7280;">
+              <div style="background:#f1f5f9;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+                <h4 style="font-size:0.95rem;font-weight:bold;color:#374151;margin:0;">参考文献</h4>
+              </div>
+              <ul style="font-size:0.82rem;color:#4b5563;line-height:1.9;padding-left:1.25rem;">
+                <li>Y先生のEBM講座 YouTube動画（EBM診療ガイドライン作成編1：エビデンスがない場合・確実性が非常に低い場合の推奨）</li>
+                <li>mxe05064 note記事（GRADE Notes 4: how to use GRADE when there is "no" evidence? A case study of using unpublished registry data）</li>
+                <li><em>Journal of Clinical Epidemiology</em> (2024). GRADE Notes 4: How to use GRADE when there is "no" evidence?</li>
+                <li><em>Surgical Endoscopy</em> (2025). Can recommendations be based upon low or very low certainty evidence?</li>
+                <li>Lewin, S., et al. (2018). Applying GRADE-CERQual to qualitative evidence synthesis findings: introduction to the series. <em>Implementation Science</em>.</li>
+                <li>Downe, S., et al. (2019). Qualitative Evidence Synthesis (QES) for Guidelines: Paper 1 - Using qualitative evidence synthesis to inform guideline scope and develop qualitative findings statements. <em>Health Research Policy and Systems</em>.</li>
+                <li>Murad, M. H., et al. (2017). Rating the certainty in evidence in the absence of a single estimate of effect. <em>Evidence-Based Medicine</em>.</li>
+                <li>Campbell, M., et al. (2020). Synthesis without meta-analysis (SWiM) in systematic reviews: reporting guideline. <em>BMJ</em>.</li>
+              </ul>
             </div>
           </div>
         </div>
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">2 / 14</span>
+        <span class="page-indicator">2 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-3">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 3 / 14</div>
+        <div class="chapter-badge">Chapter 3 / 16</div>
         <h1>GRADEの使用を主張するための要件</h1>
         <div class="en-title">Requirements for claiming the use of GRADE</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">信頼できるCPG</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">その他</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -1218,39 +1523,165 @@ function checkAuth(){
 <hr class="section-divider">
       
           </div>
+          <!-- 信頼できるCPG tab -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#7c3aed);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">信頼できる診療ガイドライン（CPG）の基準比較表</h2>
+              <p style="color:#ddd6fe;font-size:0.9rem;">IOM・GRADEワーキンググループ・Guyattら の3つのアプローチを比較する</p>
+            </div>
+
+            <div class="card" style="margin-bottom:1rem;background:#f5f3ff;border-left:4px solid #7c3aed;padding:1rem;border-radius:0 8px 8px 0;">
+              <p style="color:#374151;font-size:0.9rem;">米国医学研究所（IOM）、GRADEワーキンググループ、およびGuyattらの文献に基づく「信頼できる診療ガイドライン」の要件・基準の比較表です。ガイドラインの開発から評価に至るプロセスにおいて、各文献がどの評価項目（ドメイン）をどのように規定しているかを整理しています。</p>
+            </div>
+
+            <!-- 比較マトリックス -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">基準・要件の比較マトリックス</h3>
+              <div class="table-container">
+                <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+                  <thead>
+                    <tr style="background:#f1f5f9;">
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:20%;color:#374151;">評価項目 (ドメイン)</th>
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:27%;background:#eff6ff;color:#1e40af;">IOM (2011)<br>『8つの基準』<br><span style="font-weight:400;color:#6b7280;font-size:0.78rem;">主に開発プロセス全体の標準</span></th>
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:27%;background:#f0fdf4;color:#166534;">GRADEの要件<br><span style="font-weight:400;color:#6b7280;font-size:0.78rem;">エビデンスから推奨への方法論</span></th>
+                      <th style="border:1px solid #e2e8f0;padding:0.6rem;text-align:left;width:26%;background:#fdf4ff;color:#7e22ce;">Guyattら (2023)<br>の評価基準<br><span style="font-weight:400;color:#6b7280;font-size:0.78rem;">臨床医による批判的吟味の視点</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">1. 透明性と利益相反 (COI) の管理</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準1: 透明性の確立<br>基準2: 利益相反 (COI) の管理</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;">（前提条件としてCOIの適切な管理を求める）</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q6: 利益相反が推奨に影響を与えていないか？影響がある場合、管理されているか？</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">2. 作成パネルの構成</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準3: 多職種によるグループ構成（患者や一般市民の参加を含む）</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;">EtDにおいて多角的な視点を反映するパネル構成を推奨</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">ガイドラインパネルの適切な構成（専門家だけでなく方法論者や患者代表の参加）</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">3. 患者の価値観と重要なアウトカム</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準3（患者代表の参加）に包含</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;"><strong>必須要件:</strong> 「患者にとって重要なアウトカム」を網羅的に特定し、患者の価値観と好みをEtDで明示的に考慮する</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q3: パネルは患者にとって重要なアウトカムをすべて考慮しているか？<br>Q2: すべての代替案（選択肢）を考慮しているか？</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">4. システマティックレビュー (SR) の利用</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準4: ガイドラインとシステマティックレビューの交差（SRに基づくこと）</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;"><strong>必須要件:</strong> 推奨は網羅的かつ最新のシステマティックレビューに基づいていること</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q4: 推奨は最新のシステマティックレビューに基づいているか？</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">5. エビデンスの確実性と推奨の評価</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準5: エビデンス基盤の確立と推奨の強さの評価</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;"><strong>必須要件:</strong> エビデンスの確実性（高・中・低・非常に低）と、推奨の強さ（強い・弱い/条件付き）を明確に評価・分離する</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q5: 推奨の強さは、エビデンスの確実性と整合しているか？（不確実なエビデンスなのに強い推奨をしていないか）</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">6. 推奨の明確さと記述</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準6: 推奨の明確な記述（具体的で実行可能であること）</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;"><strong>必須要件:</strong> 推奨の方向性（実施する/しない）と強さを明確に言語化する</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q1: 推奨は明確か？（臨床医が具体的に何をすべきか分かるか）</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;font-weight:600;background:#f8fafc;">7. 外部査読と更新</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#eff6ff;">基準7: 外部レビュー（ピアレビューの実施）<br>基準8: 定期的な更新</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#f0fdf4;">最新のエビデンスを反映するための継続的（Living）なアプローチを支持</td>
+                      <td style="border:1px solid #e2e8f0;padding:0.6rem;background:#fdf4ff;">Q4の「最新の」SRに基づいているか、という点に包含</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 各アプローチの詳細解説 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;margin-bottom:1rem;">各アプローチの詳しい解説と特徴</h3>
+
+              <!-- IOM -->
+              <details style="margin-bottom:1rem;" open>
+                <summary style="cursor:pointer;font-weight:bold;color:#1e40af;font-size:0.95rem;padding:0.75rem;background:#eff6ff;border-radius:8px;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#1e40af;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">1</span>
+                  IOM (米国医学研究所) の「8つの基準」 (2011年)
+                </summary>
+                <div style="padding:1rem;font-size:0.9rem;color:#374151;">
+                  <p style="font-weight:bold;color:#1e40af;margin-bottom:0.4rem;">【背景と目的】</p>
+                  <p style="margin-bottom:0.75rem;">2011年当時、世の中には質の低い「自称・ガイドライン」が溢れ、どれを信頼すべきか混乱が生じていました。これに対し、IOM（現在の全米医学アカデミー：NAM）は、ガイドライン開発団体が最低限クリアすべき「厳格なプロセスの国家・国際標準」を打ち立てました。</p>
+                  <p style="font-weight:bold;color:#1e40af;margin-bottom:0.4rem;">【アプローチの特徴と哲学】</p>
+                  <ul style="list-style:disc;padding-left:1.25rem;">
+                    <li style="margin-bottom:0.4rem;"><strong>ライフサイクル全体の包括的管理:</strong> 開発前の資金源の透明化から始まり、委員会の構成、システマティックレビュー（SR）の利用、推奨の作成、外部機関による査読、そして完成後の定期的な更新に至るまで、ガイドラインの「ゆりかごから墓場まで」の全工程を規定しています。</li>
+                    <li style="margin-bottom:0.4rem;"><strong>極めて厳格なCOI（利益相反）管理:</strong> 単にCOIを開示するだけでなく、「委員長はCOIを持たないこと」「COIを持つ委員は過半数未満であること」など、バイアスを構造的に排除する厳しい条件を求めています。</li>
+                    <li><strong>多職種・患者参加の義務化:</strong> 専門医の偏った意見（エキスパート・オピニオン）だけで決定されることを防ぐため、方法論の専門家や、実際に治療を受ける「患者や一般市民」の代表をパネルに含めることを強く要求しています。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <!-- GRADE -->
+              <details style="margin-bottom:1rem;" open>
+                <summary style="cursor:pointer;font-weight:bold;color:#166534;font-size:0.95rem;padding:0.75rem;background:#f0fdf4;border-radius:8px;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#166534;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">2</span>
+                  GRADEワーキンググループの要件
+                </summary>
+                <div style="padding:1rem;font-size:0.9rem;color:#374151;">
+                  <p style="font-weight:bold;color:#166534;margin-bottom:0.4rem;">【背景と目的】</p>
+                  <p style="margin-bottom:0.75rem;">GRADEアプローチは、現在WHOやコクランを含む世界100以上の組織で採用されている推奨作成のデファクトスタンダードです。しかし、名ばかりの「GRADE適用」を防ぐため、GRADEグループは「公式にGRADEを使用したと主張するための必須要件」を明確に提示しました。</p>
+                  <p style="font-weight:bold;color:#166534;margin-bottom:0.4rem;">【アプローチの特徴と哲学】</p>
+                  <ul style="list-style:disc;padding-left:1.25rem;">
+                    <li style="margin-bottom:0.4rem;"><strong>「エビデンスの確実性」と「推奨の強さ」の明確な分離:</strong> 過去のガイドラインでは「エビデンスの質が高い＝強い推奨」と直結しがちでした。GRADEはこれを切り離し、エビデンスの確実性（高～非常に低）とは別に、推奨の強さ（強い／弱い・条件付き）を決定することを求めます。</li>
+                    <li style="margin-bottom:0.4rem;"><strong>EtDフレームワーク（Evidence to Decision）の使用:</strong> エビデンス（科学的根拠）は決定の「一部」に過ぎないという哲学です。推奨を決定するプロセスにおいて、エビデンスに加え、「患者の価値観や好み」「コスト・資源の消費」「実現可能性」「公平性」などの要素を網羅的かつ透明性をもって評価する枠組み（EtD）の明示的な使用を必須としています。</li>
+                    <li><strong>患者にとって重要なアウトカムの重視:</strong> 検査値の改善（サロゲートアウトカム）ではなく、死亡率、QOL、重大な副作用など、実際に患者の人生に影響を与える「重要なアウトカム」に焦点を当てることを求めています。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <!-- Guyatt -->
+              <details style="margin-bottom:1rem;" open>
+                <summary style="cursor:pointer;font-weight:bold;color:#7e22ce;font-size:0.95rem;padding:0.75rem;background:#fdf4ff;border-radius:8px;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+                  <span style="background:#7e22ce;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">3</span>
+                  Guyattら (2023) の「6つの質問 / 8つの領域」
+                </summary>
+                <div style="padding:1rem;font-size:0.9rem;color:#374151;">
+                  <p style="font-weight:bold;color:#7e22ce;margin-bottom:0.4rem;">【背景と目的】</p>
+                  <p style="margin-bottom:0.75rem;">IOMやGRADEが「作る側（開発者）」に向けたルールであるのに対し、Gordon Guyatt（EBMの提唱者の一人でありGRADEの中心人物）らが提唱したのは、「使う側（臨床医）」に向けた実践的なツールです。多忙な臨床医が、目の前にあるCPGを信用して患者に適用すべきかを迅速に判断するための枠組みを提供しました。</p>
+                  <p style="font-weight:bold;color:#7e22ce;margin-bottom:0.4rem;">【アプローチの特徴と哲学】</p>
+                  <ul style="list-style:disc;padding-left:1.25rem;">
+                    <li style="margin-bottom:0.4rem;"><strong>批判的吟味（Critical Appraisal）に特化:</strong> 開発の全プロセスを評価するのではなく、「最終的な推奨が本当に信頼できるか」を見抜くための急所（6つの質問）に絞り込んでいます。</li>
+                    <li style="margin-bottom:0.4rem;"><strong>「推奨とエビデンスのズレ」への警戒 (Q5):</strong> Guyattらが特に重視しているのが、エビデンスの質が低い（不確実性が高い）にもかかわらず、パネルの信念や利益相反によって「強い推奨（全員に実施すべき）」が出されているケースを見抜くことです。妥当な理由（致死的な状況での救命など）がない限り、低いエビデンスからの強い推奨はガイドラインの信頼性を大きく損なうとしています。</li>
+                    <li><strong>隠れたバイアスの検知 (Q2, Q3, Q6):</strong> 特定の治療法を推進するために、他の「代替案」が意図的に無視されていないか？都合の悪い副作用などの「患者にとって重要なアウトカム」が隠されていないか？製薬企業などの資金提供（COI）が推奨の方向に影響を与えていないか？これらを臨床医自身がチェックできるよう促しています。</li>
+                  </ul>
+                </div>
+              </details>
             </div>
           </div>
+
+          <!-- その他 tab -->
           <div class="tab-pane">
             <div class="placeholder-msg">
               <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+              <h3>その他</h3>
+              <p>このセクションのコンテンツは現在準備中です。今後のアップデートをお待ちください。</p>
             </div>
           </div>
         </div>
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">3 / 14</span>
+        <span class="page-indicator">3 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-4">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 4 / 14</div>
+        <div class="chapter-badge">Chapter 4 / 16</div>
         <h1>介入・診断検査・予後・曝露に関する質問</h1>
         <div class="en-title">Questions about interventions, diagnostic test, prognosis and exposures</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">CQ作成いろいろ</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">CQについてその他の情報</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -1315,31 +1746,314 @@ function checkAuth(){
 <hr class="section-divider">
       
           </div>
+          <!-- CQ作成いろいろ tab -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#0891b2);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">CQ（臨床の疑問）の作成・優先順位付け・アウトカム評価</h2>
+              <p style="color:#bae6fd;font-size:0.9rem;">新規作成時の構造化・更新時の UpPriority ツール・アウトカムの Utility 評価まで</p>
+            </div>
+
+            <div class="card" style="margin-bottom:1rem;background:#f0f9ff;border-left:4px solid #0891b2;padding:1rem;border-radius:0 8px 8px 0;">
+              <p style="color:#374151;font-size:0.9rem;">診療ガイドラインにおけるCQ（Clinical Question：臨床の疑問）の作成、および「新規作成時」「更新時（UpPriority）」の優先順位付けについて、具体例を大幅に拡充して詳細に解説します。</p>
+            </div>
+
+            <!-- 1. CQの具体的な作り方 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#0c4a6e;background:#f0f9ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">1. CQ（臨床の疑問）の具体的な作り方と原則</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">ガイドラインの推奨事項を策定するためには、まずシステマティックレビューの対象となる明確な質問（CQ）を構築する必要があります。CQはPICO（対象者/介入/比較対象/アウトカム）の枠組みを用いて標準化された構造で作成されます。</p>
+
+              <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#0c4a6e;margin-bottom:0.75rem;">A. CQ設定における重要な判断事項</h4>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;font-size:0.87rem;color:#374151;">
+                  <div style="background:#fff;border-left:3px solid #0891b2;padding:0.6rem;border-radius:0 6px 6px 0;">
+                    <strong>患者と介入の「広さ」の定義:</strong> 最も難しい決定は、患者と介入をどの程度広く定義するかです。<br>
+                    <span style="color:#6b7280;font-size:0.83rem;">具体例（抗血小板薬）: 「TIA患者」に限定するか、「TIAと脳卒中の患者」とするか、「あらゆる血管疾患（脳、心臓、末梢血管）の患者」まで広げるかという選択肢があります。同様に、介入を「特定用量のアスピリン」「全用量のアスピリン」「すべての抗血小板薬」のいずれにするかを決定します。</span><br>
+                    <span style="color:#0891b2;font-size:0.83rem;"><strong>原則:</strong> 対象患者や介入の範囲全体にわたって、効果の大きさが「ほぼ同じである」と生物学的に想定できる範囲で設定する必要があります。</span>
+                  </div>
+                  <div style="background:#fff;border-left:3px solid #0891b2;padding:0.6rem;border-radius:0 6px 6px 0;">
+                    <strong>比較対象（Comparator）の明確化:</strong> 複数の治療法が存在する場合、比較対象を明確にしなければ混乱を招きます。<br>
+                    <span style="color:#6b7280;font-size:0.83rem;">具体例（抗凝固薬）: フォンダパリヌクス、ヘパリン、エノキサパリンがそれぞれ推奨されている場合、それらが「抗凝固薬を使用しない場合」と比較されているのか、それとも「薬剤間に優先順位の勾配があるのか」をCQの段階で明示する必要があります。</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 緑内障CQ例 -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.75rem;">B. 具体例の大量提示：開放隅角緑内障ガイドラインのCQ</h4>
+                <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.75rem;">実際のガイドライン開発において、疾患を網羅するためにどのようなCQが作成されるのか、開放隅角緑内障のガイドライン更新検討で実際に使用された38個のCQから、代表的なものを分類して提示します。</p>
+
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+
+                  <details>
+                    <summary style="cursor:pointer;font-weight:bold;color:#1e40af;font-size:0.88rem;padding:0.4rem 0.6rem;background:#eff6ff;border-radius:6px;">【診断・スクリーニングに関するCQ】</summary>
+                    <ul style="list-style:disc;padding:0.5rem 0.5rem 0.3rem 1.5rem;font-size:0.85rem;color:#374151;">
+                      <li>成人患者において、開放隅角緑内障の発症リスク因子は何か？</li>
+                      <li>緑内障のリスク因子を持つ人々において、早期診断のためにどのようなスクリーニング検査をどれくらいの頻度で行うべきか？</li>
+                      <li>緑内障が疑われる人々において、診断とタイプの分類のために行うべき最小限の検査は何か？</li>
+                    </ul>
+                  </details>
+
+                  <details>
+                    <summary style="cursor:pointer;font-weight:bold;color:#166534;font-size:0.88rem;padding:0.4rem 0.6rem;background:#f0fdf4;border-radius:6px;">【薬物療法に関するCQ（比較対象を細かく設定）】</summary>
+                    <ul style="list-style:disc;padding:0.5rem 0.5rem 0.3rem 1.5rem;font-size:0.85rem;color:#374151;">
+                      <li>成人患者において、開放隅角緑内障の治療として副交感神経刺激薬とβ遮断薬のどちらが推奨されるか？</li>
+                      <li>成人患者において、炭酸脱水酵素阻害薬とβ遮断薬のどちらが推奨されるか？</li>
+                      <li>成人患者において、プロスタグランジンアナログとβ遮断薬のどちらが推奨されるか？</li>
+                      <li>成人患者において、固定用量配合剤と非固定配合剤のどちらの使用が推奨されるか？</li>
+                      <li>成人患者において、防腐剤フリーの薬剤と防腐剤入り薬剤のどちらの使用が推奨されるか？</li>
+                    </ul>
+                  </details>
+
+                  <details>
+                    <summary style="cursor:pointer;font-weight:bold;color:#7e22ce;font-size:0.88rem;padding:0.4rem 0.6rem;background:#fdf4ff;border-radius:6px;">【レーザー・外科的治療に関するCQ】</summary>
+                    <ul style="list-style:disc;padding:0.5rem 0.5rem 0.3rem 1.5rem;font-size:0.85rem;color:#374151;">
+                      <li>成人患者において、ダイオードレーザー線維柱帯形成術とアルゴンレーザー線維柱帯形成術のどちらが推奨されるか？</li>
+                      <li>成人患者において、選択的レーザー線維柱帯形成術とアルゴンレーザー線維柱帯形成術のどちらが推奨されるか？</li>
+                      <li>成人患者において、レーザー線維柱帯形成術と薬物療法のどちらが推奨されるか？</li>
+                      <li>成人患者において、線維柱帯切除術（トラベクレクトミー）と薬物療法のどちらが推奨されるか？</li>
+                      <li>成人患者において、非穿孔性手術と線維柱帯切除術のどちらが推奨されるか？</li>
+                      <li>成人患者において、Ex-Pressインプラントの使用と線維柱帯切除術のどちらが推奨されるか？</li>
+                      <li>成人患者において、低侵襲緑内障手術（MICS）と線維柱帯切除術のどちらが推奨されるか？</li>
+                    </ul>
+                  </details>
+
+                  <details>
+                    <summary style="cursor:pointer;font-weight:bold;color:#92400e;font-size:0.88rem;padding:0.4rem 0.6rem;background:#fffbeb;border-radius:6px;">【麻酔・フォローアップに関するCQ】</summary>
+                    <ul style="list-style:disc;padding:0.5rem 0.5rem 0.3rem 1.5rem;font-size:0.85rem;color:#374151;">
+                      <li>成人患者の緑内障手術において、点眼麻酔と球後麻酔のどちらが推奨されるか？</li>
+                      <li>成人患者の緑内障手術において、点眼麻酔とテノン嚢下麻酔のどちらが推奨されるか？</li>
+                      <li>開放隅角緑内障の成人の経過観察において、どのフォローアップ検査をどれくらいの頻度で実施すべきか？</li>
+                    </ul>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. 新規作成時の優先順位付け -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#0c4a6e;background:#f0f9ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">2. 新規ガイドライン作成時のCQの優先順位付け（重要度の決定）</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">ガイドラインパネルは、ブレインストーミング等で抽出された膨大なCQのリスト（数十〜数百のCQ）を、限られた時間とリソース内で実行可能な数（通常は1ガイドラインあたり約20個程度）に絞り込む必要があります。</p>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">米国血液学会（ASH）のVTEガイドライン開発（10のパネル、合計469のCQを評価）で行われた手法では、パネルメンバーに対し、各CQについて「全体的な重要性」と以下の6つの基準を<strong>9点スケール（1：最も重要でない ～ 9：最も重要）</strong>でオンライン調査を用いて評価させました。</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem;">
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">① 実務上の一般的な質問（Common in practice）</strong>
+                  臨床医が日常的に直面する頻度の高い疑問かどうか。
+                </div>
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">② 実務において不確実性があるか（Uncertainty in practice）</strong>
+                  臨床現場で「どう対応すべきか」迷いが生じている領域かどうか。
+                </div>
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">③ 考慮するべき新しい研究証拠があるか（New evidence）</strong>
+                  推奨を作成するための十分かつ新しいエビデンスが存在するかどうか。
+                </div>
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">④ 実務におけるばらつきが関連（Variation in practice）</strong>
+                  医師や施設によって治療方針が異なり、標準化の必要性が高いかどうか。
+                </div>
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">⑤ 高いリソース使用/コストと関連（Resource use/cost）</strong>
+                  患者の予後に重大な影響を与えるか、あるいは医療経済的なインパクトが大きいかどうか。
+                </div>
+                <div style="background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem;font-size:0.85rem;">
+                  <strong style="color:#0c4a6e;display:block;margin-bottom:0.2rem;">⑥ 以前に十分に取り上げられていないか（Not previously addressed）</strong>
+                  既存のガイドライン等で未解決のままになっている問題かどうか。
+                </div>
+              </div>
+
+              <div style="background:#f8fafc;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                <h4 style="font-weight:bold;color:#374151;margin-bottom:0.6rem;">優先順位の決定と分析結果（VTEガイドライン469問の結果）</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;font-size:0.85rem;">
+                  <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;text-align:center;">
+                    <div style="font-weight:bold;color:#1e40af;font-size:1rem;">119問</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">25.4%</div>
+                    <div style="font-weight:600;color:#1e40af;margin-top:0.2rem;">高優先度（7〜9点）</div>
+                  </div>
+                  <div style="background:#fefce8;border-radius:6px;padding:0.6rem;text-align:center;">
+                    <div style="font-weight:bold;color:#854d0e;font-size:1rem;">340問</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">72.5%</div>
+                    <div style="font-weight:600;color:#854d0e;margin-top:0.2rem;">重要だが高優先度ではない（4〜6点）</div>
+                  </div>
+                  <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;text-align:center;">
+                    <div style="font-weight:bold;color:#6b7280;font-size:1rem;">10問</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">2.1%</div>
+                    <div style="font-weight:600;color:#6b7280;margin-top:0.2rem;">低優先度（1〜3点）</div>
+                  </div>
+                </div>
+                <p style="font-size:0.82rem;color:#374151;margin-top:0.6rem;"><strong>分析的知見:</strong> 回帰分析の結果、これら6つの基準はすべて「全体的な重要性」の有意な予測因子でした。中でも「実務で一般的な質問であること」と「以前に対処されていないこと」が、CQの重要性を決定づける最も強い関連要因でした。</p>
+              </div>
+            </div>
+
+            <!-- 3. UpPriority -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#0c4a6e;background:#f0f9ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">3. 既存ガイドライン更新時のCQ優先順位付け：UpPriorityツールの超詳細解説</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">新しいエビデンスが絶えず出現するため、ガイドラインは定期的な監視と更新が必要です。しかし、更新は方法論的・臨床的専門知識、プロジェクト管理において非常にリソースと時間がかかるプロセスです。そのため、「1つのガイドライン内の、どのCQ（またはセクション）を最も優先して更新すべきか」を特定するための実用的なツールとして<strong>「UpPriorityツール」</strong>が開発されました。</p>
+              <p style="font-size:0.85rem;color:#374151;margin-bottom:1rem;background:#f0f9ff;padding:0.6rem;border-radius:6px;">UpPriorityツールは、以下の6つのアイテムを<strong>7点のリッカートスケール（1：強く反対＝更新の優先度が低い 〜 7：強く賛成＝更新の優先度が高い）</strong>で評価します。</p>
+
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+
+                <details open>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 1: 古くなった推奨が安全性に与える影響</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> 現在の（古くなった）推奨事項に誤って従った場合、患者に害を及ぼす可能性があるか（安全性アラートなどが出ているか）を評価します。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点（低優先）:</strong> 古い推奨事項に従っても、患者に害が及ぶ可能性は低い。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点（高優先）:</strong> 医薬品の副作用に関する新たな安全性アラートが発出されており、古い推奨事項に従うと患者に重大な害を及ぼす可能性が高い。</div>
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 2: 新しい関連証拠の利用可能性</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> 臨床質問や推奨事項を修正する可能性のある新しい関連証拠（SR、RCT、観察研究など）が存在するかを評価します。文献検索だけでなく、臨床専門家のインプットでも判断されます。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点:</strong> CQに関連する新しい証拠が存在しない、または存在しても現在の推奨事項に影響を与えない。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点:</strong> 推奨の方向性や強さを覆すような決定的な新しいRCTが発表された。</div>
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 3: 臨床的質問の文脈上の関連性</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> そのCQが、現在の医療環境下において、疾患の有病率、負担、または臨床実践のばらつきといった関心要因によって依然として支持されているか（＝現場で今でも問われているか）を評価します。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点:</strong> すでに完全に標準的な治療として定着しており、あえてCQとして問う必要性がなくなっている。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点:</strong> そのCQのテーマについて現在も臨床現場で意見が分かれており、実践上の関連性が高い。</div>
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 4: 臨床的質問の方法論的適用可能性</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> 現在のCQが、現在の医療環境における関心要素（対象者、介入、比較対象、アウトカム）を引き続き適切にカバーしているかを評価します。新しいサブグループや新しい患者報告アウトカム、新しい介入方法を含める必要が生じている場合、元のCQの構造（PICO）自体を変更しなければならず、検索式やレビュープロトコルの修正が必要になります。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点:</strong> 元のCQには含まれていない新しい介入や対象集団が登場しており、元のCQのままでは現在の医療をカバーできない。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点:</strong> 既存のCQのPICO構造のままで、現在の関心要素を十分にカバーできる。</div>
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 5: ユーザーの関心</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> 患者、医療提供者、医療システム、その他のステークホルダーからの、そのCQと推奨事項に対する現在の関心の高さ（引用数、ダウンロード数、ニュース、議論、ウェブサイトのアクセス数など）を推定します。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点:</strong> そのCQに関する話題がほとんどなく、現在の実践において影響力のあるトピックとは見なされていない。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点:</strong> 学会やメディア、患者団体においてそのテーマへの関心が急速に高まっている。</div>
+                    </div>
+                  </div>
+                </details>
+
+                <details>
+                  <summary style="cursor:pointer;font-size:0.9rem;padding:0.6rem 0.75rem;background:#f0f9ff;border-radius:8px;font-weight:bold;color:#0c4a6e;">Item 6: 医療へのアクセスに与える影響</summary>
+                  <div style="padding:0.75rem;font-size:0.85rem;color:#374151;">
+                    <p style="margin-bottom:0.4rem;"><strong>解説:</strong> その推奨事項が、現在の医療環境におけるアクセスや保険適用（資金提供の決定、国民保健サービスへの治療の導入、国外への要請、希少疾病用医薬品へのアクセスなど）に対して法的な拘束力や影響力を持つかを評価します。</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.82rem;">
+                      <div style="background:#f0fdf4;border-radius:4px;padding:0.4rem;"><strong style="color:#166534;">1点:</strong> 推奨事項は資金提供の決定に法的拘束力を持たず、アクセスや保険適用に影響を与えない。</div>
+                      <div style="background:#fff1f2;border-radius:4px;padding:0.4rem;"><strong style="color:#b91c1c;">7点:</strong> このCQに対する推奨が、国や保険者の資金提供（保険適用）の可否に直結し、患者の医療アクセスに重大な影響を及ぼす。</div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+              <div style="background:#f0f9ff;border-radius:8px;padding:0.75rem;margin-top:0.75rem;font-size:0.85rem;">
+                <h4 style="font-weight:bold;color:#0c4a6e;margin-bottom:0.4rem;">UpPriorityツールの適用プロセス</h4>
+                <ol style="padding-left:1.25rem;color:#374151;">
+                  <li style="margin-bottom:0.3rem;"><strong>誰が評価するか:</strong> 理想的には、元のガイドライン開発グループ（GDG）のメンバーがツールを適用すべきです。それが不可能な場合は、CQのテーマとガイドライン手法に精通した少なくとも4名の評価者が関与することが推奨されます。</li>
+                  <li><strong>手順:</strong> ガイドラインのマッピング（CQ、推奨、参照文献の特定）を行い、評価調査を作成した上で、すべてのCQに対して上記6項目を評価し、スコアを計算・ランク付けし、最終的に更新するCQを決定してレポートを作成します。</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 4. アウトカムのUtility評価 -->
+            <div class="card" style="margin-bottom:1.5rem;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#0c4a6e;background:#f0f9ff;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1rem;">4. CQを構成する「アウトカム」の重要度とUtility（効用）評価</h3>
+              <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">CQを評価し推奨を作成するためには、介入による「利益」と「害」のバランスを判定するための「アウトカム（結果）」の重要度を事前に決めておく必要があります。</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:1rem;">
+                <div style="background:#eff6ff;border-radius:8px;padding:0.75rem;font-size:0.85rem;text-align:center;">
+                  <div style="font-size:1.2rem;font-weight:bold;color:#1e40af;margin-bottom:0.3rem;">7〜9点</div>
+                  <div style="font-weight:bold;color:#1e40af;margin-bottom:0.3rem;">Critical（極めて重要）</div>
+                  <div style="color:#374151;font-size:0.8rem;">死亡率、心筋梗塞、脳卒中、重度の出血など。全体の質の判定に直接影響する。</div>
+                </div>
+                <div style="background:#fefce8;border-radius:8px;padding:0.75rem;font-size:0.85rem;text-align:center;">
+                  <div style="font-size:1.2rem;font-weight:bold;color:#854d0e;margin-bottom:0.3rem;">4〜6点</div>
+                  <div style="font-weight:bold;color:#854d0e;margin-bottom:0.3rem;">Important（重要）</div>
+                  <div style="color:#374151;font-size:0.8rem;">軟部組織の石灰化による痛みや機能低下、入院期間の延長など。</div>
+                </div>
+                <div style="background:#f8fafc;border-radius:8px;padding:0.75rem;font-size:0.85rem;text-align:center;">
+                  <div style="font-size:1.2rem;font-weight:bold;color:#6b7280;margin-bottom:0.3rem;">1〜3点</div>
+                  <div style="font-weight:bold;color:#6b7280;margin-bottom:0.3rem;">Low importance（低）</div>
+                  <div style="color:#374151;font-size:0.8rem;">軽度のアレルギー反応など、患者への影響が限定的なもの。</div>
+                </div>
+              </div>
+
+              <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                <h4 style="font-weight:bold;color:#92400e;margin-bottom:0.5rem;">代替（サロゲート）アウトカムの注意点</h4>
+                <p style="font-size:0.85rem;color:#374151;margin-bottom:0.4rem;">重要なアウトカム（例：死亡や骨折）の発生頻度が低い、または長期間を要する場合、臨床試験では代替（サロゲート）アウトカム（例：冠動脈石灰化、骨密度など）が測定されることがよくあります。</p>
+                <p style="font-size:0.85rem;color:#374151;">ガイドライン開発者は、サロゲートに対する介入の影響が、患者にとって重要なアウトカムへの影響をそのまま反映していると安易に仮定してはなりません（これまでに多くの誤りが証明されています）。GRADEアプローチでは、本来の「患者にとって重要なアウトカム」を指定した上で、その代替としてサロゲートを使用せざるを得ないことを明記し、最終的に証拠の質（間接性）を格下げ（ダウングレード）することが求められます。</p>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:1rem;">
+                <h4 style="font-weight:bold;color:#166534;margin-bottom:0.5rem;">アウトカムのUtility（効用・価値）の評価</h4>
+                <p style="font-size:0.85rem;color:#374151;margin-bottom:0.4rem;">患者がその健康状態をどう価値づけるか（＝Utility）を数値化するため、パネルメンバーは0（死亡）から100（完全な健康）までのVisual Analogue Scale（VAS）を用いて、各アウトカムの効用を評価します。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;font-size:0.82rem;margin-top:0.5rem;">
+                  <div style="background:#fff;border-radius:4px;padding:0.4rem;text-align:center;border:1px solid #bbf7d0;">
+                    <div style="font-weight:bold;color:#166534;">真の陰性診断結果</div>
+                    <div style="font-size:1.1rem;font-weight:bold;color:#166534;">0.91</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">（高く評価）</div>
+                  </div>
+                  <div style="background:#fff;border-radius:4px;padding:0.4rem;text-align:center;border:1px solid #fde68a;">
+                    <div style="font-weight:bold;color:#854d0e;">重度の肺塞栓症</div>
+                    <div style="font-size:1.1rem;font-weight:bold;color:#854d0e;">0.25</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">（低く評価）</div>
+                  </div>
+                  <div style="background:#fff;border-radius:4px;padding:0.4rem;text-align:center;border:1px solid #fecaca;">
+                    <div style="font-weight:bold;color:#b91c1c;">出血性脳卒中</div>
+                    <div style="font-size:1.1rem;font-weight:bold;color:#b91c1c;">0.12</div>
+                    <div style="color:#6b7280;font-size:0.78rem;">（非常に低く評価）</div>
+                  </div>
+                </div>
+                <p style="font-size:0.82rem;color:#374151;margin-top:0.5rem;">このようなUtility値は、有益性と有害性のバランスを秤にかける際の重要な基礎データとなります。</p>
+              </div>
+            </div>
+
+            <!-- 参考文献 -->
+            <div class="card" style="margin-bottom:1rem;border-left:4px solid #6b7280;">
+              <div style="background:#f1f5f9;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+                <h4 style="font-size:0.95rem;font-weight:bold;color:#374151;margin:0;">参考文献</h4>
+              </div>
+              <ul style="font-size:0.82rem;color:#4b5563;line-height:1.9;padding-left:1.25rem;">
+                <li>Guyatt GH, et al. GRADE guidelines: 2. Framing the question and deciding on important outcomes. <em>J Clin Epidemiol</em>. 2011;64(4):395-400.</li>
+                <li>Wiercioch W, et al. New methods facilitated the process of prioritizing questions and health outcomes in guideline development. <em>J Clin Epidemiol</em>. 2022;143:91-104.</li>
+                <li>Sanabria AJ, et al. The UpPriority tool was developed to guide the prioritization of clinical guideline questions for updating. <em>J Clin Epidemiol</em>. 2020;126:80-92.</li>
+              </ul>
             </div>
           </div>
+
+          <!-- CQについてその他の情報 tab -->
           <div class="tab-pane">
             <div class="placeholder-msg">
               <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+              <h3>CQについてその他の情報</h3>
+              <p>このセクションのコンテンツは現在準備中です。今後のアップデートをお待ちください。</p>
             </div>
           </div>
         </div>
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">4 / 14</span>
+        <span class="page-indicator">4 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-5">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 5 / 14</div>
+        <div class="chapter-badge">Chapter 5 / 16</div>
         <h1>アウトカム（Outcomes）</h1>
         <div class="en-title">Outcomes</div>
       </div>
@@ -1444,13 +2158,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">5 / 14</span>
+        <span class="page-indicator">5 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-6">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 6 / 14</div>
+        <div class="chapter-badge">Chapter 6 / 16</div>
         <h1>介入の確実性評価の原則</h1>
         <div class="en-title">Principles for assessing the certainty of interventions</div>
       </div>
@@ -1563,13 +2277,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">6 / 14</span>
+        <span class="page-indicator">6 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-7">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 7 / 14</div>
+        <div class="chapter-badge">Chapter 7 / 16</div>
         <h1>Risk of bias（ランダム化試験）</h1>
         <div class="en-title">Risk of bias - randomized trials</div>
       </div>
@@ -1940,13 +2654,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">7 / 14</span>
+        <span class="page-indicator">7 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-8">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 8 / 14</div>
+        <div class="chapter-badge">Chapter 8 / 16</div>
         <h1>非一貫性（Inconsistency）</h1>
         <div class="en-title">Inconsistency</div>
       </div>
@@ -2241,13 +2955,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">8 / 14</span>
+        <span class="page-indicator">8 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-9">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 9 / 14</div>
+        <div class="chapter-badge">Chapter 9 / 16</div>
         <h1>非直接性（Indirectness）</h1>
         <div class="en-title">Indirectness</div>
       </div>
@@ -2490,13 +3204,13 @@ function checkAuth(){
         
         <div class="page-nav">
           <button class="nav-btn secondary nav-prev">← 前の章</button>
-          <span class="page-indicator">9 / 14</span>
+          <span class="page-indicator">9 / 16</span>
           <button class="nav-btn nav-next">次の章 →</button>
         </div>
       </div>
     <div class="page" id="page-10">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 10 / 14</div>
+        <div class="chapter-badge">Chapter 10 / 16</div>
         <h1>不精確さ（Imprecision）</h1>
         <div class="en-title">Imprecision</div>
       </div>
@@ -2939,13 +3653,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">10 / 14</span>
+        <span class="page-indicator">10 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-11">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 11 / 14</div>
+        <div class="chapter-badge">Chapter 11 / 16</div>
         <h1>Dissemination bias（情報発信バイアス）</h1>
         <div class="en-title">Dissemination bias</div>
       </div>
@@ -3280,13 +3994,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">11 / 14</span>
+        <span class="page-indicator">11 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-12">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 12 / 14</div>
+        <div class="chapter-badge">Chapter 12 / 16</div>
         <h1>Evidence to Decisionフレームワーク入門</h1>
         <div class="en-title">Introduction to the Evidence to Decision frameworks</div>
       </div>
@@ -3643,13 +4357,13 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">12 / 14</span>
+        <span class="page-indicator">12 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
     <div class="page" id="page-13">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 13 / 14</div>
+        <div class="chapter-badge">Chapter 13 / 16</div>
         <h1>GRADE推奨</h1>
         <div class="en-title">GRADE recommendations</div>
       </div>
@@ -4388,7 +5102,7 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">13 / 14</span>
+        <span class="page-indicator">13 / 16</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
@@ -4934,7 +5648,63 @@ function checkAuth(){
       </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev">← 前の章</button>
-        <span class="page-indicator">14 / 14</span>
+        <span class="page-indicator">14 / 16</span>
+        <button class="nav-btn nav-next" >次の章 →</button>
+      </div>
+    </div>
+
+    <!-- page-15: 統計・連続量 -->
+    <div class="page" id="page-15">
+      <div class="page-header">
+        <div class="chapter-badge">Chapter 15 / 16</div>
+        <h1>統計・連続量</h1>
+        <div class="en-title">Statistics / Continuous outcomes</div>
+      </div>
+      <div class="page-body">
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab(this, 0)">概要</button>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="placeholder-msg">
+              <i>🚧</i>
+              <h3>工事中</h3>
+              <p>このチャプターは現在作成中です。今後のアップデートをお待ちください。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav">
+        <button class="nav-btn secondary nav-prev" >← 前の章</button>
+        <span class="page-indicator">15 / 16</span>
+        <button class="nav-btn nav-next" >次の章 →</button>
+      </div>
+    </div>
+
+    <!-- page-16: ネットワークメタ分析・マルチ介入 -->
+    <div class="page" id="page-16">
+      <div class="page-header">
+        <div class="chapter-badge">Chapter 16 / 16</div>
+        <h1>ネットワークメタ分析・マルチ介入</h1>
+        <div class="en-title">Network Meta-analysis / Multiple interventions</div>
+      </div>
+      <div class="page-body">
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab(this, 0)">概要</button>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="placeholder-msg">
+              <i>🚧</i>
+              <h3>工事中</h3>
+              <p>このチャプターは現在作成中です。今後のアップデートをお待ちください。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav">
+        <button class="nav-btn secondary nav-prev" >← 前の章</button>
+        <span class="page-indicator">16 / 16</span>
         <button class="nav-btn nav-next" disabled>次の章 →</button>
       </div>
     </div>
