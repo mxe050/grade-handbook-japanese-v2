@@ -189,7 +189,7 @@ function checkAuth(){
         <button class="toc-btn" data-idx="13">
           <span class="toc-num">13</span>
           <span class="toc-text">
-            GRADE推奨
+            GRADE推奨・パネル会議
             <span class="en">GRADE recommendations</span>
           </span>
         </button>
@@ -198,7 +198,7 @@ function checkAuth(){
         <button class="toc-btn" data-idx="14">
           <span class="toc-num">★</span>
           <span class="toc-text">
-            トピックス
+            閾値/価値観・委員会設立・P値
             <span class="en">Topics</span>
           </span>
         </button>
@@ -2060,8 +2060,8 @@ function checkAuth(){
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
-          <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">GRADEにおけるアウトカムの解説</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">アウトカムのトピックス</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -2140,20 +2140,168 @@ function checkAuth(){
 <hr class="section-divider">
       
           </div>
+          <!-- Tab 1: GRADEにおけるアウトカムの解説 -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="content-section">
+              <h2 class="section-title">第1部：GRADEにおけるアウトカムの解説</h2>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. 診療ガイドライン作成の出発点：PICOとアウトカムの役割</summary>
+                <div class="accordion-body">
+                  <p>GRADEアプローチにおいて、すべての作業はCQ（Clinical Question）の定式化から始まる。CQは「P（患者）」「I（介入）」「C（比較）」「<strong>O（アウトカム）</strong>」の4要素で構成される。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>Oは「ものさし」</strong>：どのものさしを用いるかによって、その治療が「強く推奨」されるか「推奨されない」かは劇的に変化する。GRADEの最大の特徴は、このものさしの選び方に厳密なルールと患者中心の哲学を持ち込んだ点にある。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2. GRADEが定義するアウトカムの重要度（1〜9点スコアリング）</summary>
+                <div class="accordion-body">
+                  <p>パネル委員はエビデンスを探し始める前に、アウトカムの重要度を事前に決定しなければならない。唯一の判断基準は<strong>「患者にとっての重要性（Patient-important outcomes）」</strong>。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-top:0.8rem;">
+                    <div style="background:#dcfce7;border:1px solid #16a34a;border-radius:8px;padding:1rem;text-align:center;">
+                      <div style="font-size:1.4rem;font-weight:bold;color:#15803d;">7〜9点</div>
+                      <div style="font-weight:bold;color:#15803d;margin:0.3rem 0;">意思決定に不可欠</div>
+                      <div style="font-size:0.83rem;color:#166534;">死亡率低下、心筋梗塞発症、重篤な有害事象、QOL著しい改善など<br><br>→ 推奨の方向性と強さを決める最重要項目</div>
+                    </div>
+                    <div style="background:#fef9c3;border:1px solid #ca8a04;border-radius:8px;padding:1rem;text-align:center;">
+                      <div style="font-size:1.4rem;font-weight:bold;color:#a16207;">4〜6点</div>
+                      <div style="font-weight:bold;color:#a16207;margin:0.3rem 0;">重要だが不可欠でない</div>
+                      <div style="font-size:0.83rem;color:#713f12;">数日で回復する軽度下痢、入院期間半日短縮、軽微な疲労感など<br><br>→ 収集・提示するが推奨の決定打にはならない</div>
+                    </div>
+                    <div style="background:#f1f5f9;border:1px solid #94a3b8;border-radius:8px;padding:1rem;text-align:center;">
+                      <div style="font-size:1.4rem;font-weight:bold;color:#475569;">1〜3点</div>
+                      <div style="font-weight:bold;color:#475569;margin:0.3rem 0;">重要でない</div>
+                      <div style="font-size:0.83rem;color:#64748b;">患者が気づかないレベルの微細な生化学的マーカー変動など<br><br>→ ガイドライン評価対象から完全に除外</div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">3. なぜアウトカムを絞る必要があるのか？（多すぎるアウトカムの弊害）</summary>
+                <div class="accordion-body">
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>GRADEの強い要求</strong>：意思決定に不可欠なアウトカム（7〜9点）は<strong>最大7個（理想はそれ以下）</strong>に絞り込むこと。これは「人間の認知限界と情報処理の破綻」を防ぐためである。
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.8rem;border-radius:6px;">
+                      <strong>理由1：認知負荷（ワーキングメモリ）の限界</strong><br>
+                      心理学の「マジカルナンバー（7±2）」の通り、アウトカムが15個あると多次元パラメーターの同時比較考量は不可能。情報量が処理能力を超えると人間は思考をショートカットする。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                      <strong>理由2：認知バイアスの発動とチェリーピッキング</strong><br>
+                      大量のアウトカムが提示されると：<br>
+                      ・<strong>専門性バイアス</strong>：各委員が自分の専門領域の1〜2個だけに注目し残りを無視<br>
+                      ・<strong>利用可能性ヒューリスティック</strong>：直近の重症患者の記憶に引きずられ特定の副作用を過大評価<br>
+                      →「総合的に見て有益か」という議論ができず、透明性・客観性が失われる
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">4. 真のアウトカムと代理アウトカムの峻別</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.8rem;">
+                    <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#15803d;margin-bottom:0.4rem;">真のアウトカム</h4>
+                      <p style="font-size:0.88rem;">患者自身が直接感じる、または患者の人生・生活に直接影響を与える結果。</p>
+                      <p style="font-size:0.83rem;color:#555;margin-top:0.4rem;">例：生存期間延長、脳卒中・心筋梗塞の予防、痛みの消失、視力の回復、QOL維持</p>
+                      <div style="background:#dcfce7;padding:0.4rem;border-radius:4px;font-size:0.82rem;margin-top:0.4rem;color:#15803d;font-weight:bold;">ガイドラインは原則としてこれに基づいて推奨を決定</div>
+                    </div>
+                    <div style="background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:1rem;">
+                      <h4 style="color:#b45309;margin-bottom:0.4rem;">代理アウトカム（Surrogate）</h4>
+                      <p style="font-size:0.88rem;">真のアウトカムの「代わり」として測定される検査値・画像所見など。</p>
+                      <p style="font-size:0.83rem;color:#555;margin-top:0.4rem;">例：血圧低下、HbA1c低下、骨密度増加、腫瘍縮小、コレステロール値低下</p>
+                      <div style="background:#fef3c7;padding:0.4rem;border-radius:4px;font-size:0.82rem;margin-top:0.4rem;color:#b45309;font-weight:bold;">短期で結果が出る・コストが安い利点あり</div>
+                    </div>
+                  </div>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:1rem;border-radius:6px;">
+                    <strong>致命的問題点</strong>：「代理アウトカムが改善しても、真のアウトカムが改善するとは限らない（悪化することすらある）」<br>
+                    <strong>歴史的教訓（CAST試験）</strong>：不整脈（代理）を強力に抑える新薬 → 薬の毒性により突然死（真）が大幅増加。<br>
+                    <strong>GRADEでの扱い</strong>：代理アウトカムのみのデータ → 「非直接性（Indirectness）」でダウングレード → 「強い推奨」が極めて困難になる。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">5. アウトカムから「最終的な推奨」への橋渡し</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#3b82f6;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">1</span>
+                      <div><strong>全体的なエビデンスの確実性の決定</strong>：「不可欠に重要なアウトカム」のうち<em>最も確実性が低いエビデンス</em>が介入全体の総合確実性として採用される（意思決定の鎖は「最も弱い環」の強度に依存）。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#3b82f6;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">2</span>
+                      <div><strong>絶対効果による提示</strong>：SoFテーブルでは「相対リスク（20%減）」ではなく<em>「絶対効果（1000人治療したら心筋梗塞を何人減らせて、重篤な出血が何人増えるか）」</em>で提示。同じ土俵（人数）で利益と害を比較考量できる。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#3b82f6;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">3</span>
+                      <div><strong>価値観と好みの反映（EtDフレームワーク）</strong>：「死亡5人減少の利益」と「重大副作用20人増加の害」のバランスが患者に受け入れられるかをパネルで議論 → 「推奨の方向（する/しない）」と「強さ（強い/弱い）」を決定。</div>
+                    </div>
+                  </div>
+                  <p style="font-size:0.85rem;color:#777;margin-top:0.8rem;">📄 Guyatt GH, et al. GRADE guidelines: 2. J Clin Epidemiol. 2011;64(4):395-400.</p>
+                </div>
+              </details>
             </div>
           </div>
+
+          <!-- Tab 2: アウトカムのトピックス -->
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📊</i>
-              <h3>CoreGRADEフローチャート</h3>
-              <p>このセクションのフローチャートは現在準備中です。今後のアップデートをお待ちください。</p>
+            <div class="content-section">
+              <h2 class="section-title">第2部：アウトカムのトピックス</h2>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. 複合アウトカムの功罪：統計学的メリットと臨床的ミスリード</summary>
+                <div class="accordion-body">
+                  <p>近年、循環器領域などで「複合アウトカム（Composite outcomes）」が頻繁に用いられる。例：MACE＝心血管死＋非致死性心筋梗塞＋非致死性脳卒中の複合。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:0.8rem 0;">
+                    <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                      <strong style="color:#15803d;">メリット（なぜ使われるか）</strong><br>
+                      <p style="font-size:0.88rem;margin-top:0.4rem;">複数イベントを合算 → 統計的検出力が高まる → 必要患者数の削減、試験期間の短縮 → 研究者・企業側の大きなメリット。</p>
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                      <strong style="color:#dc2626;">デメリット（危険性）</strong><br>
+                      <p style="font-size:0.88rem;margin-top:0.4rem;">構成する個々のアウトカムの「患者にとっての重要度」が全く異なる。「心血管死（極めて重大）」と「入院を要する狭心症（重要だが死には直結しない）」を同列に足し合わせる。</p>
+                    </div>
+                  </div>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                    <strong>頻発する問題</strong>：「死亡は全く減っていないが、軽度な狭心症による入院が大きく減ったため足し算すると有意差が出た」→「この薬は心血管イベント（複合）を防ぐので強く推奨する」→患者に対して「命が助かる薬だ」という重大なミスリード。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2. がん領域におけるアウトカムの特異性と複雑性</summary>
+                <div class="accordion-body">
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <strong>OS（全生存期間）のジレンマ</strong>：がん治療の絶対的な「真のアウトカム」はOS（Overall Survival）とQOL向上。しかし近年の治療成績向上により、OSに差が出るまで数年〜十数年の追跡が必要 → 新薬開発スピードに追いつけない。
+                  </div>
+
+                  <h4 style="margin-bottom:0.5rem;">PFS（無増悪生存期間）への依存とその限界</h4>
+                  <p>早期承認のため、PFS（がんが画像上進行せず安定している期間）やORR（奏効率）といった代理アウトカムが多用される。しかし<strong>「PFSが延長してもOSが延長しない」</strong>現象が頻発する。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.5rem;margin:0.6rem 0;">
+                    <div style="background:#fff7ed;border-left:3px solid #f97316;padding:0.6rem;border-radius:4px;font-size:0.88rem;">
+                      <strong>後治療（クロスオーバー）の影響</strong>：新薬群に割り付けられなかった患者も病勢進行後に新薬を使える → 最終的な生存期間の差が薄まる。
+                    </div>
+                    <div style="background:#fef2f2;border-left:3px solid #ef4444;padding:0.6rem;border-radius:4px;font-size:0.88rem;">
+                      <strong>毒性による相殺</strong>：PFSを延長するため強力な抗がん剤を長期投与 → 副作用蓄積により命を縮めたり次の治療体力を奪う。
+                    </div>
+                  </div>
+
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>がんガイドラインにおける推奨の難しさ</strong>：「PFSが延長したから直ちに強い推奨」とするのではなく、毒性増悪、QOL低下、最終的なOSへの寄与の可能性を総合的に議論 → 多くの場合「患者との共同意思決定（Shared Decision Making）」を前提とした<strong>「条件付きの推奨（弱い推奨）」</strong>にとどめる。
+                  </div>
+
+                  <p style="font-size:0.85rem;color:#777;margin-top:0.8rem;">📄 参考：Guyatt GH et al. J Clin Epidemiol. 2011 / JAMA Oncology 2015 / BMC Medicine 2017</p>
+                </div>
+              </details>
             </div>
           </div>
+
         </div>
 </div>
       <div class="page-nav">
@@ -4364,7 +4512,7 @@ function checkAuth(){
     <div class="page" id="page-13">
       <div class="page-header">
         <div class="chapter-badge">Chapter 13 / 16</div>
-        <h1>GRADE推奨</h1>
+        <h1>GRADE推奨・パネル会議</h1>
         <div class="en-title">GRADE recommendations</div>
       </div>
       <div class="page-body">
@@ -4372,6 +4520,8 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">Guyatt先生Q&amp;A</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">パネル会議実例</button>
+          <button class="tab-btn" onclick="switchTab(this, 4)">パネル会議シミュレーション</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -5098,6 +5248,198 @@ function checkAuth(){
               </div>
             </div>
           </div>
+
+          <!-- Tab 3: パネル会議実例 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">パネル会議実例</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">Guyatt先生が講演を行ったりしている欧州泌尿器科学会（EAU）のパネリスト勉強会とパネル会議の事例。</p>
+
+              <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #2563eb;">
+                <div style="background:#eff6ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                  <h3 style="font-size:1.05rem;font-weight:bold;color:#1e40af;margin-bottom:0.3rem;">1. アムステルダムで開催された「guidelines トレーニング方法論コース」</h3>
+                </div>
+                <img src="coreGRADE/images/panel1.jpg" alt="EAUガイドライン トレーニング方法論コース アムステルダム" style="width:100%;max-width:600px;border-radius:8px;border:1px solid #e2e8f0;display:block;margin:0 auto 1rem;" loading="lazy">
+                <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">新しく加わったパネルメンバーや患者代表の方々と共に過ごした1日半。そこでは、PICO質問の策定からバイアス評価、エビデンスの統合に至るまで、ガイドライン作成の根幹を支える厳格な手法を徹底的に共有しました。</p>
+                  <p style="font-size:0.82rem;color:#6b7280;">投稿先：LinkedIn (María J. Ribal) — #EAUguidelines #guidelinemethodology</p>
+                </div>
+              </div>
+
+              <div class="card" style="margin-bottom:1.5rem;border-left:4px solid #7c3aed;">
+                <div style="background:#f5f3ff;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+                  <h3 style="font-size:1.05rem;font-weight:bold;color:#4c1d95;margin-bottom:0.3rem;">2. 2026年欧州泌尿器科学会（EAU）腎細胞がん（RCC）ガイドライン策定委員会</h3>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
+                  <img src="coreGRADE/images/panel2.jpg" alt="EAU RCCガイドライン パネル会議 2026" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;" loading="lazy">
+                  <img src="coreGRADE/images/panel3.jpg" alt="EAU RCCガイドライン パネル会議 議題" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;" loading="lazy">
+                </div>
+                <div style="background:#f8fafc;border-radius:8px;padding:1rem;">
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">会場には、長年貢献されている献身的な専門家と、新鮮な視点をもたらす新メンバーが集結。2025年版ガイドラインが<strong>「閲覧数29万1,000回、ダウンロード数1万7,000回以上」</strong>という驚異的な数字を記録している事実は、私たちの責任の重さとその影響力を物語っています。</p>
+                  <p style="font-size:0.9rem;color:#374151;margin-bottom:0.75rem;">複雑な研究結果を、誰もが実践できる明確な「推奨事項」へと変換すること。それが、世界中の患者さんがどこにいても最善のケアを受けられる基盤となります。</p>
+                  <div style="background:#f5f3ff;border-radius:6px;padding:0.8rem;font-size:0.87rem;color:#4c1d95;margin-top:0.5rem;">
+                    <strong>写真に写っている資料より — 腎細胞がんガイドライン パネル会議 議題（アジェンダ）</strong><br>
+                    ホテル サン ロッコ – オルタ サン ジューリオ / 9月25日（木）12:00〜9月26日（金）15:30<br>
+                    ・開会と歓迎の辞 / パネル構成に関する最新情報 / 利益相反（COI）・審査・開示に関する最新情報（すべての利益相反は2026年版ガイドライン更新版に掲載）/ RCCガイドラインの統計データ / 3月のEAU25でのリリース以降の統計とモバイルアプリに関する最新情報
+                  </div>
+                  <p style="font-size:0.82rem;color:#6b7280;margin-top:0.5rem;">投稿先：LinkedIn (Saeed Dabestani) — #RCCguidelines</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: パネル会議シミュレーション -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">WHOのパネル会議シミュレーション</h2>
+              <p style="color:#555;margin-bottom:0.5rem;">ソース：Developing, running, and evaluating a simulation of a guideline development meeting（ScienceDirect, 2025）</p>
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>今回のテーマ</strong>：「医療サービスの対象範囲と適時性を改善するために、患者・医療従事者間の遠隔医療（テレメディシン）を導入すべきか？」<br>
+                <strong>所要時間</strong>：1日がかり（約6〜7時間）+ 事前1時間のオンライン準備会議
+              </div>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">1日の流れ（タイムライン）</h3>
+              <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem;">
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">09:00</span>
+                  <div><strong>会議開始・チェックイン</strong>：10〜15人の参加者。役割（臨床医/行政官/患者代表など）と国名入りのネームカード。ウォームアップ（5分：共通点を3つ探す）。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">09:30</span>
+                  <div><strong>開会宣言と利益相反（COI）の確認</strong>：全員が自己紹介とともに自己申告。2名の参加者から「事前に申告していなかった潜在的COI」が告白される。議長と方法論者が協議し「重大なCOIには当たらない」と判断、全員が投票権を持ったまま継続。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">10:00</span>
+                  <div><strong>ルールの徹底とテーマの提示</strong>：「新しいエビデンスを今から追加不可」「決定事項は公開まで機密」などのルール。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#dbeafe;color:#1e40af;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">10:30</span>
+                  <div><strong>エビデンスの検討：効果と害</strong>：GRADE EtDフレームワークを使った本格的な議論。方法論者がSRのデータを提示。議長が口頭でコンセンサスを探る方法で「効果の大きさ」の判定を下す。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">12:00</span>
+                  <div><strong>ランチ休憩</strong></div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#dbeafe;color:#1e40af;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">13:00</span>
+                  <div><strong>コスト・受容性・実現可能性・公平性の検討</strong>：残りのEtD基準を消化。定性データ（患者の生の声・医療従事者の懸念）を提示。「ネットワーク接続の問題」「医療従事者の負担増」などをホワイトボードに記録。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">15:15</span>
+                  <div><strong>午後の休憩と議長たちの準備</strong>：各基準の判定結果の概要をまとめる。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">15:30</span>
+                  <div><strong>最大の山場：最終勧告の決定</strong>：「条件付き推奨（特定の条件下でのみ推奨）」にすべきかという激しい議論。議長が全体の温度感を測り、コンセンサスに導く。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">16:15</span>
+                  <div><strong>正当性の文書化と実装への配慮</strong>：「なぜその推奨に至ったか」の正当性（Justification）を合意。ホワイトボードのメモをもとに「実装に関する考慮事項」「今後の研究が必要な領域」を追加。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#e2e8f0;color:#374151;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">16:30</span>
+                  <div><strong>閉会</strong>：今後のプロセス説明。記念のグループ写真撮影。</div>
+                </div>
+                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                  <span style="background:#f5f3ff;color:#4c1d95;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.82rem;font-weight:bold;flex-shrink:0;min-width:50px;text-align:center;">16:40</span>
+                  <div><strong>現実への帰還と振り返り（デブリーフィング）</strong>：役割から現実の自分に戻る。匿名アンケート記入。難しかった点・役割演技の面白さ・EBMプロセスの学びなどを率直に意見交換。</div>
+                </div>
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">シミュレーション実施における問題点と注意点</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>①「ロールプレイ」という言葉の罠と衣装の問題</strong>：「演劇的でふざけたもの」という誤った印象を与え、不快にさせる参加者も。改善：「役割が与えられる」とだけ伝え、通常の「フォーマルな会議の服装」を指定。
+                    </div>
+                    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>②事前準備の不足</strong>：多くの参加者が資料を読まずに参加。オンライン「事前準備ミーティング」を開催して基礎知識を補う工夫が必要。
+                    </div>
+                    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>③定性データを「エビデンス」と認識できない</strong>：患者の生の声などの文章ベースのデータを科学的証拠と認識できない参加者がいた。スライドに「研究のシンボルマーク」や「円グラフ」を添えることで視覚的に「体系的な研究結果」であることを伝える工夫。
+                    </div>
+                    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>④非専門家（患者代表など）の戸惑い</strong>：「なぜ自分がこの会議に呼ばれたのか」と戸惑い。専門家だけでなく「ガイドラインの影響を受ける人の視点が不可欠」な理由を招待時から明確に説明。
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">議論が紛糾したポイント</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>①エビデンスの不確実性に対する不満と対立</strong>：あえて「確実性が低いテーマ（遠隔医療）」を選んだため、不完全なデータをもとに推論する場面で議論が難航。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>②評価基準の「判定（投票システム）」でのつまずき</strong>：厳密な多数決/機械的投票はうまくいかず。最終的に議長が口頭で全体の温度感を探り「ブロード・コンセンサス」へと導く方法に変更。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>③意図的に仕組まれた意見の対立と「議論への抵抗感」</strong>：「悪魔の代弁者」「エビデンスを軽視する人」「別のデータを持ち出す人」といったキャラクター設定により活発な議論が生まれたが、「他人の前で口論すること」自体に強い抵抗感を示す参加者も。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>④隠された利益相反（COI）の暴露</strong>：2名の参加者（サクラ）に事前申告なしのCOIを告白させるシナリオが「投票権剥奪すべきか否か」の議論を引き起こした。
+                    </div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>⑤時間切れでまとまらなかった「実装への配慮」</strong>：6〜7時間確保したにもかかわらず、終盤の「実装時の具体的な注意点」の議論に十分な時間を割くことができず、この部分はほとんどまとまらないまま終了。
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">参加者に配られた「キャラクター設定」とエビデンス資料の中身</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.6rem;">GDGメンバーの3つの属性</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:0.8rem;">
+                    <div style="background:#eff6ff;border-radius:6px;padding:0.7rem;font-size:0.87rem;"><strong>実装者</strong>：政府の役人・病院管理者。システム全体のコストと実現可能性を重視。</div>
+                    <div style="background:#f0fdf4;border-radius:6px;padding:0.7rem;font-size:0.87rem;"><strong>受益者</strong>：患者代表・サービス利用者。個人の使いやすさ・受容性・費用負担を重視。</div>
+                    <div style="background:#f5f3ff;border-radius:6px;padding:0.7rem;font-size:0.87rem;"><strong>技術的専門家</strong>：臨床医・研究者。エビデンスの評価と解釈を担当。</div>
+                  </div>
+
+                  <h4 style="margin-bottom:0.6rem;">議論を活性化させるための「性格づけ」</h4>
+                  <ul style="margin:0 0 0.8rem 1.2rem;font-size:0.87rem;">
+                    <li><strong>悪魔の代弁者</strong>：ほとんどの判定に疑問を投げかけ、挑戦的な態度をとる</li>
+                    <li><strong>エビデンスを軽視する人</strong>：科学的エビデンスにあまり関心がなく、個人的な経験ばかりを話したがる</li>
+                    <li><strong>別のデータを持ち出す人</strong>：公式のエビデンスとは異なる結果を示す「別の研究データ」を独自に主張する</li>
+                    <li><strong>隠されたCOI</strong>：2名が潜在的COIを冒頭で告白する／オブザーバー1名が「極めて強力なCOI」を持ちGDGから追放されるシナリオ</li>
+                  </ul>
+
+                  <h4 style="margin-bottom:0.6rem;">遠隔医療のエビデンス資料</h4>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.7rem;font-size:0.87rem;">
+                      <strong style="color:#15803d;">メリット（低確実性）</strong><br>
+                      ・心疾患患者の死亡率低下（低確実性）<br>
+                      ・産後女性の完全母乳育児増加（低確実性）<br>
+                      ・慢性疾患・うつ病患者のケア満足度向上（低確実性）
+                    </div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.7rem;font-size:0.87rem;">
+                      <strong style="color:#dc2626;">コストと懸念</strong><br>
+                      ・ソフトウェアカスタマイズ・セキュリティ・トレーニング費用<br>
+                      ・着信トリアージ事務員・システム保守・通信料の継続費用<br>
+                      ・勤務時間外の連絡による境界線の曖昧化<br>
+                      ・遠隔での医療ミスに対する法的責任不安
+                    </div>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.7rem;font-size:0.87rem;">
+                      <strong style="color:#a16207;">格差を是正する側面</strong><br>
+                      遠方の人・交通費がない人・育児で忙しい人にとってはアクセスが劇的に改善
+                    </div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.7rem;font-size:0.87rem;">
+                      <strong style="color:#dc2626;">格差を拡大する側面</strong><br>
+                      ITリテラシーが低い高齢者・聴覚障害者・スマホを持たない貧困層・電力が不安定な地域の人は逆に医療から取り残される
+                    </div>
+                  </div>
+
+                  <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:0.8rem;font-size:0.88rem;">
+                    <strong>最終的に出た結論</strong>：「無条件の推奨はできない。特定の条件（インフラ整備・監視体制がある状況）のもとでのみ推奨する（<strong style="color:#4ade80;">条件付き推奨</strong>）」→ 「確実性が低いエビデンス」と「相反するキャラクター設定」がぶつかり合うことで、この条件付き推奨という結論へと参加者を導く構造になっていた。
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
         </div>
 </div>
       <div class="page-nav">
@@ -5109,7 +5451,7 @@ function checkAuth(){
     <div class="page" id="page-14">
       <div class="page-header">
         <div class="chapter-badge">Chapter トピックス</div>
-        <h1>トピックス</h1>
+        <h1>閾値/価値観・委員会設立・P値</h1>
         <div class="en-title">Topics</div>
       </div>
       <div class="page-body">
@@ -5117,6 +5459,7 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">MID/閾値・価値観・意向など</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">CPG作成を始めるにあたって</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">P値と95%信頼区間など</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">サブグループ</button>
         </div>
         <div class="tab-content">
 
@@ -5644,6 +5987,85 @@ function checkAuth(){
 
           </div>
 
+          <!-- Tab 3: サブグループ（ICEMAN） -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">ICEMAN：サブグループ効果の信頼性評価ツール</h2>
+              <p style="color:#555;margin-bottom:0.5rem;">ICEMAN（Instrument for assessing the Credibility of Effect Modification Analyses）は、RCTやメタ分析における「効果修飾（サブグループ効果・交互作用）」の分析がどこまで信用できるかを評価するためのツール。</p>
+              <div style="display:flex;gap:0.5rem;font-size:0.82rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <span style="background:#dbeafe;color:#1e40af;padding:0.2rem 0.5rem;border-radius:4px;">解説: PMC7829020</span>
+                <span style="background:#dcfce7;color:#15803d;padding:0.2rem 0.5rem;border-radius:4px;">実例: ICEMAN Tocilizumab (REMAP-CAP)</span>
+              </div>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. なぜICEMANを行うのか？（目的と理由）</summary>
+                <div class="accordion-body">
+                  <p>臨床試験で「この治療は重症患者には効かないが、軽症患者にはよく効く」といったサブグループ間の効果の違いが報告されることが多い。しかし、これらは<strong>「事後的にデータをこねくり回して見つけた偶然の産物」</strong>であることも少なくない。</p>
+                  <p style="margin-top:0.5rem;">ICEMANは、そのような主張が<strong>生物学的に妥当で、統計学的に偶然の産物ではなく、事前に計画された適切な手法で導き出されたものかどうかを客観的に判断する</strong>ために行われる。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2. ICEMANによって一体何がどうなるのか？（結果と影響）</summary>
+                <div class="accordion-body">
+                  <p>ICEMANの評価結果により、<strong>「すべての患者に一律の治療効果（全体の効果）を適用すべきか」「患者のサブグループごとに異なる治療効果を適用すべきか」</strong>を決定できるようになる。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:0.6rem;">
+                    <div style="background:#f1f5f9;border:1px solid #94a3b8;border-radius:8px;padding:0.8rem;">
+                      <h4 style="color:#475569;margin-bottom:0.4rem;">信頼性が低い（Very low / Low）</h4>
+                      <p style="font-size:0.88rem;">サブグループ間の効果の違いは「おそらく存在しない」→ すべてのサブグループに対して<strong>全体統合された効果（Overall effect）</strong>を採用</p>
+                    </div>
+                    <div style="background:#dcfce7;border:1px solid #22c55e;border-radius:8px;padding:0.8rem;">
+                      <h4 style="color:#15803d;margin-bottom:0.4rem;">信頼性が高い（Moderate / High）</h4>
+                      <p style="font-size:0.88rem;">サブグループごとに効果が異なる可能性が高い → <strong>サブグループごとの個別の効果（Separate effects）</strong>を適用</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">3. 具体的な作成・評価方法（10の質問項目）</summary>
+                <div class="accordion-body">
+                  <p style="margin-bottom:0.6rem;">単一の「アウトカム」「評価時点」「効果指標」「効果修飾因子」に対して1枚のフォームを用いて評価する。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>前提確認</strong>：効果修飾因子がランダム化の時点またはそれ以前に測定されているか確認</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q1</strong>：試験内比較か試験間比較か（試験の内部での比較→信頼性が高い／試験間→低い）</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q2</strong>：効果修飾の一貫性（試験内比較の場合）：複数試験間で効果修飾の方向性が類似しているか</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q3</strong>：試験の数（試験間比較の場合）：数が多いほど信頼性が上がる</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q4</strong>：事前仮説の有無：研究開始前（a priori）に生物学的根拠に基づき正しく仮説立てられていたか</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q5</strong>：偶然の可能性（交互作用のp値）：p&lt;0.05やp&lt;0.005など確認</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q6</strong>：テストされた修飾因子の数：3つ以下なら信頼性が高まる（多重性の問題を避ける）</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q7</strong>：ランダム効果モデルの使用：メタ分析においてランダム効果モデルが使用されているか</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q8</strong>：連続変数のカットオフ：恣意的な基準で区切って分析していないか</div>
+                    <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q9</strong>：その他の考慮事項（任意）：信頼性を増減させる追加要因</div>
+                    <div style="background:#eff6ff;border-left:3px solid #2563eb;padding:0.5rem 0.7rem;border-radius:4px;font-size:0.87rem;"><strong>Q10（総合評価）</strong>：「信頼性を低下させる項目（左側の回答）」に牽引される形で評価。1つでも「確実に低下させる」項目があれば上限は「Moderate」、2つ以上で「Low」。</div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">4. GRADEの文脈での使い方（実践的活用）</summary>
+                <div class="accordion-body">
+                  <p>GRADEのEtDフレームワークにおいて、ICEMANは<strong>「どのデータを基準にして患者への利益と害を見積もるか」という出発点を決定する極めて重大な役割</strong>を担う。</p>
+
+                  <div style="background:#1e3a5f;color:#e2e8f0;border-radius:10px;padding:1.2rem;margin-top:0.8rem;">
+                    <h4 style="color:#93c5fd;margin-bottom:0.6rem;">具体例：COVID-19治療薬「レムデシビル」の評価の違い</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                      <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;padding:0.8rem;">
+                        <h5 style="color:#60a5fa;margin-bottom:0.4rem;">WHOの判断（全体でまとめる）</h5>
+                        <p style="font-size:0.85rem;">ICEMANで「重症度別サブグループ分けの信頼性は不十分」と判断 → 全患者を統合した死亡率データを採用 → 明確な利益が証明されず → <strong style="color:#fca5a5;">全入院患者への使用を推奨しない</strong></p>
+                      </div>
+                      <div style="background:#1e3a5f;border:1px solid #22c55e;border-radius:8px;padding:0.8rem;">
+                        <h5 style="color:#4ade80;margin-bottom:0.4rem;">オーストラリアTF（サブグループで分ける）</h5>
+                        <p style="font-size:0.85rem;">ICEMANで「重症度別サブグループは信頼できる」と判断 → 患者群を分割評価 → <strong style="color:#86efac;">非人工呼吸器患者：条件付き推奨（使用を支持）</strong> / <strong style="color:#fca5a5;">人工呼吸器患者：推奨しない</strong></p>
+                      </div>
+                    </div>
+                    <p style="font-size:0.85rem;color:#93c5fd;margin-top:0.8rem;">→ ICEMANの評価結果次第で、<strong>最終的な推奨事項が180度変わる</strong>可能性がある。ICEMANは「推奨の解像度（全体か特定患者層か）」を担保するための検問所として機能する。</p>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="page-nav">
@@ -5663,8 +6085,9 @@ function checkAuth(){
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">統計トピックス</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">数式の解説</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">クロスオーバー試験・スプリットマウス</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">連続量メタ分析</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">非ランダム化比較試験</button>
         </div>
         <div class="tab-content">
 
@@ -5983,6 +6406,126 @@ function checkAuth(){
             </div>
           </div>
 
+          <!-- Tab 3: 非ランダム化比較試験 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">非ランダム化比較試験（Non-RCT）のメタ分析</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">非RCTや観察研究のメタ分析は難易度が高く、結果の解釈には極めて慎重な批判的吟味が必要。以下では2つの核心的問題と、RCTとの統合（GRADE Guidance 44）について解説する。</p>
+
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>RCTとの根本的な違い</strong>：RCTでは無作為割付により既知・未知の交絡因子が均等分布することが期待される。観察研究では治療の割付がランダムでないため、効果の違いが治療そのものか<strong>交絡変数によって引き起こされているかを排除できない</strong>。
+              </div>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">パートA：Non-RCTメタ分析の2大問題点</h3>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">問題1：交絡因子が調整されていない「粗データ」を使うことの問題点</summary>
+                <div class="accordion-body">
+                  <p>各論文から「症例数とイベント数」や「平均値」といった<strong>未調整のデータ（粗データ）を直接抽出してメタ分析</strong>を行うと、各研究内に存在するベースラインの不均衡（年齢・重症度・併存疾患などの偏り）がそのまま統合されてしまう。</p>
+                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin:0.6rem 0;">
+                    <strong>具体例</strong>：新しい糖尿病薬と従来薬の比較観察研究を集めた場合。新薬は高価であり、比較的若くて合併症の少ない患者に処方されやすい傾向があった。<br>
+                    症例数と心血管死のイベント数だけを抽出して統合すると「新薬を飲んだ群は死亡率が低い」という圧倒的な結果が出る。しかしこれは「新薬が効いた」からではなく「元々リスクの低い若年層が多く飲んでいた」という交絡による<strong>見かけ上の効果（偽の関連）</strong>。<br>
+                    → 未調整データによるメタ分析は<strong>「交絡バイアスの拡大再生産」</strong>となる。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">問題2：交絡因子の「調整方法」や「調整変数」が各論文で異なる問題</summary>
+                <div class="accordion-body">
+                  <p>調整済みの値（調整済みORやHR）を用いたとしても、<strong>「研究ごとに調整している変数の種類や統計手法がバラバラ」</strong>という致命的問題が生じる。</p>
+                  <div style="background:#f8fafc;border-radius:6px;padding:0.8rem;margin:0.6rem 0;">
+                    <strong>具体例（3研究の調整方法の違い）</strong>：
+                    <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;">
+                      <li><strong>研究A</strong>：年齢と性別のみをロジスティック回帰で調整したOR</li>
+                      <li><strong>研究B</strong>：年齢・性別・BMI・罹病期間・喫煙歴などを多変量解析で調整したOR</li>
+                      <li><strong>研究C</strong>：数十の背景因子を用いた傾向スコアマッチング（PSM）で算出したHR</li>
+                    </ul>
+                  </div>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                    <strong>問題</strong>：調整基準やモデリング手法が全く異なる効果指標を一つのモデルでごちゃ混ぜに統合（プーリング）すると、算出された要約効果量が<strong>「一体何を・どの程度調整した集団における効果なのか」が誰にも説明できなくなる</strong>（リンゴとミカンを混ぜる問題）。
+                  </div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.8rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>生態学的バイアス</strong>：集計データから群の平均的な特性を用いてメタ回帰分析を行うと、個人レベルと集団レベルの関連が一致しない「生態学的バイアス（ecological bias）」を引き起こす危険性もある。
+                  </div>
+                  <p style="margin-top:0.6rem;">非RCT・観察研究のメタ分析は<strong>「未調整データを使えば強い交絡バイアスを生み、調整済みデータを使えば異質な効果指標の無理な統合に陥る」</strong>というジレンマを常に抱えている。</p>
+                </div>
+              </details>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートB：Non-RCTとRCT — GRADE Guidance 44</h3>
+
+              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                <strong>旧来の固定観念を捨てよ</strong>：NRSIだからといって自動的に低品質と決めつけるのは時代遅れ。ROBINS-Iなどの適切なツールを用いれば、NRSIであっても高い確実性レベルから評価を開始し得る。
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 1：各エビデンスの確実性（CoE）の個別評価</summary>
+                <div class="accordion-body">
+                  <p>RCTとNRSIそれぞれの確実性を<strong>個別に評価</strong>しなければならない。重要な原則：一方のエビデンスの長所によって、他方のドメインのダウングレードを安易に相殺（Mitigate）してはならない。NRSIのバイアスリスクが低いからといって、RCTのバイアスリスクの懸念を帳消しにしてプールすることは論理的に許されない。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 2：効果推定値の「一致性（Congruency）」の厳格な評価</summary>
+                <div class="accordion-body">
+                  <p>相対効果（リスク比やオッズ比）やp値の有意差の有無だけで「一致している」と判断するのはナンセンス。<strong>絶対効果と臨床的意思決定閾値（Trivial/Small/Moderate/Largeなど）を用いて判断</strong>することを強く求めている。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:0.6rem 0;">
+                    <div style="background:#dcfce7;border:1px solid #22c55e;border-radius:6px;padding:0.6rem;font-size:0.88rem;">
+                      <strong style="color:#15803d;">一致（Congruent）</strong><br>
+                      RCTとNRSIの点推定値と信頼区間が同じ効果の大きさの範囲（閾値の同じ側）に完全に収まる
+                    </div>
+                    <div style="background:#fef2f2;border:1px solid #ef4444;border-radius:6px;padding:0.6rem;font-size:0.88rem;">
+                      <strong style="color:#dc2626;">不一致（Incongruent）</strong><br>
+                      一方が「取るに足らない効果」の範囲、もう一方が「重要な利益」の範囲に完全に分かれる → 決してプールしてはならない
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 3：RCTを起点とした確実性の比較と相互作用の評価</summary>
+                <div class="accordion-body">
+                  <p>RCTの確実性を起点として、NRSIをどう扱うかを決定。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;">
+                    <li>RCTの確実性が「Moderate」でその理由が「非直接性」の場合 → NRSIが「Moderate以上」の確実性を持ち、直接的なエビデンスを提供し、効果が一致しているなら → NRSIがRCTの非直接性を補完し、統合を正当化する根拠となり得る</li>
+                    <li>RCTが「非一貫性（Inconsistency）」でダウングレードされている場合 → NRSIが一致していても非一貫性を無かったことにはできない → プールは厳禁</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 4：統合と提示の決定（SoFテーブルへの記載方法）</summary>
+                <div class="accordion-body">
+                  <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#22c55e;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">最も透明</span>
+                      <div><strong>別々に提示（2行）</strong>：RCTとNRSIを別々の行で示す。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#3b82f6;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">条件付き</span>
+                      <div><strong>別々に提示しつつプール推定値を付加（3行）</strong>：プールが正当化される場合の選択肢。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#f59e0b;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">限定的</span>
+                      <div><strong>単一行での提示</strong>：どちらか一方の確実性が極めて高く、もう一方を含める意義がない場合 → 採用しなかった方を脚注で説明。</div>
+                    </div>
+                  </div>
+
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.8rem;">
+                    <strong>具体例：カナダの透析開始時期ガイドライン</strong><br>
+                    ・RCT（IDEAL試験）：確実性「Moderate」（不精確性）<br>
+                    ・NRSI 15件：確実性「Very Low」（交絡因子未調整による深刻なバイアス・非一貫性）<br>
+                    両者のHRは共に1.04付近で一見「一致」しているように見えるが、RCTが「Moderate」でNRSIが「Very Low」の場合、NRSIはRCTの不精確性を軽減するために全く役に立たない → プールではなく別々に提示が正しい判断。
+                  </div>
+                </div>
+              </details>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.88rem;">
+                <strong>結論</strong>：RCTと観察研究のメタ分析は、単にデータをかき集めて結合する作業ではなく、それぞれのドメインごとの限界を論理的に評価し、<strong>絶対効果の閾値を用いて厳格に比較する高度なプロセス</strong>である。
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="page-nav">
@@ -6009,144 +6552,279 @@ function checkAuth(){
           <!-- Tab 0: マルチ介入 -->
           <div class="tab-pane active">
             <div class="content-section">
-              <h2 class="section-title">マルチ介入（複数介入比較：MC）</h2>
-              <p style="color:#555;margin-bottom:1.2rem;">GRADEアプローチにおけるマルチ介入とは、与えられた健康問題に対するすべての妥当な介入選択肢を、EtDフレームワークの全基準にわたって同時に相互比較・評価する構造化されたプロセスである。</p>
+              <h2 class="section-title">マルチ介入（複数介入比較：MC）完全網羅解説</h2>
+              <p style="color:#555;margin-bottom:1.2rem;">GRADEアプローチにおけるマルチ介入とは、与えられた健康問題に対するすべての妥当かつ重要な介入選択肢を、EtDフレームワーク全基準にわたって同時に相互比較・評価する構造化されたプロセスである。本解説は、概念・評価プロセス・方法論的問題点・ランキングの危険性について、最新のGRADEガイダンスと関連論文を統合して解説する。</p>
 
-              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
-                <strong>なぜMCが必要か？</strong><br>
-                一対比較（ペアワイズ比較）の積み重ねだけでは「目の前の複数の選択肢の中でどれを最優先に選ぶべきか」という実務的な問いに答えられない。例：IPFの治療薬10種類以上、乳がんスクリーニングの間隔（毎年・2年・3年）、結核感染対策の換気システム4種類など。
-              </div>
-
-              <!-- NMAとMCの棲み分け -->
-              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;">マルチ介入（MC）とNMAの棲み分け</h3>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;">
-                <div style="background:#fef2f2;border:1px solid #ef4444;border-radius:8px;padding:1rem;">
-                  <h4 style="color:#dc2626;margin-bottom:0.5rem;">NMAの役割と限界</h4>
-                  <p style="font-size:0.88rem;">定量的な効果推定（SUCRA等）を提供するが：<br>
-                  ・患者の価値観・選好を考慮しない<br>
-                  ・コスト・公平性・受容性・実施可能性を無視<br>
-                  ・単体でガイドラインの推奨は決定できない</p>
-                </div>
-                <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
-                  <h4 style="color:#15803d;margin-bottom:0.5rem;">MCはNMAを「包含」する</h4>
-                  <p style="font-size:0.88rem;">NMAが貢献できるのはEtDの12基準中「健康影響・エビデンス確実性」のみ。MCはNMAの定量データをベースに、コスト・公平性・受容性などを統合する「上位の包括的意思決定枠組み」。NMAがなくてもMCは実行可能。</p>
-                </div>
-              </div>
-
-              <!-- 7ステップ -->
-              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;">マルチ介入評価の7ステップ</h3>
-              <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem;">
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">1</span>
-                  <div><strong>優先順位の設定と計画</strong>：PICO設定時にMCの必要性を初期段階で特定</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">2</span>
-                  <div><strong>エビデンスの統合</strong>：可能かつ適格ならNMAを実施。不可能ならSR複数を活用</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">3</span>
-                  <div><strong>EtDフレームワーク適用方法の決定</strong>：アプローチA（ペアワイズ先行型・詳細だが負荷大） or B（同時比較型・効率的だがニュアンス喪失リスク）</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#ef4444;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">4</span>
-                  <div><strong>推移性（Transitivity）の評価</strong>（★重要）：すべての介入が本当に互いに比較可能か確認</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">5</span>
-                  <div><strong>各EtD基準でのレーティング</strong>：GRADEpro MCモジュールでリッカート1〜5スターを付与</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">6</span>
-                  <div><strong>全介入の推奨策定と順位付け</strong>：総括的推奨（Summary Recommendation）の合意</div>
-                </div>
-                <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                  <span style="background:#3b82f6;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">7</span>
-                  <div><strong>普及と透明性の確保</strong>：なぜその順位になったかをEtD基準ごとに文書化・公表</div>
-                </div>
-              </div>
-
-              <!-- EtD 12基準 -->
-              <details class="accordion-item">
-                <summary class="accordion-header">EtDフレームワークの12の評価基準</summary>
+              <!-- Part 1 -->
+              <details class="accordion-item" open>
+                <summary class="accordion-header">第1部：マルチ介入の根本的概念と必要性</summary>
                 <div class="accordion-body">
-                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;">
-                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>1.</strong> 問題の優先度</div>
-                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>2.</strong> 望ましい健康影響</div>
-                    <div style="background:#fef2f2;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>3.</strong> 望ましくない健康影響</div>
-                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>4.</strong> エビデンスの確実性</div>
-                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>5.</strong> 患者の価値観</div>
-                    <div style="background:#eff6ff;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>6.</strong> 健康影響のバランス</div>
-                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>7.</strong> 必要な資源（コスト）</div>
-                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>8.</strong> 資源の確実性</div>
-                    <div style="background:#fffbeb;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>9.</strong> 費用対効果</div>
-                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>10.</strong> 健康の公平性</div>
-                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>11.</strong> 受容性</div>
-                    <div style="background:#f0fdf4;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>12.</strong> 実施可能性</div>
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;">１．従来の一対比較（ペアワイズ比較）の限界</h4>
+                  <p>これまでのシステマティックレビューや診療ガイドラインの大部分は、「介入A対介入B」あるいは「介入A対プラセボ」という1対1の比較を基本単位としてエビデンスを評価してきた。しかし実際の臨床現場では、ある特定の健康問題に対して2つ以上の競合する介入の選択肢が同時に存在することが常態化している。</p>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.8rem;border-radius:6px;margin:0.8rem 0;">
+                    <strong>臨床的な問いの例：</strong>
+                    <ul style="margin:0.4rem 0 0 1rem;padding:0;">
+                      <li>高血圧の初期治療薬として、カルシウム拮抗薬・ARB・ACE阻害薬・利尿薬のどれを選ぶべきか</li>
+                      <li>乳がんスクリーニング間隔は、毎年・2年ごと・3年ごとのどれが最適か</li>
+                    </ul>
                   </div>
-                  <p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">NMAが貢献できるのは主に2・3・4。残りはEtDフレームワークが担う。</p>
+                  <p>このような状況下で、一対比較のデータのみを並列に提示されても、現場の医師や政策立案者は「利用可能なすべての選択肢の中でどれを最優先で選ぶべきか」という最も重要な実務的疑問に答えることができない。</p>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;margin-top:1rem;">２．GRADEにおけるマルチ介入の定義と歴史的推移</h4>
+                  <p>GRADEアプローチにおける「マルチ介入」とは、与えられた健康問題（PICO）に対する最終的な推奨を作成することを目的として、すべての妥当かつ重要な介入選択肢を網羅し、GRADEのEtDフレームワークの全基準にわたって、それらを同時に・体系的に相互比較・評価する構造化されたプロセスを指す。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:0.8rem;">
+                    <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:0.8rem;">
+                      <strong style="color:#dc2626;">旧来の理解（誤解）</strong><br>
+                      <p style="font-size:0.88rem;margin:0.4rem 0 0 0;">「複数のPairwise Comparisons（一対比較）を横に並べるだけ」という意味合い</p>
+                    </div>
+                    <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:0.8rem;">
+                      <strong style="color:#15803d;">現在のGRADE（正確な定義）</strong><br>
+                      <p style="font-size:0.88rem;margin:0.4rem 0 0 0;">NMAを用いた包括的比較とPairwise Comparisons並列比較の<strong>両方を包含する上位概念</strong>。参照介入の適確な選択が極めて重要</p>
+                    </div>
+                  </div>
                 </div>
               </details>
 
-              <!-- 重大問題点 -->
+              <!-- Part 2 -->
               <details class="accordion-item">
-                <summary class="accordion-header">マルチ介入の4つの重大問題点と注意点</summary>
+                <summary class="accordion-header">第2部：NMAとの棲み分けと「ランキングの罠」【超重要】</summary>
+                <div class="accordion-body">
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;">１．ネットワークメタ解析（NMA）とは何か</h4>
+                  <p>NMAは、3つ以上の介入を比較する際に、直接的な比較と間接的な比較を組み合わせて単一のネットワークを構築し、各介入の「健康上の有益性と有害性」に関する統合的な効果推定値を算出する高度な統計解析手法である。NMAを行うと、SUCRA（Surface Under the Cumulative Ranking curve）などの統計的指標を用いて「どの治療法が最も死亡率を低下させる確率が高いか」といった定量的なランキングが視覚的かつ確率的に提供される。</p>
+
+                  <div style="background:#fef2f2;border:2px solid #ef4444;border-radius:8px;padding:1rem;margin:1rem 0;">
+                    <h4 style="color:#dc2626;margin-bottom:0.6rem;">⚠️ ランキング一人歩きの危険性</h4>
+                    <p>NMAを実施すると、この「ランキング（順位）」にばかり目が行き、ガイドライン開発者や臨床医がランキングを多用・妄信してしまうという非常に危険な傾向がある。しかし、ランキングそのものの確実性は非常に低く、「ランキングの一人歩き」はNMAの最大の問題点とされている。</p>
+                    <div style="background:#fff5f5;border-left:4px solid #dc2626;padding:0.7rem;border-radius:4px;margin-top:0.6rem;">
+                      <strong>「確率」と「絶対的な効果」の混同（錯覚）</strong><br>
+                      SUCRAが90%であるということは「その介入が上位にランクインする確率が統計的に高い」ことを意味するだけであり、「他の介入よりも圧倒的に（絶対量として大きく）優れている」ことを意味しない。介入Aが介入Bよりも「わずか0.001%だけ死亡率を下げる」という結果が安定して得られた場合、臨床的には全く意味のない微小な差（Trivial effect）であっても、NMAのアルゴリズムは「介入Aが介入Bより優れている確率はほぼ100%」と計算し、介入Aにランキング1位を与えてしまう。<br>
+                      <strong style="color:#dc2626;">ランキングという指標自体が「効果の大きさ（Effect size）」の情報を完全に削ぎ落としてしまっていることが最大の統計学的問題である。</strong>
+                    </div>
+                  </div>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;margin-top:1rem;">（２）エビデンスの確実性に対する問題点</h4>
+                  <img src="coreGRADE/images/multi.jpg" alt="マルチ介入・NMAランキングの確実性問題の図" style="width:100%;max-width:600px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:0.8rem;display:block;">
+                  <p>介入A、B、Cからなる単純な三角ネットワークを想像してほしい。A対Bの直接比較のエビデンスの確実性は非常に「高い」が、B対C、およびA対Cのエビデンスの確実性は「低い」とする。この場合、AとBのペア間の「効果サイズ（点推定値）」には高い信頼度を与えることができる。しかし、ネットワーク全体における「Aが1位である」という全体的な治療ランキングには、低い信頼度しか与えることができない。なぜなら、Cとの比較が不確実である以上、全体の順位付けは根底から揺らぐからである。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>GRADEの厳格な立場</strong><br>
+                    GRADEアプローチは、この危険性を強く示唆し「ランキングはほぼ利用しない」という厳格な立場をとる。確実性や点推定値の大きさでマトリックス表を作成して判断を行うのであり、ランキングの順位をそのまま推奨の順位に直結させることは絶対にない。
+                  </div>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;margin-top:1rem;">３．CINeMA開発者（Salantiら）が指摘するランキングの致命的欠陥</h4>
+                  <p>NMAの確実性評価ツールであるCINeMAを作成したSalantiらのグループでさえ、論文の中でランキングの問題点を明確に指摘している。彼らは「効果量の信頼性」と「治療のランキングの信頼性」を完全に分けて評価しており、CINeMAにおいてはランキングの信頼性評価はまだ実装されておらず開発中であるとしている。</p>
+                  <details class="accordion-item" style="margin-top:0.8rem;">
+                    <summary class="accordion-header" style="background:#f8fafc;">三角ネットワークモデルのパラドックス（詳細）</summary>
+                    <div class="accordion-body">
+                      <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                        <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;">
+                          <strong>【試験群1】</strong> AとBを直接比較した数万人規模の非常に質が高くバイアスのない大規模RCT<br>
+                          → A対Bの確実性：<span style="background:#22c55e;color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">高</span>
+                        </div>
+                        <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;">
+                          <strong>【試験群2】</strong> BとCを比較した小規模で質の低い試験が1つ<br>
+                          → B対Cの確実性：<span style="background:#ef4444;color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">低</span>
+                        </div>
+                        <div style="background:#f5f5f5;border-left:4px solid #9ca3af;padding:0.7rem;border-radius:6px;">
+                          <strong>【試験群3】</strong> AとCの比較試験は存在しない
+                        </div>
+                      </div>
+                      <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:0.8rem;margin-top:0.8rem;">
+                        <strong>結果：ランキングを決定するためには「AとCはどちらが優れているか」というネットワーク全体（グローバル）の推論が絶対に必要になる。</strong>ところが、Cに関するエビデンス（BC間）が極めて脆弱であるため、間接的に推計されるAC間も極めて不確実になる。Cの真の効果が全くの未知数（実はCが最強かもしれない）である以上、ネットワーク全体における「Aが1位である」という全体的ランキングの信頼性は、統計学的に「極めて低く」ならざるを得ない。
+                      </div>
+                    </div>
+                  </details>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;margin-top:1rem;">４．各種論文・ガイドラインにおける注意喚起</h4>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#fefce8;border-left:4px solid #eab308;padding:0.8rem;border-radius:6px;">
+                      <strong>「Common pitfalls and mistakes in NMA」（Salantiら）：</strong><br>
+                      「臨床医は、単純なランキングではなく、効果の大きさに常に関心を持つ必要があります。」
+                    </div>
+                    <div style="background:#fefce8;border-left:4px solid #eab308;padding:0.8rem;border-radius:6px;">
+                      <strong>「EAES Rapid Guideline（肥満手術 2022年）」：</strong><br>
+                      「パネルメンバーは、介入のランキングのみに依存するのではなく、ペアごとの効果推定値にも依存する必要があることを特に認識させられました。」
+                    </div>
+                  </div>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.6rem;margin-top:1rem;">５．NMAの文脈的要素の完全な欠如</h4>
+                  <p>ランキングの問題に加えて、NMAには現実の意思決定に不可欠な文脈的要素が完全に欠如している。NMAのデータは医学的なアウトカムのみを処理し、患者の価値観・コスト・費用対効果・健康の公平性・受容性・実施可能性といった要素を一切無視している。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;">
+                    したがって、GRADEのマルチ介入（MC）アプローチは、NMAの不確実なランキングを捨て、確実性の高いペアごとの効果推定値を受け取り、それにコストや公平性といった定性的・文脈的なデータを統合して、最終的な推奨の意思決定を行う<strong>上位の包括的な意思決定システム</strong>として機能する。
+                  </div>
+                </div>
+              </details>
+
+              <!-- Part 3 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第3部：Evidence Prime動画にみるマルチ介入EtDの最新5ステップ</summary>
+                <div class="accordion-body">
+                  <p style="color:#555;margin-bottom:0.8rem;">GRADEproを開発しているEvidence PrimeのウェビナーGRADEpro Webinar: GRADE for Multiple-Intervention Comparisons in EtD Frameworkでは、最新の手順が明確に紹介されている。動画で示された5つのステップは以下の通りである。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">1</span>
+                      <div>
+                        <strong>Planning &amp; Priority Setting（プランニングと優先順位設定）</strong><br>
+                        <ul style="font-size:0.88rem;margin:0.3rem 0 0 1rem;padding:0;">
+                          <li>可能性のあるすべての介入を検討（PICO設定）</li>
+                          <li>NMAの実施可能性を評価（NMA vs ペアワイズのM-Aどちらか）</li>
+                          <li>推移性（Transitivity）の仮定が成立するかを厳密にチェック</li>
+                          <li>結果提示のための共通参照介入（プラセボや標準治療など）を慎重に選択</li>
+                          <li>医療の背景と意思決定閾値を事前に設定</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">2</span>
+                      <div>
+                        <strong>Evidence synthesis（エビデンスの統合）</strong><br>
+                        <p style="font-size:0.88rem;margin:0.3rem 0 0 0;">収集したエビデンスを統合し、Summary of Findings Table（サマリー・オブ・ファインディングス表）を作成。<strong>ランキングではなく、個々のペアの効果推定値と確実性を重視する。</strong></p>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">3</span>
+                      <div>
+                        <strong>EtD framework: Judgments for each intervention（EtDフレームワーク：各介入の判定）</strong><br>
+                        <p style="font-size:0.88rem;margin:0.3rem 0 0 0;">各介入について、EtDの全基準（望ましい効果・望ましくない効果・価値観・コスト・公平性・受容性・実現可能性）に沿って判定を行う。</p>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">4</span>
+                      <div>
+                        <strong>Rating: MC Matrix / Summary of Judgments（評価：マルチ比較マトリックス）</strong><br>
+                        <p style="font-size:0.88rem;margin:0.3rem 0 0 0;">判定結果を一覧できるマトリックス表（Summary of Judgments）を作成し、全体を俯瞰して相対的な評価（星によるスコアリングなど）を行う。</p>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;">5</span>
+                      <div>
+                        <strong>Recommendations（推奨の策定）</strong><br>
+                        <p style="font-size:0.88rem;margin:0.3rem 0 0 0;">すべての介入に対する最終的な推奨（優先順位、order of preference）を策定する。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Part 4 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">第4部：マルチ介入に特有の重大な問題点と注意点</summary>
                 <div class="accordion-body">
                   <div style="display:flex;flex-direction:column;gap:0.8rem;">
                     <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
-                      <strong>①推移性の不成立（Intransitivity）</strong><br>
-                      A vs Bの試験が「軽症のみ」、B vs Cが「重症のみ」→効果修飾因子の分布が異なり推移性崩壊。MCを始める前に「すべての介入が真に同じPICOを共有しているか」を厳密に審査すること。
+                      <strong>１．最重要ハードル：「推移性（Transitivity）」の仮定とその不成立</strong><br>
+                      <p style="margin:0.4rem 0 0 0;font-size:0.88rem;">推移性とは、AとBを直接比較したデータがなく、A対C・B対CのデータからA対Bを数学的に推計する場合、「試験ACと試験BCの患者背景や試験環境が十分に類似しており、共通の対照群Cの性質が同等である」という仮定である。これが成立するための厳密な条件は、ネットワーク内のすべての介入が「共同無作為化可能（Jointly randomizable）」であること、すなわち仮想的な巨大RCTでどの患者もどの介入群にも割り付けられる適格性を持っていることである。</p>
+                      <div style="background:#fff5f5;border-left:3px solid #dc2626;padding:0.6rem;border-radius:4px;margin-top:0.5rem;font-size:0.88rem;">
+                        介入Aが「軽症患者用」・介入Bが「重症患者用」の場合、これらを同じ患者に無作為に割り付けることは論理的に不可能。これを無理やり間接比較すると推移性が不成立（Intransitivity）となり、誤った相対評価を導き出す。
+                      </div>
                     </div>
-                    <div style="background:#fef2f2;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;">
-                      <strong>②重複カウント（Double Counting）のリスク</strong><br>
-                      既存の複数SRを単純に寄せ集めると、同一の一次研究データが複数SRに含まれ二重カウントされる→効果推定値と信頼区間が不当に歪む。
-                    </div>
-                    <div style="background:#fef2f2;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;">
-                      <strong>③レビューレベルの要約データの非互換性</strong><br>
-                      アウトカムの定義（30日死亡 vs 90日死亡など）や対象集団が微妙に異なる複数SRを無批判に比較するとミスリード→個々の一次研究レベルに立ち返りデータ同質性を確認した上で再統合が必要。
+                    <div style="background:#fef2f2;border-left:4px solid #f97316;padding:0.8rem;border-radius:6px;">
+                      <strong>２．システマティックレビューの要約データへの安易な依存と重複カウント</strong><br>
+                      <p style="margin:0.4rem 0 0 0;font-size:0.88rem;">既存の複数のシステマティックレビューの要約統計量をそのまま寄せ集めて比較することには極めて高いリスクが伴う。同じ疾患領域の複数のレビューを組み合わせると、同一の臨床試験のデータが重複して含まれることが多く、特定の試験データが二重カウントされ、確実性が高いように歪められてしまう。また、レビュー間でアウトカムの定義（30日死亡か90日死亡か）が異なるデータを非公式に比較するとミスリードが生じる。</p>
                     </div>
                     <div style="background:#fffbeb;border-left:4px solid #eab308;padding:0.8rem;border-radius:6px;">
-                      <strong>④介入ネットワークの範囲設定</strong><br>
-                      「古い薬剤」「プラセボ」をネットワークに含めるか否か→含めると間接比較の精度が向上するが、臨床的に意味のない選択肢にリソースを割くトレードオフが生じる。
+                      <strong>３．介入ネットワークの範囲設定のジレンマ</strong><br>
+                      <p style="margin:0.4rem 0 0 0;font-size:0.88rem;">現在では副作用が強すぎて使われていない古い薬剤をネットワークに含めるか否か。含めれば間接比較の統計的精度は向上するが、臨床的に無意味な選択肢の評価にパネルの時間を浪費することになる。このトレードオフの舵取りが大きな課題である。</p>
                     </div>
                   </div>
                 </div>
               </details>
 
-              <!-- 事例 -->
-              <h3 style="color:#1e40af;margin-bottom:0.8rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-top:1.2rem;">実際のガイドラインへの適用事例</h3>
-
+              <!-- Part 5 -->
               <details class="accordion-item">
-                <summary class="accordion-header">事例1：WHO 結核（TB）感染予防管理ガイドライン（2019年）</summary>
+                <summary class="accordion-header">第5部：GRADE Guidance 45に基づくマルチ介入EtD評価プロセス（8ステップ）</summary>
                 <div class="accordion-body">
-                  <p><strong>【介入選択肢】</strong>自然換気 / 混合モード換気 / 機械換気 / HEPAフィルター再循環空気（4種類）</p>
-                  <p><strong>【エビデンス状況】</strong>完全なNMAネットワークは構築できず → 存在データを他の換気システムに外挿</p>
-                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
-                    <strong>【結論】</strong>機械換気・HEPAは効果的だが<strong>コスト・実施可能性・公平性</strong>が低い。EtD総合評価で<strong>「自然換気」が第一選択</strong>に→コスト・公平性・実施可能性で最高評価。
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">1</span>
+                      <div><strong>意思決定閾値と価値観の事前定義</strong>：パネルは効果の大きさに関する「意思決定閾値（例：1000人中10人の再発防止で『大』とする等）」をデータを見る前に定義。事後的な基準の変更（Post hoc threshold shifting）を防ぐ。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">2</span>
+                      <div><strong>望ましい効果と望ましくない効果の個別評価</strong>：相関するアウトカムの二重カウントを避けながら、最大の効果を持つアウトカムを基準に、メリットとデメリットの大きさを個別に評価する。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">3</span>
+                      <div><strong>新基準「純効果（Net Effect）」の評価</strong>：望ましい効果と望ましくない効果を天秤にかけ、最終的な純粋な医学的恩恵（大きな純利益・中等度の純利益・純害など）を判定する。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">4</span>
+                      <div><strong>エビデンスの確実性と価値観の確実性の評価</strong>：純効果の判定を裏付ける確実性を評価。価値観のばらつきが大きい場合、それが最終的な推奨を左右する決定打となる。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">5</span>
+                      <div><strong>必要な資源（コスト）と逐次増分的な費用対効果の評価</strong>：すべての介入をプラセボと比較するのではなく、「逐次増分分析」を用い、コストの低い順に並べて「次にコストが高く効果が高い介入」と段階的に比較し、支払い意思額（WTP）を満たすか評価する。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">6</span>
+                      <div><strong>公平性・受容性・実施可能性の評価</strong>：健康格差の拡大縮小、患者や医師の受け入れやすさ、現場での運用可能性を相対比較する。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">7</span>
+                      <div><strong>判定概要（Summary of Judgments: SoJ）テーブルの作成</strong>：全基準の評価を一覧できるマトリックス表を作成し、視覚的に比較する。</div>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
+                      <span style="background:#1e40af;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:0.85rem;">8</span>
+                      <div><strong>最終的な推奨と順位付けの策定</strong>：SoJテーブルを俯瞰し、「介入AとBは強く推奨」「介入CとDは条件付き推奨」といった優先度クラスター化や、明確な個別順位付けを伴う包括的推奨を策定する。</div>
+                    </div>
                   </div>
                 </div>
               </details>
 
+              <!-- Part 6 -->
               <details class="accordion-item">
-                <summary class="accordion-header">事例2：特発性肺線維症（IPF）薬物治療ガイドライン</summary>
+                <summary class="accordion-header">第6部：マルチ介入アプローチの具体的な適用事例</summary>
                 <div class="accordion-body">
-                  <p><strong>【介入】</strong>10種類の薬理学的介入（ピルフェニドン、ニンテダニブ、N-アセチルシステインなど）</p>
-                  <p><strong>【NMAの役割】</strong>2016年NMAがSUCRAランキング（健康効果の定量的順位）を提供</p>
-                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
-                    <strong>【結論】</strong>NMAで最も効果が高いとされたピルフェニドンが同時に最高額→EtDでコスト・バランスを考慮して推奨を絞り込み。条件付き推奨付きのマルチ推奨を策定。
-                  </div>
+                  <details class="accordion-item" style="margin-bottom:0.8rem;">
+                    <summary class="accordion-header" style="background:#f0fdf4;">具体例１：WHO 結核感染予防管理ガイドライン（2019年）</summary>
+                    <div class="accordion-body">
+                      <p><strong>【介入選択肢】</strong>自然換気・混合モード換気・機械換気・HEPAフィルター再循環空気（4種類）</p>
+                      <p><strong>【エビデンス状況】</strong>完全なNMAネットワークは構築できず → 存在データを他の換気システムに外挿</p>
+                      <p>純粋な効果ではHEPAフィルター等が優れると思われたが、EtDフレームワークにより、高度なシステムはコストが高く、途上国での実施可能性が低く、メンテナンス不足の懸念から受容性も低いと判明。</p>
+                      <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                        <strong>【結論】</strong>安価でどこでも実施可能な<strong>「自然換気」が総合判定でトップ</strong>となり第一選択として推奨。コスト・公平性・実施可能性で最高評価を獲得。
+                      </div>
+                    </div>
+                  </details>
+                  <details class="accordion-item">
+                    <summary class="accordion-header" style="background:#eff6ff;">具体例２：特発性肺線維症（IPF）の薬物治療</summary>
+                    <div class="accordion-body">
+                      <p><strong>【介入】</strong>10種類の薬理学的介入（ピルフェニドン、ニンテダニブ、N-アセチルシステインなど）</p>
+                      <p><strong>【NMAの役割】</strong>2016年NMAがSUCRAランキング（健康効果の定量的順位）を提供</p>
+                      <p>効果が最高とされた薬剤はコストが極めて高く受容性も低いことが判明。パネルはNMAのランキングをそのまま使うのではなく、コストやバランスを考慮した。</p>
+                      <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                        <strong>【結論】</strong>複数の薬剤を並列の代替案として条件付きで推奨する柔軟な結論。NMAのランキングをそのまま推奨順位に直結させることを回避した典型例。
+                      </div>
+                    </div>
+                  </details>
                 </div>
               </details>
 
+              <!-- Part 7 -->
               <details class="accordion-item">
-                <summary class="accordion-header">事例3：欧州委員会 乳がんスクリーニングガイドライン</summary>
+                <summary class="accordion-header">第7部：結論と今後の展望</summary>
                 <div class="accordion-body">
-                  <p><strong>【介入】</strong>マンモグラフィ検診の頻度：毎年 / 2年ごと / 3年ごと（3種類 × 3年齢群）</p>
-                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
-                    <strong>【結論】</strong>利益（乳がん死亡率低下）と害（偽陽性・過剰診断）のバランス、医療資源、女性の価値観をEtDで横断的評価→<strong>「2年ごとのスクリーニング」を推奨</strong>。
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                    <p>単一の一対比較や、NMAによる「不確実で危険なランキング」の妄信では、現代の複雑な医療政策に対する最適解は出せない。臨床医やパネルが注目すべきは、単純なランキングではなく、<strong>ペアごとの効果推定値とその確実性</strong>である。</p>
+                    <p style="margin-top:0.5rem;">最新のGRADEガイダンスとEvidence Primeが提示するマルチ介入のEtDフレームワークは、NMAのランキングを退け、確実な効果サイズにコストや公平性といった社会的文脈を掛け合わせ、SoJテーブル上で透明性をもって包括的な判断を行うための唯一の体系的ツールである。このプロセスこそが、今後の世界的な診療ガイドライン策定における絶対的な標準となっていくことは間違いない。</p>
                   </div>
+                  <details class="accordion-item">
+                    <summary class="accordion-header" style="background:#f8fafc;">参考文献</summary>
+                    <div class="accordion-body">
+                      <ul style="font-size:0.85rem;line-height:1.8;">
+                        <li>Beltran J, et al. New GRADE Evidence-to-Decision Framework for Pairwise and Multiple Comparisons (GRADE Guidance 45). Annals of Internal Medicine, 2025.</li>
+                        <li>Piggott T, et al. Using GRADE evidence to decision frameworks to choose from multiple interventions. Journal of Clinical Epidemiology 130 (2021) 117-124.</li>
+                        <li>Becker L, et al. Comparing Multiple Interventions in Cochrane Reviews. Cochrane CMIMG, 2003.</li>
+                        <li>World Health Organization. WHO guidelines on tuberculosis infection prevention and control 2019 update: Online annexes. (Annex 4-5 GRADE evidence summary and EtD tables).</li>
+                        <li>Piggott T, et al. GRADEpro Webinar: GRADE for Multiple-Intervention Comparisons in EtD Framework.</li>
+                        <li>Evidence Prime Webinar: GRADE for Multiple-Intervention Comparisons in EtD Framework (Video).</li>
+                        <li>Common pitfalls and mistakes in the set-up, analysis and interpretation of results in network meta-analysis: what clinicians should look for in a published article.</li>
+                        <li>EAES Rapid Guideline: Systematic review, NMA, CINeMA and GRADE assessment, and European consensus on bariatric surgery – Extension 2022.</li>
+                      </ul>
+                    </div>
+                  </details>
                 </div>
               </details>
+
             </div>
           </div>
 
