@@ -1,0 +1,130 @@
+【厳守事項】：指定された箇所以外のロジック、スタイル、テキストには一切変更を加えないでください。
+
+1. 変更箇所
+
+Chapter 16 / 16
+ネットワークメタ分析・マルチ介入
+
+変更内容:　他らしいタブを作成して、コンテンツの挿入
+
+マルチ介入（MC）
+ネットワークメタ分析（NMA）
+のタブの真ん中に、もう一つ、
+
+「マルチ介入最新情報」のタブを作って
+
+表示要件: ユーザーが読みやすいよう、適切に改行や見出し（Markdown等）を用いてレイアウトを整えて実装すること。Chapterの中にタブを作ってもよいので、読みやすく、すぐに問題にたどり着けるようにして。図示したほうがよいところは図も追加して。
+
+【「マルチ介入最新情報」への挿入テキスト】
+
+
+
+
+
+
+
+
+
+
+2026年3月　マルチ介入最新情報
+New GRADE Evidence-to-Decision Framework for Pairwise and Multiple Comparisons (GRADE Guidance 45)
+https://www.acpjournals.org/doi/10.7326/ANNALS-25-04273
+
+
+複数の選択肢を比較検討するための新しい「GRADE Evidence-to-Decision (EtD) フレームワーク」について解説してあります [cite: 1, 2]。
+
+---
+
+## 新しいGRADE EtDフレームワークの全体像
+
+[cite_start]従来のEtDフレームワークは、主に「AとBのどちらが良いか」という1対1（ペアワイズ）の比較を想定して作られていました [cite: 2][cite_start]。しかし、実際の医療現場では「複数の治療法（例：多発性硬化症に対する様々な疾患修飾薬）の中でどれが最適か」を同時に比較する必要があります [cite: 168]。
+
+[cite_start]新しいフレームワークは、この「複数比較（Multiple Comparisons）」に対応するために構造がアップデートされており、ネットワークメタアナリシス（NMA）などの複雑なエビデンス統合手法を直接意思決定に組み込めるように設計されています [cite: 10]。
+
+フレームワークは大きく分けて **1. 疑問の定式化（Question）**、**2. 評価（Assessment）**、**3. 結論（Conclusions）** の3つのセクションで構成されています。
+
+---
+
+## アルゴリズム図の詳細な解説
+
+#ここに、C:/Users/yuasa/.gemini/antigravity/scratch/grade-handbook-japanese-v2/coreGRADE/images
+にある、M1.jpg　の図を挿入
+
+ご質問にあった「Figure. Algorithm for formulating recommendations for pairwise and multiple comparisons」は、この新しいフレームワークを使って推奨（レコメンデーション）を作成するまでの全体的なワークフローを示しています。
+
+特に重要な「破線（dashed lines）」で示された **3つのエビデンス統合のシナリオ** と、それに伴う評価基準について解説します。
+
+### 3つのエビデンス統合シナリオ（破線部分）
+[cite_start]複数の選択肢を比較する際、どのようなデータが存在するかによって、以下の3つのシナリオに分かれます [cite: 10]。
+
+* **シナリオ1：ネットワークメタアナリシス（NMA）が存在する場合**
+    複数の治療法を、プラセボや直接比較のデータを交えて1つの巨大なネットワークとして同時に解析・比較できるデータがある状態です。これが最も包括的なシナリオです。
+* **シナリオ2：共通の対照群を持つ複数のシステマティックレビュー（SR）がある場合**
+    [cite_start]「治療A vs プラセボ」「治療B vs プラセボ」「治療C vs プラセボ」のように、すべてが同じ比較対象（例：プラセボや標準治療）を持っている状態です [cite: 10]。この「共通の対照群」を基準にして各介入の評価を行います。
+* **シナリオ3：共通の対照群を持たない複数のSRがある場合**
+    [cite_start]「治療A vs 治療B」「治療C vs 治療D」のように、ばらばらのペアワイズ比較しか存在しない状態です [cite: 10]。この場合は、優先順位をつけた比較リストを作成して個別に評価していく必要があります。
+
+
+### 評価に関わる基準（Criteria）
+シナリオが決定したら、各介入（または比較）に対して、以下の基準に沿って判断を下していきます。
+
+* [cite_start]**問題の優先度 (Problem):** その健康問題がどれほど優先して解決すべきものか [cite: 10]。
+* [cite_start]**望ましい効果 / 望ましくない効果の大きさ (Desirable / Undesirable Effects):** 介入によるメリットとデメリット（副作用など）の大きさ [cite: 10, 13][cite_start]。ここでの評価は、あらかじめ設定した「閾値（Threshold）」に基づいて判定されます [cite: 10]。
+* [cite_start]**純効果 (Net Effect):** これが新しいフレームワークの目玉となる追加基準です。メリットとデメリットの大きさを差し引きし、最終的にどの程度の純粋なプラス（またはマイナス）効果があるかを評価します [cite: 13, 24]。
+* [cite_start]**エビデンスの確実性 (Certainty of Evidence):** 効果の推定値がどれくらい信頼できるか [cite: 13]。
+* [cite_start]**価値観の確実性 (Certainty of Evidence of Values):** 患者がその結果（アウトカム）をどれくらい重視しているかに関する不確実性 [cite: 13, 16]。
+* [cite_start]**効果のバランス (Balance of Effects):** 上記すべてを加味し、最終的に介入と対照のどちらを支持するか [cite: 16]。
+* [cite_start]**リソース・費用対効果 (Resources Required / Cost Effectiveness):** コストの大きさと、それに見合う効果があるか [cite: 16, 19]。
+* [cite_start]**公平性・受容性・実現可能性 (Equity / Acceptability / Feasibility):** 医療格差を広げないか、患者や医療者に受け入れられるか、実際に実行可能か [cite: 19, 22]。
+
+EtD表の例です。
+
+#ここに、
+C:/Users/yuasa/.gemini/antigravity/scratch/grade-handbook-japanese-v2/coreGRADE/images
+にある、ETD.jpg　の図を挿入
+
+
+
+
+[cite_start]最終的にこれらの評価を「Summary of Judgments (SoJ)」という一覧表にまとめ、推奨の方向性（推奨する/しない）と強さ（強い/弱い）を決定し、介入の優先順位（クラスタリング）を行います [cite: 28, 83, 91]。
+
+---
+
+## 特に注意して読むべき重要な図表
+
+この資料を深く理解する上で、本文の解説に加えて、補足資料（Supplement）にある以下の図表を重点的に確認することを強くお勧めします。
+
+### 1. Supplement Table 9. Summary of Judgments (SoJ) の実例
+
+#ここに、
+C:/Users/yuasa/.gemini/antigravity/scratch/grade-handbook-japanese-v2/coreGRADE/images
+にある、M9.jpg　の図を挿入
+
+
+* [cite_start]**所在:** Supplement 2 の 20ページ目 [cite: 300]。
+* [cite_start]**解説:** 評価基準（Criteria）のすべてを終えた後、各介入（この例では多発性硬化症の各種薬剤）がどのような評価になったかを**一覧で俯瞰できるダッシュボード**です [cite: 300, 301, 302, 303, 304, 305]。
+* [cite_start]**注目ポイント:** 「純効果 (Net Effect)」や「効果のバランス (Balance of Effects)」の行を見ると、ある薬剤は「大きな純利益 (Large net desirable)」をもたらし「介入を支持 (Probably favors intervention)」しているのに対し、別の薬剤（例：Laquinimod）は「純害 (Trivial net undesirable)」となり「推奨に反対 (conditional against)」となっているプロセスが一目でわかります [cite: 301, 305]。この表こそが、複数比較の意思決定の要です。
+
+### 2. Supplement Figure 1. 相関関係のあるアウトカムの落とし穴
+
+
+#ここに、
+C:/Users/yuasa/.gemini/antigravity/scratch/grade-handbook-japanese-v2/coreGRADE/images
+にある、MF1.jpg　の図を挿入
+
+* [cite_start]**所在:** Supplement 2 の 2ページ目 [cite: 146]。
+* **解説:** 「高度に依存し、相関のあるアウトカムを含むシナリオ例」を示しています。
+* [cite_start]**注目ポイント:** 介入の効果を評価する際、似たようなアウトカム（例：肺塞栓症、深部静脈血栓症、多臓器不全など）が並んでいる場合、単純にそれぞれの効果を「足し算」してはいけないという重要な警告です [cite: 148]。これらの結果には重複があるため、すべてを足し合わせると効果を過大評価（二重カウント）してしまう危険性があることを示唆しています。
+
+### 3. Supplement Table 3. Net Effect（純効果）の算出プロセス
+
+
+#ここに、
+C:/Users/yuasa/.gemini/antigravity/scratch/grade-handbook-japanese-v2/coreGRADE/images
+にある、M3.jpg　の図を挿入
+
+* [cite_start]**所在:** Supplement 2 の 8ページ目 [cite: 198, 200]。
+* **解説:** 新基準である「純効果（Net Effect）」をどのように算出したかを示す詳細なグリッドです。
+* [cite_start]**注目ポイント:** 単に感覚でメリットとデメリットを天秤にかけるのではなく、「SumValue（各アウトカムの効用値と絶対リスク減少率を掛け合わせた数値）」という具体的な計算を用いて、客観的に純効果の大きさを数値化・ランク付けしようと試みている点に注目してください [cite: 200]。
+
+この新しいEtDフレームワークは、複雑化する医療データ（NMAなど）を、透明性高く客観的にガイドラインや現場の意思決定に落とし込むための非常に強力なツールとなっています。
