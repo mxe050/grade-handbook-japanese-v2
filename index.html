@@ -221,6 +221,15 @@ function checkAuth(){
           </span>
         </button>
       </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="17">
+          <span class="toc-num">🆕</span>
+          <span class="toc-text">
+            最新情報(2026.4.1.～）
+            <span class="en">Latest Updates</span>
+          </span>
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -233,19 +242,47 @@ function checkAuth(){
       <div class="cover-content">
         <h1 class="cover-title">GRADEアプローチ ハンドブック</h1>
         <p class="cover-description">本アプリはGRADE Bookと CoreGradeを日本語訳とポイントの解説です</p>
-        <div class="link-button-container">
-          <a href="https://book.gradepro.org/" target="_blank" rel="noopener" class="hero-btn primary">
+        <div class="link-button-container" style="grid-template-columns: repeat(2, 1fr);">
+          <a href="https://www.youtube.com/watch?v=pAr7upG01YA&t=1s" target="_blank" rel="noopener" class="hero-btn primary">
+            <span class="btn-icon">🎬</span>
+            <span class="btn-text">
+              <span class="main-label">本資料を読む準備</span>
+              <span class="sub-label">まずこちらを視聴してから読んでください</span>
+            </span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=0dzlYkhHo-4&t=4170s" target="_blank" rel="noopener" class="hero-btn secondary">
+            <span class="btn-icon">📺</span>
+            <span class="btn-text">
+              <span class="main-label">本資料後発展編</span>
+              <span class="sub-label">本資料を読んだ後の発展的な内容</span>
+            </span>
+          </a>
+          <a href="https://mxe050.github.io/INGUIDE/" target="_blank" rel="noopener" class="hero-btn primary">
+            <span class="btn-icon">📋</span>
+            <span class="btn-text">
+              <span class="main-label">パネリスト必須知識</span>
+              <span class="sub-label">パネリスト参加前に必ず確認</span>
+            </span>
+          </a>
+          <a href="https://book.gradepro.org/" target="_blank" rel="noopener" class="hero-btn secondary">
             <span class="btn-icon">📚</span>
             <span class="btn-text">
-              <span class="main-label">GRADEBook</span>
+              <span class="main-label">GRADEBook（GRADEアプローチ）</span>
               <span class="sub-label">公式モバイルブックを表示</span>
             </span>
           </a>
-          <a href="https://www.clarityresearch.ca/frequently-asked-questions" target="_blank" rel="noopener" class="hero-btn secondary">
+          <a href="https://www.clarityresearch.ca/frequently-asked-questions" target="_blank" rel="noopener" class="hero-btn primary">
             <span class="btn-icon">📊</span>
             <span class="btn-text">
-              <span class="main-label">CoreGRADE</span>
+              <span class="main-label">CoreGRADE（Guyatt先生）</span>
               <span class="sub-label">CoreGRADEの解説を確認</span>
+            </span>
+          </a>
+          <a href="https://note.com/mxe05064/n/n4b3ab8020899" target="_blank" rel="noopener" class="hero-btn secondary">
+            <span class="btn-icon">📝</span>
+            <span class="btn-text">
+              <span class="main-label">その他資料（Y先生）</span>
+              <span class="sub-label">補足資料・参考ノート</span>
             </span>
           </a>
         </div>
@@ -6545,7 +6582,8 @@ function checkAuth(){
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">マルチ介入（MC）</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">ネットワークメタ分析（NMA）</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">マルチ介入最新情報</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">ネットワークメタ分析（NMA）</button>
         </div>
         <div class="tab-content">
 
@@ -6828,7 +6866,125 @@ function checkAuth(){
             </div>
           </div>
 
-          <!-- Tab 1: NMA -->
+          <!-- Tab 1: マルチ介入最新情報 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">マルチ介入最新情報（2026年3月）</h2>
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>New GRADE Evidence-to-Decision Framework for Pairwise and Multiple Comparisons (GRADE Guidance 45)</strong><br>
+                <a href="https://www.acpjournals.org/doi/10.7326/ANNALS-25-04273" target="_blank" rel="noopener" style="color:#2563eb;font-size:0.9rem;">https://www.acpjournals.org/doi/10.7326/ANNALS-25-04273</a><br>
+                <p style="margin-top:0.5rem;margin-bottom:0;">複数の選択肢を比較検討するための新しい「GRADE Evidence-to-Decision (EtD) フレームワーク」について解説する。</p>
+              </div>
+
+              <!-- 全体像 -->
+              <details class="accordion-item" open>
+                <summary class="accordion-header">新しいGRADE EtDフレームワークの全体像</summary>
+                <div class="accordion-body">
+                  <p>従来のEtDフレームワークは、主に「AとBのどちらが良いか」という1対1（ペアワイズ）の比較を想定して作られていた。しかし、実際の医療現場では「複数の治療法（例：多発性硬化症に対する様々な疾患修飾薬）の中でどれが最適か」を同時に比較する必要がある。</p>
+                  <p style="margin-top:0.6rem;">新しいフレームワークは、この「複数比較（Multiple Comparisons）」に対応するために構造がアップデートされており、ネットワークメタアナリシス（NMA）などの複雑なエビデンス統合手法を直接意思決定に組み込めるように設計されている。</p>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+                    <div style="background:#eff6ff;border-radius:8px;padding:0.8rem;text-align:center;">
+                      <div style="font-size:1.1rem;font-weight:bold;color:#1e40af;">1. Question</div>
+                      <div style="font-size:0.85rem;color:#555;margin-top:0.3rem;">疑問の定式化</div>
+                    </div>
+                    <div style="background:#f0fdf4;border-radius:8px;padding:0.8rem;text-align:center;">
+                      <div style="font-size:1.1rem;font-weight:bold;color:#15803d;">2. Assessment</div>
+                      <div style="font-size:0.85rem;color:#555;margin-top:0.3rem;">評価</div>
+                    </div>
+                    <div style="background:#fff7ed;border-radius:8px;padding:0.8rem;text-align:center;">
+                      <div style="font-size:1.1rem;font-weight:bold;color:#c2410c;">3. Conclusions</div>
+                      <div style="font-size:0.85rem;color:#555;margin-top:0.3rem;">結論</div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- アルゴリズム図 -->
+              <details class="accordion-item" open>
+                <summary class="accordion-header">アルゴリズム図の詳細な解説</summary>
+                <div class="accordion-body">
+                  <img src="coreGRADE/images/M1.jpg" alt="Algorithm for formulating recommendations for pairwise and multiple comparisons" style="width:100%;max-width:700px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1rem;display:block;">
+                  <p>「Figure. Algorithm for formulating recommendations for pairwise and multiple comparisons」は、この新しいフレームワークを使って推奨（レコメンデーション）を作成するまでの全体的なワークフローを示している。特に重要な「破線（dashed lines）」で示された<strong>3つのエビデンス統合のシナリオ</strong>と、それに伴う評価基準について解説する。</p>
+
+                  <h4 style="color:#1e40af;margin:0.8rem 0 0.5rem;">3つのエビデンス統合シナリオ（破線部分）</h4>
+                  <p style="margin-bottom:0.6rem;">複数の選択肢を比較する際、どのようなデータが存在するかによって、以下の3つのシナリオに分かれる。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;">
+                      <strong>シナリオ1：ネットワークメタアナリシス（NMA）が存在する場合</strong><br>
+                      <span style="font-size:0.88rem;">複数の治療法を、プラセボや直接比較のデータを交えて1つの巨大なネットワークとして同時に解析・比較できるデータがある状態。これが最も包括的なシナリオである。</span>
+                    </div>
+                    <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                      <strong>シナリオ2：共通の対照群を持つ複数のSR（システマティックレビュー）がある場合</strong><br>
+                      <span style="font-size:0.88rem;">「治療A vs プラセボ」「治療B vs プラセボ」「治療C vs プラセボ」のように、すべてが同じ比較対象（例：プラセボや標準治療）を持っている状態。この「共通の対照群」を基準にして各介入の評価を行う。</span>
+                    </div>
+                    <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.8rem;border-radius:6px;">
+                      <strong>シナリオ3：共通の対照群を持たない複数のSRがある場合</strong><br>
+                      <span style="font-size:0.88rem;">「治療A vs 治療B」「治療C vs 治療D」のように、ばらばらのペアワイズ比較しか存在しない状態。この場合は、優先順位をつけた比較リストを作成して個別に評価していく必要がある。</span>
+                    </div>
+                  </div>
+
+                  <h4 style="color:#1e40af;margin:1rem 0 0.5rem;">評価に関わる基準（Criteria）</h4>
+                  <p style="margin-bottom:0.6rem;">シナリオが決定したら、各介入（または比較）に対して、以下の基準に沿って判断を下していく。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>問題の優先度 (Problem)</strong>：その健康問題がどれほど優先して解決すべきものか</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>望ましい効果 / 望ましくない効果の大きさ</strong>：介入によるメリットとデメリットの大きさ。あらかじめ設定した「閾値（Threshold）」に基づいて判定</div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.6rem;font-size:0.85rem;border:1px solid #fca5a5;"><strong>★ 純効果 (Net Effect)【新追加】</strong>：メリットとデメリットの大きさを差し引きし、最終的にどの程度の純粋なプラス（またはマイナス）効果があるかを評価</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>エビデンスの確実性 (Certainty of Evidence)</strong>：効果の推定値がどれくらい信頼できるか</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>価値観の確実性</strong>：患者がその結果（アウトカム）をどれくらい重視しているかに関する不確実性</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>効果のバランス (Balance of Effects)</strong>：上記すべてを加味し、最終的に介入と対照のどちらを支持するか</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>リソース・費用対効果</strong>：コストの大きさと、それに見合う効果があるか</div>
+                    <div style="background:#f8fafc;border-radius:6px;padding:0.6rem;font-size:0.85rem;"><strong>公平性・受容性・実現可能性</strong>：医療格差を広げないか、患者や医療者に受け入れられるか、実際に実行可能か</div>
+                  </div>
+
+                  <p style="margin-top:0.8rem;">EtD表の例：</p>
+                  <img src="coreGRADE/images/ETD.jpg" alt="EtD表の例" style="width:100%;max-width:700px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:0.5rem;display:block;">
+
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.8rem;">
+                    最終的にこれらの評価を「Summary of Judgments (SoJ)」という一覧表にまとめ、推奨の方向性（推奨する/しない）と強さ（強い/弱い）を決定し、介入の優先順位（クラスタリング）を行う。
+                  </div>
+                </div>
+              </details>
+
+              <!-- 重要な図表 -->
+              <details class="accordion-item">
+                <summary class="accordion-header">特に注意して読むべき重要な図表</summary>
+                <div class="accordion-body">
+                  <p style="margin-bottom:1rem;">この資料を深く理解する上で、本文の解説に加えて、補足資料（Supplement）にある以下の図表を重点的に確認することを強くお勧めする。</p>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.5rem;">1. Supplement Table 9. Summary of Judgments (SoJ) の実例</h4>
+                  <img src="coreGRADE/images/M9.jpg" alt="Summary of Judgments (SoJ) の実例" style="width:100%;max-width:700px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:0.8rem;display:block;">
+                  <div style="background:#f8fafc;border-left:3px solid #3b82f6;padding:0.7rem;border-radius:4px;margin-bottom:1rem;font-size:0.88rem;">
+                    <strong>所在：</strong>Supplement 2 の 20ページ目<br>
+                    <strong>解説：</strong>評価基準（Criteria）のすべてを終えた後、各介入（この例では多発性硬化症の各種薬剤）がどのような評価になったかを<strong>一覧で俯瞰できるダッシュボード</strong>。<br>
+                    <strong>注目ポイント：</strong>「純効果 (Net Effect)」や「効果のバランス (Balance of Effects)」の行を見ると、ある薬剤は「大きな純利益 (Large net desirable)」をもたらし「介入を支持 (Probably favors intervention)」しているのに対し、別の薬剤（例：Laquinimod）は「純害 (Trivial net undesirable)」となり「推奨に反対 (conditional against)」となっているプロセスが一目でわかる。この表こそが、複数比較の意思決定の要である。
+                  </div>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.5rem;">2. Supplement Figure 1. 相関関係のあるアウトカムの落とし穴</h4>
+                  <img src="coreGRADE/images/MF1.jpg" alt="相関関係のあるアウトカムを含むシナリオ例" style="width:100%;max-width:700px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:0.8rem;display:block;">
+                  <div style="background:#fef2f2;border-left:3px solid #ef4444;padding:0.7rem;border-radius:4px;margin-bottom:1rem;font-size:0.88rem;">
+                    <strong>所在：</strong>Supplement 2 の 2ページ目<br>
+                    <strong>解説：</strong>「高度に依存し、相関のあるアウトカムを含むシナリオ例」を示している。<br>
+                    <strong>注目ポイント：</strong>介入の効果を評価する際、似たようなアウトカム（例：肺塞栓症、深部静脈血栓症、多臓器不全など）が並んでいる場合、単純にそれぞれの効果を「足し算」してはいけないという重要な警告。これらの結果には重複があるため、すべてを足し合わせると効果を過大評価（二重カウント）してしまう危険性があることを示唆している。
+                  </div>
+
+                  <h4 style="color:#1e40af;margin-bottom:0.5rem;">3. Supplement Table 3. Net Effect（純効果）の算出プロセス</h4>
+                  <img src="coreGRADE/images/M3.jpg" alt="Net Effect（純効果）の算出プロセス" style="width:100%;max-width:700px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:0.8rem;display:block;">
+                  <div style="background:#f0fdf4;border-left:3px solid #22c55e;padding:0.7rem;border-radius:4px;font-size:0.88rem;">
+                    <strong>所在：</strong>Supplement 2 の 8ページ目<br>
+                    <strong>解説：</strong>新基準である「純効果（Net Effect）」をどのように算出したかを示す詳細なグリッド。<br>
+                    <strong>注目ポイント：</strong>単に感覚でメリットとデメリットを天秤にかけるのではなく、「SumValue（各アウトカムの効用値と絶対リスク減少率を掛け合わせた数値）」という具体的な計算を用いて、客観的に純効果の大きさを数値化・ランク付けしようと試みている点に注目。
+                  </div>
+
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.8rem;">
+                    この新しいEtDフレームワークは、複雑化する医療データ（NMAなど）を、透明性高く客観的にガイドラインや現場の意思決定に落とし込むための非常に強力なツールとなっている。
+                  </div>
+                </div>
+              </details>
+
+            </div>
+          </div>
+
+          <!-- Tab 2: NMA -->
           <div class="tab-pane">
             <div class="content-section">
               <h2 class="section-title">ネットワークメタ分析（NMA）完全実務マニュアル</h2>
@@ -7026,6 +7182,29 @@ function checkAuth(){
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
         <span class="page-indicator">16 / 16</span>
+        <button class="nav-btn nav-next" >次の章 →</button>
+      </div>
+    </div>
+
+    <!-- page-17: 最新情報(2026.4.1.～） -->
+    <div class="page" id="page-17">
+      <div class="page-header">
+        <div class="chapter-badge">最新情報(2026.4.1.～）</div>
+        <h1>最新情報(2026.4.1.～）</h1>
+        <div class="en-title">Latest Updates</div>
+      </div>
+      <div class="page-body">
+        <div style="display:flex;align-items:center;justify-content:center;min-height:300px;">
+          <div style="text-align:center;">
+            <div style="font-size:4rem;margin-bottom:1rem;">🚧</div>
+            <h2 style="color:#6b7280;font-size:1.5rem;margin-bottom:0.5rem;">工事中</h2>
+            <p style="color:#9ca3af;">このセクションは現在準備中です。今後のアップデートをお待ちください。</p>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav">
+        <button class="nav-btn secondary nav-prev" >← 前の章</button>
+        <span class="page-indicator">最新情報</span>
         <button class="nav-btn nav-next" disabled>次の章 →</button>
       </div>
     </div>
