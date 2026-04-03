@@ -516,7 +516,7 @@ pre {
   }
 
   /* タブボタンの最小幅を縮小 */
-  .tab-btn { min-width: 100px; font-size: 0.82rem; padding: 9px 10px; }
+  .tab-btn { min-width: 90px; font-size: 0.82rem; padding: 8px 8px; }
 
   /* はみ出し防止：横スクロールバーを出さない */
   body { overflow-x: hidden; }
@@ -715,7 +715,8 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
 /* ===== タブナビゲーション（Tabs Nav） ===== */
 .tabs-nav {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
   background: #f0f4f8;
   padding: 6px;
   border-radius: 12px;
@@ -730,9 +731,9 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
 .tabs-nav::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-  flex: 1;
-  min-width: 140px;
-  padding: 10px 16px;
+  flex: 1 1 auto;
+  min-width: 120px;
+  padding: 9px 14px;
   border: none;
   background: transparent;
   color: var(--text-light);
