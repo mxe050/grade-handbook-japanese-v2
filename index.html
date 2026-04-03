@@ -108,8 +108,8 @@ function checkAuth(){
         <button class="toc-btn" data-idx="4">
           <span class="toc-num">4</span>
           <span class="toc-text">
-            介入・診断検査・予後・曝露に関する質問
-            <span class="en">Questions about interventions, diagnostic test, prognosis and exposures</span>
+            CQ・スコープ
+            <span class="en">Clinical Questions &amp; Scope</span>
           </span>
         </button>
       </li>
@@ -126,8 +126,8 @@ function checkAuth(){
         <button class="toc-btn" data-idx="6">
           <span class="toc-num">6</span>
           <span class="toc-text">
-            介入の確実性評価の原則
-            <span class="en">Principles for assessing the certainty of interventions</span>
+            確実性評価の原則・Overall
+            <span class="en">Principles for assessing the certainty / Overall certainty</span>
           </span>
         </button>
       </li>
@@ -1710,15 +1710,16 @@ function checkAuth(){
     </div>
     <div class="page" id="page-4">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 4 / 16</div>
-        <h1>介入・診断検査・予後・曝露に関する質問</h1>
-        <div class="en-title">Questions about interventions, diagnostic test, prognosis and exposures</div>
+        <div class="chapter-badge">Chapter 4 / 17</div>
+        <h1>CQ・スコープ</h1>
+        <div class="en-title">Clinical Questions &amp; Scope</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">CQ作成いろいろ</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">CQについてその他の情報</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">スコープ作成</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -2080,11 +2081,265 @@ function checkAuth(){
               <p>このセクションのコンテンツは現在準備中です。今後のアップデートをお待ちください。</p>
             </div>
           </div>
+          <!-- スコープ作成 tab -->
+          <div class="tab-pane">
+            <div style="max-width:900px;margin:0 auto;padding:0.5rem;">
+              <h2 style="font-size:1.5rem;font-weight:bold;margin-bottom:1rem;color:#1e3a5f;">スコープ作成（Scoping）</h2>
+
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:8px;margin-bottom:1.5rem;">
+                <p style="margin:0;">スコープの作成について以下の動画より解説します。</p>
+                <p style="margin:0.5rem 0 0;"><strong>Determining the Scope of Guidelines：</strong></p>
+                <div style="margin-top:0.8rem;">
+                  <a href="https://www.youtube.com/watch?v=vxRIps1ARL0" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#dc2626;color:#fff;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;font-weight:bold;">
+                    ▶ YouTube で視聴する
+                  </a>
+                </div>
+              </div>
+
+              <!-- クイックジャンプ -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1.5rem;">
+                <p style="font-weight:bold;margin:0 0 0.6rem;font-size:0.95rem;">目次</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  <a href="#scope-step" style="background:#1e3a5f;color:#fff;padding:0.3rem 0.7rem;border-radius:4px;text-decoration:none;font-size:0.87rem;">1. スコープ作成の手順</a>
+                  <a href="#scope-caution" style="background:#1e3a5f;color:#fff;padding:0.3rem 0.7rem;border-radius:4px;text-decoration:none;font-size:0.87rem;">2. 注意点</a>
+                  <a href="#scope-vote" style="background:#1e3a5f;color:#fff;padding:0.3rem 0.7rem;border-radius:4px;text-decoration:none;font-size:0.87rem;">3. 投票の流れ（GRADEpro）</a>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- Section 1 -->
+              <h3 id="scope-step" style="font-size:1.2rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.8rem;">1. スコープ作成の手順</h3>
+              <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-bottom:1rem;">
+                <strong>スコープ決定（Scoping）</strong>は、プロジェクトの初期段階で行われる最も重要なプロセスの一つであり、推奨事項の質を左右します。
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">① 準備段階</summary>
+                <div class="accordion-body">
+                  <p>スコープ決定を始める前に、以下の体制を整える必要があります。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>管理委員会（Oversight Committee）</strong>・ガイドラインパネルの選出</li>
+                    <li><strong>ステークホルダー（利害関係者）</strong>の特定</li>
+                    <li>合意形成の方法の決定および<strong>利益相反（COI）</strong>の管理</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">② ステップ1：スコーピング・レビュー</summary>
+                <div class="accordion-body">
+                  <p>既存のガイドラインやシステマティック・レビューを網羅的に検索します。</p>
+                  <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:0.7rem;border-radius:4px;margin-top:0.5rem;">
+                    <strong>目的：</strong>既存の資産を<strong>適応（Adaptation）</strong>させることで時間・資金・労力を節約するため。また、既存のガイダンスが不足しており最もインパクトを与えられる領域を特定するためです。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">③ ステップ2：ステークホルダーとの協議</summary>
+                <div class="accordion-body">
+                  <p>医療従事者、政策立案者、患者・一般市民から意見を収集します。</p>
+                  <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:0.7rem;border-radius:4px;margin-top:0.5rem;">
+                    <strong>目的：</strong>重要な臨床疑問や患者にとって意味のあるアウトカムを特定し、実装における課題を把握するためです。また、開発プロセスへの信頼を高め、将来的な推奨事項の普及（Buy-in）を促します。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">④ ステップ3：臨床疑問（Question）の生成（ブレインストーミング）</summary>
+                <div class="accordion-body">
+                  <p>ガイドラインで扱う可能性のある問いをリストアップします。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>形式：</strong>PICO（Population・Intervention・Comparator・Outcome）形式で構成します。</li>
+                    <li><strong>方法：</strong>この段階では優先順位をつけず、パネルメンバーが関連すると思うものをすべて挙げます。方法論学者は、パネルが出した生の問いをPICO形式に変換・整理する役割を担います。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">⑤ ステップ4：臨床疑問の優先順位付け</summary>
+                <div class="accordion-body">
+                  <p>リストアップされた多数の問いから、リソースやタイムラインに応じて実際に扱うものを絞り込みます。</p>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-top:0.6rem;">
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#15803d;">7〜9点</strong><br>推奨事項を作成すべき問い</div>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#a16207;">4〜6点</strong><br>潜在的に重要（将来のために保存）</div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#dc2626;">1〜3点</strong><br>優先度が低いため除外</div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">⑥ ステップ5：アウトカムの生成と優先順位付け</summary>
+                <div class="accordion-body">
+                  <p>採用された各臨床疑問に対し、評価指標となるアウトカムを特定します。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>原則：</strong>患者にとって重要なアウトカムを優先し、代用アウトカム（例：心筋梗塞そのものではなく石灰化の数値など）は「間接性」を招き推奨の確実性を下げるため、可能な限り避けます。</li>
+                    <li><strong>優先順位付け：</strong>臨床疑問と同様に1〜9点で格付けし、意思決定に「クリティカル（極めて重要）」なものを特定します。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">⑦ ステップ6：最終合意と承認</summary>
+                <div class="accordion-body">
+                  <p>最後に、パネル全体で優先順位付けの結果を確認し、合意を得ます。</p>
+                  <p>投票結果に基づき、必要に応じて特定の項目を「採用」や「除外」のグループへ移動させ、パネルの承認を得るプロセス（例：GradeProなどのソフトウェアを活用した匿名アンケート）を経て、最終的なPICOリストを確定させます。</p>
+                  <div style="background:#f0fdf4;border-left:3px solid #22c55e;padding:0.7rem;border-radius:4px;margin-top:0.5rem;">
+                    確定したPICOリストはエビデンス・レビュー・チームに引き継がれ、実際のデータ抽出と統合が開始されます。
+                  </div>
+                </div>
+              </details>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin:1rem 0 1.5rem;">
+                <strong>スコープ決定が答えるべき3つの核心：</strong>
+                <ol style="margin:0.5rem 0 0 1.2rem;line-height:1.8;">
+                  <li><strong>トピックの範囲：</strong>何をカバーし、何をカバーしないか（例：がんの「診断」は含むが「緩和ケア」は含まないなど）</li>
+                  <li><strong>対象読者：</strong>臨床医、政策立案者、または患者の誰に向けたものか</li>
+                  <li><strong>具体的な焦点：</strong>どのような設定、集団、介入、アウトカムに焦点を当ててエビデンスを統合するか</li>
+                </ol>
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- Section 2 -->
+              <h3 id="scope-caution" style="font-size:1.2rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.8rem;">2. スコープ作成にあたっての注意点など</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2-1. スコープ作成における主な問題点と障壁</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li><strong>ボトルネックとしてのスコーピング：</strong>スコーピングのプロセスは多くのガイドライン開発者にとって「ボトルネック（停滞点）」になりやすく、ここで適切な決定がなされないと後の工程に大きな負担がかかります。</li>
+                    <li><strong>PICO形式への変換の難しさ：</strong>パネルメンバー（専門家や患者）は、最初からPICO形式で問いを立てることに慣れていない場合がほとんどです。方法論学者がこれらを整理する必要がありますが、「問いを整理する作業」と「無意識に優先順位をつけてしまう（バイアスが入る）作業」の境界線が非常に細いことが課題となります。</li>
+                    <li><strong>合意形成の困難さ：</strong>多くのステークホルダーが関わるため、全員の意見を一致させることは非常に困難です。特に、COIの管理や、異なる専門領域間の意見調整が実務上のハードルとなります。</li>
+                    <li><strong>ワークロードとリソースの限界：</strong>ブレーインストーミング段階では問いの数に制限はありませんが、実際には予算や時間の制約があるため、無限に問いを扱うことはできません。リストが長くなりすぎると、システマティック・レビュー・チームの負担が爆発的に増加してしまいます。</li>
+                    <li><strong>下流工程への理解不足：</strong>パネルメンバーは、今決めているアウトカムが数ヶ月後のエビデンス統合や推奨作成にどう影響するかを完全には理解していないことが多く、その重要性を過小評価してしまう傾向があります。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2-2. 注意点（成功のための秘訣）</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.5rem;">① 問い（PICO）の設定に関する注意</h4>
+                  <ul style="margin:0 0 0.8rem 1.2rem;">
+                    <li><strong>詳細度のバランス：</strong>PICOに詳細を詰め込みすぎないよう注意が必要です。地理的な場所や特定の医療設定を厳格に指定しすぎると、該当するエビデンスが見つからなくなるリスクがあります。</li>
+                    <li><strong>「Should（すべきか）」の問いにする：</strong>「介入Aと介入Bのどちらを用いるべきか」という意思決定に直結する形式に整えることが推奨されます。</li>
+                  </ul>
+                  <h4 style="margin-bottom:0.5rem;">② アウトカムの選択に関する注意</h4>
+                  <ul style="margin:0 0 0.8rem 1.2rem;">
+                    <li><strong>患者にとって重要なアウトカムを優先：</strong>死亡率やQOLなど、患者に直接関係するアウトカムを最優先し、代用アウトカムは可能な限り避けるべきです。</li>
+                    <li><strong>「間接性」への警戒：</strong>代用アウトカムを使用すると、エビデンスの評価において「間接性（Indirectness）」の懸念が生じ、推奨の確実性を下げてしまいます。どうしても他にエビデンスがない場合にのみ使用します。</li>
+                  </ul>
+                  <h4 style="margin-bottom:0.5rem;">③ プロセス管理に関する注意</h4>
+                  <ul style="margin:0 0 0 1.2rem;">
+                    <li><strong>透明性の確保：</strong>スコーピングのプロセスが体系的であることを文書化し、最終的なガイドラインで公開することが、ステークホルダーからの信頼（Buy-in）を得るために不可欠です。</li>
+                    <li><strong>優先順位付けの分離：</strong>評価（1〜9点の格付け）を行う際は、他のメンバーの意見に影響されないよう、匿名性を保つ工夫が必要です。</li>
+                    <li><strong>不要な項目の除外：</strong>実行可能性（Feasibility）、公平性（Equity）、費用対効果（Cost-effectiveness）などはスコーピングの段階でなく、後のEtDテーブルで議論すべき事項です。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">2-3. ステークホルダーとの関わり</summary>
+                <div class="accordion-body">
+                  <p>ガイドラインを社会や現場に実装するためには、単に科学的に正しい問いを立てるだけでなく、ステークホルダーの懸念を聞き取り、彼らのニーズをPICOに反映させることが重要です。これにより、最終的な推奨事項が「実行可能（Actionable）」なものになります。</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    このプロセスを適切に管理することで、高品質な問いから高品質な推奨が生み出されるという、ガイドライン開発の好循環を生むことができます。
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- Section 3 -->
+              <h3 id="scope-vote" style="font-size:1.2rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.8rem;">3. ステークホルダーによる投票と優先順位付けの流れ（GRADEpro の例）</h3>
+              <p style="margin-bottom:0.8rem;font-size:0.9rem;color:#555;">出典に基づき、その詳細なステップを解説します。</p>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 1：パネルメンバー（投票者）の準備</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.8;">
+                    <li><strong>アカウント不要の参加：</strong>投票を行うパネルメンバーや患者代表などは、必ずしもGradeProのアカウントを作成する必要はありません。</li>
+                    <li><strong>招待：</strong>管理者が「Team」タブにメンバーのリストを作成すると、各メンバーに調査（サーベイ）へのリンクが含まれた招待メールが送信されます。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 2：臨床疑問（PICO）とアウトカムの生成（ブレインストーミング）</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.8;">
+                    <li><strong>シード（種）リストの提示：</strong>ガイドライン開発チームが、既存のガイドラインや更新案に基づいた「最初のリスト」をパネルに提示します。</li>
+                    <li><strong>項目の追加：</strong>リンクを開いたパネルメンバーは、提示されたリストを確認し、新しい質問やアウトカムを自由に追加できます。</li>
+                    <li><strong>匿名性の確保：</strong>メンバーは他のメンバーがどのような入力をしたかを見ることができません。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 3：モデレーション（整理と修正）</summary>
+                <div class="accordion-body">
+                  <p>ブレインストーミングで集まった膨大な案を、管理者が整理します。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>重複の削除：</strong>異なるメンバーから出された類似の質問を一つにまとめます。</li>
+                    <li><strong>PICO形式への変換：</strong>断片的な問いを、開発者が正式なPICO形式へと書き換えます（例：「メールは手紙より有効か？」→「無症状の女性に対する乳がん検診において、メールによる招待は手紙と比較して有効か？」）。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 4：優先順位付けの投票（1〜9点の格付け）</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.8rem;">
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#15803d;">7〜9点</strong><br>意思決定に極めて重要（クリティカル）</div>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#a16207;">4〜6点</strong><br>重要だがクリティカルではない</div>
+                    <div style="background:#fef2f2;border-radius:6px;padding:0.7rem;text-align:center;font-size:0.88rem;"><strong style="color:#dc2626;">1〜3点</strong><br>優先度が低い</div>
+                  </div>
+                  <p style="font-size:0.88rem;color:#555;">この段階でも、結果は匿名化されており、誰がどのように投票したかは他のメンバーには伏せられます。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 5：結果の集計と分類</summary>
+                <div class="accordion-body">
+                  <p>投票が完了すると、GradeProは結果を自動的に集計し、色分けして表示します。</p>
+                  <div style="display:flex;flex-direction:column;gap:0.4rem;margin-top:0.5rem;">
+                    <div style="background:#dbeafe;border-left:4px solid #2563eb;padding:0.5rem 0.8rem;border-radius:4px;font-size:0.88rem;"><strong>青（7〜9点）：</strong>「回答すべき（To be answered）」質問として採用</div>
+                    <div style="background:#fef9c3;border-left:4px solid #ca8a04;padding:0.5rem 0.8rem;border-radius:4px;font-size:0.88rem;"><strong>黄（4〜6点）：</strong>「潜在的に重要」として将来の検討リストに保存</div>
+                    <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.5rem 0.8rem;border-radius:4px;font-size:0.88rem;"><strong>赤（1〜3点）：</strong>除外</div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 6：最終承認（Approval）プロセス</summary>
+                <div class="accordion-body">
+                  <p>管理者が集計結果に基づいて最終的な採用・不採用の判断を下した後、パネルメンバーにその結果を提示して最終確認を求めます。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>合意形成：</strong>メンバーは提示された優先順位に同意するか、変更を求めることができます。</li>
+                    <li><strong>コメントの必須化：</strong>「優先順位を変更すべき」と回答した場合は、理由をコメントとして残すことが義務付けられています。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 7：エビデンス・テーブルへの転送</summary>
+                <div class="accordion-body">
+                  <p>承認された臨床疑問（PICO）は、ボタン一つでGradePro内の「比較（Comparison）」セクションへ自動的に転送されます。転送された質問には、あわせて選定されたアウトカムが紐付けられ、その後のエビデンス統合（エビデンス・プロファイルやEtDテーブルの作成）にそのまま活用できる状態になります。</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.5rem;">
+                    この一連の流れにより、GradeProはステークホルダー間の合意形成を透明かつ効率的に進めることを可能にしています。
+                  </div>
+                </div>
+              </details>
+
+            </div>
+          </div>
         </div>
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">4 / 16</span>
+        <span class="page-indicator">4 / 17</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
@@ -2349,14 +2604,14 @@ function checkAuth(){
     </div>
     <div class="page" id="page-6">
       <div class="page-header">
-        <div class="chapter-badge">Chapter 6 / 16</div>
-        <h1>介入の確実性評価の原則</h1>
+        <div class="chapter-badge">Chapter 6 / 17</div>
+        <h1>確実性評価の原則・Overall</h1>
         <div class="en-title">Principles for assessing the certainty of interventions</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
-          <button class="tab-btn" onclick="switchTab(this, 1)">CoreGrade解説</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">overall certainty</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">CoreGRADEフローチャート</button>
         </div>
         <div class="tab-content">
@@ -2445,10 +2700,419 @@ function checkAuth(){
       
           </div>
           <div class="tab-pane">
-            <div class="placeholder-msg">
-              <i>📖</i>
-              <h3>CoreGrade解説</h3>
-              <p>このセクションの解説は現在準備中です。今後のアップデートをお待ちください。</p>
+            <div style="max-width:900px;margin:0 auto;padding:0.5rem;">
+
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;color:#1e3a5f;">Overall Certainty of Evidence（エビデンスの全体的な確実性）完全手順書</h2>
+
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.8rem;margin-bottom:1rem;font-size:0.88rem;">
+                <p style="margin:0 0 0.4rem;font-weight:bold;">本手順書の引用元</p>
+                <ul style="margin:0 0 0 1.2rem;line-height:1.7;">
+                  <li><strong>Doc1：</strong>Guyatt et al. "GRADE guidelines 11—making an overall rating of confidence in effect estimates for a single outcome and for all outcomes." <em>Journal of Clinical Epidemiology</em>, 2012.</li>
+                  <li><strong>Doc2：</strong>Appendix 1. Example of a Structured Evidence-to-Decision framework（CAP コルチコステロイド事例）</li>
+                  <li><strong>Doc3：</strong>Colunga-Lozano et al. "Core GRADE unpacked: a summary of recent innovations in complementary GRADE methodology." <em>Journal of Clinical Epidemiology</em>, 189 (2026) 112047.</li>
+                  <li><strong>Doc4：</strong>Guyatt et al. "Core GRADE 7: principles for moving from evidence to recommendations and decisions." <em>BMJ</em> 2025;389:e083867.</li>
+                </ul>
+              </div>
+
+              <!-- クイックジャンプ -->
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.8rem;margin-bottom:1rem;">
+                <p style="font-weight:bold;margin:0 0 0.5rem;font-size:0.9rem;">STEPジャンプ</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                  <a href="#oc-intro" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">序文</a>
+                  <a href="#oc-step0" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 0</a>
+                  <a href="#oc-step1" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 1</a>
+                  <a href="#oc-step2" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 2</a>
+                  <a href="#oc-step3" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 3</a>
+                  <a href="#oc-step4" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 4</a>
+                  <a href="#oc-step5" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 5（例外）</a>
+                  <a href="#oc-step6" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 6</a>
+                  <a href="#oc-step7" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 7</a>
+                  <a href="#oc-step8" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">STEP 8（事例）</a>
+                  <a href="#oc-summary" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">まとめ</a>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- 序文 -->
+              <h3 id="oc-intro" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">序文：なぜ「全体的な確実性」が必要か</h3>
+              <p>GRADEでは、アウトカムごとに確実性を評価するだけでなく、<strong>推奨を作成する際には「全アウトカムを通じた全体的な確実性」を1つ決定する</strong>ことが求められます。</p>
+              <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin:0.5rem 0 0.3rem;font-size:0.88rem;font-style:italic;">
+                <strong>原文引用（Doc1 Abstract）：</strong>"An overall rating of confidence in estimates of effect is only relevant in settings when recommendations are being made. In general, it is based on the critical outcome that provides the lowest confidence."
+              </div>
+              <p>すなわち、「全体的な確実性」は<strong>推奨を作成する文脈においてのみ意味を持ち</strong>、純粋なシステマティックレビューでは必須ではありません。</p>
+
+              <hr class="section-divider">
+
+              <!-- STEP 0 -->
+              <h3 id="oc-step0" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 0：前提の確認</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">0-1. この手順を適用する場面の確認</summary>
+                <div class="accordion-body">
+                  <div class="table-container"><table>
+                    <thead><tr><th>場面</th><th>全体確実性の決定</th></tr></thead>
+                    <tbody>
+                      <tr><td>推奨を伴うガイドライン作成</td><td><strong>必須</strong></td></tr>
+                      <tr><td>純粋なシステマティックレビュー（推奨なし）</td><td><strong>不要</strong>（アウトカムごとの確実性提示で十分）</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-top:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, p.5）：</strong>"For systematic reviews that are not associated with recommendations, and therefore do not require an overall confidence rating across outcomes, we suggest presenting confidence ratings for each important outcome and not determining the confidence in effect estimates across outcomes."
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">0-2. GRADEの確実性の4段階</summary>
+                <div class="accordion-body">
+                  <div class="table-container"><table>
+                    <thead><tr><th>レベル</th><th>意味</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>High（高）</strong></td><td>真の効果が推定値に近いと非常に確信できる</td></tr>
+                      <tr><td><strong>Moderate（中）</strong></td><td>真の効果が推定値に近いと概ね確信できるが、かなり異なる可能性もある</td></tr>
+                      <tr><td><strong>Low（低）</strong></td><td>真の効果が推定値から相当異なる可能性がある</td></tr>
+                      <tr><td><strong>Very Low（非常に低）</strong></td><td>真の効果は推定値と大きく異なる可能性が高い</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 1 -->
+              <h3 id="oc-step1" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 1：アウトカムの分類（Critical vs. Important）</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">手順と原文引用</summary>
+                <div class="accordion-body">
+                  <ol style="margin:0 0 0.8rem 1.2rem;line-height:1.8;">
+                    <li>パネルが事前に設定した全アウトカムをリストアップする</li>
+                    <li>各アウトカムを「<strong>Critical（決定的に重要）</strong>」または「<strong>Important but not critical（重要だが決定的ではない）</strong>」に分類する</li>
+                    <li>Critical outcomeのみを、全体的な確実性の決定に用いる</li>
+                  </ol>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, p.5）：</strong>"It is logical that the overall confidence in effect estimates cannot be higher than the lowest confidence in effect estimates for any outcome that is <strong>critical</strong> for a decision. We therefore suggest applying the <strong>lowest confidence rating of the critical outcomes</strong> as the overall confidence associated with a recommendation."
+                  </div>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>⚠️ 注意点：Critical outcomeの判断は結果を見てから変わりうる</strong>
+                    <p style="margin:0.4rem 0 0;font-size:0.88rem;font-style:italic;">"The overall confidence in effect estimates may not come from the outcomes judged critical at the beginning of the guideline development process—that is, <strong>judgments about what is critical may change when considering the results.</strong>"（Doc1, p.5）</p>
+                    <p style="margin:0.4rem 0 0;font-size:0.88rem;"><strong>具体例（Doc1 p.5 – 痔核フラボノイド治療）：</strong>有害事象がCriticalと判断されたが、最大の信頼区間上限でも絶対リスクは約6.3%で軽微 → 「有害事象はImportantだがCriticalではない」と再判断することも合理的。これにより全体確実性がLowからModerateに変わりうる。</p>
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 2 -->
+              <h3 id="oc-step2" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 2：各アウトカムの個別確実性を評価する</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">8つのドメイン（5つの Rate Down + 3つの Rate Up）</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.4rem;">確実性を下げる5因子（Rate Down）</h4>
+                  <div class="table-container"><table>
+                    <thead><tr><th>ドメイン</th><th>主な確認事項</th></tr></thead>
+                    <tbody>
+                      <tr><td>① Risk of Bias（バイアスリスク）</td><td>ランダム化・盲検化・追跡の適切さ</td></tr>
+                      <tr><td>② Imprecision（不精確さ）</td><td>信頼区間がMIDを越えているか</td></tr>
+                      <tr><td>③ Inconsistency（非一貫性）</td><td>研究間のばらつき（I²、点推定値の方向性）</td></tr>
+                      <tr><td>④ Indirectness（非直接性）</td><td>PICOとのズレ（人口・介入・アウトカムの違い）</td></tr>
+                      <tr><td>⑤ Publication Bias（出版バイアス）</td><td>ファンネルプロット、小規模・企業資金研究の集中</td></tr>
+                    </tbody>
+                  </table></div>
+                  <h4 style="margin:0.8rem 0 0.4rem;">確実性を上げる3因子（Rate Up）※Core GRADEでは2因子</h4>
+                  <div class="table-container"><table>
+                    <thead><tr><th>ドメイン</th></tr></thead>
+                    <tbody>
+                      <tr><td>⑥ Large magnitude of effect（大きな効果量）</td></tr>
+                      <tr><td>⑦ Dose-response gradient（用量反応関係）</td></tr>
+                      <tr><td>⑧ Plausible confounding（残差交絡が効果を過小評価）※Core GRADEでは省略</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-top:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc3, p.7）：</strong>"Core GRADE includes only <strong>two</strong> of the three criteria for rating up the certainty of evidence (large magnitude of effect and dose-response gradient), and omits the third that pertains to the effect of plausible residual confounding."
+                  </div>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>⚠️ 各ドメインはカテゴリではなく「連続体」として見る</strong>
+                    <p style="margin:0.4rem 0 0;font-size:0.88rem;"><strong>→ 直感に反するポイント①：</strong>3つのドメインでそれぞれ「ギリギリ下げない」と判断した場合でも、3つ合わせてみると全体としてはLow〜Moderateの境界付近にある、というゲシュタルト的判断が必要。個別評価を足し算するのではなく、<strong>全体を俯瞰すること</strong>が求められる。</p>
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 3 -->
+              <h3 id="oc-step3" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 3：アウトカムごとの確実性を整理する（Evidence Profile / Summary of Findings Table）</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">一覧表の作り方と具体例（CAP）</summary>
+                <div class="accordion-body">
+                  <p>各アウトカムについて以下を表にまとめます：</p>
+                  <div class="table-container"><table>
+                    <thead><tr><th>アウトカム</th><th>確実性</th><th>重要度分類</th></tr></thead>
+                    <tbody>
+                      <tr><td>アウトカムA</td><td>High</td><td>Critical</td></tr>
+                      <tr><td>アウトカムB</td><td>Moderate</td><td>Critical</td></tr>
+                      <tr><td>アウトカムC</td><td>Low</td><td>Critical</td></tr>
+                      <tr><td>アウトカムD</td><td>Very Low</td><td>Important (not critical)</td></tr>
+                    </tbody>
+                  </table></div>
+                  <p style="margin-top:0.8rem;"><strong>具体例（Doc2 – CAP軽症患者・コルチコステロイド）：</strong></p>
+                  <div class="table-container"><table>
+                    <thead><tr><th>アウトカム</th><th>確実性</th><th>重要度</th></tr></thead>
+                    <tbody>
+                      <tr><td>全死亡</td><td>Low</td><td>Critical</td></tr>
+                      <tr><td>侵襲的人工呼吸器使用</td><td>High</td><td>Critical</td></tr>
+                      <tr><td>人工呼吸器非使用日数</td><td>Moderate</td><td>Critical</td></tr>
+                      <tr><td>二次感染</td><td>Moderate</td><td>Important</td></tr>
+                      <tr><td>消化管出血</td><td>High</td><td>Important</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-top:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc2, p.5）：</strong>"For critically important outcomes, certainty of evidence ranged from low (for all-cause mortality) to high (for need for invasive mechanical ventilation). <strong>Overall certainty was therefore deemed to be low</strong>, in keeping with the lowest certainty rating among critical outcomes."
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 4 -->
+              <h3 id="oc-step4" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 4：「最も低い確実性のCritical outcome」に合わせる（原則）</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">基本ルールと具体例（膵臓癌Whipple手術）</summary>
+                <div class="accordion-body">
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-bottom:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, Abstract）：</strong>"In general, it is based on the <strong>critical outcome that provides the lowest confidence</strong>."
+                  </div>
+                  <p><strong>手順：</strong></p>
+                  <ol style="margin:0 0 0.8rem 1.2rem;">
+                    <li>Critical outcomeと判断されたアウトカムをすべて抽出する</li>
+                    <li>その中で<strong>最も確実性の低いアウトカムの確実性</strong>を全体の確実性とする</li>
+                  </ol>
+                  <p><strong>具体例（膵臓癌Whipple手術 vs 幽門温存手術 – Doc1 Table 2）：</strong></p>
+                  <div class="table-container"><table>
+                    <thead><tr><th>アウトカム</th><th>確実性</th><th>重要度</th></tr></thead>
+                    <tbody>
+                      <tr><td>5年生存率</td><td>Moderate</td><td>Critical</td></tr>
+                      <tr><td>院内死亡率</td><td>Low</td><td>Critical</td></tr>
+                      <tr><td>胆汁漏れ</td><td>Low</td><td>Critical</td></tr>
+                      <tr><td>遅延性胃排出</td><td>Very Low</td><td>Critical（→ 議論の余地あり）</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="display:flex;flex-direction:column;gap:0.4rem;margin-top:0.5rem;font-size:0.88rem;">
+                    <div style="background:#fef2f2;border-left:3px solid #ef4444;padding:0.5rem;border-radius:4px;">「遅延性胃排出」がCriticalなら → <strong>全体確実性 = Very Low</strong></div>
+                    <div style="background:#fff7ed;border-left:3px solid #f97316;padding:0.5rem;border-radius:4px;">「遅延性胃排出」がImportantにとどまるなら → <strong>全体確実性 = Low</strong></div>
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 5 -->
+              <h3 id="oc-step5" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 5：「最低に合わせる」原則の例外と注意点</h3>
+              <div style="background:#fef9c3;border-left:4px solid #ca8a04;padding:0.7rem;border-radius:6px;margin-bottom:0.8rem;font-size:0.9rem;">
+                <strong>これが本手順書の最重要部分です。</strong>単純に「最低に合わせる」ことには複数の問題点と例外があります。
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">問題点①：Critical outcomeの判断が恣意的になりうる（HARKingリスク）</summary>
+                <div class="accordion-body">
+                  <p>「どのアウトカムをCriticalとするか」次第で全体確実性が変わるため、<strong>事前にCriticalを決めておく</strong>ことが原則ですが、結果を見た後に変更することも許容されます。ただしこれは<strong>HARKing（Hypothesizing After Results are Known）のリスク</strong>を伴います。</p>
+                  <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:0.6rem;border-radius:4px;margin-top:0.5rem;font-size:0.88rem;">
+                    <strong>→ 対策：</strong>パネルが事前に基準を明示し、変更する場合はその理由を透明に記録する。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">問題点②：「最低に合わせる」と全体確実性が実態よりも低くなりすぎる（スタチン一次予防の例）</summary>
+                <div class="accordion-body">
+                  <div class="table-container"><table>
+                    <thead><tr><th>アウトカム</th><th>確実性</th></tr></thead>
+                    <tbody>
+                      <tr><td>心筋梗塞</td><td>High</td></tr>
+                      <tr><td>脳卒中</td><td>High</td></tr>
+                      <tr><td>CHD死亡</td><td><strong>Moderate</strong>（不精確さのため）</td></tr>
+                      <tr><td>有害事象</td><td>High</td></tr>
+                    </tbody>
+                  </table></div>
+                  <p style="margin:0.6rem 0 0.3rem;">→ 原則に従えば全体確実性 = <strong>Moderate</strong>。しかし…</p>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, p.7）：</strong>"Most patients, however, once it is established that their risk of stroke and major coronary events decreases with statins, <strong>would find compelling reason to use the medication. Whether CHD mortality decreases is (as long as it is very unlikely it increases) no longer relevant to the decision.</strong>"
+                  </div>
+                  <div style="background:#dcfce7;border-left:4px solid #22c55e;padding:0.7rem;border-radius:6px;margin-top:0.6rem;font-size:0.88rem;">
+                    <strong>→ 全体確実性 = High が適切</strong>
+                    <p style="margin:0.3rem 0 0;font-style:italic;font-size:0.85rem;">"The principle is that <strong>if there is higher confidence in some critical outcomes to support a decision in favor of an intervention</strong>… <strong>one need not rate down confidence</strong> because of lower confidence in other critical outcomes that support the same recommendation."（Doc1, p.7）</p>
+                  </div>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>→ 直感に反するポイント②：</strong>あるCritical outcomeの確実性が低くても、その結果の<strong>どの可能な値でも推奨の方向・強さが変わらない</strong>なら、そのアウトカムは事実上「もはやCriticalではない」とみなし、全体確実性を下げなくてよい。
+                    <p style="margin:0.4rem 0 0;font-size:0.85rem;font-style:italic;"><strong>原文引用（Doc4, p.3-4）：</strong>"An outcome is <strong>no longer critical</strong> if, across the range of possible effect of the intervention on that outcome, <strong>the recommendation or its strength would remain unchanged</strong>. Such judgments require careful consideration and are probably rare."</p>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">問題点③：個別ドメインの積み重ねがゲシュタルト評価と乖離する（痔核フラボノイドの例）</summary>
+                <div class="accordion-body">
+                  <div class="table-container"><table>
+                    <thead><tr><th>ドメイン</th><th>下げる根拠</th><th>下げない根拠</th></tr></thead>
+                    <tbody>
+                      <tr><td>Risk of Bias</td><td>多くの研究で割り付け隠蔽が不明確</td><td>盲検化から隠蔽の可能性が高い</td></tr>
+                      <tr><td>Inconsistency</td><td>I²=70.4%、検定 p&lt;0.0001</td><td>すべての点推定値が効果ありの方向</td></tr>
+                      <tr><td>Publication Bias</td><td>全研究が企業資金、ファンネルプロット非対称</td><td>研究数が少なくファンネルプロット基準未達</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="display:flex;gap:0.5rem;margin:0.6rem 0;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:180px;background:#fef2f2;border-left:3px solid #ef4444;padding:0.5rem;border-radius:4px;font-size:0.87rem;"><strong>「厳格なレビュアー」</strong>→ 3つともDown → Very Low</div>
+                    <div style="flex:1;min-width:180px;background:#dcfce7;border-left:3px solid #22c55e;padding:0.5rem;border-radius:4px;font-size:0.87rem;"><strong>「寛容なレビュアー」</strong>→ 3つともDown不要 → High</div>
+                    <div style="flex:1;min-width:180px;background:#eff6ff;border-left:3px solid #3b82f6;padding:0.5rem;border-radius:4px;font-size:0.87rem;"><strong>実際の著者らの結論：Moderate</strong>（Publication Biasで1段階down）</div>
+                  </div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, p.4）：</strong>"both reviewers—charitable and harsh with respect to individual domains—may, taking a <strong>broad look at the evidence</strong>, agree that <strong>overall it lies on the border of moderate to low quality evidence</strong>."
+                  </div>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;margin-top:0.6rem;">
+                    <strong>→ 直感に反するポイント③：</strong>「複数ドメインで懸念があっても、すべてで下げる必要はない」
+                    <p style="margin:0.3rem 0 0;font-size:0.88rem;">ドメインA・B・Cで少し懸念がある場合に「3段階down」するのは過剰。ゲシュタルト評価で「全体として1段階down」が適切なこともある。</p>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">問題点④：確実性カテゴリ間の境界付近は「連続体」として扱う</summary>
+                <div class="accordion-body">
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-bottom:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc1, p.5）：</strong>"Having difficulties about placing the evidence in either the moderate or low confidence category emphasizes that <strong>the overall confidence rating also is a continuum</strong>, and contextual decisions are necessary when confidence is near the threshold between categories."
+                  </div>
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-bottom:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc3, p.3-4）：</strong>"By adopting a gestalt view of the evidence, reviewers can place their judgment <strong>closer to the threshold between categories</strong> (e.g., between moderate and low), and explicitly acknowledge when a rating represents such a borderline case."
+                  </div>
+                  <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:0.6rem;border-radius:4px;font-size:0.88rem;">
+                    <strong>→ 推奨行動：</strong>「ModerateかLowかで迷っている」という事実を明示的に記録し、読者が判断できるようにする。<br>
+                    <em style="font-size:0.85rem;">"The authors of the review acknowledged this by suggesting that <strong>ratings of either moderate or low confidence would be reasonable.</strong>"（Doc1, p.5）</em>
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 6 -->
+              <h3 id="oc-step6" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 6：全体確実性の決定と記録</h3>
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:0.6rem;">
+                <p style="font-weight:bold;margin:0 0 0.5rem;">手順チェックリスト</p>
+                <ul style="margin:0 0 0 1.2rem;line-height:2;">
+                  <li>□ 1. Critical outcomeをすべてリストアップしたか？</li>
+                  <li>□ 2. 各Critical outcomeの個別確実性を評価したか？</li>
+                  <li>□ 3. 最低確実性のCritical outcomeを特定したか？</li>
+                  <li>□ 4. そのoutcomeについて：「推奨の方向・強さがそのoutcomeの不確実な範囲全体で変わらないか？」<br>
+                    <span style="margin-left:1.2rem;">→ 変わらないなら、そのoutcomeはもはやCriticalではない</span></li>
+                  <li>□ 5. ゲシュタルト評価で全体的な印象と個別評価の一致を確認したか？</li>
+                  <li>□ 6. 境界付近の場合、その旨を明示的に記録したか？</li>
+                  <li>□ 7. キー判断の理由を透明に記録したか？</li>
+                </ul>
+              </div>
+              <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.85rem;font-style:italic;">
+                <strong>原文引用（Doc1, "Key points"）：</strong>"Optimal application of GRADE requires <strong>making the reasons for key judgments transparent.</strong>"
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- STEP 7 -->
+              <h3 id="oc-step7" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 7：全体確実性と推奨強度の関係</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">確実性別の推奨強度の原則と例外</summary>
+                <div class="accordion-body">
+                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;margin-bottom:0.6rem;font-size:0.85rem;font-style:italic;">
+                    <strong>原文引用（Doc4, Table 1）：</strong>"The greater the certainty of evidence the more likely a panel will make a <strong>strong recommendation</strong>. High or moderate certainty evidence often justifies strong recommendations, whereas <strong>low and very low certainty mandates, in almost all situations, conditional recommendations</strong>."
+                  </div>
+                  <div class="table-container"><table>
+                    <thead><tr><th>全体確実性</th><th>推奨強度の原則</th></tr></thead>
+                    <tbody>
+                      <tr><td>High / Moderate</td><td>Strong recommendation が可能</td></tr>
+                      <tr><td>Low / Very Low</td><td>Conditional recommendation が原則</td></tr>
+                      <tr><td>Low（特殊状況）</td><td>例外的にStrong recommendationも可</td></tr>
+                    </tbody>
+                  </table></div>
+                  <details style="margin-top:0.6rem;" class="accordion-item">
+                    <summary class="accordion-header">例外的なStrong recommendation（Low確実性でも）の5状況（Doc4 Appendix 4）</summary>
+                    <div class="accordion-body">
+                      <ol style="margin:0 0 0 1.2rem;line-height:1.9;">
+                        <li>生命を脅かす状況でLow確実性の便益が示される（害のエビデンスはLow〜High）</li>
+                        <li>Low確実性の便益 + High確実性の重大な害または非常に高いコスト</li>
+                        <li>2つの選択肢がLow確実性で同等だが、一方でHigh確実性の害が少ない</li>
+                        <li>High確実性で2つが同等だが、一方でLow確実性の害が示唆される</li>
+                        <li>High確実性で適度な便益 + Low/Very Low確実性で壊滅的な害の可能性</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- STEP 8 -->
+              <h3 id="oc-step8" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">STEP 8：具体的事例による総合演習</h3>
+              <details class="accordion-item">
+                <summary class="accordion-header">事例：CAP軽症患者へのコルチコステロイド（Doc2より）</summary>
+                <div class="accordion-body">
+                  <h4 style="margin-bottom:0.4rem;">Step 1：アウトカム分類</h4>
+                  <ul style="margin:0 0 0.6rem 1.2rem;">
+                    <li><strong>Critical：</strong>全死亡、侵襲的人工呼吸器使用、人工呼吸器非使用日数</li>
+                    <li><strong>Important (not critical)：</strong>二次感染、消化管出血、入院期間、症状消失までの時間</li>
+                  </ul>
+                  <h4 style="margin-bottom:0.4rem;">Step 2：各Critical outcomeの確実性</h4>
+                  <div class="table-container"><table>
+                    <thead><tr><th>アウトカム</th><th>確実性</th><th>主な理由</th></tr></thead>
+                    <tbody>
+                      <tr><td>全死亡</td><td><strong>Low</strong></td><td>不精確さで2段階down（CIが重要な利益・重要な害の両方を含む）</td></tr>
+                      <tr><td>侵襲的人工呼吸器使用</td><td><strong>High</strong></td><td>不精確さなし（MID閾値をCIが越えない）</td></tr>
+                      <tr><td>人工呼吸器非使用日数</td><td><strong>Moderate</strong></td><td>不精確さで1段階down</td></tr>
+                    </tbody>
+                  </table></div>
+                  <h4 style="margin:0.6rem 0 0.4rem;">Step 3：「最低に合わせる」原則の適用</h4>
+                  <p>Critical outcomeの最低確実性 = <strong>Low</strong>（全死亡）→ 全体確実性 = <strong>Low</strong></p>
+                  <h4 style="margin:0.6rem 0 0.4rem;">Step 4：例外適用の検討</h4>
+                  <p style="font-size:0.9rem;">全死亡のCIはRR 1.08（0.83-1.42）。方向性として、害の可能性がある。しかしHigh確実性で侵襲的人工呼吸器使用が39/1000減（RR 0.56）と大きな便益。全死亡の不確実性の全範囲を通じても推奨の方向は変わらない可能性がある。ただし推奨の<strong>強さ</strong>（strongかconditionalか）は変わりうる。</p>
+                  <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:0.7rem;border-radius:4px;margin-top:0.5rem;font-size:0.88rem;">
+                    実際のパネルの判断（Doc2）：<em>"Overall certainty was therefore deemed to be <strong>low</strong>"</em> → <strong>Conditional recommendation（弱い推奨）</strong>。この事例では例外を適用せず、Low確実性→Conditional推奨の原則を維持。
+                  </div>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- まとめ -->
+              <h3 id="oc-summary" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">まとめ：直感に反するポイント一覧</h3>
+              <div class="table-container"><table>
+                <thead><tr><th>#</th><th>直感</th><th>実際の原則</th><th>出典</th></tr></thead>
+                <tbody>
+                  <tr><td>①</td><td>カテゴリを足し引きすれば確実性が決まる</td><td>各ドメイン・全体ともに「連続体」として見る</td><td>Doc1 p.4, Doc3 p.3</td></tr>
+                  <tr><td>②</td><td>必ず最低のCritical outcomeに合わせる</td><td>そのoutcomeが推奨を変えないなら合わせなくてよい</td><td>Doc1 p.7, Doc4 p.4</td></tr>
+                  <tr><td>③</td><td>3つのドメインで懸念→3段階down</td><td>ゲシュタルト評価で1段階downが適切な場合もある</td><td>Doc1 p.4</td></tr>
+                  <tr><td>④</td><td>一度CriticalはずっとCritical</td><td>結果を見てCriticalの判断を変えることが許容される</td><td>Doc1 p.5</td></tr>
+                  <tr><td>⑤</td><td>Low確実性→必ずConditional推奨</td><td>特殊状況ではLow確実性でもStrong推奨が可能</td><td>Doc4 p.7, Appendix 4</td></tr>
+                </tbody>
+              </table></div>
+
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;margin-top:1rem;">
+                <h4 style="margin-bottom:0.5rem;">Overall Certainty決定の思考フロー</h4>
+                <div style="display:flex;flex-direction:column;gap:0.3rem;font-size:0.87rem;">
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 0：</strong>推奨作成が目的か？ → No → 各アウトカム別確実性の提示のみ</div>
+                  <div style="text-align:center;color:#888;">↓ Yes</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 1：</strong>Critical vs. Important の分類（事前に行い、結果後も見直す）</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 2：</strong>各アウトカムの個別確実性を8ドメインで評価（連続体・ゲシュタルト）</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 3：</strong>Critical outcomeの確実性を一覧化</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 4：</strong>最低確実性のCritical outcomeを特定 → これが全体確実性の原則値</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#fff7ed;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 5：</strong>例外検討：「そのoutcomeのどんな値でも推奨が変わらないか？」<br>→ Yes → Criticalから除外し全体確実性を再決定 / → No → 最低確実性を維持</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 6：</strong>境界付近の場合は明示的に記録 → 全体確実性を確定・記録（理由を透明に）</div>
+                  <div style="text-align:center;color:#888;">↓</div>
+                  <div style="background:#eff6ff;padding:0.4rem 0.7rem;border-radius:4px;"><strong>STEP 7-8：</strong>推奨強度の決定（High/Moderate→Strong可能、Low/VLow→Conditional原則）</div>
+                </div>
+              </div>
+
+              <p style="margin-top:1rem;font-size:0.83rem;color:#888;font-style:italic;">本手順書はDoc1（GRADE guideline 11）、Doc2（EtD framework事例）、Doc3（Core GRADE unpacked）、Doc4（Core GRADE 7）の内容に基づき作成。</p>
             </div>
           </div>
           <div class="tab-pane">
@@ -2462,7 +3126,7 @@ function checkAuth(){
 </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">6 / 16</span>
+        <span class="page-indicator">6 / 17</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
@@ -4559,6 +5223,7 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 2)">Guyatt先生Q&amp;A</button>
           <button class="tab-btn" onclick="switchTab(this, 3)">パネル会議実例</button>
           <button class="tab-btn" onclick="switchTab(this, 4)">パネル会議シミュレーション</button>
+          <button class="tab-btn" onclick="switchTab(this, 5)">パネル会議Q&amp;A</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -5474,6 +6139,570 @@ function checkAuth(){
                   </div>
                 </div>
               </details>
+            </div>
+          </div>
+
+          <!-- Tab 5: パネル会議Q&A -->
+          <div class="tab-pane">
+            <div style="max-width:940px;margin:0 auto;padding:0.5rem;">
+              <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.3rem;color:#1e3a5f;">診療ガイドラインパネル会議 詳細Q&amp;A解説</h2>
+              <p style="font-size:0.85rem;color:#555;margin-bottom:1rem;">出典：<a href="https://note.com/mxe05064/n/n25be20e1fd9c" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">note.com/mxe05064/n/n25be20e1fd9c</a></p>
+
+              <!-- 目次ナビ -->
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;margin-bottom:1rem;">
+                <p style="font-weight:bold;margin:0 0 0.5rem;font-size:0.9rem;">部ごとにジャンプ</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                  <a href="#qa-p1" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第1部：全体の流れと準備（Q1–3）</a>
+                  <a href="#qa-p2" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第2部：CQとアウトカム（Q4–12）</a>
+                  <a href="#qa-p3" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第3部：推奨の決定（Q13–25）</a>
+                  <a href="#qa-p4" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第4部：推奨なし（Q26–29）</a>
+                  <a href="#qa-p5" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第5部：詳細事項（Q30–35）</a>
+                  <a href="#qa-p6" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第6部：当日の注意（Q36–39）</a>
+                  <a href="#qa-p7" style="background:#1e3a5f;color:#fff;padding:0.25rem 0.6rem;border-radius:4px;text-decoration:none;font-size:0.83rem;">第7部：推奨文の実例（Q40–43）</a>
+                </div>
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- 第1部 -->
+              <h3 id="qa-p1" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第1部：全体の流れと準備</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q1. この資料はどのような経験を元に作成されているのか？</summary>
+                <div class="accordion-body">
+                  <p>著者が20回を超える診療ガイドライン（CPG）作成のためのパネル会議に、運営の立場から参加した経験に基づいて作成されている。特に、議論が疲れてくると知らず知らずのうちにエビデンスから離れ、専門医の得意な治療法や患者の意向のみで推奨を決めてしまうという事態を何度も経験したことが、この資料作成の動機となっている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q2. パネリストが行う全体の流れはどうなっているか？</summary>
+                <div class="accordion-body">
+                  <p>大きく3つのフェーズに分けられる。</p>
+                  <p><strong>準備編</strong>では、①GRADEアプローチなどの作成ルールに従う同意（メール返信は5日以内厳守）、②利益相反（COI）の確認、③SRとCPG作成の概略の学習、④CQの基本形の理解、⑤その分野での常識・疑うべき事の学習、⑥メタ分析のフォレストプロットの読み方習得、⑦エビデンスプロファイルの読み方習得、⑧EtD frameworkの読み方習得、⑨推奨の決定の基本的考え方の理解、を行う。</p>
+                  <p><strong>SR等の資料が作られる前</strong>には、①CQの優先順位決定、②アウトカムの相対的な重要度の投票（近年では効用値も決定）、③アウトカムごとに臨床的な効果の閾値を益と害の両方で決定（合計6つの閾値）、④GRADE-ADOLOPMENTとして既存のSR・CPGを利用するかの同意、を行う。</p>
+                  <p><strong>資料作成後～パネル会議前後</strong>には、①パネル会議前に資料を読んで理解・疑問は事前にメールで、②アウトカムの相対的重要度の再確認、③パネル会議での議論・草案への理解、④草案への同意投票、⑤CPG骨子完成後は患者向けリーフレット作成への協力、を行う。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q3. 診療ガイドライン作成のチェックリストとして何が使われているか？</summary>
+                <div class="accordion-body">
+                  <p>GIN-McMaster Guideline Development Checklistが使われており、以下の点が確認される。①監査（統括）委員会・パネル委員・ワーキンググループ・その他のサポートチーム（医療利用者と関係者）などが組織されているか、②目的の明確化・既存CPGの検索・透明性の確保のための優先順位設定プロセスおよびトピックの記録がされているか、③COIが確認されているか。また2024年に「Strengthening countries' capacities to adopt and adapt evidence-based guidelines」というWHO文書も参考資料として紹介されている。</p>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第2部 -->
+              <h3 id="qa-p2" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第2部：臨床疑問（CQ）とアウトカムについて</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q4. パネリストはトピックをどのように理解すればよいか？</summary>
+                <div class="accordion-body">
+                  <p>GIN-McMaster Guideline Development Checklistでは「選択」とされているが、INGUIDEのパネルの知識のための資料では「トピックの理解」となっている。その分野の専門分野でないパネリストは、診療ガイドライン委員会が作成したanalytical frameworkを利用して説明を受けることが望ましい。また、パネリストが一からCQを作成するのではなく、CQの草案が事前に用意されているのが現実的とされている。最初の時点で患者や利害関係者を招聘することは現実的には困難とも述べられている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q5. 背景疑問と前景疑問の違いは何か？なぜ診療ガイドラインでは前景疑問が必要か？</summary>
+                <div class="accordion-body">
+                  <p>診療ガイドラインは行動の指針となるものであるため、前景疑問が必要とされる。背景疑問（疾患の概念・病態など一般的な知識に関する疑問）と異なり、前景疑問は「AとBのどちらを使うべきか」という行動選択に直結する疑問である。診療ガイドラインは臨床現場での具体的な行動の方向性を示す必要があるため、行動の指針となる前景疑問が求められる。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q6. CQが重要かどうかを左右する要因は何か？</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>実施する上で一般的なクエッションであるか</li>
+                    <li>実施する上で不明瞭な状況であるか</li>
+                    <li>検討すべき新たなエビデンスがあるか</li>
+                    <li>複数の選択肢があるか</li>
+                    <li>リソースの利用・コストへの影響があるか</li>
+                    <li>これまで十分に検討されてこなかったか</li>
+                  </ul>
+                  <p style="margin-top:0.5rem;">ポイントとして、実現可能なリストとするために重要なクエッションを削減しないようにすることが求められている（もっとも、効率化のための工夫も必要とも付記されている）。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q7. CQの標準フォーマットとして何が使われるか？また典型的な質問の形式は？</summary>
+                <div class="accordion-body">
+                  <p>標準フォーマットとしてPICO（Population対象集団・Intervention介入・Comparison比較対照・Outcome転帰）が使われる。ガイドラインで解決を図ろうとしている重要な疑問を生成・記録し、すべての疑問を解決することが不可能な場合には、優先順位を設定するための基準を決定し実行する（例：パネルメンバーや利害関係者へのアンケート調査）。</p>
+                  <p>典型的な質問の形式は「Xという対象に対してAとBのどちらを使うべきか？（Should A or B be used for people with X?）」である。良いCQから良い推奨ができる。この形式であれば自然とPICOを考えることになる。PICOを精確に作るのを、優先順位の前か後かは微妙な問題とされている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q8. 間違った推奨の表現方法にはどのようなものがあるか？</summary>
+                <div class="accordion-body">
+                  <p>以下の4つが例として挙げられ、いずれも誤った表現とされる。</p>
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>「低分子量ヘパリンはプラセボと比較すると血栓塞栓症を減少させる」→これは推奨でなく事実の記載であり、実行可能な記述が必要。</li>
+                    <li>「低分子量ヘパリンの使用が検討されることを提案する」→検討でなく、方向性と強さが示されるべき。</li>
+                    <li>「YよりXを使う方が良い」→行動への示唆が欠けている。</li>
+                    <li>「入院患者には低分子量ヘパリンを使用するのが標準的なやり方である」→推奨は標準的な実施を説明するのではなく、何が最善であるか否かを説明するものである。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q9. 診断検査のCQについては何を考える必要があるか？</summary>
+                <div class="accordion-body">
+                  <p>診断検査は2つのことを考える必要がある。</p>
+                  <p><strong>1）診断検査精度そのものの評価とエビデンスの確実性：</strong>その診断検査がどれだけ精確かどうか（一つの検査だけか、2つの検査の比較かは問わず）。</p>
+                  <p><strong>2）診断検査を行なったら行なわないに比べて（またはA検査対B検査）、予後や死亡率などの患者にとって重要なアウトカムが改善するかという検査の影響とエビデンスの確実性。</strong>現実には2）のデータはほとんど存在しない。さらにはその時行った治療効果のエビデンスの確実性も考慮しなければならない。</p>
+                  <p>研究デザインについても言及があり、one-gate design（コホート研究）とtwo-gate design（ケースコントロール研究）の区別、推論においてはone step inference approachとtwo step inference approachの2つがある。診療ガイドラインにおける診断検査の臨床疑問は、2）の「A検査に対してB検査を行うべきか（患者にとって重要なアウトカム）」が基本となり、その中に1）のいろいろな診断検査精度のメタ分析が入ってくる構造となっている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q10. 「future research questions」という用語は診療ガイドラインで使うべきか？</summary>
+                <div class="accordion-body">
+                  <p>著者は注意を促している。Mindsの手引き2020には「今後の研究が推奨される臨床疑問（future research question）」という記載があるが、GoogleやPubMedで調べると、これを一つの用語のように使っているのはほぼ日本の論文のみである。</p>
+                  <p>GRADEアプローチではこの用語は使われておらず、EtD frameworkにあるResearch Prioritiesとは異なる意味と思われる。GRADEアプローチでは、CQ作成後に検索して論文がなかったので「future research question」にしましょうという概念が存在しないため、言及されていない。</p>
+                  <p>WHOの文書にはResearch only recommendations（定義：特定の集団における介入選択肢の使用を研究設定に限定する推奨）というものはある。よって、日本の診療ガイドライン委員会でfuture research questionという用語を使う場合は、あくまでも日本のMindsのみの使い方というのを理解して使うことが必要である（著者自身は使わない）。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q11. アウトカムはどのように選ぶべきか？アウトカム評価への取り組みとは？</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>アウトカムによって健康上の益と害のバランスが関心のある介入に有利かどうかを判断できる必要がある</li>
+                    <li>意思決定にとって重要なことが必要であり、評価されていることがすべて重要な訳ではない</li>
+                    <li>望ましい効果の例：死亡率の低下・入院期間の短縮・有病期間の短縮・QOLや症状の改善</li>
+                    <li>望ましくない効果の例：死亡率の上昇・有害事象・耐性発現・QOLや症状の悪化</li>
+                    <li>アウトカムは意思決定において重大または重要なものが7つ以下が望ましい</li>
+                    <li>意思決定において「重大（987）、重大でないが重要（654）、重要ではない（321）」を1〜9の評価尺度で示す</li>
+                    <li>同じ重大でも例えば7の肺炎と9の死亡では効用値が異なる</li>
+                    <li>アウトカムは重要性によって決定されるべきであり、利用・測定可能かや、SRに記載があるか、RCTのプライマリーアウトカムであるかによって決定されるべきではない</li>
+                    <li>代替のものも含め意思決定のためにすべてのアウトカムを考慮する</li>
+                  </ul>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    アウトカムが7つ以下にできない場合については、「あなたが普段の臨床で7つのアウトカムを考えて行動指針としているかを再度問い直して欲しい。研究として重要なアウトカムと、臨床判断に必要なアウトカムを混同していないか」と問いかけている。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q12. 「価値観」という概念はどのように理解すればよいか？</summary>
+                <div class="accordion-body">
+                  <p>価値観については若干複雑な経緯がある。もともとは（1）価値観が患者にとってバラついているという意味であったが、2020年頃の論文では（2）患者にとってのアウトカムの重要度・効用値を価値観とするという意味に変わりつつあった。しかし最近では（1）のみの意味に戻りつつあり、（2）は別にコンテキスト化として、利益と害のバランスのところでアウトカムの効用値を明示するため、EtD frameworkの価値観の所での記載でなくなりつつある。</p>
+                  <p>価値観がバラバラでは「強い推奨」にならない。アウトカムの効用値に関しては、基本的には全国的な調査研究のエビデンスに従うことが望ましい。しかし研究がない場合が多く、診療ガイドライン委員会が独自に調査することになる。時間的制約で不可能な場合は、パネルへの直接のアンケートを実施するなど、できる限り客観的な結果に基づく努力が必要とされている。</p>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第3部 -->
+              <h3 id="qa-p3" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第3部：推奨の決定のために</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q13. パネル会議での決定はどのような順番で行われるか？（①〜⑪の流れ）</summary>
+                <div class="accordion-body">
+                  <p>以下の順番で行われるが、途中で議論と決定の順番が前後することがある。</p>
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>GRADEアプローチに従うことの同意と、投票での決定の基準を決める。</li>
+                    <li>COIについて確認する。ジャッジはすべてそのCQのCOIがない人で決定する。</li>
+                    <li>CQごとにEtD表に従い各基準の判定を確認する（大きな反対がなければ多数決で進める）。問題点があれば議論するが、全員が納得する結論を導き出すことは行わない。時間制限で議論を打ち切る。</li>
+                    <li>推奨文の草案について議論する。あくまでもたたき台であり、最初から批判しないこと。推奨文は推奨度決定に合わせて新しく作成する。</li>
+                    <li>アウトカムの重要度（効用値）について確認する。最終形を議論しないとアウトカムの重要度がイメージできないことが多いのでここで再確認する。</li>
+                    <li>推奨度の強さを確認する。</li>
+                    <li>以上の議論を踏まえてEtD表の前半のコンセンサスと推奨度の仮決めを行い、無記名で投票する。</li>
+                    <li>推奨文の文言を決める（近年では草案に対して賛成か反対かのコンセンサス・多数決が多くなっている）。</li>
+                    <li>できれば解説文（正当化）を決める。</li>
+                    <li>最初のCQに時間をかけて行い、その後他のCQは時間を限って行う。最後の方のCQは疲れて議論が不十分になりがちなので注意。</li>
+                    <li>パネル会議で行えなかった内容や新たな資料が必要と考えられた場合、後日メール会議となる。締め切り日までに返事がない場合は同意したと判断して進める。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q14. パネル会議での心構えとして最も重要なことは何か？</summary>
+                <div class="accordion-body">
+                  <div style="background:#1e3a5f;color:#e2e8f0;padding:0.8rem;border-radius:8px;margin-bottom:0.5rem;font-size:0.9rem;">
+                    「利益と不利益のバランスは、あくまでもエビデンスに従うこと。議論をして自分の考えを投票して決定するのではない。エビデンスに従った推奨文であることを確認して、それに合意できるかを投票すること。推奨作成の目的は患者に害を与えないことが第1であり、次に臨床医にとって有用な情報を提供することである。」
+                  </div>
+                  <p>また、患者参加については「会議の目的を推奨草案の批判でなく、推奨文を作成するという意識で」とお願いしており、患者参加は非常に重要であり、これにより医療者のみの利益にならない作成が可能になるとしている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q15. 推奨の強さと方向はどのように理解すればよいか？</summary>
+                <div class="accordion-body">
+                  <p>診療ガイドラインは得られたエビデンスより、推奨の方向（例：A薬という方向）を決定する。それに加えて、ほとんどの方に推奨する場合は「強く推奨」し、一部の方に推奨する場合は「弱く推奨」する（強さ）。</p>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    <strong>注意すべき点：</strong>望ましい効果の方向はアウトカムによって異なる。死亡率と生存率では介入が望ましい方向が逆転する。フォレストプロットの横軸で介入優位の左右の方向がアウトカムごとに異なることがある。また投票用紙に介入と対照とだけ書いてあると治療法を逆に勘違いして投票する場合があるので注意が必要（パネル会議のあるある話題）。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q16. 「標準治療」という用語は診療ガイドラインでどう扱われるか？</summary>
+                <div class="accordion-body">
+                  <p>「標準治療」と言うと医療訴訟で問題となる「医療水準（医療機関で異なる）」や、すでに世界で「最も行われている治療」を思い浮かべる。しかし診療ガイドラインは、あくまでも推奨している治療を選択するかどうかも含めて医師の裁量権の範囲内の治療の1つにすぎない。診療ガイドラインで示す治療は、いわゆる標準治療のこともあれば、標準治療でないこと（最新のエビデンスに基づいて新薬を推奨）もある。</p>
+                  <p>また、癌治療と慢性疾患では「標準治療」の使い方が異なる。癌治療では第3相臨床試験などの治験が終了するとすぐに標準治療と言われることがある。慢性疾患では、治験終了後に広く普及し安全性が確立した治療を示すことが多い。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q17. 推奨度の強さ（強い・条件付き/弱い）はどのように定義されているか？</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.6rem;">
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.8rem;">
+                      <strong style="color:#15803d;">「強い推奨」</strong>
+                      <p style="margin:0.4rem 0 0;font-size:0.88rem;">介入による望ましい効果（利益）が望ましくない効果（害、負担、コスト）を上回る、または下回る確信が強い。</p>
+                      <ul style="margin:0.4rem 0 0 1rem;font-size:0.85rem;">
+                        <li>患者：その状況下にあるほぼ全員が推奨される行動を希望し、希望しない人がごくわずかである。</li>
+                        <li>臨床家：ほぼ全員が推奨される行動を受けるべきである。個人の価値観と意向に一致した意思決定を支援するためのフォーマルな意思決定支援は不要だろう。</li>
+                      </ul>
+                    </div>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.8rem;">
+                      <strong style="color:#a16207;">「条件付き・弱い推奨」</strong>
+                      <p style="margin:0.4rem 0 0;font-size:0.88rem;">介入による望ましい効果（利益）が望ましくない効果（害、負担、コスト）を上回る、または下回る確信が弱い。</p>
+                      <ul style="margin:0.4rem 0 0 1rem;font-size:0.85rem;">
+                        <li>患者：その状況下にある人の多くが提案される行動を希望するが、希望しない人も多い。</li>
+                        <li>臨床家：患者によって選択肢が異なることを認識し、各患者が自らの価値観と意向に一致したマネジメント決断を下せるよう支援しなくてはならない。決断支援ツールが有効であると考えられる。</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                    重要な注記：「Strong does not necessarily mean a priority recommendation（強いということは必ずしも優先的推奨を意味しない）」とある。推奨（recommendation）は、指令（directive）でも規制（regulations）でもない。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q18. 強い推奨が正当化される4つの基準とは何か？</summary>
+                <div class="accordion-body">
+                  <div class="table-container"><table>
+                    <thead><tr><th>基準</th><th>強い推奨が正当化される場合</th><th>弱い推奨が予想される場合</th></tr></thead>
+                    <tbody>
+                      <tr><td>アウトカム全般にわたるエビデンスの確実性</td><td>「高」または「中」</td><td>「低」または「非常に低」</td></tr>
+                      <tr><td>望ましい効果と望ましくない効果のバランス</td><td>望ましい効果が明らかに上回る/下回る</td><td>拮抗している、またはバランスが不確実</td></tr>
+                      <tr><td>価値観</td><td>すべてまたはほぼすべての患者が同じ選択をする</td><td>選択肢にばらつきや不確実性がある</td></tr>
+                      <tr><td>必要資源量やコスト（任意）</td><td>正味の利益がすべてまたはほぼすべての状況で明らかに正当化される</td><td>ある状況では正当化されない場合がある</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;margin-top:0.6rem;font-size:0.88rem;">
+                    基準は「AND」でつながっており、4つすべてが満たされる必要がある。「強い推奨」を検討する場合は80〜90％の賛同が必要となる。エビデンスの確実性が低くても、致死的な病気では害が少なく介入によって効果が期待できるなら強く推奨することもありうる（整合性に欠ける推奨で特別な場合）。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q19. 「整合性に欠ける推奨」が行われる特別な場合とはどのような場合か？</summary>
+                <div class="accordion-body">
+                  <p>以下の5つの状況がAlex 2014、ハンドブックなどに示されている。</p>
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>致死的な状況である。</li>
+                    <li>利益は不確実で、害は確実である。</li>
+                    <li>同等であると考えられるが、1つの選択肢が明らかにより低リスク・低コストである。</li>
+                    <li>利益が類似していることの確信は高いが、1つの選択肢がより高リスク・高コストと考えられる。</li>
+                    <li>甚大な害の可能性がある。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q20. 推奨の強さを表す用語について、2025年時点でどのような状況か？</summary>
+                <div class="accordion-body">
+                  <p>2025年時点でも混乱しており、どのような用語で解釈が一致するかの研究が進んでいる。もっとも使われているのが強い（strong）・条件付き（conditional）という推奨の強さの分類である。しかし推奨の強さと関連付けられずに「must」「should」「may」などの用語が使用される事例や、「weak recommendation」という用語の問題点などが指摘されている。</p>
+                  <p>2025年6月3日には、中心メンバーのGuyatt先生から「今後は『suggest（提案する）』が良いのではないか」という論文（BMJ）が出た。Core GRADEでは強い推奨に「we recommend」、条件付き推奨に「we suggest」という言語を提供している。また「to consider（検討する）」のような曖昧さと関連した言葉は避けるべきとされている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q21. 推奨の方向（利益と害のバランス）はどのように決定されるか？</summary>
+                <div class="accordion-body">
+                  <p>基本的には、メタ分析の結果で得られた点推定値に、アウトカムの相対的な価値を効用値として算出したものを掛け合わせ、介入による利益と害の大きさを比較する。95％信頼区間が効果なしを含む場合（有意差なし）でも点推定値が上回っている方の介入を推奨すると仮置きをする。その後、95％信頼区間と推奨の閾値を考慮して調整するが、基本は点推定値のバランスに従う（点推定値が最も典型的な患者を示すと考えられる）。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    <strong>具体的な計算例：</strong>標準薬と比較して新薬が点推定値として1000人中、死亡10人減少・心筋梗塞34人減少・症候性静脈血栓塞栓症33人減少・脳卒中6人減少・大出血（害）5人増加とする。死亡が心筋梗塞などと比較して3倍の価値があり、脳卒中が2倍の価値があると判断された場合、利益と害のバランスは(-10)×3+(-34)+(-33)+(-6)×2+(+5)=-104となり、利益が害を上回っているので推奨すると判断される。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q22. アウトカムの相対的重要性（効用値）はどのように決めるか？</summary>
+                <div class="accordion-body">
+                  <p>以下の優先順位で決める。</p>
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>効用値などを調査した全国規模で患者も入った研究があれば、それらをシステマティックレビューする。</li>
+                    <li>なければ学会・委員会独自で調査する。</li>
+                    <li>それも無理な場合（緊急案件で時間がないなど）、パネリストのコンセンサスとなる場合もある（Schünemann先生より）。その場合はパネリストの主観を排除するのが困難となる。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q23. 競合アウトカム・複合アウトカムの問題とはどういうことか？</summary>
+                <div class="accordion-body">
+                  <p>例えば、総死亡と脳卒中のイベントは独立しておらず競合しているため、2つともそのまま採用すると効果を余分に強く見積もることになる（競合アウトカムの問題）。2024年にJCEに複合エンドポイントの論文も出版されている（Sousa-Pinto Bら、2025年）。推奨の方向を決定する際には、複合アウトカムの問題も考慮することが求められている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q24. 「有意差がない」場合の解釈について、パネリストはどのような注意が必要か？</summary>
+                <div class="accordion-body">
+                  <p>「有意差がないから同等とは言えない」はよく知られているが、さらに重要なのは、例えばプラセボに対して新薬の効果が1.2のリスク比（95%CI:-3%〜48%）でP=0.091で有意差がなかった場合、差があるとは言えないということだけであり、差がある可能性もあるということ。これを誤って「効果がない」と表現すると「差がない・同等」と考えているのと同じことになる。</p>
+                  <p>意訳すると「点推定値で20%の効果があったが、稀には3%の悪化の可能性もあり、稀には48%の効果となることもあった」という結果を議論すべきであり、その20%が効果の閾値を超えているかを判断することが重要である。P値0.05での有意差があるないの二元論はデメリットが多い。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    GRADEアプローチでは、95%信頼区間の全体が閾値内に収まる場合（Estimate 4相当）は差がないと判断する。有意差がないが信頼区間が閾値を越える場合（Estimate 1相当）は差がないとは判断できない。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q25. 推奨の表現方法としてどのような言葉が使われるか？</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+                    <div style="background:#dcfce7;border-radius:6px;padding:0.8rem;font-size:0.88rem;">
+                      <strong style="color:#15803d;">「強い」</strong><br>
+                      Strong・強く推奨する・should・すべきである・recommend・推奨する
+                    </div>
+                    <div style="background:#fef9c3;border-radius:6px;padding:0.8rem;font-size:0.88rem;">
+                      <strong style="color:#a16207;">「弱い」</strong><br>
+                      Weak・弱く推奨する・suggestion・提案する・might・すると良いだろう・conditional・条件付きで推奨する・discretionary・任意・qualified・限定的
+                    </div>
+                  </div>
+                  <p style="margin-top:0.5rem;font-size:0.88rem;">最も多く使われているのが「行なうことを強く・条件付きで推奨する」「行なわないことを強く・条件付きで推奨する」である。「行なわないことを推奨する」という日本語の表現に違和感を持つ者も多いが、より正確な表現として位置づけられている。プロセスが明確ならば最後の文言はより利用者に分かりやすいように変えてもよい（Schünemann先生）。</p>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第4部 -->
+              <h3 id="qa-p4" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第4部：「推奨なし」について</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q26. 「推奨なし」はどのような状況で起こるか？Schünemann先生はどのような立場か？</summary>
+                <div class="accordion-body">
+                  <p>以下のような状況で起こる。</p>
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.8;">
+                    <li>エビデンスの確実性（効果推定値の確信性）が非常に低いために、パネルが推奨は推測の域を脱しないと判断する。</li>
+                    <li>効果推定値の確信性にかかわらず、トレードオフがかなり拮抗しており、価値観・意向・資源に関わる影響が不明であることや、ばらつきが大きすぎるために、パネルが推奨の方向性を決めかねる。</li>
+                    <li>望ましくない帰結が2つの治療選択肢で大きく異なっており、個々の患者の反応が大きく異なると考えられることから、典型的な価値観と意向について検討することはほぼ無意味であると考えられる。</li>
+                  </ol>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    <strong>Schünemann先生は「推奨なし」はダメとしている。</strong>ただし注意点として、推奨なしを選ぶことで患者に不利益が生じないか真剣に考えて決定することが求められる。逆に専門家のコンセンサスに従った推奨によって患者の不利益につながった歴史もあるので、安易にコンセンサスに従わないという姿勢も大切とされている。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q27. エビデンスがない（乏しい）場合でも、あえて推奨を行うことがあるのはなぜか？</summary>
+                <div class="accordion-body">
+                  <p>利益と害のバランスがトレードオフ・エビデンスの確実性が非常に低い場合でも、診療医一人が決めるより、パネル会議で議論して決めた推奨の方が患者に利益があると信じるならば、「推奨なし」を作らないという判断がある。</p>
+                  <p>エビデンスがない場合でも、多くの患者に不利益になるならば、パネリストの専門医のケースを集めてでもエビデンス（極めて低い）とし（議論だけでは声の強い者に引っ張られるので、データを出す）、推奨することが求められる。</p>
+                  <p>さらに「エビデンスの不確実性によるミスリードのリスクよりも、『推奨なし』による無秩序がもたらす害の方が大きいと判断される場合には、適切な注意喚起とともに、条件付き（弱い）推奨を提供することが、エビデンスに基づく医療の精神により合致した選択となる可能性がある」と述べられている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q28. 「当該介入または比較対照のいずれかについての条件付きの推奨」とはどのようなものか？</summary>
+                <div class="accordion-body">
+                  <p>EtD表のオプションのひとつであり、「推奨なし」とは異なる。これを選択するならば各条件のリサーチエビデンスが必要になる。Schünemann先生はこの推奨を好きでないと言っている。相原先生は「介入Aの選択を提案するが、代替選択肢Bに反対するものではない」という記載の方が適切ではないかとしている。</p>
+                  <p>実際の例として、ASH（米国血液学会）の血栓予防ガイドラインでは「ASHガイドライン委員会は、手術を受ける患者には薬物的予防法または機械的予防法を使用することを提案している（効果に関する証拠の確実性が低いため、条件付き推奨）」とだけあり、どちらでもよいという推奨文となっている事例がある。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q29. Good Practice Statements（よい実践ステートメント）とはどのような場合に用いるか？</summary>
+                <div class="accordion-body">
+                  <p>Good Practice Statementsは、体系的にエビデンスを特定するためのリソースが不足しているために作成するのではなく、明確な提言にもかかわらず間接的なエビデンスしかない場合に用いられる。「エビデンスがないから作成する」ものではない点が重要である（著者自身も間違っていたとしている）。</p>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第5部 -->
+              <h3 id="qa-p5" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第5部：推奨決定に関わる詳細事項</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q30. 診療ガイドラインの推奨の決定は相対効果と絶対効果のどちらを使うべきか？</summary>
+                <div class="accordion-body">
+                  <p>絶対効果を使うべきである。例えば「新薬が標準薬より死亡が1.56倍減少する」という相対効果でなく、「1000人中30名減少する」という絶対効果の表現で議論する。絶対効果＝ベースラインリスク×相対効果であるため、ベースラインリスクの違いによって絶対効果が大きく異なる（よって相対効果では判断ができない）。システマティックレビューでのベースラインリスクが作成するCPGで想定されるベースラインリスクと日本の現状が違う場合は、いろいろなデータより補正した値（低リスク・高リスクと分けることもある）を利用する。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q31. ベースラインリスクとアウトカムの相対的価値の判断はどのような影響を与えるか？</summary>
+                <div class="accordion-body">
+                  <p>ベースラインリスクとアウトカムの相対的価値の判断（可能な限り客観的資料に基づく）によって、推奨草案と異なる結論がパネル会議で決定されることもある。ただし点推定値と逆方向の場合、誰もが納得するような客観的証拠と理由が必要となる。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    <strong>具体的な国際例：</strong>カナダタスクフォースガイドラインは40〜50歳の女性乳がん検診について弱い推奨なし（検診を行わない）としたが、KSA（サウジアラビア）のガイドラインパネルはKSAの若年女性のベースラインリスクがより高いと考えられるため、この年齢層の検診に賛成する条件付き推奨を出した。これはEtD frameworkを踏まえると、ベースラインリスクの違いによって正当化される。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q32. コスト（必要資源量）はCPG作成においてどのように扱われるか？</summary>
+                <div class="accordion-body">
+                  <p>個人向けのCPGの場合、コストは患者の直接コストになる。よってGRADEproのEtD frameworkでは容認性の項目で検討する。</p>
+                  <p>一方、MindsのEtD表の例（RC-8というエクセルの表）は、セッティングの選択で個人でなく集団を選択して作っているため、「基準7. 必要資源量　資源利用はどの程度大きいか？」など個人向けCPGでは検討しなくてよい項目も含まれており、これは間違っているとしている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q33. 推奨文の文言を決める際の注意点は？</summary>
+                <div class="accordion-body">
+                  <p>日本では推奨文や備考ならびに注意の細かな文言で議論されることが多いので、パネル会議でできるだけ最終的な文章まで作成することが求められる。推奨の強さと方向の合意を得た後に推奨文を作成するが、推奨文を作成しながらでないと推奨の議論が進まないこともある。議論はプロジェクターで文章を表示して具体的に文章を読みながら行うことが効率的である。決定できなければ後日電子メール会議とする。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q34. 投票はどのように行われるか？どのようなルールが一般的か？</summary>
+                <div class="accordion-body">
+                  <p>近年では推奨文やRemarkまで作成して、それに対して合意するかどうかを確認するだけの形が多くなっている。</p>
+                  <p><strong>一般的な規則として以下が挙げられている：</strong></p>
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>強い推奨は80〜90%以上のため、80%とするか90%とするかをまず決める。</li>
+                    <li>その他の決定は70%以上の一致で決定としていたが、最近は多数決（50%）が多い。コンセンサスが得られたらわざわざ投票までしないらしい。</li>
+                    <li>3回の投票でも収束しない場合、または3回目投票でも「推奨を作成しない」が70%以上の場合は推奨なしとするかも事前に決める。</li>
+                  </ul>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.7rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;">
+                    注意として、GRADEアプローチの具体的な基準から逸脱する結果となった場合は修正して再度議論する。GRADEproのウェブサイトでは、PanelVoiceというすべてオンラインで投票まで可能なシステムが存在する。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q35. パネリストへのお願い・注意事項は何か？</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;">
+                    <li>利益相反で問題となる推奨に関しては投票できない。</li>
+                    <li>推奨の合意がなされても少数意見は解説に記載するので、自分の意見と異なるからといってパネリストを辞退しないこと。</li>
+                    <li>投票の時にエビデンスから離れないこと。疲れてくると知らず知らずのうちに患者の意向や自分の得意な治療や自分が行われた治療をエビデンスより重きにおいた思考回路に陥ることがある。</li>
+                    <li>議論の流れがおかしな方向に進んでいると感じたとき、介入と対照を逆にして議論すると良い方向に進むことがある。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第6部 -->
+              <h3 id="qa-p6" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第6部：パネル会議当日の注意事項</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q36. EtD表ならびに推奨文草案のパネリスト提出前に何を確認すべきか？</summary>
+                <div class="accordion-body">
+                  <p>作成委員会の責任として全員が全CQで以下を確認する。</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem;">
+                    <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>検討事項について：</strong>
+                      <ul style="margin:0.4rem 0 0 1rem;">
+                        <li>PICOの定義の再確認</li>
+                        <li>ベースラインリスクの検討が行われているかの確認</li>
+                        <li>アウトカムの価値観（効用値）・臨床の閾値などを論文データより示す（些細な利益・小さな利益・中等度の利益・些細な害など）</li>
+                        <li>価値観・コストエフェクト論文（必要なら）など参考文献の提示</li>
+                        <li>閾値・バリューなど参考文献がない場合は、アンケートだが無理なら策定委員会で3分の2以上の賛同ぐらいはしておく</li>
+                      </ul>
+                    </div>
+                    <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.7rem;border-radius:6px;font-size:0.88rem;">
+                      <strong>文章などについて：</strong>
+                      <ul style="margin:0.4rem 0 0 1rem;">
+                        <li>用語の統一</li>
+                        <li>グラフなど効果と害の方向を勘違いしていないかの確認（この間違いは多い！）</li>
+                        <li>パネリストに分かりやすい文章と補足説明</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q37. パネル会議の準備と当日の注意すべき点は何か？</summary>
+                <div class="accordion-body">
+                  <p><strong>事務的な事：</strong>患者や非専門家の参加（招聘書類）と謝金等の事前決定・謝金の発生する方への税金・領収書等の用意・参加者の交通費を払う場合の諸手続。</p>
+                  <p><strong>説明準備：</strong>草案まであるがあくまでも誘導しない説明をする・患者にも分かる説明をする・説明時間を守る・疾患やアウトカムの定義、治療の詳細、サブグループなどのデータを聞かれたら答えられる資料を用意。</p>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.7rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>パネル会議当日の注意すべき点：</strong>
+                    <ul style="margin:0.4rem 0 0 1rem;font-size:0.88rem;line-height:1.8;">
+                      <li>推奨の方向を勘違いしていることがないか確認（特に「～しないことを推奨する」）</li>
+                      <li>エビデンスが希薄な場合、患者の意向のみで推奨しがちだが、それでよいか十分に議論する</li>
+                      <li>「推奨なし」の場合その決定が患者の不利益にならないかを議論する</li>
+                      <li>最も重大なアウトカムの点推定値と逆の推奨を行う場合、十分な納得できる判断理由を示すこと</li>
+                      <li>推奨文やEtDなど変更時はその都度どんどんリアルにプロジェクターで出しながら直していく。文章にして目でみて読まないと議論だけでは正確に作れない。</li>
+                    </ul>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q38. パネル会議の物理的な準備・運営上の細かな準備は何か？</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0 0 0 1.2rem;line-height:1.9;font-size:0.9rem;">
+                    <li>ZOOMなどを利用してハイブリッドが望ましい</li>
+                    <li>録画（録音）の準備（録音データでAIを使って議事録へ）</li>
+                    <li>気楽な服装でのアナウンス</li>
+                    <li>コーヒーブレイクのためのコーヒー（できればお菓子も）</li>
+                    <li>昼食弁当（必要なら）</li>
+                    <li>投票用紙（参考例）、できれば投票箱（なければ袋）、オンラインサーベイの利用</li>
+                    <li>推奨決定のための確認事項（事前配布・印刷も）</li>
+                    <li>机におく名札</li>
+                    <li>パネリストはできるだけ四角で対面で、かつ、狭く喋りやすい環境を作る（パネリスト同士が離れていると発言しにくい）</li>
+                    <li>ネクタイをできるだけ行わないこと、「先生・教授」などの敬称をつけないこと（患者代表もいるので「先生」はやめる）</li>
+                    <li>ZOOMなら、マイクをどうするか、カメラの位置をどうするか、特にハイリング問題がZOOMの場合ある（多人数集音マイクの場合、後で文字起こしで誰が喋ったか不明となる）</li>
+                    <li>PC持参の方が多い場合はコンセントが届かないので延長ケーブル</li>
+                    <li>記録係、司会以外のタイムキーパーが議論の制限時間を伝える方がよい</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q39. 海外のパネル会議の研究から何が分かっているか？</summary>
+                <div class="accordion-body">
+                  <p>GRADEアプローチを用いた20名のメンバーによる2日間のガイドラインパネル会議を分析した研究（Li SAら、JCE 2022）がある。主な観察結果として：</p>
+                  <ul style="margin:0.4rem 0 0.8rem 1.2rem;line-height:1.8;">
+                    <li>会議は20時間続き、466ページの転写を生成した。</li>
+                    <li>エビデンスの質と利益対害に関する議論が会話の46%を占めた。</li>
+                    <li>議長・副議長・方法論専門家が全コミュニケーションの53%を開始し60%を受け取った。</li>
+                    <li>ネットワーク分析により、これらの個人が議論に最も大きな影響力を持っていたことが示された。</li>
+                  </ul>
+                  <p>また、革新的なアプローチとして関節リウマチ患者のみで構成されたパネルがCPG推奨事項を開発し医師のパネルと比較した論文（Fraenkel Lら、2016）もある。このパネルにはEBMとガイドライン開発に関する8時間のトレーニング、18の臨床的疑問に関する推奨事項を作成するための対面会議、GRADE方法論の適用が含まれていた。</p>
+                </div>
+              </details>
+
+              <hr class="section-divider">
+
+              <!-- 第7部 -->
+              <h3 id="qa-p7" style="font-size:1.1rem;font-weight:bold;color:#1e3a5f;margin-bottom:0.6rem;">第7部：推奨文の記載方法の実例</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q40. エビデンスの確実性が低く症例数が少ない場合でも推奨文を作ることはあるか？実例は？</summary>
+                <div class="accordion-body">
+                  <p>2025年1月のGIEジャーナルの例（慢性膵炎・主膵管閉塞の疼痛に対する内視鏡療法vs外科的治療）では、エビデンスプロファイルで死亡はメタ分析していない（0イベントが多い）にもかかわらず推奨なしにしていない。症例数が199とごく少ないにもかかわらず推奨なしにしていない。外科的アプローチの優位性にもかかわらず、パネルは条件付きで内視鏡も選んだ。推奨の記載はまずaとして外科を推奨し、bとして内視鏡も条件付きで推奨するという2段構えの記述となっている。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.5rem;font-size:0.88rem;font-style:italic;">
+                    著者は「このエビデンスの確実性が非常に低で、症例数も少ない場合、パネリストが『こんなものでは推奨できない』と言われることが多い。しかし多くの医療者とその先の患者のために、何もない状況での臨床判断より、少なくともエビデンスを把握した上でパネル会議で判断した推奨の方がましでしょう、という根幹的な考えを元にして、この程度のエビデンスでこの程度の弱い推奨を作ることは許容範囲だという感じで捉えて欲しい」と述べている。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q41. 益と害のバランスがなかった場合、推奨はどのように決まるか？</summary>
+                <div class="accordion-body">
+                  <p>薬剤間の差がなかった場合、コストと価値観のみで薬剤の順番を決めた例がある（2025年CPG片頭痛のCPG）。このCPGは良くできているという評価が高いCPGのバージョンアップ版であり、最先端の推奨作成方法の一つとして紹介されている。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q42. 「against（推奨しない）」のみの推奨からなるCPGはあるか？</summary>
+                <div class="accordion-body">
+                  <p>Guyatt先生が参加したCPGで、慢性的な脊椎軸性疼痛（首の痛み・腰痛など）に対するステロイドや局所麻酔の注射・高周波治療について、ほぼすべてが「強い反対」推奨のみのCPGがある（BMJ 2025年2月）。これは値段が安くて害も少なく効果がありそうな治療は外して、ダメな治療のみを選んで「ダメだよ！」と言うことをメインとしている。</p>
+                  <div style="background:#1e3a5f;color:#e2e8f0;padding:0.8rem;border-radius:8px;margin-top:0.5rem;font-size:0.88rem;">
+                    「診療ガイドラインの本質は患者に不利益のある治療を明確にしようということ」という根幹的な考えがよく現れた例として紹介されている。アウトカムがなんと22個もあり、NMAであったため、アウトカムに介入が組み合わさっている。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Q43. NMAのランキングで第1位を推奨するのでなく、グループとして推奨する場合があるか？</summary>
+                <div class="accordion-body">
+                  <p>Guyatt先生が参加した顎関節症の慢性痛のCPG（BMJ 2023）では、複数の治療を同時に強く推奨としている事例がある。NMAのエビデンスの確実性と効果の大きさのバランスを見た結果、単一の1位を選ぶのではなく、グループとして推奨する方法が採用されている。このような記載方法を知っていると、パネル会議で議論が収束しない場合や複数の介入が拮抗している場合の対応策として活用できる。</p>
+                </div>
+              </details>
+
             </div>
           </div>
 
