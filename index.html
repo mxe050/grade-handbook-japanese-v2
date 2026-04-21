@@ -223,6 +223,15 @@ function checkAuth(){
       </li>
       <li class="toc-item">
         <button class="toc-btn" data-idx="17">
+          <span class="toc-num">Q&A</span>
+          <span class="toc-text">
+            GRADE Q&amp;A
+            <span class="en">GRADE Q&amp;A Collection</span>
+          </span>
+        </button>
+      </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="18">
           <span class="toc-num">🆕</span>
           <span class="toc-text">
             最新情報(2026.4.1.～）
@@ -8458,13 +8467,347 @@ function checkAuth(){
       </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
-        <span class="page-indicator">16 / 16</span>
+        <span class="page-indicator">16 / 17</span>
         <button class="nav-btn nav-next" >次の章 →</button>
       </div>
     </div>
 
-    <!-- page-17: 最新情報(2026.4.1.～） -->
+    <!-- page-17: GRADE Q&A -->
     <div class="page" id="page-17">
+      <div class="page-header">
+        <div class="chapter-badge">GRADE Q&amp;A</div>
+        <h1>GRADE Q&amp;A</h1>
+        <div class="en-title">GRADE Q&amp;A Collection</div>
+        <div style="margin-top:0.8rem; color:rgba(255,255,255,0.8); font-size:0.9rem; max-width:700px; margin-left:auto; margin-right:auto;">
+          2026年にコクランで行われた Collection: GRADE assessment of certainty of evidence series というセミナーよりのQ&amp;A集です。
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab(this, 0)">セッション一覧</button>
+          <button class="tab-btn" onclick="switchTab(this, 1)">Holger Schünemann：Introduction</button>
+        </div>
+        <div class="tab-content">
+
+          <!-- Tab 0: セッション一覧 -->
+          <div class="tab-pane active">
+            <div class="content-section">
+              <h2 class="section-title">Q&amp;Aセッション一覧</h2>
+              <p style="color:#4a5568; line-height:1.7; margin-bottom:1.5rem;">
+                2026年にコクランで行われた <strong>Collection: GRADE assessment of certainty of evidence series</strong> セミナーの各セッションのQ&amp;A集です。
+                セッション名をクリックすると、そのQ&amp;Aページを表示できます。
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+                <button
+                  onclick="var b=this.closest('.page').querySelectorAll('.tabs-nav .tab-btn')[1]; switchTab(b, 1);"
+                  style="display:inline-flex; align-items:center; gap:0.6rem; padding:1rem 1.5rem; background:linear-gradient(135deg,#1a5276,#2980b9); color:white; border:none; border-radius:10px; font-size:1rem; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(41,128,185,0.3); transition:all 0.2s;">
+                  <span style="font-size:1.2rem;">🎓</span>
+                  Holger Schünemann：Introduction
+                </button>
+              </div>
+              <div style="margin-top:2rem; padding:1rem; background:#f0f4f8; border-radius:8px; border-left:4px solid #3b82f6; color:#4a5568; font-size:0.9rem;">
+                ※ 今後、他のセッションのQ&amp;Aも順次追加予定です。
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 1: Holger Schünemann：Introduction Q&A -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">Holger Schünemann：Introduction</h2>
+              <p style="color:#4a5568; line-height:1.7; margin-bottom:1.5rem;">
+                各質問をクリックすると回答が展開されます。
+              </p>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q1: GRADEとは何で、どのように発展してきたか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>GRADE（推奨・評価・策定・評価の等級付け）は、エビデンスの確実性と推奨の強さを評価するシステムです。2002-2003年頃に始まり、25年にわたって発展してきました。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>第一期：</strong>Cochraneの緊密な関与のもと中核的方法論の開発に焦点を当て、DECIDEプロジェクト（2015年まで）を通じて「エビデンスから決定へ」のフレームワークを作成。</li>
+                    <li><strong>第二期（現在）：</strong>人工知能やプラネタリー・ヘルスなどの新たなトピックを扱っています。</li>
+                  </ul>
+                  <p style="margin-top:0.5rem;">ガイダンス記事は <em>Annals of Internal Medicine</em> と <em>Journal of Clinical Epidemiology</em> に掲載されています。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q2: GRADEの2つの主要な貢献は何か？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <ul style="margin:0 0 0 1.2rem;">
+                    <li><strong>Summary of Findings（SoF）表</strong> — 2002-2003年頃にAndy Oxmanが開発。特定の質問に対する最良の利用可能なエビデンスを、アウトカム別に確実性評価とともに簡潔にまとめたもの。</li>
+                    <li style="margin-top:0.5rem;"><strong>Evidence-to-Decision（EtD）フレームワーク</strong> — 意思決定プロセスにおけるエビデンスの使用を構造化したもの。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q3: エビデンス統合は、より広い医療意思決定の生態系にどう適合するか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>システマティックレビューは単独では存在しません。以下に情報を提供します：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li>医療技術評価（HTA）と保険適用の決定</li>
+                    <li>臨床診療ガイドライン（WHOガイドラインの70%以上がCochraneのエビデンスに基づく）</li>
+                    <li>必須医薬品リスト（特に低・中所得国で重要）</li>
+                    <li>政策立案プロセス</li>
+                    <li>モデリング研究</li>
+                    <li>実装研究</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q4: ガイドライン開発プロセスはシステマティックレビューとどう連携するか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>通常のステップ：</p>
+                  <ol style="margin:0.5rem 0 0 1.2rem;">
+                    <li>ガイドラインパネルが健康上の疑問に優先順位をつける</li>
+                    <li>システマティックレビューが介入効果だけでなく、意思決定フレームワークのすべての基準に情報を提供</li>
+                    <li>すべてのレビューは使用前にエビデンスの確実性評価を受ける</li>
+                    <li>エビデンスがガイドラインやHTAプロセスに反映され、決定に至る</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q5: なぜアウトカムの優先順位付けが重要か？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>GRADEは「測定されているものすべてが意思決定に重要なわけではなく、重要なものがすべて実際に測定されているわけでもない」ことを明確にしました。</p>
+                  <p style="margin-top:0.5rem;">レビュー著者は個々の研究を評価する前にクリティカルなアウトカムに優先順位をつけなければなりません。このため、Cochraneレビューは20-25のアウトカムを持つものから、SoF表での焦点を絞った少数のアウトカムへと移行しました。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q6: Summary of Findings表には何が含まれるか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>SoF表には以下が含まれます：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li>上部にPICO質問</li>
+                    <li>意思決定に関連する優先順位付けされたアウトカム</li>
+                    <li>メタアナリシスからの相対効果推定値</li>
+                    <li>代表的なベースラインリスクの絶対効果（最大3つのリスク層：低、中、高）</li>
+                    <li>比較群と介入群のリスク</li>
+                    <li>参加者数と研究タイプ</li>
+                    <li>説明脚注付きの確実性評価</li>
+                    <li>解釈のためのコメント欄</li>
+                  </ul>
+                  <p style="margin-top:0.5rem; background:#eff6ff; border-left:3px solid #3b82f6; padding:0.6rem; border-radius:4px;">各アウトカムは異なる確実性評価を持つことができ、これはGRADEの特徴です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q7: GRADEは「エビデンスの確実性」をどう定義するか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>GRADEはエビデンスの確実性を「<strong>推定値の真の値が特定の範囲内、または意思決定の閾値の上下にあることの確実性</strong>」と定義します。</p>
+                  <p style="margin-top:0.5rem;">GRADEは以下を区別します：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>効果の大きさ</strong>（理想的には絶対推定値として表現）</li>
+                    <li><strong>そのエビデンスの確実性</strong>（以前は「質」と呼ばれていた）</li>
+                  </ul>
+                  <p style="margin-top:0.5rem;">個々の研究の質との混同を避けるため、用語が「質」から「確実性」に変更されました。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q8: GRADEの4つの確実性レベルとは？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-top:0.5rem;">
+                      <thead>
+                        <tr style="background:#1a5276; color:white;">
+                          <th style="padding:0.6rem 0.8rem; text-align:left; border:1px solid #a9cce3;">レベル</th>
+                          <th style="padding:0.6rem 0.8rem; text-align:left; border:1px solid #a9cce3;">語りによる解釈</th>
+                          <th style="padding:0.6rem 0.8rem; text-align:left; border:1px solid #a9cce3;">科学的解釈</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="background:#eaf4fb;">
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8; font-weight:700; color:#1a5276;">高</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">「介入はアウトカムを減少/増加させる」</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">真の値が閾値の一方の側または特定の範囲内にあるという高い確信</td>
+                        </tr>
+                        <tr>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8; font-weight:700; color:#2471a3;">中</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">「介入はおそらくアウトカムを減少/増加させる」</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">中程度の確信；真の値はわずかに目標から逸脱する可能性</td>
+                        </tr>
+                        <tr style="background:#eaf4fb;">
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8; font-weight:700; color:#e67e22;">低</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">「介入はアウトカムを減少/増加させるかもしれない」</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">低い確信；真の値は重要に逸脱する可能性</td>
+                        </tr>
+                        <tr>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8; font-weight:700; color:#e74c3c;">非常に低</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">「エビデンスは効果について非常に不確実」</td>
+                          <td style="padding:0.6rem 0.8rem; border:1px solid #c8d8e8;">真の値は目標から著しく逸脱する可能性</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q9: GRADEは介入効果のみに使用されるか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>いいえ。GRADEは複数のタイプの質問に使用され、確実性は異なる意味を持ちます：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>介入の質問：</strong>治療効果</li>
+                    <li><strong>患者の価値観：</strong>アウトカムの相対的重要性（通常0-1スケール）</li>
+                    <li><strong>診断の質問：</strong>診断精度の測定</li>
+                    <li><strong>予後の質問：</strong>予測因子とアウトカムの関連性の測定</li>
+                    <li><strong>環境健康/リスク評価：</strong>曝露とアウトカムの関係</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q10: 確実性を下げるためのGRADEドメインは何か？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p><strong>評価を下げる5つのドメイン：</strong></p>
+                  <ol style="margin:0.5rem 0 0 1.2rem;">
+                    <li><strong>バイアスのリスク</strong> — 研究デザインと実施の限界</li>
+                    <li><strong>不精確性</strong> — まばらなデータまたは不十分なイベント/参加者</li>
+                    <li><strong>非一貫性</strong> — 研究間の説明されない異質性</li>
+                    <li><strong>非直接性</strong> — 適用可能性、一般化可能性、移行可能性</li>
+                    <li><strong>出版（伝播）バイアス</strong></li>
+                  </ol>
+                  <p style="margin-top:0.5rem;">そして評価を上げるドメイン（主に観察研究用）。</p>
+                  <div style="margin-top:0.5rem; background:#fef9e7; border-left:3px solid #f39c12; padding:0.6rem; border-radius:4px;">
+                    <strong>注：</strong>利益相反は別個のドメインではなく、既存のドメインを通じてカバーされます。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q11: 確実性評価の4つのステップは何か？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <ol style="margin:0 0 0 1.2rem;">
+                    <li>些細な、小さな、中等度、大きな効果の<strong>閾値を決定</strong>（コンセンサスまたは経験的エビデンスにより、透明に報告）</li>
+                    <li><strong>確実性評価の目標を決定</strong> — 絶対効果の点推定値が入る範囲</li>
+                    <li>すべてのGRADEドメインにわたって<strong>エビデンスを評価</strong></li>
+                    <li><strong>評価を上げるか下げるかを決定</strong> — 各ドメインを個別にではなく全体的に行う</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q12: なぜ閾値がそれほど重要か？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>閾値は重要です：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li>明示的な閾値がなくても、これらの判断は暗黙的に行われる</li>
+                    <li>不精確性やその他の要因の評価を容易にする</li>
+                    <li>感度分析とバイアスリスク評価に情報を提供</li>
+                    <li>レビュアー間の不一致を減らす</li>
+                  </ul>
+                  <div style="margin-top:0.5rem; background:#eff6ff; border-left:3px solid #3b82f6; padding:0.6rem; border-radius:4px; font-weight:600;">
+                    ルール：信頼区間が閾値を1つ越えるごとに、1レベル下げる
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q13: GRADEは医療以外（例：教育、気候）で使用できるか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>はい。確実性はトピック領域に関係なく絶対的な連続体（0%から100%まで）上にあります。ドメインとEtDフレームワークは、気候変動介入、環境健康、さらには非医療教育にも適用されます。</p>
+                  <p style="margin-top:0.5rem;">一般教育に焦点を当てたGRADEプロジェクトグループが適用可能性を示しています。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q14: GRADEはメタアナリシスなしで使用できるか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>はい。メタアナリシスが実施できない場合でもGRADEは適用できますが、より定性的なアプローチになります。同じ5つのドメインが適用されます。GRADEは定性的エビデンス統合にも使用できます。</p>
+                  <p style="margin-top:0.5rem; background:#f0fdf4; border-left:3px solid #22c55e; padding:0.6rem; border-radius:4px;">ただし、メタアナリシス（適切なプロトコル、感度分析、サブグループ分析あり）があるとGRADE適用が容易になります。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q15: レビュアー間の不一致はどう扱うべきか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>研究の包含/除外の決定と同様に：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li>評価は二重に行う</li>
+                    <li>コンセンサスを求める</li>
+                    <li>経験豊富な第三者が紛争解決を支援</li>
+                    <li>議論が行われたことを記録し、異なる解釈を記載</li>
+                    <li>明示的な閾値を設定すると、評価がより透明になり、不一致が減る</li>
+                  </ul>
+                  <p style="margin-top:0.5rem; color:#6b7280; font-style:italic;">AIと自動化が確実性評価をサポートするために開発中</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q16: バイアスリスクとGRADEの違いは？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <ul style="margin:0 0 0 1.2rem;">
+                    <li><strong>バイアスリスク</strong>は個々の研究のデザインと実施の内部妥当性/限界を評価します — 研究結果が潜在的真実をどれだけよく表しているか。特定の1つのドメインです。</li>
+                    <li style="margin-top:0.5rem;"><strong>GRADE</strong>はエビデンス全体の確実性を、バイアスリスクに加えて非直接性、非一貫性、不精確性、出版バイアスを考慮して評価します。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item" style="margin-bottom:0.8rem; border:1px solid #c8d8e8; border-radius:8px; overflow:hidden;">
+                <summary class="accordion-header" style="padding:1rem 1.2rem; background:#eaf4fb; cursor:pointer; font-weight:600; color:#1a5276; font-size:0.95rem;">
+                  Q17: 1つの研究のみでGRADEを使用できるか？
+                </summary>
+                <div class="accordion-body" style="padding:1rem 1.2rem; background:#f8fbfd; border-top:1px solid #c8d8e8; line-height:1.8; color:#2c3e50;">
+                  <p>はい、同じアプローチで。ただし：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;">
+                    <li>単一の研究は非一貫性を持つことができない（非一貫性は適用されない）</li>
+                    <li>単一の研究は通常GRADE評価で悪い結果になる（不精確、非直接的など）</li>
+                    <li>しかし評価フレームワーク自体で不利になるわけではない</li>
+                  </ul>
+                </div>
+              </details>
+
+            </div>
+          </div><!-- end tab-pane -->
+
+        </div><!-- end tab-content -->
+      </div><!-- end page-body -->
+      <div class="page-nav">
+        <button class="nav-btn secondary nav-prev">← 前の章</button>
+        <span class="page-indicator">17 / 17</span>
+        <button class="nav-btn nav-next">次の章 →</button>
+      </div>
+    </div>
+
+    <!-- page-18: 最新情報(2026.4.1.～） -->
+    <div class="page" id="page-18">
       <div class="page-header">
         <div class="chapter-badge">最新情報(2026.4.1.～）</div>
         <h1>最新情報(2026.4.1.～）</h1>
