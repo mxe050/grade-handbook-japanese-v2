@@ -7411,6 +7411,7 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 1)">クロスオーバー試験・スプリットマウス</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">連続量メタ分析</button>
           <button class="tab-btn" onclick="switchTab(this, 3)">非ランダム化比較試験</button>
+          <button class="tab-btn" onclick="switchTab(this, 4)">仮説検定とP値の誤解：佐藤俊哉先生</button>
         </div>
         <div class="tab-content">
 
@@ -7845,6 +7846,294 @@ function checkAuth(){
 
               <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.88rem;">
                 <strong>結論</strong>：RCTと観察研究のメタ分析は、単にデータをかき集めて結合する作業ではなく、それぞれのドメインごとの限界を論理的に評価し、<strong>絶対効果の閾値を用いて厳格に比較する高度なプロセス</strong>である。
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: 仮説検定とP値の誤解：佐藤俊哉先生 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">仮説検定とP値の誤解</h2>
+              <p style="color:#555;margin-bottom:0.4rem;">京都大学大学院医学研究科 聴講コース「臨床研究者のための生物統計学」</p>
+              <p style="color:#777;margin-bottom:1rem;font-size:0.9rem;">佐藤 俊哉 教授（医学研究科）</p>
+              <div style="margin-bottom:1.2rem;">
+                <a href="https://www.youtube.com/watch?v=vz9cZnB1d1c" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#dc2626;color:white;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:bold;">
+                  ▶ YouTube で動画を見る
+                </a>
+              </div>
+
+              <div style="background:#fef9c3;border-left:4px solid #eab308;padding:1rem;border-radius:6px;margin-bottom:1.5rem;">
+                <strong>この講義の核心メッセージ</strong>：検定やP値の誤解は30〜40年前から指摘されてきたが、近年その問題がより深刻化したため、アメリカ統計協会（ASA）が2016年に公式声明を発表した。P値を計算してデータ解析が終わりではなく、考慮すべきことが山ほどある。
+              </div>
+
+              <!-- セクション1 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">1. 導入：なぜ今この問題が重要か</h3>
+              <p style="margin-bottom:0.8rem;">仮説検定・P値の誤解と誤用は古くから指摘されてきた。しかし科学界では依然として誤った解釈が横行しており、それが重大な社会的・科学的問題につながっている。アメリカ統計協会（ASA）は世界最大の統計専門家学術団体であり、「なぜ多くの人が有意水準5%を使うのか？」→「大学でそう教わったから」→「なぜ大学はそう教えるのか？」→「みんなが使っているから」という悪循環への危機感から、2016年に公式声明を発表した。声明の対象は統計専門家ではなく、統計を専門としない研究者・実務家・サイエンスライターを主な対象としている。</p>
+
+              <!-- セクション2 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">2. EUCLID試験：具体例で学ぶ検定の構造</h3>
+
+              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
+                <strong>EUCLID試験の概要</strong>（NEJM 2017年掲載）<br>
+                末梢動脈疾患患者の心血管イベント予防を目的とした、チカグレロル（新規強力抗血小板薬）対クロピドグレルのランダム化二重マスク化臨床試験
+              </div>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">試験デザインと統計計画</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;line-height:1.8;">
+                    <li><strong>調べたい仮説（証明したいこと）</strong>：チカグレロルの心血管イベント予防効果はクロピドグレルを上回る</li>
+                    <li><strong>帰無仮説（Null Hypothesis）</strong>：両薬の予防効果は同程度である（これを否定することで間接的に証明する）</li>
+                    <li><strong>主要エンドポイント</strong>：心血管死・心筋梗塞・脳梗塞の複合エンドポイントまでの時間（生存時間解析）</li>
+                    <li><strong>想定ハザード比</strong>：0.85（チカグレロルの方が15%リスク低減）</li>
+                    <li><strong>検出力</strong>：90%（→ 後に計画変更で85%に）</li>
+                    <li><strong>有意水準（α）</strong>：4.94%（中間解析1回を調整した値。通常の5%ではなくなる）</li>
+                    <li><strong>必要イベント数</strong>：当初1,596件 → 参加者の状態が予測より良好だったため1,364件に計画変更</li>
+                    <li><strong>登録患者数</strong>：各群約7,000名・計約14,000名</li>
+                    <li><strong>解析手法</strong>：Cox回帰によるハザード比推定、Wald法によるP値・信頼区間の計算</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">試験結果と結論</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:0.8rem;">
+                    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;text-align:center;">
+                      <div style="font-size:0.8rem;color:#64748b;">ハザード比</div>
+                      <div style="font-size:1.4rem;font-weight:bold;color:#1e40af;">1.02</div>
+                      <div style="font-size:0.75rem;color:#94a3b8;">（≒1 ＝ほぼ同等）</div>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;text-align:center;">
+                      <div style="font-size:0.8rem;color:#64748b;">95%信頼区間</div>
+                      <div style="font-size:1.2rem;font-weight:bold;color:#1e40af;">0.92–1.13</div>
+                      <div style="font-size:0.75rem;color:#94a3b8;">（1を含む）</div>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem;text-align:center;">
+                      <div style="font-size:0.8rem;color:#64748b;">P値</div>
+                      <div style="font-size:1.4rem;font-weight:bold;color:#dc2626;">0.65</div>
+                      <div style="font-size:0.75rem;color:#94a3b8;">（α=4.94%より大）</div>
+                    </div>
+                  </div>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                    <strong>重要な点</strong>：生存曲線では2群がほぼ重なり、拡大するとチカグレロル群のイベント発生がわずかに多い（HR 1.02）。「優越性を示さなかった」が正確な結論であり、「両者の効果は同じである」という結論にはならない。これが検定の解釈の難しさを示す典型例。
+                  </div>
+                </div>
+              </details>
+
+              <!-- セクション3 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">3. P値に関する7つの誤解（すべて誤り）</h3>
+
+              <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.6rem 1rem;border-radius:6px;margin-bottom:0.8rem;font-size:0.88rem;">
+                以下はすべて「誤解」です。正しいと思わないでください。
+              </div>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解①：P値は帰無仮説が正しい確率である</summary>
+                <div class="accordion-body">
+                  <p>「P値が0.65だから帰無仮説が正しい確率は65%」「P値が0.01だから帰無仮説が正しい確率は1%」という解釈は誤り。<strong>仮説や真の値はばらつかないため、確率で表現できない。</strong>ばらつくのはデータ（観測値）だけである。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解②：統計的有意 ＝ 科学的・臨床的に重要な関係がある</summary>
+                <div class="accordion-body">
+                  <p>「p&lt;0.05で有意だったから重要な発見だ」という解釈は誤り。<strong>サンプルサイズを増やせばどんなに小さな差でも必ずp&lt;0.05になる。</strong>統計的有意性と臨床的意義・科学的重要性は全く別の概念である。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解③：P値 ＞ α → 帰無仮説を採択すべき</summary>
+                <div class="accordion-body">
+                  <p>非有意だったからといって「帰無仮説が正しい」とは言えない。これは「判断の保留」であって採択ではない。サンプルサイズを増やせば同じ効果量でも有意になる可能性があり、サンプルサイズが小さすぎて検出できなかっただけかもしれない。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解④：P値 ＞ α → 効果がなかった・効果のなさが証明された</summary>
+                <div class="accordion-body">
+                  <p>EUCLID試験のような結果（P=0.65）を見て「チカグレロルもクロピドグレルも同じ効果」と結論するのは誤り。「優越性を示さなかった」と「効果がない・同等である」は意味が全く異なる。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解⑤：P値 ＜ α → 帰無仮説が誤りであり棄却すべき（教科書に書いてあるが誤解）</summary>
+                <div class="accordion-body">
+                  <p>統計の教科書に必ず書いてあるこの記述も実は誤解を含む。小さいP値は「帰無仮説が誤り」を直接示すのではなく、<strong>「統計モデルを構成するすべての仮定のうちのどれかが間違っている」</strong>ことを示すにすぎない。帰無仮説だけが唯一の「誤りの候補」ではない。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解⑥：P=0.01 → 100回に1回しか起こらないことが起きた、だから帰無仮説を棄却しても誤りは100回に1回だけ</summary>
+                <div class="accordion-body">
+                  <p>これも誤り。P値はデータが「帰無仮説のもとで」どれくらい極端かを示す確率であって、「この判断が誤りである確率」ではない。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤解⑦：α=5%で棄却した → その判断が誤りである確率は5%</summary>
+                <div class="accordion-body">
+                  <p>α（有意水準）は「帰無仮説が本当に正しいときに誤って棄却してしまう確率の上限（第一種の過誤率）」であって、「この一回の判断が間違いである確率」ではない。頻度論的な長期確率であり、個々の判断に直接適用できない。</p>
+                </div>
+              </details>
+
+              <!-- セクション4 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">4. ASA声明（2016年）：P値に関する6原則</h3>
+
+              <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1rem;">
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則1：P値はデータと統計モデルが矛盾する程度を示す指標の一つ</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">統計モデルには多くの仮定が含まれる（ランダム化・ランダムサンプリング・バイアスなし・計画遵守・全追跡・全結果報告など）。帰無仮説はそのうちの<em>一つの仮定にすぎない</em>。小さいP値は「モデルのどこかの仮定が間違っている」ことを示す。</p>
+                </div>
+
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則2：P値は仮説が正しい確率でも、データが偶然のみで得られた確率でもない</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">仮説・真の値はばらつかないため確率で表現できない（原則1の誤解①と対応）。「偶然のみで得られる確率」という表現も誤り。確率計算はランダム化・ランダムサンプリングを前提としており、その前提そのものが正しいかどうかは確率では評価できない。</p>
+                </div>
+
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則3：P値の閾値のみで科学的・政策的決定をすべきではない</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">p&lt;0.05か否かで結果を二分するのは誤った思い込みと貧弱な意思決定につながる。研究デザイン・測定の質・外部エビデンス・解析の仮定の妥当性など、総合的な判断が必要。</p>
+                </div>
+
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則4：適切な推測にはすべてを報告する透明性が必要</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">P値や解析結果の選択的報告は禁物。調べた仮説の数、データの選択基準と除外理由、実施した全解析・全P値を開示すること。選択的報告は報告バイアスを生み出す。</p>
+                </div>
+
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則5：P値・統計的有意性は効果の大きさや結果の重要性を意味しない</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">サンプルサイズが大きければどんな小さな差でも有意になる。逆に同じ効果量でもサンプルサイズが異なれば有意・非有意が変わる。臨床的・科学的重要性は研究者が別途評価しなければならない。</p>
+                </div>
+
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;">
+                  <strong style="color:#15803d;">原則6：P値単独では統計モデルや仮説に関する十分なエビデンスとならない</strong>
+                  <p style="margin:0.4rem 0 0;font-size:0.88rem;">P値が大きくても帰無仮説を支持する証拠にはならない（サンプルサイズが小さければ大きなP値が出てしまう）。背景情報・外部エビデンスなしにP値だけでは限定的な情報しか得られない。</p>
+                </div>
+              </div>
+
+              <!-- セクション5 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">5. 統計モデルの仮定：検定が前提とするもの</h3>
+
+              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin-bottom:0.8rem;">
+                <strong>最重要前提（これなしに検定は意味をなさない）</strong>
+                <ol style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;line-height:1.8;">
+                  <li>データ獲得にランダムな要素が入っていること（臨床試験→治療のランダム化、調査→対象者のランダムサンプリング）</li>
+                  <li>データに様々なバイアスが入っていないこと</li>
+                </ol>
+              </div>
+
+              <p style="font-size:0.9rem;margin-bottom:0.8rem;">統計モデルが必要とする仮定の全体像：</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem;margin-bottom:0.8rem;">
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ 治療のランダム割付（臨床試験）</div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ ランダムサンプリング（調査研究）</div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ 事前に決めた研究計画の遵守</div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ 全対象者の完全追跡（脱落最小化）</div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ 妥当な解析手法の選択</div>
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.5rem 0.8rem;">✔ 実施した全解析結果の報告</div>
+              </div>
+              <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
+                <strong>帰無仮説はこれらの仮定の「一つ」にすぎない。</strong>P値が小さい＝帰無仮説だけが誤りとは限らない。ランダム化されていないデータで有意なP値が出たとしても、それはモデルの前提が崩れているだけかもしれない。
+              </div>
+
+              <!-- セクション6 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">6. 検定の手順と第一種の過誤（アルファエラー）</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">検定の手順（5ステップ）</summary>
+                <div class="accordion-body">
+                  <ol style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;line-height:1.8;">
+                    <li><strong>前提確認</strong>：ランダム化・ランダムサンプリングの実施、バイアスの不在</li>
+                    <li><strong>帰無仮説の設定</strong>：証明したい仮説を否定する形の仮説（例：両薬の効果は同じ）</li>
+                    <li><strong>帰無仮説が正しいと仮定した場合の検定統計量の分布を求める</strong>：同じ実験を仮想的に繰り返したときにハザード比・t値・χ²値などがどんな分布になるかを調べる</li>
+                    <li><strong>P値の計算</strong>：観察された検定統計量と同等以上に帰無仮説から離れた値が得られる確率（片側P値）を求める</li>
+                    <li><strong>α（有意水準）との比較と判断</strong>：P値 &lt; α → 統計的に有意（帰無仮説が誤っているのではないか）、P値 ≥ α → 判断保留（帰無仮説が誤っているとは言えない）</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">α（有意水準）はなぜ5%なのか？</summary>
+                <div class="accordion-body">
+                  <p>α水準は本来、研究ごとに「どれくらいの第一種の過誤（帰無仮説が真に正しいとき誤って棄却する確率）を許容するか」を研究者が自ら決めるべき値である。しかし「5%以外を設定すると査読者に説明を求められる」という慣例の圧力があるため、5%が使い続けられている。<br><br>5%という数値が普及した理由は実はシンプルで、かつての統計数値表でキリのよい1%と5%の2水準が掲載されていたことに由来するに過ぎず、5%という値に深い科学的根拠はない。</p>
+                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.6rem;border-radius:6px;margin-top:0.5rem;">
+                    <strong>第一種の過誤（アルファエラー・Type I Error）</strong>：帰無仮説が本当に正しいにもかかわらず、誤って「帰無仮説は誤り」と結論してしまうこと。ゼロにはできないので許容した上で運用する。
+                  </div>
+                </div>
+              </details>
+
+              <!-- セクション7 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">7. 信頼区間の正しい理解と誤解</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">信頼区間の正体：検定の「裏返し」</summary>
+                <div class="accordion-body">
+                  <p>95%信頼区間は「真のハザード比（や平均値の差など）を少しずつ動かしながら両側5%水準で検定し続けたとき、有意にならない真の値の範囲」として定義される。つまり「データと仮説が矛盾しない範囲（両側5%水準で）」であり、これが 1−0.05=0.95 から「95%信頼区間」と命名された由来。</p>
+                  <p style="margin-top:0.5rem;">EUCLID試験の例：真のHRを0.92から動かすと、HR=0.92のとき上側P値=2.5%、HR=1.13のとき下側P値=2.5% → HR=0.92〜1.13の範囲が「有意にならない真の値の範囲」＝95%信頼区間。</p>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.6rem;border-radius:6px;margin-top:0.5rem;">
+                    したがって5%水準の検定と95%信頼区間は<strong>1対1に対応</strong>している。CIが1（やゼロ）を含むかどうかだけを見るのは、検定のP値だけを見ることと全く同じであり、信頼区間の利点を活かしていない。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">信頼区間のよくある誤解</summary>
+                <div class="accordion-body">
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;margin-bottom:0.5rem;">
+                    <strong>誤解（古くから指摘されているが今なお続く）</strong>：「95%信頼区間 0.92〜1.13 に真のハザード比が含まれる確率は95%」<br>
+                    → <strong>誤り</strong>。真の値はばらつかない（誤差を持たない）ため、真の値を「含む確率」は定義できない。真の値は95%CIの中に入っているか入っていないかのどちらかだけである。
+                  </div>
+                  <p style="font-size:0.88rem;">正しい解釈：同じ方法で無数に試験を繰り返したとき、計算された信頼区間が真の値を含む割合が95%になるように設計されている（長期的な頻度の保証）。</p>
+                  <p style="font-size:0.88rem;margin-top:0.4rem;"><strong>有効な使い方</strong>：CIの幅から推定の精度を読み取る。EUCLID試験では14,000名の大規模試験でCI幅が0.92〜1.13と非常に狭く、「精度よく推定されている」ことが明確。これは次の試験設計のための重要な情報。</p>
+                </div>
+              </details>
+
+              <!-- セクション8 -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">8. 実践的提言：誤解しないため・誤解されないために</h3>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">提言①：検定より「推定」を重視する</summary>
+                <div class="accordion-body">
+                  <p>検定は歴史的に「データの誤差を無視した過大解釈を戒めるため」に提案された経緯がある。しかし現代では「有意か否か」だけに注目するのではなく、効果の大きさ（ハザード比・リスク差・オッズ比など）と信頼区間を必ず報告することが重要。</p>
+                  <div style="background:#dcfce7;border-left:4px solid #22c55e;padding:0.6rem;border-radius:6px;margin-top:0.5rem;">
+                    EUCLID試験：P=0.65で非有意であっても、HR=1.02（95%CI 0.92〜1.13）を報告することで「大規模試験でも効果はほとんどない、精度もよい」という次の研究への重要な情報が伝わる。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">提言②：透明性の確保（エコチル調査の例）</summary>
+                <div class="accordion-body">
+                  <p>環境省のエコチル調査（妊婦10万人→子ども13歳まで追跡、環境化学物質の影響を調査）では、全データが公開予定であるため第三者による検証が可能。そこで「作業実施手順書」の作成を義務化した：</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;line-height:1.8;">
+                    <li>利用した統計ソフト・プログラムの記録</li>
+                    <li>途中段階の結果の保存</li>
+                    <li>データの取捨選択の記録</li>
+                    <li>解析計画からの逸脱とその理由の記録</li>
+                  </ul>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.6rem;border-radius:6px;margin-top:0.5rem;">
+                    これにより第三者からの「計算が合わない」という指摘に対して解析プロセスを完全に示すことができ、<strong>研究の再現性と研究者自身の研究成果を守る</strong>ことができる。
+                  </div>
+                </div>
+              </details>
+
+              <!-- セクション9：まとめ -->
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">9. まとめ</h3>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1.2rem;border-radius:8px;margin-bottom:1rem;">
+                <p style="margin-bottom:0.8rem;font-weight:bold;font-size:1rem;">佐藤先生の結論（モダンエピデミオロジーおよび「宇宙怪人しまりす」より）</p>
+                <ul style="margin:0 0 0 1.2rem;line-height:2;font-size:0.88rem;">
+                  <li><strong>「検定はいらない」にはならない</strong>：信頼区間の理論は仮説検定の理論と表裏一体であり、検定の考え方は統計的推測の基礎として学ぶ価値がある</li>
+                  <li><strong>P値・検定結果「だけ」では不十分</strong>：背景情報・外部エビデンス・研究デザインの質・解析の仮定の妥当性を総合的に判断する</li>
+                  <li><strong>最も重要な条件はランダム化とバイアスの排除</strong>：これなしにはどんな統計解析も意味をなさない</li>
+                  <li><strong>透明性が科学を支える</strong>：全解析の報告・解析プロセスの記録・選択的報告の排除</li>
+                  <li><strong>検定の数式より考え方を理解する</strong>：検定の手順・なぜその手順が必要かの思想を理解し研究に活かす</li>
+                </ul>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem;">
+                <strong style="color:#15803d;">ASA声明（日本語訳）のダウンロード先</strong><br>
+                <span style="font-size:0.88rem;">日本計量生物学会ホームページ → トップページ左下「統計的有意性とP値に関するASA声明」タブよりダウンロード可能（全文2〜3ページ、必読）</span>
               </div>
             </div>
           </div>
