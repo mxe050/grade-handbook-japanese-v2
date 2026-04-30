@@ -9113,13 +9113,210 @@ function checkAuth(){
         <div class="en-title">Latest Updates</div>
       </div>
       <div class="page-body">
-        <div style="display:flex;align-items:center;justify-content:center;min-height:300px;">
-          <div style="text-align:center;">
-            <div style="font-size:4rem;margin-bottom:1rem;">🚧</div>
-            <h2 style="color:#6b7280;font-size:1.5rem;margin-bottom:0.5rem;">工事中</h2>
-            <p style="color:#9ca3af;">このセクションは現在準備中です。今後のアップデートをお待ちください。</p>
+
+        <!-- アップデート一覧 -->
+        <div style="display:grid;gap:1rem;margin-bottom:1.5rem;">
+          <button type="button" onclick="toggleUpdate('upd-guyatt-i2')" class="hero-btn primary" style="width:100%;text-align:left;cursor:pointer;border:none;">
+            <span class="btn-icon">⚠️</span>
+            <span class="btn-text">
+              <span class="main-label">GRADE落とし穴：Guyatt先生、I²とOIS</span>
+              <span class="sub-label">Eachempati &amp; Guyatt 2026 / J Clin Epidemiol 194:112210 - クリックで詳細を展開</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Guyatt I2 / OIS 詳細解説（折りたたみ） -->
+        <div id="upd-guyatt-i2" style="display:none;background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
+
+          <!-- 論文ヘッダー -->
+          <div style="background:linear-gradient(135deg,#1e3a8a,#312e81);color:white;padding:1.2rem;border-radius:10px;margin-bottom:1.2rem;">
+            <div style="font-size:0.78rem;opacity:0.85;margin-bottom:0.3rem;">COMMENTARY / Journal of Clinical Epidemiology 194 (2026) 112210</div>
+            <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.5rem;line-height:1.4;">Misusing I² for inconsistency, overlooking OIS for imprecision, and ignoring the continuum of certainty ratings: common pitfalls in GRADE assessments</h2>
+            <h3 style="font-size:1.05rem;font-weight:600;margin-bottom:0.6rem;color:#fde68a;">GRADE評価における3大落とし穴：I²の誤用、OISの見落とし、連続体としての確実性の無視</h3>
+            <div style="font-size:0.85rem;opacity:0.9;">著者: Prashanti Eachempati, Gordon Guyatt（MAGIC Evidence Ecosystem / McMaster University）<br>受理: 2026年3月2日 / 公開: 2026年3月6日</div>
+            <div style="margin-top:0.8rem;">
+              <a href="https://www.jclinepi.com/article/S0895-4356(26)00085-5/fulltext" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#fbbf24;color:#1f2937;padding:0.5rem 0.9rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.88rem;">
+                🔗 原著フルテキストを開く（J Clin Epidemiol）
+              </a>
+            </div>
+          </div>
+
+          <!-- 要約（What is new?） -->
+          <div style="background:#fffbeb;border-left:5px solid #f59e0b;padding:1rem;border-radius:8px;margin-bottom:1.2rem;">
+            <h3 style="color:#92400e;font-size:1.05rem;font-weight:700;margin-bottom:0.6rem;">📝 この論文のポイント（What is new?）</h3>
+            <ul style="margin:0;padding-left:1.2rem;font-size:0.92rem;line-height:1.7;color:#1f2937;">
+              <li><strong>非一貫性（Inconsistency）：</strong>点推定値の類似性、信頼区間の重なり、決定閾値との関係を<strong>視覚的</strong>に評価することが第一。I²は<strong>あくまで二次的指標</strong>であり、誤解を招く可能性がある。</li>
+              <li><strong>不精確性（Imprecision）：</strong>信頼区間が閾値を含まなくても、効果が大きい（&gt;30% RRR等）場合は <strong>OIS（Optimal Information Size）</strong> を計算し、サンプルサイズが不足していればグレードダウンする。</li>
+              <li><strong>確実性は連続体：</strong>領域別評価（not serious / serious / very serious）も総合評価（high / moderate / low / very low）も、<strong>カテゴリ間の境界に近い位置</strong>を明示することが意思決定者に有用。</li>
+            </ul>
+          </div>
+
+          <!-- 序論 -->
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="color:#1e40af;font-size:1.15rem;font-weight:700;border-bottom:2px solid #3b82f6;padding-bottom:0.3rem;margin-bottom:0.6rem;">はじめに：GRADE 5領域と本論文の立ち位置</h3>
+            <p style="font-size:0.95rem;line-height:1.75;color:#1f2937;">GRADEアプローチは、エビデンスの確実性を <strong>5つの領域</strong>（risk of bias, inconsistency, indirectness, imprecision, publication bias）で評価する体系的プロセスである。本論文はGRADE Working Groupの公式見解ではなく、Core GRADEシリーズ[BMJ 2025]を補完する <strong>2人のGRADE専門家による実践的解説</strong>として、ユーザーがしばしば陥る3つの落とし穴を <strong>4つのメタアナリシス事例</strong>で解説している。</p>
+            <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-top:0.8rem;font-size:0.9rem;">
+              <strong>取り上げられる4事例：</strong><br>
+              ① 早産児の鼻側CPAP（NCPAP）vs CPAPなし<br>
+              ② 抗マラリア薬：DP（dihydroartemisinin–piperaquine）vs AL（artemether–lumefantrine）の再発予防<br>
+              ③ 抗マラリア薬：ASAQ（artesunate–amodiaquine）vs AL<br>
+              ④ ICU人工呼吸器関連肺炎（VAP）予防のための歯磨き vs 歯磨きなし
+            </div>
+          </div>
+
+          <!-- 落とし穴1: I² -->
+          <div style="background:white;border:2px solid #fca5a5;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+            <h3 style="color:#b91c1c;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;">🚨 落とし穴①：I²統計量への過度の依存（非一貫性の誤評価）</h3>
+
+            <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;margin-bottom:1rem;">
+              <strong style="color:#991b1b;">Core GRADEが推奨する非一貫性の3つの視覚基準：</strong>
+              <ol style="margin:0.4rem 0 0;padding-left:1.4rem;font-size:0.92rem;line-height:1.7;">
+                <li><strong>点推定値（point estimates）に大きなばらつきがあるか</strong></li>
+                <li><strong>信頼区間（CI）の重なりが乏しいか、まったくないか</strong></li>
+                <li><strong>点推定値が決定閾値（null または MID）の同じ側に揃っているか、それとも横切っているか</strong></li>
+              </ol>
+              <p style="margin-top:0.5rem;margin-bottom:0;font-size:0.9rem;">I²は <strong>第4の補助指標</strong> であり、サンプルサイズ・イベント数が大きい場合や連続変数の場合、CIが狭くなり、臨床的メッセージは一致していてもI²が高くなる現象が知られている。</p>
+            </div>
+
+            <!-- 事例1: 図1 -->
+            <h4 style="color:#7c2d12;font-size:1rem;font-weight:700;margin:1rem 0 0.5rem;">📊 事例1：DP vs AL（マラリア再発予防）— I²=72%でも非一貫性なし</h4>
+            <p style="font-size:0.9rem;line-height:1.7;margin-bottom:0.6rem;">DP（dihydroartemisinin–piperaquine）と AL（artemether–lumefantrine）を比較した <strong>14本のRCTのメタアナリシス</strong>。</p>
+            <img src="images/Guyatt2026I2/図1.jpg" alt="Figure 1: Forest plot of 14 RCTs comparing DP vs AL" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#f8fafc;border-left:3px solid #64748b;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 1の解説：</strong> プールされたOR=0.26 [0.16, 0.41]、I²=72%、Tau²=0.48と <strong>統計的異質性は高い</strong>。直感的には非一貫性でグレードダウンしたくなる場面。<br>
+              <strong>しかし視覚基準で評価すると：</strong>
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li>多くの点推定値が <strong>0.15〜0.55の範囲</strong> に集中</li>
+                <li>14試験中13試験で、CIがプール推定値を含む</li>
+                <li><strong>14試験中13試験の点推定値が null（OR=1）の同じ側にあり、DPの優位を支持</strong></li>
+              </ul>
+              <strong style="color:#15803d;">→ 「効果が存在する」という確実性の標的（target）に対して結果は頑健。I² &gt; 70%でもグレードダウンは不適切。</strong>
+            </div>
+
+            <!-- 事例2: 図2 -->
+            <h4 style="color:#7c2d12;font-size:1rem;font-weight:700;margin:1.2rem 0 0.5rem;">📊 事例2：NCPAP vs No CPAP（早産児の抜管失敗）— I²=60%でも同様</h4>
+            <p style="font-size:0.9rem;line-height:1.7;margin-bottom:0.6rem;">早産児における鼻側持続的気道陽圧（NCPAP）の効果を抜管失敗予防について評価した <strong>Cochraneレビューの8試験</strong>（Ho 2024）。</p>
+            <img src="images/Guyatt2026I2/図2.jpg" alt="Figure 2: Forest plot of 8 RCTs comparing NCPAP vs no CPAP" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#f8fafc;border-left:3px solid #64748b;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 2の解説：</strong> プールされたRR=0.62 [0.51, 0.76]、I²=60%。<br>
+              点推定値は0.08〜3.62と <strong>一見大きく散らばる</strong> が、
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li>1試験を除いてすべてのCIがプール推定値を含む</li>
+                <li>1試験を除いて全点推定値がNCPAPに有利な側</li>
+                <li>CI同士に重なりがある</li>
+              </ul>
+              <strong style="color:#b91c1c;">原著者はI²を主因にグレードダウンしたが、これは誤り。</strong>「閾値を明示していなかった」ことが誤判断の背景にある可能性が指摘されている。<br>
+              <strong style="color:#15803d;">→ 確実性評価では、まず閾値（null か MID か）と target を定めることが必須。</strong>
+            </div>
+          </div>
+
+          <!-- 落とし穴2: OIS -->
+          <div style="background:white;border:2px solid #fcd34d;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+            <h3 style="color:#a16207;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;">⚠️ 落とし穴②：OIS（最適情報量）の見落とし（不精確性の見逃し）</h3>
+
+            <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.92rem;line-height:1.7;">
+              <strong>原則：</strong>不精確性の評価は、まず <strong>CIが選択した閾値（null または MID）を横切るかどうか</strong> の視覚的判断が出発点。横切ればグレードダウン、横切らなければ通常はダウンしない。<br>
+              <strong>例外（重要）：</strong> RCTで観察される <strong>大きな効果（&gt;30% RRR）</strong> は、後続研究で再現されないことが多い。よって効果が大きい場合は、 <strong>OIS（保守的な推定値、典型的にはRRR 20%/25%/30%、α=0.05、β=0.1）でサンプルサイズを計算</strong> し、メタアナリシスの総参加者数がOISを下回ればグレードダウンする。
+            </div>
+
+            <!-- 事例3: 図3 -->
+            <h4 style="color:#854d0e;font-size:1rem;font-weight:700;margin:1rem 0 0.5rem;">📊 事例3：DP vs AL（再発：13試験）— OIS不足によるダウングレード</h4>
+            <img src="images/Guyatt2026I2/図3.jpg" alt="Figure 3: Forest plot of 13 RCTs comparing DP vs AL for treatment failure" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#fffbeb;border-left:3px solid #d97706;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 3の解説：</strong> プールされたOR=0.45 [0.26, 0.81]、I²=3%（ほぼ均一）。<br>
+              <strong>視覚的にはCIがnull（OR=1）を横切らない</strong> ため、初期判断は「不精確性のグレードダウン不要」。<br>
+              <strong>しかし</strong>、OR=0.45 は <strong>大きく不自然に強い効果</strong> なので OIS チェックが必要。
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li>RRR=25%、α=0.05、β=0.1、対照イベント率=0.023 で計算</li>
+                <li>必要サンプルサイズ <strong>OIS = 18,558人</strong></li>
+                <li>本メタ解析の総参加者数 <strong>n = 4,709人</strong>（OIS の約1/4）</li>
+              </ul>
+              <strong style="color:#b91c1c;">→ サンプルサイズ不足。Core GRADE指針により、効果方向は一致していても <strong>不精確性で1段階グレードダウン</strong> が妥当。</strong>
+            </div>
+
+            <!-- 事例4: 図4 -->
+            <h4 style="color:#854d0e;font-size:1rem;font-weight:700;margin:1.2rem 0 0.5rem;">📊 事例4：歯磨き vs 歯磨きなし（VAP予防）— 原著者は不精確性をダウンしなかったが…</h4>
+            <p style="font-size:0.9rem;line-height:1.7;margin-bottom:0.6rem;">ICUで人工呼吸器装着中の重症患者に対する口腔ケアのCochraneレビュー（Zhao 2020）。</p>
+            <img src="images/Guyatt2026I2/図4.jpg" alt="Figure 4: Forest plot and SoF table of toothbrushing for VAP prevention" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#fffbeb;border-left:3px solid #d97706;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 4の解説：</strong> プールRR=0.61 [0.41, 0.91]（39%相対リスク減少）。CIはnullを横切らない。<br>
+              <strong>原著SoFテーブルでは不精確性のダウンなし</strong> だが、効果が大きい（&gt;30% RRR）ため OIS チェック：
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li>RRR=25%で OIS = 1,718人</li>
+                <li>メタアナリシスの総参加者数 n = 910人 → <strong>OIS未達</strong></li>
+              </ul>
+              <strong style="color:#b91c1c;">→ 不精確性で1段階グレードダウンが妥当。</strong>
+              <br><br>
+              <strong>2段階ダウンの基準（参考）：</strong> CIの上限/下限の比 ≥ 3 のとき。本例では 0.91/0.41 = <strong>2.2</strong> で 3未満 → 1段階のダウンに留める。
+            </div>
+          </div>
+
+          <!-- 落とし穴3: 連続体 -->
+          <div style="background:white;border:2px solid #93c5fd;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+            <h3 style="color:#1d4ed8;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;">🎯 落とし穴③：確実性をバイナリで解釈してしまう（連続体性の無視）</h3>
+
+            <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.92rem;line-height:1.7;">
+              GRADEのhigh / moderate / low / very low という4カテゴリは、本質的には <strong>連続体（gradient）上のセグメント</strong>。閾値ぎりぎりに位置する2つの値は、カテゴリは違っても <strong>実質的にはほぼ同じ確信度</strong>。剛直なカテゴリ運用は誤解を招く。
+            </div>
+
+            <!-- 図5 -->
+            <h4 style="color:#1e3a8a;font-size:1rem;font-weight:700;margin:1rem 0 0.5rem;">📊 図5：確実性の連続体（Continuum of Certainty）</h4>
+            <img src="images/Guyatt2026I2/図5.jpg" alt="Figure 5: Continuum of certainty ratings" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#eff6ff;border-left:3px solid #2563eb;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 5の解説：</strong> Very low → Low → Moderate → High という確実性カテゴリは <strong>赤→緑のグラデーション</strong> 上の領域として描かれる。矢印はカテゴリ間の境界を示す。境界に近い「下端のmoderate」と「上端のlow」は、表記は異なるが <strong>実質はほぼ同等</strong>。
+            </div>
+
+            <!-- 事例5: 図6 -->
+            <h4 style="color:#1e3a8a;font-size:1rem;font-weight:700;margin:1.2rem 0 0.5rem;">📊 事例5：ASAQ vs AL（28試験）— 閾値選択で判定が変わる例</h4>
+            <img src="images/Guyatt2026I2/図6.jpg" alt="Figure 6: Forest plot of 28 RCTs comparing ASAQ vs AL" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#eff6ff;border-left:3px solid #2563eb;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 6の解説：</strong> ASAQ vs AL（マラリア再発予防、28試験）。
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li>プールOR = 0.58 [0.42, 0.79]、I²=9%、ASAQ有利・null除外</li>
+                <li>RRR=25%で OIS = 9,378人 ⇔ 実際 n = 9,273人 → <strong>わずかに未達</strong>（差105人）</li>
+                <li><strong>RRR=30%で計算するとOISは満たされる</strong></li>
+              </ul>
+              <strong style="color:#1e40af;">→ 不精確性の懸念は「seriousの下端（lower end of serious）」と判定。1段階ダウンするが、その懸念は閾値ギリギリで弱い。</strong>
+            </div>
+
+            <!-- 図7 -->
+            <h4 style="color:#1e3a8a;font-size:1rem;font-weight:700;margin:1.2rem 0 0.5rem;">📊 図7：連続体上での領域別／総合判定の表現</h4>
+            <img src="images/Guyatt2026I2/図7.jpg" alt="Figure 7: Domain-level and overall certainty on a continuum" style="width:100%;max-width:780px;border-radius:8px;border:1px solid #e2e8f0;margin:0.4rem 0;display:block;">
+            <div style="background:#eff6ff;border-left:3px solid #2563eb;padding:0.7rem 0.9rem;border-radius:4px;font-size:0.88rem;line-height:1.65;">
+              <strong>Figure 7の解説：</strong>
+              <ul style="margin:0.3rem 0;padding-left:1.2rem;">
+                <li><strong>パネルA（領域別）：</strong>「No serious / Serious / Very serious」を緑→赤のグラデーションで表示。事例5の不精確性は <strong>「seriousの下端」</strong>（緑寄りの矢印）。</li>
+                <li><strong>パネルB（総合）：</strong>各領域の判断を統合し、最終確実性を <strong>「moderateの上端（upper end of moderate）」</strong> と表現。「moderateだが、ほぼhighに近い」と意思決定者に伝わる。</li>
+              </ul>
+              <strong style="color:#1e40af;">→ 閾値の選択（25% vs 30% RRR）の <strong>厳格さ（stringency）</strong> によって判定は揺れるため、レビュアーはどちらを選んだかと、結果が境界からどの程度離れているかを <strong>明示的に記述</strong> すべき。</strong>
+            </div>
+          </div>
+
+          <!-- 結論 -->
+          <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-left:5px solid #10b981;border-radius:10px;padding:1.2rem;margin-bottom:1rem;">
+            <h3 style="color:#065f46;font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;">✅ 結論：3つの実務指針</h3>
+            <ol style="margin:0;padding-left:1.4rem;font-size:0.94rem;line-height:1.8;color:#1f2937;">
+              <li><strong>非一貫性：</strong>I²のみに依存せず、点推定値・CI・閾値との関係を <strong>視覚的に判断する</strong>。閾値とtargetを必ず明示。</li>
+              <li><strong>不精確性：</strong>CIの視覚評価に加えて、効果が大きい場合は <strong>OIS計算</strong> を行う。サンプルサイズ不足ならグレードダウン。</li>
+              <li><strong>確実性は連続体：</strong>領域別／総合の両方で「serious のどの位置か」「moderateのどの位置か」を明示し、<strong>境界からの距離</strong>を伝える。</li>
+            </ol>
+          </div>
+
+          <!-- フッターリンク -->
+          <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;padding:0.8rem;background:#f1f5f9;border-radius:8px;">
+            <a href="https://www.jclinepi.com/article/S0895-4356(26)00085-5/fulltext" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#1e40af;color:white;padding:0.6rem 1rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.9rem;">
+              🔗 J Clin Epidemiol 原著フルテキストへ
+            </a>
+            <a href="https://doi.org/10.1016/j.jclinepi.2026.112210" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#475569;color:white;padding:0.6rem 1rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.9rem;">
+              📎 DOI: 10.1016/j.jclinepi.2026.112210
+            </a>
+          </div>
+
+          <div style="text-align:center;margin-top:0.8rem;font-size:0.78rem;color:#6b7280;">
+            Eachempati P, Guyatt G. <em>J Clin Epidemiol</em> 194 (2026) 112210. © 2026 Elsevier Inc.
           </div>
         </div>
+
       </div>
       <div class="page-nav">
         <button class="nav-btn secondary nav-prev" >← 前の章</button>
@@ -9127,6 +9324,19 @@ function checkAuth(){
         <button class="nav-btn nav-next" disabled>次の章 →</button>
       </div>
     </div>
+
+    <script>
+    // 最新情報トグル
+    function toggleUpdate(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+      if(el.style.display === 'block'){
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+    window.toggleUpdate = toggleUpdate;
+    </script>
   </main>
 </div>
 
