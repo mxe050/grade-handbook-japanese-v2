@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <link rel="stylesheet" href="style.css?v=2.0">
@@ -9524,311 +9524,883 @@ function checkAuth(){
         </div><!-- /upd-arasagashi -->
 
         <!-- Porto 2026 GRADE Working Group Meeting -->
-        <div id="upd-porto2026" style="display:none;background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
+                <div id="upd-porto2026" style="display:none;background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
 
-          <!-- ヘッダー -->
-          <div style="background:linear-gradient(135deg,#064e3b,#065f46);color:white;padding:1.2rem;border-radius:10px;margin-bottom:1.2rem;">
-            <div style="font-size:0.77rem;opacity:0.85;margin-bottom:0.3rem;">GRADE Working Group Annual Meeting · Porto, Portugal · 2026年5月7日</div>
-            <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.4rem;line-height:1.4;">2026年5月7日 GRADE Working Group会議（ポルト）全6講演まとめ</h2>
-            <p style="font-size:0.88rem;opacity:0.9;margin:0;line-height:1.6;">自動化・AI統合・希少疾患・閾値・ADOLOPMENT・Net Effect――GRADE方法論の最前線を日本語で詳解</p>
+          <!-- ===== MEETING HEADER ===== -->
+          <div style="background:linear-gradient(135deg,#064e3b,#065f46);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;">
+            <div style="font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">GRADE Working Group Annual Meeting</div>
+            <div style="font-size:1.25rem;font-weight:700;line-height:1.3;">Porto, Portugal &nbsp;—&nbsp; 2026年5月7日</div>
+            <div style="font-size:0.85rem;margin-top:0.5rem;opacity:0.9;">GRADE Working Group 年次総会 ポルトガル・ポルト開催</div>
           </div>
 
-          <!-- 概要ボックス -->
-          <div style="background:#ecfdf5;border-left:5px solid #059669;padding:0.9rem 1rem;border-radius:8px;margin-bottom:1.2rem;font-size:0.92rem;line-height:1.75;color:#064e3b;">
-            <strong>会議の概要：</strong>2026年5月7日、ポルトガル・ポルトで開催されたGRADE Working Group年次大会。GRADErater（NMA自動GRADE評価）のワーキンググループ承認投票、GRADE to Researchガイダンスの公式承認投票など、歴史的な節目となった会議。本セクションでは6つの主要講演・テーマを、文字起こし・スライド資料に基づき詳解する。
+          <!-- ===== OVERVIEW BOX ===== -->
+          <div style="background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:0.9rem;line-height:1.7;color:#064e3b;">
+            <strong style="font-size:0.95rem;">【総会概要】</strong><br>
+            本会議はGRADE Working Groupの2026年年次総会。<strong>GRADErater（NMA自動GRADE評価ツール）のWorking Group正式承認</strong>、および<strong>GRADE to Research（エビデンスから研究への示唆）の正式承認投票</strong>という歴史的節目となった。自動化・AI活用・希少疾患・個別化医療・公平性（equity）・方法論的精緻化など多方向でGRADE方法論が急速に発展していることを示す会議であった。セッションは全14講演で構成され、午前・午後にわたって行われた。
           </div>
 
-          <!-- 講演① NMA自動GRADE / GRADErater -->
-          <details style="margin-bottom:0.8rem;border:2px solid #d1fae5;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#047857,#065f46);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演① NMA自動GRADE／GRADErater（Bernardo Sousa-Pinto）
+          <!-- ===== LECTURE 1 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #d1fae5;">
+            <summary style="background:linear-gradient(135deg,#047857,#059669);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>① NMA自動GRADE／GRADErater（Bernardo Sousa-Pinto）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">午前セッション 19:35〜20:06</span>
             </summary>
-            <div style="padding:1.2rem;background:white;">
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
 
-              <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.9rem;">
-                <strong>発表者：</strong>Bernardo Sousa-Pinto ／ <strong>タイトル：</strong>AUTOMATION OF THE ASSESSMENT OF THE CERTAINTY OF EVIDENCE WITH GRADE ／ <strong>対象：</strong>NMA自動GRADE_Automation_May72026.pdf
-              </div>
+              <p><strong style="color:#047857;">目的・位置づけ</strong><br>
+              GRADE certainty of evidence評価、特にNMAを半自動化・標準化することが目的。GRADEraterは<em>suggested judgment（提案的判断）</em>を提案するツールであり、意思決定の代替ではない。「Testing purposes only」の段階であり、出力は必ず人間が確認しなければならない。GRADEを知らない人は使うべきでない。</p>
 
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">GRADEraterとは何か</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">GRADEraterは、GRADE certainty of evidence評価を、特にネットワークメタ解析（NMA）において半自動化・標準化するツールである。ルールベースの自動判断（suggested judgement）を提案しつつ、最終確認は人間が行う「支援ツール」であり、意思決定の代替ではない。</p>
-
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">評価対象ドメイン</h4>
-              <ul style="font-size:0.92rem;line-height:1.8;padding-left:1.2rem;color:#1f2937;">
-                <li><strong>Risk of bias</strong>（生成AIによる一次研究評価を構想）</li>
-                <li><strong>Inconsistency</strong>（ルールベース自動判断）</li>
-                <li><strong>Indirectness</strong>（一部AI支援）</li>
-                <li><strong>Imprecision</strong>（decision thresholdsと連動）</li>
-                <li><strong>Dissemination bias</strong></li>
-                <li><strong>Incoherence</strong>（NMA特有）</li>
-                <li><strong>Intransitivity</strong>（NMA特有）</li>
+              <p><strong style="color:#047857;">対象ドメイン（7つ）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Risk of bias</strong>：生成AI支援による構想段階</li>
+                <li><strong>Inconsistency</strong>：ルールベースで自動判断</li>
+                <li><strong>Indirectness</strong>：部分的にAI支援</li>
+                <li><strong>Imprecision</strong>：decision thresholdsと連動して判断</li>
+                <li><strong>Dissemination bias</strong>：ルールベース評価</li>
+                <li><strong>Incoherence</strong>：NMA特有ドメイン</li>
+                <li><strong>Intransitivity</strong>：NMA特有ドメイン</li>
               </ul>
 
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">必要な入力情報</h4>
-              <div style="display:grid;gap:0.4rem;font-size:0.9rem;line-height:1.7;color:#1f2937;">
-                <div>① <strong>研究デザイン</strong>（RCT / 非ランダム化研究）→ certaintyの出発点を決定</div>
-                <div>② <strong>Risk of bias評価ツール</strong>（RoB2 / ROBINS-I等）</div>
-                <div>③ <strong>効果指標</strong>（RR / OR / HR / MD / SMD / incidence rate ratio等）</div>
-                <div>④ <strong>データセット形式</strong>（二値: events数・参加者数、連続: 平均・SD）</div>
-                <div>⑤ <strong>Baseline risk・スケール</strong>（per 1,000 / 10,000等）</div>
-                <div>⑥ <strong>NMA特有情報</strong>（reference category・P-score・increase望ましいか）</div>
-                <div>⑦ <strong>メタ解析オプション</strong>（continuity correction・prediction interval・tau²推定法）</div>
-                <div>⑧ <strong>Decision thresholds</strong>（手入力 または GRADE Guidance 42に基づく自動計算）</div>
-              </div>
+              <p><strong style="color:#047857;">3つのアーキテクチャ</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>ルールベース自動提案</strong>：明確なルールに従い自動的にjudgmentを生成</li>
+                <li><strong>生成AIによる一次研究評価</strong>：RoB・Indirectnessに特化したLLM支援</li>
+                <li><strong>Human verification（最終確認は必ず人間）</strong>：すべての自動判断に人間の確認が義務づけられる</li>
+              </ol>
 
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">出力・確認プロセス</h4>
-              <div style="font-size:0.92rem;line-height:1.75;color:#1f2937;">
-                <p><strong>Step 1 — Warnings/Highlights確認：</strong>閾値ギリギリのcrossing・全研究がhigh RoB・incoherence p値が境界的・OIS未達など、特別注意が必要な状況をアラート表示。</p>
-                <p><strong>Step 2 — 比較別レポート確認：</strong>自動判断と自動生成justificationを確認。各GRADEドメイン評価が含まれる。</p>
-                <p><strong>Step 3 — 必要時に手動修正：</strong>変更の場合はjustificationを必須入力。manual changeはexport reportに記録され透明性を確保。</p>
-              </div>
+              <p><strong style="color:#047857;">必要入力（8種）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>研究デザイン（RCT/NRS、certaintyの出発点を決定）</li>
+                <li>RoB評価ツール（RoB2・ROBINS-I等）</li>
+                <li>効果指標（RR・OR・HR・MD・SMD・incidence rate ratioなど）</li>
+                <li>データセット形式（二値：events数・参加者数、連続：平均・SD）</li>
+                <li>Baseline risk・スケール（per 1,000 / per 10,000等）</li>
+                <li>NMA特有情報（reference category・P-score・increaseが望ましいか否か）</li>
+                <li>メタ解析オプション（continuity correction・prediction interval・tau²推定法）</li>
+                <li>Decision thresholds（手入力またはGRADE Guidance 42に基づく自動計算）</li>
+              </ol>
 
-              <div style="background:#fef9c3;border-left:4px solid #eab308;padding:0.8rem;border-radius:6px;margin:0.8rem 0;font-size:0.9rem;">
-                <strong>⚠️ 現状の位置づけ（2026年5月時点）：</strong>「Testing purposes only」― 出力されたcertainty ratingは必ず人間が確認し、現時点では意思決定に直接使うべきでない。Decision rules（判断ルール）は「living rules」として継続更新される。
-              </div>
-
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">検証結果：1306 judgmentsで9.8%の不一致</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">初期decision rulesと人間評価者の比較では、1,306判断中9.8%の不一致が見られた。不一致の主な理由：</p>
-              <ul style="font-size:0.91rem;line-height:1.8;padding-left:1.2rem;color:#1f2937;">
-                <li>人間評価者のミス（大量評価で避けられない）</li>
-                <li>threshold crossingが非常にわずか → 人間は「ほぼ超えていない」と判断</li>
-                <li>incoherenceのp値が境界的</li>
-                <li>large effectだがOIS未達 → 人間は「imprecisionでdowngrade」</li>
+              <p><strong style="color:#047857;">出力の3段階プロセス</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Step 1 — Warnings/Highlights確認</strong>：threshold borderline crossing・全研究high RoB・OIS未達等の警告を確認</li>
+                <li><strong>Step 2 — 比較別レポート確認</strong>：自動判断・justification・各ドメイン評価の詳細を確認</li>
+                <li><strong>Step 3 — 手動修正</strong>：justification必須入力・変更はexportファイルに記録される</li>
               </ul>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">対応策：境界的ケースはデフォルトで保守的判断を維持しつつ、ユーザーへの「要確認」ハイライト表示で対応。</p>
 
-              <h4 style="color:#065f46;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bbf7d0;padding-bottom:0.2rem;">時間節約効果</h4>
-              <div style="font-size:0.92rem;line-height:1.75;color:#1f2937;">
-                <p>✅ <strong>NMA：数日分の作業削減</strong>が期待される（テストユーザーからの報告）。RevManファイル直接読み込み機能を開発中。</p>
-                <p>✅ <strong>Pairwise MA：</strong>時間短縮効果は大きくないが、<strong>評価の標準化・GRADE guidance準拠・判断ミス削減</strong>に価値。</p>
-              </div>
+              <p><strong style="color:#047857;">Decision rules = Living rules（継続更新）</strong><br>
+              ルールは固定されず継続更新される。rule versionの管理・変更履歴の追跡・オンラインでの最新ルール確認が可能。論文・ガイドラインには使用バージョンの明記が必要。</p>
 
-              <!-- Q&A -->
-              <details style="margin-top:1rem;border:1px solid #bbf7d0;border-radius:8px;overflow:hidden;">
-                <summary style="background:#ecfdf5;padding:0.7rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.93rem;color:#065f46;list-style:none;">▶ 重要Q&amp;A（会議文字起こしより）</summary>
-                <div style="padding:1rem;font-size:0.89rem;line-height:1.75;color:#1f2937;">
+              <p><strong style="color:#047857;">検証結果（1,306 judgments）</strong><br>
+              人間との不一致率は9.8%。不一致の主な4つの理由：</p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>人間側のミス（大量評価では不可避）</li>
+                <li>threshold crossingがわずか（人間は「ほぼ超えていない」として非downgrade）</li>
+                <li>incoherence p値が境界的</li>
+                <li>large effectだがOIS未達（人間はimprecisionでdowngrade、GRADEraterは非downgrade）</li>
+              </ol>
 
-                  <p><strong>Q1. 10年後にGRADEを知らない人でも使えるのか？（Bill）</strong><br>A. 「10年後でもGRADEの知識は必要。自動化はefficiency supportであり、risk of biasやdowngradeの意味を理解していなければ出力を批判的に読めない。メタ解析ソフトを使うのにfixed/random effectsの概念が必要なのと同じ。」</p>
+              <p><strong style="color:#047857;">時間短縮効果</strong><br>
+              NMAでは数日分の作業削減（テストユーザー報告）。Pairwise MAでは主に標準化・compliance改善・判断ミス削減が価値。RevManファイル直接読み込み機能を現在開発中。</p>
 
-                  <p><strong>Q2. デフォルト変更のガイダンスは？（Reem）</strong><br>A. 「変更してよい典型例・すべきでない典型例のガイダンスを付ける方向。設定変更には理由の必須入力・変更履歴・レポートへの自動記載が必要（自動化の利点を守るため）。」時間短縮：NMAでは数日分。Pairwiseでは標準化が主なメリット。RevMan直接読み込みを開発中。</p>
+              <!-- Q&A nested -->
+              <details style="margin-top:0.85rem;border-radius:6px;overflow:hidden;border:1px solid #a7f3d0;">
+                <summary style="background:#ecfdf5;color:#064e3b;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A（会議文字起こし）</summary>
+                <div style="padding:0.9rem 1rem;background:#f0fdf4;font-size:0.87rem;line-height:1.75;">
 
-                  <p><strong>Q3. 変更の透明性をどう確保するか？（Paul Whaley）</strong><br>A. 「comparison levelで自動判断・justificationを表示。手動変更時はjustificationがmanual assessmentに切り替わり記録される。export fileに全justification・manual changeを含めて出力。ただし著者が削除することは技術的には可能。」</p>
+                  <p><strong>Q1（Bill）：10年後にGRADE知識が不要になるか？</strong><br>
+                  Bernardo：「10年後でもGRADEの知識は必要。メタ解析ソフトを使うのにfixed/random effectsの概念が必要なのと同じ。現段階はUI改善・機能追加段階。」</p>
 
-                  <p><strong>Q4. どれくらい時間節約になるか、いつ使うべきでないか？（Samuel）</strong><br>A. 「NMAで数日節約の実績。Pairwiseは標準化がメイン。<strong>使うべきでない場合：</strong>GRADEを全く知らない人・メタ解析がない・ほぼすべてを手動変更が必要な特殊文脈。」</p>
+                  <p><strong>Q2（Reem）：デフォルト変更のガイダンス・時間短縮の測定方法</strong><br>
+                  Bernardo：「変更してよい典型例・すべきでない典型例のguidanceを付ける方向。NMAで数日短縮の実績あり。RevMan読み込み機能を開発中。」</p>
 
-                  <p><strong>Q5. SRとガイドラインでcertainty ratingは違うが区別するか？（Jennifer）</strong><br>A. 「同じGRADE Book guidanceを使用。ただしthresholds・indirectnessを変更して再評価は可能。target population・baseline risk・decision thresholdsを変えれば文脈別再評価できる。報告方法の記述はpaperに追加予定。」</p>
+                  <p><strong>Q3（Paul Whaley、環境毒性）：変更の透明性</strong><br>
+                  Bernardo：「comparison levelで自動判断＋justificationを表示。手動変更時はmanual assessmentに切り替わり記録される。exportファイルに全justificationとmanual changeが含まれる。著者が削除する可能性は技術的にはあるが、透明性ある利用が目的。」</p>
 
-                  <p><strong>Q6. 人間評価をreference standardにしてよいのか？</strong><br>A. 「重要なコメント：人間評価者も誤り・ルール逸脱・inconsistencyがある。今後はexpert consensus・predefined rules・adjudication panelを組み合わせた複合的reference standardが望ましい。」</p>
+                  <p><strong>Q4（Samuel、online）：時間短縮と、いつ使うべきでないか</strong><br>
+                  Bernardo：「NMAで数日節約。Pairwiseは標準化がメイン。使うべきでない場合：GRADEを知らない人・メタ解析なし・ほぼ全判断を手動変更が必要な特殊文脈。」</p>
 
-                  <p><strong>Q7. いつ論文・ガイダンスを公開すべきか？（Holger提起）</strong><br>主な意見：①早期公開推奨（検証目的でも出すべき、rulesが変わることを明示）②ソフトウェアとguidanceを分けて公開（Paul案）③R packageのように基本論文＋オンライン更新マニュアル④ライセンスで使用バージョン・manual changesの報告義務化⑤maintenance teamの確立が必要（living rulesの更新負担）</p>
+                  <p><strong>Q5（Bernardo回答、Samuel Q2の続き）：人間との10%不一致について</strong><br>
+                  「threshold borderline caseで差が出やすい。large effectだがOIS未達のケースも多い。」</p>
+
+                  <p><strong>Q6：人間評価をreference standardにしてよいか</strong><br>
+                  「重要コメント：人間も誤り・ルール逸脱がある。今後はexpert consensus・adjudication panelを組み合わせた複合reference standardが望ましい。」</p>
+
+                  <p><strong>Q7（Jennifer、online）：SRとguidelineで違うが区別するか</strong><br>
+                  「同じGRADE Book guidanceを使用。thresholds・indirectnessを変更して再評価は可能。guideline/SRモードの切り替え機能を追加予定。」</p>
+
+                  <p><strong>Q8：thresholdをわずかに変えるとratingが変わる問題</strong><br>
+                  「a prioriに定義すべき。borderline crossingはhighlightして要確認表示。デフォルトは保守的判断を維持。」</p>
+
+                  <p><strong>Q9：critical outcomeが後から変わる場合</strong><br>
+                  「現在はoutcome-level独立評価。net benefit計算は未実装。将来net effectが実装されると重要な問題となる。」</p>
+
+                  <p><strong>Q10（Holger提起）：いつ公開すべきか</strong><br>
+                  会場からの意見：<br>
+                  ①Lorenzo：早期公開を推奨<br>
+                  ②Paul：ソフトウェアとguidanceを分離（Gitでバージョン管理）<br>
+                  ③R packageモデル（基本論文＋オンライン更新マニュアル）<br>
+                  ④ライセンスで使用バージョン・manual changes報告義務化<br>
+                  ⑤メンテナンスチームの確立が必要（living rules更新のため）</p>
 
                 </div>
               </details>
-
             </div>
           </details>
 
-          <!-- 講演② GRADE to Research / Schünemann -->
-          <details style="margin-bottom:0.8rem;border:2px solid #dbeafe;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#1e40af,#1d4ed8);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演② GRADE to Research（Holger Schünemann）―公式承認投票あり
+          <!-- ===== LECTURE 2 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #bfdbfe;">
+            <summary style="background:linear-gradient(135deg,#1e40af,#2563eb);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>② GRADE to Research / GRADE for Research（Holger Schünemann）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">午前セッション 20:06〜21:00 ★承認投票あり</span>
             </summary>
-            <div style="padding:1.2rem;background:white;">
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
 
-              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.9rem;color:#1e3a8a;">
-                <strong>正式タイトル：</strong>GRADE Guidance: What are the implications for primary research based on certainty of evidence assessment in intervention effects (Part 1)<br>
-                <strong>発表者：</strong>Holger J. Schünemann ／ <strong>プロジェクト：</strong>GRADE Project Group "From GRADE to research"（2025年1月〜月次開催）<br>
-                <strong>🗳️ 承認投票：</strong>この会議でワーキンググループ投票により正式承認（80%以上賛成で承認）
-              </div>
+              <p><strong style="color:#1e40af;">正式タイトル</strong><br>
+              GRADE Guidance: What are the implications for primary research based on certainty of evidence assessment in intervention effects (Part 1)</p>
 
-              <h4 style="color:#1e40af;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.2rem;">なぜ必要か：医療研究の現状</h4>
-              <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;font-size:0.91rem;line-height:1.75;color:#1f2937;margin-bottom:0.8rem;">
-                Doug Altman 1994年「貧弱な医学研究のスキャンダル：世界に必要なのは<em>より多くの研究</em>ではなく<em>より少なく・より良い研究</em>」。2022年Cochrane reviewsの調査（1,640試験）：low risk of bias trialはわずか9→16%、80%以上のtrialはbadまたはmaybe bad。臨床trialで実際にpracticeをinformするものは5%程度、80% powerに達するのは12%のみ。
-              </div>
+              <p><strong style="color:#1e40af;">承認プロセス</strong><br>
+              本セッションで正式承認投票が実施された。80%以上の賛成で承認。承認後2週間以内に追加コメントの提出が可能。不承認の場合はプロジェクトグループが修正して次回会議に再提出する仕組み。</p>
 
-              <h4 style="color:#1e40af;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.2rem;">3つの重要定義</h4>
-              <div style="display:grid;gap:0.5rem;font-size:0.91rem;line-height:1.7;color:#1f2937;">
-                <div style="background:#eff6ff;padding:0.7rem;border-radius:6px;"><strong>① Evidence gaps</strong>：certainty ratingに基づき特定された、特定トピック・アウトカムで不足しているエビデンス</div>
-                <div style="background:#eff6ff;padding:0.7rem;border-radius:6px;"><strong>② Implications for research</strong>：evidence gapsから導かれる将来研究への示唆（research prioritiesとは異なる）</div>
-                <div style="background:#eff6ff;padding:0.7rem;border-radius:6px;"><strong>③ Research priorities</strong>：evidence gapsのうち、実際に「行動が推奨される」もの（単なるgap特定とは区別）</div>
-              </div>
+              <p><strong style="color:#1e40af;">プロジェクト経緯</strong><br>
+              2025年1月にプロジェクトグループ発足（G.3承認後）。上海での発表後、月次ミーティングを継続。スコーピングレビュー（Omar担当、JCEで改訂中）、WHOワークショップ等を経て今回の承認投票に至った。</p>
 
-              <h4 style="color:#1e40af;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.2rem;">研究示唆の提示3オプション</h4>
-              <div style="display:grid;gap:0.5rem;font-size:0.91rem;line-height:1.7;color:#1f2937;">
-                <div style="border:1px solid #bfdbfe;padding:0.8rem;border-radius:8px;">
-                  <strong>Option 1（SoF表内）：</strong>既存のGRADE Summary of Findings表に1〜2文でevidence gapと研究示唆を追記。最も簡潔。Cochrane reviewのすべてに導入すべきとの意見あり。例：「certaintyを改善するには、QOLを測定した追加RCTが必要」
-                </div>
-                <div style="border:1px solid #bfdbfe;padding:0.8rem;border-radius:8px;">
-                  <strong>Option 2（SWAT表）：</strong>独立したSummary of Implications for Research表（中程度の詳細度）。複数・単独比較対応。overall certainty・evidence gaps・研究示唆のカスタム記述・全アウトカム横断的概括を含む。
-                </div>
-                <div style="border:1px solid #bfdbfe;padding:0.8rem;border-radius:8px;">
-                  <strong>Option 3（詳細Research Implications表）：</strong>特にNMAで使用。Canadianの健康研究機関のようにSRを根拠として新規RCTを正当化する場合など、より詳細な研究設計への含意を記述。
-                </div>
-              </div>
-
-              <h4 style="color:#1e40af;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.2rem;">GRADEドメインから研究示唆へ</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">各GRADEドメインのdowngrade理由が、直接的に「将来研究の設計要件」につながる。例：risk of biasでdowngrade → 将来研究では「outcome assessorのblinding必須」。Inconsistencyでdowngrade → 異質性の原因となるmodifier変数を探索する研究が必要。</p>
-
-              <div style="background:#ecfdf5;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;font-size:0.9rem;color:#064e3b;margin-top:0.8rem;">
-                <strong>次のステップ：</strong>EtDからの研究示唆の抽出（Part 2）・Values評価からの研究示唆・自動化ツールとの連携（GRADEraterとの接続）も計画中。
-              </div>
-
-              <details style="margin-top:1rem;border:1px solid #bfdbfe;border-radius:8px;overflow:hidden;">
-                <summary style="background:#eff6ff;padding:0.7rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.93rem;color:#1e40af;list-style:none;">▶ Q&amp;A・会議での議論（文字起こしより）</summary>
-                <div style="padding:1rem;font-size:0.89rem;line-height:1.75;color:#1f2937;">
-                  <p><strong>承認プロセスについて：</strong>80%以上の賛成で承認。承認後2週間以内に追加コメント提出可能。不承認の場合はプロジェクトグループが修正して次回会議に再提出。</p>
-                  <p><strong>Cochrane reviewへの統合：</strong>Toby Lusignonら（Cochrane）が多数の入力を提供。SoF表への1〜2文追記（Option 1）をすべてのCochrane reviewに導入することを目指す方向。</p>
-                  <p><strong>研究示唆の標準的文言：</strong>GRADEドメイン別の標準フレーズ例をpaperのbox内に収録（「certaintyを改善するには、将来研究でXXすべき」といった定型表現）。</p>
-                  <p><strong>Schünemannの個人見解：</strong>「すべてのAI・自動化プロジェクトの中で、このGRADE to Researchが最も重要な貢献になると個人的に考えている。医療研究の質改善とresearch wasteの削減に直接つながる。」</p>
-                  <p><strong>プロジェクト成果物：</strong>①本ガイダンス論文（承認済）②EtDからの研究示唆（Part 2）③Values評価からの研究示唆④ツール（Excelテンプレート等）⑤スコーピングレビュー（Omar担当・改訂中）⑥WHOワークショップ等での普及活動</p>
-                </div>
-              </details>
-
-            </div>
-          </details>
-
-          <!-- 講演③ 希少疾患 / Rare Diseases -->
-          <details style="margin-bottom:0.8rem;border:2px solid #fce7f3;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#9d174d,#be185d);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演③ 希少疾患におけるGRADE：Rare Diseases Concept Paper
-            </summary>
-            <div style="padding:1.2rem;background:white;">
-
-              <div style="background:#fdf2f8;border-left:4px solid #ec4899;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.9rem;color:#831843;">
-                <strong>正式タイトル：</strong>GRADE concept X: applying the GRADE methodology to assess the certainty of the evidence in rare diseases<br>
-                <strong>プロジェクトリード：</strong>Charlotte Gaasterland・Federico Germini・Hanneke van der Lee ／ GGG Liaison: Holger Schünemann・Miranda Langendam ／ <strong>メンバー：60名以上</strong><br>
-                <strong>注：</strong>Concept paperであり、正式GRADE guidanceではない。
-              </div>
-
-              <h4 style="color:#9d174d;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fbcfe8;padding-bottom:0.2rem;">中心的メッセージ</h4>
-              <div style="background:#fdf2f8;border-left:4px solid #ec4899;padding:0.8rem;border-radius:6px;font-size:0.92rem;line-height:1.75;color:#1f2937;margin-bottom:0.8rem;">
-                「GRADEは希少疾患でも適用できる。問題はGRADEの枠組みではなく、<strong>上流のエビデンス生成の問題</strong>である。希少疾患だからこそ、透明で体系的なGRADEの枠組みが必要。」GRADEで certaintyが低くなるのはGRADEが厳しすぎるのではなく、研究デザイン・サンプルサイズ・データ収集・公表の制約が原因。
-              </div>
-
-              <h4 style="color:#9d174d;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fbcfe8;padding-bottom:0.2rem;">希少疾患の社会的インパクト</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">希少疾患の定義：一般に1,500〜2,000人に1人未満。しかし全体の有病率は<strong>3.5〜5.9%</strong>（世界で2億6,300万〜4億4,600万人）。個々の疾患はまれでも希少疾患患者全体は世界規模で巨大な集団。Ultra-rare（SMA等）から比較的頻度の高い希少疾患（cystic fibrosis等）まで幅がある。</p>
-
-              <h4 style="color:#9d174d;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fbcfe8;padding-bottom:0.2rem;">希少疾患研究の主な困難</h4>
-              <ul style="font-size:0.91rem;line-height:1.8;padding-left:1.2rem;color:#1f2937;">
-                <li><strong>患者数が少ない</strong>：RCT実施困難・十分な検出力不足・信頼区間が広くなりやすい</li>
-                <li><strong>資金制約</strong>：一部の希少がん・遺伝子治療領域では多額資金が投入される一方、商業的魅力の低い疾患では資金不足</li>
-                <li><strong>倫理的困難</strong>：急速進行・高死亡率・重篤障害がある疾患ではプラセボ対照RCTが倫理的に困難</li>
-                <li><strong>レジストリの質</strong>：registryが存在しない・質が低い・outcome定義が統一されていない・missing data多・long-term follow-up不足</li>
-                <li><strong>国際協力が必須</strong>：単一施設・国では患者数が集まらず、international registry・data sharing・reference centresが必要</li>
+              <p><strong style="color:#1e40af;">背景・動機</strong><br>
+              Doug Altman 1994年の名言「貧弱な医学研究のスキャンダル（Scandal of poor medical research）」：世界に必要なのはより多くではなくより良い研究。<br><br>
+              2022年Cochrane reviews調査（1,640試験）の衝撃的な結果：</p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>Low risk of bias trialはわずか9→16%のみ増加（過去数十年で）</li>
+                <li>80%以上のtrialはbadまたはmaybe bad</li>
+                <li>臨床trialで実践をinformするものは約5%のみ</li>
+                <li>80% powerに達するのは12%のみ</li>
               </ul>
 
-              <h4 style="color:#9d174d;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fbcfe8;padding-bottom:0.2rem;">希少疾患だけの問題ではない</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">類似の問題は遺伝子型別サブタイプ・precision medicine・分子標的治療・新興感染症初期（COVID-19初期等）でも起こる。医学が細分化し患者集団がより小さく定義される時代において、希少疾患的エビデンス問題はますます一般化している。</p>
+              <p><strong style="color:#1e40af;">3つの重要定義（長い議論の末に決定）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Evidence gaps</strong>：certainty ratingに基づき特定された、特定トピック・アウトカムで不足しているエビデンス</li>
+                <li><strong>Implications for research</strong>：evidence gapsから導かれる将来研究への示唆（research prioritiesとは異なる概念）</li>
+                <li><strong>Research priorities</strong>：evidence gapsのうち実際に「行動が推奨される」もの（単なるgap特定とは区別される）</li>
+              </ol>
 
-              <h4 style="color:#9d174d;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fbcfe8;padding-bottom:0.2rem;">Deliverablesのロードマップ</h4>
-              <ol style="font-size:0.91rem;line-height:1.8;padding-left:1.2rem;color:#1f2937;">
-                <li>本concept paper（方法論的課題・障害・可能な解決策の整理）</li>
-                <li>GRADEが使われた希少疾患ガイドラインの事例収集</li>
+              <p><strong style="color:#1e40af;">Evidence synthesisが研究を導くべき4つの理由</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>重複・不要な研究を避ける</li>
+                <li>ギャップと不確実性を特定する</li>
+                <li>研究デザインを改善する（RoB downgrade→将来研究でその原因を避ける設計）</li>
+                <li>倫理的・効率的な資源利用を促進する</li>
+              </ol>
+
+              <p><strong style="color:#1e40af;">対象読者（第1報）</strong><br>
+              evidence synthesisを行う人（ガイドライン開発者・HTA担当者を含む）</p>
+
+              <p><strong style="color:#1e40af;">研究示唆の提示3オプション（多くの議論を経て3択に整理）</strong></p>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Option 1（SoF表内）</strong>：GRADEのSummary of Findings表に1〜2文でevidence gapと研究示唆を追記。最も簡潔な形式。Cochrane reviewのすべてに導入すべきとの意見が会議で出た。<br>
+                例：「certaintyを改善するには、QOLを測定した追加RCTが必要。将来研究ではoutcome assessorのblindingが必要。」
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Option 2（独立SWAT表）</strong>：中程度の詳細。複数・単独比較の両方に対応。overall certainty・evidence gaps・研究示唆のカスタム記述・全アウトカム横断的概括を含む。Excelテンプレートあり。より詳細なevidence synthesis報告を目指す場合に使用。
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Option 3（詳細Research Implications表）</strong>：特にNMAで使用。カナダの健康研究機関のようにSRを根拠として新規RCT実施を正当化する場合など。最も詳細で構造化されたオプション。
+              </div>
+
+              <p><strong style="color:#1e40af;">GRADEドメインから研究示唆へ（具体例）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>Risk of bias downgrade → 「将来研究でoutcome assessor blindingが必要」</li>
+                <li>Inconsistency downgrade → 「異質性の原因となるmodifier変数を探索する研究が必要」</li>
+                <li>Indirectness → 「より代表的なpopulationを含む研究が必要」</li>
+                <li>Imprecision → 「より大きなサンプルサイズ・十分なOISの研究が必要」</li>
+              </ul>
+
+              <p><strong style="color:#1e40af;">標準的な記述フレーズ例（paper内のboxに収録）</strong><br>
+              <em>"To improve the certainty of evidence, future studies should include quality of life, be randomized, blind outcome assessors..."</em></p>
+
+              <p><strong style="color:#1e40af;">Schünemannの個人見解</strong><br>
+              「すべてのAI・自動化プロジェクトの中で、このGRADE to Researchが最も重要な貢献。医療研究の質改善とresearch wasteの削減に直接つながる。」</p>
+
+              <p><strong style="color:#1e40af;">次のステップ</strong><br>
+              Part 2（EtDからの研究示唆）・Values評価からの研究示唆・自動化ツールとの連携（GRADEraterとの接続）も計画中。</p>
+
+              <details style="margin-top:0.85rem;border-radius:6px;overflow:hidden;border:1px solid #bfdbfe;">
+                <summary style="background:#eff6ff;color:#1e40af;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A</summary>
+                <div style="padding:0.9rem 1rem;background:#f0f7ff;font-size:0.87rem;line-height:1.75;">
+                  <p><strong>Cochrane統合</strong>：Toby Lusignonら（Cochrane）が多数の入力を提供。SoF表への1〜2文追記をすべてのCochrane reviewに導入することを目指している。</p>
+                  <p><strong>標準フレーズ（phrasing standard）</strong>：ドメイン別の標準フレーズ例をpaperのbox内に収録。ガイドライン・SR著者が参照できる形式。</p>
+                  <p><strong>複数比較への対応</strong>：Option 2とOption 3は複数比較（NMA含む）にも対応している。</p>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 3 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fce7f3;">
+            <summary style="background:linear-gradient(135deg,#9d174d,#be185d);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>③ 希少疾患におけるGRADE ― Rare Diseases Concept Paper</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【Concept Paper 討議】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#9d174d;">正式タイトル</strong><br>
+              GRADE concept X: applying the GRADE methodology to assess the certainty of the evidence in rare diseases</p>
+
+              <p><strong style="color:#9d174d;">プロジェクト体制</strong><br>
+              プロジェクトリード：Charlotte Gaasterland・Federico Germini・Hanneke van der Lee<br>
+              GGG Liaison：Holger Schünemann・Miranda Langendam<br>
+              メンバー60名以上（国際的大規模プロジェクト）</p>
+
+              <p><strong style="color:#9d174d;">位置づけ</strong><br>
+              Concept paperであり正式GRADE guidanceではない。将来的なGRADE guidance paperの前段階として位置づけられる。</p>
+
+              <p><strong style="color:#9d174d;">中心的メッセージ</strong><br>
+              GRADEは希少疾患でも適用できる。問題はGRADEの枠組みではなく上流のエビデンス生成の問題。「希少疾患ではGRADEは使えない」という誤解に明確に反論する。certaintyがvery lowになるのはGRADEが厳しすぎるのではなく、研究デザイン・サンプルサイズ・データ収集・公表の制約が原因。</p>
+
+              <p><strong style="color:#9d174d;">社会的インパクト</strong><br>
+              希少疾患の定義は1,500〜2,000人に1人未満。Ultra-rare（SMAなど）から比較的頻度の高い希少疾患（cystic fibrosisなど）まで幅がある。全体有病率は3.5〜5.9%（世界で2億6,300万〜4億4,600万人）。個々の疾患はまれでも、希少疾患患者全体は巨大な集団である。</p>
+
+              <p><strong style="color:#9d174d;">スライド5：典型的な誤解（プロジェクトが向き合う問題）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>「GRADE doesn't work for RARE diseases」</li>
+                <li>「CoE often very low → conditional recommendations → no approval/reimbursement」</li>
+                <li>「No RCTs leads to no recommendations」</li>
+              </ul>
+
+              <p><strong style="color:#9d174d;">希少疾患研究の5つの主な困難</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>患者数が少ない</strong>：RCT困難・十分な検出力不足・信頼区間が広くなりやすい・OIS未達</li>
+                <li><strong>資金制約</strong>（ただしcancer・遺伝子治療では多額資金あり——単純化できない複雑な状況）</li>
+                <li><strong>倫理的困難</strong>：高死亡率・急速進行・重篤障害がある疾患ではプラセボ対照RCTが倫理的に困難</li>
+                <li><strong>レジストリの質</strong>：非存在・質が低い・outcome定義未統一・missing data多・long-term follow-up不足</li>
+                <li><strong>国際協力が必須</strong>：単一施設・国では患者が集まらず、international registry・data sharing・reference centresが必要</li>
+              </ol>
+
+              <p><strong style="color:#9d174d;">希少疾患だけの問題ではない</strong><br>
+              遺伝子型別サブタイプ・precision medicine・分子標的治療・新興感染症初期でも同様の問題が生じる。医学が細分化する時代に、希少疾患的エビデンス問題は一般化していく。</p>
+
+              <p><strong style="color:#9d174d;">4つのProject目的</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>希少疾患GL開発の方法論的課題を調査する</li>
+                <li>GRADE適用事例を集めて批判的レビューを行う</li>
+                <li>GRADEガイダンスをさらに発展させる</li>
+                <li>患者コミュニティ・専門家コミュニティへの普及を図る</li>
+              </ol>
+
+              <p><strong style="color:#9d174d;">Deliverables（5つ）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>本concept paper</li>
+                <li>事例ガイドライン収集</li>
                 <li>スコーピングレビュー</li>
                 <li>定性的インタビュー研究</li>
-                <li>将来的なGRADE guidance paper「applying GRADE to developing guidelines for rare diseases」</li>
+                <li>将来的なGRADE guidance paper</li>
               </ol>
 
             </div>
           </details>
 
-          <!-- 講演④ Decision Thresholds / Rare Events / Certainty Range / Indirectness -->
-          <details style="margin-bottom:0.8rem;border:2px solid #fef3c7;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演④ Decision Thresholds・Rare Events・Certainty Range・Indirectness Update
+          <!-- ===== LECTURE 4 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fde68a;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>④ GRADE Guidance 42 ― Decision Thresholds（効果の大きさを判断する閾値）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【GRADE Guidance 42】</span>
             </summary>
-            <div style="padding:1.2rem;background:white;">
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
 
-              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin-bottom:1rem;font-size:0.9rem;color:#78350f;">
-                4つのテーマはすべて同一の核心でつながっている：「GRADEのcertainty評価は、効果推定値が意思決定上重要なthresholdのどちら側にあるか・どの範囲にあるかについての確信である」
+              <p><strong style="color:#92400e;">正式タイトル</strong><br>
+              GRADE Guidance: Using Thresholds for Judgments on Health Benefits and Harms in Decision Making</p>
+
+              <p><strong style="color:#92400e;">Decision Thresholdとは</strong><br>
+              介入効果をtrivial or no effect / small effect / moderate effect / large effectに分類するための基準値。主にAbsolute Risk Difference（ARD）で表現される。</p>
+
+              <p><strong style="color:#92400e;">なぜ必要か（4理由）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>透明性（基準を明示することで誰でも理解可能）</li>
+                <li>一貫性（複数アウトカム・複数推奨で同一基準を適用）</li>
+                <li>判断の容易化（パネルが毎回ゼロから議論する必要がなくなる）</li>
+                <li>living guidelineで特に有用（新エビデンス追加時も一貫した判断が可能）</li>
+              </ol>
+
+              <p><strong style="color:#92400e;">Approach 1 — Research dataに基づくDT算出</strong><br>
+              GRADE-THRESHOLD研究（方法論的RCT）から得たgeneric coefficientsを使用。各アウトカムにutility value（0〜1）を設定。Disutility = 1 - utility。</p>
+
+              <div style="background:#fffbeb;border-left:3px solid #b45309;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;font-family:monospace;font-size:0.85rem;">
+                DT(trivial/small) = 0.073 − (0.061 × disutility)<br>
+                DT(small/moderate) = 0.180 − (0.146 × disutility)<br>
+                DT(moderate/large) = 0.338 − (0.271 × disutility)
               </div>
 
-              <h4 style="color:#92400e;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fcd34d;padding-bottom:0.2rem;">① GRADE Guidance 42 — Decision Thresholds</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">正式タイトル：「GRADE Guidance: Using Thresholds for Judgments on Health Benefits and Harms in Decision Making」。介入効果を<strong>trivial / small / moderate / large</strong>に分類するための基準値。Absolute risk difference（ARD）で表現し、アウトカムのutility/disutilityと組み合わせて判断する。</p>
-              <div style="font-size:0.91rem;line-height:1.75;color:#1f2937;margin:0.5rem 0;">
-                <strong>2つのアプローチ：</strong><br>
-                <strong>Approach 1</strong>：GRADE-THRESHOLD研究から得たgeneric coefficientsを使用。各アウトカムにutility値（0〜1）を設定。例：死亡 disutility=1.0、脳卒中=0.86、肺塞栓=0.58、中等度下痢=0.10、軽い嘔吐=0.05。Disutilityが大きいほど、より小さなARDでも重要と判断される。<br>
-                <strong>Approach 2</strong>：ガイドラインパネル等が文脈に応じてdecision thresholdsを直接決定する方法。
-              </div>
-              <p style="font-size:0.91rem;line-height:1.75;color:#1f2937;"><strong>DTsが必要な理由：</strong>透明性の確保（small/moderate/largeの基準を明示）・一貫性（複数アウトカム・複数推奨で同一基準）・living guidelineで特に有用（新エビデンス追加時も一貫して判断可能）</p>
+              <p><strong>例：disutility 0.6のアウトカム</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>trivial/small = 36 per 1,000</li>
+                <li>small/moderate = 92 per 1,000</li>
+                <li>moderate/large = 175 per 1,000</li>
+              </ul>
 
-              <h4 style="color:#92400e;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fcd34d;padding-bottom:0.2rem;">② Rare Eventsにおけるabsolute effects算出</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">二値アウトカムでイベントがまれな場合、標準的なGRADE手法では信頼区間が不自然に広くなり、imprecisionの過大評価につながることがある。代替的な推定アプローチと報告方法を整理する内容。</p>
+              <p><strong>例：Mortality（disutility = 1.0）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>trivial/small = <strong>12 per 1,000</strong>（死亡では12 per 1,000の差でsmall effectになる——重要性が極めて高いため）</li>
+                <li>small/moderate = 34 per 1,000</li>
+                <li>moderate/large = 67 per 1,000</li>
+              </ul>
 
-              <h4 style="color:#92400e;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fcd34d;padding-bottom:0.2rem;">③ Certainty Range Concept</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">GRADE certaintyを「欠点の数え上げ」ではなく、「欠点が真の効果推定値の解釈にどれだけ影響するか」として捉え直す概念。High/Moderate/Low/Very Lowは、「真の効果がどの範囲にある確信か」として解釈する。効果がすべてのthresholdを超えている場合と、thresholdをまたぐ場合でimprecision評価が異なる。</p>
+              <p><strong>例：Pulmonary embolism（disutility = 0.58）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>trivial/small ≈ 38 per 1,000</li>
+                <li>small/moderate ≈ 95 per 1,000</li>
+              </ul>
 
-              <h4 style="color:#92400e;font-size:1rem;font-weight:700;margin:0.8rem 0 0.4rem;border-bottom:2px solid #fcd34d;padding-bottom:0.2rem;">④ GRADE Indirectness Update</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">Indirectnessをより明確に評価するための更新案。評価の主な要素：PICOのずれ・baseline riskの不確実性・relative effectのeffect modification・decision thresholdsを使ったdowngrade判断の明確化。Indirectnessとrisk of biasの区別をより明確にする方向性。</p>
+              <p><strong>例：Upper respiratory tract infection（disutility = 0.17）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>trivial/small = 62 per 1,000（同じ50 per 1,000減少でもtrivialになり得る——重要性が低いため）</li>
+              </ul>
+
+              <p><strong style="color:#92400e;">Approach 2 — Expert inputに基づくDT設定</strong><br>
+              ガイドラインパネルに直接「何 per 1,000でsmall/moderate/largeか」を尋ねる方法。utility valueは必須でないが把握が望ましい。<br>
+              利点：文脈に合った判断・パネルの価値観反映<br>
+              限界：尋ね方で結果が変わる・anchoring効果・患者代表と専門家で違いが出やすい</p>
+
+              <p><strong style="color:#92400e;">Combined approach</strong><br>
+              研究データでDTを計算→パネルに提示→同意/不同意を尋ねる→最終DTを合意で決定。WHO drug-resistant TB guidelineの例：6アウトカムで実施（death・sustained treatment success・treatment failure・loss to follow-up・adverse events・amplification of drug resistance）。</p>
+
+              <p><strong style="color:#92400e;">DTの図示（推奨）</strong><br>
+              absolute effectsと95% CIをDTとともに図示することが推奨される。ガイドラインパネルが点推定・CIがどの効果範囲にあるか直感的に理解でき、imprecision downgradeの判断に活用できる。</p>
+
+              <p><strong style="color:#92400e;">Health outcome descriptor</strong><br>
+              アウトカムをSymptoms・Time horizon・Testing and treatment・Consequencesで具体的に記述する必要がある。<br>
+              例（化学療法誘発性悪心）：胃の不快感・食欲低下・1日6回未満の嘔吐・4〜6時間でピーク・最大6日続く・経口/IV補充・日常生活への影響</p>
+
+              <p><strong style="color:#92400e;">Time horizon問題（3 scenarios）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Scenario 1</strong>：推定値とthresholdのtime horizonが一致→そのまま比較可能</li>
+                <li><strong>Scenario 2</strong>：推定値のtime horizonがthresholdより長い場合→再推定が必要（ECICC大腸がんスクリーニング例：20年リスクでDT設定、lifetime riskを20年に変換）</li>
+                <li><strong>Scenario 3</strong>：アウトカムごとにtime horizonが異なる場合→年率から累積リスクへ変換が必要（式：CR = [1 − exp(−r)] × 100）</li>
+              </ul>
+
+              <p><strong>ECICC例</strong>：Colorectal cancer death trivial/small = 35 per 100,000（20年）、Diagnosis = 75 per 100,000</p>
 
             </div>
           </details>
 
-          <!-- 講演⑤ ADOLOPMENT / Equity / Dose-response NMA / MDT -->
-          <details style="margin-bottom:0.8rem;border:2px solid #e0e7ff;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#3730a3,#4338ca);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演⑤ Rapid ADOLOPMENT・Equity EtD・Dose-response NMA・個別化MDT
+          <!-- ===== LECTURE 5 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fecaca;">
+            <summary style="background:linear-gradient(135deg,#991b1b,#b91c1c);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑤ 低イベント率でのAbsolute Effects算出（Ariel Izcovich）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">午後セッション 22:47〜23:14 【Concept Paper 討議】【文字起こし収録】</span>
             </summary>
-            <div style="padding:1.2rem;background:white;">
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
 
-              <h4 style="color:#3730a3;font-size:1rem;font-weight:700;margin:0.4rem 0 0.4rem;border-bottom:2px solid #c7d2fe;padding-bottom:0.2rem;">① GRADE Rapid ADOLOPMENT（Paula Perestrelo）</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;"><strong>ADOLOPMENTとは：</strong>Adoption（採用）+ Adaptation（適応）+ De novo Development（新規作成）の3つを組み合わせる方法論。特に低・中所得国や資源の限られた組織で、de novoガイドライン開発の負担を減らしながら質の高い推奨を作る枠組み。</p>
-              <div style="display:grid;gap:0.4rem;font-size:0.91rem;line-height:1.7;color:#1f2937;margin:0.5rem 0;">
-                <div style="background:#e0e7ff;padding:0.6rem;border-radius:6px;"><strong>Adoption：</strong>既存推奨が自分たちの文脈にそのまま適切な場合。ただし実装情報（保険償還・患者説明・施設適用条件等）は必要。</div>
-                <div style="background:#e0e7ff;padding:0.6rem;border-radius:6px;"><strong>Adaptation：</strong>推奨を地域・制度・患者集団・資源状況に合わせてcontextualize。EtD frameworkを使ってcosts・feasibility・acceptability・local evidenceを形式的に評価。</div>
-                <div style="background:#e0e7ff;padding:0.6rem;border-radius:6px;"><strong>De novo：</strong>既存ガイドラインがない・信頼できない・問いが異なる場合のみ。既存エビデンス統合を最大限活用。</div>
+              <p><strong style="color:#991b1b;">発表者</strong><br>
+              Ariel Izcovich（Buenos Aires在住、臨床家兼方法論者、オンライン参加）</p>
+
+              <p><strong style="color:#991b1b;">注記</strong><br>
+              本セッションは昼食後の午後セッション。アジェンダ変更あり（indirectness sessionを翌日に移動し、このセッションを先に実施）</p>
+
+              <p><strong style="color:#991b1b;">論文タイトル</strong><br>
+              Optimal Estimation of Risk Differences When Event Rates Are Low（Concept paper）</p>
+
+              <p><strong style="color:#991b1b;">問題の本質</strong><br>
+              GRADEの標準法（relative effectをbaseline riskに適用してRDを算出）は通常合理的だが、イベント率が低い場合にRDの95% CIが不自然に広く・非対称になり、imprecisionが過大評価されることがある。</p>
+
+              <p><strong style="color:#991b1b;">なぜ非対称CIが生じるか</strong><br>
+              relative effect（RR/OR）はlog scaleで計算されるため、元のscaleでは非対称。rare eventsではrelative CIが非常に広くなりやすく、その非対称性がRD CIに強く反映される。</p>
+
+              <p><strong style="color:#991b1b;">問題1</strong>：点推定はbenefitを示しているのに、CIはharm方向に大きく伸びる→読者に「大きな害の可能性あり」という誤解を与える。</p>
+              <p><strong style="color:#991b1b;">問題2</strong>：interventionとcomparatorを逆にすると解釈が変わる（同じデータなのに非論理的な結果が生じる）。</p>
+
+              <p><strong style="color:#991b1b;">3つの具体例（講演から）</strong></p>
+
+              <div style="background:#fff5f5;border-left:3px solid #b91c1c;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>例1：Parathyroidectomy vs observation</strong>（primary hyperparathyroidism, hospitalization）<br>
+                6 RCTs, 287患者, 13 events。Baseline risk 54/1,000、RR = 0.91（95% CI: 0.20–4.21）<br>
+                標準法：5 fewer（43 fewer to 176 more）——CIがharm方向に大きく非対称<br>
+                逆向き比較では：5 more（37 fewer to 196 more）——同じデータで全く異なるメッセージ
               </div>
-              <p style="font-size:0.91rem;line-height:1.75;color:#1f2937;"><strong>Rapid版の狙い：</strong>より迅速・実用的なツール開発構想。national programme・hospital level・professional societyなど、フルのde novo開発が困難な組織が利用可能。</p>
 
-              <h4 style="color:#3730a3;font-size:1rem;font-weight:700;margin:1rem 0 0.4rem;border-bottom:2px solid #c7d2fe;padding-bottom:0.2rem;">② GRADE Equity EtD Guidance</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">GRADE Evidence-to-Decision（EtD）frameworkにhealth equityを体系的に統合するための更新版ガイダンス。EtDの各要素（benefits/harms/values/resources/equity/acceptability/feasibility）のうち、equityについてより構造化された評価方法を提供。人口集団間の健康格差、脆弱集団への影響、介入のequity効果を明示的にEtDに組み込む枠組み。</p>
+              <div style="background:#fff5f5;border-left:3px solid #b91c1c;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>例2：Bupropion＋NRT vs NRT</strong>（禁煙、all-cause mortality）<br>
+                2 RCTs, 731患者。Baseline risk 8/1,000、RR = 0.68（95% CI: 0.12–3.98）<br>
+                標準法：3 fewer（7 fewer to 24 more）<br>
+                直接RD：3 fewer（8 fewer to 9 more）←MID = 15であればtrivial/no effect範囲→certianty差異が生じる
+              </div>
 
-              <h4 style="color:#3730a3;font-size:1rem;font-weight:700;margin:1rem 0 0.4rem;border-bottom:2px solid #c7d2fe;padding-bottom:0.2rem;">③ Dose-response NMAにおけるGRADE certainty評価</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">用量反応NMAでは比較が理論上無限に生じるため、通常のNMAとは異なるGRADE certainty評価の工夫が必要。比較・用量ごとに個別評価するのではなく、dose-response関係全体としてどのようにcertaintyを評価するかの方法論的整理。GRADEraterとの連携も視野。</p>
+              <div style="background:#fff5f5;border-left:3px solid #b91c1c;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>例3：Anti-TNF agents vs placebo</strong>（Plaque psoriasis, MACE）<br>
+                15 RCTs, 1,572患者, 各群1 event。Baseline risk 2/1,000、OR = 0.69（95% CI: 0.03–13.82）<br>
+                標準法：1 fewer（2 fewer to 25 more）→MID = 25があればimportant harmを含む→Moderate certainty<br>
+                直接RD：1 fewer（2 fewer to 3 more）→完全にtrivial/no effect範囲→High certainty of little or no effect
+              </div>
 
-              <h4 style="color:#3730a3;font-size:1rem;font-weight:700;margin:1rem 0 0.4rem;border-bottom:2px solid #c7d2fe;padding-bottom:0.2rem;">④ 個別化意思決定・MDTにおけるEtD応用（Personalized MDT / HCC事例）</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">GRADE EtDを集団レベルのガイドライン推奨だけでなく、個別患者のmultidisciplinary team（MDT）意思決定に応用する構想。肝細胞がん（HCC）の事例でexploration。EtD frameworkの「populations→individual patient」への転用：患者固有の価値観・文脈・comorbidities・治療可能性を組み込んだ意思決定支援として機能する可能性。</p>
+              <p><strong style="color:#991b1b;">4つの代替法（Muradら先行研究より）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Microsimulation</strong>：relative estimatesに基づくため問題解決せず</li>
+                <li><strong>Bivariate random-effects model</strong>：少なくとも6研究必要・実装されているソフトが限られる→実務的でない</li>
+                <li><strong>数学的な代替RD算出法</strong>：理論的に可能だが未検証・一部でCIが過度に狭くなった</li>
+                <li><strong>RDの直接メタ解析</strong>（推奨）：通常のメタ解析技術を使用・rare eventsではbaseline riskのheterogeneityが小さいため直接プールが合理的・relative effectのlog変換による非対称性の影響を避けられる</li>
+              </ol>
+
+              <p><strong style="color:#991b1b;">direct RDを推奨する理由</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>rare eventsではbaseline risk変動が少ないためRD heterogeneityが小さい</li>
+                <li>直感的なCIが得られる</li>
+                <li>relative effectのlog変換の影響を受けない</li>
+              </ul>
+
+              <p><strong style="color:#991b1b;">別のbaseline riskへの適用</strong><br>
+              直接RDをapproximate RRに再構成：<code style="background:#f3f4f6;padding:0.1rem 0.3rem;border-radius:3px;">RR_approx = 1 + RD_source / BR_source</code>→target baseline riskに適用。<br>
+              限界：relative effectがtransportableという仮定・effect modificationがないという仮定に依存。baseline riskが高い理由がrelative effectにも影響するならindirectnessでdowngrade検討。</p>
+
+              <p><strong style="color:#991b1b;">大規模empirical evaluation</strong><br>
+              Cochrane Library 2000–2020、64,633 meta-analyses、314,963 studies、binary outcomesで検証。<br>
+              結論：</p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>CI asymmetryはmainly event数25〜30未満、baseline risk 5〜7%未満で発生</li>
+                <li>標準法とdirect RDでimprecision ratingが変わる例は全体の2〜8%（主にevent数50未満のMA）</li>
+                <li>問題はほぼ全て上側CIに限定</li>
+              </ol>
+
+              <p><strong style="color:#991b1b;">実務的GRADE guidance（Rule of thumb）</strong><br>
+              直接RDメタ解析を検討すべき場合：両群のevent rateが低い（通常5%以下、特に1〜2%以下）＋標準法のRD CIが点推定と不整合に見える。<br>
+              強く推奨できるのはdirect RDを使うことでimprecision判断が変わる場合のみ。<br>
+              Izcovichの暫定的目安：<strong>event数20〜30未満、baseline risk 5〜7%未満</strong></p>
+
+              <details style="margin-top:0.85rem;border-radius:6px;overflow:hidden;border:1px solid #fecaca;">
+                <summary style="background:#fff5f5;color:#991b1b;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A（文字起こし）</summary>
+                <div style="padding:0.9rem 1rem;background:#fef2f2;font-size:0.87rem;line-height:1.75;">
+
+                  <p><strong>Sean：</strong>「イベント率が低すぎる場合はそもそも変換不要では？anti-TNF例では各群1 eventで、CIが巨大なのは『我々にはわからない』ということでは？」<br>
+                  Ariel回答：「MACEが非常にまれであることは分かる。これは臨床的に有用な情報。その介入がMACEを増やさないことは言える。」<br>
+                  Hassan：「サンプルサイズが十分に大きければ、trivial effectについてhigh certaintyを持てる可能性がある。」</p>
+
+                  <p><strong>Holger：</strong>「3つの概念的問題を指摘：①asymmetric CI（follow-up短期でも起こり得る）②rare eventsそのもの③risk differenceを使うべき状況。Follow-upが短い場合はこの変換を使うべきでない——試験がまだ十分な期間フォローしていないなら、それはimprecisionではなくindirectnessとrisk of biasの問題。この区別がpaperで不明確。」<br>
+                  Hassan：「おっしゃる通り。follow-upの十分性はrisk of biasとindirectnessの問題。この前提でのみ本手法が適切。」<br>
+                  Ariel：「同意。本プレゼンテーションはfollow-upが十分な状況に適用することを前提としている。」</p>
+
+                  <p><strong>Reem：</strong>「risk differenceのメタ解析からrelative effectを逆算すると、別のCIが出る——数学が壊れているようで怖い。統計家が確認したか？」<br>
+                  Ariel：「統計家が見て、cautionメッセージを入れることにした。代替方法が見つからないため、この方法を提案している。」<br>
+                  Hassan：「実は標準法の方が統計的に問題が多い。標準法ではvariance of RDがrelative effectのみから来ており、baseline riskの変動性を考慮していない。direct RD法の方が理論的には優れている側面がある。」</p>
+
+                  <p><strong>Carlos（online）：</strong>「イベント数が少なすぎる場合のthresholdの経験則は？」<br>
+                  Ariel：「Event数20〜30未満、baseline risk 5〜7%未満が一つの目安。ただし直接imprecisionでdowngradeするのではなく、直接RDメタ解析を検討するトリガーとして使うべき。」</p>
+
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 6 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #99f6e4;">
+            <summary style="background:linear-gradient(135deg,#0f766e,#0d9488);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑥ Certainty Range Concept（確実性の範囲概念）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【方法論的更新】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#0f766e;">GRADEにおけるcertaintyの正式定義（GRADE Book）</strong><br>
+              <em>"The confidence that the true value of an estimate falls within a specific range or above or below a relevant threshold."</em><br>
+              真の推定値が特定の範囲内・または重要閾値の上下にあるとどの程度確信できるか。</p>
+
+              <p><strong style="color:#0f766e;">重要点</strong><br>
+              Certaintyは単に「欠点の数え上げ」ではない。本質は「真の効果が意思決定上どの範囲にあるかについての確信」。</p>
+
+              <p><strong style="color:#0f766e;">Certainty評価の対象は介入効果だけでない</strong><br>
+              intervention studies・patients' values・diagnostic studies・prognostic studies・environmental health全てに適用可能。</p>
+
+              <p><strong style="color:#0f766e;">4ステップのcertainty assessment</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Step 1：閾値の数を決める</strong>（どのdecision thresholdsが重要か）→ Guidance 42と連動</li>
+                <li><strong>Step 2：certainty ratingのtargetを決める</strong>（点推定がどの効果範囲にあるか）→「このエビデンスはmoderate benefitという判断にどれくらい確信を持てるか」</li>
+                <li><strong>Step 3：GRADEドメインを評価</strong>（risk of bias・inconsistency・indirectness・imprecision・publication bias）</li>
+                <li><strong>Step 4：rating downまたはupを決める</strong>（懸念により真の効果がtargetからどれくらい外れ得るかを評価）</li>
+              </ol>
+
+              <p><strong style="color:#0f766e;">High/Moderate/Low/Very Low certaintyのrange conceptとしての解釈</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>High</strong>：真の値がthresholdの片側または特定範囲内にあると高く確信できる</li>
+                <li><strong>Moderate</strong>：真の値はtargetからわずかに逸脱する可能性がある（少しsmall benefit寄りかもしれない程度）</li>
+                <li><strong>Low</strong>：真の値はtargetから逸脱し別の範囲に入る可能性が高い</li>
+                <li><strong>Very Low</strong>：真の値はtargetから大きく逸脱する可能性があり、おそらく別の範囲にある</li>
+              </ul>
+
+              <p><strong style="color:#0f766e;">Certainty intervalという考え方（Laplace's demon比喩）</strong><br>
+              宇宙の全粒子の位置を知れば未来も完全に予測できるが人間には不可能——同様に真の効果の取り得る範囲を完全に計算することは不可能だが近似はできる。<br>
+              直接観察できる不確実性（CI・heterogeneity・events数・sample size）と、仮説として経験的に検証できる不確実性（RoB・indirectness・publication bias・baseline risk uncertainty・effect modification）を組み合わせる。</p>
+
+              <p><strong style="color:#0f766e;">GRADEの進化</strong><br>
+              「懸念の有無を評価する」から「その懸念が効果推定の解釈にどの程度影響するかを評価する」へ。Decision thresholdsとcertainty range conceptがこの進化の核心。</p>
 
             </div>
           </details>
 
-          <!-- 講演⑥ GRADE Bot / Net Effect / Perspectives -->
-          <details style="margin-bottom:0.8rem;border:2px solid #f3e8ff;border-radius:10px;overflow:hidden;">
-            <summary style="background:linear-gradient(135deg,#6b21a8,#7c3aed);color:white;padding:0.9rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.97rem;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-              ▶ 講演⑥ GRADE Bot・Net Effect・Perspectives in Decision-making
+          <!-- ===== LECTURE 7 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #cbd5e1;">
+            <summary style="background:linear-gradient(135deg,#475569,#64748b);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑦ Indirectness Update（翌日に移動）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【Day 2に移動 — ポルト2026会議2日目】</span>
             </summary>
-            <div style="padding:1.2rem;background:white;">
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
 
-              <h4 style="color:#6b21a8;font-size:1rem;font-weight:700;margin:0.4rem 0 0.4rem;border-bottom:2px solid #e9d5ff;padding-bottom:0.2rem;">① GRADE Book and AI / GRADE Bot（Manuel Marques-Cruz・Paweł Jemioło）</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">Open-source LLMに基づく新しいGRADE Botの開発・評価プロジェクト。GRADEに関する専門的質問（「imprecisionはいつ2段階downgradeか」「NMAなしでGRADEは使えるか」等）に対し、<strong>GRADE Book・公式guidance paperに根拠づけられた回答</strong>を返すAI。汎用ChatGPTではなく、GRADE文書に特化した信頼性の高いQ&Aシステムを目指す。</p>
-              <div style="display:grid;gap:0.4rem;font-size:0.91rem;line-height:1.7;color:#1f2937;margin:0.5rem 0;">
-                <div style="background:#f3e8ff;padding:0.6rem;border-radius:6px;"><strong>Prompt/Context Engineering：</strong>「公式guidanceのみに基づく」「不確実な場合は推測しない」「官公式guidanceとconcept paperを区別する」「根拠となる章・文書を示す」等の指示を付与</div>
-                <div style="background:#f3e8ff;padding:0.6rem;border-radius:6px;"><strong>RAG（Retrieval Augmented Generation）：</strong>質問→関連GRADE Book章・guidance paper検索→文書に基づき回答生成。Hallucinationを減らし、GRADE guidance更新への対応が容易。GRADEのように継続更新される領域に相性が良い。</div>
-                <div style="background:#f3e8ff;padding:0.6rem;border-radius:6px;"><strong>Fine-tuning：</strong>GRADE Book Q&A・expert回答・よくある誤答と修正例を使って特化型モデルを追加学習。</div>
-              </div>
-              <div style="background:#fdf4ff;border-left:4px solid #a855f7;padding:0.7rem;border-radius:6px;font-size:0.9rem;color:#4b0082;margin-top:0.6rem;">
-                <strong>重要な課題：</strong>GRADE関連文書には公式guidance・concept paper・未承認preliminary documentが混在。AIが区別せずに回答すると、未承認内容を公式guidanceのように提示する危険がある。「この回答は正式なGRADE guidanceか、concept paperか」を明示する機能が必須。
+              <div style="background:#f1f5f9;border-left:3px solid #64748b;border-radius:4px;padding:0.7rem 0.9rem;margin:0 0 0.85rem 0;">
+                <strong>注記（文字起こしより）</strong>：昼食後のアジェンダ変更で、indirectness sessionは翌日（2026年5月8日）に移動。<br>
+                <em>"Ariel, who is overseas, to not start presenting. So we're gonna make a small switch, so the indirectness discussion or paper is going to be talked about tomorrow."</em>
               </div>
 
-              <h4 style="color:#6b21a8;font-size:1rem;font-weight:700;margin:1rem 0 0.4rem;border-bottom:2px solid #e9d5ff;padding-bottom:0.2rem;">② Net Effect — 正味効果の明示的推定</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">EtD frameworkの「balance of effects」をより透明・定量的にする取り組み。複数のbenefitsとharmsをutility値で重み付けして統合し、介入の正味効果（net effect）を数値として推定する。GRADEraterのoutcome-level certainty評価の次のステップとして位置づけられる。現在GRADEraterではnet benefit計算は未実装だが、将来的な連携が計画される。</p>
-              <p style="font-size:0.91rem;line-height:1.75;color:#1f2937;">「net benefit / net effect / overall certainty / recommendation strength」の連動が実現すれば、EtDフレームワークのbenefit-harm判断が大きく自動化・定量化される。</p>
+              <p><strong style="color:#475569;">以下は資料から把握できるIndirectness Updateの内容（翌日以降の参考）</strong></p>
 
-              <h4 style="color:#6b21a8;font-size:1rem;font-weight:700;margin:1rem 0 0.4rem;border-bottom:2px solid #e9d5ff;padding-bottom:0.2rem;">③ Perspectives in Decision-making</h4>
-              <p style="font-size:0.92rem;line-height:1.75;color:#1f2937;">誰の視点から（healthcare system・patient・society）、どの影響を、どこまで（介入の直接影響 vs. システム全体の影響）、どの時間軸で考慮しているかを明確化する枠組み。意思決定の「範囲」「影響領域」「時間軸」をEtDを超えて可視化する試み。</p>
-              <div style="background:#f3e8ff;padding:0.7rem;border-radius:6px;font-size:0.9rem;color:#4b0082;margin-top:0.5rem;">
-                <strong>なぜ重要か：</strong>同じ介入でも、誰の視点かによってbenefits/harmsのバランスが変わる。患者視点ではベネフィットが大きくても、社会全体の視点ではコストが問題になる場合がある。現在のEtDでは「perspective」が明示されないことが多く、推奨の文脈依存性が見えにくくなる。
-              </div>
+              <p><strong style="color:#475569;">Indirectnessの定義</strong><br>
+              <em>"Indirectness encompasses applicability, generalizability, external validity, translatability and transferability of research results."</em><br>
+              研究エビデンスの特徴と実際に適用したいtarget applicationとの間に系統的な違いがあるリスク。</p>
+
+              <p><strong style="color:#475569;">従来guidanceの限界（10点）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>2011年のguidance以降GRADEが発展したが未更新</li>
+                <li>indirectness tableが不十分</li>
+                <li>study-level assessmentの説明が不足</li>
+                <li>PICO要素ごとの具体的要因が不足</li>
+                <li>unexplained inconsistencyとの関係が不明確</li>
+                <li>RCT中心で他の研究デザインへの対応が弱い</li>
+                <li>baseline risk uncertaintyとの関係が不明確</li>
+                <li>thresholdsを判断支援に使っていない</li>
+                <li>3段階downgradeを認めていない</li>
+                <li>どれくらいdowngradeするかの操作化が不十分</li>
+              </ol>
+
+              <p><strong style="color:#475569;">重要なGeneral rule</strong><br>
+              <strong>"All evidence is indirect."</strong> どんな研究も完全に目の前の患者と一致しない。しかし、PICOの違いが「relative effectまたはabsolute effectに意味のある系統的差をもたらすcompelling reasonsがある場合にのみ」downgradeする。</p>
+
+              <p><strong style="color:#475569;">Indirectnessの2つの主要理由</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Relative effectがPICO要素により異なる可能性</strong>（effect modification）→「成人ではRR 0.8、小児ではRR 0.6かもしれない」</li>
+                <li><strong>Absolute effectがPICO要素により異なる可能性</strong>（baseline riskの違いによる）→rare events論文との関連も重要</li>
+              </ol>
+
+              <p><strong style="color:#475569;">35.2 理由2（絶対効果の違い）</strong><br>
+              baseline riskが大きく異なる場合、たとえrelative effectが同じでもabsolute effectは大きく変わる。これはindirectnessとしてdowngradeを検討すべき状況。Direct RDメタ解析からのRR再構成で対処不十分な場合もここに該当する。</p>
 
             </div>
           </details>
 
-          <!-- まとめ -->
-          <div style="background:#f0fdf4;border:2px solid #bbf7d0;border-radius:10px;padding:1rem;margin-top:0.5rem;">
-            <h4 style="color:#065f46;font-size:0.97rem;font-weight:700;margin:0 0 0.5rem;">ポルト2026会議の全体的な位置づけ</h4>
-            <p style="font-size:0.91rem;line-height:1.75;color:#1f2937;margin:0;">GRADEraterのWG承認とGRADE to Researchの正式承認という2つの歴史的節目を含む会議。自動化・AI（GRADErater・GRADE Bot）、研究への架け橋（GRADE to Research）、適用拡大（希少疾患・dose-response NMA・MDT）、公平性（Equity EtD）、そして意思決定の透明化（decision thresholds・net effect・perspectives）という方向でGRADE方法論が急速に発展しつつあることを示す。日本語でのGRADE実践者にとっても、これらの更新への対応は今後不可欠となる。</p>
+          <!-- ===== LECTURE 8 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #c7d2fe;">
+            <summary style="background:linear-gradient(135deg,#3730a3,#4338ca);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑧ GRADE Rapid ADOLOPMENT（Paula Perestrelo）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【ツール開発プロジェクト】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#3730a3;">ADOLOPMENTとは</strong><br>
+              Adoption（採用）＋ Adaptation（適応）＋ De novo Development（新規作成）の造語。既存ガイドラインを効率的に採用・適応・発展させるGRADE framework。</p>
+
+              <p><strong style="color:#3730a3;">背景・必要性</strong><br>
+              de novo guideline developmentは専門家・方法論者・SR・文献検索・GRADE評価・EtD・パネル・外部レビュー・資金・時間が必要→LMICs・資源制約組織には重すぎる。</p>
+
+              <p><strong style="color:#3730a3;">3つの判断（EtD frameworkを使って決定）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Adoption</strong>：推奨を現地文脈にそのまま採用</li>
+                <li><strong>Adaptation</strong>（contextualize）：costs・feasibility・acceptability・患者価値観・local evidenceを評価して修正</li>
+                <li><strong>De novo</strong>：既存なし・信頼できない・問いが異なる場合のみ実施</li>
+              </ul>
+
+              <p><strong style="color:#3730a3;">なぜRapid版が必要か</strong><br>
+              通常のADOLOPMENTも資源を使う→「より少なく、より速く、同等の質を保つ」streamlined versionの開発。"rigourを維持しながらefficiencyとscalabilityを高める"</p>
+
+              <p><strong style="color:#3730a3;">開発計画3段階</strong></p>
+
+              <div style="background:#eef2ff;border-left:3px solid #4338ca;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Study 1：現在のADOLOPMENT使用実践のqualitative study</strong><br>
+                Semi-structured interviews ＋ focus groups。ADOLOPMENT経験者（少なくとも1 published projectに関与）へのpurposive sample。45〜60分・secure online platforms・2名のinterviewers。
+              </div>
+
+              <div style="background:#eef2ff;border-left:3px solid #4338ca;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Study 2：tool開発とvalidation</strong><br>
+                Expert input・user testing・usability・feasibility・clarity評価。
+              </div>
+
+              <div style="background:#eef2ff;border-left:3px solid #4338ca;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>Output 3：GRADE Rapid ADOLOPMENT tool</strong><br>
+                チェックリストではなく構造化支援ツール
+              </div>
+
+              <p><strong style="color:#3730a3;">Study 1で調査する変数（key thematic areas）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>Methodological fidelity（方法論的忠実性）</li>
+                <li>Intentional deviations（意図的な標準からの逸脱）</li>
+                <li>Rationale for adaptations（効率化・実践的制約・guideline integrity維持）</li>
+                <li>Acceptable simplifications（透明性と厳密性を保ちながら許容できる簡略化）</li>
+              </ul>
+
+              <p><strong style="color:#3730a3;">Data analysis：Hybrid deductive-inductive thematic analysis</strong><br>
+              Deductive（既存ADOLOPMENT processとGRADE原則に基づく）＋ Inductive（予期せぬtheme：unanticipated adaptations・context-specific constraints・workarounds・informal decision-making）</p>
+
+              <p><strong style="color:#3730a3;">参加形態（相互排他的）</strong><br>
+              Interviewees（ADOLOPMENT経験者）またはcollaborators（インタビュー実施・解釈貢献）。2つは相互排他的（研究バイアス防止）。</p>
+
+              <p><strong style="color:#3730a3;">AI統合の可能性（スライドに言及）</strong><br>
+              AIがsource guideline同定・recommendationの抽出・EtD criteria比較・local evidence検索・contextual differences整理・adaptation rationale草案作成を支援できる可能性。ただし最終判断は人間のパネルと方法論者が行う。</p>
+
+              <p><strong style="color:#3730a3;">意義</strong><br>
+              LMICsでの信頼できる国際GLの迅速地域化・living guidelineとの相性・重複作業削減・将来的なGRADE自動化との接続可能性。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 9 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #e9d5ff;">
+            <summary style="background:linear-gradient(135deg,#6b21a8,#7c3aed);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑨ GRADE Equity EtD Guidance</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【ガイダンス更新】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#6b21a8;">正式タイトル</strong><br>
+              GRADE Guidance: Updated guidance for integrating health equity in the GRADE Evidence to Decision process</p>
+
+              <p><strong style="color:#6b21a8;">Health equityの定義（WHO）</strong><br>
+              <em>"The absence of unfair, avoidable differences in health among groups of people."</em><br>
+              unfair・avoidable・unjustな差が問題（差があること自体ではない）。</p>
+
+              <p><strong style="color:#6b21a8;">GRADEとhealth equityの歴史</strong><br>
+              2016年：EtD frameworkにhealth equity criterionを追加。4つのsignalling questions（①不利な集団がいるか②相対効果が異なる予想があるか③baseline conditionsが異なり絶対効果が変わるか④実装時の考慮事項はあるか）。<br>
+              2017年：GRADE Equity series（4部作）で方法論的基盤を整備。<br>
+              しかし実際のガイドラインでの統合は不十分→今回の更新版ガイダンスが必要。</p>
+
+              <p><strong style="color:#6b21a8;">用語の変更</strong><br>
+              "disadvantaged populations"→stigmatizingとして「populations experiencing or at risk of experiencing inequities」（不公平を経験している・または将来リスクのある集団）に変更。</p>
+
+              <p><strong style="color:#6b21a8;">Equity lens</strong><br>
+              equity-relevant populationsに関するエビデンスを探し・統合し・health equity considerationsを導くプロセス。benefits and harmsには最低限適用。必要に応じてEtD全要素（values・balance of effects・resources・acceptability・feasibility・planetary health等）にも適用。</p>
+
+              <p><strong style="color:#6b21a8;">5ステップアプローチ</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Step 1</strong>：guideline perspectiveがhealth equity pathwaysとpriority populationsをどう定めるか評価。PROGRESS-Plus枠組みを使用（Place・Race/ethnicity/culture/language・Occupation・Gender/sex・Religion・Education・Socioeconomic status・Social capital・Plus：age・disability・sexual orientation・migration等）。Perspectiveの例：個別患者・スクリーニング集団・医療システム・環境/職業・Planetary health。</li>
+                <li><strong>Step 2</strong>：guideline health questionにhealth equityを統合。Separate PICOを作るべき条件（credible effect modifier・絶対効果が大きく変わるbaseline riskの違い・outcome importanceの違い・feasibility/acceptabilityの違い）。</li>
+                <li><strong>Step 3</strong>：equity-relevant evidenceを統合し、そのcertaintyを評価。</li>
+                <li><strong>Step 4</strong>：equity considerationsをEtDに組み込み。</li>
+                <li><strong>Step 5</strong>：equity-informedなrecommendationの作成。</li>
+              </ol>
+
+              <p><strong style="color:#6b21a8;">5種類のperspective例（Box 1）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Clinical individual patient</strong>：関節リウマチ治療減量ガイドライン「flare時に迅速再開アクセスがない場合はtaperingを推奨しない」（医療アクセスの違いが影響）</li>
+                <li><strong>Screening/coverage decision</strong>：大腸がんスクリーニング「健康不公平を経験する成人にoutreachを優先」</li>
+                <li><strong>Health system/public health</strong>：Indigenous peoples糖尿病ケア「社会的・歴史的・経済的・文化的・地理的要因を尊重」</li>
+                <li><strong>Environmental/occupational</strong>：低所得住宅でのpesticide exposure不均等</li>
+                <li><strong>Planetary health equity</strong>：carbon pricingが低所得世帯に不均等な経済負担を与える可能性</li>
+              </ol>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 10 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #a5f3fc;">
+            <summary style="background:linear-gradient(135deg,#0e7490,#0891b2);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑩ Dose-response NMAにおけるGRADE Certainty評価</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【方法論的開発】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#0e7490;">背景</strong><br>
+              Dose-response network meta-analysis（dose-response NMA）では、比較が理論上無限に生じる（異なる用量の全組み合わせ）。通常のNMAとは異なるGRADE certainty評価のアプローチが必要。</p>
+
+              <p><strong style="color:#0e7490;">問題</strong><br>
+              通常のNMAでは各比較ペアにcertaintyを評価する。dose-response NMAでは比較が連続的で、どの用量ペアに対してもcertainty evaluationが必要になると現実的でない。用量ごとに評価を繰り返すことはほぼ不可能であり、新しいアプローチが必要。</p>
+
+              <p><strong style="color:#0e7490;">解決の方向</strong><br>
+              dose-response関係全体としてcertaintyをどう評価するかの方法論的整理。dose-response関係の形（linear・non-linear・threshold等）への不確実性の組み込み。GRADEraterとの将来的な連携も視野に入れている。</p>
+
+              <p><strong style="color:#0e7490;">意義</strong><br>
+              用量設定ガイドライン・用量反応関係の評価が重要な分野（薬物療法・環境曝露・栄養介入等）でのGRADE適用を可能にする。医療政策・規制科学・精密医療においても重要な方法論的基盤となる。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 11 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #6ee7b7;">
+            <summary style="background:linear-gradient(135deg,#065f46,#047857);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑪ 個別化意思決定・MDTにおけるEtD応用（HCC事例）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【応用研究】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#065f46;">背景</strong><br>
+              GRADE EtDを従来の集団レベルのガイドライン推奨だけでなく、個別患者のmultidisciplinary team（MDT）意思決定に応用する構想。</p>
+
+              <p><strong style="color:#065f46;">HCC（肝細胞がん）事例でのexploration</strong><br>
+              Hepatocellular carcinoma（肝細胞がん）の治療選択に関するMDTでEtD frameworkを適用した事例研究として提示された。</p>
+
+              <p><strong style="color:#065f46;">集団レベル vs 個別レベルのEtD</strong><br>
+              集団レベルでは「一般的な患者にとって」の推奨。個別化では患者固有の価値観・comorbidities・機能状態・治療可能性・アクセス・患者の意向を組み込んだ意思決定支援。同じEtDの要素を個別患者の文脈で再評価する。</p>
+
+              <p><strong style="color:#065f46;">EtD for individual patient care</strong><br>
+              EtDの各要素（benefits/harms/values/resources/equity/acceptability/feasibility）を個別患者の文脈で再評価。「この患者にとって」のcertainty・thresholds・balance of effectsを考える枠組み。</p>
+
+              <p><strong style="color:#065f46;">意義</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>SDM（shared decision making）とGRADEの統合</li>
+                <li>MDTでの透明な意思決定支援</li>
+                <li>ガイドライン推奨の「集団→個人」への橋渡し</li>
+                <li>precision medicineとの親和性</li>
+              </ul>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 12 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+            <summary style="background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑫ GRADE Bot — GRADEをAIで回答する（Manuel Marques-Cruz・Paweł Jemioło）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【AI開発プロジェクト】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#6d28d9;">目的</strong><br>
+              Open-source LLMに基づく新しいGRADE Botの開発・評価。GRADEに関する専門的質問に対し、GRADE Book・公式guidance paperに根拠づけられた回答を返すAI。</p>
+
+              <p><strong style="color:#6d28d9;">なぜ汎用AIではだめか</strong><br>
+              ChatGPT等の汎用AIはGRADE関連文書に特化しておらず、hallucination・古い情報・未承認概念の混入リスクがある。GRADE Botは「GRADE Bookに書かれていないことは書かれていないと答える」能力が必要。</p>
+
+              <p><strong style="color:#6d28d9;">典型的な質問例</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>「imprecisionはいつ2段階downgradeするか？」</li>
+                <li>「NMAなしでGRADEは使えるか？」</li>
+                <li>「NRSIのstarting pointはいつlowで、いつhigh？」</li>
+                <li>「EtDでvalues and preferencesをどう扱うか？」</li>
+              </ul>
+
+              <p><strong style="color:#6d28d9;">3つの開発アプローチ</strong></p>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>1. Prompt/Context Engineering</strong>：AIへの指示文の工夫。「公式guidanceのみに基づく」「不確実な場合は推測しない」「official guidanceとconcept paperを区別する」「根拠となる章・文書を示す」等。RAGなしでは限界あり（古い情報・hallucination）。
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>2. RAG（Retrieval Augmented Generation）</strong>：質問→関連GRADE Book章・guidance paper検索→文書に基づき回答生成。利点：最新GRADE Bookに基づける・根拠を示せる・hallucination軽減・文書更新に対応しやすい・再学習不要。GRADEのように継続更新される領域に最も相性が良い。
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
+                <strong>3. Fine-tuning</strong>：GRADE Book Q&amp;A・expert回答・よくある誤答と修正例を使って特化型LLMを追加学習。利点：GRADE特有の表現や判断様式に特化。注意点：新guidanceが出ると再学習必要・古い情報を固定化するリスク・training data品質に依存。
+              </div>
+
+              <p><strong style="color:#6d28d9;">対象知識源の階層化（重要）</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>Official GRADE guidance（最上位）</li>
+                <li>GRADE Book</li>
+                <li>GRADE concept paper</li>
+                <li>GRADE WG presentation</li>
+                <li>Draft manuscript</li>
+                <li>Non-GRADE methodological paper</li>
+              </ol>
+              <p>回答では「これは公式guidanceに基づく」「これはconcept paper段階」「これは開発中」と明示する必要がある。</p>
+
+              <p><strong style="color:#6d28d9;">Preliminary evaluation results（17 questions training sample）</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Model A（Deepseek-r1）</strong>：Correct and good quality 88%、Correct but 6%、Incorrect 6% ←最良成績</li>
+                <li><strong>Model B</strong>：Correct and good quality 76%、Correct but 18%、Incorrect 6%</li>
+                <li><strong>Model C</strong>：Correct and good quality 76%、Correct but 18%、Incorrect 6%</li>
+                <li><strong>Model Z</strong>：Correct and good quality 41%、Correct but 6%、Incorrect 53% ←最低成績</li>
+              </ul>
+              <p>意義：Deepseek-r1（open-source LLM）が最高成績→open-source LLMでも専門方法論QAに使える可能性が示された。</p>
+
+              <p><strong style="color:#6d28d9;">回答品質カテゴリ</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Correct and good quality</strong>：GRADE Bookと一致・誤りなし・十分具体的・明確・質問に直接答える</li>
+                <li><strong>Correct but...</strong>：正しいが問題あり（GRADE Book外の情報・general過ぎる・例なし・不十分な詳細・混乱を招く）</li>
+                <li><strong>Incomplete</strong>：一部の論点のみ・重要例外省略・GRADE domainの欠落</li>
+                <li><strong>Incorrect</strong>：GRADE Bookに反する・明らかな誤り（最も危険）</li>
+              </ul>
+
+              <p><strong style="color:#6d28d9;">会議でのlive evaluation</strong><br>
+              参加者がGRADE Bookで答えられるべき質問を提出→Botの回答をその場で評価→expert feedbackを即座に収集→評価データを増やしprompt/RAGを改善。</p>
+
+              <p><strong style="color:#6d28d9;">今後の課題</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>情報源の階層化と引用・根拠提示（chapter・section・key quotation・version）</li>
+                <li>GRADE Bookにないことを「ない」と言える能力の実装</li>
+                <li>ユーザー層別の回答（初学者向け簡潔 vs 上級者向け詳細）</li>
+                <li>Safety（誤った方法論の提示がGLの質に影響するリスク）</li>
+              </ul>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 13 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #a7f3d0;">
+            <summary style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑬ Net Effect（正味効果の明示的推定）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【方法論的革新】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#059669;">背景</strong><br>
+              EtD frameworkの「balance of effects」は現在しばしば暗黙的・非定量的。「benefits &gt; harmsだから推奨」という判断が定量的根拠なしになされることが多い。</p>
+
+              <p><strong style="color:#059669;">Net effectとは</strong><br>
+              複数のbenefitsとharmsをutility値で重み付けして統合し、介入の正味効果（net benefit / net effect）を単一の数値として推定する取り組み。</p>
+
+              <p><strong style="color:#059669;">計算の考え方</strong><br>
+              各アウトカムのabsolute effect × disutility（またはutility重みづけ）を合算。<br>
+              例：死亡を10 fewer per 1,000減らす（重みが高い）— 吐き気を20 more per 1,000増やす（重みが低い）= 正味としてどちらの方向に？</p>
+
+              <p><strong style="color:#059669;">GRADEraterとの関係</strong><br>
+              GRADEraterは現在outcome-level certainty assessment tool。net benefit計算は未実装。将来的に実装されると、outcome importance（critical vs important）・benefit-harm balance・net effect・overall certainty・recommendation strengthの連動が可能になる。</p>
+
+              <p><strong style="color:#059669;">意義</strong><br>
+              EtDのbenefit-harm判断の定量化・透明化。「どのoutcomeにどの重みをつけているのか」が明示され、パネルのvalue judgmentが見える化される。recommendation strengthとの連動がより論理的になる。ただし、utility weightの設定方法・文脈依存性・患者vs社会の視点の違いなど多くの方法論的課題がある。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== LECTURE 14 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #bfdbfe;">
+            <summary style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑭ Perspectives in Decision-making（意思決定における視点の構造化）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【概念的枠組み】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <p><strong style="color:#1e3a8a;">問題意識</strong><br>
+              同じ介入でも誰の視点からか（患者・医療者・医療システム・社会・政府）によってbenefits/harmsのバランスが変わる。現在のEtDでは「perspective」が明示されないことが多く、推奨の文脈依存性が見えにくい。</p>
+
+              <p><strong style="color:#1e3a8a;">構造化する4つの次元</strong></p>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li><strong>Who（誰の視点か）</strong>：個別患者・医療提供者・医療システム・保険者・社会全体・将来世代</li>
+                <li><strong>What（どの影響を考慮するか）</strong>：直接の介入効果のみ vs システム全体の影響（displaced care・resource reallocation等）</li>
+                <li><strong>Where（どこまで考慮するか）</strong>：介入の直接影響 vs 間接的影響 vs planetary health impacts</li>
+                <li><strong>When（どの時間軸か）</strong>：短期 vs 長期 vs 生涯 vs 世代を超えた影響</li>
+              </ol>
+
+              <p><strong style="color:#1e3a8a;">EtDとの関係</strong><br>
+              EtDの各要素（balance of effects・resource use・equity・acceptability・feasibility）は「perspective」によって評価が変わる。同じintervention effectでも、患者視点ではbenefit outweighsでも、healthcare system視点では高コストでunfavorableかもしれない。</p>
+
+              <p><strong style="color:#1e3a8a;">Planetary health perspective</strong><br>
+              医療介入が環境・自然システム・将来世代に与える影響を考慮する枠組み。GRADEのEtDに将来的にplanetary health impactsを正式に組み込む動き。</p>
+
+              <p><strong style="color:#1e3a8a;">意義</strong></p>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
+                <li>ガイドライン推奨に「どの視点からの推奨か」を明示できる</li>
+                <li>異なるステークホルダーが同じ推奨をどう解釈するかの透明化</li>
+                <li>推奨の条件性（conditional）と視点の関係を整理</li>
+                <li>HTA・保険者・患者・医療者が同じEtDデータから異なる結論に至る理由を構造的に説明</li>
+              </ul>
+
+            </div>
+          </details>
+
+          <!-- ===== FINAL SUMMARY BOX ===== -->
+          <div style="background:linear-gradient(135deg,#064e3b,#065f46);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-top:1rem;">
+            <div style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:0.5rem;">【ポルト2026年会議 総括】</div>
+            <div style="font-size:0.88rem;line-height:1.8;">
+              <p style="margin:0 0 0.65rem 0;"><strong>歴史的節目：</strong>GRADEraterのWorking Group正式承認・GRADE to Researchの正式承認投票という2大歴史的承認が行われた会議。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>自動化・AI：</strong>GRADErater（NMA半自動化）・GRADE Bot（LLM-based QA）による方法論的作業の効率化と品質担保を同時に追求。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>研究への架け橋：</strong>GRADE to Researchにより、エビデンス評価がresearch waste削減・研究質改善に直接貢献する新しいサイクルを確立。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>適用拡大：</strong>希少疾患・dose-response NMA・個別化MDT意思決定・環境/職業/planetary healthと、GRADE適用領域が急速に広がっている。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>方法論的精緻化：</strong>Decision Thresholds（Guidance 42）・Rare Events（直接RDメタ解析）・Certainty Range Concept・Indirectness Updateにより判断の定量化・透明化が進む。</p>
+              <p style="margin:0 0 0;"><strong>公平性・透明化：</strong>Equity EtD更新・Net Effect・Perspectives in Decision-makingにより、「誰にとって・どの視点から・どの価値観で」という問いがGRADE方法論に正式に統合されつつある。</p>
+            </div>
           </div>
 
         </div><!-- /upd-porto2026 -->
+
 
       </div>
       <div class="page-nav">
