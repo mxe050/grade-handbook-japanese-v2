@@ -9753,6 +9753,45 @@ function checkAuth(){
 
                 </div>
               </details>
+
+              <!-- 関連ツール・リソース -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1rem 1.2rem;margin-top:1rem;">
+                <div style="font-size:0.88rem;font-weight:700;color:#065f46;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;">🔗 関連ツール・リソース</div>
+
+                <!-- GRADErater-TA -->
+                <div style="background:#fff;border:1px solid #d1fae5;border-radius:8px;padding:0.9rem 1rem;margin-bottom:0.8rem;">
+                  <div style="display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:0.5rem;">
+                    <span style="background:#059669;color:#fff;font-size:0.75rem;font-weight:700;padding:0.25rem 0.55rem;border-radius:4px;white-space:nowrap;flex-shrink:0;">Shiny App</span>
+                    <div>
+                      <div style="font-weight:700;font-size:0.95rem;color:#065f46;">GRADErater-TA（診断検査精度評価版）</div>
+                      <div style="font-size:0.8rem;color:#6b7280;">作成: Rafael J. Vieira</div>
+                    </div>
+                  </div>
+                  <p style="font-size:0.88rem;line-height:1.7;color:#1f2937;margin:0 0 0.5rem 0;">GRADErater本体（NMA用）を<strong>Test Accuracy（診断検査精度）評価</strong>に拡張したShinyウェブアプリ。診断テストのメタアナリシス（感度・特異度）に対してGRADE確実性評価を半自動化。DTA（Diagnostic Test Accuracy）向けに最適化されたインターフェースを持ち、GRADEraterと同じ7ドメイン評価枠組みを採用する。</p>
+                  <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.6rem 0.8rem;margin-bottom:0.6rem;font-size:0.85rem;">
+                    <strong style="color:#065f46;">Example dataset（ab4240_example.xlsx）：</strong>アルツハイマー病血中バイオマーカー（Aβ42/40 P-tau比）の診断精度データセット。30研究、6種類のプラットフォーム（HPLC-DMS-MS/MS・IPMS [C2N/UGOT/WashU]・免疫測定法 [Roche Elecsys・HISCL・Lumipulse Fujirebio・Quanterix Simoa]）を評価。各研究にTP/FP/TN/FN・RoB（low/high/unclear）・directness（sufficiently direct / not sufficiently direct）の評価を含む。このデータをツールに読み込んでGRADE DTA評価を体験できる。
+                  </div>
+                  <a href="https://rafaeljvieira.shinyapps.io/GRADErater-TA/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#059669;color:#fff;padding:0.5rem 0.9rem;border-radius:7px;font-weight:700;text-decoration:none;font-size:0.88rem;">
+                    🔗 GRADErater-TA を開く（Shiny App）
+                  </a>
+                </div>
+
+                <!-- FEvIR -->
+                <div style="background:#fff;border:1px solid #d1fae5;border-radius:8px;padding:0.9rem 1rem;">
+                  <div style="display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:0.5rem;">
+                    <span style="background:#0891b2;color:#fff;font-size:0.75rem;font-weight:700;padding:0.25rem 0.55rem;border-radius:4px;white-space:nowrap;flex-shrink:0;">FHIR</span>
+                    <div>
+                      <div style="font-weight:700;font-size:0.95rem;color:#0e7490;">FEvIR.net — GRADE Code System</div>
+                      <div style="font-size:0.8rem;color:#6b7280;">Fast Evidence Interoperability Resources</div>
+                    </div>
+                  </div>
+                  <p style="font-size:0.88rem;line-height:1.7;color:#1f2937;margin:0 0 0.5rem 0;">FEvIR（Fast Evidence Interoperability Resources）プラットフォーム上に公開されたGRADE用語コードシステム。<strong>FHIRベース</strong>でGRADE確実性評価・SoF表・EtDを<strong>計算機処理可能な構造化データ（computable GRADE）</strong>として表現・共有するための基盤。EHRシステム・CDSツール・GRADE Bot（Lecture ⑫）のナレッジベース構築に利用される。<code style="background:#f1f5f9;padding:0.1rem 0.35rem;border-radius:3px;font-size:0.82rem;">GRADE:02030</code>はGRADE確実性評価の特定コードを指す。</p>
+                  <a href="https://fevir.net/resources/CodeSystem/27833#GRADE:02030" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#0891b2;color:#fff;padding:0.5rem 0.9rem;border-radius:7px;font-weight:700;text-decoration:none;font-size:0.88rem;">
+                    🔗 FEvIR GRADE CodeSystem を開く
+                  </a>
+                </div>
+              </div>
+
             </div>
           </details>
 
@@ -10082,6 +10121,45 @@ function checkAuth(){
                 ⑥ decision thresholdsと連携できる<br>
                 ⑦ 研究設計改善に具体的<br>
                 ⑧ funders / ethics committeesへの応用可能性
+              </div>
+
+              <!-- 研究優先度付けサブセクション -->
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:1rem 1.2rem;margin-top:1rem;">
+                <div style="font-size:0.88rem;font-weight:700;color:#1e40af;margin-bottom:0.7rem;">📋 関連討議：GRADE for Research — 研究優先度付けの基準（For Discussion）</div>
+                <p style="font-size:0.88rem;line-height:1.7;color:#1f2937;margin:0 0 0.6rem 0;">GRADE for Research プロジェクトの一環として、研究優先度付けのためのGRADE的基準を開発する議論が行われた。ChatGPTを活用した文献調査で13の主要文献から<strong>231の研究優先度付け基準</strong>を手動抽出し、AIが17のoverarching categoriesに要約した。</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.7rem;">
+                  <div style="background:#fff;border-left:3px solid #3b82f6;border-radius:4px;padding:0.6rem 0.8rem;font-size:0.85rem;">
+                    <strong style="color:#1e40af;">主要参考文献</strong><br>
+                    Fadlallah et al. 2022 <em>BMJ Glob Health</em>（scoping review）<br>
+                    Wong et al. 2022 <em>J Gen Intern Med</em>（methods）<br>
+                    WHO 2020・2025（政策文書）<br>
+                    Tong et al. 2019（REPRISE reporting guideline）
+                  </div>
+                  <div style="background:#fff;border-left:3px solid #ef4444;border-radius:4px;padding:0.6rem 0.8rem;font-size:0.85rem;">
+                    <strong style="color:#b91c1c;">ギャップ分析（5点）</strong><br>
+                    ① GRADEのCoE/EtDに基づくものが皆無<br>
+                    ② guidelinesとの明示的リンクなし<br>
+                    ③ health effects以外のEtDドメインに未対応<br>
+                    ④ GRADE for Research指針未組み込み<br>
+                    ⑤ EtD基準との顕著な類似性（両者とも意思決定に関わる）
+                  </div>
+                </div>
+
+                <p style="font-size:0.88rem;font-weight:700;color:#1e40af;margin:0 0 0.4rem 0;">提案EtDスタイル枠組み（10基準）</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;font-size:0.84rem;">
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>1. Problem</strong> — 研究の重要性・関連性・緊急性</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>2. Desirable consequences</strong> — 不確実性低減・ギャップ解消の程度</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>3. Undesirable consequences</strong> — 参加者への潜在的害</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>4. Certainty of evidence</strong> — 結果の確実性</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>5. Balance of benefits</strong> — desirable vs undesirable + problem</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>6. Resources</strong> — 費用・人員・時間・インフラ</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>7. Cost-effectiveness</strong> — 研究が生み出す価値</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>8. Equity</strong> — 結果がequity問題に与える影響</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>9. Acceptability</strong> — 参加者・研究者・臨床家の許容性</div>
+                  <div style="background:#fff;border:1px solid #dbeafe;border-radius:4px;padding:0.4rem 0.7rem;"><strong>10. Feasibility</strong> — 実施可能性・実施準備の充足度</div>
+                </div>
+                <div style="margin-top:0.6rem;font-size:0.82rem;color:#6b7280;font-style:italic;">ステータス：For Discussion（承認投票なし）。既存フレームワークに依拠するか新たなGRADE独自枠組みを開発するか、方向性を検討中。</div>
               </div>
 
             </div>
@@ -11715,9 +11793,9 @@ function checkAuth(){
                   <span style="font-size:0.82rem;opacity:0.9;">発言："84.6% voted yes, so 55 out of 65, and that means that it's approved the previous paper." — "Net benefit? Congratulations, Ignacio and team."</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:0.7rem 1rem;font-size:0.9rem;">
-                  <strong>Equity EtD Guidance（本ペーパー）の投票：</strong><br>
-                  🗳️ 投票が開始された（"For the equity voting… everybody can vote on the equity one."）<br>
-                  <span style="font-size:0.82rem;opacity:0.9;">この文字起こしの範囲では投票結果（数値）は発表されていない。</span>
+                  <strong>Equity EtD Guidance（本ペーパー）の投票結果：</strong><br>
+                  ✅ <strong>承認（Approved）</strong>｜Yes: <strong>100%（全員賛成）</strong><br>
+                  <span style="font-size:0.82rem;opacity:0.9;">発言（PECOセッション終了後）："So, Omar's paper was also, um, approved, um, with 100%, so good job." — 全会一致での承認。</span>
                 </div>
               </div>
 
@@ -13147,11 +13225,149 @@ function checkAuth(){
             </div>
           </details>
 
+          <!-- ===== LECTURE 15 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fde68a;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑮ GRADE Guidance on PECO Statements（Paul Whaley・Julia・Devon）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">【For Information / 情報共有】</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <!-- ヘッダー -->
+              <div style="background:linear-gradient(135deg,#78350f,#92400e);color:#fff;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;">
+                <div style="font-size:0.78rem;opacity:0.85;margin-bottom:0.3rem;">GRADE Working Group Porto 2026 — Lecture ⑮ / For Information（昼食前セッション）</div>
+                <div style="font-size:1.05rem;font-weight:700;line-height:1.4;margin-bottom:0.3rem;">GRADE Guidance on PECO Statements in Research and Health Guidelines</div>
+                <div style="font-size:0.85rem;opacity:0.9;">発表者：Paul Whaley（Rebecca Morgan代理。Rebeccaは産休中）、Julia Menon（SRs担当）、Devon Barnes（Primary studies担当）<br>
+                所属：GRADE Environmental Health Project Group<br>
+                資金：EBTC（Evidence-Based Toxicology Collaboration）によるin-kind support<br>
+                チーム：Julia Menon・Devon Barnes・Emily Senerth・Nadia Vilahur・Gro Mathisen・Milica Pavlovic・Jan-Peter Nilsson（うち5名がGRADE初参加の新メンバー）</div>
+              </div>
+
+              <!-- 背景 -->
+              <div style="background:#fffbeb;border-left:4px solid #f59e0b;border-radius:6px;padding:0.9rem 1rem;margin-bottom:1rem;">
+                <h4 style="color:#92400e;font-weight:700;margin-bottom:0.5rem;">背景：PECOとは・なぜ今ガイダンスが必要か</h4>
+                <p style="margin:0 0 0.5rem 0;"><strong style="color:#92400e;">PECOとは</strong><br>
+                Population・Exposure・Comparator・Outcomeの枠組み。比較効果サイズ研究（comparative effect size research）の目標・スコープを明確化するために使用。環境・職業健康分野の曝露研究に特化した形式。<br>
+                ※ GRADEオントロジーでは介入（Intervention）は「意図的な曝露（deliberate exposure）」として曝露の下位概念に分類される。</p>
+                <p style="margin:0 0 0.5rem 0;"><strong style="color:#92400e;">現状の問題（実証データ付き）</strong><br>
+                Julia Menon et al. 2022の調査（75件の環境健康SR）：57件（76%）でPICOが不完全。内訳：Population欠如37/57件、<strong>Comparator欠如57/57件（全件！）</strong>、ExposureとOutcomeはほぼ常に記載。<br>
+                Primary studiesではPICOの使用例が見当たらない（索引付けの問題もあり発見困難）。Guidelinesでの普及状況は不明。</p>
+                <p style="margin:0 0 0.5rem 0;"><strong style="color:#92400e;">既存文献の問題</strong><br>
+                Rebecca Morgan et al. 2018論文が広く引用されているが、SR限定・古い・GRADE公式ガイダンスではない。Morgan論文を引用しているSRでもPICO記載の質は非常にばらつく。</p>
+                <p style="margin:0;"><strong style="color:#92400e;">PICOの二次効果</strong><br>
+                良質なPICO記載は研究メタデータを充実させ、SRや統合研究での検索可能性（findability）・再利用性（reusability）が向上する。</p>
+              </div>
+
+              <!-- 目的と方法 -->
+              <div style="background:#fef3c7;border-left:4px solid #d97706;border-radius:6px;padding:0.9rem 1rem;margin-bottom:1rem;">
+                <h4 style="color:#92400e;font-weight:700;margin-bottom:0.5rem;">目的と方法論</h4>
+                <p style="margin:0 0 0.4rem 0;"><strong>ゴール：</strong>Primary studies・SRs・health guidelinesの3文脈に対応するGRADE公式ガイダンスの開発。一般的アプローチ（general approach）を提供し、topic specialists（栄養・特定環境健康分野等）が約3ページの解釈版を作成する構造を想定。</p>
+                <p style="margin:0 0 0.4rem 0;"><strong>方法：</strong>①スコーピングレビューで現状把握 → ②Morgan et al. 2018を出発点に修正・開発 → ③必要ならModified Delphi → ④大グループ承認。現在はスコーピングレビュー進行中。タイムライン未確定。</p>
+                <p style="margin:0;"><strong>遅延の背景：</strong>米国政権交代に伴い、サブグループリーダー予定者が政府機関内の外部活動制限で参加不能となり、計画が大幅遅延。現チームはリソース制約下で進行中。</p>
+              </div>
+
+              <!-- 3つのスコーピングレビュー -->
+              <h4 style="color:#92400e;font-size:0.95rem;font-weight:700;border-left:4px solid #f59e0b;padding-left:0.5rem;margin-bottom:0.7rem;">3つの並行スコーピングレビュー</h4>
+
+              <div style="display:grid;gap:0.7rem;margin-bottom:1rem;">
+                <!-- SR担当 -->
+                <div style="background:#fff;border:1px solid #fde68a;border-radius:8px;padding:0.85rem 1rem;">
+                  <div style="font-weight:700;color:#92400e;margin-bottom:0.4rem;">① SRs担当（Julia Menon）</div>
+                  <div style="font-size:0.87rem;line-height:1.7;">
+                    検索：PubMed、4種類の検索式（ヒト・動物・in vitro研究のSR）、2024年または2025年公開。RIANで2人以上が重複選択。<br>
+                    多様性注入：①研究集団種別（ヒト/動物/in vitro）②雑誌の質（質管理あり誌 vs delisted誌）③Morgan論文引用有無。25件×3グループ＝75件目標。<br>
+                    <strong>適格基準：</strong>英語/外因性化学的・物理的曝露（職業含む）/比較効果サイズ/ヒト健康アウトカム/歯科を除く。<br>
+                    <strong>データ収集：</strong>PICO記載あり→形式種別・場所・各要素の明確性・改善可能性・目的との整合性・アーキタイプ一致。PICO記載なし→目的・場所・明確性・整合性をできる範囲で評価。
+                  </div>
+                </div>
+                <!-- Primary studies担当 -->
+                <div style="background:#fff;border:1px solid #fde68a;border-radius:8px;padding:0.85rem 1rem;">
+                  <div style="font-weight:700;color:#92400e;margin-bottom:0.4rem;">② Primary studies担当（Devon Barnes）</div>
+                  <div style="font-size:0.87rem;line-height:1.7;">
+                    対象：疫学・動物・in vitro研究。Primary studiesではPICOがほぼ暗黙的であるため、論文の目的（objectives）からPICOを<strong>推論して抽出</strong>する inferential approachを採用。<br>
+                    <strong>主な課題：</strong>①PICOが暗黙的 ②comparatorが不明確（回帰分析等では暗黙的な複数の比較群）③多重曝露・多重アウトカムを持つ研究への対応 ④情報がabstractではなくMethods/Tables/Supplementに散在。<br>
+                    透明で正確な推論的判断のcodebookを整備して対応。
+                  </div>
+                </div>
+                <!-- Health guidelines担当 -->
+                <div style="background:#fff;border:1px solid #fde68a;border-radius:8px;padding:0.85rem 1rem;">
+                  <div style="font-weight:700;color:#92400e;margin-bottom:0.4rem;">③ Health guidelines担当（Emily Senerth・Nadia Vilahur）</div>
+                  <div style="font-size:0.87rem;line-height:1.7;">
+                    GRADE Guidance 40（環境・職業健康EtD）作成時に収集した300件のガイドライン文書を活用予定（eligibility制限は設けず、自称guidelinesを額面通りに受け取る）。50〜75件を対象にデータ抽出。<br>
+                    <strong>課題：</strong>①1ガイドラインに複数PICOが存在 ②guideline定義の曖昧性（narrative reviewが「guideline」と名乗る） ③毒性学的研究での多重曝露-アウトカム関係への対応。<br>
+                    最低基準案（他参加者提案）：methodology sectionが存在すること。
+                  </div>
+                </div>
+              </div>
+
+              <!-- PECO分析の3軸 -->
+              <div style="background:#fef9c3;border-left:4px solid #ca8a04;border-radius:6px;padding:0.8rem 1rem;margin-bottom:1rem;font-size:0.88rem;">
+                <strong style="color:#92400e;">PECOの分析3軸：</strong><br>
+                <strong>①completeness（完全性）</strong>：PICO全要素が存在するか<br>
+                <strong>②precision（精度）</strong>：各要素の記載が十分に明確か（例：「妊婦」と書いてあるが実際は特定の妊娠期間のみを対象にしている場合など）<br>
+                <strong>③coherence（整合性）</strong>：PICO文と実際の研究目標・目的との整合性（PICO文が研究の本当の目的を正確に表しているか）<br>
+                また、Morgan et al. 2018の<strong>5アーキタイプ（シナリオ）</strong>への一致を確認し、未対応の研究デザインがないか検証。パイロット段階では一致率が低く方法を再検討中。
+              </div>
+
+              <!-- PECO-Buddy -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.8rem 1rem;margin-bottom:1rem;font-size:0.88rem;">
+                <strong style="color:#065f46;">🤖 PECO-Buddy（サイドプロジェクト）</strong><br>
+                本GRADEプロジェクトとは別の派生プロジェクト。<strong>LLMベースのツール</strong>で研究者が明確・包括的なPECO文の作成を支援する。2025年11月のAIミーティングで紹介済み。Ignacioによる最初のユーザーテストを実施したところ即座に再構築が必要になった（→有益なフィードバック）。<strong>ボランティア10名募集中</strong>。
+              </div>
+
+              <!-- Q&A -->
+              <div style="background:#44403c;border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:1rem;">
+                <div style="color:#fbbf24;font-size:0.78rem;margin-bottom:0.5rem;">Q&amp;A DISCUSSION</div>
+                <div style="color:#fff;font-size:0.95rem;font-weight:700;">質疑応答</div>
+              </div>
+
+              <div style="border:1px solid #e5e7eb;border-radius:8px;margin-bottom:0.7rem;overflow:hidden;">
+                <div style="background:#f1f5f9;padding:0.6rem 0.9rem;font-size:0.85rem;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb;">
+                  💬 Jo（コメント）— Miranda CumpstonのJCE論文との関連
+                </div>
+                <div style="padding:0.75rem 1rem;font-size:0.88rem;line-height:1.75;color:#1f2937;">
+                  Miranda Cumpston（PhD）とほぼ同内容の研究をJCE誌で発表済み（SRにおけるPICO formulation）。介入の定義精度・合成質問の要素記載などで類似した問題を扱っており、参照を推奨。現時点でもSRにおけるPICO記載は不十分。
+                </div>
+              </div>
+
+              <div style="border:1px solid #e5e7eb;border-radius:8px;margin-bottom:0.7rem;overflow:hidden;">
+                <div style="background:#f1f5f9;padding:0.6rem 0.9rem;font-size:0.85rem;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb;">
+                  💬 参加者（質問）— guidelineの定義・PICOなしのガイドライン
+                </div>
+                <div style="padding:0.75rem 1rem;font-size:0.88rem;line-height:1.75;color:#1f2937;">
+                  「guidelineとはどう定義するか？PICOなしでもguidelineと呼べるか（特に希少疾患領域でnarrative reviewがguidelineと自称する問題がある）」<br>
+                  <strong>Paulの回答：</strong>PICOなしでもguidelineと呼ぶことは可能だが、集団・曝露・アウトカムを明示しない推奨文書はguideline として「よく出来ていない」に過ぎない。Emily（Zoomコメント）：eligibility制限なし、自称guidelinesを額面通りに取る。<em>他参加者提案の最低基準：methodology sectionが存在すること。</em>
+                </div>
+              </div>
+
+              <div style="border:1px solid #fde68a;border-radius:8px;margin-bottom:0.7rem;overflow:hidden;">
+                <div style="background:#fffbeb;padding:0.6rem 0.9rem;font-size:0.85rem;font-weight:700;color:#92400e;border-bottom:1px solid #fde68a;">
+                  💬 Holger（2点の質問）
+                </div>
+                <div style="padding:0.75rem 1rem;font-size:0.88rem;line-height:1.75;color:#1f2937;">
+                  <p style="margin:0 0 0.4rem 0;"><strong>①「Morgan論文の5カテゴリへのマッチングを試みているか？」</strong><br>
+                  Paulの回答：データ抽出で試みている。ただしパイロットで抽出者間の一致率が非常に低く、方法を再検討中。アーキタイプの解釈が難しく、初学者には特に困難。</p>
+                  <p style="margin:0;"><strong>②「環境・職業健康以外（例：スポーツ外傷等の臨床医学）にも拡張する可能性は？」</strong><br>
+                  Paulの回答：現状ではcapacity不足で困難。topic-specific interpretationコンポーネントで対応予定。RobbieとSueとの連携を検討。<br>
+                  Holgerの補足：「PECOがI（介入）ではなくE（曝露）に基づく<strong>臨床医学分野</strong>でもこの枠組みは有用。スポーツ外傷等の分野ではすでにPECOが使われている」—拡張により臨床医学での有用性が増す可能性を指摘。</p>
+                </div>
+              </div>
+
+              <!-- ステータス -->
+              <div style="background:linear-gradient(135deg,#78350f,#92400e);color:#fff;border-radius:10px;padding:0.9rem 1.1rem;margin-top:0.5rem;">
+                <div style="font-size:0.78rem;opacity:0.85;margin-bottom:0.4rem;">STATUS</div>
+                <div style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem;">ステータス：For Information（承認投票なし）</div>
+                <div style="font-size:0.85rem;opacity:0.9;">スコーピングレビュー進行中。タイムライン未確定。GRADE大グループへの報告・承認は後日予定。</div>
+              </div>
+
+            </div>
+          </details>
+
           <!-- ===== FINAL SUMMARY BOX ===== -->
           <div style="background:linear-gradient(135deg,#064e3b,#065f46);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-top:1rem;">
             <div style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:0.5rem;">【ポルト2026年会議 総括】</div>
             <div style="font-size:0.88rem;line-height:1.8;">
-              <p style="margin:0 0 0.65rem 0;"><strong>歴史的節目：</strong>GRADEraterのWorking Group正式承認・GRADE to Researchの正式承認投票という2大歴史的承認が行われた会議。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>歴史的節目：</strong>GRADEraterのWorking Group正式承認（84.6%承認）・GRADE to Researchの正式承認投票・Equity EtD Guidance（Omar Dewidar執筆）の100%全会一致承認という3大承認が行われた会議。</p>
               <p style="margin:0 0 0.65rem 0;"><strong>自動化・AI：</strong>GRADErater（NMA半自動化）・GRADE Bot（LLM-based QA）による方法論的作業の効率化と品質担保を同時に追求。</p>
               <p style="margin:0 0 0.65rem 0;"><strong>研究への架け橋：</strong>GRADE to Researchにより、エビデンス評価がresearch waste削減・研究質改善に直接貢献する新しいサイクルを確立。</p>
               <p style="margin:0 0 0.65rem 0;"><strong>適用拡大：</strong>希少疾患・dose-response NMA・個別化MDT意思決定・環境/職業/planetary healthと、GRADE適用領域が急速に広がっている。</p>
