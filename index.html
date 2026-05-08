@@ -11644,6 +11644,32 @@ function checkAuth(){
                 「しかし、ベースラインリスクについての仮定では、閾値を越えてしまいます。多くの例を見てきた経験から言うと、ベースラインリスクの問題は、効果推定値を変化させる大きさという点で、より重要になることが多いのです。」
               </div>
 
+              <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;font-size:0.85rem;">
+                <strong style="color:#9a3412;">仮定分析（assumption-based analysis）の3層説明</strong><br>
+                <span style="color:#6b7280;font-size:0.82rem;">※以下の英語は文字起こし原文に基づくため、一部に自動文字起こし由来の揺れがあります。「家庭検定」と読める箇所は、文脈上この「仮定分析」を指すものとして整理しています。</span>
+                <div style="display:grid;gap:0.6rem;margin-top:0.75rem;">
+                  <div style="background:#fff;border-left:4px solid #f97316;border-radius:6px;padding:0.7rem 0.85rem;">
+                    <strong>1. 演者の英語そのもの</strong><br>
+                    <em>"But then what we can do, rather than just write down by risk of bias and by inconsistency, or by inconsistency, by indirectness, we can make assumptions. We made assumption 2 or 3 times the relative risk increment, and two or three times the baseline risk. And we see what happened with that."</em><br><br>
+                    <em>"When doing this assumption for the relative effect doesn't change. So we're saying within this assumption, we don't believe that the risk of bias is playing an important role."</em><br><br>
+                    <em>"But, however, the patron risk make us cross a threshold... From the assumption we made, which are reasonable, you can disagree on the assumption, but at least we know in what do we disagree... the risk of aspiration is between no effect to a small harm."</em><br>
+                    <span style="color:#6b7280;font-size:0.82rem;">※ "patron risk" は文字起こし上の表記。前後の文脈から、演者はbaseline riskを指していると解釈できる。</span>
+                  </div>
+                  <div style="background:#fff;border-left:4px solid #fb923c;border-radius:6px;padding:0.7rem 0.85rem;">
+                    <strong>2. 直訳</strong><br>
+                    「しかし、そのとき私たちにできることは、risk of biasやinconsistency、あるいはinconsistencyやindirectnessによって単に格下げするのではなく、仮定を置くことです。相対リスクの増加を2倍または3倍とする仮定、そしてベースラインリスクを2倍または3倍とする仮定を置きました。そして、それで何が起こるかを見ます。」<br><br>
+                    「相対効果についてこの仮定を置いても、変わりません。つまり、この仮定の範囲では、risk of biasが重要な役割を果たしているとは考えていない、ということです。」<br><br>
+                    「しかし、ベースラインリスクのほうは閾値をまたがせます。私たちが置いた仮定は合理的なものですが、その仮定に反対することはできます。ただ、少なくとも何について意見が違うのかはわかります。誤嚥リスクは、効果なしから小さな害の間にあることがわかります。」
+                  </div>
+                  <div style="background:#fff;border-left:4px solid #fdba74;border-radius:6px;padding:0.7rem 0.85rem;">
+                    <strong>3. AIによるわかりやすい解説（講演者の表現そのものではない）</strong><br>
+                    ここでIgnacioが言っているのは、「研究が全部high risk of biasだから、とりあえずRoBで1段階下げる」という処理をやめて、<strong>その懸念が結論をどれくらい動かすかを試算しよう</strong>ということ。<br><br>
+                    この例では、術前に水を飲ませるかどうかの話で、アウトカムは誤嚥。メタ解析では「重要な差なし」に見えるが、全研究が高RoBで、さらに誤嚥のベースラインリスクにも不確実性がある。そこで2種類の仮定を置く。1つ目は「相対リスクが2〜3倍悪くなっていたらどうか」、2つ目は「そもそもの誤嚥リスクが2〜3倍高かったらどうか」。<br><br>
+                    結果として、相対リスクを悪く見積もっても結論の範囲はあまり動かなかった。つまり、この仮定の範囲ではRoBは結論を大きく変えない。一方、ベースラインリスクを高く見積もると、absolute effectが「効果なし」から「小さな害」へ移り、thresholdをまたいだ。だからこの例では、主なdowngrade理由はRoBそのものではなく、<strong>baseline risk uncertaintyにより、真の効果範囲が1つ隣へ動く可能性</strong>にある。これがmoderate certainty、つまり1段階downgradeの意味。
+                  </div>
+                </div>
+              </div>
+
               <div style="background:#ecfdf5;border-left:4px solid #0d9488;border-radius:6px;padding:0.75rem 0.95rem;margin:0.5rem 0;font-size:0.86rem;">
                 <strong>結論：Moderate certainty（1段階downgrade）</strong><br>
                 「不精確性も非一貫性もないことはわかっています。懸念はrisk of biasとベースラインの不確実性です。私たちが置いた仮定——合理的な仮定ですが、異論があっても構いません、少なくとも何について意見が食い違っているかはわかります——から、誤嚥リスクは「効果なし」から「軽度の害」の間にあることがわかります。これが結論です。ある意味、これはまさにmoderate certaintyの定義そのものです。」<br><br>
