@@ -11646,7 +11646,6 @@ function checkAuth(){
 
               <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;font-size:0.85rem;">
                 <strong style="color:#9a3412;">仮定分析（assumption-based analysis）の3層説明</strong><br>
-                <span style="color:#6b7280;font-size:0.82rem;">※以下の英語は文字起こし原文に基づくため、一部に自動文字起こし由来の揺れがあります。「家庭検定」と読める箇所は、文脈上この「仮定分析」を指すものとして整理しています。</span>
                 <div style="display:grid;gap:0.6rem;margin-top:0.75rem;">
                   <div style="background:#fff;border-left:4px solid #f97316;border-radius:6px;padding:0.7rem 0.85rem;">
                     <strong>1. 演者の英語そのもの</strong><br>
@@ -11665,7 +11664,10 @@ function checkAuth(){
                     <strong>3. AIによるわかりやすい解説（講演者の表現そのものではない）</strong><br>
                     ここでIgnacioが言っているのは、「研究が全部high risk of biasだから、とりあえずRoBで1段階下げる」という処理をやめて、<strong>その懸念が結論をどれくらい動かすかを試算しよう</strong>ということ。<br><br>
                     この例では、術前に水を飲ませるかどうかの話で、アウトカムは誤嚥。メタ解析では「重要な差なし」に見えるが、全研究が高RoBで、さらに誤嚥のベースラインリスクにも不確実性がある。そこで2種類の仮定を置く。1つ目は「相対リスクが2〜3倍悪くなっていたらどうか」、2つ目は「そもそもの誤嚥リスクが2〜3倍高かったらどうか」。<br><br>
-                    結果として、相対リスクを悪く見積もっても結論の範囲はあまり動かなかった。つまり、この仮定の範囲ではRoBは結論を大きく変えない。一方、ベースラインリスクを高く見積もると、absolute effectが「効果なし」から「小さな害」へ移り、thresholdをまたいだ。だからこの例では、主なdowngrade理由はRoBそのものではなく、<strong>baseline risk uncertaintyにより、真の効果範囲が1つ隣へ動く可能性</strong>にある。これがmoderate certainty、つまり1段階downgradeの意味。
+                    <strong>AIによる推測補足（Ignacioがこの間を明示的に説明したわけではない）：</strong><br>
+                    絶対効果は、おおまかには「ベースラインリスク × 相対効果の変化」で決まる。誤嚥のように元の発生率が非常に低いアウトカムでは、相対リスクを2〜3倍にしても、出発点となるベースラインリスクが小さいままなら、絶対リスク差はまだ小さい範囲にとどまりやすい。たとえば、もともとの誤嚥リスクが極めて低ければ、相対的に2倍になっても、患者1,000人あたりの増加数は小さく、事前に設定したthresholdを越えない可能性がある。<br><br>
+                    一方で、ベースラインリスクそのものを2〜3倍にすると、同じ相対効果でも絶対効果は大きくなる。GRADEのEtDやcertainty判断では、最終的に問題になるのはrelative effectそのものではなく、患者にとって何人分の害が増えるかというabsolute effectである。そのため、相対リスクを悪く見積もる仮定よりも、ベースラインリスクを高く見積もる仮定のほうが、効果範囲を「効果なし」から「小さな害」へ動かしやすかった、と理解できる。<br><br>
+                    つまり、この仮定の範囲ではRoBは結論を大きく変えない。一方、ベースラインリスクを高く見積もると、absolute effectが「効果なし」から「小さな害」へ移り、thresholdをまたいだ。だからこの例では、主なdowngrade理由はRoBそのものではなく、<strong>baseline risk uncertaintyにより、真の効果範囲が1つ隣へ動く可能性</strong>にある。これがmoderate certainty、つまり1段階downgradeの意味。
                   </div>
                 </div>
               </div>
