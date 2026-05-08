@@ -11377,6 +11377,15 @@ function checkAuth(){
                 <strong>スライド：</strong>33枚
               </div>
 
+              <div style="background:#ecfeff;border:1px solid #67e8f9;border-radius:8px;padding:0.9rem 1rem;margin:0 0 1rem 0;font-size:0.86rem;">
+                <strong style="color:#0e7490;">この講演を読むための地図</strong><br>
+                Ignacioの主張は、「GRADEの5ドメインをそれぞれ機械的に減点する」のではなく、<strong>それらの懸念を全部合わせたとき、真の効果がどの効果範囲まで動き得るか</strong>を見る、というもの。つまり、risk of bias・indirectness・inconsistency・imprecisionを別々の罰点として足し上げるのではなく、最終的に「推奨判断を変えるほど、効果の解釈が別の範囲に移るか」を評価する。
+                <div style="background:#fff;border-left:4px solid #06b6d4;border-radius:6px;padding:0.7rem 0.85rem;margin-top:0.75rem;">
+                  <strong>AIによる言い換え（講演者の表現そのものではない）：</strong><br>
+                  GRADEのcertaintyは「研究がきれいか汚いかの成績表」ではなく、<strong>今見えている効果が、意思決定上どの程度まで別物になり得るかを示す幅</strong>である。研究に問題があっても、真の効果が同じdecision rangeにとどまるなら大きく下げない。逆に、見た目の問題が小さくても、閾値をまたいで解釈が変わるなら下げる。
+                </div>
+              </div>
+
               <h4 style="color:#0f766e;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #0d9488;padding-left:0.5rem;">§1 GRADE Certaintyの定義とその適用範囲</h4>
 
               <img src="images/Certainty range concept v2/スライド2.JPG" alt="スライド2: Certainty of Evidence定義" style="max-width:100%;border-radius:6px;margin:0.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
@@ -11426,6 +11435,15 @@ function checkAuth(){
                 <div style="background:#f0fdfa;border-left:3px solid #0d9488;border-radius:4px;padding:0.7rem 0.9rem;">
                   <strong>Step 4：Rating downまたはupを決める（Rate down or up）</strong><br>
                   単に各ドメインに懸念があるかではなく、その懸念により<strong>真の効果がtargetからどれくらい外れ得るか</strong>を評価する。
+                </div>
+              </div>
+
+              <div style="background:#fffbeb;border-left:4px solid #d97706;border-radius:6px;padding:0.8rem 0.95rem;margin:0.75rem 0;font-size:0.86rem;">
+                <strong>ここで混乱しやすいポイント：targetは「点推定値の名前」ではなく「評価したい効果範囲」</strong><br>
+                例えば点推定がmoderate benefitの範囲にあるとき、評価している問いは「この研究群に問題があるか」ではなく、<strong>「真の効果もmoderate benefitと言ってよいほど、この範囲に残っていそうか」</strong>である。CIやprediction interval、RoB、indirectnessの影響を足し合わせて考えた結果、small benefitやtrivial effectまで動き得るならcertaintyは下がる。
+                <div style="background:#fff;border-left:3px solid #f59e0b;border-radius:4px;padding:0.65rem 0.8rem;margin-top:0.65rem;">
+                  <strong>AIによる言い換え（講演者の表現そのものではない）：</strong><br>
+                  targetとは「現在の点推定が置いている旗」。certainty assessmentとは、その旗が風でどれくらい動くかを見積もる作業。旗が同じ区画に残るならhigh、隣の区画まで動くならmoderate、何区画も動くならlow/very lowに近づく。
                 </div>
               </div>
 
@@ -11479,6 +11497,17 @@ function checkAuth(){
                 「risk of biasがあるからdowngrade」「heterogeneityがあるからdowngrade」という機械的評価から、<strong>「その限界が効果推定の解釈にどの程度影響するか」を評価する</strong>方向への進化。
               </div>
 
+              <div style="display:grid;gap:0.55rem;margin:0.75rem 0;font-size:0.86rem;">
+                <div style="background:#fff7ed;border-left:4px solid #ea580c;border-radius:6px;padding:0.75rem 0.95rem;">
+                  <strong>講演者の表現に沿った整理：</strong><br>
+                  「concernが大きいか」だけでdowngrade数を決めない。重要なのは、そのconcernによって結果が現実的にどれだけ変わるか、そして何個のthresholdをまたぎ得るかである。
+                </div>
+                <div style="background:#f8fafc;border-left:4px solid #64748b;border-radius:6px;padding:0.75rem 0.95rem;">
+                  <strong>AIによる別表現（講演者の表現そのものではない）：</strong><br>
+                  GRADEで下げるべきなのは「欠点の数」ではなく、<strong>欠点が意思決定にもたらす揺れ幅</strong>である。たとえば高RoB研究が多くても、高RoB研究と低RoB研究が同じ「重要な効果なし」の範囲を示すなら、欠点は見えるが、結論を別範囲へ押し出していない。一方、baseline riskの不確実性がabsolute effectをtrivialからsmall harmへ動かすなら、そこにはdowngradeの理由がある。
+                </div>
+              </div>
+
               <h4 style="color:#0f766e;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #0d9488;padding-left:0.5rem;">§6 CoE方程式：新しい定式化</h4>
 
               <img src="images/Certainty range concept v2/スライド16.JPG" alt="スライド16: CoE = 4 − Inside − Outside 方程式" style="max-width:100%;border-radius:6px;margin:0.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
@@ -11523,6 +11552,46 @@ function checkAuth(){
                   「メタ解析からは見えない不確実性の源泉が他にも存在しますが、それについては仮説を立てることができます。そして、それらの仮説は経験的に検証可能です。」<br>
                   → Risk of biasによる効果のずれ、indirectnessによる適用可能性のずれ、publication biasなど
                 </div>
+              </div>
+
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;font-size:0.84rem;overflow-x:auto;">
+                <strong style="color:#334155;">用語の違い：似ているが、見ている不確実性が違う</strong>
+                <table style="width:100%;border-collapse:collapse;margin-top:0.55rem;min-width:620px;">
+                  <thead>
+                    <tr style="background:#e2e8f0;">
+                      <th style="border:1px solid #cbd5e1;padding:0.45rem;text-align:left;">用語</th>
+                      <th style="border:1px solid #cbd5e1;padding:0.45rem;text-align:left;">主に含むもの</th>
+                      <th style="border:1px solid #cbd5e1;padding:0.45rem;text-align:left;">この講演での位置づけ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;"><strong>Fixed-effect CI</strong></td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">研究内変動、ランダム誤差</td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">主にimprecisionを見る</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;"><strong>Random-effects CI</strong></td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">研究内変動＋研究間変動</td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">imprecisionとinconsistencyを同時に少し反映</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;"><strong>Prediction interval</strong></td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">次の研究であり得る効果の範囲、tau²の影響</td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">研究数が十分で、RoB/indirectnessが混在している場合はcertainty intervalの近似になり得る</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;"><strong>Certainty interval</strong></td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">GRADEの全ドメインを考慮した真の効果の範囲</td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">理想形。ただし現時点では計算方法がない、または計算不能かもしれない</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;"><strong>Certainty range</strong></td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">certainty intervalを実務的に近似した範囲</td>
+                      <td style="border:1px solid #cbd5e1;padding:0.45rem;">今回の提案。thresholdを何個またぐかでdowngradeを考える</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <p style="font-size:0.86rem;">また、concordant results（高RoB・低RoBの研究が一致した結果を示す場合）の扱いについて：</p>
@@ -11581,6 +11650,21 @@ function checkAuth(){
                 → Certainty intervalが1つのthresholdを越える → 1段階downgrade。ドメインはindirectnessに帰属。Risk of biasは仮定分析から影響なしと判断。
               </div>
 
+              <div style="background:#f0f9ff;border-left:4px solid #0284c7;border-radius:6px;padding:0.8rem 0.95rem;margin:0.75rem 0;font-size:0.86rem;">
+                <strong>実務で使うときの手順（講演内容を踏まえた整理）</strong>
+                <ol style="margin:0.35rem 0 0 1.2rem;padding:0;">
+                  <li><strong>まずthresholdを明示する：</strong>trivial / small / moderate / largeをどこで分けるかを決める。ここが曖昧だと、後の判断も曖昧になる。</li>
+                  <li><strong>点推定のrangeをtargetにする：</strong>点推定がmoderate benefitなら、「moderate benefitについてのcertainty」を評価していると明示する。</li>
+                  <li><strong>メタ解析の中で見える幅を見る：</strong>fixed-effect CI、random-effects CI、prediction intervalを使い、within-study variationとbetween-study variationを確認する。</li>
+                  <li><strong>メタ解析の外にある懸念を仮定で表す：</strong>全研究が高RoB、全研究がindirect、baseline riskが不確実など、区間に出ていない不確実性を「どれくらい動かし得るか」として仮定する。</li>
+                  <li><strong>最終的なrangeが何個thresholdをまたぐかを見る：</strong>またいだ数がdowngradeの段数の目安になる。ただし、どのドメインに帰属させるかはなお判断が必要。</li>
+                </ol>
+                <div style="background:#fff;border-left:3px solid #38bdf8;border-radius:4px;padding:0.65rem 0.8rem;margin-top:0.65rem;">
+                  <strong>AIによる言い換え（講演者の表現そのものではない）：</strong><br>
+                  これは「5ドメインの採点表」から「真の効果が動き得る地図」への変更である。地図上で別の意思決定区域に入らないなら減点は控えめにし、区域をまたぐなら、その理由をどのドメインに置くかを説明する。
+                </div>
+              </div>
+
               <h4 style="color:#0f766e;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #0d9488;padding-left:0.5rem;">§11 まとめ</h4>
 
               <img src="images/Certainty range concept v2/スライド33.JPG" alt="スライド33: In summary" style="max-width:100%;border-radius:6px;margin:0.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
@@ -11603,6 +11687,22 @@ function checkAuth(){
 
               <h4 style="color:#0f766e;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #0d9488;padding-left:0.5rem;">💬 Q&amp;A 全文（逐語記録）</h4>
               <p style="font-size:0.82rem;color:#6b7280;margin-bottom:0.75rem;">22:39:30〜23:07 — 8名の発言者</p>
+
+              <div style="background:#f8fafc;border-left:4px solid #64748b;border-radius:6px;padding:0.8rem 0.95rem;margin:0.75rem 0;font-size:0.85rem;">
+                <strong>Q&amp;Aの読みどころ：会場で議論になった論点</strong>
+                <ul style="margin:0.35rem 0 0 1.2rem;padding:0;">
+                  <li><strong>不確実性は片方向に広げてよいのか：</strong>何も知らなければ両方向に広げるべきだが、事前知識や生物学的妥当性があれば片方向の仮定もあり得る。ただし仮定であることを明示する。</li>
+                  <li><strong>高RoB研究と低RoB研究の一致を信用してよいのか：</strong>十分な研究数と精度が必要。低RoB研究が1つだけで広いCIなら、偶然一致しているだけかもしれない。</li>
+                  <li><strong>サブグループ比較は検出力不足ではないか：</strong>その通り。だからこそ統計的有意差だけでなく、thresholdの別rangeに入るかを見る、という発想が出てくる。</li>
+                  <li><strong>非RCT・観察研究ではどうするか：</strong>エビデンス全体がconfoundingを受け得るので、confoundingが真の効果を別rangeへ動かす可能性を先に考える必要がある。</li>
+                  <li><strong>certainty intervalが完成したらGRADEレベルは不要になるのか：</strong>理論上はその方向も考えられるが、現時点では定性的・序数的な不確実性の表現としてhigh/moderate/low/very lowが使われる。</li>
+                  <li><strong>アルゴリズム化の限界：</strong>概念には賛同があっても、定量化には破綻点がある。シミュレーションと多数例での経験的検証が必要。</li>
+                </ul>
+                <div style="background:#fff;border-left:3px solid #94a3b8;border-radius:4px;padding:0.65rem 0.8rem;margin-top:0.65rem;">
+                  <strong>AIによる一言まとめ（講演者の表現そのものではない）：</strong><br>
+                  会場の反応は「考え方は正しい方向に見える。しかし、どこまで数字にしてよいか、どの条件で壊れるかを示してほしい」というものだった。
+                </div>
+              </div>
 
               <details style="margin-bottom:0.75rem;border-radius:6px;overflow:hidden;border:1px solid #d1fae5;">
                 <summary style="background:#f0fdfa;padding:0.6rem 0.85rem;cursor:pointer;font-weight:600;font-size:0.88rem;color:#065f46;">💬 Q1: Brim — 不確実性の方向性（22:39:43）</summary>
