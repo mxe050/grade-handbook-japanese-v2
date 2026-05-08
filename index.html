@@ -9143,7 +9143,458 @@ function checkAuth(){
               <span class="sub-label">NMA自動GRADE・GRADE to Research・希少疾患・閾値・ADOLOPMENT・GRADE Bot - クリックで展開</span>
             </span>
           </button>
+          <button type="button" onclick="toggleUpdate('upd-shanghai2025')" class="hero-btn primary" style="width:100%;text-align:left;cursor:pointer;border:none;background:linear-gradient(135deg,#92400e,#b45309);">
+            <span class="btn-icon">🏙️</span>
+            <span class="btn-text">
+              <span class="main-label">2025年4月 GRADE Working Group会議（上海）全8セッション</span>
+              <span class="sub-label">NMA自動化・意思決定閾値・非一貫性/不精確性・参照基準なし・間接性・AIとGRADE・推奨文表現 - クリックで展開</span>
+            </span>
+          </button>
         </div>
+
+        <!-- ===== 上海2025 GRADE Working Group年次総会 ===== -->
+        <div id="upd-shanghai2025" style="display:none;background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
+
+          <!-- MEETING HEADER -->
+          <div style="background:linear-gradient(135deg,#78350f,#92400e);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;">
+            <div style="font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">GRADE Working Group Annual Meeting</div>
+            <div style="font-size:1.25rem;font-weight:700;line-height:1.3;">Shanghai, China &nbsp;—&nbsp; 2025年4月4〜9日</div>
+            <div style="font-size:0.85rem;margin-top:0.5rem;opacity:0.9;">GRADE Working Group 年次総会 中国・上海開催</div>
+          </div>
+
+          <!-- OVERVIEW BOX -->
+          <div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:0.9rem;line-height:1.7;color:#78350f;">
+            <strong style="font-size:0.95rem;">【総会概要】</strong><br>
+            2025年4月4〜9日、中国・上海で開催されたGRADE Working Group年次総会。全8セッションにわたり、GRADErater（NMA自動GRADE評価）・意思決定閾値（Decision Thresholds）のGRADEガイダンス正式承認・非一貫性と不精確性の概念整理・参照基準なし研究への対応・間接性アップデート・推奨文の表現・AIとGRADE活用の最前線が議論された。特に意思決定閾値に関するGRADEガイダンスが本会議でGWGの承認を受け、Annals of Internal Medicine誌への投稿へと進んだことが重要な成果である。
+          </div>
+
+          <!-- ===== SESSION 1 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>① GRADErater：NMAにおける確実性評価の自動化（Bernardo Sousa-Pinto）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 4 / For Discussion</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>発表者:</strong> Bernardo Sousa-Pinto（ポルト大学 FM-UP / RISE / CINTESIS / MEDCIDS）<br>
+                <strong>ステータス:</strong> For Discussion ／ <strong>連携:</strong> Rafael José Vieira（AI・間接性モジュール担当）
+              </div>
+
+              <p>NMAにおけるGRADE確実性評価（CoE）は手作業では非常に時間がかかり、判断の一貫性を保つことが難しい。GRADEraterは、ルールベースのアルゴリズムとAIモジュールを組み合わせ、NMAの確実性評価を半自動化するRツール・Webアプリケーションである。</p>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🔧 自動化の対象ドメイン（3つ）</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>Risk of Bias（バイアスリスク）</strong> — ルールベースで自動判定</li>
+                  <li><strong>Inconsistency（非一貫性）</strong> — ランダム効果 vs 固定効果モデルの比較</li>
+                  <li><strong>Imprecision（不精確性）</strong> — 信頼区間と意思決定閾値の比較</li>
+                </ul>
+                <div style="font-weight:700;color:#92400e;margin-top:0.5rem;margin-bottom:0.3rem;">✋ 手動入力が必要なドメイン（3つ）</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>Indirectness（間接性）、Publication bias（出版バイアス）、Intransitivity（非推移性）</li>
+                </ul>
+              </div>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">⚙️ 意思決定閾値（Decision Threshold）カラースケール</div>
+                <p style="margin:0;font-size:0.88rem;">6段階のカラーコード化された閾値スケール（DT LB/MB, MB/SB, SB/T, T/SH, SH/MH, MH/LH）を用いて、効果推定値の位置が各閾値をどれだけ超えているかを視覚化し、自動ダウングレード判断に活用する。</p>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📋 ワークフロー（Rによる実装）</div>
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.6rem 0.9rem;font-family:monospace;font-size:0.82rem;color:#334155;margin-bottom:0.75rem;">
+                Dataset → R netmeta object → <strong>template_gen()</strong> → CSV（手動入力欄） → <strong>nma_grade_prep()</strong> → 自動評価 → SoF表
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📊 実証例①：アレルギー性鼻炎 / 点鼻薬NMA</div>
+              <ul style="margin:0 0 0.75rem;padding-left:1.2rem;font-size:0.88rem;">
+                <li><strong>対象:</strong> 季節性アレルギー性鼻炎患者、34研究、11介入（triamcinolone・fluticasone・azelastine等）</li>
+                <li><strong>アウトカム:</strong> QoL（RQLQ）</li>
+                <li>Rの <code>netmeta</code> パッケージでネットワークメタ解析 → テンプレート生成 → 自動評価 → 間接性・出版バイアス・非推移性のみ手動入力</li>
+              </ul>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📊 実証例②：片頭痛治療薬NMA（Gerald Gartlehner・Claus Nowakと協力）</div>
+              <div style="overflow-x:auto;margin-bottom:0.75rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                  <thead><tr style="background:#fef3c7;"><th style="padding:0.4rem 0.6rem;text-align:left;border:1px solid #fcd34d;">アウトカム</th><th style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #fcd34d;">比較数</th><th style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #fcd34d;">手動と同じ評価</th><th style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #fcd34d;">1段階下</th><th style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #fcd34d;">2段階下</th></tr></thead>
+                  <tbody>
+                    <tr><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">痛み消失（2時間後）</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">62</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;color:#065f46;font-weight:700;">42 (67.7%)</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">16 (25.8%)</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">4 (6.5%)</td></tr>
+                    <tr style="background:#f9fafb;"><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">有害事象（任意）</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">79</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;color:#065f46;font-weight:700;">59 (74.7%)</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">15 (19.0%)</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">5 (6.3%)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🚀 次ステップ（6項目）</div>
+                <ol style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>意思決定閾値ベースルールのさらなる検証</li>
+                  <li>多様なNMA例での検証</li>
+                  <li>自動テキストレポートの生成機能</li>
+                  <li><strong>Webユーザーインターフェース開発</strong>（Rやコード不要で利用可能に）</li>
+                  <li>Rパッケージとしての公開</li>
+                  <li>AIモジュール（間接性評価用）の開発 — 研究内容から年齢・国・併存疾患等の変数をAIが抽出</li>
+                </ol>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 2 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>② 非一貫性と不精確性の解きほぐし（Disentangling Inconsistency &amp; Imprecision）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 6 / Concept Paper</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>ステータス:</strong> Concept Paper（受理・掲載済み）<br>
+                <strong>データソース:</strong> Cochrane Database of Systematic Reviews（CDSR）9,059件のメタアナリシス
+              </div>
+
+              <p><strong>問題の本質:</strong> GRADEの確実性評価において、非一貫性（Inconsistency：研究間の効果推定値のばらつき、I²等で表現）と不精確性（Imprecision：メタアナリシス推定値周囲の信頼区間幅）は互いに影響し合い、個別評価が極めて困難である。両ドメインを独立して評価するための概念的・実践的枠組みを提示する。</p>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📐 因子分析結果（3因子）</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>因子1（非一貫性関連）:</strong> I²・Q検定p値・DI（Decision Inconsistency Index）・ASI（Across-Studies Inconsistency）→ ランダム効果 vs 固定効果モデルでDT交差数の差</li>
+                  <li><strong>因子2（不精確性関連）:</strong> 固定効果モデルでDT交差数・SEの大きさ</li>
+                  <li><strong>因子3:</strong> CI幅比（非一貫性/不精確性に明確に対応しない）</li>
+                </ul>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">🔬 クラスター分析（9クラスター、CDSR 9,059件）</div>
+              <div style="overflow-x:auto;margin-bottom:0.75rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                  <thead><tr style="background:#fef3c7;"><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:left;">クラスター</th><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:center;">割合</th><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:left;">特徴</th></tr></thead>
+                  <tbody>
+                    <tr><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">クラスターA</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;color:#065f46;">35.0%</td><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">低非一貫性 + 低不精確性（懸念なし）</td></tr>
+                    <tr style="background:#f9fafb;"><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">クラスターB-D</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">2.9%</td><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">低非一貫性 + 高不精確性</td></tr>
+                    <tr><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">クラスターE</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">14.3%</td><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">中等度非一貫性 + 不精確性</td></tr>
+                    <tr style="background:#f9fafb;"><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">クラスターF-G</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;color:#b45309;">38.7%</td><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">中〜高非一貫性 + 低不精確性</td></tr>
+                    <tr><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">クラスターH-I</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">8.3%</td><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">中〜高非一貫性 + 高不精確性</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🔑 解決策：固定効果 vs ランダム効果 比較アプローチ</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>固定効果モデル</strong> = 不精確性のみを反映（研究間のばらつきを無視）</li>
+                  <li><strong>ランダム効果モデル</strong> = 不精確性＋非一貫性の両方を反映</li>
+                  <li><strong>判断ロジック:</strong> 両モデルが意思決定閾値（DT）をどれだけ交差するかを比較 → 交差パターンから非一貫性か不精確性かを判別</li>
+                </ul>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📚 決定木の概要</div>
+              <ol style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                <li>ランダム効果モデルがDTを交差しない → 両ドメインとも懸念なし</li>
+                <li>ランダム効果のみ交差 → 非一貫性に懸念の可能性（不精確性は問題なし）</li>
+                <li>両モデルが同数のDTを交差 → 不精確性に主な懸念（非一貫性は軽微）</li>
+                <li>ランダム効果がより多くのDTを交差 → 非一貫性＋不精確性の両方に懸念</li>
+              </ol>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.85rem 0 0.35rem;">📋 実例（クラスター別6ケース）</div>
+              <ul style="margin:0;padding-left:1.2rem;font-size:0.87rem;">
+                <li><strong>Cluster A:</strong> Zonnevelt et al.（血圧管理）— 両モデルともDT非交差 → 懸念なし</li>
+                <li><strong>Cluster B:</strong> Toews et al.（GI出血）— ランダムのみ交差 → 不精確性に懸念</li>
+                <li><strong>Cluster E:</strong> Alkhawaja et al.（経腸栄養）— 固定・ランダム同数交差 → 軽度不精確性</li>
+                <li><strong>Cluster F:</strong> Zhan et al.（エゼチミブ/LDL）— 高I²（85.7%）だがランダム1交差・固定0 → 不精確性に懸念</li>
+                <li><strong>Cluster G:</strong> Bighelli et al.（PTSD治療）— ランダム2交差・固定0 → 非一貫性に懸念</li>
+                <li><strong>Cluster I:</strong> Bisson et al.（Trauma-focused CBT）— 両モデルとも多数交差 → 非一貫性＋不精確性の両方に懸念</li>
+              </ul>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 3 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>③ 参照基準なし研究におけるGRADE（No Reference Standard）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 7</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>ソース:</strong> GRADE Shanghai no reference standard_20250407.pptx<br>
+                <strong>テーマ:</strong> 参照基準（gold standard）が存在しない診断精度研究におけるGRADE評価の方法論
+              </div>
+
+              <p>診断テストの精度を評価する際、真の「正解」となる参照基準（reference standard）が存在しない状況は医学の多くの領域で生じる。たとえば精神疾患の診断や、バイオマーカーの評価では、確立された参照基準がない場合がある。このような状況でのGRADE確実性評価の枠組みを検討するセッションである。</p>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📌 主要な方法論的課題</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>参照基準が存在しない場合の感度・特異度の解釈</li>
+                  <li>代替エンドポイント（proxy reference standard）を用いた際のバイアスリスク評価</li>
+                  <li>QUADAS-2（診断精度研究のバイアスリスク評価ツール）の適用</li>
+                  <li>複数の不完全な参照基準を組み合わせる場合の不確実性</li>
+                </ul>
+              </div>
+
+              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 4 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>④ 間接性評価アップデート（Indirectness Update）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 7</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>ソース:</strong> 06 GRADE Shanghai indirectness update_20250407.pptx<br>
+                <strong>テーマ:</strong> GRADEの間接性（Indirectness）評価に関するガイダンス更新
+              </div>
+
+              <p>間接性（Indirectness）は、研究のPICO（集団・介入・比較対照・アウトカム）が、評価の対象となるガイドライン質問のPICOと一致しているかどうかを評価するGRADEのドメインである。上海会議では、間接性評価の枠組みを更新し、特にNMA・実世界データ・複数のPICO不一致が重なる状況への対応を強化することが議論された。2026年のポルト会議でも継続的に取り上げられたテーマである。</p>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📌 更新の主要論点（上海→ポルト継続）</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>間接性評価のルールベース化 vs. AIベース化（変数抽出による自動評価の可能性）</li>
+                  <li>非推移性（Intransitivity）との概念的重複と区別</li>
+                  <li>意思決定閾値を用いた間接性の全体的判断方法</li>
+                  <li>サブグループ変数（年齢・国・併存疾患）による間接性懸念の定量化</li>
+                </ul>
+              </div>
+
+              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 5 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑤ GWGレポート 上海（GRADE Working Group Report）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 7</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>ソース:</strong> 20250407_GGG_Report_Shanghai_draft.pptx（ドラフト版）<br>
+                <strong>テーマ:</strong> GRADE Working Group活動報告・進捗状況の共有
+              </div>
+
+              <p>GRADE Working Groupの年次活動報告セッション。現在進行中の複数のガイダンス開発プロジェクト・作業部会・出版物の進捗を報告し、ガイダンス開発の優先課題を整理する。意思決定閾値・間接性・不精確性・NMA・環境健康・希少疾患など多岐にわたるプロジェクトの現状が概観された。</p>
+
+              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX ドラフト版）を参照。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 6 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑥ 意思決定閾値GRADEガイダンス（Decision Thresholds — For Approval）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 7 / ✅ GWG承認</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#dcfce7;border-left:4px solid #16a34a;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>✅ GWG正式承認済み</strong> — Annals of Internal Medicine誌へ投稿/受理<br>
+                <strong>発表者:</strong> Wojtek Wiercioch（McMaster大学/GRADEセンター）& Gian Paolo Morgano（欧州委員会）<br>
+                <strong>関連論文:</strong> プロトコル BMJ Open 2022（NCT05237635）／ 結果 J Clin Epidemiol 2024年12月（Vol.179, p.11639）
+              </div>
+
+              <p>GRADEのEvidence-to-Decision（EtD）フレームワークにおいて、効果の大きさを「trivial（ほぼなし）」「small（小）」「moderate（中）」「large（大）」に分類する際の定量的基準（意思決定閾値）を提供するガイダンスが、本会議で正式にGWGの承認を受けた。</p>
+
+              <div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#92400e;margin-bottom:0.4rem;">🧪 GRADE-THRESHOLDスタディ（2020-2022年）</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>登録: 445名のステークホルダー（臨床専門家54.8%、研究者55.7%、患者代表6.5%）</li>
+                  <li>有効回答: 288名、1,038件のケースシナリオを評価</li>
+                  <li>デザイン: オンライン無作為化調査。各参加者が4ケースをランダムに割り当て</li>
+                  <li>評価アウトカム: 死亡・虚血性脳卒中・肺塞栓・中等度下痢・軽度悪心嘔吐</li>
+                </ul>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📊 意思決定閾値の係数（Generic Coefficients, N=288）</div>
+              <div style="overflow-x:auto;margin-bottom:0.75rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                  <thead><tr style="background:#fef3c7;"><th style="padding:0.4rem 0.7rem;border:1px solid #fcd34d;text-align:left;">閾値</th><th style="padding:0.4rem 0.7rem;border:1px solid #fcd34d;text-align:center;">係数</th><th style="padding:0.4rem 0.7rem;border:1px solid #fcd34d;text-align:center;">95% CI</th></tr></thead>
+                  <tbody>
+                    <tr><td style="padding:0.4rem 0.7rem;border:1px solid #e5e7eb;">Trivial → Small</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;">0.0135</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;">0.0103–0.0168</td></tr>
+                    <tr style="background:#f9fafb;"><td style="padding:0.4rem 0.7rem;border:1px solid #e5e7eb;">Small → Moderate</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;">0.0321</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;">0.0265–0.0376</td></tr>
+                    <tr><td style="padding:0.4rem 0.7rem;border:1px solid #e5e7eb;">Moderate → Large</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;">0.0625</td><td style="padding:0.4rem 0.7rem;text-align:center;border:1px solid #e5e7eb;">0.0533–0.0716</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">📏 絶対効果閾値の例</div>
+              <div style="overflow-x:auto;margin-bottom:0.75rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                  <thead><tr style="background:#fef3c7;"><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;">アウトカム (utility)</th><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:center;">Trivial/Small</th><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:center;">Small/Moderate</th><th style="padding:0.4rem 0.6rem;border:1px solid #fcd34d;text-align:center;">Moderate/Large</th></tr></thead>
+                  <tbody>
+                    <tr><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">死亡（utility=1）</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">13/1,000</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">32/1,000</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">62/1,000</td></tr>
+                    <tr style="background:#f9fafb;"><td style="padding:0.4rem 0.6rem;border:1px solid #e5e7eb;">COPD増悪（utility=0.54）</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">25/1,000</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">59/1,000</td><td style="padding:0.4rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">116/1,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">✅ 検証（バリデーション）</div>
+                <p style="margin:0;font-size:0.88rem;">ASH（米国血液学会）VTEガイドライン53件の判断と実証的DTを比較 → <strong>71.6%の一致率</strong></p>
+              </div>
+
+              <div style="font-weight:700;color:#1f2937;margin:0.75rem 0 0.35rem;">🛠️ 3つの実践アプローチ</div>
+              <ol style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                <li><strong>アプローチ1（研究ベース）:</strong> 研究データから得られた係数を比較に使用</li>
+                <li><strong>アプローチ2（アウトカム固有）:</strong> utility値から計算 DT = [係数 ÷ (1 − utility)] × 1,000</li>
+                <li><strong>アプローチ3（専門家ベース）:</strong> GDGパネルへの直接調査で閾値を設定（チリCOVID-19ガイドライン等で実施）</li>
+              </ol>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">💻 GRADEproEtDへの統合</div>
+                <p style="margin:0;font-size:0.88rem;">utility値・介入効果・絶対効果閾値をGRADEproのEtDフォームに入力することで、効果量カテゴリの自動判定候補が表示される。担当者はこれをもとに最終判断を行う（オーバーライド可能）。閾値は介入効果を見る前に事前設定することが推奨される。</p>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 7 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑦ 推奨文の表現（Wording of Recommendations）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 9</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>ソース:</strong> Wording of Recommendations GWG Presentation_2025-04-09.pptx<br>
+                <strong>テーマ:</strong> GRADEガイドラインにおける推奨文の表現・文言の最適化
+              </div>
+
+              <p>GRADEでは「強い推奨（strong recommendation）」には「〜すべきである（we recommend）」、「条件付き推奨（conditional recommendation）」には「〜することを提案する（we suggest）」という標準的な文言を使用している。本セッションでは、推奨文の表現をより明確・一貫・患者中心的なものにするための更新ガイダンスが議論された。</p>
+
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📝 主要論点</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>強い推奨 vs. 条件付き推奨の文言標準化</li>
+                  <li>異なる対象者（患者・臨床家・政策立案者）向けの表現の違い</li>
+                  <li>否定的推奨（〜しないことを推奨）の表現方法</li>
+                  <li>多言語・異文化での推奨文翻訳の課題</li>
+                </ul>
+              </div>
+
+              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+
+            </div>
+          </details>
+
+          <!-- ===== SESSION 8 ===== -->
+          <details style="margin-bottom:0.85rem;border-radius:8px;overflow:hidden;border:1px solid #fcd34d;">
+            <summary style="background:linear-gradient(135deg,#92400e,#b45309);color:#fff;padding:0.85rem 1.1rem;cursor:pointer;font-weight:700;font-size:0.92rem;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+              <span>⑧ AIとGRADE：ワーキンググループ 6プロジェクト（Bernardo Sousa-Pinto）</span>
+              <span style="font-size:0.78rem;font-weight:400;opacity:0.9;white-space:nowrap;margin-left:0.5rem;">April 2025 / インタラクティブ討論</span>
+            </summary>
+            <div style="padding:1.1rem 1.25rem;background:#fff;font-size:0.9rem;line-height:1.75;color:#1f2937;">
+
+              <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;font-size:0.88rem;">
+                <strong>発表者:</strong> Bernardo Sousa-Pinto（ポルト大学）<br>
+                <strong>形式:</strong> スライドによる解説よりもカジュアルな議論中心のインタラクティブセッション<br>
+                <strong>参加者（Zoom）:</strong> Miloslav Klugar（チェコ GRADE Network）、Martin Ringsten 他
+              </div>
+
+              <p>GRADEとAIに関連する6つの進行中・完了プロジェクトが紹介され、参加者との活発な議論が行われた。「すでに利用可能なAIツールはあるか」「メソドロジストはAIに置き換えられるか」などの実践的な問いに答える形で進行。</p>
+
+              <!-- プロジェクト①: NMA -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.3rem;">プロジェクト① GRADErater NMA自動化（セッション①の拡張討論）</div>
+                <p style="margin:0;font-size:0.88rem;">間接性評価のルールベース化 vs. AIベース化について議論。<strong>Robot Reviewer</strong>（旧来のAIによるRoB評価ツール）の教訓を踏まえ、AIが研究内容から間接性の懸念変数（年齢・国・併存疾患）を抽出し、ルールベース戦略に入力するハイブリッドアプローチが提案された。非推移性・Dissemination biasはルール化が依然困難な領域として残る。</p>
+              </div>
+
+              <!-- プロジェクト②: GRADE GPT -->
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.3rem;">プロジェクト② GRADE GPTのさらなるファインチューニング</div>
+                <p style="margin:0;font-size:0.88rem;">GRADEハンドブック内のGPTチャットボットを強化。GRADEユーザーがよく抱く疑問を収集し学習データに組み込む。ハンドブック非掲載だが論文では議論されているエビデンスのマッピング作業が重要な支援となる。</p>
+              </div>
+
+              <!-- プロジェクト③: AI原則論文 -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.3rem;">プロジェクト③ AIとガイドライン開発の原則（論文掲載済み）</div>
+                <p style="margin:0;font-size:0.88rem;">JCE誌でBernadoらが発表したAIをガイドライン開発に利用する際の原則論文。ガイドライン開発プロセスへのAI統合において守るべき方法論的原則・品質管理・透明性に関するフレームワークを提示。</p>
+              </div>
+
+              <!-- プロジェクト④: ガイドライン質問生成 -->
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.3rem;">プロジェクト④ AIによるガイドライン質問の生成</div>
+                <ul style="margin:0.3rem 0 0;padding-left:1.2rem;font-size:0.87rem;">
+                  <li>Google Trendsの検索クエリをAIで分類（質問か否か → Yes/Noで判定）</li>
+                  <li>医師・患者の立場でAIが新たなガイドライン質問を生成</li>
+                  <li><strong>適用例:</strong> アレルギー性鼻炎・気管支喘息・post-COVID症候群・蕁麻疹</li>
+                  <li><strong>発展課題:</strong> 患者の文脈別カスタマイズ（疾患重症度・文化・地域）<br>
+                    — ブラジル先住民族へのガイドライン適応事例を紹介<br>
+                    — エビデンスの出所マッピング（欧米偏重 → 中国・ラテンアメリカ・アフリカへの適用）<br>
+                    — UpToDateの検索データ（臨床医の関心パターン）の活用可能性<br>
+                    — ベースラインリスクに応じた条件付き確実性評価（デンマークをパイロット案）</li>
+                </ul>
+              </div>
+
+              <!-- プロジェクト⑤: REMARK -->
+              <div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#92400e;margin-bottom:0.3rem;">プロジェクト⑤ SR方法論的質のAI自動評価：REMARKツール</div>
+                <p style="margin:0 0 0.4rem;font-size:0.88rem;"><strong>REMARK</strong>（Research Synthesis Methods誌2025年掲載）: SRの方法論的質を自動評価するための新ツール。26の二分法（Yes/No）項目で構成し、LLMによる自動評価を容易にする設計。</p>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.87rem;">
+                  <li>適用範囲: 介入研究のSR（臨床的背景知識不要の項目に限定）</li>
+                  <li>AMSTAR2との比較で高い一致率・信頼性を確認</li>
+                  <li><strong>検証方法:</strong> SRを400件手動分類（300件:学習用、100件:テスト用）、8つのLLMで評価（3つはファインチューニング）</li>
+                </ul>
+                <div style="overflow-x:auto;margin-top:0.5rem;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                    <thead><tr style="background:#fef3c7;"><th style="padding:0.3rem 0.6rem;border:1px solid #fcd34d;">モデル</th><th style="padding:0.3rem 0.6rem;border:1px solid #fcd34d;text-align:center;">正確度</th><th style="padding:0.3rem 0.6rem;border:1px solid #fcd34d;text-align:center;">F1スコア</th><th style="padding:0.3rem 0.6rem;border:1px solid #fcd34d;text-align:center;">カッパ係数</th></tr></thead>
+                    <tbody>
+                      <tr><td style="padding:0.3rem 0.6rem;border:1px solid #e5e7eb;"><strong>GPT（ファインチューニング済）</strong></td><td style="padding:0.3rem 0.6rem;text-align:center;border:1px solid #e5e7eb;font-weight:700;color:#065f46;">96.5%</td><td style="padding:0.3rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">0.95</td><td style="padding:0.3rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">0.9</td></tr>
+                      <tr style="background:#f9fafb;"><td style="padding:0.3rem 0.6rem;border:1px solid #e5e7eb;">全項目で80%以上を保証</td><td colspan="3" style="padding:0.3rem 0.6rem;text-align:center;border:1px solid #e5e7eb;">一貫性指数=1 → 96.2%のケースで達成</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin:0.4rem 0 0;font-size:0.87rem;"><strong>Webインターフェース:</strong> 論文公開後に公開予定。SRの「方法」セクションをコピー&ペーストするだけで評価結果を取得。今後: 判断根拠（論文中の根拠箇所）の表示・補足資料検出警告・PRISMA自動化・プロトコル-最終報告書乖離検出を開発予定。</p>
+              </div>
+
+              <!-- プロジェクト⑥: AI検索プラットフォーム -->
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.3rem;">プロジェクト⑥ AI検索プラットフォームを用いたエビデンス検索</div>
+                <p style="margin:0 0 0.4rem;font-size:0.88rem;"><strong>対象:</strong> Elicit等のAI特化型文献検索プラットフォーム（SRの代替ではなく補完として位置づけ）</p>
+                <div style="font-size:0.87rem;margin-bottom:0.3rem;"><strong>3つの利用可能性:</strong></div>
+                <ol style="margin:0 0 0.4rem;padding-left:1.2rem;font-size:0.87rem;">
+                  <li>クエリ検証（既知のキー文献が上位50-100件に出るかをテスト）</li>
+                  <li>補完的検索（プリプリント・Google Scholar・学会抄録の補完）</li>
+                  <li>迅速レビュー（資源制約下でのPICOベース体系的検索）</li>
+                </ol>
+                <p style="margin:0 0 0.3rem;font-size:0.87rem;"><strong>実証例（アレルギー性鼻炎 / モメタゾン）:</strong> 3プラットフォームで検索 → Citation Chaserで引用追跡 → 重複除去 → <strong>18件の適格RCTを特定</strong>（メタアナリシスとほぼ一致）。見つからなかった文献: ClinicalTrials.gov登録だが未発表の試験 + ブラジル地方文献1件のみ。</p>
+                <p style="margin:0;font-size:0.87rem;">プラットフォームによって性能差あり → 複数の使用を推奨。中国語文献へのアクセスが大きな課題として議論された。</p>
+              </div>
+
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#374151;margin-bottom:0.4rem;">💬 Q&Aハイライト</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.87rem;">
+                  <li><strong>Miloslav Klugar（チェコ GRADE Network）:</strong>「現在使えるAIツールはあるか？」→ REMARK Webインターフェースが近日公開予定。NMA自動化ツールもWebUI開発中。</li>
+                  <li><strong>「メソドロジストは不要になるか？」:</strong> NO — AIは補助ツールであり、人間の監督が不可欠。特に「このケースは特殊」という判断やエラーチェックは人間が行う。</li>
+                  <li><strong>Hallucination問題:</strong> Yes/No出力に限定することで大幅に回避。説明文（テキスト生成）段階ではHallucinationリスクが増大するため、次ステップとして慎重に設計が必要。</li>
+                  <li><strong>AIと研究優先課題の抽出（Omarとの連携）:</strong> 既存のSRから研究の優先課題をAIで抽出するプロジェクトが進行中。この情報は論文の「考察」部分に非構造的に埋もれており、LLMにとって良い挑戦となる。</li>
+                </ul>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- FINAL SUMMARY BOX -->
+          <div style="background:linear-gradient(135deg,#78350f,#92400e);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-top:1rem;">
+            <div style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:0.5rem;">【上海2025年会議 総括】</div>
+            <div style="font-size:0.88rem;line-height:1.8;">
+              <p style="margin:0 0 0.65rem 0;"><strong>最大の成果:</strong> 意思決定閾値GRADEガイダンスのGWG正式承認（Annals of Internal Medicine誌へ投稿）。効果量を定量的に分類する方法論的基盤が確立した。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>方法論的進化:</strong> 非一貫性と不精確性の概念的解きほぐし（Concept Paper）・参照基準なし・間接性アップデートにより、GRADEドメイン評価の精緻化が進む。</p>
+              <p style="margin:0 0 0.65rem 0;"><strong>AI統合の加速:</strong> GRADErater・REMARK・AI検索プラットフォーム・GRADE GPTと、GRADEプロセスの複数フェーズでAI活用が実用段階に近づいている。</p>
+              <p style="margin:0;"><strong>次回:</strong> 2026年5月7日 ポルト（ポルトガル）での年次総会で継続議論。</p>
+            </div>
+          </div>
+
+        </div><!-- /upd-shanghai2025 -->
 
         <!-- Guyatt I2 / OIS 詳細解説（折りたたみ） -->
         <div id="upd-guyatt-i2" style="display:none;background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
