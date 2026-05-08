@@ -13825,6 +13825,44 @@ function checkAuth(){
               <p style="margin:0 0 0.65rem 0;"><strong>方法論的精緻化：</strong>Decision Thresholds（Guidance 42）・Rare Events（直接RDメタ解析）・Certainty Range Concept・Indirectness Updateにより判断の定量化・透明化が進む。</p>
               <p style="margin:0 0 0;"><strong>公平性・透明化：</strong>Equity EtD更新・Net Effect・Perspectives in Decision-makingにより、「誰にとって・どの視点から・どの価値観で」という問いがGRADE方法論に正式に統合されつつある。</p>
             </div>
+
+            <!-- 🔗 関連ツール・リソース -->
+            <div style="margin-top:1rem;padding-top:0.9rem;border-top:1px solid rgba(255,255,255,0.25);">
+              <div style="font-size:0.92rem;font-weight:700;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
+                🔗 関連ツール・リソース（ポルト2026会議関連）
+              </div>
+
+              <!-- ツール① GRADErater-TA -->
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:0.85rem 1rem;margin-bottom:0.65rem;">
+                <div style="font-size:0.9rem;font-weight:700;margin-bottom:0.35rem;">
+                  🧪 GRADErater-TA（診断精度研究版）
+                </div>
+                <div style="font-size:0.84rem;line-height:1.75;margin-bottom:0.5rem;">
+                  R言語Shinyフレームワークで開発されたウェブアプリ。診断精度研究（Test Accuracy）のメタアナリシス（感度・特異度・AUC等）に対して、GRADEの確実性評価（高・中・低・非常に低）を半自動的に実施できる。リスクオブバイアス・非直接性・不精確性・非一貫性・出版バイアスの各ドメインを入力すると自動的に確実性を導出。GRADErater本体（NMA用）と同じ設計思想で、診断テスト系統的レビューやHTA（医療技術評価）に携わる研究者・ガイドライン作成者向け。開発者：Rafael J. Vieira（ポルト大学 / CINTESIS・MEDCIDS）。ブラウザから無料で利用可能。
+                </div>
+                <a href="https://rafaeljvieira.shinyapps.io/GRADErater-TA/"
+                   target="_blank" rel="noopener"
+                   style="display:inline-block;background:rgba(255,255,255,0.2);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:4px;border:1px solid rgba(255,255,255,0.4);">
+                  🔗 GRADErater-TA を開く →
+                </a>
+              </div>
+
+              <!-- ツール② FEvIR GRADE CodeSystem -->
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:0.85rem 1rem;">
+                <div style="font-size:0.9rem;font-weight:700;margin-bottom:0.35rem;">
+                  🗂️ FEvIR.net — GRADE Ontology CodeSystem
+                </div>
+                <div style="font-size:0.84rem;line-height:1.75;margin-bottom:0.5rem;">
+                  FEvIR（Fast Evidence Interoperability Resources）は、HL7 FHIR規格を拡張して医学的エビデンスをコンピュータ処理可能な形式（機械可読形式）で表現・共有するためのプラットフォーム。このCodeSystem（ID: 27833）はGRADE Working Groupと共同開発された「GRADEオントロジー」のドラフトで、GRADEの概念（確実性の評価ドメイン・推奨の強さ・EtD要素等）を標準化されたコードシステムとして定義している。診療ガイドラインや系統的レビューのエビデンスをデジタル・コンピュータ処理可能な構造化データ（Computable GRADE）として実装する基盤となる。EHRシステム・CDS（臨床意思決定支援）ツール・GRADE Botのナレッジベース構築に活用。システム開発者・ガイドライン作成機関・EBM標準化研究者向け。
+                </div>
+                <a href="https://fevir.net/resources/CodeSystem/27833#GRADE:02030"
+                   target="_blank" rel="noopener"
+                   style="display:inline-block;background:rgba(255,255,255,0.2);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:4px;border:1px solid rgba(255,255,255,0.4);">
+                  🔗 FEvIR GRADE CodeSystem を開く →
+                </a>
+              </div>
+            </div>
+
           </div>
 
         </div><!-- /upd-porto2026 -->
