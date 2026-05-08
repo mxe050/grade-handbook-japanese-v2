@@ -9602,45 +9602,154 @@ function checkAuth(){
               <p><strong style="color:#047857;">時間短縮効果</strong><br>
               NMAでは数日分の作業削減（テストユーザー報告）。Pairwise MAでは主に標準化・compliance改善・判断ミス削減が価値。RevManファイル直接読み込み機能を現在開発中。</p>
 
-              <!-- Q&A nested -->
+              <h4 style="color:#047857;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #059669;padding-left:0.5rem;">📋 Responsible use of automation（責任ある利用の6原則）</h4>
+              <p>スライド21〜22では、GRADEraterを責任を持って使うための原則が整理されている：</p>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>① GRADEを理解している人が使うべき</strong><br>
+                理解すべき概念：risk of bias / inconsistency / indirectness / imprecision / dissemination bias / downgrade / upgrade / decision thresholds / certainty of evidence。これらを理解していないユーザーは出力を批判的に読めない。
+              </div>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>② ツールの説明とdecision rulesを理解してから使う</strong><br>
+                単にデータを入れて結果を見るのではなく、どのルールが実装されているかを理解して使う。
+              </div>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>③ 異なるルールを使うなら事前に決める</strong><br>
+                ツールと異なるルールで評価したいなら、<em>事前に規定／一貫して適用／理由を説明／自動判断を手動で変更</em>する必要がある。
+              </div>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>④ 自動判断は批判的に吟味する</strong><br>
+                ツールの出力はsuggestionであり、最終判断ではない。
+              </div>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>⑤ 手動変更は透明に報告する</strong><br>
+                manual changesは、なぜ変更したかとともに報告する。
+              </div>
+
+              <div style="background:#f0fdf4;border-left:3px solid #059669;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>⑥ 自動化の使用自体を報告する</strong><br>
+                論文・ガイドラインでは、GRADEraterを使ったこと／どのバージョンか／どのdecision rulesか／どの判断を手動変更したか — を包括的に報告する。
+              </div>
+
+              <h4 style="color:#047857;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #059669;padding-left:0.5rem;">🏆 強みと限界（総合評価）</h4>
+              <div style="background:#ecfdf5;border-left:4px solid #10b981;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>強み（10点）：</strong><br>
+                ① GRADE expertsにより開発／② 人間判断との比較が行われている／③ 1306 judgmentsで初期検証／④ prospective evaluationが予定・実施／⑤ UI/UX testingあり／⑥ decision rulesが明示／⑦ manual changesが記録／⑧ NMAで大幅な時間短縮／⑨ thresholds guidanceとの整合性／⑩ living rulesとして更新可能
+              </div>
+              <div style="background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>限界（10点）：</strong><br>
+                ① 現時点ではテスト目的／② 人間検証必須／③ メタ解析がない場合は使えない／④ 事前入力が多い／⑤ GRADE知識のない人には使えない／⑥ thresholdの微妙な変更で結果が変わる可能性／⑦ 特殊文脈ではmanual changesが多くなる／⑧ softwareとguidanceの関係整理が必要／⑨ maintenance burdenが大きい／⑩ human ratingをreference standardにする限界
+              </div>
+
+              <!-- Q&A nested - 完全転写版 -->
               <details style="margin-top:0.85rem;border-radius:6px;overflow:hidden;border:1px solid #a7f3d0;">
-                <summary style="background:#ecfdf5;color:#064e3b;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A（会議文字起こし）</summary>
+                <summary style="background:#ecfdf5;color:#064e3b;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A完全転写（19:35〜20:06、英語原文付き）</summary>
                 <div style="padding:0.9rem 1rem;background:#f0fdf4;font-size:0.87rem;line-height:1.75;">
 
-                  <p><strong>Q1（Bill）：10年後にGRADE知識が不要になるか？</strong><br>
-                  Bernardo：「10年後でもGRADEの知識は必要。メタ解析ソフトを使うのにfixed/random effectsの概念が必要なのと同じ。現段階はUI改善・機能追加段階。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q1（Bill）：システムの現在の課題は？10年後にはGRADEを知らない人でも使えるようになるか？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I was wondering whether you could tell us where the system currently still has problems where you see the challenges. And the other thing... Do you think? In 10 years, when this is matured? Do you think the people using this still need to use grade or are gonna be able to do it themselves?... Like like, do you? When you get into a taxi. You don't need to drive anymore. Right increasingly, when you get into a self driving car, you don't right."</em><br><br>
+                    <strong>Bernardoの回答：</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I think, even in 10 years from now it was always being important for people to be knowledgeable about grade. This means... What is risk of bias and inconsistency? What are the different domains? What does it mean to downgrade the certainty of the evidence, or to upgrade. So these key concepts, so the automation is here. Support. To increase the efficiency, to support compliance to the guidance, but at the end of the day it's. Always important that we are able to critically appraise what are the results... I mean, it's the same way. For example with mechanisms. We have a lot of software that help us doing methodology. We no longer needed to do it by hand. But it's important that we know the concept that we know what is a random effect or fixed effects."</em><br>
+                    <strong>要約：</strong>10年後でもGRADEの知識は必要。メタ解析ソフトを使うのにfixed/random effectsの概念が必要なのと同じ。現在はエラー修正というよりUI改善・機能追加段階。例：ユーザー要望でincidence rate ratioをeffect size measureに追加した。
+                  </div>
 
-                  <p><strong>Q2（Reem）：デフォルト変更のガイダンス・時間短縮の測定方法</strong><br>
-                  Bernardo：「変更してよい典型例・すべきでない典型例のguidanceを付ける方向。NMAで数日短縮の実績あり。RevMan読み込み機能を開発中。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q2（Reem）：①フィードバック機能、②デフォルト変更のguidance、③時間短縮の測定</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"With this very important development. i'm assuming that there are features that people can feed and feedback directly. Because that is that is key. The second is. I know you can adjust the defaults, but what would be very helpful. Is. Tell people when it's appropriate to adjust the default, and when it's not because people can't adjust anything they want, and we don't. We wanna kind of save. Guard against that. That's 1 good thing about automation. and the last the last point with. You know you're very rigorous about all the methods and the accuracy. Can you tell us about time saving."</em><br><br>
+                    <strong>Bernardoの回答（デフォルト変更）：</strong>「ツールには原則が要約されているが、それぞれに背景説明を付ける必要がある。すべての特殊ケースを網羅することはできないが、いつデフォルトを変更してよいか／いつ変更すべきでないかについて、ある程度のguidanceは提供できる」<br>
+                    <strong>Bernardoの回答（時間短縮）：</strong>「particularly for network meta-analysis, it saves a lot of time... For pairwise, not necessarily yet」<br>
+                    <strong>追加の取り組み：</strong>RevMan filesを直接読み込む機能を開発中。Cochrane reviewなどではRevMan形式のデータが多く使われるため、直接読み込みができれば入力負担が大きく減る。
+                  </div>
 
-                  <p><strong>Q3（Paul Whaley、環境毒性）：変更の透明性</strong><br>
-                  Bernardo：「comparison levelで自動判断＋justificationを表示。手動変更時はmanual assessmentに切り替わり記録される。exportファイルに全justificationとmanual changeが含まれる。著者が削除する可能性は技術的にはあるが、透明性ある利用が目的。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q3（Paul Whaley、環境毒性、evidence-based toxicology Collaboration）：自動判断・手動変更の透明性をどう確保するか？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"There are some complicated like human computer interaction challenges that arise at that, where how you guide somebody through which parts they should modify and why, and then when it comes to making those changes transparent to the user at the end of it... how you surface those changes in a way that's accessible to a user, I think, a really quite complicated."</em><br><br>
+                    <strong>Bernardoの説明（仕組み）：</strong><br>
+                    ① comparison levelで自動判断と自動生成justificationが表示される<br>
+                    ② ユーザーはdomain levelで手動変更できる（例：imprecisionを"very serious"から"serious"に変更）<br>
+                    ③ 変更時、自動justificationはmanual assessmentに切り替わる<br>
+                    ④ ユーザーが自分でjustificationを入力する<br>
+                    ⑤ その変更は記録される<br>
+                    ⑥ export fileに、manual changeを含めた全justificationが出力される<br><br>
+                    <strong>Paulのフォロー：</strong>「論文・ガイドラインの読者がどうやってその変更を理解できるのか？」<br>
+                    <strong>Bernardo：</strong>「exportされたレポートにすべてのjustificationが含まれる／manual changeも記録される／著者が原稿でそれを削除することは技術的には可能／しかし透明性ある利用を意図している」
+                  </div>
 
-                  <p><strong>Q4（Samuel、online）：時間短縮と、いつ使うべきでないか</strong><br>
-                  Bernardo：「NMAで数日節約。Pairwiseは標準化がメイン。使うべきでない場合：GRADEを知らない人・メタ解析なし・ほぼ全判断を手動変更が必要な特殊文脈。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q4（Samuel、online）：どれくらい時間を節約できるのか？いつ使うべきで、いつ使うべきでないのか？</strong><br>
+                    <strong>Bernardoの回答（時間短縮）：</strong>「particularly for networks, we can get time savings of <strong>some days</strong>... for pairwise meta-analysis, of course, the impact will not be so big. And I would say... for pairwise, the value is, even though there can be some time efficiency, but I would say it's more on standardization, endurance to compliance with the great guidance, particularly decision thresholds, having the thresholds automatically computed」<br><br>
+                    <strong>Bernardoの回答（使うべきでない場合）：</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"If someone does not know anything about grade, does not know what are the concepts, I would say don't use it. It's the same way as if you don't know the concepts of meta-analysis, don't just play with the software. If there is no meta-analysis involved as well, this is a situation for which we cannot use. And there can be some although even the system, the rules, domains can be modified systematically if at the end of the day there needs to be a lot of systematic changes because this is a very, very special context. So this may be a situation in which people may wonder whether to do it manually or with the automated support."</em><br><br>
+                    <strong>使うべきでない4類型：</strong>① GRADEを全く知らない人／② メタ解析が存在しない場合／③ 非常に特殊な文脈で、ほぼすべての判断を手動変更する必要がある場合／④ 出力を批判的に検証できない場合
+                  </div>
 
-                  <p><strong>Q5（Bernardo回答、Samuel Q2の続き）：人間との10%不一致について</strong><br>
-                  「threshold borderline caseで差が出やすい。large effectだがOIS未達のケースも多い。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q5（Samuel追加、online）：人間評価との10%不一致はなぜ起きたのか？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"there were other situations for which there was the study was a very closed with the crossing of a threshold. So, for example, it crossed by a very small margin, and the rater said, okay, we will not be downgrading just because it crosses by this small amount. So let's be a little bit less conservative... And this is what inspired, for example, for this to be highlighted. We will still be putting as default more conservative option, but it will be highlighted that the situation occurred."</em><br><br>
+                    <strong>不一致の主な4類型：</strong><br>
+                    ① 人間側のミス（多数の判断を行う中で誤って判断した可能性、大量評価では避けにくい）<br>
+                    ② threshold crossingが非常に小さい（CIがdecision thresholdをわずかにまたぐ場合：自動では「downgrade」、人間は「ほんのわずかにまたいでいるだけなのでdowngradeしない」と判断）<br>
+                    ③ incoherenceのp値が境界的（NMAでp値が境界付近）<br>
+                    ④ large effectだがOISを満たさない（大きな効果が観察されているが参加者数がOIS未達 → 人間は「imprecisionでdowngrade」、自動はそうしない）<br><br>
+                    <strong>今後の対応：</strong>「defaultでは保守的判断を維持しつつ、close threshold crossingとしてハイライトする」設計。ツールは自動でdowngradeするが、ユーザーに「ここは境界的なので確認してください」と知らせる。
+                  </div>
 
-                  <p><strong>Q6：人間評価をreference standardにしてよいか</strong><br>
-                  「重要コメント：人間も誤り・ルール逸脱がある。今後はexpert consensus・adjudication panelを組み合わせた複合reference standardが望ましい。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 重要な会場コメント（York?）：人間評価をreference standardにしてよいのか？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"a better approach is to have a composite outcome, because I don't know that the human as a reference standard is the right approach, because they obviously some of the raters, appropriately or not, I don't know, bend the rules. Right? That's what this sounds like. So, I think as evaluation progress, you probably need a combination of some sort of a reference standard that combines both to get to whatever humans don't necessarily are not the right reference standard here."</em><br><br>
+                    <strong>意義：</strong>自動化評価の検証では、しばしば人間の判断をgold standardにする。しかしGRADE評価は、完全に客観的な作業ではなく、判断を含む。人間の評価にも：誤り／文脈依存判断／ルール逸脱／経験に基づく柔軟判断／inconsistency があり得る。<br>
+                    <strong>今後の方向：</strong>expert consensus / predefined rules / human ratings / adjudication panel / disagreement analysis / outcome-based evaluation を組み合わせた <strong>複合的reference standard</strong>が望ましい。
+                  </div>
 
-                  <p><strong>Q7（Jennifer、online）：SRとguidelineで違うが区別するか</strong><br>
-                  「同じGRADE Book guidanceを使用。thresholds・indirectnessを変更して再評価は可能。guideline/SRモードの切り替え機能を追加予定。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q7（Jennifer、online）：systematic reviewとguidelineでcertainty ratingは違うが、自動化システムは区別するのか？</strong><br>
+                    <strong>Bernardoの基本回答：</strong>「same approach, we're using what is right now in current guidance that's in the book」<br>
+                    <strong>Holgerの補足：</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"You can change the thresholds, for example, and do a re-rating. So that definitely is possible. And of course, the most, let's say, obvious change that guideline developers make to the certainty ratings relates to indirectness or applicability, and also there there will be possibilities of just changing the actual… the actual input variables, and then get a new rating."</em><br><br>
+                    <strong>意義：</strong>SR では一般的なpopulationに基づく評価が行われることが多い一方、guidelineでは特定の意思決定文脈に応じてtarget population / baseline risk / decision thresholds / values / applicability / indirectnessが変わる。GRADEraterに必要なのは <strong>「同じデータから、文脈別に再評価できる機能」</strong>。<br>
+                    <strong>アプリ化での想定モード：</strong>SR mode / Guideline-EtD mode / HTA mode / user-defined threshold mode / target population baseline risk mode
+                  </div>
 
-                  <p><strong>Q8：thresholdをわずかに変えるとratingが変わる問題</strong><br>
-                  「a prioriに定義すべき。borderline crossingはhighlightして要確認表示。デフォルトは保守的判断を維持。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q8（会場）：thresholdをわずかに変えるとratingが変わる問題</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I was wondering whether you plan, and if so, how, to address the importance of the thresholds for the automation. Because I believe that there might be instances where a slight change in the threshold, like 10%, might actually change the rating. And I wonder whether you think about an approach to making that explicit to the user, that there is a caution needed, really, in interpreting the results, because a slight change in the threshold might completely change your assessment."</em><br><br>
+                    <strong>Bernardoの回答：</strong>「the threshold should be defined a priori, but there are some situations for which... when the crossing of the threshold happens by a small margin... we will still, by default, have the number of levels downgraded with a correspondence with the threshold, but this situation being highlighted so that the users can see... these are the situations when users may want to weigh in and take a second look」<br><br>
+                    <strong>実装すべき機能：</strong>threshold sensitivity warning／「CIが閾値をわずかにまたいでいます」表示／thresholdからの距離表示／10% threshold variation sensitivity analysis／ratingが変わるかどうかの自動チェック／"borderline downgrade"フラグ
+                  </div>
 
-                  <p><strong>Q9：critical outcomeが後から変わる場合</strong><br>
-                  「現在はoutcome-level独立評価。net benefit計算は未実装。将来net effectが実装されると重要な問題となる。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #047857;">
+                    <strong>🟢 Q9：critical outcomeが後から変わる場合</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"People get into trouble who don't have a lot of experience with GRADE is when a priori they've thought that something was a critical outcome. And it turns out not to be affected by the intervention. And so something else that was an important outcome is now a critical outcome. How do you deal with that?"</em><br><br>
+                    <strong>Bernardo：</strong>「right now, the evaluation is assessed at outcome level... we can do it for critical or for important outcomes. Since we have not yet the guidance published on that benefit, there is no computation of the natural benefit yet. Of course, that this will be an aspect which will be critical once we implement net benefit calculation as well. But right now, this is done independently for each outcome.」<br><br>
+                    <strong>意義：</strong>GRADEraterの現段階は「outcome-level certainty assessment tool」であり、「overall net benefit / balance of effects tool」ではない。今後Net effectの概念（講演⑬）が実装されると、outcome importance / critical vs important / benefit-harm balance / net effect / overall certainty / recommendation strength の連動が必要になる。
+                  </div>
 
-                  <p><strong>Q10（Holger提起）：いつ公開すべきか</strong><br>
-                  会場からの意見：<br>
-                  ①Lorenzo：早期公開を推奨<br>
-                  ②Paul：ソフトウェアとguidanceを分離（Gitでバージョン管理）<br>
-                  ③R packageモデル（基本論文＋オンライン更新マニュアル）<br>
-                  ④ライセンスで使用バージョン・manual changes報告義務化<br>
-                  ⑤メンテナンスチームの確立が必要（living rules更新のため）</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q10（Holger提起、Olga？）：いつ論文・guidanceを公開すべきか？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"one of the challenges that we have with this paper that we've discussed at length is when we should publish the paper, right? So this is the first presentation of the approach. And it will eventually be a guidance paper, but it's also very clear that there will be additional rules. Bernardo, you explained this very well, that there's a living approach to that. And I think it would be good to get a sense from the room, in particular, those who perhaps are less involved in this particular paper. What do you think a good moment would be?"</em><br><br>
+                    <strong>会場意見1：Lorenzo（早期公開賛成）</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I would be largely in favor of an early publication. I mean, not to lose… so it seems to be quite advanced by these, and you are also... To me, I have no participation on this. It seems that you already have an overzealous approach explaining how it should be used, right, and what are the risks. But I think it would be important to come early on so you are clearly defining that the rules would be changed. But that'll also passed the idea that other people in this room and outside this room should be investing time in checking for the accuracy and the reliability of the tool."</em><br><br>
+                    <strong>会場意見2：Paul（softwareとguidance分離）</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"a thought on the publication strategy, I would suggest separating the publication of the software from publishing of the guidance because it sounds at the moment like those two things are being run together. You can publish the guidance as like almost like a single version thing right where you're saying how the software should be used and how you would anticipate it evolving. And the software is going to be continuously updated, and that should be versioned through Git or whatever."</em><br><br>
+                    <strong>会場意見3：別の参加者（R packageモデル）</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I like the way that it could be published more like an instruction of online software, like an R package... You have main concepts in a paper, but you have the operational manual that you may have different versions. So we have a lot of nice examples of our package that work on that one... like for the metaphor package for meta-analysis and people are still citing and using for general concepts the original one. But you go to the R and you get the most updated instructions there."</em><br><br>
+                    <strong>会場意見4：ライセンス案</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"You may define, like, a license such as CCBI, ShareAlike, that if you are using the grader, and you want to say that we use that. You must add as appendix or provides a link for the tracking that it was used."</em><br><br>
+                    <strong>会場意見5：Vinoslav（早く使いたい）</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I would be… I would be keen to, to test it as soon as possible, or use it as soon as possible with very careful validation. Happy to volunteer with my team to do so, because, you know, there are a lot of the AI tools we already playing with, I mean, all of us. So I think... I would do it as soon as possible. Having in the mind there will be updates and adaptation, and probably agree with Paul that to separate it..."</em><br><br>
+                    <strong>司会の最後の指摘（重要）：maintenance burden</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"Because this update is going to be live, there'll be new guidance coming up. Perhaps it's good to think about the maintenance burden, like maintaining a living review, living guideline, to put teams together to respond quickly so this software keeps up to date."</em>
+                  </div>
+
+                  <div style="background:#fef9c3;border-left:4px solid #ca8a04;border-radius:6px;padding:0.7rem 0.9rem;margin-top:0.5rem;">
+                    <strong>📌 Q&Aから抽出されるアプリ設計上の機能要件（一覧）：</strong><br>
+                    自動判断の表示／自動判断の根拠表示／手動変更機能／変更理由の必須入力／変更履歴ログ／使用ルールバージョン表示／export report／差分表示（automatic vs manual）／変更箇所のフラグ／threshold sensitivity warning／borderline crossing highlight／close-call indicator／SR vs guideline mode切替／patient population customization／RevMan import／decision rule version registry／online updates feed
+                  </div>
 
                 </div>
               </details>
@@ -9692,46 +9801,289 @@ function checkAuth(){
               <p><strong style="color:#1e40af;">対象読者（第1報）</strong><br>
               evidence synthesisを行う人（ガイドライン開発者・HTA担当者を含む）</p>
 
-              <p><strong style="color:#1e40af;">研究示唆の提示3オプション（多くの議論を経て3択に整理）</strong></p>
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">📋 研究示唆の提示3オプション（多くの議論を経て3択に整理）</h4>
 
               <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
-                <strong>Option 1（SoF表内）</strong>：GRADEのSummary of Findings表に1〜2文でevidence gapと研究示唆を追記。最も簡潔な形式。Cochrane reviewのすべてに導入すべきとの意見が会議で出た。<br>
-                例：「certaintyを改善するには、QOLを測定した追加RCTが必要。将来研究ではoutcome assessorのblindingが必要。」
+                <strong>Option 1（SoF表内）— 簡潔な形式</strong><br>
+                通常のGRADE Summary of Findings (SoF) tableに、アウトカムごとの短い研究示唆を追加。追加場所は：<br>
+                ① 既存の"Implications"列<br>
+                ② "What happens"列<br>
+                ③ 新しい"Implications for Research"列<br>
+                <strong>詳細度：</strong>低い。簡潔な一文で十分。<br>
+                <strong>誰向け：</strong>すべてのevidence synthesisで使える基本形式。Toby Lasserson曰く「すべてのCochrane reviewに入るべき」。
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;font-size:0.86rem;">
+                <strong>Option 1の実例：季節性アレルギー性鼻炎</strong><br>
+                <em>oral antihistamines vs leukotriene receptor antagonists</em><br><br>
+                ・<strong>Nasal symptoms：</strong>Certainty Moderate (imprecision) → "Future studies should enroll more participants."<br>
+                ・<strong>Ocular symptoms：</strong>Certainty Very low (RoB+indirectness) → "Future studies should address selective reporting of outcomes and report a three-symptom-based total ocular symptom score."<br>
+                ・<strong>Rhinoconjunctivitis-related QOL：</strong>Certainty High → "Further research is unlikely to change the results."<br>
+                ・<strong>Long-term adverse events（Studies: 0）：</strong>"Future studies should have longer follow-up to capture long-term adverse events."
               </div>
 
               <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
-                <strong>Option 2（独立SWAT表）</strong>：中程度の詳細。複数・単独比較の両方に対応。overall certainty・evidence gaps・研究示唆のカスタム記述・全アウトカム横断的概括を含む。Excelテンプレートあり。より詳細なevidence synthesis報告を目指す場合に使用。
+                <strong>Option 2（Structured SOIR table）— 中等度詳細</strong><br>
+                SOIR = <strong>S</strong>ummary <strong>O</strong>f <strong>I</strong>mplications for <strong>R</strong>esearch（Schünemann曰く「フランス語の<em>soir</em>=eveningに似ているのは偶然」）<br>
+                SoF tableとは別のstand-alone table。内容：<br>
+                ・outcomes / thresholds / certainty of evidence<br>
+                ・lower certaintyの理由<br>
+                ・future research implications<br>
+                ・across outcomes summary<br>
+                <strong>誰向け：</strong>evidence synthesis authors / primary researchers / grant applicants / funders / HTA・guideline開発者 / research commissioning関係者
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;font-size:0.86rem;">
+                <strong>Option 2の実例（Single comparison、補足表2a）：</strong><br>
+                <em>Oral antihistamines vs leukotriene receptor antagonists</em><br>
+                ・Nasal symptoms：SMD = -0.15／certainty Moderate／downgrade reason imprecision／<strong>implication：</strong>より多くの参加者を含むadequately powered studiesが必要<br>
+                ・Ocular symptoms：certainty Very low／downgrade RoB+indirectness／<strong>implication：</strong>protocols事前登録／outcome完全報告／ocular symptomsを現在のbest practiceに従って測定・報告<br>
+                ・Long-term AE（no evidence）：<strong>implication：</strong>長期follow-up研究／neuropsychiatric adverse eventsを注意深く記録<br><br>
+                <strong>Multiple comparisons / NMA例（補足表2b）：</strong>アレルギー性鼻炎NMAで5アウトカム × 比較数のhigh/mod/low/very low certainty分布、RoB / indirectness / imprecision でdowngradeされた比較数、future research implications、across outcomes summary（protocol登録・double dose vs co-medication直接比較・pediatric/perennial allergic rhinitis研究・subgroup stratification）が記載される。
               </div>
 
               <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;">
-                <strong>Option 3（詳細Research Implications表）</strong>：特にNMAで使用。カナダの健康研究機関のようにSRを根拠として新規RCT実施を正当化する場合など。最も詳細で構造化されたオプション。
+                <strong>Option 3（Extended domain-specific research implications table）— 最も詳細</strong><br>
+                アウトカムごとに、<strong>GRADE domainごとに</strong>downgrade levels／reasons for lower certainty／implications for researchを詳細に記載。研究計画やtrial protocol作成に使えるレベル。<br>
+                <strong>誰向け：</strong>新しいtrialを計画する研究者／grant proposalを書く研究者／funders／trial planning committee／research priority-setting group／HTA関連研究者／NMAの研究ギャップを詳細に理解したい人
               </div>
 
-              <p><strong style="color:#1e40af;">GRADEドメインから研究示唆へ（具体例）</strong></p>
-              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
-                <li>Risk of bias downgrade → 「将来研究でoutcome assessor blindingが必要」</li>
-                <li>Inconsistency downgrade → 「異質性の原因となるmodifier変数を探索する研究が必要」</li>
-                <li>Indirectness → 「より代表的なpopulationを含む研究が必要」</li>
-                <li>Imprecision → 「より大きなサンプルサイズ・十分なOISの研究が必要」</li>
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0 0.7rem 0;font-size:0.86rem;">
+                <strong>Option 3の実例（Single comparison、補足表3a）：</strong><br>
+                <strong>Nasal symptoms：</strong>imprecisionで1 level downgrade（fixed-effect MAのCIが1つのDTをまたぐ）→ より多くの参加者のadequately powered studies<br>
+                <strong>Ocular symptoms：</strong>RoBで1 level（selective outcome reporting）+ indirectnessで2 levels（4症状合計で測定 ≠ 現代標準の3症状）→ protocol登録／all outcomes reporting／3症状total ocular symptom score<br>
+                <strong>Short-term AE：</strong>RoB 1 level + dissemination bias 1 level → blinding確保／AE包括的報告／少なくとも1つのAEを経験した患者数を報告／individual AE frequency<br>
+                <strong>Long-term AE（studiesなし）：</strong>長期follow-up研究／neuropsychiatric adverse eventsの慎重な登録<br><br>
+                <strong>Multiple comparisons例（補足表3b）：</strong>nasal symptoms: 191 studies, 28 comparisons／trivial-small-moderate-large比較数／high-moderate-low-very low certainty比較数／evidence gapあり／combination therapyに関する研究が限られる／direct comparison不足／imprecision／pediatric・perennial rhinitis subgroup evidence不足
+              </div>
+
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">🧱 GRADEドメインから研究示唆へ（詳細）</h4>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Risk of bias</strong> downgradeされた場合：<br>
+                outcome assessor blinding／participant・personnel blinding／allocation concealment／ITT analysis／missing dataの最小化／selective outcome reportingの防止／protocol registration／complete reporting<br>
+                <strong>⚠️ 現実的でなければならない：</strong>behavioral・dietary interventionではparticipant blindingが困難 → "future studies should blind participants"と書くのは非現実的。代わりに：objective outcomes使用／blinded outcome assessors使用／standardized measurement／outcome reporting改善 などの現実的提案を。
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Indirectness</strong> どのPICO要素がずれていたかを明示：<br>
+                ・<strong>Population indirectness：</strong>子ども対象なのに成人のみ研究／高齢者対象なのに若年者中心／疾患重症度が異なる／settingが異なる → "Future studies should include the target population"<br>
+                ・<strong>Intervention indirectness：</strong>実際の介入と異なるdose／complex interventionの一部が欠ける／delivery setting異なる → "Future studies should evaluate the intervention as implemented in practice"<br>
+                ・<strong>Comparator indirectness：</strong>標準治療ではなくplaceboと比較／guideline-relevant comparatorがない → "Future studies should compare against the decision-relevant comparator"<br>
+                ・<strong>Outcome indirectness：</strong>patient-important outcomeではなくsurrogate／outcome definitionが古い／follow-upが短い／measurement instrument異なる → "Future studies should measure and report patient-important outcomes using current standards"
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Imprecision</strong> 基本的には情報量不足：<br>
+                sample size増／events増／follow-up延長／decision thresholdsに基づくpower計算／direct comparisons増。<br>
+                <strong>重要：</strong>imprecisionはdecision thresholdsと深く結びつく。CIがsmall/moderate/large thresholdをまたぐ場合certaintyが下がる。将来研究は単に「統計的有意差」を目指すのではなく <strong>"decision-relevant effect thresholdsに基づいて設計する"</strong>べき。
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Inconsistency</strong>（2種類）：<br>
+                ・<strong>Explained inconsistency</strong>（あるsubgroupで説明可能）：children vs adults／mild vs severe disease／seasonal vs perennial allergic rhinitis／comorbid asthmaあり/なし → "Future studies should include and report stratified results for plausible effect modifiers"<br>
+                ・<strong>Unexplained inconsistency</strong>（理由不明）：→ "Future studies should collect and report variables that may explain heterogeneity"
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Dissemination bias</strong>：unpublished dataを探す／trial registration徹底／results reporting義務化／outcome reporting bias回避／adverse events完全報告。<br>
+                特に研究があっても結果が未公表なら、新研究だけでなく <strong>「既存の未公表データを取得すること」</strong>もresearch implicationになる。
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Upgrading domains（NRSの場合）</strong>：<br>
+                ・large effectでprecision不足 → より大きな研究でCIを狭める<br>
+                ・dose-responseが疑われる → exposure levelsを十分にばらつかせる<br>
+                ・confoundingの影響が不明 → confoundersを測定・調整する
+              </div>
+
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.4rem 0;font-size:0.86rem;">
+                <strong>Intransitivity in NMA</strong>：PICO要素を揃えた研究／baseline risk・disease severity報告／co-interventions報告／direct head-to-head追加／network内で不足比較を補う<br><br>
+                <strong>Incoherence in NMA</strong>：direct vs indirectの違いを説明する仮説検証／study design違いを評価／outcome definitions統一／head-to-head studies追加／stratified analyses
+              </div>
+
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">🌐 PICO-level evidence gaps</h4>
+              <p>アウトカムごとだけでなく、PICO全体でのresearch gapsもまとめることを提案：</p>
+              <div style="background:#eff6ff;border-left:3px solid #2563eb;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                例：<em>"For the population of interest, our review failed to identify information on outcomes X, Y, and Z."</em><br>
+                さらに：<em>"Across outcomes, the following populations, interventions, and comparisons lacked information."</em><br><br>
+                個別アウトカムごとの詳細だけでは全体像が見えにくい。PICO全体でまとめると、研究者・fundersにとって有用。
+              </div>
+
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">💬 Schünemannの個人見解</h4>
+              <div style="background:#dbeafe;border-left:4px solid #1e40af;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-style:italic;">
+                <em>"all of our the AI projects, all of our projects are super important. I right now find this personally to be the most important contribution. That that we can make to the community outside of the the narrower grade, rating..."</em><br><br>
+                「すべてのAI・自動化プロジェクトの中で、このGRADE to Researchが最も重要な貢献。医療研究の質改善とresearch wasteの削減に直接つながる」
+              </div>
+
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">🚀 次のステップ</h4>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;font-size:0.86rem;">
+                <li><strong>Part 2：</strong>EtDからの研究示唆（research priorities）</li>
+                <li>Values評価からの研究示唆（diagnostic / prognosis / values and preferences ／ resource use）</li>
+                <li>Qualitative evidence研究ギャップへの拡張（GRADE-CERQual連携）</li>
+                <li>自動化ツールとの連携（GRADEraterとの接続）</li>
               </ul>
 
-              <p><strong style="color:#1e40af;">標準的な記述フレーズ例（paper内のboxに収録）</strong><br>
-              <em>"To improve the certainty of evidence, future studies should include quality of life, be randomized, blind outcome assessors..."</em></p>
-
-              <p><strong style="color:#1e40af;">Schünemannの個人見解</strong><br>
-              「すべてのAI・自動化プロジェクトの中で、このGRADE to Researchが最も重要な貢献。医療研究の質改善とresearch wasteの削減に直接つながる。」</p>
-
-              <p><strong style="color:#1e40af;">次のステップ</strong><br>
-              Part 2（EtDからの研究示唆）・Values評価からの研究示唆・自動化ツールとの連携（GRADEraterとの接続）も計画中。</p>
-
               <details style="margin-top:0.85rem;border-radius:6px;overflow:hidden;border:1px solid #bfdbfe;">
-                <summary style="background:#eff6ff;color:#1e40af;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A</summary>
+                <summary style="background:#eff6ff;color:#1e40af;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A完全転写（19問、英語原文付き）</summary>
                 <div style="padding:0.9rem 1rem;background:#f0f7ff;font-size:0.87rem;line-height:1.75;">
-                  <p><strong>Cochrane統合</strong>：Toby Lusignonら（Cochrane）が多数の入力を提供。SoF表への1〜2文追記をすべてのCochrane reviewに導入することを目指している。</p>
-                  <p><strong>標準フレーズ（phrasing standard）</strong>：ドメイン別の標準フレーズ例をpaperのbox内に収録。ガイドライン・SR著者が参照できる形式。</p>
-                  <p><strong>複数比較への対応</strong>：Option 2とOption 3は複数比較（NMA含む）にも対応している。</p>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q1（Reem）：research wasteとの関連を明確にすべき</strong><br>
+                    指摘：「背景にresearch waste conceptとの明確なつながりが不足。Ian ChalmersやGlasziouのworkに触れるべきでは？」<br>
+                    <strong>Schünemann：</strong>「Lancet series on research wasteは議論済み、Doug Altmanの背景にも含まれている。引用が抜けていれば追加すべき」<br>
+                    <strong>意義：</strong>このガイダンスは単なる表形式の改善ではなく「research wasteを減らすための方法論」として位置づけるべき。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q2：Qualitative evidenceの研究ギャップは？</strong><br>
+                    指摘：「すべての例がquantitative evidence。qualitative evidenceにも大きなevidence gapsがある」<br>
+                    <strong>Schünemann：</strong>「separate paper」（今回のpaperでは扱わず、将来別paperが必要）<br>
+                    <strong>意義：</strong>EtDではacceptability・feasibility・values・equity・implementation barriersなどでqualitative evidenceが非常に重要。今後GRADE-CERQualと連携したresearch implications guidanceが必要。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q3：EQUATORやPRISMAと連携すべき</strong><br>
+                    別の参加者：「PRISMAのfuture research関連項目にも直接つながるのではないか」<br>
+                    <strong>Schünemann：</strong>「reporting checklistにつながる可能性があり、非常に良い提案」<br>
+                    <strong>将来の組み込み先：</strong>PRISMA extension／EQUATOR reporting checklist／Cochrane review template／journal submission checklist／funding application checklist
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q4（PRISMA関係者と思われる参加者）：一次研究のreporting改善も含めるべき</strong><br>
+                    指摘：「primary studiesの報告が不十分でrisk of bias評価すらできないことが多い。future research implicationsにはreporting improvementも含めるべき」<br>
+                    <strong>Schünemann：</strong>「重要であり、paperにより明確に入れるべき」<br>
+                    <strong>具体問題：</strong>intervention description不足／outcome reporting不完全／RoB assessmentに必要な情報がない／結果が利用できない<br>
+                    <strong>意義：</strong>「新しい研究を実施せよ」だけでなく <strong>「既存・将来の研究をよりよく報告せよ」</strong>でもあるべき。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q5：Cochraneはこれを必須化（mandate）するのか？</strong><br>
+                    質問：「Toby Lassersonと関わっているとのことだが、Cochraneはこれをmandateするのか？」<br>
+                    <strong>Schünemannの回答：</strong>「<strong>brief answer is yes</strong>」<br>
+                    <strong>意義：</strong>Cochrane reviewsへのstructured research implications組み込みの方向性。Cochraneで導入されれば、世界中のsystematic reviewsで大きな影響。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q6：3〜5年後のimpact evaluation計画は？</strong><br>
+                    質問：「このguidanceが実際に使われるか、実装されるか、影響を測る予定はあるか？」<br>
+                    <strong>Schünemann：</strong>「必要性は認める。Shanghaiで議論されたが、まだ具体的なimpact evaluation planningは進んでいない」<br>
+                    <strong>意義：</strong>このguidanceの成功は、論文出版ではなく、review authors / funders / journal editors / ethics committees / primary researchers が研究設計に使うことで初めて測れる。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q7：Option選択はreview team能力にも依存するのでは？</strong><br>
+                    指摘：「clinical epidemiologistsとclinical trialistsは同じではない。review authorsがtrialistsに詳細な研究設計を助言できるとは限らない」<br>
+                    <strong>Schünemann：</strong>「良い指摘」<br>
+                    <strong>意義：</strong>Option 3のように詳細な研究設計示唆を出すには、review teamに：trial methodology／clinical expertise／biostatistics／implementation science／regulatory knowledge／patient engagement の専門性が必要になる可能性 — つまりevidence synthesis team構成にも影響。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q8：このpaperとEtD paperは一緒に出すか別々か？</strong><br>
+                    質問：「このpaperと、EtDからresearch prioritiesを導くpaperは一緒に出すのか？」<br>
+                    <strong>Schünemann：</strong>「別々に出版予定」<br>
+                    理由：今回のpaperはevidence synthesis authors向け／次のEtD paperはより広いaudience向け／scopeが異なる／今回のpaperを待たせる必要はない。<br>
+                    ただし、今回のpaperには、次のpaperが来ることを <strong>明確に書く必要がある</strong>。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q9：すでにstrong recommendationがある場合でも、研究ギャップ表を作るべきか？</strong><br>
+                    重要な懸念：「low certaintyでもstrong recommendationがある場合、さらに詳細なresearch implicationsを作ることはmethodological wasteにならないか？」<br>
+                    <strong>Schünemann：</strong>「良い指摘。今回のprimary audienceはevidence reviewersであり、彼らは必ずしもrecommendationを知っているわけではない。EtD paperでは <strong>3つの機会</strong>でevidence gapsを考える：① review stage ② EtD panel stage ③ external review / interest-holder stage」<br>
+                    <strong>意義：</strong>研究ギャップがあるからといって、常に新研究が必要とは限らない（効果が明らか／強い推奨がある／追加研究が意思決定を変えない／非倫理的／実現不可能／優先度低 場合）。research implicationはあってもpriorityではない。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q10：Fundersやprimary researchersとの関与は？</strong><br>
+                    オンライン質問：「funderとして、このguidanceは歓迎する。primary researchersとのengagementはあったか？」<br>
+                    <strong>Schünemann：</strong>「project groupにはprimary researchersやtrialistsが含まれ、多くのworkshopsでもfeedbackを得た」<br>
+                    <strong>最終的な意図する利用者：</strong>funders／trialists／journal editors／regulators／ethics committees
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q11：National/International guideline developersとの議論は？</strong><br>
+                    オンライン質問：「national and international guideline developersとのdiscussionはあったか？」<br>
+                    <strong>Schünemann：</strong>「WHOやEuropean Allergy and Clinical Immunology関連の会議などで議論した」<br>
+                    <strong>意義：</strong>HTA・guideline organizationsに組み込まれれば、research gap identificationが標準化される。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q12（Lorenzo）：Medical reversalとの関連を強調すべき</strong><br>
+                    Medical reversal = 後の研究で従来の標準診療が実は無効/有害だったと判明すること。<br>
+                    指摘：「このguidanceは、不要な研究を減らす／悪い研究を止める／研究をよりinformativeにする／medical reversalのリスクを減らす — 観点でも意義がある」<br>
+                    <strong>Schünemann：</strong>「paperのpolicy and practice implicationsに入れやすい」
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q13（Lorenzo）：なぜ今までこのpaperがなかったのか？</strong><br>
+                    指摘：「Doug AltmanやChalmersらの影響を受けてきたのに、なぜ今までGRADEがこれを優先してこなかったのか」<br>
+                    <strong>Schünemann：</strong>「これはGRADEの <strong>lifeline</strong>になり得る重要領域。GRADEはrecommendation/certainty ratingだけでなく、<em>研究そのものを改善する仕組み</em>として発展できる」
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q14（Paul）：同じbody of evidenceから異なるresearch implicationsが出る問題</strong><br>
+                    例：行動介入で主観的アウトカム／blinding不可能 → あるreviewerは「blindingは無理だから触れない」とし、別のreviewerは「より客観的アウトカムを追加すべき」とする<br>
+                    <strong>Schünemann：</strong>「このpaper自体がそのためのstructured thoughtを提供する。reviewersは <strong>大きな視点</strong>を持つべき：original PICOの限界／intervention definitionの不十分さ／outcome selectionの問題／objective outcomeの必要性 — を研究示唆として記述すべき」<br>
+                    <strong>意義：</strong>単にGRADE domainごとに機械的に書くのではなく、<em>"evidence synthesisから見えた『研究設計全体の改善点』を拾う必要がある"</em>。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q15：Implementationされないresearch recommendations問題（第4のresearch gap）</strong><br>
+                    指摘：「research recommendationsを書いてもprimary researchに取り込まれない。これは <strong>第4のresearch gap</strong>と呼ぶべきではないか」<br>
+                    1. evidenceがない<br>
+                    2. evidenceが不確実<br>
+                    3. research implicationがある<br>
+                    4. しかしそれが研究者に届かず実行されない<br>
+                    <strong>Schünemann：</strong>「scope外だが非常に重要、broader research agendaに含まれる」<br>
+                    <strong>アプリ化での想定：</strong>funder向け出力／trialist向け出力／ethics committee向け出力／journal editor向け出力／research priority dashboard
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q16：「もう研究不要」と明示することも重要では？</strong><br>
+                    指摘：「研究が十分である場合には、『これ以上この種類の研究は不要』と言うべきではないか」<br>
+                    研究ギャップだけでなく："no further research needed" / "further research unlikely to change results" / "do not produce more indirect/unhelpful studies" というメッセージも必要。<br>
+                    Option 1の例にも <em>"Further research is unlikely to change the results."</em> という記載がある。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q17：Disseminationが重要では？</strong><br>
+                    研究ギャップ・研究示唆は、guideline本体に埋もれるだけでは不十分。<em>"not many people read full guidelines"</em>。<br>
+                    <strong>Schünemann：</strong>完全に同意。<br>
+                    <strong>アプリ化想定：</strong>searchable database／dashboard／API／funder portal／trial registry linkage／journal checklist／ethics review checklist
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q18（Shaun Treweekと思われる参加者）：悪い研究を止めるgatekeeperとしてのGRADE</strong><br>
+                    Doug Altmanの文脈：「悪い研究が行われるのは、それを止める人がいないからだ」<br>
+                    GRADE for researchはfunders / ethics committees / regulators / journal editorsに対して：<br>
+                    ・「この研究は既存エビデンスを踏まえていない」<br>
+                    ・「この研究はinformativeにならない」<br>
+                    ・「この研究は設計を改善すべき」<br>
+                    と言う <strong>根拠</strong>を与える可能性。これは非常に大きな意義。
+                  </div>
+
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #1e40af;">
+                    <strong>🔵 Q19：Evidence synthesis team構成が変わるのでは？</strong><br>
+                    research implicationsをきちんと書くには、review teamに <strong>trial methodology expertise</strong>が必要になるかもしれない（特にOption 3に関係）。<br>
+                    研究設計に踏み込むなら、review teamには：evidence synthesis expert／clinical expert／trialist／statistician／methodologist／patient/public representative — が必要になる可能性。
+                  </div>
+
                 </div>
               </details>
+
+              <h4 style="color:#1e40af;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #2563eb;padding-left:0.5rem;">🏆 強みと限界（総合評価）</h4>
+              <div style="background:#dbeafe;border-left:4px solid #1e40af;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>強み（8点）：</strong><br>
+                ① GRADE certainty assessmentとfuture researchを直接結びつける<br>
+                ② Evidence gaps / implications / prioritiesを明確に区別する<br>
+                ③ 3段階の提示形式があり柔軟<br>
+                ④ SoF tableに簡単に統合できる<br>
+                ⑤ NMAにも対応する<br>
+                ⑥ decision thresholdsと連携できる<br>
+                ⑦ 研究設計改善に具体的<br>
+                ⑧ funders / ethics committeesへの応用可能性
+              </div>
+
             </div>
           </details>
 
@@ -10155,23 +10507,64 @@ function checkAuth(){
                 <summary style="background:#fff5f5;color:#991b1b;padding:0.6rem 0.9rem;cursor:pointer;font-weight:700;font-size:0.88rem;list-style:none;">▶ Q&amp;A（文字起こし）</summary>
                 <div style="padding:0.9rem 1rem;background:#fef2f2;font-size:0.87rem;line-height:1.75;">
 
-                  <p><strong>Sean：</strong>「イベント率が低すぎる場合はそもそも変換不要では？anti-TNF例では各群1 eventで、CIが巨大なのは『我々にはわからない』ということでは？」<br>
-                  Ariel回答：「MACEが非常にまれであることは分かる。これは臨床的に有用な情報。その介入がMACEを増やさないことは言える。」<br>
-                  Hassan：「サンプルサイズが十分に大きければ、trivial effectについてhigh certaintyを持てる可能性がある。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #b91c1c;">
+                    <strong>🔴 Q1（Sean Treweek、trial methods person）：イベント率があまりに低くて何もできない状況もあるのでは？</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I wondered whether you thought there were situations where the event rates are so low that it's just too low to do anything. So in the sense that you you talked about the anti. I think it was tnf. Intervention. I think there was one event in on one side, on the intervention side, one event on the placebo side, 15 trials, 1,500 patients. If i was to look at those data, i guess i would say. We have no idea. Like the confidence interval is giant. And that's because we have no idea... There will be situations where we don't need to do transformations, because simply we. It's not clinically important or. We simply don't have enough events to. Meaningfully, do something."</em><br><br>
+                    <strong>Ariel：</strong><em>"I think that we have a pretty good deal of information in that specific example, and. The information is saying that the events are very, very rare. So in this case it was may. So. What we can say with that piece of information is that mace is rare. Both in the intervention and the control arms. And that's. A piece of information that is useful to make decisions, because the the the aim of that question was to know if the intervention increased. The the risk. And with that piece of information i think we can say pretty surely. That it that does not increase, at least not to an extent that is clinically meaningful."</em><br>
+                    <strong>Hassan Murad：</strong><em>"I agree, and i will add that, particularly if the sample size is large, so, if your events are very rare. But your sample size is. Sufficiently large. Then you actually have. Potentially high certainty that the effect is trivial."</em>
+                  </div>
 
-                  <p><strong>Holger：</strong>「3つの概念的問題を指摘：①asymmetric CI（follow-up短期でも起こり得る）②rare eventsそのもの③risk differenceを使うべき状況。Follow-upが短い場合はこの変換を使うべきでない——試験がまだ十分な期間フォローしていないなら、それはimprecisionではなくindirectnessとrisk of biasの問題。この区別がpaperで不明確。」<br>
-                  Hassan：「おっしゃる通り。follow-upの十分性はrisk of biasとindirectnessの問題。この前提でのみ本手法が適切。」<br>
-                  Ariel：「同意。本プレゼンテーションはfollow-upが十分な状況に適用することを前提としている。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
+                    <strong>🟡 Q2（Holger Schünemann、強い反論）：3つの概念的問題が混在している</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"I had sent extensive comments to Ariel, I'm not sure why you didn't include them because i think the paper. Is right now, also in terms of format, not consistent with how we approach the issues. But i think there's 3 issues that. That you describe, but don't conceptually really address and one of them relates to that asymmetric confidence, intervals, or wide confidence intervals. You call them implausible. Are not implausible. If follow up is very short, you know you give an example of one trial with very few people and very few events..."</em><br><br>
+                    Holgerの3点指摘：<br>
+                    ① <strong>asymmetric CIは「implausibleではない」</strong>：follow-upが短い場合は妥当な現象。<br>
+                    ② <strong>Rare eventsそのもの</strong>と <strong>asymmetric CI</strong>は別概念。<br>
+                    ③ <strong>RDをいつ使うか</strong>の状況設定が曖昧。<br><br>
+                    <em style="color:#475569;font-size:0.83rem;">"With longer follow up the event rates may just go up, and you have very different ways of thinking about the i don't know if he sent the paper to your son. But but you may have very different event rates, if there was sufficient, follow up, and under those circumstances. I would not want to artificially narrow a confidence interval, or not be concerned about impressing, and i wouldn't even worry about if it's if it's an asymmetric confidence interval, because under those circumstances, if you have a trial with 87 people that follows people for 4 months. And you have 3 events. It is imprecise right, it is not an issue of rare events. It is an issue of the fact that, you know, you may not have long enough follow up to actually count these events or it can be an issue of sample size."</em><br><br>
+                    <strong>Hassan：</strong><em>"i mean, i agree holler. That's a very good point, and actually in the impecision paper. The older one. We mentioned this. This is contingent. If you want to have high certainty in this context. It's contingent on that the follow up is sufficient for. For assessing the outcome. And it's actually a risk of bias criteria. So it goes under that domain that for these studies. The the the follow up should be sufficient to capture. The outcome or capture the events, and if it's if the follow up is short..."</em><br>
+                    <strong>Holger：</strong>"and indirectness"（短いfollow-upは <strong>RoB and indirectness</strong>の問題で、imprecisionではない）<br>
+                    <strong>Hassan：</strong><em>"I agree. I think these things should should be, will will be brought out in the paper."</em><br>
+                    <strong>Ariel：</strong><em>"I'm more in line with holder in terms that i think it's indirectness and. I agree that this whole. Presentation applies to a situation in which follow up is is long enough."</em><br><br>
+                    <strong>意義：</strong>本論文の手法は <strong>follow-upが十分な状況にのみ適用可能</strong>。短いfollow-upの場合はRoB / indirectnessでdowngradeするべきで、変換exerciseは不要。
+                  </div>
 
-                  <p><strong>Reem：</strong>「risk differenceのメタ解析からrelative effectを逆算すると、別のCIが出る——数学が壊れているようで怖い。統計家が確認したか？」<br>
-                  Ariel：「統計家が見て、cautionメッセージを入れることにした。代替方法が見つからないため、この方法を提案している。」<br>
-                  Hassan：「実は標準法の方が統計的に問題が多い。標準法ではvariance of RDがrelative effectのみから来ており、baseline riskの変動性を考慮していない。direct RD法の方が理論的には優れている側面がある。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #b91c1c;">
+                    <strong>🔴 Q3（Reem、非統計家）：数学的整合性への懸念</strong><br>
+                    <em style="color:#475569;font-size:0.83rem;">"It's scaring me that. When you do a met analysis of risk difference, and then back, calculate. To the relative effects. You're ending up with a different confidence interval. Then, when you do a meta analysis of the relative effects. It feels like math is breaking down somewhere. has a statistician looked at this and said, this is kosher, because it feels weird to me, and i don't mean to imply that i know enough. To be right about that. It just. Isn't behaving the way i would have expected. A meta analysis on one thing. Transferred to another to behave."</em><br><br>
+                    <strong>Ariel：</strong><em>"It it has been seen by. By mid by by. Statisticians and. We decided to to include these caution messages, because we agree that this. Maybe maybe have problems. But still we didn't found an alternative way of solving that specific situation which some of. As a faced in in practice. So that's why we decided to. To include in the paper. But i agree, yeah."</em><br>
+                    <strong>Hassan（重要な反論）：</strong><em>"actually, most decisions will be very uncomfortable with the standard approach. So actually, our standard approach. Has a lot of assumptions when you convert when you transform right. It has a lot of. 1st 1st of all, it has those assumptions right that there, that the. Relative effect is transportable. In many cases it's not, and and and and you know, so that's like one part of it. And then the other thing is, is all these issues with the confidence interval, because when you transform. Like. Say you transform a relative risk into a risk difference. The the variance of this risk. Difference is just coming from the relative effect. Right. It's not really coming from the actual baseline risk and the variability and the baseline baseline risk. So the standard approach. Is the one that. Most will be uncomfortable with. On the other hand, when you directly calculate the risk, difference. that already addresses variability in the baseline is. So the standard approach is is the one that. There's more problematic statistically."</em><br><br>
+                    <strong>意義：</strong>標準法こそ実は <strong>仮定が多く統計的に問題</strong>：① relative effectがtransportableという仮定（多くの場合不成立）／② RDの分散がrelative effectからのみ来ており、baseline risk variabilityを反映しない。直接RD計算ならbaseline risk variabilityも考慮される → 統計的には direct RD のほうが優れている側面がある。
+                  </div>
 
-                  <p><strong>Carlos（online）：</strong>「イベント数が少なすぎる場合のthresholdの経験則は？」<br>
-                  Ariel：「Event数20〜30未満、baseline risk 5〜7%未満が一つの目安。ただし直接imprecisionでdowngradeするのではなく、直接RDメタ解析を検討するトリガーとして使うべき。」</p>
+                  <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #b91c1c;">
+                    <strong>🔴 Q4（Carlos、online）：rule of thumb閾値はあるか？</strong><br>
+                    質問：「データから『event数が少なすぎる』のrule of thumb閾値は見つかった？」<br>
+                    <strong>Ariel：</strong>「imprecisionで直接downgradeするrule of thumbではなく、<strong>直接RDメタ解析を検討すべき</strong>rule of thumb。Hassanの仕事に基づき、おおよそ <strong>20〜30 events</strong>、<strong>baseline 5〜7%</strong>」<br><br>
+                    <strong>注意：</strong>この閾値は「自動的にimprecisionで2レベルdowngrade」を意味するのではなく、「<strong>直接RDメタ解析を検討するトリガー</strong>」として使う。
+                  </div>
+
+                  <div style="background:#fef9c3;border-left:4px solid #ca8a04;border-radius:6px;padding:0.75rem 0.95rem;margin:0.7rem 0;font-size:0.86rem;">
+                    <strong>📌 Q&Aから抽出される重要な実務指針</strong><br>
+                    1. <strong>Follow-up十分性が前提</strong>：short follow-upの場合はRoB/indirectnessでdowngrade、変換は不要<br>
+                    2. <strong>Rare eventsとasymmetric CIは別問題</strong>：両方が同時に起こる場合のみ、直接RDメタ解析の価値が高い<br>
+                    3. <strong>標準法のほうが実は仮定が多い</strong>：transportability仮定、baseline risk variability無視 → 「直接RD」を「危ない代替案」と見るのは誤解<br>
+                    4. <strong>Trigger目安：</strong>events &lt;20-30 && baseline 5-7%未満<br>
+                    5. <strong>必ずsensitivity analysis：</strong>標準法と直接RDの両方を提示し、certainty判断が変わる場合のみ直接RDを採用<br>
+                    6. <strong>論文出版前に2週間のコメント期間</strong>あり（dropbox folder）
+                  </div>
 
                 </div>
               </details>
+
+              <h4 style="color:#991b1b;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #b91c1c;padding-left:0.5rem;">🔗 他講演との接続</h4>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;font-size:0.86rem;">
+                <li><strong>Guidance 42（講演④）：</strong>適切なRD・CIをDTと比較する → 本論文がRD算出の前提を整える</li>
+                <li><strong>Certainty range concept（講演⑥）：</strong>「真の効果がどの範囲にあるか」を判断するには、まずRD・CIが妥当である必要</li>
+                <li><strong>Indirectness update（講演⑦）：</strong>baseline riskが大きく違う場合のRR再構成の限界 → effect modificationがあればindirectnessでdowngrade検討</li>
+                <li><strong>NMA自動GRADE（講演①）：</strong>large effectがあるがOIS未達の場合のhighlight機能と本論文の指針が連動</li>
+              </ul>
+
             </div>
           </details>
 
@@ -11061,14 +11454,139 @@ function checkAuth(){
               </ul>
 
               <p><strong style="color:#6d28d9;">会議でのlive evaluation</strong><br>
-              参加者がGRADE Bookで答えられるべき質問を提出→Botの回答をその場で評価→expert feedbackを即座に収集→評価データを増やしprompt/RAGを改善。</p>
+              参加者がGRADE Bookで答えられるべき質問を提出→Botの回答をその場で評価→expert feedbackを即座に収集→評価データを増やしprompt/RAGを改善。スライド16の提案：「Share with us questions that GRADE Book should have the answer to … and receive the answer / Provide feedback about that answer directly … or let's discuss unexpected behaviour with the group」</p>
 
-              <p><strong style="color:#6d28d9;">今後の課題</strong></p>
-              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;">
-                <li>情報源の階層化と引用・根拠提示（chapter・section・key quotation・version）</li>
-                <li>GRADE Bookにないことを「ない」と言える能力の実装</li>
-                <li>ユーザー層別の回答（初学者向け簡潔 vs 上級者向け詳細）</li>
-                <li>Safety（誤った方法論の提示がGLの質に影響するリスク）</li>
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">📊 Preliminary results詳細解釈</h4>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;">
+                <strong>① open-source LLMでもGRADE回答に十分使える可能性</strong><br>
+                Deepseek-r1（model A）がCorrect and good quality 88%で最良成績。これはopen-source LLMでも専門方法論領域のQAに使える可能性を示す重要な発見。<br>
+                <em>ChatGPT等の商用LLMだけが解ではない</em>ことを示唆。
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;">
+                <strong>② モデル差が非常に大きい</strong><br>
+                Z model はIncorrect 53%。同じpromptやRAGを使っても、モデルの能力差により回答品質は大きく変わり得る。<br>
+                <em>モデル選択は最も重要な実装上の決定</em>。
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;">
+                <strong>③ 「正しいが微妙」（Correct but…）をどう扱うかが実用化の鍵</strong><br>
+                BやCではCorrect but...が18%。完全誤答ではないが、GRADE Bookにない情報や曖昧な説明が含まれる可能性。<br>
+                実用化に必要：根拠引用／公式文書へのリンク／回答テンプレート／「GRADE Bookにはここまで書かれている」と明示／uncertainty表示。
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🎯 典型的なGRADEユーザーの疑問（GRADE Botが答えるべき質問）</h4>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;font-size:0.86rem;">
+                <li>imprecisionはいつ1段階downgradeし、いつ2段階downgradeするのか？</li>
+                <li>indirectnessとinconsistencyはどう区別するのか？</li>
+                <li>NRSIのstarting pointはいつlowで、いつhighになり得るのか？</li>
+                <li>decision thresholdsはどのように使うのか？</li>
+                <li>EtD frameworkでvalues and preferencesをどう扱うのか？</li>
+                <li>risk of biasはstudy levelかoutcome levelか？</li>
+                <li>GRADEの公式guidanceと、単なるGRADE-related paperの違いは何か？</li>
+              </ul>
+              <p style="font-size:0.86rem;">これらに対して、毎回GRADE Bookやguidance paperを手作業で探すのは大変。GRADE Botは自然言語の質問に対し、GRADE Bookに基づく回答を返す。</p>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">⚠️ なぜ汎用AIではダメか</h4>
+              <div style="background:#fef2f2;border-left:4px solid #dc2626;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                ChatGPT等の汎用AIは：<br>
+                ・GRADE関連文書に特化していない<br>
+                ・hallucination（事実に基づかない作話）リスク<br>
+                ・古い情報を出すリスク<br>
+                ・GRADE Working Groupの正式承認とconcept paperを区別しない<br>
+                ・推奨事項とGRADEユーザーの個人意見を混同する<br>
+                ・dropbox / 議事録 / 草案文書を独立した正式guidanceのように提示する可能性<br><br>
+                GRADE Botは「<strong>GRADE Bookに書かれていないことは、書かれていないと答える</strong>」能力が必要。
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🔧 開発手法（3つの組み合わせ）詳細</h4>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>1. Prompt/Context Engineering</strong><br>
+                AIへの指示文の工夫。例：<br>
+                <em>"あなたはGRADE Working Groupの公式文書に基づいて回答する。回答はGRADE Bookまたは公式GRADE guidanceに根拠を置く。不確実な場合は推測せず、該当文書が見つからないと述べる。公式guidanceとconcept paperを区別する。回答には根拠となる章や文書を示す。"</em><br><br>
+                利点：実装が容易／モデル変更しても適用可能<br>
+                限界：モデル内部知識への依存／古い情報・hallucinationのリスク
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>2. RAG (Retrieval Augmented Generation)</strong><br>
+                処理フロー：<br>
+                ① ユーザーが質問する<br>
+                ② 質問に関連するGRADE Bookの章やguidance paperを検索する<br>
+                ③ 検索された文書の該当箇所をLLMに渡す<br>
+                ④ LLMがその文書に基づいて回答を生成する<br>
+                ⑤ 必要なら根拠文書を表示する<br><br>
+                利点（5点）：最新GRADE Bookに基づける／回答の根拠を示せる／hallucinationを減らせる／文書更新に対応しやすい／モデル自体を毎回再訓練しなくてもよい<br>
+                <strong>GRADEのように更新が続く領域に最適。</strong>
+              </div>
+
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                <strong>3. Model Fine-tuning</strong><br>
+                利用可能なtraining data：GRADE BookのQ&A／GRADE expertsによる正解回答／training sampleの質問と評価済み回答／よくある誤答と修正例<br><br>
+                利点：GRADE特有の表現や判断様式に慣れる<br>
+                限界（5点）：<br>
+                ・新しいguidanceが出ると再学習が必要<br>
+                ・training dataの品質に依存<br>
+                ・古い情報を固定化する可能性<br>
+                ・open-source LLMの性能差が出る<br>
+                ・誤ったデータでfine-tuneすると誤答が強化される<br><br>
+                GRADE Botでは、<strong>RAGとfine-tuningを組み合わせる</strong>のが現実的。
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">📚 情報源の階層化（重要）</h4>
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                AIが参照する文書を以下のように区別すべき：<br>
+                ① <strong>Official GRADE guidance</strong>（最上位、正式承認済み）<br>
+                ② <strong>GRADE Book</strong>（公式書籍）<br>
+                ③ <strong>GRADE concept paper</strong>（プロジェクト群中間文書）<br>
+                ④ <strong>GRADE Working Group presentation</strong>（議事録・スライド）<br>
+                ⑤ <strong>Draft manuscript</strong>（執筆中草稿）<br>
+                ⑥ <strong>Non-GRADE methodological paper</strong>（参考論文）<br><br>
+                回答では、「これは公式guidanceに基づく」「これはconcept paper段階である」「これは開発中の考え方である」と <strong>明示する必要</strong>がある。<br>
+                Living guidanceなので <strong>version管理</strong>も重要。
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🎓 ユーザー層別の回答</h4>
+              <div style="background:#f5f3ff;border-left:3px solid #7c3aed;border-radius:4px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                例：同じimprecisionの質問でも、<br>
+                ・<strong>Beginner向け：</strong>「信頼区間が重要なthresholdをまたぐとdowngradeする」<br>
+                ・<strong>Advanced向け：</strong>contextualized/minimally contextualized approach、OIS、decision thresholds、fixed vs random effects、absolute effect、Guidance 42との連動 — を含める<br><br>
+                ユーザーレベルを推定し、適切な深さで回答する機能が必要。
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🛡 Safety considerations（誤った方法論提示のリスク）</h4>
+              <div style="background:#fef2f2;border-left:4px solid #dc2626;border-radius:6px;padding:0.7rem 0.9rem;margin:0.5rem 0;font-size:0.86rem;">
+                GRADE Botが誤った方法論を示すと、<strong>ガイドラインの質に影響</strong>する。特に以下では慎重な設計が必要：<br>
+                ・recommendation strength<br>
+                ・certainty rating<br>
+                ・downgrade/up判断<br>
+                ・EtD framework<br>
+                ・diagnostic test guidance<br>
+                ・NRSI<br>
+                ・indirectness<br>
+                ・imprecision<br>
+                ・decision thresholds
+              </div>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🚀 GRADE Botの今後の課題（実装ロードマップ）</h4>
+              <ol style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;font-size:0.86rem;">
+                <li><strong>情報源の階層化（Phase 1）：</strong>document tagging、source-aware retrieval</li>
+                <li><strong>引用と根拠提示（Phase 1）：</strong>chapter／guidance paper名／section／key quotation／date/version</li>
+                <li><strong>回答の範囲制御（Phase 2）：</strong>「GRADE Bookに書かれていないことは書かれていないと答える」</li>
+                <li><strong>ユーザー層別回答（Phase 2）：</strong>beginner / advanced 自動判別</li>
+                <li><strong>Safety（Phase 3）：</strong>recommendation strength / certainty rating / downgrade判断 等の高リスク領域での慎重設計</li>
+                <li><strong>Continuous evaluation（Phase 4）：</strong>新規guidanceに合わせたevaluation set拡大、model retraining サイクル確立</li>
+                <li><strong>GRADErater連携（Phase 5）：</strong>講演①と本Botを統合し、評価＋質問応答を一元化</li>
+              </ol>
+
+              <h4 style="color:#6d28d9;font-size:0.95rem;margin:1rem 0 0.4rem;border-left:4px solid #7c3aed;padding-left:0.5rem;">🔗 他講演との接続</h4>
+              <ul style="margin:0.3rem 0 0.7rem 1.2rem;padding:0;font-size:0.86rem;">
+                <li><strong>NMA自動GRADE（講演①）：</strong>GRADErater = certainty評価の自動化、GRADE Bot = 知識質問応答 → 統合すれば <strong>「評価＋疑問解決」one-stop tool</strong>に</li>
+                <li><strong>GRADE for research（講演②）：</strong>research implicationsの標準フレーズをBotから提示可能</li>
+                <li><strong>Rapid ADOLOPMENT（講演⑧）：</strong>BotがADOLOPMENTツールに組み込まれ、guideline開発者の質問に即答</li>
+                <li><strong>Personalised DM（講演⑪）：</strong>MDTでBotにevidence baseを問い合わせて、その場でCoEを引き出す将来像</li>
               </ul>
 
             </div>
