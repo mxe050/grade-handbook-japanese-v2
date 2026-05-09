@@ -9136,18 +9136,18 @@ function checkAuth(){
               <span class="sub-label">特別編＋シリーズ1〜16 リンク集 - クリックで展開</span>
             </span>
           </button>
-          <button type="button" onclick="toggleUpdate('upd-porto2026')" class="hero-btn primary" style="width:100%;text-align:left;cursor:pointer;border:none;background:linear-gradient(135deg,#065f46,#047857);">
-            <span class="btn-icon">🌍</span>
-            <span class="btn-text">
-              <span class="main-label">2026年5月7日 GRADE Working Group会議（ポルト）全6講演</span>
-              <span class="sub-label">NMA自動GRADE・GRADE to Research・希少疾患・閾値・ADOLOPMENT・GRADE Bot - クリックで展開</span>
-            </span>
-          </button>
           <button type="button" onclick="toggleUpdate('upd-shanghai2025')" class="hero-btn primary" style="width:100%;text-align:left;cursor:pointer;border:none;background:linear-gradient(135deg,#92400e,#b45309);">
             <span class="btn-icon">🏙️</span>
             <span class="btn-text">
               <span class="main-label">2025年4月 GRADE Working Group会議（上海）全8セッション</span>
               <span class="sub-label">NMA自動化・意思決定閾値・非一貫性/不精確性・参照基準なし・間接性・AIとGRADE・推奨文表現 - クリックで展開</span>
+            </span>
+          </button>
+          <button type="button" onclick="toggleUpdate('upd-porto2026')" class="hero-btn primary" style="width:100%;text-align:left;cursor:pointer;border:none;background:linear-gradient(135deg,#065f46,#047857);">
+            <span class="btn-icon">🌍</span>
+            <span class="btn-text">
+              <span class="main-label">2026年5月7日 GRADE Working Group会議（ポルト）全6講演</span>
+              <span class="sub-label">NMA自動GRADE・GRADE to Research・希少疾患・閾値・ADOLOPMENT・GRADE Bot - クリックで展開</span>
             </span>
           </button>
         </div>
@@ -9320,19 +9320,32 @@ function checkAuth(){
                 <strong>テーマ:</strong> 参照基準（gold standard）が存在しない診断精度研究におけるGRADE評価の方法論
               </div>
 
-              <p>診断テストの精度を評価する際、真の「正解」となる参照基準（reference standard）が存在しない状況は医学の多くの領域で生じる。たとえば精神疾患の診断や、バイオマーカーの評価では、確立された参照基準がない場合がある。このような状況でのGRADE確実性評価の枠組みを検討するセッションである。</p>
+              <p>診断精度研究では、reference standardは「対象状態があるかないか」を決める現在最良の検査または検査戦略として扱われる。一方で、gold standardは理論上の完全な判定法であり、侵襲的・高価・有害・実施不能であるため実際には使えないことが多い。本セッションの核心は、現在のreference standardを無批判に100%正しいものとして扱うと、新しい検査が実際には優れていても過小評価される、という問題である。</p>
 
               <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
                 <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📌 主要な方法論的課題</div>
                 <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
-                  <li>参照基準が存在しない場合の感度・特異度の解釈</li>
-                  <li>代替エンドポイント（proxy reference standard）を用いた際のバイアスリスク評価</li>
-                  <li>QUADAS-2（診断精度研究のバイアスリスク評価ツール）の適用</li>
-                  <li>複数の不完全な参照基準を組み合わせる場合の不確実性</li>
+                  <li><strong>対象状態の定義:</strong> population、target condition、gold standardを先に明確化する。肺塞栓なら「臨床的に意味のあるPE」、薬剤耐性結核なら「どの薬剤への耐性か」まで特定する。</li>
+                  <li><strong>現行reference standardの欠点:</strong> 不正確、侵襲的、高価、利用困難、低い確実性、過剰診断・過少診断の可能性をEtD基準で整理する。</li>
+                  <li><strong>新reference standardの受け入れ条件:</strong> 現行基準と比べて同等以上の確実性、より高いまたは少なくとも同等の精度、望ましい効果と望ましくない効果のバランスを示す必要がある。</li>
+                  <li><strong>Good Practice Statementの限界:</strong> 明確で実行可能、医療実践上必要、正味の利益が大きい、間接的根拠との論理が明示される場合のみGPSとして扱う。</li>
                 </ul>
               </div>
 
-              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🧭 提案された3ドメインの手順</div>
+                <ol style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>Target and context:</strong> 検査対象者、症状・時間軸・治療影響、対象疾患の重症度や臨床的重要性、理想的なgold standardを定義する。</li>
+                  <li><strong>Current reference standard:</strong> 現行検査を記述し、偽陽性・偽陰性、費用、侵襲性、公平性、受容性、実行可能性を評価する。</li>
+                  <li><strong>New reference standard:</strong> 新検査または複合基準がgold standardとどこまで近いか、現行基準より正確・実行可能・受容可能かを比較EtDで判断する。</li>
+                </ol>
+              </div>
+
+              <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#9a3412;margin-bottom:0.4rem;">🧪 例：肺塞栓（PE）と薬剤耐性結核</div>
+                <p style="margin:0 0 0.45rem;font-size:0.88rem;">PEではCTPAが現行reference standardだが、小さく臨床的意義の乏しい塞栓をどう扱うかが問題になる。CTPA陰性例に6〜24か月の臨床フォローアップを組み合わせる複合基準は、臨床的に意味のあるPEをよりよく捉える可能性がある一方、資源と実行可能性の面で負担が増える。</p>
+                <p style="margin:0;font-size:0.88rem;">薬剤耐性結核では、培養ベースの表現型DSTは時間と資源を要し利用困難な環境も多い。DNA sequencingやgenotypic DSTは耐性変異を直接検出できるため、精度・迅速性・受容性の面で利点があるが、地域ごとの実装可能性と公平性を同時に評価する必要がある。</p>
+              </div>
 
             </div>
           </details>
@@ -9350,19 +9363,32 @@ function checkAuth(){
                 <strong>テーマ:</strong> GRADEの間接性（Indirectness）評価に関するガイダンス更新
               </div>
 
-              <p>間接性（Indirectness）は、研究のPICO（集団・介入・比較対照・アウトカム）が、評価の対象となるガイドライン質問のPICOと一致しているかどうかを評価するGRADEのドメインである。上海会議では、間接性評価の枠組みを更新し、特にNMA・実世界データ・複数のPICO不一致が重なる状況への対応を強化することが議論された。2026年のポルト会議でも継続的に取り上げられたテーマである。</p>
+              <p>間接性（Indirectness）は、研究のPICO（集団・介入・比較対照・アウトカム）が、評価対象のガイドライン質問にどれだけ直接答えているかを判断するドメインである。上海のアップデートでは、2011年時点の旧ガイダンスから進化した点として、indirectness table、研究レベルからbody of evidenceレベルへの統合、NRSや外部エビデンスとの併用、absolute effectとrelative effectの区別を明確にする必要が示された。</p>
 
               <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
                 <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📌 更新の主要論点（上海→ポルト継続）</div>
                 <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
-                  <li>間接性評価のルールベース化 vs. AIベース化（変数抽出による自動評価の可能性）</li>
-                  <li>非推移性（Intransitivity）との概念的重複と区別</li>
-                  <li>意思決定閾値を用いた間接性の全体的判断方法</li>
-                  <li>サブグループ変数（年齢・国・併存疾患）による間接性懸念の定量化</li>
+                  <li><strong>PICO要素ごとの直接性:</strong> population、intervention、comparator、outcomeのどこにずれがあるかを研究ごとに記録し、body of evidence全体で統合する。</li>
+                  <li><strong>population indirectnessの再整理:</strong> baseline riskの違いとrelative effect modificationを混同しない。絶対効果の違いだけならDTをまたぐかを確認し、相対効果の違いがありうるならより深いdowngradeを検討する。</li>
+                  <li><strong>intransitivityとの関係:</strong> 直接比較がない場合の間接比較・NMAでは、PICOのずれがネットワーク内の非推移性として現れることがある。</li>
+                  <li><strong>congruencyの考え方:</strong> より直接的なエビデンスと間接的なエビデンスが同じ方向で閾値をまたがないなら、機械的にdowngradeしない。</li>
                 </ul>
               </div>
 
-              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">📉 いつ、どれだけrating downするか</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>下げない:</strong> direct evidenceとindirect evidenceが一致し、効果が意思決定閾値をまたがない、またはNRS等を追加しても判断が変わりにくい場合。</li>
+                  <li><strong>1段階:</strong> PICO要素1つに懸念、または相対効果・絶対効果の plausible difference が1つの閾値をまたぐ可能性がある場合。</li>
+                  <li><strong>2段階:</strong> PICO要素2つ、または plausible difference が2つの閾値をまたぐ場合。baseline riskの確実性が低い場合もここに近づく。</li>
+                  <li><strong>3段階:</strong> PICO要素3つ、または3つの閾値をまたぐほど判断が変わりうる場合。低い/非常に低いbaseline risk certaintyを伴う場合は特に注意する。</li>
+                </ul>
+              </div>
+
+              <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#9a3412;margin-bottom:0.4rem;">🔎 実務上の読み替え</div>
+                <p style="margin:0;font-size:0.88rem;">上海での議論は、間接性を「研究対象が少し違うから1段階下げる」という単純な作業から、意思決定への影響を見積もる作業へ移すものだった。PICOのずれがあっても、絶対効果が同じ効果カテゴリ内に収まり、より直接的な研究と結果が一致するなら、確実性を下げる必要はない。逆に、baseline riskや効果修飾が異なり、trivial/small/moderate/largeの境界をまたぐなら、間接性は意思決定を変えるため深刻になる。</p>
+              </div>
 
             </div>
           </details>
@@ -9380,9 +9406,30 @@ function checkAuth(){
                 <strong>テーマ:</strong> GRADE Working Group活動報告・進捗状況の共有
               </div>
 
-              <p>GRADE Working Groupの年次活動報告セッション。現在進行中の複数のガイダンス開発プロジェクト・作業部会・出版物の進捗を報告し、ガイダンス開発の優先課題を整理する。意思決定閾値・間接性・不精確性・NMA・環境健康・希少疾患など多岐にわたるプロジェクトの現状が概観された。</p>
+              <p>GRADE Working Groupの年次活動報告セッション。GRADE Guidance Group（GGG）の役割、メンバーシップ、研究倫理・出版倫理、プロジェクトグループ運営、ガイダンス/コンセプト論文の承認プロセスを共有し、今後3〜5年の方向性を確認した。上海時点では「GRADEとAI」「誤情報・偽科学の時代のGRADE」「WHO・HTA・規制機関との連携」が戦略課題として強調された。</p>
 
-              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX ドラフト版）を参照。</p>
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">🏛️ GGGの運営と承認プロセス</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li>GGGはGWGのexecutive committeeとして、共同議長への助言、方針設定、承認プロセス支援を担う。</li>
+                  <li>プロジェクトグループはGRADE方法論を進める主要単位で、2名以上のリード、GGG liaison、1〜2か月ごとの会議、小規模writing groupを基本構造とする。</li>
+                  <li>guidance paperとconcept paperはいずれも、少なくとも2回GWGで提示され、討議後に投票へ進む。投票に出せるのは原則3回までで、発表後2週間の書面コメントが推奨される。</li>
+                </ul>
+              </div>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🆕 新規・進行中プロジェクト</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>新規承認:</strong> GRADE for Rare Diseases、GRADE for Primary Research / from GRADE to research。</li>
+                  <li><strong>新規Guidance:</strong> 環境・職業健康EtD（Guidance 40）が2025年3月に公表。Multiple Interventions Comparisons、Good Practice Statements、Values and Preferences、Contextualisation、RCT/NRS統合などが査読・開発中。</li>
+                  <li><strong>新規Concept:</strong> NMAにおける外部間接エビデンス、Essential Medicines Listと信頼できる推奨の連結、予後モデルのdiscrimination performance certaintyなど。</li>
+                </ul>
+              </div>
+
+              <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#9a3412;margin-bottom:0.4rem;">🌐 ネットワークと今後</div>
+                <p style="margin:0;font-size:0.88rem;">GRADEセンターはMcMaster、蘭州、Barcelona、Freiburg、AUB、NECA、Humanitas、JBI、Minds Tokyo、Fudanなどに広がり、米国・英国・オランダ・韓国・コロンビア・イタリア・Nordic・Portugal・South Africaなどのネットワークが支えている。今後の会議として2025年9月Geneva（GIN conference）が確認され、GRADE 25周年イベントも予告された。</p>
+              </div>
 
             </div>
           </details>
@@ -9469,19 +9516,35 @@ function checkAuth(){
                 <strong>テーマ:</strong> GRADEガイドラインにおける推奨文の表現・文言の最適化
               </div>
 
-              <p>GRADEでは「強い推奨（strong recommendation）」には「〜すべきである（we recommend）」、「条件付き推奨（conditional recommendation）」には「〜することを提案する（we suggest）」という標準的な文言を使用している。本セッションでは、推奨文の表現をより明確・一貫・患者中心的なものにするための更新ガイダンスが議論された。</p>
+              <p>GRADEでは推奨の強さを伝えるために、従来「we recommend / we suggest」の能動態表現が推奨されてきた。しかし、GRADEの利用者が臨床家だけでなく患者・一般市民・政策立案者へ広がるにつれ、推奨文の語感が意図した強さを正しく伝えているかが問題になっている。本セッションは、推奨の方向（for/against）と強さ（strong/conditional）を、異なる読者に誤解なく届ける表現を実証的に検証するプロジェクトである。</p>
 
               <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
                 <div style="font-weight:700;color:#1e40af;margin-bottom:0.4rem;">📝 主要論点</div>
                 <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
-                  <li>強い推奨 vs. 条件付き推奨の文言標準化</li>
-                  <li>異なる対象者（患者・臨床家・政策立案者）向けの表現の違い</li>
-                  <li>否定的推奨（〜しないことを推奨）の表現方法</li>
-                  <li>多言語・異文化での推奨文翻訳の課題</li>
+                  <li><strong>既存研究の限界:</strong> 2012年RCTでは「recommend/suggest」「should/might」「recommend/conditionally recommend」のいずれも、推奨の強さ理解で明確な優位を示さなかった。</li>
+                  <li><strong>実務上の混乱:</strong> AUAガイドライン分析では must / should / may などが推奨強度と一貫して対応しない形で使われていた。</li>
+                  <li><strong>公衆向け説明の難しさ:</strong> 「エビデンスの確実性が低いのになぜ推奨するのか」「low certaintyなら政策決定者は従わないのではないか」といった反応がCAN-PCCなどで生じた。</li>
+                  <li><strong>更新の方向:</strong> 推奨文だけでなく、推奨強度の意味、対象者別の含意、根拠の確実性を一体として伝える必要がある。</li>
                 </ul>
               </div>
 
-              <p style="font-size:0.87rem;color:#6b7280;font-style:italic;">※ 詳細はプレゼンテーションファイル（PPTX）を参照。</p>
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#065f46;margin-bottom:0.4rem;">🧪 新しいランダム化試験の設計</div>
+                <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;">
+                  <li><strong>目的:</strong> recommend/suggest、strongly recommend/conditionally recommend、should/may の3表現が、推奨の方向と強さの理解をどれだけ促進するか比較する。</li>
+                  <li><strong>対象:</strong> 患者・一般市民、臨床家、政策立案者/プログラム責任者の3群。</li>
+                  <li><strong>デザイン:</strong> オンラインRCT、1:1:1割付、参加者・研究者盲検、実際のガイドライン推奨をもとにしたケースシナリオを使用。</li>
+                  <li><strong>主要アウトカム:</strong> 強い推奨、条件付き推奨、推奨しない方向を複数選択式で正しく理解できるか。</li>
+                  <li><strong>副次アウトカム:</strong> 推奨に従う意図、3表現への好み、ユーザー群ごとの差。</li>
+                  <li><strong>予定サンプルサイズ:</strong> 合計1,674名（各群558名）で、理解度7%差を検出する設計。</li>
+                </ul>
+              </div>
+
+              <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem 1rem;margin:0.75rem 0;">
+                <div style="font-weight:700;color:#9a3412;margin-bottom:0.4rem;">📄 推奨文テンプレートの実例</div>
+                <p style="margin:0 0 0.45rem;font-size:0.88rem;">基本形は「For [population], the guideline panel [recommends/suggests] using [option A] over [option B]」に、推奨の強さと根拠の確実性を括弧で明示する形式。例として、人工股関節置換術後患者に対するDOACs vs LMWHの条件付き推奨が示された。</p>
+                <p style="margin:0;font-size:0.88rem;">重要なのは「弱い推奨」という語が、読者には「根拠が弱い」「従わなくてよい」と受け取られやすい点である。GRADEとしては、条件付き推奨とは価値観・状況・資源・患者選好によって最適選択が分かれうることを意味するため、その含意を文言と説明で補う必要がある。</p>
+              </div>
 
             </div>
           </details>
@@ -11303,31 +11366,31 @@ function checkAuth(){
 
                   <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #b91c1c;">
                     <strong>🔴 Q1（Sean Treweek、trial methods person）：イベント率があまりに低くて何もできない状況もあるのでは？</strong><br>
-                    <em style="color:#475569;font-size:0.83rem;">"I wondered whether you thought there were situations where the event rates are so low that it's just too low to do anything. So in the sense that you you talked about the anti. I think it was tnf. Intervention. I think there was one event in on one side, on the intervention side, one event on the placebo side, 15 trials, 1,500 patients. If i was to look at those data, i guess i would say. We have no idea. Like the confidence interval is giant. And that's because we have no idea... There will be situations where we don't need to do transformations, because simply we. It's not clinically important or. We simply don't have enough events to. Meaningfully, do something."</em><br><br>
-                    <strong>Ariel：</strong><em>"I think that we have a pretty good deal of information in that specific example, and. The information is saying that the events are very, very rare. So in this case it was may. So. What we can say with that piece of information is that mace is rare. Both in the intervention and the control arms. And that's. A piece of information that is useful to make decisions, because the the the aim of that question was to know if the intervention increased. The the risk. And with that piece of information i think we can say pretty surely. That it that does not increase, at least not to an extent that is clinically meaningful."</em><br>
-                    <strong>Hassan Murad：</strong><em>"I agree, and i will add that, particularly if the sample size is large, so, if your events are very rare. But your sample size is. Sufficiently large. Then you actually have. Potentially high certainty that the effect is trivial."</em>
+                    <em style="color:#475569;font-size:0.83rem;">「イベント率が低すぎて、そもそも何もできない状況もあるのではないか、と思いました。たとえば先ほどのanti-TNFの例では、介入群で1イベント、プラセボ群で1イベント、15試験、1,500人でした。私がそのデータを見るなら、『分からない』と言うと思います。信頼区間が巨大で、それは私たちが分かっていないからです。変換をしなくてよい状況もあるのではないでしょうか。臨床的に重要でない、あるいは意味のあることをするにはイベント数が足りない、というだけの場合です。」</em><br><br>
+                    <strong>Ariel：</strong><em>「その具体例については、かなり多くの情報があると思います。その情報が示しているのは、イベントが非常にまれだということです。この場合はMACEでした。つまり、介入群でも対照群でもMACEはまれだと言えます。これは意思決定に役立つ情報です。問いの目的は、その介入がリスクを増やすかどうかを知ることでした。その情報があれば、少なくとも臨床的に意味のある程度にはリスクを増やしていない、とかなり確実に言えると思います。」</em><br>
+                    <strong>Hassan Murad：</strong><em>「同意します。特にサンプルサイズが大きい場合には、イベントが非常にまれでもサンプルサイズが十分なら、その効果はtrivialであるという高い確実性を持てる可能性があります。」</em>
                   </div>
 
                   <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #ca8a04;">
                     <strong>🟡 Q2（Holger Schünemann、強い反論）：3つの概念的問題が混在している</strong><br>
-                    <em style="color:#475569;font-size:0.83rem;">"I had sent extensive comments to Ariel, I'm not sure why you didn't include them because i think the paper. Is right now, also in terms of format, not consistent with how we approach the issues. But i think there's 3 issues that. That you describe, but don't conceptually really address and one of them relates to that asymmetric confidence, intervals, or wide confidence intervals. You call them implausible. Are not implausible. If follow up is very short, you know you give an example of one trial with very few people and very few events..."</em><br><br>
+                    <em style="color:#475569;font-size:0.83rem;">「Arielにはかなり詳細なコメントを送りました。なぜそれが入っていないのか分かりません。現時点の論文は、形式の面でも、私たちがこの問題に取り組むやり方と一貫していないと思います。あなたが記述しているけれど概念的には十分扱っていない問題が3つあります。その1つは非対称な信頼区間、または広い信頼区間に関するものです。あなたはそれをimplausibleと呼んでいますが、implausibleではありません。追跡期間が非常に短いなら、それは十分起こりうることです。たとえば、少人数でイベントもごく少ない1試験の例を出していますが……」</em><br><br>
                     Holgerの3点指摘：<br>
                     ① <strong>asymmetric CIは「implausibleではない」</strong>：follow-upが短い場合は妥当な現象。<br>
                     ② <strong>Rare eventsそのもの</strong>と <strong>asymmetric CI</strong>は別概念。<br>
                     ③ <strong>RDをいつ使うか</strong>の状況設定が曖昧。<br><br>
-                    <em style="color:#475569;font-size:0.83rem;">"With longer follow up the event rates may just go up, and you have very different ways of thinking about the i don't know if he sent the paper to your son. But but you may have very different event rates, if there was sufficient, follow up, and under those circumstances. I would not want to artificially narrow a confidence interval, or not be concerned about impressing, and i wouldn't even worry about if it's if it's an asymmetric confidence interval, because under those circumstances, if you have a trial with 87 people that follows people for 4 months. And you have 3 events. It is imprecise right, it is not an issue of rare events. It is an issue of the fact that, you know, you may not have long enough follow up to actually count these events or it can be an issue of sample size."</em><br><br>
-                    <strong>Hassan：</strong><em>"i mean, i agree holler. That's a very good point, and actually in the impecision paper. The older one. We mentioned this. This is contingent. If you want to have high certainty in this context. It's contingent on that the follow up is sufficient for. For assessing the outcome. And it's actually a risk of bias criteria. So it goes under that domain that for these studies. The the the follow up should be sufficient to capture. The outcome or capture the events, and if it's if the follow up is short..."</em><br>
-                    <strong>Holger：</strong>"and indirectness"（短いfollow-upは <strong>RoB and indirectness</strong>の問題で、imprecisionではない）<br>
-                    <strong>Hassan：</strong><em>"I agree. I think these things should should be, will will be brought out in the paper."</em><br>
-                    <strong>Ariel：</strong><em>"I'm more in line with holder in terms that i think it's indirectness and. I agree that this whole. Presentation applies to a situation in which follow up is is long enough."</em><br><br>
+                    <em style="color:#475569;font-size:0.83rem;">「追跡期間が長ければイベント率は上がるかもしれません。十分な追跡があれば、まったく異なるイベント率になりうるのです。そのような状況では、信頼区間を人工的に狭めたり、不精確性を心配しないことにはしたくありません。非対称な信頼区間かどうかも、むしろ問題ではありません。87人を4か月追跡して3イベントしかない試験なら、それは不精確です。rare eventsの問題ではなく、イベントを数えるのに追跡期間が十分でなかった、あるいはサンプルサイズの問題かもしれない、ということです。」</em><br><br>
+                    <strong>Hassan：</strong><em>「Holgerに同意します。とても重要な点です。実は以前のimprecision論文でもこの点に触れています。この文脈で高い確実性を主張したいなら、アウトカムを評価するのに追跡期間が十分であることが前提です。これは実際にはrisk of biasの基準でもあります。つまり、これらの研究ではアウトカムやイベントを捕捉するのに十分な追跡期間が必要です。もし追跡が短いなら……」</em><br>
+                    <strong>Holger：</strong>「そしてindirectnessでもある」（短いfollow-upは <strong>RoB and indirectness</strong>の問題で、imprecisionではない）<br>
+                    <strong>Hassan：</strong><em>「同意します。これらの点は論文の中で明確に示されるべきですし、そうなると思います。」</em><br>
+                    <strong>Ariel：</strong><em>「その点ではHolgerに近い立場です。これはindirectnessだと思います。この発表全体は、追跡期間が十分に長い状況に適用されるものだ、という点には同意します。」</em><br><br>
                     <strong>意義：</strong>本論文の手法は <strong>follow-upが十分な状況にのみ適用可能</strong>。短いfollow-upの場合はRoB / indirectnessでdowngradeするべきで、変換exerciseは不要。
                   </div>
 
                   <div style="background:#fff;border-radius:6px;padding:0.7rem 0.9rem;margin-bottom:0.7rem;border-left:3px solid #b91c1c;">
                     <strong>🔴 Q3（Reem、非統計家）：数学的整合性への懸念</strong><br>
-                    <em style="color:#475569;font-size:0.83rem;">"It's scaring me that. When you do a met analysis of risk difference, and then back, calculate. To the relative effects. You're ending up with a different confidence interval. Then, when you do a meta analysis of the relative effects. It feels like math is breaking down somewhere. has a statistician looked at this and said, this is kosher, because it feels weird to me, and i don't mean to imply that i know enough. To be right about that. It just. Isn't behaving the way i would have expected. A meta analysis on one thing. Transferred to another to behave."</em><br><br>
-                    <strong>Ariel：</strong><em>"It it has been seen by. By mid by by. Statisticians and. We decided to to include these caution messages, because we agree that this. Maybe maybe have problems. But still we didn't found an alternative way of solving that specific situation which some of. As a faced in in practice. So that's why we decided to. To include in the paper. But i agree, yeah."</em><br>
-                    <strong>Hassan（重要な反論）：</strong><em>"actually, most decisions will be very uncomfortable with the standard approach. So actually, our standard approach. Has a lot of assumptions when you convert when you transform right. It has a lot of. 1st 1st of all, it has those assumptions right that there, that the. Relative effect is transportable. In many cases it's not, and and and and you know, so that's like one part of it. And then the other thing is, is all these issues with the confidence interval, because when you transform. Like. Say you transform a relative risk into a risk difference. The the variance of this risk. Difference is just coming from the relative effect. Right. It's not really coming from the actual baseline risk and the variability and the baseline baseline risk. So the standard approach. Is the one that. Most will be uncomfortable with. On the other hand, when you directly calculate the risk, difference. that already addresses variability in the baseline is. So the standard approach is is the one that. There's more problematic statistically."</em><br><br>
+                    <em style="color:#475569;font-size:0.83rem;">「少し怖いと感じています。risk differenceのメタ解析をして、それをrelative effectに逆算すると、relative effectを直接メタ解析した場合とは違う信頼区間になります。どこかで数学が壊れているように感じます。統計家がこれを見て『問題ない』と言っているのでしょうか。私には違和感があります。自分が正しいと言えるほど分かっているつもりはありません。ただ、ある尺度でメタ解析したものを別の尺度に移したとき、私が期待する振る舞いをしていないように見えるのです。」</em><br><br>
+                    <strong>Ariel：</strong><em>「統計家には見てもらっています。私たちは注意喚起のメッセージを入れることにしました。この方法には問題があるかもしれない、という点には同意しているからです。それでも、私たちが実務で直面するこの特定の状況を解決する別の方法は見つかりませんでした。だから論文に含めることにしました。ただ、その懸念には同意します。」</em><br>
+                    <strong>Hassan（重要な反論）：</strong><em>「実際には、多くの意思決定者は標準的な方法のほうに強い違和感を持つはずです。標準法は、変換するときに多くの仮定を置いています。第一に、relative effectがtransportableであるという仮定があります。しかし多くの場合、それは成り立ちません。もう1つは信頼区間の問題です。たとえばrelative riskをrisk differenceに変換すると、そのrisk differenceの分散はrelative effectから来ています。実際のbaseline riskやbaseline riskのばらつきから来ているわけではありません。したがって、統計的により問題が多いのは標準法のほうです。一方でrisk differenceを直接計算すれば、baseline riskのばらつきもすでに扱われます。」</em><br><br>
                     <strong>意義：</strong>標準法こそ実は <strong>仮定が多く統計的に問題</strong>：① relative effectがtransportableという仮定（多くの場合不成立）／② RDの分散がrelative effectからのみ来ており、baseline risk variabilityを反映しない。直接RD計算ならbaseline risk variabilityも考慮される → 統計的には direct RD のほうが優れている側面がある。
                   </div>
 
