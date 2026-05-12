@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guyatt 2026 MIDアンケート実装手順</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5b6475;
+      --line: #d9e2ec;
+      --surface: #f7fafc;
+      --panel: #ffffff;
+      --blue: #1d4ed8;
+      --green: #047857;
+      --amber: #b45309;
+      --rose: #be123c;
+      --teal: #0f766e;
+      --violet: #6d28d9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f7fb;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .source-chip {
+      color: #475569;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      background: #fff;
+      white-space: nowrap;
+    }
+
+    header {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 920px;
+      margin: 14px 0 0;
+      color: #334155;
+      font-size: 1rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      margin-top: 22px;
+      align-items: stretch;
+    }
+
+    .summary-box {
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: #eff6ff;
+      padding: 16px;
+    }
+
+    .summary-box h2,
+    .snapshot h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .summary-box p,
+    .snapshot p {
+      margin: 0;
+      color: #334155;
+      font-size: 0.93rem;
+    }
+
+    .snapshot {
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      background: #f0fdf4;
+      padding: 16px;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .nav-grid a {
+      display: block;
+      min-height: 54px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.32rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section h3 {
+      margin: 18px 0 8px;
+      font-size: 1.03rem;
+      line-height: 1.45;
+    }
+
+    .section p {
+      margin: 0 0 12px;
+      color: #334155;
+      font-size: 0.95rem;
+    }
+
+    .section ul,
+    .section ol {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: #334155;
+      font-size: 0.94rem;
+    }
+
+    .section li {
+      margin: 0.35rem 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      color: #0f172a;
+    }
+
+    .mini-card p {
+      margin: 6px 0 0;
+      font-size: 0.89rem;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .blue { background: var(--blue); }
+    .green { background: var(--green); }
+    .amber { background: var(--amber); }
+    .rose { background: var(--rose); }
+    .teal { background: var(--teal); }
+    .violet { background: var(--violet); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 132px;
+      padding: 14px 14px 14px 48px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .flow-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .flow-step h3 {
+      margin: 0 0 6px;
+      font-size: 0.96rem;
+    }
+
+    .flow-step p {
+      margin: 0;
+      font-size: 0.86rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2f7;
+      color: #1f2937;
+    }
+
+    .callout {
+      border: 1px solid #fed7aa;
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      background: #fff7ed;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #7c2d12;
+      font-size: 0.92rem;
+    }
+
+    .example {
+      border: 1px solid #c7d2fe;
+      border-left: 4px solid var(--violet);
+      border-radius: 8px;
+      background: #f5f3ff;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .example p {
+      color: #3b0764;
+    }
+
+    .sequence {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+    }
+
+    .sequence span {
+      min-width: 58px;
+      text-align: center;
+      padding: 7px 9px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #fff;
+      color: #1e293b;
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .risk-visual {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 5px;
+      max-width: 520px;
+      margin-top: 12px;
+    }
+
+    .risk-visual i {
+      display: block;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      background: #dbeafe;
+    }
+
+    .risk-visual i.marked {
+      background: #dc2626;
+    }
+
+    .template {
+      margin-top: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 14px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .template code {
+      color: #0f766e;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.88rem;
+    }
+
+    .footer-note {
+      color: #64748b;
+      font-size: 0.82rem;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      header,
+      .section {
+        padding: 16px;
+      }
+
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .source-chip {
+        white-space: normal;
+      }
+
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">index.htmlへ戻る</a>
+      <div class="source-chip">Guyatt閾値アンケート2026 PDF + 付録DOCXより整理</div>
+    </div>
+
+    <header>
+      <p class="eyebrow">MID / 閾値 / 価値観・意向</p>
+      <h1>Guyatt 2026 MIDアンケート実装手順</h1>
+      <p class="lead">
+        2026年の方法論プロトコルを、実際にアンケートを作る人向けの手順書として再構成したページです。
+        冠動脈疾患患者を対象に、患者が「重要」と感じる最小効果、つまりMIDを調べるための流れを、アウトカム選定、HOD作成、ping-pong式質問票、認知インタビューまで一気通貫で整理します。
+      </p>
+
+      <div class="hero-grid">
+        <div class="summary-box">
+          <h2>この論文の要点</h2>
+          <p>
+            MIDは、効果量を「統計的に有意か」ではなく「患者にとって治療判断を変えるほど重要か」で判断するための基準です。
+            このプロトコルは、患者がアウトカムを正しく想像できるようにHODを作り、1/1000から50/1000までのリスク差をping-pong式に提示して、重要性の切り替わり点を探す方法を示しています。
+          </p>
+        </div>
+        <div class="snapshot">
+          <h2>成果物として作るもの</h2>
+          <p>
+            1. 重要アウトカム一覧、2. HOD、3. MID質問票、4. 視覚補助、5. 認知インタビュー記録、6. 最終MID推定値とその根拠、の6点をそろえる設計です。
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav-grid" aria-label="ページ内ナビゲーション">
+      <a href="#overview">全体像</a>
+      <a href="#outcomes">アウトカム選定</a>
+      <a href="#hod">HOD作成</a>
+      <a href="#questionnaire">MID質問票</a>
+      <a href="#fieldwork">実施と品質管理</a>
+      <a href="#builder">作成ポイント</a>
+      <a href="#related-papers">関連論文</a>
+    </nav>
+
+    <section id="overview" class="section">
+      <h2>1. 全体像</h2>
+      <p>
+        これは単なるアンケート作成ではありません。患者がアウトカムを理解し、そのうえで「この程度の利益なら重要」「この程度の害なら避けたい」と判断できるように、素材と質問を段階的に作り込む方法です。
+      </p>
+      <div class="flow">
+        <div class="flow-step">
+          <h3>作業グループを作る</h3>
+          <p>方法論家、臨床家、質的研究者、患者研究者を入れ、患者負担と科学的妥当性の両方を見る。</p>
+        </div>
+        <div class="flow-step">
+          <h3>重要アウトカムを選ぶ</h3>
+          <p>文献と議論で患者に重要なアウトカムを絞り、数を増やし過ぎない。</p>
+        </div>
+        <div class="flow-step">
+          <h3>HODを作る</h3>
+          <p>症状、検査治療、短期影響、長期影響を、患者が理解できる言葉で説明する。</p>
+        </div>
+        <div class="flow-step">
+          <h3>認知インタビューで磨く</h3>
+          <p>参加者が説明をどう理解したかを確認し、曖昧な表現を修正する。</p>
+        </div>
+        <div class="flow-step">
+          <h3>MID質問票を作る</h3>
+          <p>1/1000から50/1000の効果量を、極端値から中央へ寄せる順序で提示する。</p>
+        </div>
+        <div class="flow-step">
+          <h3>最終化する</h3>
+          <p>疲労、誤解、回答選択肢のずれを点検し、MID推定に使える質問票にする。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes" class="section">
+      <h2>2. アウトカム選定</h2>
+      <p>
+        プロトコルでは、患者負担を抑えながら十分な推定精度を得ること、そして患者にとって本当に重要なアウトカムを扱うことを基準にしています。
+        CAD患者では、最終的に心筋梗塞、死亡、虚血性脳卒中、消化管出血の4アウトカムが選ばれています。
+      </p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="label blue">基準1</span>
+          <strong>患者負担を増やし過ぎない</strong>
+          <p>専門家パネルでも複数アウトカムに回答すると疲労が出るため、患者対象ではアウトカム数と質問数を抑える。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label green">基準2</span>
+          <strong>患者にとって重要である</strong>
+          <p>価値観・意向、重要アウトカム、エンドポイントに関する文献を調べ、患者の意思決定に影響するものを選ぶ。</p>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>アウトカム</th>
+            <th>扱い</th>
+            <th>実務上の注意</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>心筋梗塞</td>
+            <td>望ましくないイベントの回避、つまり治療の利益として提示する。</td>
+            <td>胸痛などの急性症状と退院後の生活影響をHODに入れる。</td>
+          </tr>
+          <tr>
+            <td>死亡</td>
+            <td>プロトコルでは「死亡」として直接扱い、HODは作らない。</td>
+            <td>説明を増やし過ぎると余計な解釈差が入るため、単純化する。</td>
+          </tr>
+          <tr>
+            <td>虚血性脳卒中</td>
+            <td>血栓性イベントを防ぐ利益として提示する。</td>
+            <td>「脳卒中」という語が曖昧な場合は、地域の言葉に合わせて明確化する。</td>
+          </tr>
+          <tr>
+            <td>消化管出血</td>
+            <td>抗血栓療法の害として提示する。</td>
+            <td>利益アウトカムとは逆に「何人増えると重要な害か」を評価する。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="hod" class="section">
+      <h2>3. HODを作る</h2>
+      <p>
+        HODはHealth Outcome Descriptionの略で、患者が未経験のアウトカムでも現実感をもって評価できるようにする説明文です。
+        文章物語ではなく、典型的な出来事を箇条書きで示す設計が採用されています。
+      </p>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="label teal">典型性</span>
+          <strong>臨床的に典型的である</strong>
+          <p>診療ガイドラインに沿った症状、検査、治療を反映させる。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label amber">経験</span>
+          <strong>患者経験として典型的である</strong>
+          <p>質的研究と患者インタビューから、患者が実際に語る症状や生活影響を拾う。</p>
+        </div>
+      </div>
+
+      <h3>HODに入れる4領域</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>領域</th>
+            <th>入れる内容</th>
+            <th>確認する問い</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>発症時の症状</td>
+            <td>痛み、しびれ、息切れ、不安など、患者が最初に感じる変化。</td>
+            <td>患者がその状態を具体的に想像できるか。</td>
+          </tr>
+          <tr>
+            <td>検査と治療</td>
+            <td>救急受診、検査、入院、薬剤、処置など。</td>
+            <td>医療行為の負担や流れが伝わるか。</td>
+          </tr>
+          <tr>
+            <td>短期的な影響</td>
+            <td>入院中から退院直後の身体症状、恐怖、活動制限。</td>
+            <td>直後のつらさが過不足なく表現されているか。</td>
+          </tr>
+          <tr>
+            <td>長期的な影響</td>
+            <td>仕事、家族役割、社会生活、後遺症、再発不安。</td>
+            <td>治療選択に影響する生活上の重みが入っているか。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>
+          HOD作成では、まず診療ガイドラインと質的研究をレビューし、コード化して説明要素を整理します。
+          次に経験者インタビューで不足を補い、最後に未経験の患者へ認知インタビューを行って、説明が伝わるかを確認します。
+        </p>
+      </div>
+    </section>
+
+    <section id="questionnaire" class="section">
+      <h2>4. MID質問票を作る</h2>
+      <p>
+        MID質問票はアウトカムごとに別々に作ります。参加者には最終化したHODを読んでもらったあと、1000人あたり何人のイベントが減る、または増えるなら重要かを評価してもらいます。
+      </p>
+
+      <div class="grid-2">
+        <div class="example">
+          <h3>利益アウトカムの例</h3>
+          <p>
+            1000人が1年間薬を使った場合、心筋梗塞がX人減るとしたら、その減少をどの程度重要と考えるかを尋ねます。
+          </p>
+        </div>
+        <div class="example">
+          <h3>害アウトカムの例</h3>
+          <p>
+            1000人が1年間薬を使った場合、消化管出血がX人増えるとしたら、その増加をどの程度重要な害と考えるかを尋ねます。
+          </p>
+        </div>
+      </div>
+
+      <h3>回答選択肢</h3>
+      <div class="grid-2">
+        <div class="mini-card"><strong>Trivial</strong><p>重要とはいえない、取るに足らない。</p></div>
+        <div class="mini-card"><strong>Small but important</strong><p>小さいが、治療判断に入れるだけの重要性がある。</p></div>
+        <div class="mini-card"><strong>Moderate</strong><p>中等度に重要。</p></div>
+        <div class="mini-card"><strong>Large</strong><p>大きく重要。</p></div>
+      </div>
+
+      <h3>Ping-pong提示順序</h3>
+      <p>
+        いきなり1、5、10と順に増やすのではなく、低い値と高い値を行き来しながら中央へ近づけます。
+        これにより、参加者の判断がどのあたりで「重要」に切り替わるかを効率よく見つけます。
+      </p>
+      <div class="sequence" aria-label="Ping-pong sequence per 1000">
+        <span>1</span>
+        <span>50</span>
+        <span>5</span>
+        <span>40</span>
+        <span>10</span>
+        <span>30</span>
+        <span>15</span>
+        <span>20</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>状況</th>
+            <th>停止ルール</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1、5、10、15/1000のような低い値で「small but important」以上を選ぶ</td>
+            <td>そのアウトカムの質問を終了できる。</td>
+            <td>MIDは低い範囲にある可能性が高い。</td>
+          </tr>
+          <tr>
+            <td>20、30、40、50/1000のような高い値でも「trivial」を選ぶ</td>
+            <td>そのアウトカムの質問を終了できる。</td>
+            <td>MIDは想定範囲より高い、またはアウトカム理解に問題がある可能性を確認する。</td>
+          </tr>
+          <tr>
+            <td>判断が中央付近で揺れる</td>
+            <td>順序に沿って続ける。</td>
+            <td>切り替わり点を推定するための中心データになる。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>視覚補助</h3>
+      <p>
+        1000人中X人という絶対リスク差は直感的に難しいため、図で示します。下のように、全体のなかで影響を受ける人数を色で示すと、数値の大きさを理解しやすくなります。
+      </p>
+      <div class="risk-visual" aria-label="色付きセルで人数を示す簡易図">
+        <i class="marked"></i><i class="marked"></i><i class="marked"></i><i class="marked"></i><i class="marked"></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </section>
+
+    <section id="fieldwork" class="section">
+      <h2>5. 実施と品質管理</h2>
+      <div class="grid-3">
+        <div class="mini-card">
+          <span class="label blue">割付</span>
+          <strong>アウトカム順序をランダム化</strong>
+          <p>4アウトカムの順序は24通り作り、参加者ごとに割り付ける。HOD評価でも割付を使い、偏りを抑える。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label rose">疲労</span>
+          <strong>参加者の疲労を優先する</strong>
+          <p>あくび、視線の散漫、短い返答、反応遅延、反復依頼、疲労の訴えがあれば休止または終了する。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label green">反復</span>
+          <strong>飽和まで修正する</strong>
+          <p>7から10人程度のラウンドを繰り返し、新しい問題が出なくなるまでHODと質問票を修正する。</p>
+        </div>
+      </div>
+
+      <h3>認知インタビューで見る点</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>対象</th>
+            <th>確認領域</th>
+            <th>問いの例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HOD</td>
+            <td>明確さ、理解、十分性、その他の問題</td>
+            <td>この説明は明確か。自分の言葉で言い直せるか。足すべき情報はあるか。</td>
+          </tr>
+          <tr>
+            <td>MID質問票</td>
+            <td>明確さ、理解、判断、回答選択肢、その他の問題</td>
+            <td>1/1000の意味をどう理解したか。なぜtrivialまたはimportantと考えたか。選択肢は考えに合ったか。</td>
+          </tr>
+          <tr>
+            <td>視覚補助</td>
+            <td>リスク量の理解、誤解の有無、足りない情報</td>
+            <td>図が何を示しているか説明できるか。色や配置が誤解を招かないか。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>患者向け導入文の骨子</h3>
+      <div class="template">
+        <p>
+          <code>目的</code> CAD治療では、血栓を防ぐ利益と出血などの害を比べて判断する必要がある。
+          医師の判断だけでなく、患者がどの程度の利益や害を重要と感じるかを知ることが、今後の治療方針づくりに役立つ。
+        </p>
+        <p>
+          <code>安心材料</code> 回答は現在の治療には影響しない。正解や不正解はなく、本人の率直な判断を知りたい。
+        </p>
+        <p>
+          <code>回答方法</code> 仮想シナリオを読み、1000人中X人のイベント増減を、trivial、small but important、moderate、largeから選ぶ。
+          数字は何度か変わるが、意地悪な質問ではなく、重要と感じ始める点を探すためである。
+        </p>
+      </div>
+
+      <div class="callout">
+        <p>
+          重要なのは、MIDを「データから自動計算される値」と扱わないことです。
+          MIDは患者の価値判断を含む閾値であり、Core GRADEでは効果の重要性とエビデンス確実性の判断に直結します。
+        </p>
+      </div>
+    </section>
+
+    <section id="builder" class="section">
+      <h2>6. 自分でアンケートを作るための具体ポイント</h2>
+      <p>
+        自分の診療ガイドラインや研究テーマで使う場合は、いきなりGoogleフォームを作らず、まず「誰に、何を、どの判断単位で聞くのか」を固定します。
+        ここが曖昧だと、あとでMIDなのか、治療受け入れ閾値なのか、単なる印象調査なのかが混ざります。
+      </p>
+
+      <h3>まず決める3つの型</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>型</th>
+            <th>誰に聞くか</th>
+            <th>何を知りたいか</th>
+            <th>向いている状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>患者MID調査</td>
+            <td>対象疾患の患者</td>
+            <td>単一アウトカムについて「何人減る/増えると重要か」</td>
+            <td>患者調査を実施でき、アウトカム説明を丁寧に作れるとき。</td>
+          </tr>
+          <tr>
+            <td>パネルサーベイ Objective 1</td>
+            <td>ガイドラインパネル</td>
+            <td>患者が重要と考える単一アウトカムのMIDを推論する</td>
+            <td>患者データが乏しいが、効果の重要性や不精確性判断に閾値が必要なとき。</td>
+          </tr>
+          <tr>
+            <td>パネルサーベイ Objective 2</td>
+            <td>ガイドラインパネル</td>
+            <td>害や負担を考えたうえで、介入を受け入れる最小利益を推論する</td>
+            <td>スクリーニングや予防介入のように、利益と負担のトレードオフが中心のとき。</td>
+          </tr>
+          <tr>
+            <td>パネルサーベイ Objective 3</td>
+            <td>ガイドラインパネル</td>
+            <td>提示された利益・害の組み合わせで、何割の患者が介入を選ぶか推論する</td>
+            <td>サブグループ別に利益と害が変わり、推奨方向・強さを議論したいとき。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>質問票を作るときの設計シート</h3>
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="label blue">1</span>
+          <strong>PICOTを1行で書く</strong>
+          <p>例：症候性CCS患者に抗血栓薬を追加し、1年間で心筋梗塞を何人/1000人減らすなら重要か。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label green">2</span>
+          <strong>アウトカムは1問1アウトカム</strong>
+          <p>死亡、心筋梗塞、脳卒中、出血を1つの設問に混ぜない。複合アウトカムは、患者が何を評価しているか不明になります。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label amber">3</span>
+          <strong>相対効果ではなく絶対差で聞く</strong>
+          <p>「20%減少」ではなく「1000人中X人減少」と聞く。期間も必ず入れます。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label violet">4</span>
+          <strong>値は極端値から中央へ</strong>
+          <p>1、50、5、40、10、30、15、20/1000のように提示し、切り替わり点を探します。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label rose">5</span>
+          <strong>停止ルールを事前に決める</strong>
+          <p>低い値で「重要」なら早期終了、高い値でも「些細」なら早期終了など、疲労を避けるルールを明文化します。</p>
+        </div>
+        <div class="mini-card">
+          <span class="label teal">6</span>
+          <strong>理解確認を別に行う</strong>
+          <p>本調査前に認知インタビューを行い、質問文、HOD、視覚補助、選択肢の意味が伝わっているか確認します。</p>
+        </div>
+      </div>
+
+      <h3>質問文テンプレート</h3>
+      <div class="template">
+        <p>
+          <code>利益アウトカム</code>
+          あなたは［疾患/状況］で、［介入］を使うかどうかを考えています。
+          1000人が［期間］この介入を使うと、［アウトカム］がX人減ります。
+          このX人の減少を、あなたはどの程度重要だと思いますか。
+        </p>
+        <p>
+          <code>害アウトカム</code>
+          あなたは［疾患/状況］で、［介入］を使うかどうかを考えています。
+          ただし、1000人が［期間］この介入を使うと、［害アウトカム］がX人増えます。
+          このX人の増加を、あなたはどの程度重要な害だと思いますか。
+        </p>
+        <p>
+          <code>選択肢</code>
+          取るに足らない / 小さいが重要 / 中等度に重要 / 大きく重要。
+          パネルサーベイでは「全員またはほぼ全員」「多く」「過半数」など、患者分布を推論する選択肢にします。
+        </p>
+      </div>
+
+      <h3>集計で見るポイント</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>見るもの</th>
+            <th>意味</th>
+            <th>報告のしかた</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>切り替わり点</td>
+            <td>trivialからsmall but important以上へ変わる範囲。</td>
+            <td>MID候補を中央値と範囲で示す。</td>
+          </tr>
+          <tr>
+            <td>ばらつき</td>
+            <td>患者またはパネルの価値観・意向がどれくらい多様か。</td>
+            <td>推奨の強さに影響する不確実性として記述する。</td>
+          </tr>
+          <tr>
+            <td>非単調回答</td>
+            <td>値が大きくなっても重要性が下がるなど、理解困難や疲労の可能性。</td>
+            <td>認知インタビュー記録と照合し、除外ではなくまず原因を確認する。</td>
+          </tr>
+          <tr>
+            <td>説明への反応</td>
+            <td>HODや視覚補助が判断を助けたか、逆に誘導したか。</td>
+            <td>最終版で修正した文言と理由を残す。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>
+          実務上の落とし穴は、「統計的有意」「相対リスク低下」「よくある重篤イベント」などの専門語で質問してしまうことです。
+          MID調査では、患者が現実の選択として想像できる絶対リスク差、期間、アウトカム説明をそろえることが最重要です。
+        </p>
+      </div>
+    </section>
+
+    <section id="related-papers" class="section">
+      <h2>7. 同じ考え方の関連論文まとめ</h2>
+      <p>
+        2026年の患者MID調査プロトコルは、単独のアイデアではなく、GRADEで患者価値観・意向を明示的に扱う一連の方法論の延長にあります。
+        特にZeng/Guyattらの2本のJournal of Clinical Epidemiology論文は、患者調査ができない場面でパネルが患者価値観をどう構造化して推論するかを示しています。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>論文</th>
+            <th>中心テーマ</th>
+            <th>アンケート作成への示唆</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Liu, Guyatt, Jin, Shang ら. Global Health Research and Policy 2026</td>
+            <td>CAD患者を対象に、患者重要アウトカムのMIDを調べるための方法論プロトコル。</td>
+            <td>患者向けHOD、ping-pong式MID質問票、認知インタビュー、視覚補助を組み合わせる。</td>
+          </tr>
+          <tr>
+            <td>Zeng, Helsingen, Bretthauer, Guyatt ら. Journal of Clinical Epidemiology 2023;161:164-172. doi:10.1016/j.jclinepi.2023.07.003</td>
+            <td>ガイドラインパネルが患者価値観・意向を推論するためのパネルサーベイ5ステップ。</td>
+            <td>患者データが乏しいとき、パネル全員に同じシナリオで閾値や患者選好分布を推論してもらう。</td>
+          </tr>
+          <tr>
+            <td>Zeng, Li, Yang, Yan, Guyatt ら. Journal of Clinical Epidemiology 2023;161:173-180. doi:10.1016/j.jclinepi.2023.07.014</td>
+            <td>パネルサーベイを使った4つのガイドラインパネルの定性的評価。</td>
+            <td>サーベイは患者視点を思い出させ、利益・害のトレードオフと推奨の強さの議論を透明にする。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>パネルサーベイ5ステップ</h3>
+      <div class="flow">
+        <div class="flow-step">
+          <h3>Preference-sensitiveか判断</h3>
+          <p>利益と害のバランスが近く、患者価値観で推奨が変わり得るかを見る。</p>
+        </div>
+        <div class="flow-step">
+          <h3>目的を選ぶ</h3>
+          <p>MID、decision threshold、患者が介入を選ぶ割合のどれを知りたいか決める。</p>
+        </div>
+        <div class="flow-step">
+          <h3>設問を作る</h3>
+          <p>絶対効果、期間、利益と害を同じ場面で提示し、ping-pong式に値を変える。</p>
+        </div>
+        <div class="flow-step">
+          <h3>教育して回答を集める</h3>
+          <p>パネルに患者視点と選好分布を考える意義を説明し、個別回答を集める。</p>
+        </div>
+        <div class="flow-step">
+          <h3>結果を提示する</h3>
+          <p>中央値、範囲、分布、意見の割れを示し、推奨方向と強さの議論につなげる。</p>
+        </div>
+        <div class="flow-step">
+          <h3>不確実性を残す</h3>
+          <p>ばらつきは失敗ではなく、conditional recommendationや追加研究の根拠になる。</p>
+        </div>
+      </div>
+
+      <h3>患者MID調査とパネルサーベイの使い分け</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>比較点</th>
+            <th>患者MID調査</th>
+            <th>パネルサーベイ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>強み</td>
+            <td>患者本人の価値判断を直接得られる。</td>
+            <td>短時間で、推奨会議の議論を同じ土俵にそろえられる。</td>
+          </tr>
+          <tr>
+            <td>弱み</td>
+            <td>HOD作成、認知インタビュー、サンプリングに手間がかかる。</td>
+            <td>患者本人ではなく、パネルが患者視点を推論するため代表性に限界がある。</td>
+          </tr>
+          <tr>
+            <td>使う場面</td>
+            <td>MIDを主要成果として推定したい、または患者調査のリソースがある。</td>
+            <td>患者価値観の研究が乏しいが、推奨作成の場で透明な判断が必要。</td>
+          </tr>
+          <tr>
+            <td>報告すべきこと</td>
+            <td>対象者、HOD、提示値、停止ルール、認知インタビューでの修正、MID分布。</td>
+            <td>パネル構成、教育資料、設問、集計方法、ばらつき、推奨への反映。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>8. 自分のガイドラインで使うときのチェックリスト</h2>
+      <ol>
+        <li>対象疾患、介入、比較、時間枠を明確にする。</li>
+        <li>患者に重要な利益アウトカムと害アウトカムを、文献と患者関与で選ぶ。</li>
+        <li>アウトカム数を絞り、1人あたりの回答負担を決める。</li>
+        <li>各アウトカムのHODを、4領域で作る。</li>
+        <li>経験者インタビューで、HODに患者の言葉を入れる。</li>
+        <li>未経験の対象患者で、HODの認知インタビューを行う。</li>
+        <li>1000人あたりの絶対リスク差として質問票を作る。</li>
+        <li>1、50、5、40、10、30、15、20/1000のようにping-pong順序で提示する。</li>
+        <li>低値で重要、高値で些細と判断された場合の停止ルールを事前に決める。</li>
+        <li>質問票、視覚補助、導入文を認知インタビューで修正する。</li>
+        <li>最終MID、判断のばらつき、文化的・言語的修正点を報告する。</li>
+      </ol>
+
+      <p class="footer-note">
+        原資料: Exploring methodology for investigating Chinese coronary artery disease patient values and preferences: A methodological study protocol.
+        Global Health Research and Policy 11 (2026) 36-42、および付録資料。
+        関連資料: Zeng et al. Journal of Clinical Epidemiology 2023;161:164-172（framework paper）、
+        Zeng et al. Journal of Clinical Epidemiology 2023;161:173-180（qualitative evaluation paper）。
+      </p>
+    </section>
+  </main>
+</body>
+</html>
