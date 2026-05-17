@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>閾値・MIDの解説</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --emerald: #059669;
+      --emerald-soft: #d1fae5;
+      --amber: #b45309;
+      --amber-soft: #fef3c7;
+      --rose: #be123c;
+      --rose-soft: #ffe4e6;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Yu Gothic UI", "Meiryo", sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 9px 13px;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .button.primary {
+      border-color: #1d4ed8;
+      background: var(--blue);
+      color: #ffffff;
+    }
+
+    .button.emerald {
+      border-color: #047857;
+      background: var(--emerald);
+      color: #ffffff;
+    }
+
+    .button.amber {
+      border-color: #92400e;
+      background: var(--amber);
+      color: #ffffff;
+    }
+
+    .hero,
+    .section,
+    .note,
+    .figure-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero {
+      padding: 26px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 9px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      background: var(--surface-soft);
+      color: #334155;
+    }
+
+    .badge.blue {
+      background: var(--blue-soft);
+      border-color: #93c5fd;
+      color: #1e40af;
+    }
+
+    .badge.emerald {
+      background: var(--emerald-soft);
+      border-color: #6ee7b7;
+      color: #065f46;
+    }
+
+    .badge.amber {
+      background: var(--amber-soft);
+      border-color: #fbbf24;
+      color: #92400e;
+    }
+
+    .badge.rose {
+      background: var(--rose-soft);
+      border-color: #fda4af;
+      color: #9f1239;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .actions,
+    .nav-grid,
+    .grid,
+    .mini-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .actions {
+      grid-template-columns: repeat(auto-fit, minmax(190px, max-content));
+      margin-top: 16px;
+    }
+
+    .nav-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin: 18px 0;
+    }
+
+    .nav-grid a {
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      background: #eff6ff;
+      padding: 10px 12px;
+      font-weight: 800;
+      color: #1e3a8a;
+    }
+
+    .section {
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .section > p:last-child,
+    .note > p:last-child {
+      margin-bottom: 0;
+    }
+
+    .two {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .four {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 14px;
+    }
+
+    .card.blue {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .card.emerald {
+      border-color: #a7f3d0;
+      background: #ecfdf5;
+    }
+
+    .card.amber {
+      border-color: #fcd34d;
+      background: #fffbeb;
+    }
+
+    .card.purple {
+      border-color: #c4b5fd;
+      background: #f5f3ff;
+    }
+
+    .card.rose {
+      border-color: #fda4af;
+      background: #fff1f2;
+    }
+
+    .note {
+      padding: 14px 16px;
+      margin: 14px 0;
+      box-shadow: none;
+    }
+
+    .note.info {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .note.warn {
+      border-color: #fbbf24;
+      background: #fffbeb;
+    }
+
+    .note.tip {
+      border-color: #6ee7b7;
+      background: #ecfdf5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      background: var(--surface);
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 11px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 0.8rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .formula {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 12px;
+      font-family: Consolas, "Courier New", monospace;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .formula-label {
+      display: block;
+      margin-bottom: 4px;
+      color: #64748b;
+      font-family: "Segoe UI", "Yu Gothic UI", "Meiryo", sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .calculator {
+      border: 1px solid #c4b5fd;
+      border-radius: 8px;
+      background: #f5f3ff;
+      padding: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 4px;
+      border: 1px solid #94a3b8;
+      border-radius: 7px;
+      padding: 9px 10px;
+      font: 700 0.95rem Consolas, "Courier New", monospace;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .result {
+      border-radius: 7px;
+      background: #f8fafc;
+      padding: 10px;
+      text-align: center;
+      font-family: Consolas, "Courier New", monospace;
+      font-weight: 800;
+    }
+
+    .result small {
+      display: block;
+      color: #475569;
+      font-family: "Segoe UI", "Yu Gothic UI", "Meiryo", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .figure-card {
+      padding: 18px;
+      margin-top: 14px;
+    }
+
+    .figure-image {
+      margin: 12px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .figure-image img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .caption {
+      margin-top: 8px;
+      color: #475569;
+      font-size: 0.82rem;
+    }
+
+    .small {
+      color: #64748b;
+      font-size: 0.84rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 13px;
+    }
+
+    .timeline-date {
+      color: #1e40af;
+      font-weight: 900;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        padding: 18px 12px 42px;
+      }
+
+      .hero,
+      .section {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.58rem;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← GRADE handbookへ戻る</a>
+      <a class="button primary" href="https://note.com/mxe05064/n/n4368e86d09cf" target="_blank" rel="noopener noreferrer">原noteを開く</a>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="badge blue">MID</span>
+        <span class="badge emerald">Decision Thresholds</span>
+        <span class="badge amber">Utility / Disutility</span>
+        <span class="badge">EtD</span>
+      </div>
+      <h1>閾値・MIDの解説</h1>
+      <p class="lead">
+        統計的に有意かではなく、患者にとって意味のある差かを判定するためのページです。
+        note「MID・閾値一覧」を土台に、MID、MIC、MCID、SWD、Decision Thresholds、Utility/Disutility、
+        GRADE Guidance 41/42、CoreGRADE/Guyatt系のMIDアプローチを一つの流れで読めるように再構成しました。
+      </p>
+      <p>
+        目的は、診療ガイドライン作成・監査で「どの閾値を、どの根拠で、どの限界を認識して使ったか」を説明できるようにすることです。
+        このページだけで学習できるように、noteで扱った論点、図、リンク、実務上の注意点をHTMLページとして整理しています。
+      </p>
+      <div class="actions">
+        <a class="button primary" href="https://www.youtube.com/watch?v=4nd4uTrDAKM&t=2s" target="_blank" rel="noopener noreferrer">MIDと信頼区間の関係を理解しよう</a>
+        <a class="button emerald" href="https://mxe050.github.io/GRADE-Guidance-42/" target="_blank" rel="noopener noreferrer">Guidance 42 シミュレーター</a>
+        <a class="button amber" href="https://www.acpjournals.org/doi/10.7326/ANNALS-24-02013" target="_blank" rel="noopener noreferrer">Guidance 42 原著</a>
+      </div>
+    </section>
+
+    <section class="note info">
+      <h2>このページの読み方</h2>
+      <p>
+        MIDやDTは「表に数字を入れる作業」ではありません。まず、評価したいものが群間差なのか、患者内変化なのか、
+        効果の大きさ分類なのか、不精確さ評価なのかを分けます。そのうえで、絶対効果差と95%信頼区間が、事前に定めた閾値と
+        どの位置関係にあるかを見ます。
+      </p>
+      <p>
+        本ページでは、CoreGRADE/Guyatt系のMIDアプローチと、GRADE Guidance 41/42の複数Decision Thresholdsアプローチを
+        混ぜずに比較できるようにしています。どちらか一方だけを「GRADEの唯一の方法」と読まないことが大切です。
+      </p>
+    </section>
+
+    <nav class="nav-grid" aria-label="ページ内リンク">
+      <a href="#terms">1. 用語整理</a>
+      <a href="#problems">2. 重要な問題点</a>
+      <a href="#streams">3. 二つの流れ</a>
+      <a href="#guidance42">4. Guidance 42</a>
+      <a href="#setting-methods">5. 設定方法</a>
+      <a href="#dt-procedure">6. 記録手順</a>
+      <a href="#figures">8. 論点を学習</a>
+      <a href="#resources">13. 主要リンク</a>
+    </nav>
+
+    <section id="map" class="grid four">
+      <div class="card blue"><h3>A. 用語の整理</h3><p>MID / MIC / MCID / SWD / DTを分ける。</p></div>
+      <div class="card blue"><h3>B. 確実性評価</h3><p>CIがNullやMID/DTをまたぐかを見る。</p></div>
+      <div class="card blue"><h3>C. 効果の大きさ</h3><p>絶対効果差が小・中・大のどこに入るかを見る。</p></div>
+      <div class="card blue"><h3>D. 実務データ</h3><p>疾患・アウトカム別MID/DT候補と限界を残す。</p></div>
+    </section>
+
+    <section id="terms" class="section">
+      <h2>1. 用語整理：MIDという一語に混ぜない</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>用語</th><th>意味</th><th>実務上の注意</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>MID</strong><br><span class="small">Minimally Important Difference</span></td><td>患者・市民にとって意味があるとみなせる最小の群間差。診療ガイドラインやSRでは、介入群と対照群の差がこの線を超えるかを見て、効果の大きさや不精確さを判断する。</td><td>本ページでは原則として群間差を指す。患者内の変化量をそのままMIDとして使う場合は、転用であることを明記する。</td></tr>
+            <tr><td><strong>MIC</strong><br><span class="small">Minimal Important Change</span></td><td>同じ患者・同じ群の中で、治療前後の変化が意味あるかを見る概念。アンカー研究で得られる値の多くはMICに近い。</td><td>MICは自然経過、回帰効果、測定誤差、患者の改善実感を含むため、介入の追加効果を問う群間差MIDとは別物。</td></tr>
+            <tr><td><strong>MCID</strong><br><span class="small">Minimal Clinically Important Difference</span></td><td>古くから広く使われてきた用語。臨床的に重要な最小差という意味で使われるが、近年は患者重要アウトカムに合わせてMID表記へ移る流れがある。</td><td>clinicallyという語が医療者中心に見えるため、患者にとって重要な差を強調するならMIDが望ましい。</td></tr>
+            <tr><td><strong>SWD</strong><br><span class="small">Smallest Worthwhile Difference</span></td><td>患者や社会が、負担・害・コストを踏まえて、それなら介入を受ける価値があると考える最小差。</td><td>MIDより意思決定に近い概念。効果だけでなく、介入の仕事量や害も含めて考える。</td></tr>
+            <tr><td><strong>DT</strong><br><span class="small">Decision Threshold</span></td><td>効果を「些細またはなし」「小」「中」「大」に分類するための閾値。GRADE Guidance 42で中心になる概念。</td><td>単一MIDで二分する考え方とは違う。小・中・大の複数閾値を置く場合、どの線をMIDと呼ぶのか整理が必要。</td></tr>
+            <tr><td><strong>Utility / Disutility</strong><br><span class="small">効用 / 不効用</span></td><td>Utilityは健康状態のスコアで、0が死亡、1が完全な健康。Disutilityは1 - Utilityで、その状態を避けたい重みとして扱う。</td><td>死亡率や生存率という「率」ではない。Guidance 42型の計算では、悪い状態のUtilityを入れる必要がある。</td></tr>
+            <tr><td><strong>ARD</strong><br><span class="small">Absolute Risk Difference</span></td><td>絶対リスク差。1000人あたり何人減る、または増えるかとして示す。GRADEの閾値判断では相対効果よりARDとの比較が重要。</td><td>同じRRでもベースラインリスクが違えばARDは大きく変わる。EtDでは絶対効果に直す。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <p>
+          <strong>MIDという用語の更新：</strong>
+          Guyatt先生は、MCIDという表現が医療者中心に見えやすいことを踏まえ、患者重要アウトカムに合わせてMIDへ移る趣旨の投稿をしています。
+          用語欄ではこの流れを前提に、MCIDを古い一般用語、MIDを患者中心の表現として整理します。
+          <a href="https://x.com/GuyattGH/status/1960688765779038446" target="_blank" rel="noopener noreferrer">X投稿を開く</a>
+        </p>
+      </div>
+      <div class="figure-image">
+        <img src="images/mid-threshold/1762044286-gikwU6TLhMzxJAmy4ve9ObWn.webp" alt="MIDとMICを区別する図">
+        <div class="caption">MIDは群間差、MICは患者内変化として区別して読む。出典：note掲載図</div>
+      </div>
+    </section>
+
+    <section id="problems" class="section">
+      <h2>2. 解説前に考えるべき重要な問題点</h2>
+      <p>
+        このページは、下の問題点を解消するための学習ページです。各カードのリンクを押すと、その問題を説明するセクションへ移動します。
+        まず「どこで混乱しやすいか」を確認し、その後の章で一つずつほどいていく流れで読んでください。
+      </p>
+      <div class="grid two">
+        <div class="card amber"><span class="badge amber">問題 1</span><h3>群間差MIDと群内変化MICの混同</h3><p>既存文献にMIDと書いてあっても、実際には患者内変化のMICであることがある。転用するなら「参考値」として扱い、限界を書く。</p><p><strong>このページでの解き方：</strong> 用語表と最初の図で、群間差・群内変化・測定誤差を切り分けます。</p><a href="#terms">用語整理へ</a> / <a href="#figures">学習図1へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 2</span><h3>GRADE本体とCoreGRADE/Guyatt系の二重構造</h3><p>GRADE Guidance 41/42の複数DT方式と、CoreGRADE的なMID方式は同じではない。どちらの流れで説明しているかを明示する。</p><p><strong>このページでの解き方：</strong> 二つの流れを並べて比較し、Guidance 42の計算とCoreGRADE系MIDの使いどころを分けて説明します。</p><a href="#streams">二つの流れへ</a> / <a href="#guidance42">Guidance 42へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 3</span><h3>「些細/なし」と「小」の境界はMIDなのか</h3><p>小の閾値をMIDと呼べる場合もあるが、6つのDTを用いる体系では単一MIDとは意味がずれる。</p><p><strong>このページでの解き方：</strong> 複数閾値の図とDT設定手順で、「閾値」と「ターゲット」を分けて読みます。</p><a href="#figures">学習図2へ</a> / <a href="#dt-procedure">DT設定手順へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 4</span><h3>アウトカムごとに閾値が違う</h3><p>死亡、ICU入室、軽度悪心、疼痛、QOL低下を同じ人数差で比較すると、患者価値の反映が崩れる。</p><p><strong>このページでの解き方：</strong> Utility/Disutility、リスク層別MID、疾患別例で、なぜ閾値が変わるのかを具体化します。</p><a href="#guidance42">Guidance 42へ</a> / <a href="#examples">各種MID例へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 5</span><h3>患者価値・重要度・Utilityの混在</h3><p>1から9のアウトカム重要度と0から1のUtilityは別スケール。悪い状態に揃えて初めてDisutilityとして重みづけしやすくなる。</p><p><strong>このページでの解き方：</strong> Utilityは「率」ではなく「状態のスコア」であることを確認し、入力を悪い状態に揃える理由を説明します。</p><a href="#guidance42">Guidance 42へ</a> / <a href="#dt-procedure">DT設定手順へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 6</span><h3>MIDよりSWDの方が意思決定に近い可能性</h3><p>意味ある差と、負担を受け入れる価値がある差は一致しない。EtDでは後者も意識する。</p><p><strong>このページでの解き方：</strong> 用語表とガイドライン本文の書き方で、効果だけでなく負担・害・資源も説明に残します。</p><a href="#terms">用語整理へ</a> / <a href="#templates">本文テンプレートへ</a></div>
+        <div class="card amber"><span class="badge amber">問題 7</span><h3>閾値側を変えるのか、効果推定値側を補正するのか</h3><p>Guidance 35系の重みづけとGuidance 42型のアウトカム別DT計算は、見かけが似ていても発想が違う。</p><p><strong>このページでの解き方：</strong> 線形回帰式とEUT割り算式を並べ、何を変換しているのかを計算欄で確認します。</p><a href="#guidance42">計算欄へ</a> / <a href="#dt-procedure">DT設定手順へ</a></div>
+        <div class="card amber"><span class="badge amber">問題 8</span><h3>SRとCPGの不精確さ評価の接近</h3><p>以前はSRとCPGで文脈化の度合いが違ったが、2025年時点ではCIと閾値の関係で考える方向へ寄っている。</p><p><strong>このページでの解き方：</strong> 信頼区間を閾値に重ねる図と本文テンプレートで、SoF/EtDにどう書くかまでつなぎます。</p><a href="#figures">学習図6へ</a> / <a href="#templates">本文テンプレートへ</a></div>
+      </div>
+      <div class="note tip">
+        <p><strong>読み進め方：</strong> 問題1から2は「用語と流派の整理」、問題3から5は「閾値計算と患者価値観」、問題6から8は「EtD・SoFにどう残すか」へつながります。</p>
+      </div>
+    </section>
+
+    <section id="streams" class="section">
+      <h2>3. GRADE本体とCoreGRADE/Guyatt系を分ける</h2>
+      <p>
+        ここは主に、問題2「GRADE本体とCoreGRADE/Guyatt系の二重構造」と、問題3「小の閾値はMIDなのか」への答えです。
+        同じGRADEでも、複数DTで効果量を分類する流れと、MIDで患者にとって重要な差を読む流れがあります。
+      </p>
+      <div class="grid two">
+        <div class="card blue">
+          <h3>GRADE Guidance 41/42 型</h3>
+          <ul>
+            <li>利益側・害側に複数の閾値を置く。</li>
+            <li>些細/なし、小、中、大の効果分類を透明化する。</li>
+            <li>Utility/Disutilityを使ってアウトカム固有のDTを作る。</li>
+            <li>効果量分類には強いが、Utility測定や理論的一貫性には議論が残る。</li>
+          </ul>
+        </div>
+        <div class="card emerald">
+          <h3>CoreGRADE / Guyatt 系MID 型</h3>
+          <ul>
+            <li>患者にとって重要な最小差をアウトカムごとに決める。</li>
+            <li>絶対効果差やCIがMIDを超えるかで判断する。</li>
+            <li>リスク層別にMIDを変える実例がある。</li>
+            <li>文献MIDがない場合、パネル調査や既存試験からの推定が必要になる。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figure-image">
+        <img src="images/mid-threshold/1762044647-UKQed4AkgNfVF0OsYLmcnb6B.webp" alt="利益側と害側の複数閾値を示す図">
+        <div class="caption">利益・害の両側に複数閾値を置くと、MIDだけではない分類になる。出典：note掲載図</div>
+      </div>
+    </section>
+
+    <section id="guidance42" class="section">
+      <h2>4. GRADE Guidance 42：Utility/DisutilityとDT計算</h2>
+      <p>
+        ここは問題4、問題5、問題7への答えです。アウトカムごとに閾値が違う理由、Utilityとアウトカム重要度を混同しやすい理由、
+        そして「効果側を補正する」のか「閾値側を変える」のかを計算として確認します。
+      </p>
+      <div class="card purple">
+        <h3>なぜここで GRADE Guidance 42 が出てくるのか</h3>
+        <p>
+          ここまでの話では、まずMIDを「患者にとって意味のある最小差」として使いました。
+          しかし実際のガイドラインでは、死亡、入院、ICU入室、重い副作用、軽い悪心、疼痛改善、QOL低下のように、
+          重要度の違うアウトカムを同じEtDの中で並べます。さらに、効果が「ある/ない」だけでなく、
+          小さいのか、中等度なのか、大きいのかも説明しなければなりません。
+        </p>
+        <p>
+          そこで出てくるのが <strong>GRADE Guidance 42</strong> です。Guidance 42は、アウトカムごとに
+          「些細/なし・小・中・大」を分けるDecision Thresholdsを、できるだけ透明に決めようとする試みです。
+          つまり、MIDを捨てる話ではなく、MIDだけでは表現しにくい「複数アウトカム・複数段階の効果量判断」を扱うための道具として読むと分かりやすくなります。
+        </p>
+        <p>
+          この章では、Guidance 42の考え方を丸暗記するのではなく、なぜアウトカムごとに閾値が変わるのか、
+          なぜUtility/Disutilityが登場するのか、計算で出た値をそのまま正解にしてはいけない理由を順番に確認します。
+        </p>
+      </div>
+      <div class="note warn">
+        <p><strong>最重要の注意：Utilityは率ではなく状態のスコアです。</strong> Utilityは状態の質を0から1で表したスコアであり、Rateはその状態になった人数の割合です。DTで扱う利益・害は、1000人あたりのイベント増減です。</p>
+      </div>
+      <div class="grid three">
+        <div class="card purple"><h3>1. まずアウトカムの重さが違う</h3><p>死亡を1人減らすことと、軽い悪心を1人減らすことは、同じ1人でも意思決定上の重みが違います。</p></div>
+        <div class="card blue"><h3>2. 次に効果を段階化したい</h3><p>MIDだけなら「意味あるか」の境界が中心です。DTでは、些細/なし、小、中、大という複数段階へ広げます。</p></div>
+        <div class="card emerald"><h3>3. 最後に透明に説明したい</h3><p>どの値を使ったかだけでなく、どの式・どのUtility・どの合意で閾値を決めたかを残すことが目的です。</p></div>
+      </div>
+      <div class="grid three" style="margin-top:12px;">
+        <div class="formula"><span class="formula-label">不効用</span>Disutility = 1 - Utility</div>
+        <div class="formula"><span class="formula-label">Guidance 42 線形回帰式の例</span>T1 = 0.073 - 0.061 * Disutility</div>
+        <div class="formula"><span class="formula-label">EUT型シミュレーターの式</span>T = base threshold / Disutility</div>
+      </div>
+      <div class="note warn">
+        <p><strong>良いアウトカムの入力に注意：</strong> 「治療成功」のUtility 0.9をそのまま入れると、Disutilityは0.1となり、閾値が不自然に大きくなります。良いアウトカムを評価するときは、反対側の悪い状態、たとえば「治療失敗」のUtility 0.1を入力して考えます。</p>
+      </div>
+
+      <div class="calculator">
+        <h3>簡易DT計算：線形回帰式とEUT割り算式を比較する</h3>
+        <p>
+          この計算欄の目的は、「どちらの式が正解か」を決めることではありません。同じUtilityを入れても、
+          線形回帰式とEUT割り算式では出てくる閾値が変わることを見て、DTは機械的に決まる絶対値ではなく、
+          前提に依存する判断材料だと理解するためのものです。
+        </p>
+        <p>
+          線形回帰式は、GRADE-THRESHOLD研究の回答データから得られた経験的なモデルです。
+          一方、EUT割り算式は「同じ社会的インパクトになる人数」を逆算する考え方です。
+          実務では、計算値を初期値として使い、GDGが患者価値観・対象集団・過去のガイドライン・臨床的妥当性を踏まえて調整します。
+        </p>
+        <div class="grid four">
+          <label>悪い状態のUtility<input id="utility" type="number" min="0" max="1" step="0.01" value="0.5"></label>
+          <label>EUT base T1<input id="baseT1" type="number" step="0.1" value="13.5"></label>
+          <label>EUT base T2<input id="baseT2" type="number" step="0.1" value="32.1"></label>
+          <label>EUT base T3<input id="baseT3" type="number" step="0.1" value="62.5"></label>
+        </div>
+        <p id="disutilityText" class="small" style="margin-top:12px;"></p>
+        <div class="grid two">
+          <div class="card">
+            <h3>A. 線形回帰式（Guidance 42式）</h3>
+            <div class="result-grid">
+              <div class="result"><small>T1 小</small><span id="linearT1"></span></div>
+              <div class="result"><small>T2 中</small><span id="linearT2"></span></div>
+              <div class="result"><small>T3 大</small><span id="linearT3"></span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>B. EUT割り算式（シミュレーター式）</h3>
+            <div class="result-grid">
+              <div class="result"><small>T1 小</small><span id="eutT1"></span></div>
+              <div class="result"><small>T2 中</small><span id="eutT2"></span></div>
+              <div class="result"><small>T3 大</small><span id="eutT3"></span></div>
+            </div>
+          </div>
+        </div>
+        <p class="small">
+          どちらの式も「自動的な正解」ではありません。線形回帰式はGRADE-THRESHOLD研究の経験的モデル、
+          EUT割り算式は同じインパクト量を1000人あたり人数へ逆算する発想です。最終的にはGDGが対象集団・アウトカム定義・患者価値観を踏まえて合意します。
+        </p>
+      </div>
+    </section>
+
+    <section id="setting-methods" class="section">
+      <h2>5. MID・Decision Thresholdsの設定方法</h2>
+      <p>
+        ここは問題3から7を実務に落とす章です。noteで繰り返し出てくる実務上の悩みは、「閾値をどこから持ってくるのか」です。
+        理想は患者調査ですが、現実には既存文献、パネル調査、RCT設計値、安全性データ、Guidance 42の計算式を組み合わせることになります。
+        重要なのは、値の出所と限界を隠さないことです。
+      </p>
+      <div class="grid two">
+        <div class="card emerald"><h3>理想：患者調査・アンカーベース研究</h3><p>対象疾患、対象アウトカム、対象集団、測定尺度、時間軸が一致する患者調査やアンカーベース研究からMIDを得る。最も望ましいが、既存研究がないことが多い。</p></div>
+        <div class="card emerald"><h3>現実解：パネル調査</h3><p>既存の患者価値観研究やMID研究が不足する場合、GDGが患者の立場を推測し、1000人あたり何人の差なら小・中・大とみなすかを調査・合意する。</p></div>
+        <div class="card emerald"><h3>CoreGRADE型：患者価値観の分布を推測する</h3><p>例として、心筋梗塞を5年間で1000人あたり1、3、5、8、10、12、15、20人減らす場合、それぞれを重要とみなす患者がどの程度いるかを尋ねる。</p></div>
+        <div class="card emerald"><h3>Guidance 42型：DisutilityからDTを計算する</h3><p>小 = 0.073 - 0.061×Disutility、中 = 0.180 - 0.146×Disutility、大 = 0.338 - 0.271×Disutilityのような経験式、またはEUT割り算式で初期値を作る。</p></div>
+      </div>
+      <div class="note warn">
+        <p><strong>自動計算だけで終わらせない：</strong> Guidance 42の式は便利ですが、対象集団、アウトカム定義、時間軸、Utilityの測定方法がずれれば閾値もずれます。計算値は初期値であり、最終的にはGDGが患者価値観と実行可能性を踏まえて合意する必要があります。</p>
+      </div>
+    </section>
+
+    <section id="dt-procedure" class="section">
+      <h2>6. DT設定手順ノート：実務で何を記録するか</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ステップ</th><th>記録する内容</th></tr></thead>
+          <tbody>
+            <tr><td><strong>アウトカムを選ぶ</strong></td><td>推奨判断に使うCritical/Important outcomeを先に決める。後から都合のよいアウトカムだけ閾値化しない。</td></tr>
+            <tr><td><strong>値の種類を決める</strong></td><td>MID、MIC、MCID、DT、SWDのどれを使っているかを明示する。群間差か群内変化かも必須。</td></tr>
+            <tr><td><strong>Utility/Disutilityを確認する</strong></td><td>Guidance 42型では、評価する悪い状態のUtilityを使い、Disutility = 1 - Utilityで重みづけする。</td></tr>
+            <tr><td><strong>初期値を作る</strong></td><td>既存MID、患者調査、RCTサンプルサイズ、承認試験、安全性データ、計算式のいずれかから候補値を作る。</td></tr>
+            <tr><td><strong>GDGで調整する</strong></td><td>計算値をそのまま正解にせず、対象集団、時間軸、アウトカム定義、患者負担、資源を踏まえて合意する。</td></tr>
+            <tr><td><strong>文書化する</strong></td><td>採用値、出典、直接性、限界、感度分析、CIがまたぐ閾値をSoF/EtD/脚注に残す。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid three" style="margin-top:12px;">
+        <div class="formula"><span class="formula-label">線形回帰式 T1</span>small = 0.073 - 0.061 * Disutility</div>
+        <div class="formula"><span class="formula-label">線形回帰式 T2</span>moderate = 0.180 - 0.146 * Disutility</div>
+        <div class="formula"><span class="formula-label">線形回帰式 T3</span>large = 0.338 - 0.271 * Disutility</div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section">
+      <h2>7. 論文・ガイダンスの時系列</h2>
+      <div class="grid">
+        <div class="timeline-item"><div class="timeline-date">2020年以前</div><div>Cochrane等でRR 0.75 / 1.25のような経験則が使われた時期。SR文脈の便宜的な目安であり、CPG推奨の患者価値閾値とは分ける。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2022年7月</div><div>チリCOVID-19ガイドラインで、パネル会議により利益と害の明示的閾値を作った例。閾値を事前に持つ実務例として重要。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2022年10月</div><div>GRADE Guidance 35。不精確さとcontextualized certaintyの更新。Utility/Disutilityを用いる考え方が入る。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2022年10月・2023年9月</div><div>Linan Zengらによるパネル調査論文。患者価値観をGDGが推測し、どの程度の患者が重要と考えるかを分布として扱う点が重要。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年5月</div><div>GRADE-THRESHOLD研究。効果を小・中・大に分ける閾値を経験的に導出する流れ。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年5月</div><div>複合エンドポイントのDisutilityとDT推定。死亡、非致死的イベント、複合アウトカムを同じ表に入れるときの重みづけ問題を扱う。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年7月</div><div>GRADE Guidance 41。contextualization categoriesからthresholdsへ整理する方向を示す。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年8月</div><div>BMJ 2型糖尿病 living guideline / NMA。CoreGRADE的にMIDを用いる実例として、リスク層別MIDが理解しやすい。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年10月</div><div>GRADE Guidance 42。複数DTを透明に設定する方法を示すが、Utility測定や理論的一貫性には批判もある。</div></div>
+        <div class="timeline-item"><div class="timeline-date">2025年10月</div><div>Guyattらの批判的レターとGRADEnote 6。MID概念、RCTサンプルサイズ、安全性データから閾値を作る実務戦略が提示される。</div></div>
+      </div>
+    </section>
+
+    <section id="figures" class="section">
+      <h2>8. いろいろな論点を学習する</h2>
+      <p>
+        ここは問題点セクション全体の復習です。noteに置かれていた図を「学習順」に並べ替えて読みます。図はそれぞれ別の論点を扱っていますが、
+        流れとしては、用語の整理、複数閾値、リスク層別MID、可視化、パネルでの閾値設定、CIとの位置関係、Guidance 41の用語整理へ進みます。
+        各図だけを単独で読んでも分かるように、背景、読み方、実務での使い方、注意点を付けています。
+      </p>
+
+      <article class="figure-card">
+        <span class="badge blue">1. まず用語を分ける</span>
+        <h3>群間差としてのMIDと、個人内変化としてのMIC/MDCの違い</h3>
+        <p><strong>この図だけで読むなら：</strong> この図は、このページ全体の入口です。MIDの議論では、最初に「何の差を見ているのか」を固定しないと、その後の不精確さ評価、効果量判定、EtD判断が全部ずれます。患者が治療前後でどれだけ変わったかを見る話と、介入群が対照群よりどれだけ良いかを見る話は、似て見えて別の問いです。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762044286-gikwU6TLhMzxJAmy4ve9ObWn.webp" alt="MID, MIC, MDCを群間解析と個人解析で区別する図"><div class="caption">群間差としてのMIDと、個人内変化としてのMIC/MDCの違い。出典：note掲載図</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>左側は群レベルの比較で、最小限の改善と改善なしの差がMIDとして描かれる。右側は個人レベルの前後変化で、MICやMDCに近い。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>文献の値を採用するときは、研究が群間差を見たのか、患者内変化を見たのかを最初に判定する。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>MICをMIDとしてそのまま使うと、介入の追加効果ではなく患者の主観的変化を閾値にしてしまう。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> ここで群間差MIDと群内変化MICを分けたうえで、次に「1本のMIDだけでよいのか、利益・害の両側に複数の閾値を置くのか」という話へ進みます。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">2. 1本のMIDから複数閾値へ広げる</span>
+        <h3>利益・害の両側に、小・中・大の閾値を置くGRADE Guidance 41/42型の考え方</h3>
+        <p><strong>この図だけで読むなら：</strong> MIDを「意味ある差の境界」として1本だけ置くと、効果あり/なしの二分法に近くなります。しかしEtDでは、効果が小さいのか、中等度なのか、大きいのか、さらに害側ではどの程度問題なのかを分けて考える必要があります。この図は、その拡張を視覚化しています。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762044647-UKQed4AkgNfVF0OsYLmcnb6B.webp" alt="利益側と害側の複数閾値を示す図"><div class="caption">単一MIDではなく、利益側3本・害側3本の線を置くと、判断ターゲットが7領域に分かれる。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>中央に「効果なし」領域があり、左右に小・中・大の利益/害が広がる。閾値は線、ターゲットは線で区切られた領域。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>効果の大きさをEtDで「小さい」「中等度」「大きい」と説明したいときに使う。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>小の閾値をMIDと呼ぶか、DTの一部と呼ぶかを曖昧にすると、後で説明が崩れる。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> 複数閾値の発想が分かると、次は「その閾値の値をアウトカムやリスク層ごとにどう変えるか」という実例が必要になります。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">3. アウトカムとリスク層でMIDを変える</span>
+        <h3>BMJ 2型糖尿病 living guidelineで示されたリスク層別のMID例</h3>
+        <p><strong>この図だけで読むなら：</strong> ここから抽象論ではなく実務例です。相対効果が同じでも、ベースラインリスクが違えば絶対効果差は変わります。低リスク群では1000人あたり数人の差でも、高リスク群では何十人、何百人の差になることがあります。だからMIDは、アウトカムだけでなくリスク層とも結びつきます。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762045447-lNpr2ThI6Wt43VmDZkjqLcKd.webp" alt="BMJ糖尿病ガイドラインにおけるリスク層別MID表"><div class="caption">死亡、心血管死亡、MACE、腎不全などについて、低・中・高リスク群ごとに1000人あたりのMIDが置かれている。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>同じアウトカムでも低リスク群・中リスク群・高リスク群で絶対効果の意味が変わる。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>同じ相対効果でも、ベースラインリスクが高い集団では絶対効果差が大きくなり、MIDを超えやすいことを説明する。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>リスク層別MIDは便利だが、どの集団にどの層を当てるかを事前に定義しないと恣意的になる。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> リスク層別MIDを使うと、アウトカムが増えたときに一覧性が必要になります。次の図は、多数の介入とアウトカムを一枚で読むための見せ方です。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">4. 多数の比較を一枚で読む</span>
+        <h3>閾値と確実性を合わせて可視化した例</h3>
+        <p><strong>この図だけで読むなら：</strong> ネットワークメタ解析や複数介入比較では、1つずつ文章で読むと全体像を失います。この図の役割は、各介入がどのアウトカムで利益・害を示すかを、閾値カテゴリーと確実性を合わせて一望できるようにすることです。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762045500-Fqd7BJnDL2yIsprkUfCMTmao.webp" alt="効果の大きさと確実性を色で示した表"><div class="caption">効果量のカテゴリーと確実性を同時に見せると、EtDでどこが判断を動かすかが見えやすい。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>行に介入、列にアウトカムを置き、各セルを効果の方向・大きさ・確実性で色分けする。CIが広いセルはグレーや低確実性として読まれる。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>ネットワークメタ解析や複数アウトカムの比較で、どの介入がどのアウトカムに大きな利益/害を持つかを一望する。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>色が強いと確定的に見える。確実性とCIの幅を同時に示さないと、効果量だけが独り歩きする。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> ただし、このような色分けをするには、先に閾値を決めておく必要があります。次の図は、ガイドラインパネルが閾値を作った具体例です。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">5. パネルで明示的閾値を作る</span>
+        <h3>COVID-19ガイドラインで用いられた1000人あたりの明示的閾値例</h3>
+        <p><strong>この図だけで読むなら：</strong> 既存MIDがないアウトカムでも、ガイドラインは判断を止められません。この図は、重要アウトカムごとにパネルが1000人あたりの差をどう置いたかを示します。値は自然に存在するものではなく、患者価値観・臨床判断・合意形成の結果として作られます。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762050803-1Eyqkd0NMYvPiceBH4ahpI6t.webp" alt="COVID-19 guidelineで使われた明示的閾値の表"><div class="caption">死亡、人工呼吸、重篤有害事象について、些細・小・中程度の境界が1000人あたり人数として示される。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>パネル調査の平均とコンセンサス値を分けて示している点が実務的。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>既存MID研究がないとき、GDGが重要アウトカムごとに閾値を作り、最後に全重要アウトカム共通値へ合意した例として使える。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>コンセンサス値は平均値ではない。議論で丸められた値なので、根拠と合意過程をセットで報告する。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> 閾値を決めたら、次は効果推定値と95%信頼区間をその閾値に重ねます。ここで不精確さ評価とつながります。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">6. 信頼区間を閾値に重ねる</span>
+        <h3>絶対効果差と信頼区間を閾値線に重ねる見方</h3>
+        <p><strong>この図だけで読むなら：</strong> ここがImprecision評価の実践部分です。効果推定値が小・中・大のどこにあるかだけではなく、95%CI全体が同じ判断領域に収まるかを見ます。CIが複数の閾値をまたぐほど、効果の大きさに関する判断は不安定になります。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762051070-B6TYfk1SKynO89V5lzHpArZD.webp" alt="脳卒中、死亡、VTEなどの閾値線と信頼区間の図"><div class="caption">点推定値だけでなく、95%CIがどの閾値をまたぐかが不精確さ評価の中心になる。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>1000人あたり何人少ない/多いかを横軸に置き、Small/Moderate/Largeの閾値線と95%CIを重ねる。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>Imprecisionでは、点推定値がどの領域にあるかより、CI全体が同じ判断領域に収まるかを確認する。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>点推定値が中等度利益でも、CIが些細から大きな利益までまたぐなら、効果の大きさに対する確実性は下がる。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> 最後に、この考え方をGRADEの用語としてどう表現するかを整理します。次の図は、旧contextualization用語から閾値・ターゲットへ移る流れです。</p></div>
+      </article>
+
+      <article class="figure-card">
+        <span class="badge blue">7. 閾値とターゲットとして整理する</span>
+        <h3>旧contextualization categoriesからthresholds / targetsへ整理する考え方</h3>
+        <p><strong>この図だけで読むなら：</strong> ここまでの図をつなぐと、GRADE Guidance 41の整理が見えてきます。以前はnoncontextualized、minimally contextualized、partially contextualizedと呼んでいましたが、実務上は「どの閾値を置き、どの領域に真の効果があると確信したいのか」と表現した方が明確です。</p>
+        <div class="figure-image"><img src="images/mid-threshold/1762061360-Hw260Gc8vWbLtNoiMulBmPrq.webp" alt="GRADE Guidance 41の閾値とターゲットの表"><div class="caption">「どの閾値を使うか」と「どのターゲットの確実性を評価するか」を分ける。</div></div>
+        <div class="grid three">
+          <div class="card"><h3>何を示す図か</h3><p>以前のnoncontextualized / minimally / partially contextualizedという呼び方を捨て、閾値と確実性ターゲットの組み合わせとして整理する。</p></div>
+          <div class="card blue"><h3>どう使うか</h3><p>SR著者、GRADE利用者、意思決定者のどの文脈で評価しているかを説明するときに便利。</p></div>
+          <div class="card amber"><h3>注意点</h3><p>旧用語のカテゴリ名だけを覚えると、実際に何本の閾値を使い、何をターゲットにしているかが見えなくなる。</p></div>
+        </div>
+        <div class="note tip"><p><strong>次につながる文脈：</strong> この整理まで来ると、MID/DTは「数字の一覧」ではなく、確実性評価とEtD判断を再現可能にするための言語だと分かります。</p></div>
+      </article>
+    </section>
+
+    <section id="gradenote" class="section">
+      <h2>9. GRADEnote 6：MIDから6つの閾値へ拡張する3戦略</h2>
+      <p>
+        GRADEnote 6は公式ガイダンスそのものではありませんが、既存MIDがないときに実務でどう考えるかを補う重要な資料です。
+        noteでは、MID/MCID、RCTサンプルサイズ計算、安全性データの3つを、閾値候補の作り方として整理しています。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>戦略</th><th>使い方</th><th>限界</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. 既存MID/MCIDを使う</strong></td><td>既存MID研究、既存ガイドライン、疾患別データベースを小の閾値候補として使い、中・大はGDG討議で拡張する。</td><td>疾患・アウトカムごとのMIDが少ない。MICの混入、測定尺度、対象集団の違いを必ず確認する。</td></tr>
+            <tr><td><strong>2. RCTサンプルサイズ計算から拾う</strong></td><td>試験設計時に研究者が「検出したい意味ある差」として置いた値を参考にする。</td><td>検出力計算の都合、規制上の便宜、研究者の期待効果が混ざる。患者価値観そのものではない。</td></tr>
+            <tr><td><strong>3. 薬剤承認試験の安全性データを使う</strong></td><td>規制当局提出試験や承認時安全性データから、有害事象の許容差を推定する。</td><td>安全性アウトカムの直接データとして有用だが、適用例は未成熟で一般化に注意が必要。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn"><p><strong>3戦略の共通限界：</strong> どれも患者価値観を直接測ったものとは限りません。使う場合は、出典タイプ、直接性、群間/群内、対象集団、時間軸、感度分析をセットで残します。</p></div>
+    </section>
+
+    <section id="examples" class="section">
+      <h2>10. 各種MID・DT例：値だけでなく使える条件を見る</h2>
+      <p>
+        Noteの「各種MID」部分は、単なるリンク集ではなく、実務で閾値候補を探すときの地図です。
+        ここでは値・使える可能性・注意点を一緒に残し、noteを開かなくても概要を把握できるようにしています。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>例</th><th>ポイント</th><th>直接性</th></tr></thead>
+          <tbody>
+            <tr><td><strong>QOLメタ分析</strong></td><td>2010年頃から、単純なSD単位ではなくMID unitsとして効果を解釈する提案がある。値そのものを閾値として使うというより、アウトカム尺度を読者に意味ある単位へ戻す発想。</td><td>低から中</td></tr>
+            <tr><td><strong>糖尿病 HbA1c</strong></td><td>0.5%をMID候補として扱う例。小の閾値として使い、中・大はパネル討議で拡張する発想に向く。</td><td>高</td></tr>
+            <tr><td><strong>脳卒中後PROMIS</strong></td><td>脳卒中後のPROMIS尺度における重要な変化量。患者内変化に近い可能性があるため、群間差MIDとして使う場合は注記が必要。</td><td>中</td></tr>
+            <tr><td><strong>口腔灼熱症候群 疼痛</strong></td><td>MDは±1.0、RRは0.32 / 1.68などの閾値例。方向の読み替えが重要。</td><td>中</td></tr>
+            <tr><td><strong>顎関節症 TMD</strong></td><td>疼痛、下顎機能、頭痛インパクトなどでMCIDが検討される。VASの値が複数提示されるが、直接使えるかはアウトカム定義次第。</td><td>中</td></tr>
+            <tr><td><strong>慢性TMD</strong></td><td>MCIDとsubstantial clinical benefitの整理。複合アウトカム開発の必要性が示され、単純な1本のMIDとしては扱いにくい。</td><td>低から中</td></tr>
+            <tr><td><strong>インフルエンザ</strong></td><td>死亡0.3%、入院1.5%、ICU 1%、重篤有害事象0.5%、耐性5%、症状緩和1日など。CoreGRADE系MID例として重要。</td><td>高</td></tr>
+            <tr><td><strong>BMJ 2型糖尿病</strong></td><td>死亡、MACE、腎不全、重篤有害事象などでリスク層別MIDを示す。絶対効果の意味がリスク層で変わる例。</td><td>高</td></tr>
+            <tr><td><strong>COPD FEV1</strong></td><td>FEV1 0.1 LがMCIDとして用いられる例。COPD領域では実務的に使いやすいが、症状・QOL・増悪とは別アウトカムとして扱う。</td><td>高</td></tr>
+            <tr><td><strong>理学療法・リハビリ尺度</strong></td><td>Rehabilitation Measures Databaseなどに多数の尺度別MIDがある。ただしCPG閾値へ直接転用できるかは別判断。</td><td>中</td></tr>
+            <tr><td><strong>アレルギー性鼻炎NMA</strong></td><td>SMDのCohen分類やAEの人数差閾値を使う例。安全性閾値を一律にする根拠には注意。</td><td>中</td></tr>
+            <tr><td><strong>小児肥満・心理的介入</strong></td><td>GRADE guidanceに基づく多数アウトカムのMID推定例。対象年齢、尺度、介入差を確認する。</td><td>中から高</td></tr>
+            <tr><td><strong>NMAランキング</strong></td><td>SUCRAなどのランキング指標へMIDを組み込む試み。順位そのものの信頼性が低いため、MIDは補助線として慎重に扱う。</td><td>低から中</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="binary" class="section">
+      <h2>11. 連続変数をMID超え割合へ2値化する話</h2>
+      <div class="card">
+        <h3>平均差だけでは、患者に意味ある改善が何人増えたかが見えにくい</h3>
+        <p>
+          CoreGRADEのSoFでは、連続アウトカムを「MIDを超えて改善した患者の割合」へ変換する考え方が出てきます。
+          これは、平均で何点良くなったかではなく、患者にとって意味ある改善を達成した人がどれだけ増えたかとして読む方法です。
+        </p>
+        <p>
+          たとえば、各尺度のMIDが分かり、結果が正規分布に近いと仮定できる場合、各群でMIDを超えた患者割合を計算し、
+          リスク比またはリスク差として示すことができます。EtDではこの形の方が「1000人あたり何人が意味ある改善を得るか」と説明しやすくなります。
+        </p>
+        <p>
+          ただし、正規分布仮定、SD、尺度の方向、群間差MIDの妥当性、時間軸の一致がすべて必要です。
+          平均差を2値化すると情報は失われるため、元のMD/SMDと併記して解釈するのが安全です。
+        </p>
+      </div>
+    </section>
+
+    <section id="templates" class="section">
+      <h2>12. ガイドライン本文で残すべき説明</h2>
+      <p>
+        最後は問題8への答えです。CIと閾値の関係を評価したら、その判断をSoF脚注やEtD本文に残さないと、
+        次に読む人が同じ判断を再現できません。
+      </p>
+      <div class="grid two">
+        <div class="card"><h3>方法セクション</h3><p>本ガイドラインでは、アウトカムごとに臨床的に重要な最小差またはDecision Thresholdを事前に設定した。値は既存MID研究、患者価値観研究、パネル調査、またはGuidance 42に基づく計算を参考にし、対象集団・時間軸・尺度の適用可能性を確認した。</p></div>
+        <div class="card"><h3>SoF脚注</h3><p>不精確さは、事前に設定した閾値と95%信頼区間の位置関係に基づいて判断した。信頼区間がMIDまたは小・中・大の複数閾値をまたぐ場合、臨床的重要性の判断が不安定として格下げを検討した。</p></div>
+        <div class="card"><h3>EtD</h3><p>望ましい効果と望ましくない効果の大きさは、絶対効果差をアウトカム固有の閾値と比較して判断した。Utility/Disutilityを用いた場合は、入力した健康状態とその根拠を明示した。</p></div>
+        <div class="card"><h3>監査レポート</h3><p>MID/DTの出典、設定理由、患者価値観の反映、感度分析の有無が示されていない場合、確実性評価とEtD判断の再現性に問題が残る。数値だけでなく、なぜその数値を採用したかを追跡できる形で残す。</p></div>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
+      <h2>13. Noteから飛ぶ主要リンク集</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>元記事・用語・解説</h3>
+          <ul>
+            <li><a href="https://note.com/mxe05064/n/n4368e86d09cf" target="_blank" rel="noopener noreferrer">原note：MID・閾値一覧</a></li>
+            <li><a href="https://x.com/GuyattGH/status/1960688765779038446" target="_blank" rel="noopener noreferrer">Guyatt先生のX投稿：MCIDからMIDへ</a></li>
+            <li><a href="https://www.docswell.com/s/MXE05064/58WQD7-2025-09-21-145443" target="_blank" rel="noopener noreferrer">連続量のMID（群間差）まとめ2025</a></li>
+            <li><a href="https://www.docswell.com/s/MXE05064/K4QVR1-2023-04-28-124558" target="_blank" rel="noopener noreferrer">MID設定の基礎スライド</a></li>
+            <li><a href="https://sph.med.kyoto-u.ac.jp/news/5368/" target="_blank" rel="noopener noreferrer">SWDに関する京都大学SPHニュース</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>GRADE Guidance / 方法論</h3>
+          <ul>
+            <li><a href="https://www.acpjournals.org/doi/10.7326/ANNALS-24-02013" target="_blank" rel="noopener noreferrer">GRADE Guidance 42</a></li>
+            <li><a href="https://www.acpjournals.org/doi/10.7326/ANNALS-25-00548" target="_blank" rel="noopener noreferrer">GRADE Guidance 41</a></li>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S0895435622001883" target="_blank" rel="noopener noreferrer">GRADE Guidance 35</a></li>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S0895435624003950" target="_blank" rel="noopener noreferrer">GRADE-THRESHOLD methodological study</a></li>
+            <li><a href="https://bmjopen.bmj.com/content/12/3/e053246.long" target="_blank" rel="noopener noreferrer">GRADE-THRESHOLD protocol</a></li>
+            <li><a href="https://www.jclinepi.com/article/S0895-4356(25)00309-9/fulltext" target="_blank" rel="noopener noreferrer">GRADEnote 6</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>計算ツール・データ</h3>
+          <ul>
+            <li><a href="https://mxe050.github.io/GRADE-Guidance-42/" target="_blank" rel="noopener noreferrer">GRADE Guidance 42 日本語シミュレーター</a></li>
+            <li><a href="https://fmup.shinyapps.io/dt_calc/" target="_blank" rel="noopener noreferrer">Decision threshold calculator</a></li>
+            <li><a href="https://compositedt.med.up.pt/" target="_blank" rel="noopener noreferrer">Composite endpoints DT calculator</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1lU-O2Vgzn4qWtwAjDN6tebk-mGqV50ZJDZuYkjy2zXU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">MID/DT整理用スプレッドシート</a></li>
+            <li><a href="https://forms.gle/GRR7Uqe2wAgHsUmw8" target="_blank" rel="noopener noreferrer">パネル調査フォーム例</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>実例・疾患別MID</h3>
+          <ul>
+            <li><a href="https://www.bmj.com/content/390/bmj-2024-082071" target="_blank" rel="noopener noreferrer">BMJ 2型糖尿病 living guideline</a></li>
+            <li><a href="https://www.bmj.com/content/390/bmj-2024-083039" target="_blank" rel="noopener noreferrer">BMJ 2型糖尿病 NMA</a></li>
+            <li><a href="https://www.medrxiv.org/content/10.1101/2024.05.28.24307936v1.full.pdf" target="_blank" rel="noopener noreferrer">インフルエンザ抗ウイルス薬NMA</a></li>
+            <li><a href="https://www.sralab.org/rehabilitation-measures" target="_blank" rel="noopener noreferrer">Rehabilitation Measures Database</a></li>
+            <li><a href="https://onlinelibrary.wiley.com/doi/10.1111/joor.13717" target="_blank" rel="noopener noreferrer">慢性TMD MCID / substantial clinical benefit</a></li>
+            <li><a href="https://onlinelibrary.wiley.com/doi/10.1111/ijpo.13193" target="_blank" rel="noopener noreferrer">小児肥満・心理的介入MID推定</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="note info">
+      <p>
+        <strong>実務での結論：</strong>
+        MID/DTは、数字を探して貼るだけでは不十分です。群間差か群内変化か、単一MIDか複数DTか、Utilityをどう測ったか、
+        CIがどの閾値をまたぐか、患者価値観に照らして妥当かを一緒に記録して初めて、GRADEの判断として透明になります。
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const fmt = (value) => {
+      if (!Number.isFinite(value)) return "計算不能";
+      return `${Math.round(value)} / 1000`;
+    };
+
+    const readNumber = (id, fallback) => {
+      const value = Number(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : fallback;
+    };
+
+    const updateCalculator = () => {
+      const utility = Math.min(1, Math.max(0, readNumber("utility", 0.5)));
+      const baseT1 = readNumber("baseT1", 13.5);
+      const baseT2 = readNumber("baseT2", 32.1);
+      const baseT3 = readNumber("baseT3", 62.5);
+      const disutility = 1 - utility;
+      const linear = (intercept, slope) => Math.max(0, (intercept - slope * disutility) * 1000);
+      const eut = (base) => disutility <= 0 ? Number.POSITIVE_INFINITY : base / disutility;
+
+      document.getElementById("disutilityText").textContent =
+        `Disutility = ${disutility.toFixed(2)}${utility > 0.8 ? "。高いUtilityです。治療成功などの良い状態を入れていないか確認してください。" : ""}`;
+      document.getElementById("linearT1").textContent = fmt(linear(0.073, 0.061));
+      document.getElementById("linearT2").textContent = fmt(linear(0.180, 0.146));
+      document.getElementById("linearT3").textContent = fmt(linear(0.338, 0.271));
+      document.getElementById("eutT1").textContent = fmt(eut(baseT1));
+      document.getElementById("eutT2").textContent = fmt(eut(baseT2));
+      document.getElementById("eutT3").textContent = fmt(eut(baseT3));
+    };
+
+    ["utility", "baseT1", "baseT2", "baseT3"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", updateCalculator);
+    });
+
+    updateCalculator();
+  </script>
+</body>
+</html>
