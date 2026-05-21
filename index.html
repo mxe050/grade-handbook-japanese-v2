@@ -9038,6 +9038,7 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">セッション一覧</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">Holger Schünemann：Introduction</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">Thresholds and rating the certainty of evidence using GRADE</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">エビデンス・シンセシス・アイルランド(ESI)セミナー</button>
         </div>
         <div class="tab-content">
 
@@ -9369,6 +9370,69 @@ function checkAuth(){
               </div>
               <div id="thresholds-grade-slides" class="threshold-slide-list" aria-label="Thresholds and rating the certainty of evidence using GRADE slides and Japanese transcript">
                 <p style="color:#4a5568;">スライドを読み込み中です。</p>
+              </div>
+            </div>
+          </div><!-- end tab-pane -->
+
+          <!-- Tab 3: Evidence Synthesis Ireland seminars -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">エビデンス・シンセシス・アイルランド(ESI)セミナー</h2>
+              <p style="color:#4a5568; line-height:1.75; margin-bottom:1.25rem;">
+                Evidence Synthesis Ireland (ESI) のセミナー原稿を今後追加するための入口です。各ボタンを押すと、原稿・資料を入れるための空欄が開きます。
+              </p>
+
+              <div style="display:grid; gap:1rem;">
+                <div style="border:1px solid #bfdbfe; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 8px 20px rgba(15,23,42,0.06);">
+                  <button type="button" onclick="var el=document.getElementById('esi-carlos-cuello-2026-05-21'); el.style.display=(el.style.display==='none'||el.style.display==='')?'block':'none';" style="width:100%; border:none; cursor:pointer; text-align:left; display:flex; gap:0.9rem; align-items:flex-start; padding:1rem 1.15rem; background:linear-gradient(135deg,#0f766e,#1d4ed8); color:#fff;">
+                    <span style="flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; min-width:4.2rem; padding:0.4rem 0.5rem; border-radius:10px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);">
+                      <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">May</span>
+                      <span style="font-size:1.45rem; font-weight:800; line-height:1;">21</span>
+                    </span>
+                    <span style="display:block;">
+                      <span style="display:block; font-weight:800; font-size:1rem; line-height:1.45;">Webinar: Dr Carlos A. Cuello - Using Randomized and Non-randomized Studies with GRADE: When and How in Evidence Syntheses</span>
+                      <span style="display:block; margin-top:0.35rem; font-size:0.88rem; opacity:0.9;">May 21, 2026 / 2:00 pm - 3:00 pm / ONLINE</span>
+                    </span>
+                  </button>
+                  <div id="esi-carlos-cuello-2026-05-21" style="display:none; padding:1rem 1.15rem; background:#f8fbfd; color:#2c3e50; line-height:1.75;">
+                    <strong>原稿追加予定欄</strong><br>
+                    ここに、Dr Carlos A. Cuello セミナーの原稿・日本語訳・スライド等を追加します。
+                  </div>
+                </div>
+
+                <div style="border:1px solid #ddd6fe; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 8px 20px rgba(15,23,42,0.06);">
+                  <button type="button" onclick="var el=document.getElementById('esi-grade-workshop-2026-06-10'); el.style.display=(el.style.display==='none'||el.style.display==='')?'block':'none';" style="width:100%; border:none; cursor:pointer; text-align:left; display:flex; gap:0.9rem; align-items:flex-start; padding:1rem 1.15rem; background:linear-gradient(135deg,#5b21b6,#7c3aed); color:#fff;">
+                    <span style="flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; min-width:4.2rem; padding:0.4rem 0.5rem; border-radius:10px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);">
+                      <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Jun</span>
+                      <span style="font-size:1.45rem; font-weight:800; line-height:1;">10</span>
+                    </span>
+                    <span style="display:block;">
+                      <span style="display:block; font-weight:800; font-size:1rem; line-height:1.45;">Introduction to GRADE Workshop (Online)</span>
+                      <span style="display:block; margin-top:0.35rem; font-size:0.88rem; opacity:0.9;">June 10, 2026 / 10:00 am - 1:00 pm / ONLINE</span>
+                    </span>
+                  </button>
+                  <div id="esi-grade-workshop-2026-06-10" style="display:none; padding:1rem 1.15rem; background:#faf5ff; color:#2c3e50; line-height:1.75;">
+                    <strong>原稿追加予定欄</strong><br>
+                    ここに、Introduction to GRADE Workshop の原稿・日本語訳・資料等を追加します。
+                  </div>
+                </div>
+
+                <div style="border:1px solid #fed7aa; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 8px 20px rgba(15,23,42,0.06);">
+                  <button type="button" onclick="var el=document.getElementById('esi-andrew-booth-2026-06-11'); el.style.display=(el.style.display==='none'||el.style.display==='')?'block':'none';" style="width:100%; border:none; cursor:pointer; text-align:left; display:flex; gap:0.9rem; align-items:flex-start; padding:1rem 1.15rem; background:linear-gradient(135deg,#92400e,#ea580c); color:#fff;">
+                    <span style="flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; min-width:4.2rem; padding:0.4rem 0.5rem; border-radius:10px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);">
+                      <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Jun</span>
+                      <span style="font-size:1.45rem; font-weight:800; line-height:1;">11</span>
+                    </span>
+                    <span style="display:block;">
+                      <span style="display:block; font-weight:800; font-size:1rem; line-height:1.45;">Webinar: Prof. Andrew Booth - Putting the AI into QuAlItative Evidence Synthesis: opportunities and caveats</span>
+                      <span style="display:block; margin-top:0.35rem; font-size:0.88rem; opacity:0.9;">June 11, 2026 / 12:00 pm - 1:00 pm / ONLINE</span>
+                    </span>
+                  </button>
+                  <div id="esi-andrew-booth-2026-06-11" style="display:none; padding:1rem 1.15rem; background:#fff7ed; color:#2c3e50; line-height:1.75;">
+                    <strong>原稿追加予定欄</strong><br>
+                    ここに、Prof. Andrew Booth セミナーの原稿・日本語訳・資料等を追加します。
+                  </div>
+                </div>
               </div>
             </div>
           </div><!-- end tab-pane -->
