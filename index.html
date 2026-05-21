@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="style.css?v=2.0">
 <script src="script.js?v=2.0" defer></script>
 <script src="thresholds-slides.js?v=1.0" defer></script>
+<script src="esi-seminars.js?v=1.0" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRADEアプローチ ハンドブック（日本語版）</title>
@@ -9038,7 +9039,7 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">セッション一覧</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">Holger Schünemann：Introduction</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">Thresholds and rating the certainty of evidence using GRADE</button>
-          <button class="tab-btn" onclick="switchTab(this, 3)">エビデンス・シンセシス・アイルランド(ESI)セミナー</button>
+          <button class="tab-btn esi-tab-btn" onclick="switchTab(this, 3)">エビデンス・シンセシス・アイルランド(ESI)セミナー</button>
         </div>
         <div class="tab-content">
 
@@ -9383,8 +9384,8 @@ function checkAuth(){
               </p>
 
               <div style="display:grid; gap:1rem;">
-                <div style="border:1px solid #bfdbfe; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 8px 20px rgba(15,23,42,0.06);">
-                  <button type="button" onclick="var el=document.getElementById('esi-carlos-cuello-2026-05-21'); el.style.display=(el.style.display==='none'||el.style.display==='')?'block':'none';" style="width:100%; border:none; cursor:pointer; text-align:left; display:flex; gap:0.9rem; align-items:flex-start; padding:1rem 1.15rem; background:linear-gradient(135deg,#0f766e,#1d4ed8); color:#fff;">
+                <div style="border:1px solid #a7f3d0; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 8px 20px rgba(15,23,42,0.06);">
+                  <button type="button" onclick="var el=document.getElementById('esi-carlos-cuello-2026-05-21'); el.style.display=(el.style.display==='none'||el.style.display==='')?'block':'none';" style="width:100%; border:none; cursor:pointer; text-align:left; display:flex; gap:0.9rem; align-items:flex-start; padding:1rem 1.15rem; background:linear-gradient(135deg,#065f46,#16a34a); color:#fff;">
                     <span style="flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; min-width:4.2rem; padding:0.4rem 0.5rem; border-radius:10px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);">
                       <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">May</span>
                       <span style="font-size:1.45rem; font-weight:800; line-height:1;">21</span>
@@ -9394,9 +9395,20 @@ function checkAuth(){
                       <span style="display:block; margin-top:0.35rem; font-size:0.88rem; opacity:0.9;">May 21, 2026 / 2:00 pm - 3:00 pm / ONLINE</span>
                     </span>
                   </button>
-                  <div id="esi-carlos-cuello-2026-05-21" style="display:none; padding:1rem 1.15rem; background:#f8fbfd; color:#2c3e50; line-height:1.75;">
-                    <strong>原稿追加予定欄</strong><br>
-                    ここに、Dr Carlos A. Cuello セミナーの原稿・日本語訳・スライド等を追加します。
+                  <div id="esi-carlos-cuello-2026-05-21" style="display:none; padding:1rem 1.15rem; background:#f0fdf4; color:#2c3e50; line-height:1.75;">
+                    <div style="background:#ffffff;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;margin-bottom:1rem;">
+                      <h3 style="margin:0 0 0.45rem;color:#065f46;font-size:1.1rem;">Dr Carlos A. Cuello セミナー原稿</h3>
+                      <p style="margin:0;color:#4b5563;">Zoom保存字幕を、要約せず全文表示します。発話者・時刻ごとに区切って、スマートフォンでも読みやすい形に整えています。</p>
+                    </div>
+                    <div id="esi-carlos-transcript" class="esi-transcript" data-src="data/esi/carlos-cuello-2026-05-21-closed-caption.txt">
+                      原稿を読み込み中です。
+                    </div>
+                    <div style="margin-top:1.25rem;background:#111827;color:#fff;border-radius:12px;padding:1rem 1.1rem;">
+                      <div style="font-weight:800;margin-bottom:0.45rem;">内緒の動画</div>
+                      <a href="https://youtu.be/78MeW3u0Rio" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.45rem;background:#dc2626;color:#fff;padding:0.65rem 0.95rem;border-radius:8px;text-decoration:none;font-weight:800;">
+                        https://youtu.be/78MeW3u0Rio ↗
+                      </a>
+                    </div>
                   </div>
                 </div>
 

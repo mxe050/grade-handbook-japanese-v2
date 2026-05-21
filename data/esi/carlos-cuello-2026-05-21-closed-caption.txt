@@ -1,0 +1,1446 @@
+[Evidence Synthesis] 22:01:02
+All right, I'm going to go ahead and get going and people can just join as they join. So hi again, and welcome to this month's Evidence Synthesis Ireland webinar. Before we kick off, and just to give a little introduction to ourselves, just as a little background, ESI, Evidence Synthesis Ireland, are an Ireland-based evidence synthesis unit funded by the Health Research Board and the Research and Development Division of the Public Health Agency in Northern Ireland
+
+[Evidence Synthesis] 22:01:30
+And our goal is to support and develop evidence synthesis knowledge, awareness, and capacity on the island of Ireland. One way that we achieve that is through these monthly webinars. So we are very glad to have you with us today. Our speaker today is Dr. Carlos
+
+[Evidence Synthesis] 22:01:45
+A tueo Carlos is assistant professor in the Department of Health Research Methods, Evidence and Impact at McMaster University, and a clinical research officer at Canada's Drug Agency. He has extensive experience in evidence synthesis, health technology assessment, and clinical guideline development, with a particular focus on certainty of evidence and decision-making frameworks.
+
+[Evidence Synthesis] 22:02:05
+In addition to this, he is an active member of the Grade Working Group and has contributed to multiple official grade guidance documents, including the grade guidance 44, which provides a structured practical approach to using randomized control trials and non-randomized studies of interventions
+
+[Evidence Synthesis] 22:02:22
+in evidence syntheses of health interventions. And that's what he's here to discuss with us today. So we're very glad to have you with us, Carlos. Thanks for being here. I'm going to hand over most of the hour for that talk, but as usual, we will try to leave at least a few minutes at the end to take questions, so if you have any, either as we're going along or towards the end of the talk
+
+[Evidence Synthesis] 22:02:43
+Please feel free to drop them into that Q&A box down at the bottom of the screen, and we'll take as many as we can. We'll also record this session and make it available on our website. So if there's any content that you want to return to, you can do that there.
+
+[Evidence Synthesis] 22:02:58
+Okay, I think that's all I need to say for now. So over to you, Carlos, and thanks again.
+
+[Carlos Cuello] 22:03:07
+Thank you. Thank you, Joanna
+
+[Carlos Cuello] 22:03:09
+I'll share my screen.
+
+[Carlos Cuello] 22:03:15
+You should be able to see it. Let me know if you cannot see it.
+
+[Evidence Synthesis] 22:03:19
+It's looking good, but it's not full screen.
+
+[Carlos Cuello] 22:03:21
+Yeah
+
+[Carlos Cuello] 22:03:24
+There you go.
+
+[Evidence Synthesis] 22:03:26
+Yep, perfect.
+
+[Carlos Cuello] 22:03:26
+Excellent.
+
+[Carlos Cuello] 22:03:28
+All right. Thank you, everyone. Good morning here in America. Good afternoon there in Europe and anywhere in the world.
+
+[Carlos Cuello] 22:03:36
+My name is Carlos Cueller and I'm going to talk about the use of randomized and non-randomized studies in a beta synthesis using GRADE
+
+[Carlos Cuello] 22:03:46
+Specifically, we're going to focus on
+
+[Carlos Cuello] 22:03:49
+Intervention to health interventions
+
+[Carlos Cuello] 22:03:52
+Rather than
+
+[Carlos Cuello] 22:03:54
+But we will touch a little brief and you will see that it's pretty similar in that sense. First of all
+
+[Carlos Cuello] 22:04:01
+I don't have any potential conflict of interest, economic conflict of interest, perhaps on academic conflict can be seen, but it's mostly about my work, what I do, what I come from. As I already mentioned, I work on the Canada Drug Agency and HTA agency here in Canada
+
+[Carlos Cuello] 22:04:20
+And integrate working group and as a professor in the
+
+[Carlos Cuello] 22:04:25
+department at McMaster University.
+
+[Carlos Cuello] 22:04:28
+So, let's start by outlining what we'll cover today. We will look at when and how to include both RCTs and non-randomized studies in evidence synthesis
+
+[Carlos Cuello] 22:04:38
+We'll go through real world scenarios when non-randomized studies can
+
+[Carlos Cuello] 22:04:45
+feeling evidence gaps, compliment, or even substitute RCTs sometimes, we're going to dig into the methods for rating the certainty of the evidence for both RCTs and non-randomized studies
+
+[Carlos Cuello] 22:04:54
+And why this matters for the overall picture. And finally, we will review some practical approaches for presenting the evidence using gray, specifically similar findings tables or evidence profiles as used in
+
+[Carlos Cuello] 22:05:09
+Cochrane reviews and other reviews and guidance in HTAs
+
+[Carlos Cuello] 22:05:15
+So let's go back in time a little bit. This story takes us back to Toronto, 1922. If we can see, remember this case of Leonard Thompson was
+
+[Carlos Cuello] 22:05:25
+The first patient that received insulin, here's the moment that changed history in medicine and diabetes
+
+[Carlos Cuello] 22:05:36
+The real question here
+
+[Carlos Cuello] 22:05:38
+that we're trying to answer, in this case, is if we will apply our concepts and our knowledge about
+
+[Carlos Cuello] 22:05:45
+Evidence generation and use of evidence. The question that we will make and we can still make is do we need a randomized control trial in this case or will we need a randomized trial
+
+[Carlos Cuello] 22:05:59
+In this situation to recommend insulin for patients
+
+[Carlos Cuello] 22:06:03
+With diabetes type 1
+
+[Carlos Cuello] 22:06:07
+If you remember or if you in those times
+
+[Carlos Cuello] 22:06:11
+Children diagnosed with diabetes mellitus type
+
+[Carlos Cuello] 22:06:15
+It was a death sentence, pretty much. In one year, most of them will be dying of diabetes. That was a very sad situation. Before insulin, the tragic reality was that most of them
+
+[Carlos Cuello] 22:06:27
+die. So no effective treatment was the standard, okay, in those cases was just diet and some other treatments, but pretty much until it discovered of the insulin, it was a sovereign remember to remember just how dire these outcomes were before these medical advances
+
+[Carlos Cuello] 22:06:43
+Now, after the introduction of insulin, we saw that the events of death and decreased dramatically, and this huge change, this complete transformation, polynecologia essentially survival
+
+[Carlos Cuello] 22:06:59
+possible where it wasn't before. So this shows just how powerful a new intervention can be. And
+
+[Carlos Cuello] 22:07:06
+This one medical breakthrough and the outcome for this population change
+
+[Carlos Cuello] 22:07:11
+Entirely
+
+[Carlos Cuello] 22:07:13
+So here we are relying
+
+[Carlos Cuello] 22:07:16
+Or doctors in those times relied on observational data, comparing outcomes before and after insulin. This is a classic non-randomized studies with historical control
+
+[Carlos Cuello] 22:07:27
+For historical comparison, and we had to ask how certain were we or are we about the effect of insulin in the drop of mortality
+
+[Carlos Cuello] 22:07:36
+So in any situation with this huge effect
+
+[Carlos Cuello] 22:07:42
+It is hard to consider that other factors might be influencing the result in this case. So it's obviously we have biological and physiological reasoning supporting a causal link
+
+[Carlos Cuello] 22:07:52
+between insulin and survival or insulin and the decrease of death
+
+[Carlos Cuello] 22:07:58
+So that is a question and that is the situation that we are addressing in this case. So my point with this example is not that we don't need randomized control trials
+
+[Carlos Cuello] 22:08:09
+But rather that we have two situations here, two issues to consider. One
+
+[Carlos Cuello] 22:08:15
+The randomized control trials are not always feasible and not always possible because some ethical concerns or it's not practical to conduct one randomized trial.
+
+[Carlos Cuello] 22:08:26
+And number two, while non-randomal studies can provide high certainty, like in this case, for determining a causal effect
+
+[Carlos Cuello] 22:08:34
+These cases are extremely rare
+
+[Carlos Cuello] 22:08:37
+So having examples like this that what we call parachute examples that are rare, other examples might be, for instance, surgery for the transposition of the regular arteries in children or
+
+[Carlos Cuello] 22:08:51
+Adrenaline for asthma attacks or anaphylaxis attack. So there are several situations or even the parachute example that many of you may be familiar with are very rare.
+
+[Carlos Cuello] 22:09:03
+But it's possible to
+
+[Carlos Cuello] 22:09:06
+a situation where observational studies provide a very information for the causal links.
+
+[Carlos Cuello] 22:09:14
+So the point in here is
+
+[Carlos Cuello] 22:09:16
+that we reach the concept of the target trial. So even if
+
+[Carlos Cuello] 22:09:22
+The question per se
+
+[Carlos Cuello] 22:09:24
+about the insulin versus no insulin sounds like it is not will not be ethical or logistical to conduct. We still have the same question whether we have randomized trials on non-randomized trials in the mindset
+
+[Carlos Cuello] 22:09:39
+Helps us clarify exactly what we want to know that the population, we have the intervention, we have the comparison and the outcome that we want to address. So it's about the making the question explicit, even if the evidence from RCTs will not be possible
+
+[Carlos Cuello] 22:09:55
+So this is the concept of the target trial. This framework that will help us. So this is a benchmark that we should aim. So the essence of a randomized controlled trial does not mean we abandon rigorous thinking about study questions of health intervention or exposures
+
+[Carlos Cuello] 22:10:11
+Instead, we use this as a benchmark about the ideal situation that we aim to address. So we will look, obviously, for the best evidence will be obviously a randomized trial, and then we from there we go down
+
+[Carlos Cuello] 22:10:26
+to imagine what will be the best next situation to have a comparison effectiveness assessment
+
+[Carlos Cuello] 22:10:35
+of these intervention versus the counterfactual, in this case, no insulin or placebo or any other comparative.
+
+[Carlos Cuello] 22:10:43
+So, in the case, let's see another example.
+
+[Carlos Cuello] 22:10:47
+Intra-hospital cardiac arrest and we want to address if extracorporeal
+
+[Carlos Cuello] 22:10:52
+TPR actually saves more lives than conventional CPR in hospital, and this is a real case scenario where we have a question that is sometimes difficult, although we have randomized trials about we have, like, 3 or 4 only randomized trials
+
+[Carlos Cuello] 22:11:05
+And there are many more observational studies. In this case, we might have the question, well, do we need the randomized trials? Do we need to add the observational studies for this question? What will be
+
+[Carlos Cuello] 22:11:17
+the scenario that will provide the best clarity and guide us
+
+[Carlos Cuello] 22:11:22
+And how we interpret the evidence that we have at the end
+
+[Carlos Cuello] 22:11:25
+So, as you know, we will end up with two types of studies or 2 types of designs of studies to ascertain causality. Remember that the main goal that we are addressing is causality. If the the intervention has a causal effect still
+
+[Carlos Cuello] 22:11:42
+mortality, or any other outcomes that we are addressing
+
+[Carlos Cuello] 22:11:45
+So random studies are the best to determine causal effects
+
+[Carlos Cuello] 22:11:48
+But we are aware that not always, they will never be feasible or ethical, and that leads to
+
+[Carlos Cuello] 22:11:57
+scarcity
+
+[Carlos Cuello] 22:11:58
+So, non-randomized stories can sometimes provide more immediate evidence from real-world problems
+
+[Carlos Cuello] 22:12:04
+And there is a wide variety of non-randomized design and they can fit in many situations. We will talk about that. Also, many of you have
+
+[Carlos Cuello] 22:12:14
+heard usually about the real world evidence or real-world data that nowadays is more
+
+[Carlos Cuello] 22:12:22
+of use, but we can discuss that during the course of this talk. But pretty much to address causality, these are the two main designs that we will face
+
+[Carlos Cuello] 22:12:33
+We can use non-randomized studies in several ways to have an additional or contextual information to randomized trials
+
+[Carlos Cuello] 22:12:45
+Non-randoma stories can help in a complementary way.
+
+[Carlos Cuello] 22:12:49
+For, adding context to the RCTs. For example, if you want to address indirectness, or we want to address baseline risk, non-randomized studies can
+
+[Carlos Cuello] 22:12:59
+contextually provide information, although we will not be using it for the final certainty estimate, we use it for informing other domains in the RCT board of evidence. Or sometimes we can include it directly as a sequential evidence or integrating them
+
+[Carlos Cuello] 22:13:17
+With the RCTs and in that case they can both provide a final certainty of the evidence, especially if you are making decisions in guidelines or HTAs. In this case, in this paper from Holger 2013, they call that sequential evidence. It's more than I would like to call it integrative evidence because it's
+
+[Carlos Cuello] 22:13:36
+that you actually use both of them. An example will be rare effects or rare outcomes or long-term outcomes that are not available yet from RCTs. You can use it from the non-randomized studies.
+
+[Carlos Cuello] 22:13:48
+Or sometimes we can use it as a replacement totally. This will be a less common case, but it happens like in the case, in other cases of parachute examples of the insulin example where
+
+[Carlos Cuello] 22:14:01
+The evidence from RCTC is absent completely and we can use higher certainty evidence from non-randomized studies or substitute completely because there are no randomized trials.
+
+[Carlos Cuello] 22:14:13
+So this was in early 2020. Remember the pandemic. Sometimes we have questions that are urgent to answer. And it was a clinical dilemma that we have. The urgency was real. We needed answers quickly for patients with severe COVID-19
+
+[Carlos Cuello] 22:14:30
+And the question was, is we should add tocilizumab to standard of care
+
+[Carlos Cuello] 22:14:35
+Or what was the magnitude or the benefit if it was a meaningful benefit for this drug? So that was
+
+[Carlos Cuello] 22:14:43
+There was uncertainty around the interventions, and the challenge was, what was the answer? What there are no randomized trial right now. They are in development, but we need we have already observational studies. We need to give recommendation in those cases, it can be helpful to
+
+[Carlos Cuello] 22:14:59
+understand how this role can provide
+
+[Carlos Cuello] 22:15:04
+beneficial effect or not based on the question. And but the question is still the same, and in your mind, you should always make the question as a target trial, whether it is unethical or unfeasible, always provide
+
+[Carlos Cuello] 22:15:17
+The target trial, as in this case, well, how can we be this be done as a randomized study?
+
+[Carlos Cuello] 22:15:26
+So passing that, we will use the grade approach. And the great approach, just a quick reminder on how it works. We know that we have
+
+[Carlos Cuello] 22:15:36
+The approach considers randomized studies and non-randomized studies separately. In the classic framework, the randomized trials will start at high certainty. We are under the assumption that these are well conducted and there is no other… there are no concerns yet
+
+[Carlos Cuello] 22:15:53
+And once you address the concerns or the domains that can decrease the certainty of the evidence, we have these five domains, these two limitations, inconsistency, indirectness, imprecision, and dissemination bias
+
+[Carlos Cuello] 22:16:05
+And three domains that can read up the body of evidence, especially for observational studies, such as dose response, large effect or residual confounding
+
+[Carlos Cuello] 22:16:15
+The non-randomal studies in the classic framework in GRADE starts at low certainty because of the lack of randomization. So by default, we consider that
+
+[Carlos Cuello] 22:16:27
+as a low certainty evidence, and from there, you still address the domains of grade
+
+[Carlos Cuello] 22:16:33
+However, with the advent of the new tools, like Robins, if you see the latest guidance on the use of observational stories in GRADE, if you use Robins
+
+[Carlos Cuello] 22:16:45
+You can start set until the evidence at high certainty, and then from there reduce the certainty of the evidence or increase it depends on your judgments. We will review this a little bit in a few minutes.
+
+[Carlos Cuello] 22:16:58
+So overall, in the example of the COVID-19 and tocilizumab
+
+[Carlos Cuello] 22:17:04
+If we will address the question from the outset, we can follow the guidance 24
+
+[Carlos Cuello] 22:17:10
+What those disc guidances tells you
+
+[Carlos Cuello] 22:17:13
+What is the pathway that we will take? And ideally, we can consider if we are making a systematic review, we always try to have a scoping of the literature and what is happening there
+
+[Carlos Cuello] 22:17:26
+Whether your RCTs will be available or not. And if you have a certainty or are uncertain about the
+
+[Carlos Cuello] 22:17:35
+The RCTs that will be available, you have you say that there is a possibility of having RCTs. You can start performing a full search and screening of
+
+[Carlos Cuello] 22:17:44
+The RCTs and in non-randomized studies and have them there just in your endophile or any other
+
+[Carlos Cuello] 22:17:55
+A little screening process. So in this case
+
+[Carlos Cuello] 22:18:00
+You have to evaluate first the randomized trials. If you find
+
+[Carlos Cuello] 22:18:05
+You can assess the certainty of the evidence in the randomized trials, and from there, go through the process that we suggest in here. So, for example, if we have high certainty evidence in randomized trials, it's maybe… in most cases, 99.9% of the cases, you don't need observational studies
+
+[Carlos Cuello] 22:18:23
+And there is no need to include non-randomized studies. You can stop there from the non-randomized studies. And for this outcome, you can use only your high certainty area from RCTs. However, it is suggested that if you have very low, low, or even moderate certainty evidence in
+
+[Carlos Cuello] 22:18:40
+Body of evidence, you can still explore the use of observational studies. Obviously, the more the lowest the certainty, the lower the certainty, the more is suggested that you
+
+[Carlos Cuello] 22:18:52
+explore the use of non-randomized studies that can complement or replace or be used in sequence with the Rcts
+
+[Carlos Cuello] 22:19:00
+So overall, this was the guidance 24. And in that case, let's say you follow this path and you find
+
+[Carlos Cuello] 22:19:08
+like evidence from from randomized trials that is, let's say, low, very low
+
+[Carlos Cuello] 22:19:14
+You'll also find observational studies, and you have both of them there. So what's next? What is the
+
+[Carlos Cuello] 22:19:20
+What would be the next steps? In that case, we can address We usually have several questions when you have two bodies of evidence. So do they agree in their results that was a main question. If they agree, they say that the drug works or they are indifferent
+
+[Carlos Cuello] 22:19:39
+size of the
+
+[Carlos Cuello] 22:19:41
+of the spectrum of the intervention effect. So if one points to harm and the other points to a benefit, we have a problem in there. Also, what is the certainty on each body of evidence?
+
+[Carlos Cuello] 22:19:53
+Which gray domains will be affected? What is the effect of the certainty on one over another
+
+[Carlos Cuello] 22:19:59
+What is the final effect on recommendations and decisions, and how to use and present them in your summary of findings tables and evidence profiles.
+
+[Carlos Cuello] 22:20:07
+So the question is, do we keep them separated like many
+
+[Carlos Cuello] 22:20:12
+system attributors do, as I know, was one option? Or do we keep them together as in this case
+
+[Carlos Cuello] 22:20:19
+And we have in a subgroups, we have non randomized studies, and then we have the randomized study with a poor effect at the end. That's another
+
+[Carlos Cuello] 22:20:28
+possibility
+
+[Carlos Cuello] 22:20:30
+I've seen some people combine them
+
+[Carlos Cuello] 22:20:33
+Or pooling, this is the case of pooling
+
+[Carlos Cuello] 22:20:37
+Or just keep one
+
+[Carlos Cuello] 22:20:41
+We will review this
+
+[Carlos Cuello] 22:20:43
+In detail
+
+[Carlos Cuello] 22:20:44
+And this is what about this is what guidance 44 is about.
+
+[Carlos Cuello] 22:20:49
+Once you have the two body variants, now what do you do with them?
+
+[Carlos Cuello] 22:20:53
+So to answer these questions, we follow 4 steps or Canon 44 just ends up in these 4 main steps. One is assessing the certainty of the evidence of both RCTs and non-randomal studies.
+
+[Carlos Cuello] 22:21:08
+Define the number of decision thresholds and target of the certainty ratings
+
+[Carlos Cuello] 22:21:12
+Then assess congruency of effects. We will talk about the definition. What is congruency? So if they agree or not
+
+[Carlos Cuello] 22:21:20
+And third, identify and compare the gray domains affected
+
+[Carlos Cuello] 22:21:25
+certainty ratings. What is the what are the issues in each body of evidence in terms of the gray domain? And what is the effect between each other? And at the end, number 4, decide whether we present one
+
+[Carlos Cuello] 22:21:40
+Or two types of studies or a single pool estimate and how to use it in the grade tables. So overall, these are the four
+
+[Carlos Cuello] 22:21:51
+steps that you will see in the guidance. We will use this for domains or these four steps through several examples to guide you what will happen. But pretty much
+
+[Carlos Cuello] 22:22:03
+This is a gist of the whole guidance.
+
+[Carlos Cuello] 22:22:08
+So the step one is assessing the certainty areas of both bodies of evidence.
+
+[Carlos Cuello] 22:22:12
+So, as mentioned, this is a grader
+
+[Carlos Cuello] 22:22:15
+framework, and I mentioned that if you use Robins, you should start as high certain till the end
+
+[Carlos Cuello] 22:22:21
+I know there are some preferences among colleagues. Some people don't like Romans. I understand that it's it's a very comprehensive, sometimes takes time and a lot of effort, more
+
+[Carlos Cuello] 22:22:37
+to conduct risk of biodiversity by using Robins.
+
+[Carlos Cuello] 22:22:42
+personal preference. Some people consider more comprehensive and more available to
+
+[Carlos Cuello] 22:22:50
+compare directly in the same or almost the same scale, let's call it with the randomized trials. And the reason is the one that I mentioned before
+
+[Carlos Cuello] 22:23:01
+If you advise the risk of bias in
+
+[Carlos Cuello] 22:23:05
+randomized trials.
+
+[Carlos Cuello] 22:23:07
+you know, the reco bias tool from Cochrane is pretty straightforward
+
+[Carlos Cuello] 22:23:13
+And it goes into the
+
+[Carlos Cuello] 22:23:16
+conduction of the randomized trial. What happens when certain situations do not happen properly in the randomized trial? Well, you can have problems in the randomization process
+
+[Carlos Cuello] 22:23:27
+4 deviations from the interventions or missing that, etc.
+
+[Carlos Cuello] 22:23:31
+And as we mentioned at the beginning, when you ask the question, when you have your target trial question.
+
+[Carlos Cuello] 22:23:38
+You do the same question in your mind, you follow the target trial, whether you use a randomized or you find a randomized trials for an observational study. And that's how Robins works as well.
+
+[Carlos Cuello] 22:23:50
+Because you think about what will happen if I don't have the randomization and the conduction, the proper conduction of
+
+[Carlos Cuello] 22:23:59
+randomized trial
+
+[Carlos Cuello] 22:24:01
+very much what you will have is bias due to confounding or classification interventions, or selection of participants, and you have these three biases that are similar to these biases in the randomized trial, but pretty much the difference is obvious is the lack of randomization
+
+[Carlos Cuello] 22:24:18
+In the observational studies, so it's easier to equate these 2 bodies of evidence if you use Robins, and that's why Robbins, when he's using Greg, you start at high certainty, but you have to be
+
+[Carlos Cuello] 22:24:32
+very strict in the
+
+[Carlos Cuello] 22:24:34
+application of these assessments of bias due to confounding and other issues that you can see in workshops about robinside, how do we assess the proper target trial, even DAX or the directed secret graphics
+
+[Carlos Cuello] 22:24:52
+in time zero, et cetera, things that
+
+[Carlos Cuello] 22:24:55
+You can address easily on robins than in other tools. However, grade
+
+[Carlos Cuello] 22:25:00
+does not force anyone to use Romance or any other. They can use no-cass or a tower. The result should be the same
+
+[Carlos Cuello] 22:25:07
+Okay. So, in the end, after the step one
+
+[Carlos Cuello] 22:25:12
+We have the congregacy between non-randomized studies and randomized trials. This is an important domain or step. Agreement between RCTC and non-normal studies have been studied
+
+[Carlos Cuello] 22:25:25
+extensively. I mean, that was an interesting question. What do they say? We usually are
+
+[Carlos Cuello] 22:25:32
+taught in school and any basic methodology program that observational studies provide different results or can provide different results than RCTs. So the question is, how often is that? And pretty much all of
+
+[Carlos Cuello] 22:25:48
+studies find out that approximately the agreement between them is usually above 50%. So it's like 70, 80% depends on the study that you address. So it's more
+
+[Carlos Cuello] 22:26:02
+Common than not to see
+
+[Carlos Cuello] 22:26:06
+agreement between this, but depends on how do you define agreement.
+
+[Carlos Cuello] 22:26:09
+So the the methods report to assess congruency can go from visual comparison of the forest plots and the confidence intervals
+
+[Carlos Cuello] 22:26:18
+to statistically significant versus not significant or test of interaction like in subgroup effects or using relative effects of relative effects. So you compare those two and you measure that part
+
+[Carlos Cuello] 22:26:32
+As a Rachel variety or loss ratios
+
+[Carlos Cuello] 22:26:36
+And those are the main ways of measuring that. In our guidance
+
+[Carlos Cuello] 22:26:43
+We try three things
+
+[Carlos Cuello] 22:26:48
+So, to address congruency, so we acknowledge the uncertainty that can happen in any evidence synthesis, especially if this is going to be used for decision making in HTAs or guidance
+
+[Carlos Cuello] 22:27:04
+So because of that, we like to take effect estimate but also confidence intervals and explicit decision thresholds of important benefit and harms with this range of effects, of magnitude of effects
+
+[Carlos Cuello] 22:27:17
+To address the congruency or incongruency between RCTs and non-randomized studies
+
+[Carlos Cuello] 22:27:25
+For example
+
+[Carlos Cuello] 22:27:28
+These are congruent bodies of evidence. In blue, we have the RCTs and these are the non-random studies. This is the result of synthesis or meta-analysis of each
+
+[Carlos Cuello] 22:27:41
+And these diets, we can see, for example, here this is obviously similar or congruent effects. And these two
+
+[Carlos Cuello] 22:27:48
+Although they are on separate part, the null
+
+[Carlos Cuello] 22:27:51
+In this,
+
+[Carlos Cuello] 22:27:53
+University
+
+[Carlos Cuello] 22:27:55
+In grade, we take into account the trivial effect, or the zone of trivial effect with other sounds of importance that I mentioned.
+
+[Carlos Cuello] 22:28:04
+So these two are congruent because they both are in the trivial effect zone or area of trivial effects, even though they are separated by the node. So usually we consider more important to address the uncertainty and the importance of effects
+
+[Carlos Cuello] 22:28:21
+To address by thresholds of effects and
+
+[Carlos Cuello] 22:28:25
+songs of magnitude of effects. So these are congruent effects
+
+[Carlos Cuello] 22:28:30
+And these are examples of incongruent effects, or effects that are completely separated by these thresholds are in different zones
+
+[Carlos Cuello] 22:28:38
+For example, this one, this is pretty obvious. This is also pretty obvious
+
+[Carlos Cuello] 22:28:43
+These might be tricky, but it's still because in the old
+
+[Carlos Cuello] 22:28:48
+way of yearly assessing the null hypothesis, the issue will be can be considered similar. But if you consider an absolute effect and the threshold of a trivial effect versus an important effect, these two are the similar in that case
+
+[Carlos Cuello] 22:29:03
+Because one is in the trivial effect, and the other is in at least some benefit or a small benefit effect.
+
+[Carlos Cuello] 22:29:14
+But pretty much that can happen in any way. So
+
+[Carlos Cuello] 22:29:18
+The thing here is that they are completely separated with the confidence interval by these thresholds of importance. And obviously, if you have imprecision, there are
+
+[Carlos Cuello] 22:29:30
+So we have problems with having precision. You can have
+
+[Carlos Cuello] 22:29:36
+These cases, these are very common. And in this case, we don't have any other tool to address this
+
+[Carlos Cuello] 22:29:42
+Other than be transparent that this case, for example, is very wide. Although we have certainty in the non randomized studies, there is still a chance that it can be precise or not
+
+[Carlos Cuello] 22:29:55
+I mean, congruent or not incongruent. So we are the word probably congruent or incongruent depends on that
+
+[Carlos Cuello] 22:30:04
+For instance, this is an example of SGLT2 inhibitors on acute kidney injury. The outcome is acute kidney injury, and we have two effects
+
+[Carlos Cuello] 22:30:14
+Relative effects in this case
+
+[Carlos Cuello] 22:30:16
+And in this case, these look different
+
+[Carlos Cuello] 22:30:19
+If we address the relative effects
+
+[Carlos Cuello] 22:30:23
+Because they don't overlap
+
+[Carlos Cuello] 22:30:26
+But if this is addressing the reality, we address in a guideline the absolute effects
+
+[Carlos Cuello] 22:30:33
+We compare these based on a baseline risk
+
+[Carlos Cuello] 22:30:37
+And we will see this picture.
+
+[Carlos Cuello] 22:30:39
+In this case, we have an absolute effect of 5 fewer in the randomized trials and seven fewer in
+
+[Carlos Cuello] 22:30:48
+observational studies. And the confidence interval is way below the 10 per thousand threshold for a trivial effect. So this case, although in the relative effect is
+
+[Carlos Cuello] 22:31:00
+None is incongruent like this. In this case will be considered a congruent effect. So we recommend using absolute effects
+
+[Carlos Cuello] 22:31:09
+Always be transparent on how you obtain your absolute effects, because there are several methodologies to obtain the absolute effects, and they can vary. So we have to be transparent and consider that yes, there are assumptions you have to make when
+
+[Carlos Cuello] 22:31:24
+Address absolutely affects, and that makes it difficult sometimes. And there is a great paper that has some more about how to calculate the absolute effect that we recommend in in our papers.
+
+[Carlos Cuello] 22:31:37
+There is a float in the guidance you can follow
+
+[Carlos Cuello] 22:31:39
+Sorry, but… so you can make a decision to see if this is congruent or non-conquent
+
+[Carlos Cuello] 22:31:46
+Yeah, or probably congruent or incongruent depends on the confidence intervals and the point estimates.
+
+[Carlos Cuello] 22:31:52
+Okay, so in step three is about guiding principles to compare grade domains affected
+
+[Carlos Cuello] 22:31:59
+And this table is included in the paper as well. You can use this table to
+
+[Carlos Cuello] 22:32:04
+To guide the… to guide your decisions
+
+[Carlos Cuello] 22:32:09
+Read it first before you go into addressing the rest of the process, because this is like a set of rules. I don't want to call them rules, but it's more like a guidance. But yeah, it's helpful to understand
+
+[Carlos Cuello] 22:32:21
+Why do we suggest when you have different problems or different judgments
+
+[Carlos Cuello] 22:32:26
+For each body of evidence about stored limitations, inconsistency, indirectness, etc.
+
+[Carlos Cuello] 22:32:30
+So looking at one
+
+[Carlos Cuello] 22:32:33
+One by one, we can, for example, in this case, if you have student limitations or risk of bias assessment in each body of evidence
+
+[Carlos Cuello] 22:32:44
+And if you can have differences, obviously, you will have differences in the
+
+[Carlos Cuello] 22:32:48
+and your judgment, great judgment for risk or bias
+
+[Carlos Cuello] 22:32:53
+We suggest that you should not mitigate one body of evidence
+
+[Carlos Cuello] 22:33:00
+In the risk of bias assessment, because the other doesn't have risk of bias, so you cannot
+
+[Carlos Cuello] 22:33:05
+Say we have also original stories with high risk of bias or serious risk of bias, and these are observational studies do not have any serious, no serious risk of bias
+
+[Carlos Cuello] 22:33:17
+And they both agree, and there is no other problem, so I will mitigate this and not write down for risk of bias. So we should always keep your risk of bias for each one, and not mitigate or correct the other because of that.
+
+[Carlos Cuello] 22:33:31
+Polling can be acceptable if you are performing a sensitivity analysis, other parts. But as long as you don't have any other issues in the other gray domains, which is
+
+[Carlos Cuello] 22:33:43
+It's a good
+
+[Carlos Cuello] 22:33:47
+lock or her
+
+[Carlos Cuello] 22:33:48
+Safety issue not to perform a lot of pooling just because there is no other thing, there is no problem in the body of evidence for each one. So pooling can be acceptable, but only if you have
+
+[Carlos Cuello] 22:34:02
+Critical bias are similar
+
+[Carlos Cuello] 22:34:04
+Preferably using Robin and imprecision is the only other domain affected. If you have other issues in other great domains, do not pull
+
+[Carlos Cuello] 22:34:13
+For example, in the next one, this is applicable to that. We suggest that you cannot mitigate and you cannot pull if you have inconsistency in any of the value of evidence that you
+
+[Carlos Cuello] 22:34:25
+using for your synthesis. For example, in here you have
+
+[Carlos Cuello] 22:34:31
+inconsistency in the randomized trials, but no inconsistency in the observational studies. You should present them or report them separately and do not
+
+[Carlos Cuello] 22:34:41
+Sometimes it can you can explore, obviously, as you should when you have heterogeneity in one body of evidence, explore the reasoning
+
+[Carlos Cuello] 22:34:49
+And that's the guidance for every evidence synthesis, explore the reasoning for heterogeneity, and if you don't have it, you call it inconsistency. But sometimes if you read the observational studies, sometimes they can help you say, okay, I found an effect modifier that may be applicable, and this might be the reason
+
+[Carlos Cuello] 22:35:07
+Of this inconsistency, or maybe not, but it's worth exploring in that case.
+
+[Carlos Cuello] 22:35:12
+So, do not pull, do not mitigate, and report separately if you have inconsistency
+
+[Carlos Cuello] 22:35:21
+In terms of indirectness
+
+[Carlos Cuello] 22:35:23
+Sometimes
+
+[Carlos Cuello] 22:35:25
+Indirect evidence can be used, especially in
+
+[Carlos Cuello] 22:35:29
+HTAs or guidelines for decision making
+
+[Carlos Cuello] 22:35:34
+We use body of evidence of indirect evidence to provide a better view of the evidence. So, for example, if you have this big question for your guideline or your review
+
+[Carlos Cuello] 22:35:48
+And your typical question, the population is for pregnant
+
+[Carlos Cuello] 22:35:52
+It's a pregnant population
+
+[Carlos Cuello] 22:35:55
+And you don't have the RCTs for that part. It's a common situation. We don't have RCTs that include a pregnant patients. So in that case
+
+[Carlos Cuello] 22:36:06
+No pregnant patients, only people with no pregnancy.
+
+[Carlos Cuello] 22:36:10
+So, but you can have observational studies that provide evidence directly for that include pregnant patients. In that case
+
+[Carlos Cuello] 22:36:21
+That is possible to address the indirectness in the RCTs and see if they have an agreement
+
+[Carlos Cuello] 22:36:28
+So if you have congruency in this body of evidence with this body of evidence, you can mitigate in this case the concerns of indirectness in this case. So if a drug works for the population and you don't know if it works for pregnancy
+
+[Carlos Cuello] 22:36:41
+And then you have a situation in the study that is similar to any other case, except that this population is
+
+[Carlos Cuello] 22:36:48
+This is directly applicable to pregnant patients. You can mitigate indirectness in this case and use the body of evidence for RCTs
+
+[Carlos Cuello] 22:36:56
+Or report separately as well. Depends on the judgment and what other concerns are there. It is possible to use indirect evidence. And we use it pretty commonly in island, especially in these cases or in piatric guidelines, etc.
+
+[Carlos Cuello] 22:37:13
+So mitigation is possible, but pooling is not recommended in these cases. Obvious present separately and mitigation is possible.
+
+[Carlos Cuello] 22:37:23
+In terms of imprecision, you can have imprecision sometimes. It's a very common situation. Imprecision ideally you should not mitigate this imprecision
+
+[Carlos Cuello] 22:37:35
+Because this is not… this is precise, but it's not
+
+[Carlos Cuello] 22:37:40
+But you can consider
+
+[Carlos Cuello] 22:37:43
+together sometimes if you don't have any other issue
+
+[Carlos Cuello] 22:37:47
+Only, let's say, you have only preschool bias that is similar between them, you can explore the imprecision
+
+[Carlos Cuello] 22:37:54
+in a pool estimate provided as mentioned, that there is no indirectness, no inconsistency, or very 0 risk of bias in either body of evidence. So ideally, you should report them separately and in very rare cases, you
+
+[Carlos Cuello] 22:38:09
+provide a pool estimate and explore that part
+
+[Carlos Cuello] 22:38:13
+We will see an example in this
+
+[Carlos Cuello] 22:38:14
+And lastly, in dissemination bias in the other domain, sometimes you can explore the situation of publication bias
+
+[Carlos Cuello] 22:38:24
+But we don't have too much information on
+
+[Carlos Cuello] 22:38:27
+effect. But considering both
+
+[Carlos Cuello] 22:38:30
+Funnel plots can give you a picture of what is, you know, what is happening out there in the publication world
+
+[Carlos Cuello] 22:38:36
+Why the RCTs are how dissemination bias, but the observational do not, and you can consider that in your discussions. But ideally, we suggest that you do not mitigate
+
+[Carlos Cuello] 22:38:49
+At least not pull the volume evidence when you have dissemination bias or publication bias.
+
+[Carlos Cuello] 22:38:55
+Okay, so this is the guidance that I mentioned. This is there in the paper. And in here we recommend
+
+[Carlos Cuello] 22:39:04
+Several approaches
+
+[Carlos Cuello] 22:39:07
+Consider always the certainty of the evidence of the RCTs
+
+[Carlos Cuello] 22:39:11
+And then what is the 70 days of observational studies
+
+[Carlos Cuello] 22:39:14
+And as mentioned in the first part is very rare to have observational studies with high certainty evidence
+
+[Carlos Cuello] 22:39:24
+We struggle a lot to find these cases. So these are unicorns. We have never seen
+
+[Carlos Cuello] 22:39:31
+one body variant that is high certainty evidence from observational studies, man, there are some potential examples like certain death infant syndrome, or other cases where you have high certainty everything from observational studies. But still
+
+[Carlos Cuello] 22:39:46
+It's very rare to see this. So you don't have to worry pretty much about these cases, but we present them there anyway. And you don't have to worry much about these cases, because the high certainty evidence from observation from randomized trials
+
+[Carlos Cuello] 22:40:00
+pretty much give you the answer. So if you have a high certainty from randomized trials
+
+[Carlos Cuello] 22:40:04
+It's very unlikely that you will need observational studies for this outcome and this specific question.
+
+[Carlos Cuello] 22:40:10
+You may need it for other outcomes, but that's another issue.
+
+[Carlos Cuello] 22:40:13
+But in that outcome specifically, if you have hesitancy for randomized trials, what would be the need to use observational studies unless you're very explicit on that. So rely only in RCTs in these cases. So you pretty much your discussion will be around
+
+[Carlos Cuello] 22:40:29
+Examples in here, these
+
+[Carlos Cuello] 22:40:31
+cells that you have moderate certainty in one body and moderate certainty in the other, or moderate and low, or low and low, etc. So consider that this guidance is published there in the paper, and I invite you to read it.
+
+[Carlos Cuello] 22:40:43
+And finally, the step four is decide one or both what we have evidence of studies, how to present them in grade tables. We suggest three cases. One
+
+[Carlos Cuello] 22:40:56
+If you have
+
+[Carlos Cuello] 22:40:57
+This is very common that you have an RCTs in one row
+
+[Carlos Cuello] 22:41:01
+in the non-randomized choice in the second row, and use as much footnotes as you want
+
+[Carlos Cuello] 22:41:06
+to present both body variability and for terms of transparency. This is very common in systematic reviews
+
+[Carlos Cuello] 22:41:12
+Whether you inform or you run informal
+
+[Carlos Cuello] 22:41:14
+Guideline or decision
+
+[Carlos Cuello] 22:41:18
+Or sometimes, if you
+
+[Carlos Cuello] 22:41:20
+You have all the assumptions and you can, it is possible. This is rare, but if it is possible to do a pool of RCTs and non-dominal studies
+
+[Carlos Cuello] 22:41:29
+Sometimes you can present the three situations in one single table for this outcome. In particular, as mentioned, this is not common, but if you find a situation like that, you can do it.
+
+[Carlos Cuello] 22:41:45
+And lastly, you can present one single row, whether you say, okay, you know what, the non-randama stories were not
+
+[Carlos Cuello] 22:41:53
+I ended up judging them lower certainty because I evaluated the thing, or they do not agree with the RCT, so I'm going to remove them.
+
+[Carlos Cuello] 22:42:04
+Or I will may present a single pool estimate that is possible as well, but use as much fullness as you need
+
+[Carlos Cuello] 22:42:12
+And always be transparent about why do you include or exclude certain body of evidence.
+
+[Carlos Cuello] 22:42:18
+For example, in the example of COVID-19
+
+[Carlos Cuello] 22:42:22
+about tocilizumab
+
+[Carlos Cuello] 22:42:24
+versus the standard of care
+
+[Carlos Cuello] 22:42:26
+In patients with moderate severe COVID infection
+
+[Carlos Cuello] 22:42:31
+In this case, let's see, we go back to 2022 early and we found
+
+[Carlos Cuello] 22:42:38
+These bodies of evidence, we found a body of evidence of randomized trials, and we say, okay, people got to work and they published a lot during this time in just one year, they published this randomized trials, and we have non-randomized trials
+
+[Carlos Cuello] 22:42:54
+that evaluated the same questions. In that case, you can consider both
+
+[Carlos Cuello] 22:42:59
+At least at the beginning, say, well, okay, let's see which one would I use for my recommendation
+
+[Carlos Cuello] 22:43:05
+And you address the certainty of the evidence based on the risk of bias, obviously. And this is the risk of bias, for example, for this case, this is a real example of RCTs
+
+[Carlos Cuello] 22:43:15
+And the risk of bias in non-randomized studies.
+
+[Carlos Cuello] 22:43:19
+So you have to make your judgments as you do it in any systematic review to inform or not inform guidelines or any other decisions.
+
+[Carlos Cuello] 22:43:26
+And you have your certainty in this table. So in your evidence profile
+
+[Carlos Cuello] 22:43:31
+You have 9 RCTs, 9 observational studies, and you have these judgments with zero risk of bias in both of them
+
+[Carlos Cuello] 22:43:38
+But you have inconsistency in the observational studies with specifically with these culprit mainly one study. But we address this study and we didn't find a reason for that.
+
+[Carlos Cuello] 22:43:53
+When you have an explained heterogeneity, you write down for inconsistency. That's what we did.
+
+[Carlos Cuello] 22:43:59
+So you have inconsistency and serious risk of violence. So this ends off as low
+
+[Carlos Cuello] 22:44:05
+In this case, as you can see, we use Robin's eye.
+
+[Carlos Cuello] 22:44:10
+And that's why it started as high certainty, and then we rate down one level.
+
+[Carlos Cuello] 22:44:15
+If you see the latest guidance for Robinside, they address that very specifically in the confounding
+
+[Carlos Cuello] 22:44:22
+and other biases due to lack of randomization. And sometimes you find out that recent studies or recent observational studies
+
+[Carlos Cuello] 22:44:32
+have very methods they provide, you know their DACs, the secret graph. They provide the time zero. They provide
+
+[Carlos Cuello] 22:44:41
+How do we address post-baseline confounding, etc. And this is a very good one, and it's closer to the target trial. So in this case, I still have the residual confounding possibility, so I will write down only one level
+
+[Carlos Cuello] 22:44:55
+Due to risk of bias in the like like in this case
+
+[Carlos Cuello] 22:44:59
+But still, you have the differences in these cases. So if you see the absolute effects
+
+[Carlos Cuello] 22:45:05
+In this case.
+
+[Carlos Cuello] 22:45:08
+There is quite a little bit of difference
+
+[Carlos Cuello] 22:45:12
+Let's see it in a picture to see it better
+
+[Carlos Cuello] 22:45:15
+And you have this situation 1232 viewer with a threshold of 10
+
+[Carlos Cuello] 22:45:21
+For the trio effects. So this looks precise for RCTs and all these white is still on the left side favoring tocilizumab
+
+[Carlos Cuello] 22:45:30
+So they look pretty similar in that case, but we can consider them congruent effects between both of them
+
+[Carlos Cuello] 22:45:37
+And follow the four steps of the guidance. So they assess the certainty of the evidence, we have moderate
+
+[Carlos Cuello] 22:45:43
+Varsities, and no for observational, they are congruent, so they are both staying in the same situation. In terms of the domains, we have risk hold bias and risk of bias and inconsistency in the order.
+
+[Carlos Cuello] 22:45:56
+So what should we do in this case
+
+[Carlos Cuello] 22:46:00
+Since we have inconsistency in this case, I'm not totally comfortable with that inconsistency. But you can explore it. If you have a reasoning for that inconsistency, you can remove the inconsistencies. Okay, these are only risk of bias. But in this case, we decided to present only the
+
+[Carlos Cuello] 22:46:17
+For this outcome and deliberations
+
+[Carlos Cuello] 22:46:20
+Because the non-randomized studies
+
+[Carlos Cuello] 22:46:24
+can add uncertainty to the pool estimate. So you can make the decision also if you could observe what will happen if I do the a full pooling of effects. So this is what will happen
+
+[Carlos Cuello] 22:46:39
+If I did the pooling, if I did the pooling, I will see this effect at the end and you can see
+
+[Carlos Cuello] 22:46:46
+Because of that inconsistency in the observational study, the confidence interval was widened
+
+[Carlos Cuello] 22:46:54
+So we are now at high imprecision
+
+[Carlos Cuello] 22:46:56
+And I still have the risk of buyer. Remember that you do not
+
+[Carlos Cuello] 22:47:00
+mitigate risk of bias, and you do not mitigate inconsistency, so you still have these problems, and now you add one more by pooling, which is imprecision. So in that case, why would you add
+
+[Carlos Cuello] 22:47:12
+a pooling. Why will you add uncertainty to this Fed estimate? So in this case, we decided to stay with the randomized trials
+
+[Carlos Cuello] 22:47:21
+Which is still similar to that. So it's decision to present or not both
+
+[Carlos Cuello] 22:47:26
+Or you can present this as an appendix, or you can present in a footnote. But in terms of transparency, yeah, it's recommended to present both and say the decision will be made around the randomized trials
+
+[Carlos Cuello] 22:47:40
+What we can see here the result from the observational studies. But I will suggest Nagpool in this case, because you are adding uncertainty.
+
+[Carlos Cuello] 22:47:47
+Okay, so this was this case.
+
+[Carlos Cuello] 22:47:50
+Who says it is primary evidence
+
+[Carlos Cuello] 22:47:52
+non-master may be considered if clearly justified in this case, I just presented the non-randoma study
+
+[Carlos Cuello] 22:48:00
+Another example
+
+[Carlos Cuello] 22:48:01
+In this case, we have two bodies of evidence as well.
+
+[Carlos Cuello] 22:48:07
+You can see the
+
+[Carlos Cuello] 22:48:08
+The risk of bias in here. Also, these are
+
+[Carlos Cuello] 22:48:12
+observational studies that provided good adjustment of effects of the confounding. They addressed the confounding properly. I mean, they say they… many of them provided DAGs and address time zero and post baseline, variant, confounding, etc
+
+[Carlos Cuello] 22:48:29
+So, pretty much, you still have residual confounding. You cannot
+
+[Carlos Cuello] 22:48:33
+It's very rare to this in robins specifically to endovascular because confounding is almost impossible to exclude
+
+[Carlos Cuello] 22:48:41
+So you have to be transparent in that case and say, why are you considering this risk of buy? That's pretty much similar. So the risk of bias in the
+
+[Carlos Cuello] 22:48:50
+In the randomized studies were not serious. We have only precision
+
+[Carlos Cuello] 22:48:56
+And in this case, the observational studies, we have the residual confounding serious risk of bias only.
+
+[Carlos Cuello] 22:49:05
+And the interesting part in this case is this one
+
+[Carlos Cuello] 22:49:08
+If you can see the effect on
+
+[Carlos Cuello] 22:49:12
+The control group, in this case, if you don't give the drug
+
+[Carlos Cuello] 22:49:18
+In patients with dementia
+
+[Carlos Cuello] 22:49:20
+4.7% will die at one year.
+
+[Carlos Cuello] 22:49:23
+Which is very different if you consider the control group event in the observational study, which is 37%. And this is a difference that we saw what is happening here? Why do we have so different baseline risk
+
+[Carlos Cuello] 22:49:39
+And the other, and the explanation will be that usually randomized trials are not, let's call it real world
+
+[Carlos Cuello] 22:49:47
+are very ochially selective patients
+
+[Carlos Cuello] 22:49:50
+Very selected patients that are maybe less risky to die. So in that case, or those group patients from the beginning from the study, and those patients are more… because they have more risk. So yeah, that's a common issue among randomized trials
+
+[Carlos Cuello] 22:50:05
+A common criticism of trials is that it's not
+
+[Carlos Cuello] 22:50:08
+in many situations directly applicable, or applicability, and that can be considered indirectness. That's why that's why we add a note here
+
+[Carlos Cuello] 22:50:16
+So now how to solve this issue? So we have here 16 fever per thousand it goes to 23 to 7. And in this case, with this baseline rate, we have 89, which is quite a difference. And you can see it here.
+
+[Carlos Cuello] 22:50:32
+So the RCTs cross the trivial effect threshold
+
+[Carlos Cuello] 22:50:38
+Observing fewer
+
+[Carlos Cuello] 22:50:40
+And these are
+
+[Carlos Cuello] 22:50:41
+Completely to the left. So the observational stories give me
+
+[Carlos Cuello] 22:50:45
+A better result in this case
+
+[Carlos Cuello] 22:50:48
+So now we need to explore more observational studies
+
+[Carlos Cuello] 22:50:51
+To see what is the baseline risk, because the baseline risk is very different, so you have to consult clinicians and see what is happening here. What is the real baseline risk
+
+[Carlos Cuello] 22:51:00
+And you consult baseline risk from observational studies B, observational studies like this one
+
+[Carlos Cuello] 22:51:07
+Which agree with observational studies, that is 20% approximately of mortality at one year
+
+[Carlos Cuello] 22:51:13
+So, in that case, there isn't reach at 20% makes sense to use. And the good news is that you can use this 20% also in the Rcts
+
+[Carlos Cuello] 22:51:22
+And once you apply this baseline ratios, you have more
+
+[Carlos Cuello] 22:51:28
+congruent effects in this case. So you can use both to sensitivity analysis
+
+[Carlos Cuello] 22:51:32
+To assess the bold body of evidence, for example, here we have moderate certainty for each
+
+[Carlos Cuello] 22:51:38
+They are congruent now, and if you address these rising risk
+
+[Carlos Cuello] 22:51:42
+There is imprecision in one and risk of bias in the other. In this case, what do we do? In this case
+
+[Carlos Cuello] 22:51:49
+We have this situation. Both are moderate, you can consider presenting both
+
+[Carlos Cuello] 22:51:56
+Or complement one to each other
+
+[Carlos Cuello] 22:51:59
+That depends on the judgment that you will have
+
+[Carlos Cuello] 22:52:01
+This is what will happen if we use a pull effect
+
+[Carlos Cuello] 22:52:06
+And as you can see, there are no
+
+[Carlos Cuello] 22:52:08
+Big difference in the certainty of the evidence after you pull the facts
+
+[Carlos Cuello] 22:52:14
+In this case, so risk of bias is still an issue, so I cannot remove the risk of bias
+
+[Carlos Cuello] 22:52:20
+in the pool effect
+
+[Carlos Cuello] 22:52:22
+However, imprecision can be improved in this case. In this in this case you have
+
+[Carlos Cuello] 22:52:28
+A little better in precision.
+
+[Carlos Cuello] 22:52:31
+Comfort in that
+
+[Carlos Cuello] 22:52:34
+The results are congruent. Remember, if they are incongruent, you should not do this this part of pool
+
+[Carlos Cuello] 22:52:40
+If they are congruent and they are pretty much the same results and the risk of bias in the non-naces is only because of possibility of residual confounding
+
+[Carlos Cuello] 22:52:49
+Well, I'm more comfortable on doing that. This is rare to do, but it is possible if you don't feel comfortable with doing this, you can still present only the two different rows in different situations, especially for decisions. But doing this based on guidance
+
+[Carlos Cuello] 22:53:07
+It's allowed, and you can do this situation and present this. As you can see, is very similar to that part always being transparent about your baseline risk, etc.
+
+[Carlos Cuello] 22:53:18
+Okay, so pretty much that is, you can use more thresholds and more zones of effects where you can consider the domains per se. And this answer our question that
+
+[Carlos Cuello] 22:53:31
+We can use, in this case, we decided to use the pool estimate with an appropriate baseline risk, or you can use only the RCTs and mitigate concerns of the precision that you have initially. You can say, okay, there is in precision, but it's not that worrisome
+
+[Carlos Cuello] 22:53:48
+In the case that we have
+
+[Carlos Cuello] 22:53:50
+The the other one
+
+[Carlos Cuello] 22:53:53
+So that's pretty much it. In the paper, we have an infographic and the JCE website that is in a single page for the guidance that you can read. Obviously, first read the background
+
+[Carlos Cuello] 22:54:05
+We have the guiding principles, the congress of effects, and then the four steps
+
+[Carlos Cuello] 22:54:10
+that we just presenting here.
+
+[Carlos Cuello] 22:54:13
+And that's it. Thank you. We have 5 minutes or more
+
+[Carlos Cuello] 22:54:17
+I'm happy to stay more if you want for questions
+
+[Evidence Synthesis] 22:54:24
+Thank you, Tarlos. I really appreciate it. That was extremely clear and comprehensive and just very helpful.
+
+[Evidence Synthesis] 22:54:33
+If you do have a question, feel free to put it into that Q&A box down at the bottom of the screen. I have a question, which I might throw at you while we wait, which is I'm curious to know what are the most
+
+[Evidence Synthesis] 22:54:46
+common mistakes that reviewers make when they're trying to do this, when they're trying to integrate randomized and non-randomized evidence within GRADE. And do you have any particular advice about how to
+
+[Evidence Synthesis] 22:54:57
+Yeah, avoid those sort of pitfalls.
+
+[Carlos Cuello] 22:54:58
+Yeah.
+
+[Carlos Cuello] 22:55:01
+That's a very good question. Yes, it happens. What I've seen is that
+
+[Carlos Cuello] 22:55:06
+One of the common mistakes is going directly to the pooling
+
+[Carlos Cuello] 22:55:11
+Does this go straight to the, okay, let's let's put all together and
+
+[Carlos Cuello] 22:55:15
+Not even making subgroups sometimes, especially in junior reviewers. So it is quite common to just throw everything there. So that's why the
+
+[Evidence Synthesis] 22:55:22
+Yeah.
+
+[Carlos Cuello] 22:55:27
+In general, my suggestion is to always be transparent and report every as much as you can, even if you sometimes you decide to keep only one body of evidence. It's always a good idea to provide the other in an appendix or in footnotes, or in the text
+
+[Carlos Cuello] 22:55:42
+Whenever you can to be transparent as possible, obviously. A protocol helps a lot
+
+[Carlos Cuello] 22:55:48
+And the protocol helps also a lot
+
+[Carlos Cuello] 22:55:52
+planning the review. So if do a scoping review
+
+[Carlos Cuello] 22:55:58
+Take your time to do the scope and review and see what is out there. If you will have
+
+[Carlos Cuello] 22:56:03
+Randomized trials, if you will have
+
+[Carlos Cuello] 22:56:07
+observational
+
+[Carlos Cuello] 22:56:09
+And what will you do? So this pretty much following
+
+[Carlos Cuello] 22:56:12
+flowchart
+
+[Evidence Synthesis] 22:56:14
+As in, so that you have some sense of what's going on in the body of literature before you conduct. Yep.
+
+[Carlos Cuello] 22:56:18
+Yeah.
+
+[Carlos Cuello] 22:56:20
+Yes, yeah, that helps a lot, yeah.
+
+[Evidence Synthesis] 22:56:24
+Thank you, because it is really tempting, I think, to step straight to the polling at that stage, particularly when you're new to it and you're just sort of following the steps rigidly. And there is some sort of creativity or just like Yeah, decision making involved. There's subjectivity
+
+[Evidence Synthesis] 22:56:40
+I suppose.
+
+[Evidence Synthesis] 22:56:42
+I'm curious as well, like we talked a little bit about
+
+[Evidence Synthesis] 22:56:47
+Oh, I've got a question here, so I might go ahead and stop talking to myself. We've got a question here. What is your advice if the protocol for a systematic review and meta-analysis states that only RCTs will be used for the meta-analysis and other study designs will be described narratively
+
+[Carlos Cuello] 22:57:06
+Yeah, that's also a very common situation and it's also applicable in this case.
+
+[Carlos Cuello] 22:57:14
+Especially if you are here and you have high certainty evidence from RCTs
+
+[Carlos Cuello] 22:57:19
+And you still want to
+
+[Carlos Cuello] 22:57:21
+provide narratively the observational studies, especially if it is not possible to do a meta-analysis per se for the observational studies. Yeah, it's totally, totally valid to do
+
+[Evidence Synthesis] 22:57:31
+Yeah.
+
+[Carlos Cuello] 22:57:34
+narrative synthesis of the observational studies, and you can even use it in your
+
+[Carlos Cuello] 22:57:40
+Great tables.
+
+[Carlos Cuello] 22:57:43
+Sometimes the grade table provides, for instance, here, if the observational studies, sometimes you have the option of providing a narrative
+
+[Carlos Cuello] 22:57:52
+synthesis, or what happens with this and assess as much as possible what you can, for example, the risk of bias
+
+[Carlos Cuello] 22:57:59
+The indirectness and other stuff that you can put in here and say this is the body of evidence of observational studies, and this is from Rcts. And you can even
+
+[Carlos Cuello] 22:58:09
+Not presenting this table, if you want, the observational studies is presenting as
+
+[Carlos Cuello] 22:58:15
+narrative in appendix or text, etc. So yeah, it's mostly preference, but also transparency. So try to balance those two things
+
+[Evidence Synthesis] 22:58:26
+Okay, yep, thank you. And are there any, I guess, particular
+
+[Evidence Synthesis] 22:58:32
+considerations there where you have these two forms of analysis? Are there any things that you need to be cautious about or do you feel that it really is flexible enough to accommodate both and you can just treat them
+
+[Evidence Synthesis] 22:58:42
+Does that make sense as a question?
+
+[Carlos Cuello] 22:58:47
+Can you
+
+[Carlos Cuello] 22:58:49
+So, Mara has a question again, please? Or
+
+[Evidence Synthesis] 22:58:51
+I suppose just, is there anything that you would be cautious about if you're working with RCTs being meta-analyzed and other study designs being described narratively? Is there any additional consideration there that you need to be attentive to?
+
+[Carlos Cuello] 22:59:07
+Well, pretty much follow the main rule that is
+
+[Carlos Cuello] 22:59:10
+The highest certainty in the evidence is the one that you should always present. So you have clearly
+
+[Carlos Cuello] 22:59:15
+a higher certainty evidence, like in this case, that definitely will go into your
+
+[Carlos Cuello] 22:59:21
+Into your presentation and decision making
+
+[Carlos Cuello] 22:59:23
+Yeah, and the other can be Natalie or in this case, if possible.
+
+[Evidence Synthesis] 22:59:23
+Okay.
+
+[Carlos Cuello] 22:59:29
+Make a full synthesis with meta-analysis. But yeah, it's possible to present both options, but follow the rule that
+
+[Carlos Cuello] 22:59:38
+the highest certainty, or the one that provides you with the highest certainty, the better to present.
+
+[Evidence Synthesis] 22:59:43
+Yep, okay, that makes sense. Thank you.
+
+[Evidence Synthesis] 22:59:47
+Okay, we're coming up on time. It sounds like that was a lot of people's questions. So I might go ahead and wrap us up here. I have a couple just of reminders and housekeeping bits as usual. So first of all, I have dropped a feedback form into the chat. I'll send this along by email after the session too, but please do have a look at this at some point and fill it out if you can, because we really do
+
+[Evidence Synthesis] 23:00:12
+appreciating feedback. And also we really appreciate getting suggestions from you about things that you might be interested in hearing about in the future.
+
+[Evidence Synthesis] 23:00:22
+Secondly, if you'd like to go deeper into the grade methodology that we talked about today, we are running an additional in-depth and hands-on online introduction to grade as a workshop on the 10th and 12th of June from 10am to 1 PM on both days. So I will link to the registration form
+
+[Evidence Synthesis] 23:00:42
+For that session as well in the chat here
+
+[Evidence Synthesis] 23:00:49
+So, it's a great introduction
+
+[Evidence Synthesis] 23:00:52
+think to grade if that's something that you'd like to get deeper into. And then finally, our next webinar in this series will be on the 11th of June at 12pm Irish time, and on that day, we'll be speaking to Andrew Booth, who is Professor in Evidence Synthesis at the University of Sheffield's
+
+[Evidence Synthesis] 23:01:09
+Center for Health and Related Research. On that day, he's going to talk to us about the opportunities AI presents for qualitative evidence synthesis, as well as some of the things that you should consider if you're thinking about using AI in a QES. So if you'd like to register for that talk as well, you can follow the
+
+[Evidence Synthesis] 23:01:25
+final link that I'm going to put into the chat now
+
+[Evidence Synthesis] 23:01:29
+And you can always find information about what we're doing and register for these sessions or any other sessions by going to our website, which is at www.evidencesynthesisireland.ie, or by following us on Twitter or on LinkedIn.
+
+[Evidence Synthesis] 23:01:44
+Okay, and with that, I'm done, so I'll just say thanks again for being here, and especially to you, Carlos, for your time and for the talk. Really appreciate it. Thank you.
+
+[Carlos Cuello] 23:01:54
+Thank you. Thank you for the invite.
+
+[Evidence Synthesis] 23:01:55
+Thank you.
+

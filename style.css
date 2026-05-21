@@ -756,6 +756,81 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.tab-btn.esi-tab-btn {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.tab-btn.esi-tab-btn:hover {
+  background: #d1fae5;
+  color: #064e3b;
+}
+
+.tab-btn.esi-tab-btn.active {
+  background: linear-gradient(135deg, #065f46, #16a34a);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.esi-transcript {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.esi-transcript-meta {
+  background: #ffffff;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  color: #065f46;
+  font-weight: 800;
+}
+
+.esi-caption-card {
+  background: #ffffff;
+  border: 1px solid #d1fae5;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.04);
+}
+
+.esi-caption-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  background: #ecfdf5;
+  border-bottom: 1px solid #d1fae5;
+}
+
+.esi-speaker {
+  color: #065f46;
+  font-weight: 800;
+}
+
+.esi-time {
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.esi-caption-text {
+  padding: 0.8rem;
+  color: #1f2937;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .esi-caption-text {
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+}
+
 .threshold-session-intro {
   background: #f8fbfd;
   border: 1px solid #c8d8e8;
