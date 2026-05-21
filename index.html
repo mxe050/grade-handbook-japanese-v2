@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="style.css?v=2.0">
 <script src="script.js?v=2.0" defer></script>
+<script src="thresholds-slides.js?v=1.0" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRADEアプローチ ハンドブック（日本語版）</title>
@@ -9036,6 +9037,7 @@ function checkAuth(){
         <div class="tabs-nav">
           <button class="tab-btn active" onclick="switchTab(this, 0)">セッション一覧</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">Holger Schünemann：Introduction</button>
+          <button class="tab-btn" onclick="switchTab(this, 2)">Thresholds and rating the certainty of evidence using GRADE</button>
         </div>
         <div class="tab-content">
 
@@ -9053,6 +9055,12 @@ function checkAuth(){
                   style="display:inline-flex; align-items:center; gap:0.6rem; padding:1rem 1.5rem; background:linear-gradient(135deg,#1a5276,#2980b9); color:white; border:none; border-radius:10px; font-size:1rem; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(41,128,185,0.3); transition:all 0.2s;">
                   <span style="font-size:1.2rem;">🎓</span>
                   Holger Schünemann：Introduction
+                </button>
+                <button
+                  onclick="var b=this.closest('.page').querySelectorAll('.tabs-nav .tab-btn')[2]; switchTab(b, 2);"
+                  style="display:inline-flex; align-items:center; gap:0.6rem; padding:1rem 1.5rem; background:linear-gradient(135deg,#0f766e,#1d4ed8); color:white; border:none; border-radius:10px; font-size:1rem; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(29,78,216,0.28); transition:all 0.2s;">
+                  <span style="font-size:1.2rem;">▣</span>
+                  Thresholds and rating the certainty of evidence using GRADE
                 </button>
               </div>
               <div style="margin-top:2rem; padding:1rem; background:#f0f4f8; border-radius:8px; border-left:4px solid #3b82f6; color:#4a5568; font-size:0.9rem;">
@@ -9344,6 +9352,24 @@ function checkAuth(){
                 </div>
               </details>
 
+            </div>
+          </div><!-- end tab-pane -->
+
+          <!-- Tab 2: Thresholds and rating the certainty of evidence using GRADE -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">Thresholds and rating the certainty of evidence using GRADE</h2>
+              <div class="threshold-session-intro">
+                <p style="margin:0 0 0.6rem;">
+                  添付PDFの全49スライドを1枚ずつ画像として表示し、各スライド直下に原稿の日本語訳を省略せず掲載しています。
+                </p>
+                <p style="margin:0;">
+                  スマートフォンではスライド画像が横幅に合わせて縮小され、日本語訳は折り返して読めるようにしています。
+                </p>
+              </div>
+              <div id="thresholds-grade-slides" class="threshold-slide-list" aria-label="Thresholds and rating the certainty of evidence using GRADE slides and Japanese transcript">
+                <p style="color:#4a5568;">スライドを読み込み中です。</p>
+              </div>
             </div>
           </div><!-- end tab-pane -->
 

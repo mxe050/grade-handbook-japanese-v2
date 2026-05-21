@@ -756,6 +756,111 @@ mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.threshold-session-intro {
+  background: #f8fbfd;
+  border: 1px solid #c8d8e8;
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  color: #2c3e50;
+  line-height: 1.75;
+}
+
+.threshold-slide-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.threshold-slide-card {
+  background: #ffffff;
+  border: 1px solid #d7e5f2;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.threshold-slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #1a5276, #0f766e);
+  color: #ffffff;
+  padding: 0.85rem 1rem;
+}
+
+.threshold-slide-header h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.threshold-slide-number {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.threshold-slide-image-wrap {
+  background: #eef4f8;
+  padding: 0.9rem;
+}
+
+.threshold-slide-image {
+  display: block;
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.threshold-transcript {
+  padding: 1rem 1.1rem 1.15rem;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.threshold-transcript-title {
+  font-weight: 800;
+  color: #1a5276;
+  margin-bottom: 0.55rem;
+}
+
+.threshold-transcript-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.96rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .threshold-slide-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .threshold-slide-image-wrap {
+    padding: 0.45rem;
+  }
+
+  .threshold-transcript {
+    padding: 0.9rem 0.85rem 1rem;
+  }
+
+  .threshold-transcript-body {
+    font-size: 0.94rem;
+    line-height: 1.85;
+  }
+}
+
 /* タブコンテンツ制御 */
 .tab-content {
   position: relative;
