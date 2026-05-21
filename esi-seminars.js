@@ -57,8 +57,50 @@
     });
   }
 
+  function renderJapaneseArticle(root, sections) {
+    root.innerHTML = "";
+
+    const article = document.createElement("article");
+    article.className = "esi-article";
+
+    const meta = document.createElement("div");
+    meta.className = "esi-transcript-meta";
+    meta.textContent = "日本語訳・全文整形版（発表の流れに沿って段落化）";
+    article.appendChild(meta);
+
+    const note = document.createElement("p");
+    note.className = "esi-article-note";
+    note.textContent = "Zoom保存字幕の内容を削らず、時刻ごとの字幕カードではなく、講演として読み進められる文章に整えています。発話の言い直しや相づちは、意味が変わらない範囲で読みやすく整理しています。";
+    article.appendChild(note);
+
+    sections.forEach((section, index) => {
+      const sectionEl = document.createElement("section");
+      sectionEl.className = "esi-article-section";
+
+      const title = document.createElement("h4");
+      title.className = "esi-article-title";
+      title.textContent = `${index + 1}. ${section.title}`;
+      sectionEl.appendChild(title);
+
+      section.paragraphs.forEach((paragraph) => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        sectionEl.appendChild(p);
+      });
+
+      article.appendChild(sectionEl);
+    });
+
+    root.appendChild(article);
+  }
+
   function initEsiTranscripts() {
     document.querySelectorAll("[data-src].esi-transcript").forEach((root) => {
+      if (Array.isArray(window.ESI_CARLOS_CUELLO_JA_SECTIONS) && root.id === "esi-carlos-transcript") {
+        renderJapaneseArticle(root, window.ESI_CARLOS_CUELLO_JA_SECTIONS);
+        return;
+      }
+
       const src = root.getAttribute("data-src");
       if (!src) return;
 
