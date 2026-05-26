@@ -1730,7 +1730,7 @@ function checkAuth(){
           <div class="tab-pane">
             <div class="card" style="background:#0f172a;color:#fff;padding:1.5rem;border-radius:10px;margin-bottom:1.25rem;">
               <h2 style="font-size:1.35rem;font-weight:bold;margin:0 0 0.6rem 0;color:#fff;border-bottom:1px solid rgba(255,255,255,0.22);padding-bottom:0.55rem;">本邦における形式的GRADE/Mindsと実質的運用の乖離</h2>
-              <p style="margin:0;color:#e5e7eb;font-size:0.94rem;line-height:1.85;">以下の17項目は、ratingを決めるための採点基準ではありません。日本の学会作成CPGを読むときに、形式的には「Mindsに従った」「GRADEを用いた」「SRを行った」と書かれていても、実際には推奨の根拠が十分に追跡できないことがあります。ここでは、そのような「形式と実質のズレ」を理解するための代表的なパターンを整理します。</p>
+              <p style="margin:0;color:#e5e7eb;font-size:0.94rem;line-height:1.85;">以下の23項目は、ratingを決めるための採点基準ではありません。日本の学会作成CPGを読むときに、形式的には「Mindsに従った」「GRADEを用いた」「SRを行った」と書かれていても、実際には推奨の根拠が十分に追跡できないことがあります。ここでは、そのような「形式と実質のズレ」を理解するための代表的なパターンを整理します。AGREE IIの形式的完成度が高く見えても、それだけでGRADEに基づく科学的に妥当な推奨であることは保証されません。</p>
             </div>
 
             <div class="card" style="background:#f8fafc;border-left:4px solid #334155;padding:1rem 1.1rem;border-radius:0 8px 8px 0;margin-bottom:1.25rem;">
@@ -1765,6 +1765,12 @@ function checkAuth(){
                   <tr><td><strong>Good Practice/consensusの誤用</strong></td><td>「エビデンスがないからGPS」や「合意したから強い推奨」になっていないか。</td></tr>
                   <tr><td><strong>対象者・介入・比較のズレ</strong></td><td>PICOが臨床現場の対象者・介入の実態とずれていないか。</td></tr>
                   <tr><td><strong>複数選択肢の序列が不透明</strong></td><td>複数介入の関係を脚注、線、並び順だけで示していないか。</td></tr>
+                  <tr><td><strong>推奨なしへの逃避</strong></td><td>エビデンス不足を理由に、臨床現場が動ける条件付き判断まで放棄していないか。</td></tr>
+                  <tr><td><strong>CQからQへのすり替え</strong></td><td>重要な臨床課題が、途中で背景解説やstatementに格下げされていないか。</td></tr>
+                  <tr><td><strong>形式だけのパネル</strong></td><td>患者代表・方法論者・COI管理が、投票権や議決回避まで含む実質を持つか。</td></tr>
+                  <tr><td><strong>非常に低いcertaintyで強い推奨</strong></td><td>例外的に強い推奨にする理由が明示されているか。</td></tr>
+                  <tr><td><strong>アウトカムのつまみ食い</strong></td><td>論文ごとに都合のよいアウトカムだけを拾っていないか。</td></tr>
+                  <tr><td><strong>ADOLOPMENTの誤解</strong></td><td>海外CPGや既存SRの流用だけで、日本の文脈でEtDを再評価していない状態になっていないか。</td></tr>
                 </tbody>
               </table>
             </div>
@@ -1797,6 +1803,7 @@ function checkAuth(){
                 <h3 style="margin-top:0;"><strong>3. SRではなく、文献集になっている問題</strong></h3>
                 <p>システマティックレビューとは、単に検索して見つかった論文を並べる作業ではありません。事前にPICOと適格基準を決め、研究を選択し、RoBを評価し、アウトカムごとにエビデンスを統合し、その結果を推奨判断に接続する作業です。</p>
                 <p>ところが実際には、「検索した結果、いくつかの論文が見つかったので、それぞれを解説した」というだけのものがSRと呼ばれていることがあります。これはSRではなく文献集です。文献集では、都合のよい論文が強調されたり、不都合な結果が弱く扱われたりしても、読者が検証しにくくなります。「SRを行った」と書きながら、実態は数本の論文解説に近い例では、推奨の再現性を読者が確認できません。</p>
+                <p>名ばかりSRでは、検索式だけは示されていても、除外基準、スクリーニング過程、除外理由、RoB評価、アウトカム別の統合方法が追えません。さらに、薬剤Aは既存SRやメタ分析の結果で説明し、薬剤Bは単発の第II相試験や小規模RCTの数値で説明して、異なるエビデンス単位を横並びに比較してしまうことがあります。既存SRが複数ある場合も、AMSTAR 2などで質を評価せず、結論が都合のよいSRだけを引用すれば、SRではなく「SRのつまみ食い」になります。</p>
                 <p>信じられないことですが、SRの作成方法を知らないと思えるCPGも存在します。</p>
                 <figure class="figure">
                   <img src="images/前立腺癌GL 2023 CQ9SR破綻.jpeg" alt="前立腺癌GL 2023 CQ9 SRの記載例">
@@ -1866,6 +1873,7 @@ function checkAuth(){
                 <p>EtDは、単に「考慮した」と書くための飾りではありません。エビデンスの確実性、利益と害のバランス、患者の価値観・意向、負担、必要に応じて費用、資源、公平性、実行可能性などを整理し、なぜその推奨方向・推奨強度になったのかを説明するための枠組みです。</p>
                 <p>Core GRADEの観点では、費用、資源、公平性、実行可能性などは文脈によって扱いが変わり、常に詳細な記載が必須というわけではありません。しかし、患者の価値観・意向や、利益と害のバランスが推奨判断にどうつながったのかは中核的です。方法章でEtDやMinds/GRADEを使ったと書きながら、本文では論文結果だけを示して突然推奨が出るなら、EtDは実質的に機能していません。</p>
                 <p>特に、患者の価値観・意向、害の受け止め方、費用や負担をどう扱ったかが見えないまま「総合的に判断した」とだけ書かれている場合、推奨の強さは読者には検証できません。</p>
+                <p>方法章では「利益と害、確実性、価値観と意向、コスト、資源、公平性を考慮した」と書かれているのに、各CQ本文では論文結果だけが説明され、価値観や負担の記載が一切ないことがあります。この場合、EtDを用いたという方法論の宣言と、実際の本文の判断過程が食い違っています。</p>
               </div>
 
               <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
@@ -1879,6 +1887,7 @@ function checkAuth(){
                 <h3 style="margin-top:0;"><strong>13. エビデンスレベル、エビデンスの強さ、certaintyを混同する問題</strong></h3>
                 <p>GRADEにおけるcertainty of evidenceは、AHAなどの独自分類で用いられるLevel of Evidenceや、日本の一部CPGで使われる「エビデンスの強さ」と同じではありません。分類名が似ていても、評価対象、開始点、格下げ・格上げの考え方、推奨の強さとの関係は異なります。</p>
                 <p>この混同が起きると、GRADEでいえば「非常に低」相当のエビデンスが、別の分類では中程度以上に見えたり、逆に「エビデンスの強さ」と「推奨の強さ」が言葉の上で接近しすぎて、読者が区別できなくなります。CPGを読む側は、その文書がGRADEそのものを使っているのか、GRADE風の表現を使っているだけなのか、あるいはAHAのような独自分類なのかを最初に確認する必要があります。</p>
+                <p>「Minds診療ガイドライン作成の手引き2020」やGRADEを参考にしたと書きながら、本文では「エビデンスレベル Ib」「Level IIb」のような旧来型分類を使っていたり、推奨の強さを独自に5段階・6段階へ拡張していることがあります。GRADEを名乗るなら、なぜその分類を採用するのか、GRADEのcertaintyと推奨の強さをどう対応させるのかを明示しなければ、独自基準をGRADE風に包装しただけになります。</p>
                 <figure class="figure">
                   <div class="figure-missing">図候補：AHAのCOR/LOE、ILCOR/JRCのGRADE表記、Minds系の「エビデンスの強さ」を並べた比較図を後で挿入。</div>
                 </figure>
@@ -1897,6 +1906,7 @@ function checkAuth(){
                 <h3 style="margin-top:0;"><strong>15. Good Practice Statementやconsensusを強い推奨の代用品にする問題</strong></h3>
                 <p>Good Practice Statement（GPS）やbest practice statementは、「エビデンスがないから推奨より弱い声明に落とす」ための箱ではありません。通常は、直接的な比較研究は乏しくても、間接的エビデンスと臨床的自明性が非常に強く、明確な行動を示すことが妥当な場合に慎重に使うものです。</p>
                 <p>また、consensus-based recommendationと明記しながら、Evidence-based recommendationと同じ表記や同じ強い推奨として扱うと、読者はエビデンスに基づく強い推奨なのか、専門家合意なのかを区別できません。合意率が高いことは重要ですが、それだけではGRADEにおける強い推奨の根拠にはなりません。</p>
+                <p>たとえば、薬剤Aと薬剤Bのどちらを第一選択にするかのように、益と害のバランスが微妙で、直接比較も乏しいCQを、SRが大変だから、または慣れている薬剤を選びたいからという理由でGPSにするのは誤用です。GPSは「エビデンスがないから便利に使う札」ではなく、行うことが自明で、予想される利益が害を圧倒する場合に限って慎重に使うものです。</p>
                 <figure class="figure">
                   <div class="figure-missing">図候補：FDI toothbrushingやEFP S3の「strong recommendation」「expert consensus-based」「Good Practice」の表記部分を後で挿入。</div>
                 </figure>
@@ -1915,6 +1925,43 @@ function checkAuth(){
                 <figure class="figure">
                   <div class="figure-missing">図候補：肺癌診療ガイドライン2025 CQ47の「謎の線」と脚注部分を後で挿入。</div>
                 </figure>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>18. 「推奨なし」で臨床判断を放棄する問題</strong></h3>
+                <p>「RCTがない」「質の高いエビデンスがない」ために推奨なしとする判断は、一見すると科学的に慎重に見えます。しかし、臨床現場では、その介入を行うか、行わないか、代替手段を選ぶかを決めなければなりません。推奨なしが続くと、ガイドラインは「何が分かっていないか」は示しても、「現時点でどう動くか」を示さない文書になります。</p>
+                <p>RCTがない場合でも、観察研究、病態生理、間接エビデンス、既存診療の実態、患者の価値観、負担、害の大きさを踏まえ、非常に低いcertaintyであることを明示したうえで条件付き推奨や提案を出せる場合があります。もちろん、すべてのCQで推奨を無理に出す必要はありませんが、臨床的に重要な問いで「推奨なし」とするなら、なぜ意思決定を支える最低限の判断もできないのかを説明する必要があります。</p>
+                <p>逆に、エビデンスが弱いことだけを理由に「実施しないことを弱く推奨する」と処理するのも危険です。現場で広く行われている介入を止める推奨には、利益が乏しいだけでなく、害、負担、費用、代替手段を含めた判断が必要です。</p>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>19. CQからQやStatementへすり替える問題</strong></h3>
+                <p>当初は「手術Xは保存療法より有効か」のような推奨を作るべきCQとして設定されていたテーマが、文献が少ない、比較研究が乏しい、メタ分析が難しいと分かった瞬間に、「手術Xの現状」「手技の概要」「適応の考え方」といったBackground QuestionやStatementへ変更されることがあります。</p>
+                <p>解説記事としてのQやStatementが必要な場面はあります。しかし、重要な臨床判断を伴う問いを、エビデンス評価が難しいからという理由で推奨対象から外すと、ガイドラインは都合の悪い不確実性を読者から見えにくくします。論文が少ないなら少ないなりに、対象集団、比較対象、アウトカム、risk of bias、不精確性を評価し、推奨できないのか、条件付きで提案するのか、研究課題として残すのかを透明に示すべきです。</p>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>20. パネル構成の形式と実質がずれている問題</strong></h3>
+                <p>AGREE II対策として患者代表、多職種、方法論者を名簿に入れていても、実際の推奨決定で発言機会や投票権がなければ、パネルの多様性は形式だけになります。患者代表がオブザーバー扱いで、最終投票には医師委員だけが参加する場合、患者価値観を考慮したとは言いにくくなります。</p>
+                <p>COI管理も同じです。利益相反を開示しただけで、当該薬剤や機器の推奨決定の議論・投票にそのまま参加しているなら、実質的な管理とは言えません。信頼できるCPGでは、患者・市民、臨床専門家、方法論者が役割を持って参加し、COIのある委員は必要に応じて退室、棄権、議決回避などの管理を受けます。開示は出発点であり、回避や管理があって初めてガバナンスになります。</p>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>21. 非常に低いcertaintyなのに強い推奨にする問題</strong></h3>
+                <p>GRADEでは、エビデンスの確実性が非常に低い場合に強い推奨となることは例外的です。あり得ないわけではありませんが、その場合には、害が明らかに大きい、費用や負担が圧倒的に大きい、患者価値観がほぼ一致している、または介入しないことの不利益が明白であるなど、強い推奨を正当化する特別な理由が必要です。</p>
+                <p>ところが、本文では「エビデンスの確実性は非常に低」「有害事象の懸念がある」と書かれているのに、最後に「有意差があった」「委員会で合意した」「昔から行われている」という理由で強い推奨になっていることがあります。投票結果や慣習は、強い推奨の理由そのものではありません。非常に低いcertaintyで強い推奨にするなら、なぜその例外条件に該当するのかをEtDで明示する必要があります。</p>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>22. 都合のよいアウトカムだけを選んで解説する問題</strong></h3>
+                <p>ある論文ではAアウトカムで有意差があった、別の論文ではBアウトカムで有意差があった、だから介入は有効である、という解説は危険です。実際には、最初の論文ではBアウトカムに差がなく、別の論文ではAアウトカムに差がないかもしれません。論文ごとに結論に合うアウトカムだけを拾うと、全体として一貫して効果があるように見えてしまいます。</p>
+                <p>GRADEでは、推奨に重要なアウトカムを事前に決め、SoF表やEvidence Profileで一覧化し、アウトカムごとの効果推定値、certainty、利益と害のバランスを示す必要があります。都合のよいアウトカムを本文で拾い読みするのではなく、重要アウトカム全体を並べたときに、どのアウトカムが意思決定を主導したのかを説明することが大切です。</p>
+              </div>
+
+              <div class="card" style="padding:1.1rem;border:1px solid #e2e8f0;border-radius:8px;background:#fff;">
+                <h3 style="margin-top:0;"><strong>23. GRADE-ADOLOPMENTを単なる流用にする問題</strong></h3>
+                <p>海外CPGや既存SRを利用すること自体は有用です。しかし、「海外のCPG/SRをADOLOPMENTした」と書きながら、実際には既存SRの結論をそのまま借り、日本の医療制度、薬剤・機器の利用可能性、費用、保険収載、患者価値観、実行可能性をEtDで再評価していない場合があります。</p>
+                <p>GRADE-ADOLOPMENTは、元のエビデンスを使いつつ、自国・自施設・自領域の文脈で、推奨を採用するのか、適応するのか、新規作成するのかを判断するプロセスです。既存SRを使ってよい、という意味だけではありません。元CPGのPICO、アウトカム、ベースラインリスク、EtD判断、日本で変更した点を追跡できなければ、ADOLOPMENTではなく単なる引用・流用になります。</p>
               </div>
 
               <div class="card" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
