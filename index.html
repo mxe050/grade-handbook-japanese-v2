@@ -8035,118 +8035,523 @@ function checkAuth(){
           <div class="tab-pane">
             <div class="content-section">
               <h2 class="section-title">非ランダム化比較試験（Non-RCT）のメタ分析</h2>
-              <p style="color:#555;margin-bottom:1.2rem;">非RCTや観察研究のメタ分析は難易度が高く、結果の解釈には極めて慎重な批判的吟味が必要。以下では2つの核心的問題と、RCTとの統合（GRADE Guidance 44）について解説する。</p>
+              <p style="color:#555;margin-bottom:1.2rem;">非ランダム化研究、観察研究、リアルワールドデータをRCTと一緒に扱うときの核心は、<strong>「研究デザインを混ぜるかどうか」ではなく、「同じPICO・同じ推定対象・同じ意思決定閾値で比較できるか」</strong>である。ここでは、GRADE Guidance 44とEvidence Synthesis Irelandの講義内容をもとに、実際にレビューで使える手順として整理する。</p>
 
-              <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
-                <strong>RCTとの根本的な違い</strong>：RCTでは無作為割付により既知・未知の交絡因子が均等分布することが期待される。観察研究では治療の割付がランダムでないため、効果の違いが治療そのものか<strong>交絡変数によって引き起こされているかを排除できない</strong>。
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <strong>主な資料</strong>
+                <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.9rem;color:#475569;">
+                  <li>Cuello-Garcia CA, et al. <em>GRADE Guidance 44: strategies to enhance the utilization of randomized and non-randomized studies in evidence syntheses of health interventions.</em> Journal of Clinical Epidemiology. 2026;190:112086. DOI: <a href="https://doi.org/10.1016/j.jclinepi.2025.112086" target="_blank" style="color:#2563eb;">10.1016/j.jclinepi.2025.112086</a></li>
+                  <li>Evidence Synthesis Ireland webinar: <a href="https://www.youtube.com/watch?v=2rb0TlS0FhM" target="_blank" style="color:#2563eb;">Using Randomized and Non-randomized Studies with GRADE: When and How in Evidence Syntheses?</a></li>
+                </ul>
               </div>
 
-              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">パートA：Non-RCTメタ分析の2大問題点</h3>
+              <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
+                <strong>最初に覚える結論</strong>：Non-RCTを見つけたら、いきなりRCTとプールしない。まずRCT群とNRSI群を<strong>別々のエビデンス総体</strong>として評価し、絶対効果と意思決定閾値で効果の一致性を確認し、GRADEドメインごとに「補える限界」と「補えない限界」を判断する。
+              </div>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">パートA：Non-RCTメタ分析でまず決めること</h3>
 
               <details class="accordion-item" open>
-                <summary class="accordion-header">問題1：交絡因子が調整されていない「粗データ」を使うことの問題点</summary>
+                <summary class="accordion-header">1. まず target trial を書く：RCTができなくても、問いはRCTの形で定義する</summary>
                 <div class="accordion-body">
-                  <p>各論文から「症例数とイベント数」や「平均値」といった<strong>未調整のデータ（粗データ）を直接抽出してメタ分析</strong>を行うと、各研究内に存在するベースラインの不均衡（年齢・重症度・併存疾患などの偏り）がそのまま統合されてしまう。</p>
-                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.8rem;border-radius:6px;margin:0.6rem 0;">
-                    <strong>具体例</strong>：新しい糖尿病薬と従来薬の比較観察研究を集めた場合。新薬は高価であり、比較的若くて合併症の少ない患者に処方されやすい傾向があった。<br>
-                    症例数と心血管死のイベント数だけを抽出して統合すると「新薬を飲んだ群は死亡率が低い」という圧倒的な結果が出る。しかしこれは「新薬が効いた」からではなく「元々リスクの低い若年層が多く飲んでいた」という交絡による<strong>見かけ上の効果（偽の関連）</strong>。<br>
-                    → 未調整データによるメタ分析は<strong>「交絡バイアスの拡大再生産」</strong>となる。
+                  <p>動画では、1型糖尿病に対するインスリン導入の歴史的例が紹介されていた。RCTが倫理的・実務的に困難でも、効果を知りたい問いは「もし理想的なランダム化試験を行うなら、どのような試験か」として明示できる。この<strong>target trial</strong>が、Non-RCTの妥当性を評価する基準になる。</p>
+                  <div style="overflow-x:auto;margin:0.8rem 0;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:760px;">
+                      <thead>
+                        <tr style="background:#e0f2fe;color:#0c4a6e;">
+                          <th style="border:1px solid #bae6fd;padding:0.55rem;text-align:left;">項目</th>
+                          <th style="border:1px solid #bae6fd;padding:0.55rem;text-align:left;">書くべき内容</th>
+                          <th style="border:1px solid #bae6fd;padding:0.55rem;text-align:left;">Non-RCTで確認する点</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>適格基準</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">誰を対象にするか。重症度、併存疾患、既治療、年齢、診断基準。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">RCTより高リスク・低リスクの患者が偏っていないか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>介入と比較</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">治療Aと治療Bをいつ、どの用量・方法で開始するか。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">「非使用者」との比較ではなく、可能なら active comparator new-user design になっているか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>time zero</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">追跡開始時点。割付・介入開始・リスク期間の起点。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">不死時間バイアス、追跡開始前のイベント除外、曝露定義の後付けがないか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>アウトカム</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">死亡、入院、連続量スコア、QOLなど。測定時点も固定する。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">データベース上のコード、測定頻度、盲検性、アウトカム捕捉率が比較可能か。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>因果コントラスト</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">intention-to-treat効果か、per-protocol効果か。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">治療中止、クロスオーバー、治療変更をどう扱ったか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>解析</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">調整変数、層別、欠測、感度分析を事前に決める。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">交絡調整の変数が治療開始前に測定され、DAGや臨床知識で妥当化されているか。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:0.8rem;border-radius:6px;">
+                    <strong>実務ポイント</strong>：target trialを書けないレビューは、Non-RCTのメタ分析に入る前に止まるべきである。PICOが曖昧なまま調整済みHRやORを集めても、統合後の推定値が何を意味するのか説明できない。
                   </div>
                 </div>
               </details>
 
-              <details class="accordion-item">
-                <summary class="accordion-header">問題2：交絡因子の「調整方法」や「調整変数」が各論文で異なる問題</summary>
+              <details class="accordion-item" open>
+                <summary class="accordion-header">2. Non-RCTで起きる代表的バイアスを先に地図化する</summary>
                 <div class="accordion-body">
-                  <p>調整済みの値（調整済みORやHR）を用いたとしても、<strong>「研究ごとに調整している変数の種類や統計手法がバラバラ」</strong>という致命的問題が生じる。</p>
-                  <div style="background:#f8fafc;border-radius:6px;padding:0.8rem;margin:0.6rem 0;">
-                    <strong>具体例（3研究の調整方法の違い）</strong>：
-                    <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;">
-                      <li><strong>研究A</strong>：年齢と性別のみをロジスティック回帰で調整したOR</li>
-                      <li><strong>研究B</strong>：年齢・性別・BMI・罹病期間・喫煙歴などを多変量解析で調整したOR</li>
-                      <li><strong>研究C</strong>：数十の背景因子を用いた傾向スコアマッチング（PSM）で算出したHR</li>
-                    </ul>
-                  </div>
-                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.8rem;border-radius:6px;">
-                    <strong>問題</strong>：調整基準やモデリング手法が全く異なる効果指標を一つのモデルでごちゃ混ぜに統合（プーリング）すると、算出された要約効果量が<strong>「一体何を・どの程度調整した集団における効果なのか」が誰にも説明できなくなる</strong>（リンゴとミカンを混ぜる問題）。
-                  </div>
-                  <div style="background:#f8fafc;border-left:4px solid #64748b;padding:0.8rem;border-radius:6px;margin-top:0.6rem;">
-                    <strong>生態学的バイアス</strong>：集計データから群の平均的な特性を用いてメタ回帰分析を行うと、個人レベルと集団レベルの関連が一致しない「生態学的バイアス（ecological bias）」を引き起こす危険性もある。
-                  </div>
-                  <p style="margin-top:0.6rem;">非RCT・観察研究のメタ分析は<strong>「未調整データを使えば強い交絡バイアスを生み、調整済みデータを使えば異質な効果指標の無理な統合に陥る」</strong>というジレンマを常に抱えている。</p>
-                </div>
-              </details>
-
-              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートB：Non-RCTとRCT — GRADE Guidance 44</h3>
-
-              <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:1rem;border-radius:6px;margin-bottom:0.8rem;">
-                <strong>旧来の固定観念を捨てよ</strong>：NRSIだからといって自動的に低品質と決めつけるのは時代遅れ。ROBINS-Iなどの適切なツールを用いれば、NRSIであっても高い確実性レベルから評価を開始し得る。
-              </div>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">Step 1：各エビデンスの確実性（CoE）の個別評価</summary>
-                <div class="accordion-body">
-                  <p>RCTとNRSIそれぞれの確実性を<strong>個別に評価</strong>しなければならない。重要な原則：一方のエビデンスの長所によって、他方のドメインのダウングレードを安易に相殺（Mitigate）してはならない。NRSIのバイアスリスクが低いからといって、RCTのバイアスリスクの懸念を帳消しにしてプールすることは論理的に許されない。</p>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">Step 2：効果推定値の「一致性（Congruency）」の厳格な評価</summary>
-                <div class="accordion-body">
-                  <p>相対効果（リスク比やオッズ比）やp値の有意差の有無だけで「一致している」と判断するのはナンセンス。<strong>絶対効果と臨床的意思決定閾値（Trivial/Small/Moderate/Largeなど）を用いて判断</strong>することを強く求めている。</p>
-                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:0.6rem 0;">
-                    <div style="background:#dcfce7;border:1px solid #22c55e;border-radius:6px;padding:0.6rem;font-size:0.88rem;">
-                      <strong style="color:#15803d;">一致（Congruent）</strong><br>
-                      RCTとNRSIの点推定値と信頼区間が同じ効果の大きさの範囲（閾値の同じ側）に完全に収まる
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.7rem;">
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">交絡 by indication</strong><br>
+                      重症患者ほど新治療を受ける、または低リスク患者ほど高価な治療を受ける。治療効果と患者背景が絡む。
                     </div>
-                    <div style="background:#fef2f2;border:1px solid #ef4444;border-radius:6px;padding:0.6rem;font-size:0.88rem;">
-                      <strong style="color:#dc2626;">不一致（Incongruent）</strong><br>
-                      一方が「取るに足らない効果」の範囲、もう一方が「重要な利益」の範囲に完全に分かれる → 決してプールしてはならない
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">選択バイアス</strong><br>
+                      研究に入る条件が治療・予後の両方に影響する。退院後コホートや生存者のみ解析で起きやすい。
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">不死時間バイアス</strong><br>
+                      曝露群に分類されるまで生存していなければならない時間が、誤って治療効果として加算される。
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">曝露・介入分類の誤り</strong><br>
+                      処方、服薬、手技実施、治療継続を同じ介入として扱ってしまう。
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">時間依存性交絡</strong><br>
+                      治療後に変化した重症度や検査値が、その後の治療変更とアウトカムの両方に影響する。
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:0.75rem;">
+                      <strong style="color:#c2410c;">アウトカム測定バイアス</strong><br>
+                      受診頻度や検査頻度が群間で違い、イベントの見つかりやすさが変わる。
                     </div>
                   </div>
                 </div>
               </details>
 
               <details class="accordion-item">
-                <summary class="accordion-header">Step 3：RCTを起点とした確実性の比較と相互作用の評価</summary>
+                <summary class="accordion-header">3. 粗データのメタ分析は原則として主解析にしない</summary>
                 <div class="accordion-body">
-                  <p>RCTの確実性を起点として、NRSIをどう扱うかを決定。</p>
-                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.88rem;">
-                    <li>RCTの確実性が「Moderate」でその理由が「非直接性」の場合 → NRSIが「Moderate以上」の確実性を持ち、直接的なエビデンスを提供し、効果が一致しているなら → NRSIがRCTの非直接性を補完し、統合を正当化する根拠となり得る</li>
-                    <li>RCTが「非一貫性（Inconsistency）」でダウングレードされている場合 → NRSIが一致していても非一貫性を無かったことにはできない → プールは厳禁</li>
+                  <p>観察研究から「イベント数」「平均値」「標準偏差」だけを抜き出して、未調整のリスク比、オッズ比、平均差を統合すると、各研究内のベースライン不均衡がそのまま要約効果に入り込む。これは<strong>交絡バイアスの拡大再生産</strong>になり得る。</p>
+                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.85rem;border-radius:6px;margin:0.7rem 0;">
+                    <strong>例</strong>：新薬が若く合併症の少ない患者に処方されやすい場合、未調整イベント数だけを統合すると「新薬で死亡が少ない」と見える。しかし、それは薬効ではなく、もともとの低リスク患者が多いことを反映している可能性が高い。
+                  </div>
+                  <p>主解析では、可能な限り<strong>事前に重要交絡を定義し、それに対する調整済み効果推定値</strong>を用いる。調整済みHR、RR、OR、リスク差、平均差、回帰係数などを使う場合は、推定対象、調整変数、モデル、追跡開始時点が比較可能かを確認する。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">4. 調整済み推定値でも、無条件に混ぜてはいけない</summary>
+                <div class="accordion-body">
+                  <p>調整済み推定値なら安全、というわけではない。研究Aは年齢・性別のみ、研究Bは重症度・併存疾患まで、研究Cは傾向スコア、研究Dは周辺構造モデルというように、調整の設計が大きく異なることがある。</p>
+                  <div style="overflow-x:auto;margin:0.8rem 0;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:760px;">
+                      <thead>
+                        <tr style="background:#fee2e2;color:#991b1b;">
+                          <th style="border:1px solid #fecaca;padding:0.55rem;text-align:left;">混ぜる前の確認</th>
+                          <th style="border:1px solid #fecaca;padding:0.55rem;text-align:left;">危険な状態</th>
+                          <th style="border:1px solid #fecaca;padding:0.55rem;text-align:left;">対応</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">効果指標</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">HR、OR、RR、平均差を無理に同一モデルへ入れる。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">同一指標ごとに統合。必要なら変換の仮定を明示。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">調整変数</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">主要交絡が未調整の研究と十分調整された研究を同列に扱う。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">交絡調整の十分性で層別、または高RoBとして感度分析。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">時間軸</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">治療開始時点、診断時点、退院時点が混在する。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">time zeroがそろう研究を主解析にする。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">推定対象</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">開始した効果、継続した効果、実際に服薬した効果が混ざる。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">target trialの因果コントラストに合うものだけを統合。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">5. 連続アウトカムで特に注意すること</summary>
+                <div class="accordion-body">
+                  <p>この章の文脈では、連続量アウトカムのNon-RCTメタ分析にも注意が必要である。ベースライン値が群間で違う場合、単純な最終値平均差は交絡や選択の影響を受けやすい。</p>
+                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.9rem;">
+                    <li><strong>優先する効果量</strong>：ベースライン値を調整した平均差、ANCOVA推定値、適切な交絡調整済み回帰係数。</li>
+                    <li><strong>避ける主解析</strong>：治療群と対照群の最終値平均だけから作った未調整平均差。</li>
+                    <li><strong>尺度が違う場合</strong>：SMDは使えるが、意思決定では可能な限り元の尺度またはMIDに戻して解釈する。</li>
+                    <li><strong>一致性判定</strong>：p値やSMDの有意差ではなく、絶対的な平均差が「無視できる」「小さい」「中等度」「大きい」のどの範囲に入るかで見る。</li>
+                    <li><strong>プロトコルに書く</strong>：最重要時点、MID、許容する尺度変換、ベースライン調整の扱い、変化量と最終値の優先順位。</li>
                   </ul>
                 </div>
               </details>
 
-              <details class="accordion-item">
-                <summary class="accordion-header">Step 4：統合と提示の決定（SoFテーブルへの記載方法）</summary>
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートB：GRADE Guidance 44の4ステップ</h3>
+
+              <figure style="margin:1rem 0;background:#fff;border:1px solid #dbeafe;border-radius:8px;padding:0.8rem;text-align:center;">
+                <img src="images/guidance44_fig3_process.png" alt="GRADE Guidance 44の4ステップ全体フロー" style="max-width:100%;height:auto;border-radius:4px;">
+                <figcaption style="font-size:0.82rem;color:#475569;margin-top:0.5rem;text-align:left;">図：Guidance 44の4ステップ。Step 2で不一致なら統合せず、それぞれ別個に評価して、より確実性の高いエビデンス総体を結論の中心にする。</figcaption>
+              </figure>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">Step 1：RCTとNRSIを別々にGRADE評価する</summary>
                 <div class="accordion-body">
-                  <div style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                      <span style="background:#22c55e;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">最も透明</span>
-                      <div><strong>別々に提示（2行）</strong>：RCTとNRSIを別々の行で示す。</div>
-                    </div>
-                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                      <span style="background:#3b82f6;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">条件付き</span>
-                      <div><strong>別々に提示しつつプール推定値を付加（3行）</strong>：プールが正当化される場合の選択肢。</div>
-                    </div>
-                    <div style="display:flex;gap:0.8rem;align-items:flex-start;">
-                      <span style="background:#f59e0b;color:white;border-radius:4px;padding:0.2rem 0.5rem;font-size:0.8rem;font-weight:bold;flex-shrink:0;">限定的</span>
-                      <div><strong>単一行での提示</strong>：どちらか一方の確実性が極めて高く、もう一方を含める意義がない場合 → 採用しなかった方を脚注で説明。</div>
-                    </div>
+                  <p>まずRCT群とNRSI群を別々にメタ分析またはナラティブ統合し、それぞれの確実性（certainty of evidence, CoE）を評価する。RCTは通常「高」から、古典的GRADEでは観察研究は「低」から開始する。一方、ROBINS-Iを用いてtarget trial emulationに近い形で評価する場合、NRSIも高から開始してバイアスで下げる考え方を取り得る。ただし、動画でも強調されていたように、<strong>NRSIが最終的に高い確実性になる状況は非常にまれ</strong>である。</p>
+                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.85rem;border-radius:6px;margin:0.7rem 0;">
+                    <strong>実務上の言い換え</strong>：NRSIを「自動的に低い」と捨てない。しかし、NRSIを「自動的にRCTと同じ」とも扱わない。target trialから見て、交絡、選択、time zero、介入分類、欠測、測定、報告を個別に評価する。
                   </div>
 
-                  <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:0.8rem;border-radius:6px;margin-top:0.8rem;">
-                    <strong>具体例：カナダの透析開始時期ガイドライン</strong><br>
-                    ・RCT（IDEAL試験）：確実性「Moderate」（不精確性）<br>
-                    ・NRSI 15件：確実性「Very Low」（交絡因子未調整による深刻なバイアス・非一貫性）<br>
-                    両者のHRは共に1.04付近で一見「一致」しているように見えるが、RCTが「Moderate」でNRSIが「Very Low」の場合、NRSIはRCTの不精確性を軽減するために全く役に立たない → プールではなく別々に提示が正しい判断。
+                  <h4 style="color:#334155;margin:1rem 0 0.5rem;">表1：GRADEドメインごとの原則（Guidance 44を日本語で再構成）</h4>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.86rem;min-width:920px;">
+                      <thead>
+                        <tr style="background:#dbeafe;color:#1e3a8a;">
+                          <th style="border:1px solid #bfdbfe;padding:0.55rem;text-align:left;">GRADEドメイン</th>
+                          <th style="border:1px solid #bfdbfe;padding:0.55rem;text-align:left;">基本原則</th>
+                          <th style="border:1px solid #bfdbfe;padding:0.55rem;text-align:left;">プールを考えてよい条件</th>
+                          <th style="border:1px solid #bfdbfe;padding:0.55rem;text-align:left;">注意点</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>研究の限界<br>Risk of bias</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">一方の低RoBは、他方の高RoBを帳消しにしない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">RoBの水準とバイアス方向が十分に似ており、主な残課題が不精確性だけに近い場合。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">バイアスの方向を推定し、デザイン別・RoB別の感度分析を行う。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>非一貫性<br>Inconsistency</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">一方が一貫していても、他方の非一貫性は消えない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">原則プールしない。説明可能な効果修飾因子が特定できた場合のみ慎重に検討。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">NRSIはRCT内の非一貫性を説明する材料にはなり得るが、機械的な相殺ではない。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>非直接性<br>Indirectness</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">直接的なNRSIが、RCTの非直接性を補うことはあり得る。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">同じPICOで、NRSIが対象集団・介入・アウトカムの直接性を改善し、効果が一致する場合。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">妊婦、小児、高齢者、実臨床リスク集団などで特に重要。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>不精確性<br>Imprecision</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">一方が精確でも、他方の不精確性は自動的には消えない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">RoB、非一貫性、非直接性に深刻な問題がなく、絶対効果の閾値上も一致している場合。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">プールにより信頼区間が狭くなることも広くなることもある。広がるなら統合価値は乏しい。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>出版・公表バイアス<br>Dissemination bias</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">一方に公表バイアスがなさそうでも、他方の懸念を消せない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">両方を並べてファネルプロットや探索的評価を行うことはある。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">研究登録、データベース研究の未公表、企業データ、選択的アウトカム報告に注意。</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </details>
 
-              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.88rem;">
-                <strong>結論</strong>：RCTと観察研究のメタ分析は、単にデータをかき集めて結合する作業ではなく、それぞれのドメインごとの限界を論理的に評価し、<strong>絶対効果の閾値を用いて厳格に比較する高度なプロセス</strong>である。
+              <details class="accordion-item" open>
+                <summary class="accordion-header">Step 2：効果の一致性（congruency）を絶対効果と閾値で判定する</summary>
+                <div class="accordion-body">
+                  <p>Guidance 44の中心はここである。RCTとNRSIが「同じ結論を示しているか」は、p値、有意差の有無、相対効果の見た目だけでは判断しない。<strong>同じベースラインリスクを使って絶対効果へ変換し、意思決定閾値の同じ範囲に入るか</strong>で判断する。</p>
+
+                  <figure style="margin:1rem 0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;text-align:center;">
+                    <img src="images/guidance44_fig1_congruency.png" alt="RCTとNRSIの効果推定値の一致・不一致シナリオ" style="max-width:100%;height:auto;border-radius:4px;">
+                    <figcaption style="font-size:0.82rem;color:#475569;margin-top:0.5rem;text-align:left;">図：RCT（青）とNRSI（赤）の効果推定値を、望ましい効果、無視できる効果、望ましくない効果の範囲で比較する。A-Dは一致、E-Hは不一致、I-Lは不精確性により「おそらく一致／おそらく不一致」と判断する状況を示す。</figcaption>
+                  </figure>
+
+                  <figure style="margin:1rem 0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;text-align:center;">
+                    <img src="images/guidance44_fig2_flowchart.png" alt="RCTとNRSIの一致性を判定するフローチャート" style="max-width:100%;height:auto;border-radius:4px;">
+                    <figcaption style="font-size:0.82rem;color:#475569;margin-top:0.5rem;text-align:left;">図：一致性判定の流れ。点推定値と信頼区間が同じ効果範囲に完全に入れば一致。閾値をまたいで完全に分離すれば不一致。信頼区間が広い場合は、CIの重なりと点推定値の範囲から「おそらく一致／おそらく不一致」を判断する。</figcaption>
+                  </figure>
+
+                  <h4 style="color:#334155;margin:1rem 0 0.5rem;">一致性判定の具体ルール</h4>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:760px;">
+                      <thead>
+                        <tr style="background:#dcfce7;color:#166534;">
+                          <th style="border:1px solid #bbf7d0;padding:0.55rem;text-align:left;">判定</th>
+                          <th style="border:1px solid #bbf7d0;padding:0.55rem;text-align:left;">条件</th>
+                          <th style="border:1px solid #bbf7d0;padding:0.55rem;text-align:left;">次にすること</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>一致</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">RCTとNRSIの点推定値・CIが、同じ効果の大きさの範囲に入る。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">Step 3へ進み、GRADEドメインの相互作用を評価する。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>不一致</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">一方のCIと他方のCIが、重要な閾値を挟んで別の範囲に完全に分かれる。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">プールしない。別々に提示し、より確実性の高いエビデンスを結論の中心にする。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>おそらく一致</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">CIは広いが重なり、点推定値も同じ効果範囲にある。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">不確実性を明記し、感度分析を行う。安易な単一推定値化は避ける。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>おそらく不一致</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">CIは一部重なるが、点推定値が別の効果範囲にある、または重なりが乏しい。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">原則として別提示。効果修飾因子、対象集団、ベースラインリスクを探索する。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 style="color:#334155;margin:1rem 0 0.5rem;">絶対効果へ変換する</h4>
+                  <p>二値アウトカムでは、相対効果だけを見るとRCTとNRSIが違って見えても、意思決定に使う絶対効果では同じ「無視できる範囲」に入ることがある。動画ではSGLT2阻害薬と急性腎障害の例で、相対効果は違って見えても、絶対効果では両方とも10/1000未満の小さい差に収まる例が示された。</p>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:0.85rem;margin:0.7rem 0;font-size:0.9rem;">
+                    <strong>簡易式</strong>：相対効果がRRなら、絶対リスク差は <code>ベースラインリスク × (RR - 1)</code> で近似できる。ORやHRでは追加仮定が必要なので、使用した変換方法とベースラインリスクの出典を必ず書く。
+                  </div>
+                  <p>重要なのは、RCTとNRSIに<strong>同じベースラインリスク</strong>を使うこと。RCTは選択された低リスク集団になりやすく、NRSIは実臨床の高リスク集団を反映しやすい。ベースラインリスクが違うだけで絶対効果が不一致に見えるため、大規模で代表性の高い観察研究、レジストリ、または自分たちの統合データから、意思決定対象に合うベースラインリスクを設定する。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 3：RCTの確実性を起点に、NRSIを補完・置換・別提示のどれにするか決める</summary>
+                <div class="accordion-body">
+                  <p>Guidance 44では、RCTの確実性を起点にして、NRSIの確実性と組み合わせて扱いを決める。NRSIは、RCTを<strong>補完</strong>することも、RCTの代わりに<strong>置換</strong>することも、単に<strong>透明性のため別提示</strong>するだけのこともある。</p>
+
+                  <h4 style="color:#334155;margin:1rem 0 0.5rem;">表2：RCTとNRSIの確実性による扱い（Guidance 44を日本語で再構成）</h4>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.8rem;min-width:980px;">
+                      <thead>
+                        <tr style="background:#e0e7ff;color:#3730a3;">
+                          <th style="border:1px solid #c7d2fe;padding:0.5rem;text-align:left;width:12%;">RCTのCoE</th>
+                          <th style="border:1px solid #c7d2fe;padding:0.5rem;text-align:left;">NRSI 高</th>
+                          <th style="border:1px solid #c7d2fe;padding:0.5rem;text-align:left;">NRSI 中</th>
+                          <th style="border:1px solid #c7d2fe;padding:0.5rem;text-align:left;">NRSI 低</th>
+                          <th style="border:1px solid #c7d2fe;padding:0.5rem;text-align:left;">NRSI 非常に低</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;"><strong>RCT 高</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">両方を使える。条件がそろえばプールもあり得る。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCTを主に使う。NRSIは文脈補足や支持情報。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCT単独が原則。NRSIは例外的に補足。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCTのみ。NRSIを結論に使う意義は乏しい。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;"><strong>RCT 中</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを置換または統合候補にする。ドメイン相互作用を詳細評価。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">両方を提示。影響ドメイン次第でプールも検討。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCTを主に使う。RCTの非直接性を補う場合のみNRSIを考慮。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCTのみが原則。NRSIでRCTの限界を補ったとは言えない。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;"><strong>RCT 低</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを主エビデンスにできる。RCTは支持・比較材料。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを主にしつつ、RCTも補完的に提示。条件がよければ統合検討。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">両方提示。片方が片方の限界を本当に補うときだけ統合。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">RCTを主にすることが多い。NRSIは独自の文脈情報がある場合だけ。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;"><strong>RCT 非常に低</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを主エビデンスにする。プールは明確な理由がある場合のみ。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを中心にする。RCTは限定的な補足。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">NRSIを中心にできるが、確実性は低い。RCTは透明性のため併記。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.5rem;">どちらも十分でない。プールは避け、限界を明示。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:0.85rem;border-radius:6px;margin-top:0.8rem;">
+                    <strong>「補える」例</strong>：RCTが妊婦を除外しており、妊婦のNRSIが直接的で、効果も一致し、RoBが許容範囲なら、NRSIはRCTの非直接性を軽減する材料になり得る。<br>
+                    <strong>「補えない」例</strong>：RCTが非一貫性で下がっているとき、NRSIが一貫していてもRCTの非一貫性は消えない。NRSI側の高RoBも、RCT側の低RoBで帳消しにならない。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">Step 4：GRADE表・SoF表でどう見せるかを決める</summary>
+                <div class="accordion-body">
+                  <p>最終的には、読者が「どのエビデンスを結論に使ったのか」「なぜ一方を使わなかったのか」「プールした場合は何を仮定したのか」を追跡できる形で提示する。</p>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.75rem;margin:0.8rem 0;">
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:0.8rem;">
+                      <strong style="color:#166534;">1. 別々に2行提示</strong><br>
+                      RCTとNRSIを別行にする。最も透明で、ナラティブ統合にも使える。
+                    </div>
+                    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.8rem;">
+                      <strong style="color:#1d4ed8;">2. 2行＋プール1行</strong><br>
+                      RCT、NRSI、RCT+NRSIの3行を示す。統合が正当化されるときだけ。
+                    </div>
+                    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:0.8rem;">
+                      <strong style="color:#92400e;">3. 単一行＋脚注</strong><br>
+                      一方だけを結論に使い、もう一方は脚注・本文・付録で説明する。
+                    </div>
+                  </div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:0.85rem;">
+                    <strong>脚注テンプレート</strong>
+                    <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.9rem;">
+                      <li>「NRSIは同じPICOを扱ったが、交絡による深刻なRoBおよび非一貫性のため、結論の主根拠には用いなかった。」</li>
+                      <li>「RCTは対象集団の直接性に懸念があった。NRSIは実臨床集団を含み、絶対効果の範囲も一致したため、非直接性の判断を軽減する補足エビデンスとして扱った。」</li>
+                      <li>「RCTとNRSIは同じベースラインリスクを用いた絶対効果で同じ閾値範囲に収まり、主要ドメインに統合を妨げる深刻な問題がなかったため、プール推定値を参考として提示した。」</li>
+                    </ul>
+                  </div>
+                </div>
+              </details>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートC：実際のレビュー手順</h3>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">プロトコルに書くべき項目</summary>
+                <div class="accordion-body">
+                  <ol style="margin:0.5rem 0 0 1.2rem;font-size:0.9rem;line-height:1.65;">
+                    <li>RCTとNRSIを両方探すか、RCTが不十分なときだけNRSIを使うか。</li>
+                    <li>NRSIを replacement、complementary、integrative のどれとして使う可能性があるか。</li>
+                    <li>target trialのPICO、time zero、追跡期間、アウトカム定義。</li>
+                    <li>重要交絡因子のリストと、DAGや臨床知識による根拠。</li>
+                    <li>主解析で許容する効果量。調整済み推定値を優先すること。</li>
+                    <li>絶対効果に変換する方法と、ベースラインリスクの出典。</li>
+                    <li>利益・害の意思決定閾値。連続アウトカムならMID。</li>
+                    <li>RCTとNRSIを別々にメタ分析する計画。</li>
+                    <li>一致性判定の方法と、不一致ならプールしない方針。</li>
+                    <li>デザイン別、RoB別、調整方法別、ベースラインリスク別の感度分析。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">データ抽出フォームに入れる項目</summary>
+                <div class="accordion-body">
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.86rem;min-width:820px;">
+                      <thead>
+                        <tr style="background:#f1f5f9;color:#334155;">
+                          <th style="border:1px solid #cbd5e1;padding:0.55rem;text-align:left;">カテゴリ</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.55rem;text-align:left;">抽出する項目</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>研究設計</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">コホート、ケースコントロール、レジストリ、電子カルテ、active comparator new-user、target trial emulationの有無。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>介入・比較</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">曝露定義、開始日、用量、継続、切替、中止、比較群の定義。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>time zero</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">追跡開始、曝露分類、適格判定、アウトカムリスク開始がそろっているか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>交絡調整</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">調整変数、測定時点、DAG、傾向スコア、IPTW、マッチング、層別、周辺構造モデル、操作変数。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>効果量</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">調整済みHR/RR/OR/リスク差、調整済み平均差、SEまたはCI、log変換可能性。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>ベースラインリスク</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">対照群イベント率、代表性のある外部リスク、RCTとNRSIのリスク差、絶対効果計算に使った値。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;"><strong>RoB</strong></td>
+                          <td style="border:1px solid #e2e8f0;padding:0.55rem;">ROBINS-I各ドメイン、バイアス方向、主要交絡の未調整、欠測、測定、選択的報告。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">メタ分析の実行ルール</summary>
+                <div class="accordion-body">
+                  <ul style="margin:0.5rem 0 0 1.2rem;font-size:0.9rem;line-height:1.65;">
+                    <li>RCTとNRSIは、まず必ず別々に統合する。</li>
+                    <li>NRSIの主解析は、原則として調整済み推定値をlogスケールで統合する。</li>
+                    <li>HR、RR、ORは混在させない。変換する場合は仮定と感度分析を示す。</li>
+                    <li>連続アウトカムでは、ベースライン調整済み平均差を優先する。尺度が異なる場合はSMDを使い、MIDで解釈する。</li>
+                    <li>研究間異質性は、統計量だけでなく、target trialとのずれ、調整変数、time zero、データソース、RoBで説明する。</li>
+                    <li>RCTとNRSIのプールは、効果が一致し、統合を妨げる重大なGRADEドメイン問題がなく、プール後の推定値が意思決定を明確にする場合に限る。</li>
+                    <li>プールによりCIが広がり不精確性が増すなら、プール推定値を結論の中心にしない。</li>
+                  </ul>
+                </div>
+              </details>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートD：動画で補強された実例</h3>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">例1：インスリンと1型糖尿病 - NRSIが高確実性になり得る「まれな」状況</summary>
+                <div class="accordion-body">
+                  <p>インスリン導入前の1型糖尿病は極めて予後不良で、導入後に死亡が劇的に減少した。これは歴史的対照を用いた非ランダム化比較でありながら、生物学的妥当性と効果の大きさから因果効果に高い確信を持てる例として扱える。</p>
+                  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:0.85rem;border-radius:6px;">
+                    <strong>ただし</strong>：このような「parachute型」の巨大効果は例外であり、通常の治療効果や小から中等度の効果に一般化してはいけない。多くのNRSIでは、未測定交絡や選択バイアスを完全には排除できない。
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">例2：COVID-19のtocilizumab - 一致していてもプールしないことがある</summary>
+                <div class="accordion-body">
+                  <p>講義では、重症COVID-19に対するtocilizumabの例が紹介された。RCTと観察研究は同じ方向の効果を示し、絶対効果としても大きく矛盾しない。しかし観察研究側にはRoBと非一貫性があり、プールするとCIが広がって不精確性が増す可能性がある。</p>
+                  <p>この場合、NRSIを入れることで「情報が増えた」ように見えても、実際には結論の確実性を下げることがある。したがって、<strong>RCTを主根拠にし、NRSIは別提示または脚注で透明化する</strong>という判断が合理的になる。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">例3：認知症患者の薬剤評価 - ベースラインリスクが違うと絶対効果が変わる</summary>
+                <div class="accordion-body">
+                  <p>動画では、RCTの対照群リスクが約4.7%、観察研究では約37%と大きく異なる例が示された。RCTは選択基準により低リスク患者が多く、観察研究は実臨床の高リスク集団を含むため、同じ相対効果でも絶対効果は大きく違って見える。</p>
+                  <p>このような場合、代表性の高い観察研究などから意思決定対象に合うベースラインリスクを設定し、RCTとNRSIの相対効果を同じベースラインリスクに適用してから一致性を判断する。ベースラインリスクをそろえると、見かけの不一致が解消する場合がある。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">例4：よくある失敗 - いきなり全部プールする</summary>
+                <div class="accordion-body">
+                  <p>動画のQ&Aで最もよくある失敗として挙げられていたのは、RCTとNRSIを発見したあと、サブグループも作らずにそのまま一つのメタ分析へ投入することである。これは初心者だけでなく、時間のないレビューでも起こりやすい。</p>
+                  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:0.85rem;border-radius:6px;">
+                    <strong>回避策</strong>：プロトコル段階でスコーピングを行い、RCTがどれくらいありそうか、NRSIをどう使うか、プールする可能性がある条件は何かを先に書く。最終的に一方だけを使う場合でも、もう一方を付録、脚注、本文で透明に報告する。
+                  </div>
+                </div>
+              </details>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートE：最終チェックリスト</h3>
+
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
+                <ol style="margin:0 0 0 1.2rem;font-size:0.9rem;line-height:1.7;">
+                  <li>target trialを明記した。</li>
+                  <li>RCTとNRSIを別々に検索・選別・統合した。</li>
+                  <li>NRSIでは未調整データを主解析にしていない。</li>
+                  <li>調整済み推定値の調整変数、time zero、推定対象を確認した。</li>
+                  <li>ROBINS-Iまたは同等の方法でRoBとバイアス方向を評価した。</li>
+                  <li>RCTとNRSIのCoEを別々に評価した。</li>
+                  <li>絶対効果に変換し、ベースラインリスクの出典を明記した。</li>
+                  <li>利益・害・連続アウトカムのMIDなど、意思決定閾値を事前に設定した。</li>
+                  <li>RCTとNRSIの効果が一致、一致しない、おそらく一致、おそらく不一致のどれかを判定した。</li>
+                  <li>不一致ならプールしなかった。</li>
+                  <li>一致していても、RoB、非一貫性、非直接性、公表バイアスが統合を妨げないか確認した。</li>
+                  <li>プールした場合は、別々の推定値とプール推定値を読者が比較できるようにした。</li>
+                  <li>プールしなかった場合は、なぜ片方を主根拠にしたか脚注で説明した。</li>
+                  <li>デザイン別、RoB別、調整方法別、ベースラインリスク別の感度分析を行った。</li>
+                  <li>SoF表またはEvidence profileで、RCTとNRSIの扱いを透明に示した。</li>
+                </ol>
+              </div>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.9rem;">
+                <strong>まとめ</strong>：Non-RCTのメタ分析は「RCTがないから観察研究を足す」作業ではない。target trialを基準にNRSIのバイアスを評価し、RCTとNRSIを別々にGRADE評価し、絶対効果と閾値で一致性を判定し、ドメインごとの限界を確認してから、補完・置換・別提示・統合のいずれかを選ぶ。最も危険なのは、よく見えるフォレストプロットを作ることではなく、意味の説明できない単一推定値を作ってしまうことである。
               </div>
             </div>
           </div>
