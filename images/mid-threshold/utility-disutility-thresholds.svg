@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 560" role="img" aria-labelledby="title desc">
+  <title id="title">Utility change and decision thresholds</title>
+  <desc id="desc">Two utility scales comparing severe stroke with utility 0.3 and mild nausea with utility 0.8, showing that a larger disutility leads to smaller decision thresholds per 1000.</desc>
+  <rect width="1260" height="560" fill="#ffffff"/>
+  <style>
+    .axis { stroke:#2f7faa; stroke-width:4; }
+    .bar { fill:#2f7faa; }
+    .rest { fill:#d9d9d9; }
+    .label { font-family: Arial, sans-serif; fill:#555; font-size:28px; }
+    .num { font-family: Arial, sans-serif; fill:#4a4a4a; font-size:76px; font-weight:700; }
+    .headline { font-family: Arial, sans-serif; fill:#2f7faa; font-size:36px; font-weight:700; }
+    .body { font-family: Arial, sans-serif; fill:#555; font-size:25px; }
+    .bold { font-weight:700; }
+  </style>
+
+  <text x="72" y="78" class="label">Death</text>
+  <text x="78" y="118" class="label">(0.0)</text>
+  <text x="210" y="78" class="label">Severe</text>
+  <text x="182" y="118" class="label">Stroke (0.3)</text>
+  <text x="494" y="78" class="label">Perfect health</text>
+  <text x="556" y="118" class="label">(1.0)</text>
+  <text x="36" y="232" class="num">0</text>
+  <text x="638" y="232" class="num">1</text>
+  <line x1="124" y1="142" x2="124" y2="284" class="axis"/>
+  <line x1="280" y1="142" x2="280" y2="284" class="axis"/>
+  <line x1="620" y1="142" x2="620" y2="284" class="axis"/>
+  <rect x="124" y="170" width="156" height="82" class="bar"/>
+  <rect x="280" y="170" width="340" height="82" class="rest"/>
+  <line x1="620" y1="268" x2="280" y2="268" class="axis"/>
+  <polyline points="300,248 280,268 300,288" fill="none" class="axis"/>
+
+  <text x="752" y="120" class="headline">Utility change (disutility) = 0.7</text>
+  <text x="752" y="168" class="body">Threshold for trivial/small effect: <tspan class="bold">30 per 1000</tspan></text>
+  <text x="752" y="206" class="body">Threshold for small/moderate effect: <tspan class="bold">78 per 1000</tspan></text>
+  <text x="752" y="244" class="body">Threshold for moderate/large effect: <tspan class="bold">148 per 1000</tspan></text>
+
+  <text x="386" y="338" class="label">Mild</text>
+  <text x="338" y="378" class="label">Nausea (0.8)</text>
+  <text x="36" y="488" class="num">0</text>
+  <text x="638" y="488" class="num">1</text>
+  <line x1="124" y1="398" x2="124" y2="540" class="axis"/>
+  <line x1="516" y1="398" x2="516" y2="540" class="axis"/>
+  <line x1="620" y1="398" x2="620" y2="540" class="axis"/>
+  <rect x="124" y="426" width="392" height="82" class="bar"/>
+  <rect x="516" y="426" width="104" height="82" class="rest"/>
+  <line x1="620" y1="524" x2="516" y2="524" class="axis"/>
+  <polyline points="536,504 516,524 536,544" fill="none" class="axis"/>
+
+  <text x="752" y="386" class="headline">Utility change (disutility) = 0.2</text>
+  <text x="752" y="434" class="body">Threshold for trivial/small effect: <tspan class="bold">61 per 1000</tspan></text>
+  <text x="752" y="472" class="body">Threshold for small/moderate effect: <tspan class="bold">151 per 1000</tspan></text>
+  <text x="752" y="510" class="body">Threshold for moderate/large effect: <tspan class="bold">284 per 1000</tspan></text>
+</svg>

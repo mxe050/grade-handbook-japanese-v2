@@ -493,6 +493,7 @@
         <a class="button primary" href="https://www.youtube.com/watch?v=4nd4uTrDAKM&t=2s" target="_blank" rel="noopener noreferrer">MIDと信頼区間の関係を理解しよう</a>
         <a class="button emerald" href="https://mxe050.github.io/GRADE-Guidance-42/" target="_blank" rel="noopener noreferrer">Guidance 42 シミュレーター</a>
         <a class="button amber" href="https://www.acpjournals.org/doi/10.7326/ANNALS-24-02013" target="_blank" rel="noopener noreferrer">Guidance 42 原著</a>
+        <a class="button" href="https://book.gradepro.org/guideline/decision-thresholds" target="_blank" rel="noopener noreferrer">GRADE Book: Decision Thresholds</a>
       </div>
     </section>
 
@@ -513,7 +514,8 @@
       <a href="#terms">1. 用語整理</a>
       <a href="#problems">2. 重要な問題点</a>
       <a href="#streams">3. 二つの流れ</a>
-      <a href="#guidance42">4. Guidance 42</a>
+      <a href="#gradebook-dt">4A. GRADE Book DT</a>
+      <a href="#guidance42">4B. Guidance 42</a>
       <a href="#setting-methods">5. 設定方法</a>
       <a href="#dt-procedure">6. 記録手順</a>
       <a href="#figures">8. 論点を学習</a>
@@ -612,8 +614,237 @@
       </div>
     </section>
 
+    <section id="gradebook-dt" class="section">
+      <h2>4A. GRADE Book「Decision Thresholds」の詳しい解説</h2>
+      <p>
+        GRADE Bookの「Decision Thresholds」章は、閾値を「効果を分類するための補助線」だけでなく、
+        エビデンス統合、certainty評価、EtD、推奨作成、将来研究の計画、AI支援評価までをつなぐ共通言語として扱っています。
+        ここでは、公式章の内容を日本語で読めるように、転載ではなく実務向けに再構成して整理します。
+      </p>
+      <div class="note info">
+        <p>
+          <strong>出典：</strong>
+          <a href="https://book.gradepro.org/guideline/decision-thresholds" target="_blank" rel="noopener noreferrer">GRADE Book: Decision Thresholds</a>
+          （Authors: Martin Ringsten, Wojtek Wiercioch, Gian Paolo Morgano, Bernardo Sousa-Pinto, Ignacio Neumann, Holger J. Schünemann.
+          Graphics: Carlos Cuello. Last modified: 09 Jun 2026）
+        </p>
+      </div>
+
+      <div class="card blue">
+        <h3>Key messageを一言でいうと</h3>
+        <p>
+          Decision thresholdsは、アウトカムごとに明示された参照点です。効果が「些細または重要でない」のか、
+          「小さい」のか、「中等度」なのか、「大きい」のか、そしてどこで判断や行動が変わるのかを定義します。
+          これにより、これまで専門家やパネルの経験に暗黙に任されていた価値判断を、読者が追跡できる形にします。
+        </p>
+        <p>
+          GRADEでは、統計学的有意差よりも、患者や意思決定者にとって意味のある大きさかを重視します。
+          そのため、閾値は効果の大きさ、certainty評価、利益と害のバランス、推奨の強さ、研究計画をつなぐ基盤になります。
+          重大なアウトカムほど、小さな絶対差でも意味があり、軽いアウトカムでは、より大きな絶対差が必要になるという発想が中心です。
+        </p>
+      </div>
+
+      <div class="figure-image">
+        <img src="images/mid-threshold/decision-threshold-effect-zones.png" alt="Decision thresholds distinguishing small, moderate, and large benefits and harms">
+        <div class="caption">
+          図1：利益側と害側に、小・中・大の効果領域を分ける閾値を置く。中央の「効果なし」の線は参照点だが、通常はそれ自体を意思決定閾値とはみなさない。
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Decision thresholdsとは何か</h3>
+          <p>
+            Decision thresholdsは、あるアウトカムについて、効果推定値をどの範囲に分類するかを決める境界です。
+            絶対効果差、場合によっては相対効果を、些細、小、中、大などの効果量カテゴリーへ分けます。
+            outcome thresholds、effect size thresholdsと呼ばれることもあります。
+          </p>
+          <p>
+            重要なのは、閾値がアウトカム固有であることです。死亡、重度脳卒中、軽い悪心、QOL低下、入院、疼痛改善は、
+            すべて同じ1000人あたり人数差で判断できません。人々がそのアウトカムをどれほど避けたいか、または得たいかによって、
+            意味のある効果差の大きさは変わります。
+          </p>
+        </div>
+        <div class="card">
+          <h3>なぜ明示する必要があるか</h3>
+          <p>
+            従来、効果の大きさに関する判断は、専門家の直感、臨床経験、慣習、パネル討議の空気に依存しがちでした。
+            その場合、同じ効果推定値でも、あるパネルは「小さい」と判断し、別のパネルは「重要」と判断することがあります。
+          </p>
+          <p>
+            GRADEがDecision thresholdsを重視する理由は、この暗黙判断を表に出すためです。
+            どの閾値を使ったか、なぜその値にしたか、誰の価値観を反映したかを明示すれば、
+            evidence synthesis、certainty評価、推奨作成の再現性が高まります。
+          </p>
+        </div>
+      </div>
+
+      <h3>Decision thresholdsが役立つ場面</h3>
+      <div class="grid three">
+        <div class="card emerald">
+          <h3>1. 効果の大きさを説明する</h3>
+          <p>
+            介入の効果を「有意差あり/なし」ではなく、患者にとってどの程度の利益・害かとして伝えられます。
+            1000人あたり何人の死亡を減らすのか、何人の軽い副作用を増やすのかを、アウトカム固有の閾値に照らして分類します。
+          </p>
+        </div>
+        <div class="card emerald">
+          <h3>2. Certainty評価を構造化する</h3>
+          <p>
+            GRADEのcertainty評価は、真の効果がどの閾値のどちら側、またはどの効果範囲にあるかへの確信として考えます。
+            risk of bias、不一致、非直接性、不精確さ、出版バイアスが、真の効果を別の意思決定範囲へ動かし得るなら、格下げを検討します。
+          </p>
+        </div>
+        <div class="card emerald">
+          <h3>3. 利益と害のバランスを統合する</h3>
+          <p>
+            各アウトカムの望ましい効果と望ましくない効果を、些細、小、中、大として分類し、全体として利益が害を上回るかを判断します。
+            これにより、EtDで「どのアウトカムが判断を動かしたか」を説明しやすくなります。
+          </p>
+        </div>
+        <div class="card purple">
+          <h3>4. 最終推奨へ接続する</h3>
+          <p>
+            閾値は、エビデンスから推奨へ移るときの数量的な背骨になります。
+            値観の違いが推奨にどう影響するかを検討でき、単一推奨でよいのか、集団ごとに推奨を分けるべきか、意思決定支援ツールが必要かを考えられます。
+          </p>
+        </div>
+        <div class="card purple">
+          <h3>5. 将来研究を計画する</h3>
+          <p>
+            閾値は、今後の研究がどれくらいの効果を示せば意思決定を変え得るかを示します。
+            サンプルサイズ設計、研究優先順位、追加研究の必要性を、より透明に議論できます。
+          </p>
+        </div>
+        <div class="card purple">
+          <h3>6. 自動化・AI支援に使う</h3>
+          <p>
+            AIや自動評価では、「高リスク研究が多いから格下げ」のような単純ルールではなく、
+            バイアスやランダム誤差が結論を閾値の別領域へ動かすかを評価する必要があります。
+            Decision thresholdsは、その判断をアルゴリズム化するための基準になります。
+          </p>
+        </div>
+      </div>
+
+      <h3>概念基盤：Utility / Disutilityと期待効用</h3>
+      <p>
+        Decision thresholdsの考え方は、期待効用理論に根ざしています。健康状態にはUtilityを割り当てます。
+        0は死亡に相当する状態、1は完全な健康です。Disutilityは、完全な健康からどれだけ離れているかを表す値で、
+        1 - Utilityとして考えます。死亡や重度脳卒中のような重大アウトカムはDisutilityが大きく、
+        軽い悪心のような一過性で軽いアウトカムはDisutilityが小さくなります。
+      </p>
+      <p>
+        ここで大切なのは、同じ「1000人あたり10人」の差でも、アウトカムの重さによって意味が変わることです。
+        Utility差が大きいアウトカムでは、小さなリスク差でも重要と判断されます。逆に、Utility差が小さいアウトカムでは、
+        より大きなリスク差がなければ、意思決定を動かすほど重要とは言いにくくなります。
+      </p>
+
+      <div class="figure-image">
+        <img src="images/mid-threshold/utility-disutility-thresholds.svg" alt="Utility change and decision thresholds for severe stroke and mild nausea">
+        <div class="caption">
+          図2：重度脳卒中のようにUtility低下が大きいアウトカムでは、小さい絶対差でも意味がある。軽い悪心のようにUtility低下が小さいアウトカムでは、より大きな絶対差が必要になる。
+        </div>
+      </div>
+
+      <h3>閾値を設定する3段階</h3>
+      <div class="grid three">
+        <div class="card blue">
+          <h3>Step 1. 重要アウトカムを定義する</h3>
+          <p>
+            まず、介入の望ましい効果と望ましくない効果として、どのアウトカムが重要かを決めます。
+            それぞれについて、何を測るのか、どの尺度か、どの時点か、どの期間のリスクかを明確にします。
+            同じ「入院」でも、30日以内、1年以内、疾患関連、全原因では意味が変わります。
+          </p>
+          <p>
+            次に、そのアウトカムのUtility変化を探します。既存研究やSRから得るのが望ましいですが、
+            見つからない場合は患者・市民、臨床家、パネルから直接引き出すことがあります。
+            それも難しければ、重いアウトカムほど大きなUtility変化を置くという一般原則で近似し、限界を明記します。
+          </p>
+        </div>
+        <div class="card blue">
+          <h3>Step 2. 効果量閾値を置く</h3>
+          <p>
+            次に、各アウトカムについて、些細/小、小/中、中/大の境界を決めます。
+            使える方法は大きく二つです。第一は、Utility変化と経験的係数から閾値を計算する方法。
+            第二は、患者、臨床家、政策担当者、ガイドラインパネルなどに、1000人あたり何人の差なら小・中・大かを直接尋ねる方法です。
+          </p>
+          <p>
+            実務では、計算式で初期値を作り、ステークホルダーの判断で調整する組み合わせが使いやすいです。
+            計算値とパネル判断が一致すれば信頼しやすく、不一致なら、価値観、文脈、リスク許容度の違いを議論するきっかけになります。
+          </p>
+        </div>
+        <div class="card blue">
+          <h3>Step 3. レビューして洗練する</h3>
+          <p>
+            初期閾値は、作成者だけで確定させず、関係者のフィードバックを受けて見直します。
+            多くの関係者が受け入れられる単一セットを作れれば実装しやすいですが、患者集団や価値観が大きく異なるなら、複数の閾値セットを用意することもあります。
+          </p>
+          <p>
+            複数セットは感度分析にも使えます。たとえば、軽い副作用を重く見る集団と、効果を優先する集団で、
+            利益と害のバランスや推奨の方向・強さが変わるかを確認できます。
+          </p>
+        </div>
+      </div>
+
+      <h3>経験的係数を使う方法</h3>
+      <p>
+        GRADE Bookでは、Utility changeから小・中・大の閾値を計算する一般式が紹介されています。
+        これは、臨床家、患者、政策担当者、研究者などの参加者が複数のシナリオを評価した方法論研究から得られた係数です。
+        そのまま使うこともできますが、特定の文脈に合わせて修正したり、議論の出発点として使うこともできます。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>境界</th><th>一般式</th><th>読み方</th></tr></thead>
+          <tbody>
+            <tr><td><strong>些細/小</strong></td><td>0.073 - (0.061 × utility change)</td><td>この値を超えると、小さい効果として扱う候補になる。</td></tr>
+            <tr><td><strong>小/中</strong></td><td>0.180 - (0.146 × utility change)</td><td>この値を超えると、中等度の効果として扱う候補になる。</td></tr>
+            <tr><td><strong>中/大</strong></td><td>0.338 - (0.271 × utility change)</td><td>この値を超えると、大きな効果として扱う候補になる。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn">
+        <p>
+          <strong>重要な実務注意：</strong>
+          これらの式は、脳卒中や心筋梗塞のように臨床で比較的よく見られ、Utility推定も比較的安定しているアウトカムをもとにしています。
+          きわめて稀なアウトカムにそのまま使うと、ベースラインリスクに比べて閾値が大きすぎ、臨床的に重要な絶対効果を「些細」と誤分類する恐れがあります。
+          逆に非常に頻度の高いアウトカムでは、閾値が小さすぎて、臨床的には限定的な差が大きく見えることがあります。
+        </p>
+      </div>
+
+      <h3>ステークホルダーから直接決める方法</h3>
+      <p>
+        もう一つの方法は、患者、臨床家、政策担当者、研究者、ガイドラインパネルなどに直接尋ねることです。
+        たとえば「このアウトカムが1000人あたり何人減れば小さい利益と考えるか」「何人増えれば中等度の害と考えるか」を、
+        アウトカムごとに回答してもらいます。連続アウトカムであれば、何点差、何単位差なら小・中・大かを尋ねます。
+      </p>
+      <p>
+        この方法は、Utilityの実証データが不足している場合や、地域・制度・患者集団の文脈に合わせたい場合に有用です。
+        ただし、誰に尋ねたか、患者が含まれたか、合意形成の方法、ばらつきの扱いを記録しなければ、透明性は不十分です。
+      </p>
+
+      <h3>時間軸を必ず書く</h3>
+      <p>
+        Decision thresholdsは、ベースラインリスクや絶対効果と同じく時間軸に依存します。
+        「1年で1000人あたり10人減る」と「2年で1000人あたり10人減る」は同じ意味ではありません。
+        追跡期間が変われば、リスクの蓄積や効果曝露の期間も変わるため、閾値も変える必要があります。
+      </p>
+      <p>
+        したがって、閾値を設定するときは、アウトカム定義、測定時点、追跡期間を必ず一緒に記録します。
+        これを省くと、同じ閾値を異なる期間の研究へ機械的に当てはめ、効果の大きさや不精確さを誤って判断する原因になります。
+      </p>
+
+      <div class="note tip">
+        <p>
+          <strong>簡単な実務ガイド：</strong>
+          1) 介入の重要な利益と害を定義し、それぞれの重要度をUtility、患者入力、既存文献で見積もる。
+          2) 些細、小、中、大を分ける閾値を、経験式、ステークホルダー調査、または両方で設定する。
+          3) 患者、臨床家、パネルで見直し、価値観が分かれる場合は代替閾値セットを感度分析に使う。
+        </p>
+      </div>
+    </section>
+
     <section id="guidance42" class="section">
-      <h2>4. GRADE Guidance 42：Utility/DisutilityとDT計算</h2>
+      <h2>4B. GRADE Guidance 42：Utility/DisutilityとDT計算</h2>
       <p>
         ここは問題4、問題5、問題7への答えです。アウトカムごとに閾値が違う理由、Utilityとアウトカム重要度を混同しやすい理由、
         そして「効果側を補正する」のか「閾値側を変える」のかを計算として確認します。
@@ -950,6 +1181,7 @@
           <h3>GRADE Guidance / 方法論</h3>
           <ul>
             <li><a href="https://www.acpjournals.org/doi/10.7326/ANNALS-24-02013" target="_blank" rel="noopener noreferrer">GRADE Guidance 42</a></li>
+            <li><a href="https://book.gradepro.org/guideline/decision-thresholds" target="_blank" rel="noopener noreferrer">GRADE Book: Decision Thresholds</a></li>
             <li><a href="https://www.acpjournals.org/doi/10.7326/ANNALS-25-00548" target="_blank" rel="noopener noreferrer">GRADE Guidance 41</a></li>
             <li><a href="https://www.sciencedirect.com/science/article/pii/S0895435622001883" target="_blank" rel="noopener noreferrer">GRADE Guidance 35</a></li>
             <li><a href="https://www.sciencedirect.com/science/article/pii/S0895435624003950" target="_blank" rel="noopener noreferrer">GRADE-THRESHOLD methodological study</a></li>
