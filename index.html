@@ -7712,7 +7712,8 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 1)">クロスオーバー試験・スプリットマウス</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">連続量メタ分析</button>
           <button class="tab-btn" onclick="switchTab(this, 3)">非ランダム化比較試験</button>
-          <button class="tab-btn" onclick="switchTab(this, 4)">仮説検定とP値の誤解：佐藤俊哉先生</button>
+          <button class="tab-btn" onclick="switchTab(this, 4)">非ランダム化比較試験２</button>
+          <button class="tab-btn" onclick="switchTab(this, 5)">仮説検定とP値の誤解：佐藤俊哉先生</button>
         </div>
         <div class="tab-content">
 
@@ -8556,7 +8557,207 @@ function checkAuth(){
             </div>
           </div>
 
-          <!-- Tab 4: 仮説検定とP値の誤解：佐藤俊哉先生 -->
+          <!-- Tab 4: 非ランダム化比較試験２ -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">非ランダム化比較試験２：調整推定値とメタ分析の落とし穴</h2>
+              <p style="margin-bottom:1rem;color:#555;line-height:1.8;">
+                このタブは、前タブの「RCTと非ランダム化比較試験をどう扱うか」の続編です。ここでは、非ランダム化比較試験（NRSI）や観察研究をメタ分析するときに特に問題になりやすい、<strong>調整していないメタ分析の問題</strong>と、<strong>調整してあっても、調整方法が異なるメタ分析の問題</strong>を、文献番号付きで専門家向けに整理します。
+              </p>
+
+              <div style="background:#eff6ff;border-left:4px solid #2563eb;padding:1rem;border-radius:8px;margin-bottom:1.2rem;">
+                <strong>結論を先に言うと</strong>、NRSIのメタ分析で統合しているのは「イベント数」や「症例数」ではありません。統合すべきなのは、同じPICO、同じtime zero、同じ介入戦略、同じアウトカム定義、同じ効果尺度、そして同じ推定対象（estimand）に近い<strong>介入効果の推定値</strong>です。交絡を無視したraw dataのプールは、見た目にはフォレストプロットになりますが、因果効果の要約にはなりません。
+              </div>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">参照文献</h3>
+              <ol style="margin:0 0 1.2rem 1.3rem;line-height:1.8;font-size:0.92rem;color:#334155;">
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8959012/" target="_blank">Mathur MB, VanderWeele TJ. Methods to Address Confounding and Other Biases in Meta-Analyses: Review and Recommendations.</a> <em>Annual Review of Public Health</em>. 2022;43:19-35. DOI: 10.1146/annurev-publhealth-051920-114020.</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3063329/" target="_blank">Voils CI, Crandell JL, Chang Y, Leeman J, Sandelowski M. Combining adjusted and unadjusted findings in mixed research synthesis.</a> <em>Journal of Evaluation in Clinical Practice</em>. 2011;17(3):429-434. DOI: 10.1111/j.1365-2753.2010.01444.x.</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6690173/" target="_blank">Kundu P, Tang R, Chatterjee N. Generalized meta-analysis for multiple regression models across studies with disparate covariate information.</a> <em>Biometrika</em>. 2019;106(3):567-585. DOI: 10.1093/biomet/asz030.</li>
+                <li><a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-24" target="_blank">Reeves BC, Deeks JJ, Higgins JPT, Shea B, Tugwell P, Wells GA. Cochrane Handbook Chapter 24: Including non-randomized studies on intervention effects.</a> Cochrane Handbook version 6.5, 2024.</li>
+                <li><a href="https://www.jclinepi.com/article/S0895-4356(25)00173-8/fulltext" target="_blank">Systematic reviews of observational studies frequently conclude based on meta-analyses of biased results: standards must be improved.</a> <em>Journal of Clinical Epidemiology</em>. 2025; DOI: 10.1016/j.jclinepi.2025.111840.</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5352535/" target="_blank">Chang BH, Hoaglin DC. Meta-Analysis of Odds Ratios: Current Good Practices.</a> <em>Medical Care</em>. 2017;55(4):328-335. DOI: 10.1097/MLR.0000000000000696.</li>
+              </ol>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. NRSIのメタ分析で最初に確認すべきこと：それは同じ効果を推定しているのか</summary>
+                <div class="accordion-body">
+                  <p>NRSIでは、治療や曝露がランダムに割り付けられません。治療を受けた人と受けなかった人は、年齢、重症度、併存疾患、病期、施設、治療選択の理由、既治療歴、受診行動、社会経済的背景などが最初から異なります。このため、単純に「治療群のイベント数」と「対照群のイベント数」を比較しても、それは介入効果ではなく、治療を選ばれた患者背景の違いを反映している可能性があります。</p>
+                  <p>Cochrane Chapter 24は、NRSIではランダム化試験よりバイアスが大きくなりやすく、特に交絡、選択、ルーチンデータ解析上の問題を慎重に扱う必要があると説明しています[4]。さらに、研究デザインのラベルだけで判断するのではなく、time zero、介入開始、比較群、追跡、アウトカム測定、交絡制御などの設計上の特徴で評価することが重要です[4]。</p>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin-top:0.8rem;">
+                    <strong>専門的に見るポイント</strong>
+                    <ul style="margin:0.6rem 0 0 1.2rem;line-height:1.7;">
+                      <li>同じ介入戦略を比較しているか。薬剤開始、継続、増量、手術適応、検査実施などの「介入」の意味が研究間で同じか。</li>
+                      <li>同じtime zeroから追跡しているか。介入開始後に生存していた患者だけを組み入れると、immortal time biasが生じる。</li>
+                      <li>同じアウトカムを、同じ期間、同じ方法で測定しているか。死亡、発症、再入院、検査値改善、複合アウトカムでは推定対象が異なる。</li>
+                      <li>同じ効果尺度を扱っているか。OR、RR、HR、RD、平均差、標準化平均差は単純に横並びにできない。</li>
+                      <li>同じ推定対象か。ATE、ATT、ATC、条件付きOR、周辺OR、ハザード比は、同じ「効果」と呼ばれていても意味が違う。</li>
+                    </ul>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">2. 調整していないメタ分析の問題：raw dataを入れると因果効果になる、という誤解</summary>
+                <div class="accordion-body">
+                  <p>最も危険な処理は、NRSIから治療群・対照群の人数とイベント数だけを取り出し、RCTと同じようにMantel-Haenszel法や逆分散法でOR/RRを計算してしまうことです。この処理は統計ソフト上は簡単に実行できます。しかし、得られるものは「調整されていない粗い関連」であり、交絡を取り除いた介入効果ではありません。</p>
+                  <p>例えば、重症患者ほど積極的治療を受ける領域では、治療群の死亡率が高く見えることがあります。これは治療が有害だからではなく、治療群が最初から重症だったからかもしれません。逆に、若くて合併症が少ない患者ほど新規治療を受ける領域では、治療群の予後がよく見えることがあります。これは治療が有効だからではなく、治療群のベースラインリスクが低かったからかもしれません。</p>
+                  <p>MathurとVanderWeeleは、メタ分析が一次研究のバイアス、とくに未測定交絡を引き継ぐと、非常に説得的に見えるが誤った結論になりうることを強調し、感度分析やバイアス解析を routine に行うことを推奨しています[1]。ここで重要なのは、研究数を増やしても交絡は平均化されるとは限らないという点です。交絡の方向が同じなら、研究を増やすほど、誤った方向の推定値が精密になります。</p>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:1rem;border-radius:8px;margin:0.9rem 0;">
+                    <strong>大規模データの罠</strong>：大規模観察研究は標準誤差が小さく、通常の逆分散重みではメタ分析全体を支配します。しかし、その狭い信頼区間はランダム誤差の小ささを示すだけで、交絡、選択、誤分類、測定バイアスの小ささを示しません。Cochrane Chapter 24も、方法論的質の低い巨大NRSIが小規模だが質の高い研究を圧倒しうること、そして大規模NRSIの信頼区間が真の不確実性を表さないことに注意を促しています[4]。
+                  </div>
+                  <p>Cochrane Chapter 24は、NRSIでは通常、未調整推定値ではなく、交絡を制御しようとした調整済み推定値を解析に用いるべきだと述べています[4]。さらに、単純な分子・分母、平均、標準誤差だけでは、設計段階で重要な交絡領域がすべてマッチされている場合を除き、交絡は制御できません[4]。したがって、「イベント数があるからメタ分析できる」という判断は、NRSIでは非常に不十分です。</p>
+                  <table style="width:100%;border-collapse:collapse;margin-top:0.9rem;font-size:0.9rem;">
+                    <thead>
+                      <tr style="background:#e0f2fe;color:#0f172a;">
+                        <th style="border:1px solid #bae6fd;padding:0.65rem;text-align:left;">よくある処理</th>
+                        <th style="border:1px solid #bae6fd;padding:0.65rem;text-align:left;">なぜ危険か</th>
+                        <th style="border:1px solid #bae6fd;padding:0.65rem;text-align:left;">望ましい対応</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">各観察研究のイベント数だけでOR/RRを計算する</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">患者背景の違いがそのまま効果推定値に入る</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">調整済み推定値、調整変数、推定対象を抽出する</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">未調整ORと調整済みORを同じ列に入れる</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">粗い関連と交絡制御後の推定値を同じ意味として扱ってしまう</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">主解析は調整済み、未調整は感度分析または別提示にする[2]</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">巨大データ研究をそのまま逆分散重みでプールする</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">バイアスが小さいからではなく、標準誤差が小さいから全体を支配する</td>
+                        <td style="border:1px solid #dbeafe;padding:0.65rem;">RoB、調整の妥当性、データ品質で主解析に入れるか判断する[4]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">3. 調整済み推定値なら安全、ではない：調整方法が異なるメタ分析の問題</summary>
+                <div class="accordion-body">
+                  <p>未調整推定値より調整済み推定値を優先することは重要です。しかし、「調整済み」と書いてあれば自動的に比較可能になるわけではありません。研究Aは年齢と性別だけを調整し、研究Bは重症度、併存疾患、ベースライン値、既治療、施設差を調整し、研究Cは傾向スコアマッチング、研究DはIPTW、研究Eは多変量ロジスティック回帰を用いているかもしれません。これらはすべて「adjusted」と表記されますが、残っている交絡も、推定している効果も、必ずしも同じではありません。</p>
+                  <p>Kunduらは、研究間で利用できる共変量情報が異なる状況で、複数回帰モデルのパラメータをどう統合するかという問題を扱っています[3]。これは、観察研究のメタ分析において「各研究の調整済み推定値をただ並べて平均すればよい」という発想が単純すぎることを示しています。共変量が異なれば、推定値は同じ母数を推定していない可能性があります。</p>
+                  <p>Voilsらは、混合研究合成において調整済み結果と未調整結果を組み合わせる問題を扱っています[2]。この論点は、NRSIメタ分析で非常に実務的です。調整済み推定値がある研究と、未調整推定値しかない研究を、同じ森林図に入れることはしばしば行われます。しかし、その総合推定値は「どの程度交絡を制御した効果なのか」が曖昧になります。</p>
+                  <div style="background:#fef2f2;border-left:4px solid #dc2626;padding:1rem;border-radius:8px;margin:0.9rem 0;">
+                    <strong>調整済み推定値の不一致は、単なる統計的異質性ではない</strong>：I<sup>2</sup>が高いか低いか以前に、各研究が同じestimandを推定しているかを確認する必要があります。調整変数、モデル、効果尺度、対象集団、追跡開始時点が違うなら、統計的にプールできても、臨床的・因果推論的にはプールできないことがあります。
+                  </div>
+                  <h4 style="color:#1e3a8a;margin:1rem 0 0.6rem;">調整方法の違いが生む代表的なズレ</h4>
+                  <ul style="margin:0 0 0.8rem 1.2rem;line-height:1.8;">
+                    <li><strong>調整変数セットの違い</strong>：年齢・性別のみの調整と、重症度・併存疾患・ベースラインアウトカムまで含む調整では、残余交絡の程度が異なる。</li>
+                    <li><strong>変数定義の違い</strong>：同じ「重症度」でも、臨床スコア、検査値、診断コード、入院日数など測定方法が違えば、調整される内容が違う。</li>
+                    <li><strong>調整すべきでない変数の調整</strong>：介入後に発生する中間変数やコライダーを調整すると、交絡が減るどころか新しいバイアスを生む。</li>
+                    <li><strong>傾向スコア法の違い</strong>：マッチング、層別化、IPTW、overlap weightingでは、推定対象集団が異なりうる。ATTとATEを同じ効果としてプールしてよいとは限らない。</li>
+                    <li><strong>条件付き効果と周辺効果の違い</strong>：ロジスティック回帰の調整ORは条件付きORであることが多い。ORは非collapsibleなので、交絡がなくても条件付きORと周辺ORは一致しない。</li>
+                    <li><strong>時間軸の違い</strong>：HRは追跡期間全体の瞬間リスク比に関する尺度であり、RRやリスク差とは意味が違う。比例ハザード性や追跡開始時点が違うと、同じ臨床質問に見えても別の推定になる。</li>
+                  </ul>
+                  <p>ChangとHoaglinは、ORのメタ分析では、ORそのものではなくlog ORと標準誤差を適切に扱うこと、ゼロセルや精度の扱いを含めて実務上の注意が必要であることを整理しています[6]。NRSIではここにさらに、ORが未調整か調整済みか、条件付きか周辺か、どの共変量で調整されたかという層が加わります。つまり、ORという同じ記号を使っていても、メタ分析に入れてよい同種の推定値とは限りません。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">4. 文献[5]が示す実務上の警告：バイアスのある推定値をメタ分析して結論していないか</summary>
+                <div class="accordion-body">
+                  <p>2025年のJournal of Clinical Epidemiology論文[5]は、表題の時点で非常に重要な警告を発しています。観察研究のSRでは、バイアスのある結果をメタ分析し、その総合推定値にもとづいて結論してしまうことが頻繁にある、という問題です。これは、NRSIのメタ分析における最大の落とし穴を端的に表しています。</p>
+                  <p>フォレストプロット、ダイヤモンド、I<sup>2</sup>、p値、サブグループ解析が整っていると、読者には「きちんと統合されたエビデンス」に見えます。しかし、入力された各研究の推定値が交絡・選択・誤分類・不適切なtime zero・immortal time・不適切な調整によって歪んでいれば、メタ分析はその歪みを消すのではなく、平均化して見えにくくします。</p>
+                  <p>したがって、観察研究SRの品質を評価するときは、メタ分析を行ったかどうかよりも、次を確認する必要があります。第一に、主要交絡領域が事前に定義されているか。第二に、各研究がその交絡領域をどの程度測定・調整できているか。第三に、未調整と調整済みを混ぜていないか。第四に、調整済み推定値間のestimandの違いを吟味しているか。第五に、ROBINS-Iなどでバイアスリスクとバイアス方向を評価したうえで統合しているかです。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">5. 推奨される実務フロー：NRSIをメタ分析する前にすること</summary>
+                <div class="accordion-body">
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.8;">
+                    <li><strong>target trialを明確にする</strong>：適格基準、介入戦略、比較戦略、time zero、追跡期間、アウトカム、因果対照を明文化する。これがないと、どのNRSIが直接的か判断できない。</li>
+                    <li><strong>主要交絡領域を事前に決める</strong>：Cochrane Chapter 24は、ROBINS-Iの準備として重要な交絡領域と共介入を事前に定める必要があると述べています[4]。一次研究が報告している変数だけからリストを作ると、測られていない重要交絡を見落とします。</li>
+                    <li><strong>研究デザイン名ではなく設計特徴で分類する</strong>：「コホート研究」「症例対照研究」というラベルだけでなく、前向き/後ろ向き、inception cohortか、介入開始と追跡開始が揃っているか、比較群が同じ医療文脈から来ているかを確認する[4]。</li>
+                    <li><strong>未調整・調整済みの両方を抽出する</strong>：ただし主解析は通常、調整済み推定値を用いる[4]。未調整値しかない研究は、主解析に入れるのではなく、別提示、感度分析、または除外を検討する。</li>
+                    <li><strong>複数の調整済み推定値がある場合は、交絡バイアスを最小にする推定値を選ぶ</strong>：Cochrane Chapter 24は、同一研究に複数の調整推定値がある場合、交絡によるバイアスリスクを最小化するものを選ぶべきだと述べています[4]。</li>
+                    <li><strong>効果尺度と推定対象を揃える</strong>：OR、RR、HR、RDを安易に混ぜない。調整ORでも、条件付きORと周辺OR、ATEとATTが混在していないか確認する。</li>
+                    <li><strong>ROBINS-Iまたは同等の枠組みでRoBを評価する</strong>：critical riskのNRSIは解析から除外することが推奨されます[4]。serious riskを含める場合も、強い警告と感度分析が必要です。</li>
+                    <li><strong>統合するならgeneric inverse varianceを基本にする</strong>：調整済みlog OR、log RR、log HRなどの推定値と標準誤差を用いる。NRSIでは異質性が大きいことが想定されるため、ランダム効果をデフォルトとして考え、固定効果を使うなら理由を書く[4]。</li>
+                    <li><strong>似ていなければプールしない</strong>：Cochrane Chapter 24は、NRSIの特徴が十分に類似しない場合、総合推定値を出さずにフォレストプロットで個別推定値を示すことを推奨しています[4]。</li>
+                    <li><strong>バイアス感度分析を行う</strong>：未測定交絡、出版バイアス、選択、誤分類などが結論をどれほど変えるかを検討する。MathurとVanderWeeleの論点は、メタ分析後のダイヤモンドだけでなく、バイアスに対する結論の頑健性を示す必要があるという点にあります[1]。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">6. 「調整していないメタ分析」と「調整方法が異なるメタ分析」の見分け方</summary>
+                <div class="accordion-body">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                    <thead>
+                      <tr style="background:#dcfce7;color:#064e3b;">
+                        <th style="border:1px solid #bbf7d0;padding:0.65rem;text-align:left;">確認項目</th>
+                        <th style="border:1px solid #bbf7d0;padding:0.65rem;text-align:left;">危険な記載</th>
+                        <th style="border:1px solid #bbf7d0;padding:0.65rem;text-align:left;">信頼しやすい記載</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">効果推定値</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">人数とイベント数からOR/RRを算出</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">各研究の調整済み推定値、CI、SEを抽出</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">調整変数</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">「adjusted」とだけ記載</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">調整変数、測定時点、定義を表で提示</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">推定対象</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">ATE、ATT、条件付き/周辺効果の区別なし</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">PSマッチング、IPTW、回帰調整などの意味を説明</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">研究の統合</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">RCT、コホート、症例対照を一括でプール</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">デザイン特徴、RoB、調整方法で別解析</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">結論</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">「メタ分析で有意だったので有効」</td>
+                        <td style="border:1px solid #dcfce7;padding:0.65rem;">交絡、残余交絡、バイアス方向、絶対効果を踏まえて結論</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">7. GRADE/CPGでの読み替え：certainty評価にどう影響するか</summary>
+                <div class="accordion-body">
+                  <p>NRSIのメタ分析で、未調整推定値を主解析にしている場合、RoBは通常かなり深刻です。症例数が多い、p値が小さい、信頼区間が狭い、研究数が多いという理由でcertaintyを高くしてはいけません。大規模な交絡つき推定値は、間違った値を精密に推定しているだけかもしれないからです。</p>
+                  <p>調整済み推定値を用いていても、調整変数や推定対象が研究間でばらばらなら、非一貫性、非直接性、RoBの問題が残ります。I<sup>2</sup>が低くても安心できません。なぜなら、同じ方向に偏ったバイアスが研究間で似ていれば、統計的異質性は低く見えるからです。</p>
+                  <p>GRADEで重要なのは、総合推定値が「きれい」かどうかではなく、その推定値が意思決定に使える因果効果としてどの程度信頼できるかです。推奨作成者は、調整の妥当性、残余交絡、感度分析、絶対効果への変換、患者重要アウトカムとの関係を説明する必要があります。</p>
+                  <div style="background:#ecfeff;border-left:4px solid #0891b2;padding:1rem;border-radius:8px;margin-top:0.9rem;">
+                    <strong>CPGを読むときの監査チェック</strong>
+                    <ol style="margin:0.6rem 0 0 1.2rem;line-height:1.7;">
+                      <li>観察研究をraw dataでメタ分析していないか。</li>
+                      <li>未調整推定値と調整済み推定値を混ぜていないか。</li>
+                      <li>調整済み推定値の調整変数一覧が示されているか。</li>
+                      <li>どの調整済み推定値を採用したか、その理由が書かれているか。</li>
+                      <li>ROBINS-Iなどで交絡、選択、分類、逸脱、欠測、アウトカム測定、報告選択を評価しているか。</li>
+                      <li>critical riskの研究を主解析に入れていないか。</li>
+                      <li>デザイン特徴や調整方法が違う研究を、説明なく一つにプールしていないか。</li>
+                      <li>プールしない判断をした場合に、総合推定値を出さない理由が明記されているか。</li>
+                      <li>総合推定値の信頼区間を、バイアスまで含む不確実性と誤解していないか。</li>
+                      <li>観察研究由来の効果を推奨に使うとき、EtDで不確実性と価値判断が説明されているか。</li>
+                    </ol>
+                  </div>
+                </div>
+              </details>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.92rem;line-height:1.8;">
+                <strong>まとめ</strong>：NRSIのメタ分析では、「研究数が多い」「forest plotがある」「有意差がある」ことよりも、各研究の推定値が同じ因果質問に答えているかが重要です。未調整のraw dataメタ分析は、交絡を平均化するのではなく、しばしば交絡を精密化します。調整済み推定値であっても、調整変数、モデル、効果尺度、推定対象、time zeroが違えば、同じダイヤモンドに入れる根拠は弱くなります。専門家向けSR/CPGでは、プールする技術よりも、プールしない判断を透明に説明する技術が同じくらい重要です。
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: 仮説検定とP値の誤解：佐藤俊哉先生 -->
           <div class="tab-pane">
             <div class="content-section">
               <h2 class="section-title">仮説検定とP値の誤解</h2>
