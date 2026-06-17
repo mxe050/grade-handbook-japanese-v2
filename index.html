@@ -8578,6 +8578,8 @@ function checkAuth(){
                 <li><a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-24" target="_blank">Reeves BC, Deeks JJ, Higgins JPT, Shea B, Tugwell P, Wells GA. Cochrane Handbook Chapter 24: Including non-randomized studies on intervention effects.</a> Cochrane Handbook version 6.5, 2024.</li>
                 <li><a href="https://www.jclinepi.com/article/S0895-4356(25)00173-8/fulltext" target="_blank">Systematic reviews of observational studies frequently conclude based on meta-analyses of biased results: standards must be improved.</a> <em>Journal of Clinical Epidemiology</em>. 2025; DOI: 10.1016/j.jclinepi.2025.111840.</li>
                 <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5352535/" target="_blank">Chang BH, Hoaglin DC. Meta-Analysis of Odds Ratios: Current Good Practices.</a> <em>Medical Care</em>. 2017;55(4):328-335. DOI: 10.1097/MLR.0000000000000696.</li>
+                <li><a href="https://doi.org/10.1016/j.jclinepi.2025.112086" target="_blank">Cuello-Garcia CA, Morgan RL, Santesso N, et al. GRADE Guidance 44: strategies to enhance the utilization of randomized and non-randomized studies in evidence syntheses of health interventions.</a> <em>Journal of Clinical Epidemiology</em>. 2026;190:112086. DOI: 10.1016/j.jclinepi.2025.112086.</li>
+                <li><a href="https://doi.org/10.1016/j.jclinepi.2021.11.026" target="_blank">Cuello-Garcia CA, Santesso N, Morgan RL, et al. GRADE Guidance 24: optimizing the integration of randomized and non-randomized studies of interventions in evidence syntheses and health guidelines.</a> <em>Journal of Clinical Epidemiology</em>. 2022;142:200-208. DOI: 10.1016/j.jclinepi.2021.11.026.</li>
               </ol>
 
               <details class="accordion-item" open>
@@ -9057,6 +9059,77 @@ function checkAuth(){
                     </table>
                   </div>
                   <p style="margin-top:0.9rem;">特に重要なのは、不精確性とRoBを混同しないことです。狭い95%CIは「ランダム誤差が小さい」ことを示しますが、「交絡が小さい」ことを示しません。大規模観察研究でcertaintyを上げる理由として症例数やp値を使うのは、GRADEの文脈では不十分です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">15. GRADE Guidance 44以後の注意：NRSIはRCTを「補強」できるが、同じvery lowを同じ重みで読んではいけない</summary>
+                <div class="accordion-body">
+                  <p>GRADE Guidance 44は、RCTとNRSIを統合するか、分けて提示するか、片方を補完的・逐次的・置換的に使うかを、より構造化して判断するための新しい guidance です[7]。中心になるのは、(1) certainty評価の対象と意思決定閾値を定義すること、(2) RCTとNRSIの効果推定値の整合性を評価すること、(3) どのGRADEドメインがcertaintyを下げているかを見て、両者が本当に補完関係にあるかを判断すること、(4) どちらを、どのように使うかを決めることです[7]。これは「RCTが弱ければNRSIを足せばよい」という単純な話ではありません。</p>
+                  <p>GRADE Guidance 24も、NRSIがRCTを補完、逐次的に補足、場合によっては置換する可能性を整理しています[8]。たとえば、RCTが短期アウトカムしか見ていない場合にNRSIが長期アウトカムを補う、RCTが代理アウトカムしか見ていない場合にNRSIが患者重要アウトカムを補う、RCTの対象集団が狭い場合にNRSIが実臨床での直接性を補う、といった使い方はありえます[7,8]。しかし、ここで重要なのは、NRSIの役割が<strong>「交絡を無視してサンプルサイズを増やすこと」ではない</strong>という点です。</p>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin:0.9rem 0;">
+                    <strong>同じvery lowでも、同じ信頼性ではない</strong>：GRADEの4段階カテゴリは粗い分類です。RCTのvery lowとNRSIのvery lowが同じラベルでも、低下理由が違えば、実質的な信頼性は同じではありません。RCTがvery lowなのは、1本だけで不精確性が大きいからかもしれません。一方、NRSIがvery lowなのは、交絡、選択バイアス、time zero不整合、アウトカム測定差が深刻だからかもしれません。この2つを「同じvery lowだから同格」と扱うのは危険です。
+                  </div>
+                  <h4 style="color:#1e3a8a;margin:1rem 0 0.6rem;">15.1 RCT very low と NRSI very low の中身は違う</h4>
+                  <p>RCTのcertaintyがvery lowになる理由には、研究数が少ない、イベント数が少ない、信頼区間が広い、盲検化や割付の問題がある、アウトカムが間接的、などがあります。これらは深刻ですが、ランダム化により、少なくとも既知・未知の交絡を平均化しようとする設計上の保護があります。</p>
+                  <p>一方、NRSIのcertaintyがvery lowになる理由には、重要予後因子の未測定、治療選択理由の不明、重症度差、施設差、暦年差、介入後変数の調整、immortal time bias、アウトカム測定頻度の違いなどがあります。これらは単なる精度の問題ではなく、効果推定値そのものを特定方向に歪める問題です[1,4,5]。したがって、同じvery lowでも、RCTは「不確実で幅が広い推定値」、NRSIは「方向も大きさも歪んでいるかもしれない推定値」である場合があります。</p>
+                  <h4 style="color:#1e3a8a;margin:1rem 0 0.6rem;">15.2 1本のRCT vs 20本のNRSI：数が多いほうがよく見える罠</h4>
+                  <p>現実のCPGやSRでは、1本の小規模RCTがvery low、20本の観察研究もvery low、という状況がしばしばあります。このとき、読者には「NRSIが20本もあるのだから、RCTより全体像がよく見えるのではないか」と感じられます。しかし、この印象はかなり危険です。20本のNRSIが同じ交絡構造を共有していれば、研究数が増えてもバイアスは消えません。むしろ、同じ方向に歪んだ推定値が精密に見えるだけです[1,5]。</p>
+                  <p>研究数の多さは、ランダム誤差の減少には役立ちます。しかし、治療選択の交絡、重症度差、time zeroのずれ、アウトカム測定の違い、未測定交絡は、研究数が多いだけでは平均化されません。特に、同じデータベース、同じ医療制度、同じ診療慣行、同じ交絡未測定を共有しているNRSIが複数ある場合、それは独立した20個の根拠ではなく、同じバイアスを繰り返し観察している可能性があります。</p>
+                  <div style="overflow-x:auto;margin-top:0.8rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+                      <thead>
+                        <tr style="background:#e0f2fe;color:#0f172a;">
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">状況</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">見かけの印象</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">実際に確認すべきこと</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">GRADE上の扱い</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCT 1本、very low。NRSI 20本、very low。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">NRSIのほうが研究数が多く、精密で信頼できそうに見える。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">NRSIのvery lowが不精確性由来か、交絡・選択バイアス由来かを分ける。未測定交絡の方向も見る。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">同じvery lowとして横並びにせず、ドメイン別に根拠の性質を説明する。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCTは小さいがランダム化されている。NRSIは大規模だが未調整。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">NRSIのほうがCIが狭く、説得的に見える。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">未調整の狭いCIは交絡不確実性を含まない。raw dataメタ分析なら主根拠にしない。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCTの不精確性とNRSIのRoBを別々に説明し、単純なプールは避ける。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCTとNRSIの効果方向が一致。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">両者が一致するので確からしく見える。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">NRSIのバイアス方向がRCTと同じ方向に働く可能性、出版バイアス、アウトカム選択を検討する。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">一致だけでoverall certaintyを上げない。どのドメインが補完されたかを明示する[7]。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCTとNRSIの効果が不一致。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">数の多いNRSIを採用したくなる。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">不一致の理由が、RCTの間接性なのか、NRSIの交絡なのかを検討する。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">原則として別提示し、片方を採用する理由をEtDで説明する。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h4 style="color:#1e3a8a;margin:1rem 0 0.6rem;">15.3 NRSIがRCTを本当に補強するのは、どのドメインを補ったかを説明できる場合だけ</h4>
+                  <p>NRSIをRCTの補強として使うなら、「何を補ったのか」を具体的に言えなければなりません。たとえば、RCTでは追跡期間が短すぎるがNRSIで長期有害事象が見える、RCTでは対象外だった高齢者や併存疾患患者の直接性を補う、RCTでは代理アウトカムしかなくNRSIで患者重要アウトカムを確認する、などです[7,8]。逆に、「RCTが1本しかないので、NRSIを20本足して精度を上げた」という説明は、交絡の問題を無視しており不十分です。</p>
+                  <p>Guidance 44の実務的な価値は、RCTとNRSIを機械的に足すことではなく、両者の効果推定値の整合性、certainty低下ドメイン、補完関係、意思決定上の役割を明示する点にあります[7]。NRSIが同じvery lowでも、RoBではなく非直接性や不精確性を補う情報を持つなら、文脈情報として価値があります。しかし、NRSIのvery lowが交絡によるものなら、それはRCTの不精確性を埋めるどころか、別種の不確実性を持ち込む可能性があります。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">16. rawデータを使った未調整メタ分析が横行しているという実証的問題</summary>
+                <div class="accordion-body">
+                  <p>未調整メタ分析の問題は、まれな理論的懸念ではありません。Paulらの2025年JCE論文は、2024年にJAMA、Lancet、BMJ、Annals of Internal Medicine系の主要誌に掲載された観察研究を含むSRを調べ、63本中51本、すなわち80.9%が観察研究のcrude・unadjusted resultsをメタ分析していたと報告しています[5]。調整済み関連推定値にどこかで触れていたレビューは22/63、34.9%にとどまり、調整済みと未調整のメタ分析の両方を示したものは9/63、14.3%でした[5]。</p>
+                  <p>この数字はかなり深刻です。観察研究を含むSRの多くで、治療選択の交絡、immortal time bias、測定バイアス、適応による交絡を十分に扱わないまま、イベント数や粗い関連を統合している可能性があります。しかも、フォレストプロット、ダイヤモンド、I<sup>2</sup>、サブグループ解析があると、読者には方法論的に整った解析に見えてしまいます。Paulらの問題提起は、まさに「バイアスのある推定値をメタ分析して強い結論を出す」ことへの警告です[5]。</p>
+                  <div style="background:#fff7ed;border-left:4px solid #f97316;padding:1rem;border-radius:8px;margin:0.9rem 0;">
+                    <strong>CPG作成者への実務的警告</strong>：SRにforest plotがあるかではなく、そのforest plotの入力値が何かを確認してください。rawイベント数から作ったOR/RRなのか、重要交絡を調整した推定値なのか、調整変数は何か、同じestimandなのか、未調整と調整済みを混ぜていないか。この確認なしにNRSIのメタ分析を推奨根拠にするのは危険です。
+                  </div>
+                  <p>特に問題なのは、未調整メタ分析が「透明で再現可能」に見える点です。たしかにイベント数と分母からOR/RRを再計算することは容易です。しかし、再現可能なのは計算であって、因果推論ではありません。交絡構造を無視した計算が再現可能であっても、その結果が治療効果を表すとは限りません[1,4,5]。</p>
+                  <p>したがって、今後のCPGやSRでは、観察研究を含む場合、少なくとも以下を要求するべきです。第一に、未調整推定値を主解析にしない理由、または例外的に使う理由を明記する。第二に、主要交絡領域を事前定義する。第三に、調整済み推定値の調整変数と推定対象を表にする。第四に、RCTとNRSIを同じvery lowだからといって同じ重みで扱わない。第五に、NRSIを補完的に使うなら、どのGRADEドメインを補完したかを明示する[4,7,8]。</p>
                 </div>
               </details>
 
