@@ -9071,7 +9071,7 @@ function checkAuth(){
             <div class="content-section" style="scroll-behavior:smooth;">
               <style>
                 @media print {
-                  #singlearm-1, #singlearm-2, #singlearm-3, #singlearm-4, #singlearm-5, #singlearm-6, #singlearm-7, #singlearm-8, #singlearm-9, #singlearm-10, #singlearm-11, #singlearm-12, #singlearm-13, #singlearm-14, #singlearm-15, #singlearm-16, #singlearm-17, #singlearm-18 { break-inside: avoid; }
+                  #singlearm-1, #singlearm-2, #singlearm-2a, #singlearm-3, #singlearm-4, #singlearm-5, #singlearm-6, #singlearm-7, #singlearm-8, #singlearm-9, #singlearm-9a, #singlearm-10, #singlearm-11, #singlearm-12, #singlearm-13, #singlearm-14, #singlearm-15, #singlearm-15a, #singlearm-16, #singlearm-17, #singlearm-18 { break-inside: avoid; }
                   #singlearm-18 a[href]::after { content: " (" attr(href) ")"; font-size: 0.82em; color: #334155; }
                   nav a { text-decoration: none; color: #111827; }
                 }
@@ -9091,6 +9091,7 @@ function checkAuth(){
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.35rem 0.9rem;font-size:0.9rem;line-height:1.6;">
                   <a href="#singlearm-1">1. Executive summary</a>
                   <a href="#singlearm-2">2. まず区別すべき2つの問題</a>
+                  <a href="#singlearm-2a">2a. 現場で多い誤った実例型</a>
                   <a href="#singlearm-3">3. 用語の整理</a>
                   <a href="#singlearm-4">4. pooled proportionで推定できるもの</a>
                   <a href="#singlearm-5">5. 統計的論点</a>
@@ -9098,12 +9099,14 @@ function checkAuth(){
                   <a href="#singlearm-7">7. SRで含める場合の実務</a>
                   <a href="#singlearm-8">8. 外部対照はなぜ別問題か</a>
                   <a href="#singlearm-9">9. 外部対照の種類</a>
+                  <a href="#singlearm-9a">9a. 外部対照メタ分析の実装不能性</a>
                   <a href="#singlearm-10">10. 因果推論の仮定</a>
                   <a href="#singlearm-11">11. 外部対照の典型的バイアス</a>
                   <a href="#singlearm-12">12. 設計原則</a>
                   <a href="#singlearm-13">13. 解析方法</a>
                   <a href="#singlearm-14">14. 規制・HTA文脈</a>
                   <a href="#singlearm-15">15. SR/MAでの扱い</a>
+                  <a href="#singlearm-15a">15a. 査読チェックリスト</a>
                   <a href="#singlearm-16">16. 推奨される書き方</a>
                   <a href="#singlearm-17">17. 図表</a>
                   <a href="#singlearm-18">18. References</a>
@@ -9149,6 +9152,59 @@ function checkAuth(){
                   </div>
                 </div>
                 <p style="margin-top:0.8rem;line-height:1.8;">この2つを混同すること自体が、多くの低品質な systematic review / meta-analysis の根本的欠陥である。統計ソフトで計算できることと、因果的・臨床的に意味があることは別である。</p>
+              </section>
+
+              <section id="singlearm-2a" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">2a. 現場で多い誤った実例型：なぜ多くの論文で単群メタ分析が過剰解釈されるのか</h3>
+                <p style="line-height:1.8;">単群メタ分析の問題は、理論上の細かい統計論ではありません。実際の論文では、単群研究の奏効率、死亡率、合併症率、再発率、有害事象率をプールし、その値をあたかも治療効果・手技効果・安全性比較の根拠であるかのように解釈している例が少なくありません。方法論文は、単群研究が比較効果レビューで果たせる役割には限界があること、比例メタ分析は観察頻度の要約であることを繰り返し警告しています[7,12,13]。</p>
+                <p style="line-height:1.8;">以下は特定の学会・疾患・論文を名指しするものではなく、査読やガイドライン作成で実際に遭遇しやすい「実例型」です。問題は、数字を計算したことではありません。<strong>計算した数字に、比較群がないのに比較効果の意味を与えてしまうこと</strong>です。</p>
+                <div style="overflow-x:auto;margin-top:0.8rem;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+                    <thead>
+                      <tr style="background:#f1f5f9;color:#1e293b;">
+                        <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">実例型</th>
+                        <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">論文でよく見る処理</th>
+                        <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">なぜ不適切か</th>
+                        <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">許容される書き方</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">希少がん・難治がんの単群第II相試験</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">複数の単群試験から奏効率をプールし、「治療は有効」と結論する。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">奏効率は自然経過、前治療、測定間隔、RECIST判定、中央判定の有無、患者選択に強く左右される。比較群がなければ標準治療との差は分からない。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">対象単群試験で観察された奏効割合の要約であり、治療効果の大きさを示すものではない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">手術・内視鏡・歯科手技の症例シリーズ</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">合併症率や成功率をプールし、手技Aは安全・有効と述べる。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">術者経験、施設選択、学習曲線、症例選択、フォローアップ期間がばらばらで、手技そのものの効果と分離できない[3,4]。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">専門施設で報告された合併症頻度の要約であり、他手技より安全とは言えない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">希少疾患の自然史と治療単群の比較</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">治療単群の死亡率が古い自然史データより低いので、生存改善と結論する。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">診断基準、支持療法、病期分類、登録経路、暦年、データ品質が違う。古い自然史は現在の反事実とは限らない[15,19-21]。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">歴史的情報との文脈比較であり、非ランダム化比較として別途評価が必要である。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">有害事象の単群安全性レビュー</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">有害事象率が低いので安全と結論する。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">分母、追跡期間、能動的収集か受動的報告か、重症度定義、脱落が異なる。低頻度は「検出されていない」だけかもしれない。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">報告研究内で観察された有害事象頻度であり、比較安全性は推定できない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">診断・スクリーニング後の発見率レビュー</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">発見率・陽性率をプールし、検査が有用と結論する。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">事前確率、紹介バイアス、検査閾値、確認検査、verification biasが違う。発見率は患者利益ではない。</td>
+                        <td style="border:1px solid #e2e8f0;padding:0.6rem;">対象集団での検出頻度の要約であり、アウトカム改善や有用性は別途評価する。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin-top:0.9rem;">
+                  <strong>実務上の核心</strong>：単群メタ分析で多発する誤りは、統計手法の選択以前に、研究質問のすり替えです。「この治療を受けた人のうち何%が奏効したか」という記述質問を、「この治療は標準治療より有効か」という比較質問に変換してしまう。ここがずれると、GLMM、Freeman-Tukey、random-effects、prediction intervalをどれだけ丁寧に使っても、結論は治りません[7,10,11,12,13]。
+                </div>
               </section>
 
               <section id="singlearm-3" style="margin-bottom:1.2rem;">
@@ -9284,6 +9340,94 @@ function checkAuth(){
                 </div>
               </section>
 
+              <section id="singlearm-9a" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">9a. 外部対照を実装して「メタ分析」するのは、現実的にはなぜほぼ不可能になりやすいか</h3>
+                <p style="line-height:1.8;">外部対照を用いた単群研究は、1つの開発プログラム、1つの試験、1つのRWDデータ源、1つの事前SAPの中で慎重に設計するなら、状況依存的に検討されうる方法です[17,18,22,28]。しかし、systematic review / meta-analysis の段階で、既に出版された複数の単群研究に、それぞれ異なる外部対照を後から結びつけ、さらにそれらをプールして単一の治療効果にすることは、現実的にはほぼ破綻します。</p>
+                <p style="line-height:1.8;">理由は単純です。外部対照比較は、治療群と対照群が比較可能であるという強い仮定に依存します。ところが、メタ分析ではその比較を複数研究にまたがって再現しなければなりません。各研究で外部対照の由来、暦年、診断基準、組入基準、治療ライン、支持療法、アウトカム測定、欠測、交絡調整が違うなら、各比較は別々の仮想試験になります。これらを1つのダイヤモンドにまとめると、「何を比較した推定値なのか」が説明できなくなります。</p>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #334155;border-radius:8px;padding:1rem;margin:0.9rem 0;">
+                  <strong>かなり強く言うと</strong>：published aggregate data だけを使った外部対照比較のメタ分析は、ほとんどの場合、比較可能性を検証できません。個票データがなく、time zero、適格基準、主要予後因子、アウトカム判定、追跡、欠測を再構成できないなら、統計的にsummary estimateを出すことはできても、因果的な治療効果としては非常に弱い。多くの場合、結論は「プールしない」が正解です。
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">外部対照メタ分析が成立するために必要な条件</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                    <thead>
+                      <tr style="background:#ede9fe;color:#312e81;">
+                        <th style="border:1px solid #ddd6fe;padding:0.55rem;text-align:left;">必要条件</th>
+                        <th style="border:1px solid #ddd6fe;padding:0.55rem;text-align:left;">本来必要な内容</th>
+                        <th style="border:1px solid #ddd6fe;padding:0.55rem;text-align:left;">出版論文ベースで起きる現実</th>
+                        <th style="border:1px solid #ddd6fe;padding:0.55rem;text-align:left;">結論</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じtarget estimand</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じ対象集団、介入戦略、比較戦略、アウトカム、追跡、要約尺度。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">研究ごとに対象集団、治療ライン、アウトカム期間が違う。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じ効果としてプールできない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">time zero整合</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">単群治療開始日と外部対照のindex dateが同じ意味。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">外部対照は診断日、治療開始日、登録日、検査日などが混在。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">immortal time biasを評価できない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">適格基準の再現</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">試験のinclusion/exclusionを外部対照に完全再現。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">RWDにPS、病期細分類、検査値、既治療詳細がない。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">trial eligibility mismatchが残る。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">主要予後因子の測定</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">重症度、病期、既治療、併存疾患、施設、暦年などを介入前に測定。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">論文には調整済みHRと一部共変量しか載っていない。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">未測定交絡の大きさを評価できない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">アウトカム判定の同等性</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">画像頻度、中央判定、イベント定義、追跡密度が同じ。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">単群試験は厳密評価、外部対照は日常診療記録。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">PFS、奏効率、有害事象は比較困難。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じ調整方法</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じ共変量、同じ関数形、同じPS仕様、同じ推定対象。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">ある研究はmatching、別研究はIPTW、別研究は回帰調整。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">ATE、ATT、overlap populationが混在する。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">同じ外部対照の質</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">data provenance、auditability、fitness for purposeが確認済み。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">データ源の選択過程や監査可能性が論文から分からない。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">RoB評価が推測になる。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">QBAの実施</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">未測定交絡、誤分類、欠測、選択バイアスの感度分析。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">必要な分布情報がなく、論文ごとに仮定も異なる。</td>
+                        <td style="border:1px solid #e9d5ff;padding:0.55rem;">統合後の頑健性を説明できない[26,27]。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">メタ分析で特に破綻しやすい3つのパターン</h4>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.8rem;">
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;">
+                    <strong>1. published benchmark比較を寄せ集める</strong>
+                    <p style="margin:0.45rem 0 0;line-height:1.7;">各単群試験の奏効率を、別々の歴史的文献の奏効率と比べる。患者レベル調整ができず、ベンチマークの分母も時代も異なるため、効果推定というより印象比較に近い。</p>
+                  </div>
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;">
+                    <strong>2. synthetic control armを同質とみなす</strong>
+                    <p style="margin:0.45rem 0 0;line-height:1.7;">各研究が別々のRWDソースからsynthetic controlを作る。名称は同じでも、組入基準、欠測処理、PSモデル、評価頻度、index dateが違うため、同じ比較ではない。</p>
+                  </div>
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;">
+                    <strong>3. 調整済みHRだけを抽出してプールする</strong>
+                    <p style="margin:0.45rem 0 0;line-height:1.7;">論文からadjusted HRと95%CIだけを抜き出す。何で調整したか、どの集団の効果か、比例ハザード性や打ち切りの扱いが分からなければ、数字は揃っても意味は揃わない。</p>
+                  </div>
+                </div>
+                <p style="line-height:1.8;margin-top:0.9rem;">したがって、外部対照付き単群研究をレビューに含める場合、最も現実的な扱いは、<strong>研究ごとに外部対照設計の妥当性を評価し、個別に提示すること</strong>です。どうしても統合する場合でも、同一データ源、同一疾患定義、同一time zero、同一アウトカム、同一調整戦略、同一estimandに近い研究に限定し、総合推定値には強い警告を付ける必要があります。実際には、この条件を満たす出版済み研究群は非常にまれです[17,18,23-28]。</p>
+              </section>
+
               <section id="singlearm-10" style="margin-bottom:1.2rem;">
                 <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">10. 外部対照で必要な因果推論の仮定</h3>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.8rem;">
@@ -9399,6 +9543,72 @@ function checkAuth(){
                 </div>
               </section>
 
+              <section id="singlearm-15a" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">15a. 査読チェックリスト：その単群メタ分析は、どこで間違っているか</h3>
+                <p style="line-height:1.8;">単群メタ分析の査読では、統計ソフトや変換法の名前を見る前に、まず「このレビューは何を推定しているつもりなのか」を確認する必要があります。多くの論文は、Methodsでは proportional meta-analysis と書きながら、Discussionでは treatment effect のように語ります。このズレを見つけることが最重要です。</p>
+                <div style="overflow-x:auto;margin-top:0.8rem;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+                    <thead>
+                      <tr style="background:#e0f2fe;color:#0f172a;">
+                        <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">査読で見る場所</th>
+                        <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">危険な記載</th>
+                        <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">指摘すべき内容</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Title / Abstract</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">単群レビューなのに “efficacy and safety” “comparative effectiveness” と書く。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">比較効果は推定していない。observed response, observed mortality, reported complications などに直す。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">PICO</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">ComparatorがないのにPICO形式で標準治療との比較を示唆する。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">これはPICOではなく、single-group descriptive questionである。比較質問なら外部対照の設計が必要。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Eligibility criteria</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">case report、case series、single-arm trial、RCTの介入群を同じデータとして混ぜる。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">分母、選択、追跡、プロトコルの質が違う。少なくとも別層化し、RCTの片腕を単群研究と同一視しない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Outcome definition</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">奏効、改善、成功、合併症を研究ごとの定義のまま統合する。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">アウトカム定義と測定時点の異質性が大きければ、pooled proportion自体の意味が弱い。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Statistical analysis</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Freeman-Tukeyやrandom-effectsを使ったので妥当と説明する。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">変換法は割合データの統計処理であり、比較群欠如や交絡を解決しない[7,10,11]。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Heterogeneity</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">I²が高いがrandom-effectsなので問題ない、またはI²が低いので信頼できる。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">I²は臨床的・方法論的比較可能性を保証しない。prediction intervalと異質性の原因を示す。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Discussion</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">高いpooled response rateから治療有効性を主張する。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">記述的要約と治療効果を分ける。標準治療との差は推定していない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">Conclusion</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">さらなるRCTが望まれる、と書きつつ現在の治療を推奨する。</td>
+                        <td style="border:1px solid #dbeafe;padding:0.6rem;">仮説生成・研究計画への示唆と、臨床推奨を分ける。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">「メタ分析しない」判断を、論文内でどう正当化するか</h4>
+                <p style="line-height:1.8;">単群レビューでは、研究が複数あると著者はメタ分析を求められがちです。しかし、研究間で対象集団、分母、アウトカム定義、追跡期間、評価頻度、治療ライン、施設選択が違う場合、pooled proportion はむしろ読者を誤誘導します。このときは、メタ分析しない判断をMethodsで事前に書き、Resultsでは研究別の範囲、中央値、表、図で示すほうが誠実です。</p>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin-top:0.8rem;">
+                  <strong>書き方の例</strong>
+                  <p style="line-height:1.7;margin:0.5rem 0 0;">Because the included single-arm studies differed substantially in eligibility criteria, line of therapy, outcome definitions, assessment schedules, and follow-up duration, we did not calculate a pooled proportion. We summarized observed outcome frequencies descriptively and interpreted them as hypothesis-generating evidence rather than comparative treatment effects.</p>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">外部対照付き研究をレビューする場合の現実的な結論</h4>
+                <p style="line-height:1.8;">外部対照付き単群研究が複数見つかった場合、レビューの中心は「総合推定値」ではなく、「各研究の比較可能性の評価」です。外部対照の由来、index date、適格基準再現、主要予後因子の測定、overlap、アウトカム判定、欠測、調整方法、QBAを表にして、どの研究がどの仮定に失敗しているかを示すべきです。実装条件を満たさない研究をまとめてメタ分析するより、なぜメタ分析しなかったかを透明に説明するほうが、臨床的にははるかに有用です[17,18,23-28]。</p>
+              </section>
+
               <section id="singlearm-16" style="margin-bottom:1.2rem;">
                 <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">16. 推奨される書き方</h3>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
@@ -9468,6 +9678,10 @@ function checkAuth(){
                   <li>target estimand、time zero、eligibility、outcome definition、follow-up、交絡調整、感度分析が曖昧なら、効果推定としての信頼性は低い。</li>
                   <li>統計モデルを複雑にしても、設計上の比較可能性の欠如は救えない。</li>
                   <li>systematic review では、単群 proportion、外部対照比較、RCT/内部対照比較を混同せず、原則として別々に提示・解釈する。</li>
+                  <li>多くの単群メタ分析論文の誤りは、統計手法ではなく、記述質問を比較効果質問にすり替える点にある。</li>
+                  <li>外部対照付き単群研究のメタ分析は、個票データ、共通のtarget estimand、time zero、アウトカム定義、交絡調整、QBAが揃わない限り、現実にはほぼ実装不能である。</li>
+                  <li>published aggregate benchmarks を使った比較は、患者レベル調整ができないため、効果推定の主根拠としては非常に弱い。</li>
+                  <li>「メタ分析しない」判断は敗北ではなく、誤ったsummary estimateを避けるための方法論的に正しい判断である。</li>
                 </ol>
               </section>
 
