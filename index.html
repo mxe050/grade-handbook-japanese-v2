@@ -8051,6 +8051,70 @@ function checkAuth(){
                 <strong>最初に覚える結論</strong>：Non-RCTを見つけたら、いきなりRCTとプールしない。まずRCT群とNRSI群を<strong>別々のエビデンス総体</strong>として評価し、絶対効果と意思決定閾値で効果の一致性を確認し、GRADEドメインごとに「補える限界」と「補えない限界」を判断する。
               </div>
 
+              <div style="background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <h3 style="font-size:1.05rem;color:#1e3a5f;margin-bottom:0.7rem;">この章の読み方：NRSIを「足す」のではなく、役割を決める</h3>
+                <p style="line-height:1.8;margin-bottom:0.8rem;">非ランダム化比較試験を扱うときに最初に起きる混乱は、「RCTが少ないから観察研究を追加する」という発想です。これは半分だけ正しく、半分は危険です。NRSIは、RCTの不足を埋めることがありますが、サンプルサイズの穴埋め材ではありません。RCTとは違う種類の直接性、長期性、希少害、実臨床集団、ベースラインリスク、患者サブグループを補うことがあります。一方で、交絡、選択、time zero、アウトカム測定、治療選択理由というRCTには少ない不確実性を持ち込みます。</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.75rem;">
+                  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#1d4ed8;">第1層：問いを固定する</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">PICO、target trial、time zero、estimand、意思決定閾値を先に書く。ここが曖昧なら、RCTとNRSIの比較も統合もできない。</p>
+                  </div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#166534;">第2層：別々に評価する</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">RCT群とNRSI群を別々にRoB、非一貫性、非直接性、不精確性で評価する。同じoverall certaintyでも中身を分けて読む。</p>
+                  </div>
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#c2410c;">第3層：役割を決める</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">NRSIを置換、補完、逐次的補足、文脈情報、ベースラインリスク情報のどれとして使うのかを明示する。</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="overflow-x:auto;margin-bottom:1.2rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:900px;">
+                  <thead>
+                    <tr style="background:#fee2e2;color:#7f1d1d;">
+                      <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">よくある間違い</th>
+                      <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">なぜ起きるか</th>
+                      <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">何が危険か</th>
+                      <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">修正するなら</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTとNRSIを最初から同じforest plotに入れる</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">研究数を増やし、精度を上げたいという誘惑。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">ランダム化で保護された推定値と、交絡を受ける推定値を同じ重みで扱う。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">まずデザイン別に別解析し、絶対効果と閾値で整合性を判断してから統合可否を決める。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">イベント数だけでNRSIのOR/RRを作る</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">RevMan等に2x2表を入れれば簡単に計算できる。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">治療選択の理由、重症度、併存疾患、施設差が効果に混入する。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">主解析は妥当な調整済み推定値を使い、調整できない研究は別提示または除外理由を明示する。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">調整済みなら全部まとめてよいと考える</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">論文の表にadjusted OR/HRが載っていると安心してしまう。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">調整変数、推定対象、条件付き/周辺効果、time zeroが異なり、同じ母数を推定していない。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">調整セット、モデル、estimand、対象集団を表にし、同質なものだけを主解析にする。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTがvery lowなのでNRSIを機械的に主根拠にする</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">研究数や症例数が多いNRSIのほうが強く見える。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTの不精確性とNRSIの交絡バイアスは同じ種類の不確実性ではない。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">どのGRADEドメインをNRSIが補うのか、逆にどの新しい限界を持ち込むのかを説明する。</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">代表性の高いNRSIを効果推定にもそのまま使う</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">実臨床データは外的妥当性が高いと思われやすい。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">代表性が高いことと、交絡が小さいことは別問題である。</td>
+                      <td style="border:1px solid #fee2e2;padding:0.6rem;">NRSIをベースラインリスクや直接性の補助に使うのか、効果推定に使うのかを分ける。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">パートA：Non-RCTメタ分析でまず決めること</h3>
 
               <details class="accordion-item" open>
@@ -8530,7 +8594,49 @@ function checkAuth(){
                 </div>
               </details>
 
-              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートE：最終チェックリスト</h3>
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートE：SR/CPGで見かける不適切な使い方カタログ</h3>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">誤用1：NRSIを「RCTのサンプルサイズ追加」として扱う</summary>
+                <div class="accordion-body">
+                  <p>最も多い誤用は、RCTが少ない、イベントが少ない、信頼区間が広いという理由だけで、観察研究を足して精度を上げようとすることです。これは、ランダム誤差とバイアスを混同しています。RCTの問題が不精確性であれば、理論的には追加データで狭くなる可能性があります。しかしNRSIの主要問題が交絡や選択バイアスであれば、症例数を増やしても真の不確実性は減りません。むしろ、バイアスを含んだ推定値が狭い信頼区間で表示され、推奨が強く見える危険があります。</p>
+                  <p>適切な書き方は、「NRSIを追加して精度を上げた」ではなく、「NRSIはRCTで不足していた直接性、長期アウトカム、希少害、ベースラインリスク、実臨床集団の情報を補助的に提供した」と具体的に説明することです。補ったドメインを言えないなら、そのNRSIは主根拠ではなく、背景情報または探索的情報にとどめるべきです。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤用2：代表性の高さを、効果推定の妥当性と取り違える</summary>
+                <div class="accordion-body">
+                  <p>レジストリ、保険請求データ、電子カルテ、全国データベースは、実臨床を反映するという点で魅力的です。しかし、代表性が高いことと、因果効果の推定が妥当であることは別問題です。代表性の高いデータは、ベースラインリスク、実臨床での適応、合併症の頻度、医療資源利用、実行可能性を考えるうえでは非常に有用です。一方、治療選択が患者背景や医師判断に強く左右されるなら、効果推定値は深刻な交絡を受けます。</p>
+                  <p>CPGでは、NRSIを「実臨床データなのでRCTより現実的」とだけ説明して推奨の主根拠にしてはいけません。実臨床データを何に使ったのかを分ける必要があります。ベースラインリスクの推定に使ったのか、外的妥当性の補足に使ったのか、効果推定に使ったのか、害の検出に使ったのかで、必要な方法論的条件は大きく異なります。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤用3：p値・I²・サブグループ解析で設計上の問題を解決した気になる</summary>
+                <div class="accordion-body">
+                  <p>NRSIのメタ分析で、I<sup>2</sup>が低い、p値が有意、サブグループでも方向が同じ、leave-one-outで変わらない、という結果が示されることがあります。これらは有用な補助情報ですが、交絡や選択バイアスを消すものではありません。同じバイアス構造を共有する研究が一貫して同じ方向にずれていれば、I<sup>2</sup>は低くなり得ます。統計的一貫性は、因果的妥当性を保証しません。</p>
+                  <p>したがって、NRSIのレビューでは、統計的異質性の前に方法論的異質性を評価します。対象集団、time zero、介入定義、比較群、追跡、アウトカム、調整セット、データソース、治療時代がそろっているかを確認し、それでも統合する意味がある場合だけforest plotを中心に置きます。方法論的に混ざらないものを、random-effectsで平均しても、意味のある総合推定値にはなりません。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤用4：「調整済み」の中身を読まずに、最も都合のよい推定値を採用する</summary>
+                <div class="accordion-body">
+                  <p>観察研究では、同じ論文内に未調整、年齢性別調整、多変量調整、傾向スコア、感度分析など複数の推定値が提示されることがあります。ここで効果が最も大きい推定値、p値が有意な推定値、著者が結論で強調した推定値を抜き出すと、レビュー側で選択的抽出バイアスを作ります。</p>
+                  <p>プロトコルでは、推定値の優先順位を事前に定義すべきです。たとえば「事前に指定した主要交絡領域を最もよく制御し、介入開始前の共変量で調整し、target trialのestimandに最も近い推定値を採用する」と書きます。介入後変数を調整したモデル、主要交絡が欠けたモデル、過剰調整やコライダー調整が疑われるモデルは、たとえ有意でも主解析に使わないという判断が必要です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">誤用5：連続アウトカムでベースライン差を無視する</summary>
+                <div class="accordion-body">
+                  <p>連続アウトカムでは、治療群と対照群のベースライン値が違うことがよくあります。重症な患者ほど治療を受ける領域では、治療群の最終値が悪く見えます。逆に、軽症患者に新治療が選ばれやすい領域では、治療群の最終値が良く見えます。最終値の平均差だけを抽出してメタ分析すると、治療効果ではなくベースライン差の影響を統合してしまいます。</p>
+                  <p>連続量NRSIでは、ベースライン値を調整した平均差、ANCOVA推定値、適切な回帰係数、傾向スコア後の差などを優先します。変化量を使う場合も、ベースライン差、回帰平均、測定誤差、欠測、追跡期間の違いを確認します。SMDを使う場合は、SDの違いが患者のばらつき、測定尺度、選択基準の違いを反映していないかを考え、最終的にはMIDまたは自然単位に戻して解釈します。</p>
+                </div>
+              </details>
+
+              <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin:1.2rem 0 0.8rem;">パートF：最終チェックリスト</h3>
 
               <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
                 <ol style="margin:0 0 0 1.2rem;font-size:0.9rem;line-height:1.7;">
@@ -8581,6 +8687,66 @@ function checkAuth(){
                 <li><a href="https://doi.org/10.1016/j.jclinepi.2025.112086" target="_blank">Cuello-Garcia CA, Morgan RL, Santesso N, et al. GRADE Guidance 44: strategies to enhance the utilization of randomized and non-randomized studies in evidence syntheses of health interventions.</a> <em>Journal of Clinical Epidemiology</em>. 2026;190:112086. DOI: 10.1016/j.jclinepi.2025.112086.</li>
                 <li><a href="https://doi.org/10.1016/j.jclinepi.2021.11.026" target="_blank">Cuello-Garcia CA, Santesso N, Morgan RL, et al. GRADE Guidance 24: optimizing the integration of randomized and non-randomized studies of interventions in evidence syntheses and health guidelines.</a> <em>Journal of Clinical Epidemiology</em>. 2022;142:200-208. DOI: 10.1016/j.jclinepi.2021.11.026.</li>
               </ol>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">0. この章の再構成：NRSIメタ分析は「入力値の意味」を点検する章である</summary>
+                <div class="accordion-body">
+                  <p>この章では、メタ分析の計算法そのものよりも、forest plotに入れる前の値が何を意味しているかを徹底して確認します。NRSIでは、同じ「OR」「RR」「HR」「平均差」でも、未調整の粗い関連、年齢性別だけの調整、主要交絡まで含む調整、傾向スコア後の推定、IPTWによる周辺効果、マッチング後のATT、条件付きロジスティック回帰のORなど、意味が大きく違います。入力値の意味が違うままプールすると、統計的には平均が出ても、臨床的にも因果推論的にも説明できない総合推定値になります。</p>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;margin-top:0.8rem;">
+                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.85rem;">
+                      <strong style="color:#991b1b;">入力値1：未調整の2x2表</strong>
+                      <p style="margin:0.4rem 0 0;line-height:1.65;">計算は簡単だが、治療選択の交絡を制御しない。NRSIの主解析としては原則不適切。</p>
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem;">
+                      <strong style="color:#c2410c;">入力値2：調整済み推定値</strong>
+                      <p style="margin:0.4rem 0 0;line-height:1.65;">未調整より望ましいが、調整変数、モデル、estimand、time zeroが比較可能かを読む必要がある。</p>
+                    </div>
+                    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem;">
+                      <strong style="color:#1d4ed8;">入力値3：バイアス補正・感度分析後の値</strong>
+                      <p style="margin:0.4rem 0 0;line-height:1.65;">未測定交絡や選択バイアスを明示的に扱う。主解析だけでなく不確実性の幅として示す価値がある。</p>
+                    </div>
+                  </div>
+                  <p style="line-height:1.8;margin-top:0.8rem;">このため、NRSIメタ分析の査読では「どのモデルを使ったか」より先に、「そのモデルがどの因果質問に答えているか」「その因果質問がレビューのPICOに合っているか」「複数研究の推定値を同じダイヤモンドに入れる根拠があるか」を確認します。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">0a. 先に全体像：未調整・調整済み・RCT補強の3つを混同しない</summary>
+                <div class="accordion-body">
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:900px;">
+                      <thead>
+                        <tr style="background:#e0f2fe;color:#0f172a;">
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">論点</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">よくある誤解</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">本当の問題</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">この章での扱い</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">未調整メタ分析</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">イベント数があれば客観的で再現性が高い。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">再現できるのは計算であり、交絡を取り除いた効果ではない。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">原則として主解析にしない。例外条件を明示する。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">調整済み推定値のメタ分析</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">adjusted と書いてあれば十分。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">何を調整したか、何を推定したか、条件付きか周辺か、ATTかATEかで意味が変わる。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">調整方法、estimand、time zero、バイアス方向を表にして判断する。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">RCTとNRSIの統合</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">同じPICOなら一緒にプールできる。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">同じPICOでも、設計上の保護、交絡構造、直接性、ベースラインリスクが違う。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">別々に評価し、どのGRADEドメインを補ったかを説明できる場合だけ統合を検討する。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
 
               <details class="accordion-item" open>
                 <summary class="accordion-header">1. NRSIのメタ分析で最初に確認すべきこと：それは同じ効果を推定しているのか</summary>
@@ -9133,6 +9299,133 @@ function checkAuth(){
                 </div>
               </details>
 
+              <details class="accordion-item" open>
+                <summary class="accordion-header">17. 調整済み推定値をメタ分析する場合の実務：何を抽出し、何を捨てるか</summary>
+                <div class="accordion-body">
+                  <p>調整済み推定値を用いる場合でも、抽出表に「adjusted OR」や「adjusted HR」とだけ書いてはいけません。専門家向けレビューでは、少なくとも、効果尺度、対数変換値、標準誤差、調整変数、変数測定時点、モデル、推定対象、time zero、追跡期間、欠測処理、バイアス方向を抽出します。これらを抽出しないレビューは、後から「同じものをプールした」と説明できません。</p>
+                  <div style="overflow-x:auto;margin:0.9rem 0;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:920px;">
+                      <thead>
+                        <tr style="background:#f1f5f9;color:#1e293b;">
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">抽出項目</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">確認する理由</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">危険な例</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">主解析での判断</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">調整変数と測定時点</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">治療開始前の主要交絡を制御しているかを見る。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">介入後の検査値や合併症を調整し、媒介やコライダーを調整している。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">主要交絡が欠ける研究は高RoB、介入後調整は別解析または除外を検討。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">効果尺度</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">OR、RR、HR、RD、平均差は同じ臨床意味ではない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">ORとRRを同じ効果として統合、HRを固定時点リスク比として読む。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">同じ尺度ごとに統合し、絶対効果への変換仮定を明記する。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">estimand</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">ATE、ATT、ATC、per-protocol、as-treatedで対象が変わる。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">マッチング後のATTとIPTWのATEを同じ推定値として平均する。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">target trialの因果対照に近い推定値を優先し、違うものは別提示。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">time zero</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">追跡開始のずれはimmortal time biasやselection biasを生む。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">介入群は治療開始、対照群は診断日、または退院後生存者だけを解析。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">time zeroが整合しない研究は主解析に入れないか、深刻なRoBとする。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">標準誤差の由来</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">メタ分析の重みを決めるが、バイアス不確実性は含まれない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">巨大データの狭いCIが全体を支配し、交絡の不確実性が見えない。</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">RoB別感度分析、quality-effects的発想、ナラティブ重視を検討する。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p>抽出段階で最も大事なのは、「最も精密な推定値」ではなく「最もバイアスが少ないと判断できる推定値」を選ぶことです。Cochrane Handbook Chapter 24も、複数の調整済み推定値が報告されている場合、交絡によるバイアスを最も小さくすると判断される推定値を選ぶことを示しています[4]。これはp値の有無や著者の結論とは別の判断です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">18. よくある「間違った使い方」を結果・考察・推奨文でどう見抜くか</summary>
+                <div class="accordion-body">
+                  <p>NRSIメタ分析の誤用はMethodsだけでなく、Results、Discussion、Conclusion、CPG推奨文に現れます。以下のような表現があれば、forest plotを信じる前に入力値を疑うべきです。</p>
+                  <div style="overflow-x:auto;margin-top:0.8rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:920px;">
+                      <thead>
+                        <tr style="background:#fee2e2;color:#7f1d1d;">
+                          <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">よく見る表現</th>
+                          <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">疑うべきこと</th>
+                          <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">確認する質問</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「観察研究を含めて症例数が増え、結果は頑健であった」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">症例数増加で交絡が消えると誤解している可能性。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">NRSIのRoBは何か。未測定交絡の方向を評価したか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「未調整データを用いたが、研究間で一貫していた」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">同じ方向のバイアスを一貫性と読んでいる可能性。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">主要交絡が同じ方向に働く臨床文脈ではないか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「adjusted estimatesを用いたため交絡は制御された」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">調整変数の十分性、未測定交絡、過剰調整を検討していない可能性。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">どの交絡領域が事前指定され、どの研究で測定されたか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「RCTと観察研究で方向が同じなので確実性が高まった」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">NRSIのバイアス方向が同じ方向に働いた可能性を無視している。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">Guidance 44の観点で、どのGRADEドメインが本当に補完されたか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「very low同士なので、研究数の多いNRSIを重視した」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">同じcertaintyカテゴリを同じ信頼性と誤読している。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTのvery lowは不精確性か、NRSIのvery lowはRoBか。低下理由を分けたか。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">「I²が低いため統合した」</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">方法論的異質性を統計量だけで済ませている。</td>
+                          <td style="border:1px solid #fee2e2;padding:0.6rem;">time zero、estimand、アウトカム定義、調整セットは同じか。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">19. 専門家向けの結論作成テンプレート：どこまで言えるかを落とし込む</summary>
+                <div class="accordion-body">
+                  <p>NRSIを含むSR/CPGでは、結論文の強さを入力値の妥当性に合わせる必要があります。以下のように、解析の限界を結論文に直接組み込むと、読者が過大解釈しにくくなります。</p>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>未調整データしかない場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.7;">観察研究の多くは未調整イベント数のみを報告しており、治療選択に関する主要交絡を制御できなかった。したがって、統合値は粗い関連の記述であり、介入効果の推定値としては扱わなかった。</p>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>調整済みだが異質な場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.7;">調整済み推定値は報告されていたが、調整変数、time zero、estimand、効果尺度が研究間で異なったため、単一の総合推定値としては解釈せず、層別またはナラティブに提示した。</p>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>RCTの補完として使う場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.7;">NRSIはRCTで不足していた長期追跡および実臨床集団の直接性を補助したが、交絡によるRoBが残るため、RCTの効果推定値を置換するものではなく、EtDで文脈情報として扱った。</p>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>very low同士を扱う場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.7;">RCTとNRSIはいずれもvery low certaintyであったが、低下理由は異なった。RCTは主に不精確性、NRSIは主に交絡と選択バイアスによるRoBであり、同じ重みで統合することは避けた。</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
               <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;font-size:0.92rem;line-height:1.8;">
                 <strong>まとめ</strong>：NRSIのメタ分析では、「研究数が多い」「forest plotがある」「有意差がある」ことよりも、各研究の推定値が同じ因果質問に答えているかが重要です。未調整のraw dataメタ分析は、交絡を平均化するのではなく、しばしば交絡を精密化します。調整済み推定値であっても、調整変数、モデル、効果尺度、推定対象、time zeroが違えば、同じダイヤモンドに入れる根拠は弱くなります。専門家向けSR/CPGでは、プールする技術よりも、プールしない判断を透明に説明する技術が同じくらい重要です。
               </div>
@@ -9144,13 +9437,13 @@ function checkAuth(){
             <div class="content-section" style="scroll-behavior:smooth;">
               <style>
                 @media print {
-                  #singlearm-1, #singlearm-2, #singlearm-2a, #singlearm-3, #singlearm-4, #singlearm-5, #singlearm-6, #singlearm-7, #singlearm-8, #singlearm-9, #singlearm-9a, #singlearm-10, #singlearm-11, #singlearm-12, #singlearm-13, #singlearm-14, #singlearm-15, #singlearm-15a, #singlearm-16, #singlearm-17, #singlearm-18 { break-inside: avoid; }
+                  #singlearm-1, #singlearm-2, #singlearm-2a, #singlearm-2b, #singlearm-3, #singlearm-4, #singlearm-5, #singlearm-6, #singlearm-7, #singlearm-8, #singlearm-9, #singlearm-9a, #singlearm-10, #singlearm-11, #singlearm-12, #singlearm-13, #singlearm-14, #singlearm-15, #singlearm-15a, #singlearm-15b, #singlearm-16, #singlearm-17, #singlearm-18 { break-inside: avoid; }
                   #singlearm-18 a[href]::after { content: " (" attr(href) ")"; font-size: 0.82em; color: #334155; }
                   nav a { text-decoration: none; color: #111827; }
                 }
               </style>
               <h2 class="section-title">単群のメタ分析：pooled proportion と外部対照比較を混同しない</h2>
-              <p style="margin-bottom:0.4rem;color:#64748b;font-size:0.92rem;">作成日：2026年6月17日 / 対象読者：systematic review・meta-analysis を執筆・査読する専門医、臨床研究者、大学院生</p>
+              <p style="margin-bottom:0.4rem;color:#64748b;font-size:0.92rem;">作成日：2026年6月17日 / 更新日：2026年6月18日 / 対象読者：systematic review・meta-analysis を執筆・査読する専門医、臨床研究者、大学院生</p>
               <p style="margin-bottom:1rem;color:#475569;line-height:1.8;">
                 この章では、比較群のないケースシリーズ（case series）・単群研究（single-arm study）から奏効率、死亡率、合併症率などを pooled proportion として統合する問題と、単群研究に外部対照（external control）・歴史的対照（historical control）を持ち込んで効果推定する問題を分けて扱う。両者を混同すると、記述的な頻度の要約を治療効果の推定値として読んでしまう。
               </p>
@@ -9159,12 +9452,32 @@ function checkAuth(){
                 <strong>重要な警告</strong>：単群・ケースシリーズの pooled proportion は、原則として「観察されたアウトカム頻度の要約」であり、「治療効果」ではない。比較群がなければ反事実（counterfactual）が観察されず、自然経過、患者選択、時代変化、併用治療、測定バイアスを分離できない[1,2,12,13]。
               </div>
 
+              <div style="background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <h3 style="font-size:1.05rem;color:#1e3a5f;margin-bottom:0.7rem;">この章の再構成：単群メタ分析でまず分ける3つの問い</h3>
+                <p style="line-height:1.8;margin-bottom:0.8rem;">単群メタ分析を読むときは、最初に「何を推定しているのか」を3つに分けます。この分け方をしないと、pooled response rate、pooled complication rate、external control、historical benchmark、single-arm trial をすべて同じ「エビデンス」として扱ってしまいます。</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;">
+                  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#1d4ed8;">問い1：観察頻度はいくらか</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">単群の奏効率、死亡率、合併症率を記述する。言えるのは対象研究内の頻度であり、比較効果ではない。</p>
+                  </div>
+                  <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#c2410c;">問い2：その頻度は患者にとって意味があるか</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">奏効率や検査値改善が患者重要アウトカムにつながるか、自然経過や重症度で説明できないかを読む。</p>
+                  </div>
+                  <div style="background:#f5f3ff;border:1px solid #c4b5fd;border-radius:8px;padding:0.85rem;">
+                    <strong style="color:#5b21b6;">問い3：比較効果を推定しているか</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.65;">外部対照を使うなら、非ランダム化比較としてtarget trial、time zero、exchangeability、交絡調整が必要になる。</p>
+                  </div>
+                </div>
+              </div>
+
               <nav style="background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
                 <h3 style="font-size:1rem;color:#1e3a5f;margin-bottom:0.6rem;">目次</h3>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.35rem 0.9rem;font-size:0.9rem;line-height:1.6;">
                   <a href="#singlearm-1">1. Executive summary</a>
                   <a href="#singlearm-2">2. まず区別すべき2つの問題</a>
                   <a href="#singlearm-2a">2a. 現場で多い誤った実例型</a>
+                  <a href="#singlearm-2b">2b. 誤用カタログ</a>
                   <a href="#singlearm-3">3. 用語の整理</a>
                   <a href="#singlearm-4">4. pooled proportionで推定できるもの</a>
                   <a href="#singlearm-5">5. 統計的論点</a>
@@ -9180,6 +9493,7 @@ function checkAuth(){
                   <a href="#singlearm-14">14. 規制・HTA文脈</a>
                   <a href="#singlearm-15">15. SR/MAでの扱い</a>
                   <a href="#singlearm-15a">15a. 査読チェックリスト</a>
+                  <a href="#singlearm-15b">15b. 解析してはいけない場面</a>
                   <a href="#singlearm-16">16. 推奨される書き方</a>
                   <a href="#singlearm-17">17. 図表</a>
                   <a href="#singlearm-18">18. References</a>
@@ -9277,6 +9591,70 @@ function checkAuth(){
                 </div>
                 <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin-top:0.9rem;">
                   <strong>実務上の核心</strong>：単群メタ分析で多発する誤りは、統計手法の選択以前に、研究質問のすり替えです。「この治療を受けた人のうち何%が奏効したか」という記述質問を、「この治療は標準治療より有効か」という比較質問に変換してしまう。ここがずれると、GLMM、Freeman-Tukey、random-effects、prediction intervalをどれだけ丁寧に使っても、結論は治りません[7,10,11,12,13]。
+                </div>
+              </section>
+
+              <section id="singlearm-2b" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">2b. 誤用カタログ：単群メタ分析で特に危険な言い換え</h3>
+                <p style="line-height:1.8;">単群メタ分析の過大解釈は、しばしば「表現」の中に隠れます。Methodsではpooled proportionと書き、Resultsではresponse rateを示し、Discussionではeffective、safe、promising、clinically meaningfulと表現し、Conclusionでは治療選択肢として推奨する。この段階的な言い換えが、記述的頻度を比較効果に見せてしまいます。</p>
+                <div style="overflow-x:auto;margin-top:0.8rem;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:940px;">
+                    <thead>
+                      <tr style="background:#fee2e2;color:#7f1d1d;">
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">危険な言い換え</th>
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">何がすり替わっているか</th>
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">読者が確認すべきこと</th>
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">より正確な表現</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">pooled response rateが高いので有効</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">観察された奏効割合を、標準治療との差に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">比較群、自然経過、前治療、評価時点、中央判定の有無。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">対象単群研究で観察された奏効割合は高かったが、比較効果は推定していない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">pooled complication rateが低いので安全</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">報告頻度を、比較安全性や真の発生率に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">能動的収集か、受動的報告か、追跡期間、脱落、軽微事象の定義。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">報告研究内で観察された合併症頻度は低かったが、過少検出の可能性がある。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">historical controlより良好なので効果あり</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">時代差、診断差、支持療法差を治療効果に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">暦年、診断基準、病期、既治療、支持療法、アウトカム判定。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">歴史的情報との比較では良好に見えるが、外部対照比較としての妥当性評価が必要。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">症例数が多いので信頼できる</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">精度を妥当性に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">連続登録、除外例、施設選択、患者選択、アウトカム欠測。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">観察頻度の推定精度は上がるが、比較効果の妥当性は保証されない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">I²が低いので一貫している</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">統計的一貫性を、臨床的同質性や因果妥当性に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">対象、治療ライン、アウトカム定義、測定頻度、追跡期間が同じか。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">統計的ばらつきは小さいが、単群頻度の意味が同一とは限らない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">random-effectsを使ったので異質性に対応した</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">平均化を、異質性の解決に言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">異質性の原因が臨床的に説明され、prediction intervalが示されているか。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">random-effectsはばらつきをモデル化するだけで、研究質問の混在は解決しない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">single-arm trialなので介入研究として強い</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">介入を行ったことを、比較可能な反事実があることに言い換えている。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">内部対照、外部対照、事前閾値、自然史、患者選択、盲検判定。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">単群介入研究は頻度を観察できるが、比較効果には追加仮定が必要。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin-top:0.9rem;">
+                  <strong>査読のコツ</strong>：結論文に「effective」「safe」「superior」「useful」「recommend」などの比較・推奨を含む語が出てきたら、Methodsに内部比較、妥当な外部対照、事前閾値、または患者重要アウトカムとの連結があるかを確認する。なければ、結論は「observed frequency」または「hypothesis-generating」に戻す。
                 </div>
               </section>
 
@@ -9680,6 +10058,67 @@ function checkAuth(){
                 </div>
                 <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">外部対照付き研究をレビューする場合の現実的な結論</h4>
                 <p style="line-height:1.8;">外部対照付き単群研究が複数見つかった場合、レビューの中心は「総合推定値」ではなく、「各研究の比較可能性の評価」です。外部対照の由来、index date、適格基準再現、主要予後因子の測定、overlap、アウトカム判定、欠測、調整方法、QBAを表にして、どの研究がどの仮定に失敗しているかを示すべきです。実装条件を満たさない研究をまとめてメタ分析するより、なぜメタ分析しなかったかを透明に説明するほうが、臨床的にははるかに有用です[17,18,23-28]。</p>
+              </section>
+
+              <section id="singlearm-15b" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">15b. 解析してはいけない場面：メタ分析を止める判断も方法論である</h3>
+                <p style="line-height:1.8;">単群研究が複数見つかると、「せっかくなのでメタ分析をする」圧力が生じます。しかし、単群メタ分析では、統合しない判断が最も科学的な場合があります。特に、研究質問が比較効果なのに単群データしかない場合、または外部対照比較に必要な情報が揃わない場合、pooled estimateを出すこと自体が読者を誤導します。</p>
+                <div style="overflow-x:auto;margin-top:0.8rem;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:940px;">
+                    <thead>
+                      <tr style="background:#fee2e2;color:#7f1d1d;">
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">メタ分析を止めるべき場面</th>
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">なぜ危険か</th>
+                        <th style="border:1px solid #fecaca;padding:0.6rem;text-align:left;">代替提示</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">対象集団が大きく違う</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">治療ライン、重症度、既治療、施設水準が違えば、同じ奏効率でも意味が違う。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">疾患ステージ・治療ライン別の範囲、中央値、研究別表。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">アウトカム定義・測定時点がそろわない</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">6か月奏効、最良奏効、最終観察時奏効、中央判定と施設判定が混ざる。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">定義別に分け、統合せず表形式で示す。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">追跡期間が異なる有害事象率</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">短期研究はイベントが少なく見え、長期研究は多く見える。割合の分母だけでは時間を扱えない。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">person-time rate、固定期間別、または単純統合せず記述。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">単群試験の介入群とRCTの介入群を混ぜる</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTの片腕はランダム化された比較試験の一部であり、対象選択・測定・追跡が単群研究と異なる。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">RCTは比較効果として扱い、単群研究は記述頻度として別層化。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">外部対照の由来が研究ごとに異なる</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">各比較が別々の仮想試験になり、ひとつのsummary effectに意味がない。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">外部対照の妥当性評価表を中心にし、研究別に提示。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">published aggregate benchmarkしかない</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">患者レベルの交絡調整、overlap確認、time zero整合ができない。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">文脈比較・仮説生成として提示し、効果推定とは呼ばない。</td>
+                      </tr>
+                      <tr>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">ゼロイベント・極端な割合が多い</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">変換法やback-transformationに強く依存し、直感と異なる推定が出ることがある。</td>
+                        <td style="border:1px solid #fee2e2;padding:0.6rem;">GLMM、exact CI、研究別提示、感度分析。必要なら統合しない。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">「やらない」と書くための日本語例</h4>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
+                  <p style="line-height:1.8;margin:0;">本レビューでは、単群研究の奏効割合を研究別に提示したが、対象集団、治療ライン、奏効判定基準、評価時点、追跡期間が大きく異なったため、pooled proportionは算出しなかった。単群データは治療効果を推定するものではなく、観察頻度の記述および今後の比較研究計画のための仮説生成情報として扱った。</p>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">外部対照比較で「やらない」と書くための日本語例</h4>
+                <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
+                  <p style="line-height:1.8;margin:0;">外部対照を用いた研究は複数存在したが、外部対照のデータ源、index date、適格基準の再現性、主要予後因子の測定、アウトカム判定、調整方法が研究間で大きく異なった。したがって、これらを単一の比較効果としてメタ分析することは適切でないと判断し、各研究の比較可能性とバイアスリスクを個別に記述した。</p>
+                </div>
               </section>
 
               <section id="singlearm-16" style="margin-bottom:1.2rem;">
