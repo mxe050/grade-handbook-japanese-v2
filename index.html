@@ -7713,7 +7713,8 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 2)">連続量メタ分析</button>
           <button class="tab-btn" onclick="switchTab(this, 3)">非ランダム化比較試験</button>
           <button class="tab-btn" onclick="switchTab(this, 4)">非ランダム化比較試験２</button>
-          <button class="tab-btn" onclick="switchTab(this, 5)">仮説検定とP値の誤解：佐藤俊哉先生</button>
+          <button class="tab-btn" onclick="switchTab(this, 5)">単群のメタ分析</button>
+          <button class="tab-btn" onclick="switchTab(this, 6)">仮説検定とP値の誤解：佐藤俊哉先生</button>
         </div>
         <div class="tab-content">
 
@@ -8757,7 +8758,448 @@ function checkAuth(){
             </div>
           </div>
 
-          <!-- Tab 5: 仮説検定とP値の誤解：佐藤俊哉先生 -->
+          <!-- Tab 5: 単群のメタ分析 -->
+          <div class="tab-pane">
+            <div class="content-section" style="scroll-behavior:smooth;">
+              <style>
+                @media print {
+                  #singlearm-1, #singlearm-2, #singlearm-3, #singlearm-4, #singlearm-5, #singlearm-6, #singlearm-7, #singlearm-8, #singlearm-9, #singlearm-10, #singlearm-11, #singlearm-12, #singlearm-13, #singlearm-14, #singlearm-15, #singlearm-16, #singlearm-17, #singlearm-18 { break-inside: avoid; }
+                  #singlearm-18 a[href]::after { content: " (" attr(href) ")"; font-size: 0.82em; color: #334155; }
+                  nav a { text-decoration: none; color: #111827; }
+                }
+              </style>
+              <h2 class="section-title">単群のメタ分析：pooled proportion と外部対照比較を混同しない</h2>
+              <p style="margin-bottom:0.4rem;color:#64748b;font-size:0.92rem;">作成日：2026年6月17日 / 対象読者：systematic review・meta-analysis を執筆・査読する専門医、臨床研究者、大学院生</p>
+              <p style="margin-bottom:1rem;color:#475569;line-height:1.8;">
+                この章では、比較群のないケースシリーズ（case series）・単群研究（single-arm study）から奏効率、死亡率、合併症率などを pooled proportion として統合する問題と、単群研究に外部対照（external control）・歴史的対照（historical control）を持ち込んで効果推定する問題を分けて扱う。両者を混同すると、記述的な頻度の要約を治療効果の推定値として読んでしまう。
+              </p>
+
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #334155;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <strong>重要な警告</strong>：単群・ケースシリーズの pooled proportion は、原則として「観察されたアウトカム頻度の要約」であり、「治療効果」ではない。比較群がなければ反事実（counterfactual）が観察されず、自然経過、患者選択、時代変化、併用治療、測定バイアスを分離できない[1,2,12,13]。
+              </div>
+
+              <nav style="background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <h3 style="font-size:1rem;color:#1e3a5f;margin-bottom:0.6rem;">目次</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.35rem 0.9rem;font-size:0.9rem;line-height:1.6;">
+                  <a href="#singlearm-1">1. Executive summary</a>
+                  <a href="#singlearm-2">2. まず区別すべき2つの問題</a>
+                  <a href="#singlearm-3">3. 用語の整理</a>
+                  <a href="#singlearm-4">4. pooled proportionで推定できるもの</a>
+                  <a href="#singlearm-5">5. 統計的論点</a>
+                  <a href="#singlearm-6">6. 固有のバイアス</a>
+                  <a href="#singlearm-7">7. SRで含める場合の実務</a>
+                  <a href="#singlearm-8">8. 外部対照はなぜ別問題か</a>
+                  <a href="#singlearm-9">9. 外部対照の種類</a>
+                  <a href="#singlearm-10">10. 因果推論の仮定</a>
+                  <a href="#singlearm-11">11. 外部対照の典型的バイアス</a>
+                  <a href="#singlearm-12">12. 設計原則</a>
+                  <a href="#singlearm-13">13. 解析方法</a>
+                  <a href="#singlearm-14">14. 規制・HTA文脈</a>
+                  <a href="#singlearm-15">15. SR/MAでの扱い</a>
+                  <a href="#singlearm-16">16. 推奨される書き方</a>
+                  <a href="#singlearm-17">17. 図表</a>
+                  <a href="#singlearm-18">18. References</a>
+                </div>
+              </nav>
+
+              <section id="singlearm-1" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">1. Executive summary</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.8rem;">
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <strong>単群 proportion は記述である</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.7;">単群・ケースシリーズの pooled proportion は、観察されたアウトカム頻度の要約であり、比較治療効果の推定値ではない[1,2,7,12]。</p>
+                  </div>
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <strong>反事実がない</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.7;">奏効率、死亡率、合併症率をプールしても、比較群がなければ「治療しなかったらどうなったか」は分からない[1,12,13]。</p>
+                  </div>
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <strong>外部対照は非ランダム化比較である</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.7;">外部対照・歴史的対照を使うなら、それは単純な記述ではなく、非ランダム化比較研究として設計・評価する必要がある[15-23]。</p>
+                  </div>
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <strong>同じ forest plot に混ぜない</strong>
+                    <p style="margin:0.4rem 0 0;line-height:1.7;">RCTや内部対照を持つ比較研究と、ケースシリーズ・単群研究を同じ forest plot で治療効果として混ぜるのは基本的に不適切である[12-14]。</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="singlearm-2" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">2. まず区別すべき2つの問題</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0.9rem;">
+                  <div style="border:1px solid #bae6fd;border-radius:8px;padding:1rem;background:#f0f9ff;">
+                    <h4 style="margin-bottom:0.5rem;color:#0c4a6e;">A. proportion をプールする問題</h4>
+                    <p style="line-height:1.7;">pooled response rate、pooled mortality、pooled complication rate、pooled recurrence rate、incidence proportion、adverse event proportion などを単群データから統合する。これは単群の観察割合の統合であり、比較効果ではない[7-11]。</p>
+                    <div style="margin-top:0.7rem;background:#fff;border:1px solid #bae6fd;border-radius:6px;padding:0.7rem;">不適切な解釈：pooled response rate が70%なので治療は有効である。</div>
+                    <div style="margin-top:0.5rem;background:#fff;border:1px solid #bae6fd;border-radius:6px;padding:0.7rem;">適切な解釈：対象研究で観察された奏効割合の平均的要約が70%であった。</div>
+                  </div>
+                  <div style="border:1px solid #c4b5fd;border-radius:8px;padding:1rem;background:#f5f3ff;">
+                    <h4 style="margin-bottom:0.5rem;color:#4c1d95;">B. 外部対照を持ち込む問題</h4>
+                    <p style="line-height:1.7;">single-arm trial vs historical control、real-world external control、synthetic control arm、external comparator study は、非ランダム化比較による効果推定である。exchangeability、time zero、eligibility、outcome measurement、交絡制御が必要になる[15-23]。</p>
+                    <div style="margin-top:0.7rem;background:#fff;border:1px solid #c4b5fd;border-radius:6px;padding:0.7rem;">不適切な解釈：外部対照を持ってきたので比較できる。</div>
+                    <div style="margin-top:0.5rem;background:#fff;border:1px solid #c4b5fd;border-radius:6px;padding:0.7rem;">適切な解釈：比較可能性の仮定がどの程度妥当かを評価したうえで、非ランダム化比較として扱う。</div>
+                  </div>
+                </div>
+                <p style="margin-top:0.8rem;line-height:1.8;">この2つを混同すること自体が、多くの低品質な systematic review / meta-analysis の根本的欠陥である。統計ソフトで計算できることと、因果的・臨床的に意味があることは別である。</p>
+              </section>
+
+              <section id="singlearm-3" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">3. 用語の整理</h3>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                    <thead><tr style="background:#e2e8f0;"><th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">用語</th><th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">意味と注意点</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">case report</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">1例または少数例の詳細な記述。仮説生成や希少事象の報告には有用だが、頻度や効果の推定には不十分[5]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">case series / uncontrolled case series</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">共通の疾患・介入・曝露を持つ症例群の記述。内部比較群がないため、原則として比較治療効果は推定できない[1-4]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">consecutive case series</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">連続症例を組み入れる症例シリーズ。選択バイアスを減らすが、比較群がない限り反事実は観察されない[2,3]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">single-arm trial / single-group study</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">全例に同一介入を行い、単群でアウトカムを観察する研究。規制文脈では特定条件下で pivotal evidence として議論されるが、RCTが標準であることは変わらない[18]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">proportional meta-analysis</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">各研究の割合 p_i = x_i / n_i を統合する方法。prevalence meta-analysis、incidence proportion の統合、奏効率や合併症率の統合で用いられる[7-9]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">incidence proportion vs incidence rate</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">incidence proportion は一定期間内にイベントを経験した割合。incidence rate は person-time あたりの発生率。追跡期間がばらばらなら単純な割合は誤解を生みやすい[4,7]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">external / historical / concurrent external control</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">試験外から比較対象を得る方法。過去試験、観察コホート、レジストリ、EHR/claims、自然史コホートなどがある[15,17,19-22]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">synthetic control arm</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">外部データから構成した比較群。名称が洗練されていても、交絡と選択の問題は消えない[17,22,28]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">target estimand / target trial emulation</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">何をどの集団で、どの介入戦略と比較し、どのアウトカムで推定するかを明確にする枠組み。外部対照比較では不可欠[23-25]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">exchangeability / positivity / consistency</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">治療群と対照群が予後因子に関して比較可能で、比較可能な患者が両群に存在し、比較対象の治療内容が明確であるという因果推論上の仮定[23,25-27]。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin-top:0.8rem;line-height:1.8;">case series と cohort study は同じではない。比較群の有無、患者選択の定義、時間軸、分母の明確性、追跡開始時点が明確かどうかが重要である。単に「後ろ向きに集めた患者群」を cohort study と呼んでも、分母や連続登録性が曖昧であれば、比較可能な発生率や治療効果の推定にはならない[3,4,6]。</p>
+              </section>
+
+              <section id="singlearm-4" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">4. 単群・ケースシリーズの pooled proportion：何が推定でき、何が推定できないか</h3>
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">Table 1. pooled proportion で言えること・言えないこと</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                    <thead><tr style="background:#ecfeff;"><th style="border:1px solid #bae6fd;padding:0.65rem;">言えること</th><th style="border:1px solid #bae6fd;padding:0.65rem;">言えないこと</th><th style="border:1px solid #bae6fd;padding:0.65rem;">解説</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.65rem;">研究内で観察されたイベント割合</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">治療しなかった場合との差</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">p_i = x_i / n_i は観察頻度であり、反事実との差ではない[1,7]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.65rem;">奏効率、死亡率、合併症率の記述的要約</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">標準治療と比べた有効性</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">自然経過、重症度、前治療、診断基準が異なると割合は大きく動く[3,4,12]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.65rem;">研究間のばらつきを踏まえた平均的 observed frequency</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">交絡を除いた因果効果</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">ランダム効果モデルは研究間ばらつきを表現するが、交絡を消すモデルではない[7-9]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.65rem;">稀な疾患・稀な有害事象のシグナル</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">安全性リスクの正確な比較</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">シグナル検出や仮説生成には有用だが、対照がなければ背景発生率との差は不明[5,6]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.65rem;">feasibility や初期安全性情報</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">反事実アウトカム</td><td style="border:1px solid #e2e8f0;padding:0.65rem;">手技導入、学習曲線、施設選択が影響するため、一般化可能性に注意する[3,4]。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin-top:0.8rem;line-height:1.8;"><strong>「pooled response rate が高い」ことは、「治療が有効である」ことと同義ではない。</strong> 腫瘍縮小、検査値改善、症状改善が観察されても、自然寛解、回帰効果、患者選択、測定頻度、併用療法、アウトカム判定の主観性を差し引いた効果は分からない。</p>
+              </section>
+
+              <section id="singlearm-5" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">5. 単群比率メタ解析の統計的論点</h3>
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">5.1 基本量</h4>
+                <p style="line-height:1.8;">各研究 i でイベント数を x_i、分母を n_i とすると、観察割合は <code>p_i = x_i / n_i</code> である。二項分布を仮定すれば標準誤差は概ね <code>sqrt(p_i(1-p_i)/n_i)</code> と書けるが、p_i が0または1に近い場合、この近似は不安定になる[7-9]。固定効果モデルは「全研究が同じ真の割合を共有する」とみなし、ランダム効果モデルは研究ごとに真の割合が異なることを許す。pooled proportion は「対象研究群における平均的観察割合」であって、治療効果ではない。</p>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">5.2 変換法の比較</h4>
+                <h4 style="color:#1e3a8a;margin:0.4rem 0 0.5rem;font-size:0.95rem;">Table 2. proportional meta-analysis の統計手法比較</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                    <thead><tr style="background:#e0f2fe;"><th style="border:1px solid #bae6fd;padding:0.55rem;">手法</th><th style="border:1px solid #bae6fd;padding:0.55rem;">長所</th><th style="border:1px solid #bae6fd;padding:0.55rem;">短所</th><th style="border:1px solid #bae6fd;padding:0.55rem;">0/100%イベント</th><th style="border:1px solid #bae6fd;padding:0.55rem;">解釈可能性</th><th style="border:1px solid #bae6fd;padding:0.55rem;">推奨度・注意点</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">raw proportion</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">直感的で説明しやすい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">分散が割合に依存し、0/1近傍で不安定</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">扱いにくい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">高い</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">記述にはよいが主解析では慎重[7]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">logit transformation</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">0から1の範囲外推定を避けやすい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">0または1では計算困難</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">補正が必要</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">中等度</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">一般的だが continuity correction の影響に注意[7,9]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">arcsine transformation</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">極端な割合に比較的強い</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">臨床的解釈が難しい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">比較的対応</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">低い</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">感度分析向き</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">Freeman-Tukey double arcsine</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">ゼロイベントを扱いやすいとされてきた</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">逆変換が分母選択に依存し、misleading になりうる</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">対応しやすい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">低い</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">Schwarzer et al. の警告を踏まえ主解析では慎重[10]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">GLMM</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">二項データを直接モデル化できる</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">収束、モデル仮定、実装差の影響</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">比較的よい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">中等度</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">近年有力な選択肢[11]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">beta-binomial model</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">過分散を自然に扱える</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">モデル理解と実装が必要</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">よい</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">中等度</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">異質性が大きい割合データで検討</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">5.3 rare events とゼロイベント</h4>
+                <p style="line-height:1.8;">0/n や n/n が多い場合、logit変換はそのままでは使えず、continuity correction の値によって結果が変わる。GLMMや beta-binomial model は二項データを直接扱える利点があるが、統計モデルを高度にしても、比較群がないという因果的欠陥は解決しない[7,10,11]。</p>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">5.4 異質性</h4>
+                <p style="line-height:1.8;">単群 proportion では、population、endpoint definition、follow-up duration、disease severity、line of therapy、診断基準、施設選択、術者選択、出版バイアスによって I² が高くなりやすい。I²を機械的に「高いから悪い」「低いから安心」と読まず、tau²、prediction interval、研究間の臨床的ばらつきを併せて見る。meta-regression は仮説生成にとどまり、単群データから因果的な効果修飾を結論してはならない[7-9]。</p>
+              </section>
+
+              <section id="singlearm-6" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">6. ケースシリーズ・単群研究に固有のバイアス</h3>
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">Table 3. ケースシリーズ・単群研究のバイアスと対策</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                    <thead><tr style="background:#f1f5f9;"><th style="border:1px solid #cbd5e1;padding:0.55rem;">バイアス</th><th style="border:1px solid #cbd5e1;padding:0.55rem;">何が起こるか</th><th style="border:1px solid #cbd5e1;padding:0.55rem;">対策と限界</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">selection / referral center bias</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">良い結果が出やすい症例や専門施設症例が集まる。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">連続登録、登録基準明示。ただし一般化可能性は残る[2,3]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">publication / reporting bias</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">良好な奏効や珍しい成功例が出版されやすい。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">プロトコル登録、未出版情報探索。ただし完全補正は困難[5,6]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">denominator ambiguity</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">何人が対象で何人が除外されたか不明。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">フローチャート、分母、追跡不能を要求[3,4]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">non-consecutive inclusion</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">都合のよい症例選択が混じる。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">consecutive か inception cohort か確認[2,3]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">variable follow-up / loss to follow-up</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">追跡期間が短い症例ではイベントが少なく見える。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">観察開始時点、一定時点割合、person-time incidence rate を区別[4]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">outcome ascertainment / subjective endpoint</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">評価者や測定頻度で奏効率が変わる。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">客観アウトカム、盲検評価、標準化基準が望ましい。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">co-intervention / learning curve</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">併用治療や術者熟練がアウトカムに影響する。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">併用治療、施設、時期を記録。単群では分離困難。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">regression to the mean / natural history / spontaneous remission</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">介入後改善が介入効果に見える。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">内部対照または外部自然史が必要[1,12]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">immortal time / survivorship / time-window bias</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">治療開始まで生存した患者だけが入るなど、見かけの予後がよくなる。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">time zero を明示し、index date を揃える[23,25]。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">competing risks / small-study effects</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">死亡などの競合イベントや小研究の偏りで割合が歪む。</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">競合リスク解析、研究規模別感度分析。ただし因果比較には限界。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section id="singlearm-7" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">7. ケースシリーズ・単群研究を systematic review に含める場合の実務</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <h4 style="color:#14532d;margin-bottom:0.5rem;">含めてよい目的</h4>
+                    <ul style="margin-left:1.2rem;line-height:1.7;">
+                      <li>自然史の記述</li><li>稀な有害事象</li><li>手技の feasibility</li><li>仮説生成</li><li>患者背景・表現型の整理</li><li>比較研究が全くない状況での補助情報</li>
+                    </ul>
+                  </div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                    <h4 style="color:#7f1d1d;margin-bottom:0.5rem;">主解析に使うべきでない目的</h4>
+                    <ul style="margin-left:1.2rem;line-height:1.7;">
+                      <li>治療効果の主解析</li><li>標準治療との比較効果</li><li>薬剤間比較</li><li>RCTとの同一スケールでの統合</li><li>ネットワークメタ解析への無批判な投入</li>
+                    </ul>
+                  </div>
+                </div>
+                <p style="margin-top:0.8rem;line-height:1.8;">quality assessment では、Murad et al. の case report/case series appraisal framework、JBI critical appraisal tool for case series、Kempen の uncontrolled case series reporting の論点が参考になる[3,5,6]。CARE/PROCESS は reporting guideline であって risk of bias tool そのものではないため、「CARE準拠だからRoBが低い」と読んではならない。</p>
+              </section>
+
+              <section id="singlearm-8" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">8. 外部対照・歴史的対照を用いた効果推定：なぜ別問題なのか</h3>
+                <p style="line-height:1.8;">単群研究 + 外部対照は、もはや単純な pooled proportion ではない。これは非ランダム化比較による効果推定であり、明確な clinical question、target estimand、target trial emulation、適格基準、time zero、follow-up、outcome definition、測定頻度、censoring、missing data、measured confounding、unmeasured confounding、標準治療・診断・支持療法の時代変化を扱う必要がある[15-25]。</p>
+                <div style="background:#f8fafc;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin-top:0.8rem;">
+                  <strong>「外部対照を持ってきたから比較できる」という発想は不十分である。</strong> 外部対照は、設計・データ品質・交絡調整・感度分析・監査可能性が揃って初めて、状況依存的に補助的な比較情報になりうる[17,18,22,28]。
+                </div>
+              </section>
+
+              <section id="singlearm-9" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">9. 外部対照の種類とそれぞれの問題</h3>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                    <thead><tr style="background:#ede9fe;"><th style="border:1px solid #ddd6fe;padding:0.5rem;">種類</th><th style="border:1px solid #ddd6fe;padding:0.5rem;">例</th><th style="border:1px solid #ddd6fe;padding:0.5rem;">利点</th><th style="border:1px solid #ddd6fe;padding:0.5rem;">主なバイアス</th><th style="border:1px solid #ddd6fe;padding:0.5rem;">適する状況</th><th style="border:1px solid #ddd6fe;padding:0.5rem;">不適切になりやすい状況</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">previous trials</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">過去RCTの標準治療群</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">データ品質が比較的高い</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">時代変化、適格基準差</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">標準治療が安定</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">治療環境が急速に変化</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">observational cohorts</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">疾患レジストリ</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">現実診療に近い</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">交絡、欠測、測定差</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">予後因子が十分記録</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">重症度測定が粗い</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">concurrent registry controls</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">同時期レジストリ</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">時代差が小さい</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">施設差、測定差</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">アウトカム定義が一致</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">評価スケジュールが違う</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">EHR / claims</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">電子カルテ、保険請求</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">大規模</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">誤分類、未測定交絡</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">客観アウトカム</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">主観的奏効評価</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">natural history cohorts</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">未治療自然史</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">反事実の近似</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">診断時代、支持療法差</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">希少疾患</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">自然変動が大きい</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">published aggregate benchmarks</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">文献上の過去奏効率</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">入手しやすい</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">患者レベル調整不能</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">文脈説明</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">効果推定の主根拠として弱い</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">synthetic control arms</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">複数RWDから構成</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">設計可能性</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">選択過程の不透明性</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">事前SAPがある</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">outcome後にデータ源選択</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.5rem;">hybrid designs</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">内部対照を外部データで補強</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">内部比較を残せる</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">borrow方法の仮定</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">小規模RCT補助</td><td style="border:1px solid #e9d5ff;padding:0.5rem;">外部情報が不一致</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section id="singlearm-10" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">10. 外部対照で必要な因果推論の仮定</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.8rem;">
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem;"><strong>Exchangeability</strong><p style="margin:0.4rem 0 0;line-height:1.7;">治療群と外部対照群が、測定済み・未測定の予後因子に関して比較可能である必要がある[23,25]。</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem;"><strong>Positivity / overlap</strong><p style="margin:0.4rem 0 0;line-height:1.7;">外部対照群に単群試験の患者と比較可能な患者が存在しなければならない。overlap がない領域は extrapolation である[23,25]。</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem;"><strong>Consistency</strong><p style="margin:0.4rem 0 0;line-height:1.7;">比較対象の標準治療、支持療法、診断・評価手順が明確でなければならない[16,24]。</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem;"><strong>No unmeasured confounding</strong><p style="margin:0.4rem 0 0;line-height:1.7;">通常は検証できない。quantitative bias analysis や tipping point analysis が重要になる[26,27]。</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem;"><strong>Time zero alignment</strong><p style="margin:0.4rem 0 0;line-height:1.7;">単群試験の治療開始日と外部対照の index date を同じ意味にしないと、immortal time bias や selection bias が生じる[23,25]。</p></div>
+                </div>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">Table 4. 外部対照研究の仮定・破綻例・感度分析</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                    <thead><tr style="background:#ede9fe;"><th style="border:1px solid #ddd6fe;padding:0.55rem;">仮定</th><th style="border:1px solid #ddd6fe;padding:0.55rem;">破綻例</th><th style="border:1px solid #ddd6fe;padding:0.55rem;">結果への影響</th><th style="border:1px solid #ddd6fe;padding:0.55rem;">必要な感度分析</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.55rem;">Exchangeability</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">外部対照のPS・病期・既治療歴が軽い。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">治療効果を過大評価しうる。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">未測定交絡のQBA、tipping point analysis[26,27]。</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.55rem;">Positivity / overlap</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">単群試験の重症患者に対応する外部対照がいない。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">調整ではなく外挿になる。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">overlap plot、trim解析、overlap weighting。</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.55rem;">Consistency</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">外部対照の標準治療・支持療法が現行と違う。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">時代差を治療効果と誤認する。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">時期別解析、同時期対照限定、治療内容別解析。</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.55rem;">Time zero alignment</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">単群は治療開始日、外部対照は診断日から追跡。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">immortal time bias、selection bias。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">index date再定義、landmark解析。</td></tr>
+                      <tr><td style="border:1px solid #e9d5ff;padding:0.55rem;">Outcome comparability</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">単群は中央判定、外部対照は診療録判定。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">奏効率やPFSが系統的にずれる。</td><td style="border:1px solid #e9d5ff;padding:0.55rem;">客観アウトカム限定、判定頻度補正、複数定義解析。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section id="singlearm-11" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">11. 外部対照における典型的なバイアス</h3>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                    <thead><tr style="background:#f1f5f9;"><th style="border:1px solid #cbd5e1;padding:0.5rem;">バイアス</th><th style="border:1px solid #cbd5e1;padding:0.5rem;">何が起こるか</th><th style="border:1px solid #cbd5e1;padding:0.5rem;">歪みの方向</th><th style="border:1px solid #cbd5e1;padding:0.5rem;">予防・軽減</th><th style="border:1px solid #cbd5e1;padding:0.5rem;">残る限界</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">measured / unmeasured confounding</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">予後因子の違いが効果に見える。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">有利にも不利にも</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">事前共変量、PS、標準化、QBA</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">未測定交絡は消えない[26,27]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">confounding by indication</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">治療選択理由が予後と関連。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">どちらもありうる</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">適応、重症度、PSを測定</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">臨床判断は完全測定困難</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">trial eligibility mismatch</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">試験患者とRWD患者が別集団。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">外的妥当性・内的妥当性低下</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">組入基準再現、overlap確認</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">RWDで基準が測れないことがある</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">immortal time / index date bias</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">生存して治療に到達した患者だけが治療群に入る。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">治療有利に見えやすい</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">time zeroを厳密に揃える</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">過去データで再構成困難</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">calendar time / secular trend</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">診断・支持療法が時代で変わる。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">新治療有利に見えやすい</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">同時期対照、時期調整</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">不可測の時代差</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">differential outcome ascertainment</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">画像頻度や判定基準が違う。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">奏効率・PFSが歪む</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">同一基準、中央判定、感度分析</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">既存RWDでは限界大</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">missing data / informative censoring</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">予後不良例ほど欠測・脱落。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">有利に見えやすい</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">欠測機序、重み付け、複数代入</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">MNARは仮定依存</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">post-baseline switching / co-intervention / center effect</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">追加治療や施設差がアウトカムに影響。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">状況依存</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">intercurrent event戦略、施設調整</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">未記録の臨床判断が残る[24]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.5rem;">frailty / performance status の不完全測定</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">PSや重症度が粗く、患者差が残る。</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">多くは新治療有利</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">詳細なbaseline測定</td><td style="border:1px solid #e2e8f0;padding:0.5rem;">RWDの構造的限界</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section id="singlearm-12" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">12. 外部対照を使う場合の設計原則</h3>
+                <ol style="margin-left:1.2rem;line-height:1.8;">
+                  <li>protocol と statistical analysis plan を事前に作る。RWD source を outcome を見てから選ばない[17,28]。</li>
+                  <li>単群試験の組入基準を外部対照に再現し、index date を厳密に定義する[23,25]。</li>
+                  <li>baseline covariates は index date より前に測定されたものに限定する。</li>
+                  <li>outcome definition と assessment schedule を比較可能にする。</li>
+                  <li>主要解析と感度解析、欠測データの扱いを事前指定する[24]。</li>
+                  <li>比較可能性を Love plot や standardized mean difference で示し、positivity violation を可視化する。</li>
+                  <li>external control の選択過程を transparent に示す。</li>
+                  <li>規制当局やHTA向けには、data provenance、auditability、fitness for purpose を明記する[17,18,28]。</li>
+                </ol>
+              </section>
+
+              <section id="singlearm-13" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">13. 解析方法の整理</h3>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                    <thead><tr style="background:#e0f2fe;"><th style="border:1px solid #bae6fd;padding:0.55rem;">状況</th><th style="border:1px solid #bae6fd;padding:0.55rem;">方法</th><th style="border:1px solid #bae6fd;padding:0.55rem;">使い道</th><th style="border:1px solid #bae6fd;padding:0.55rem;">限界</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;" rowspan="8">個票データあり</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">multivariable regression</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">測定済み交絡の調整</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">モデル誤指定、未測定交絡</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">propensity score matching / IPTW</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">共変量バランス改善</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">overlap不足、未測定交絡</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">overlap weighting</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">比較可能な集団に焦点</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">推定対象が限定される</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">standardization / g-computation</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">目標集団への標準化</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">モデル仮定に依存</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">doubly robust / TMLE</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">モデルの頑健性向上</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">測定されていない交絡は解決できない</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">Bayesian borrowing / MAP prior / power prior</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">外部情報を段階的に借用</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">交換可能性の仮定が中心問題</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">quantitative bias analysis</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">結論を覆すバイアスの大きさを検討</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">正しさの証明ではない[26,27]</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">pre-specified sensitivity analysis</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">仮定の頑健性を確認</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">都合のよい後付け解析に注意</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;" rowspan="5">aggregate dataのみ</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">naive benchmark comparison</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">背景文脈</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">交絡調整が極めて弱い</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">MAIC</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">一方に個票がある場合の重み付け</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">報告済み共変量に限定</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">STC</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">目標集団への予測</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">モデル依存</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">indirect comparison</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">比較情報の補助</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">共通対照・推移性が弱い</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.55rem;">published historical thresholds</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">規制上の閾値設定の参考</td><td style="border:1px solid #e2e8f0;padding:0.55rem;">患者レベル調整不能で主根拠として弱い[18]</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin-top:0.8rem;line-height:1.8;">QBAは「QBAをしたから正しい」という免罪符ではない。未測定交絡、outcome misclassification、selection bias、missing data などについて、どの程度のバイアスで結論が変わるかを可視化する手段である[26,27]。</p>
+              </section>
+
+              <section id="singlearm-14" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">14. 規制・HTA文脈での位置づけ</h3>
+                <p style="line-height:1.8;">FDAの externally controlled trials guidance は、2026年6月17日に確認した公式ページ上では February 2023 の Draft guidance であり、「Not for implementation」と表示されている[17]。EMA reflection paper は、単群試験が pivotal evidence として提出される場合、RCTが標準であることを前提に、逸脱理由と適切性を申請者が正当化する必要があると位置づけている[18]。ICH E10は対照群選択が推論の種類とバイアス最小化に影響することを整理し、ICH E9(R1)は estimand と感度分析を明確化する枠組みを示す[16,24]。</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;margin-top:0.8rem;">
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>受け入れられやすい条件</strong><ul style="margin:0.5rem 0 0 1.2rem;line-height:1.7;"><li>稀少疾患、生命を脅かす疾患</li><li>ランダム化が倫理的・実務的に困難</li><li>自然史がよく分かっている</li><li>アウトカムが客観的</li><li>効果量が非常に大きい</li><li>標準治療が安定</li><li>外部対照データの質が高い</li></ul></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>受け入れられにくい条件</strong><ul style="margin:0.5rem 0 0 1.2rem;line-height:1.7;"><li>アウトカムが主観的</li><li>自然変動・自然寛解が大きい</li><li>標準治療や支持療法が時代で変化</li><li>trial population と RWD population の overlap が乏しい</li><li>performance status や disease severity の測定が不完全</li></ul></div>
+                </div>
+              </section>
+
+              <section id="singlearm-15" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">15. systematic review / meta-analysis での扱い</h3>
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">15.1 単群 proportion のレビュー</h4>
+                <p style="line-height:1.8;">descriptive synthesis として扱い、「効果」と呼ばない。pooled proportion を出すなら、対象集団、アウトカム定義、follow-up の同質性を確認し、random-effects model、prediction interval、異質性の説明を含める[7-11]。publication bias assessment は慎重に扱い、funnel plot を機械的に使わない。</p>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">15.2 外部対照付き単群研究のレビュー</h4>
+                <p style="line-height:1.8;">非ランダム化比較研究として扱う。target estimand と比較可能性を評価し、RCTや内部対照研究とは別層で合成する。十分に類似しないなら summary estimate を出さず、forest plot のみで個別研究を提示する選択肢もある。ROBINS-Iなどの枠組みを検討しつつ、外部対照特有の問題を明示する[23-28]。</p>
+                <h4 style="color:#1e3a8a;margin:1rem 0 0.5rem;">15.3 絶対に避けるべき書き方</h4>
+                <h4 style="color:#1e3a8a;margin:0.4rem 0 0.5rem;font-size:0.95rem;">Table 5. 論文で避けるべき表現と推奨表現</h4>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+                    <thead><tr style="background:#f1f5f9;"><th style="border:1px solid #cbd5e1;padding:0.6rem;">避けるべき表現</th><th style="border:1px solid #cbd5e1;padding:0.6rem;">なぜ駄目か</th><th style="border:1px solid #cbd5e1;padding:0.6rem;">推奨表現</th></tr></thead>
+                    <tbody>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">The pooled response rate was 70%; therefore the treatment is effective.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">反事実がない。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">観察奏効割合の記述的要約である。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">The pooled mortality was lower than historical data; therefore survival was improved.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">時代差・患者差・測定差を無視。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">歴史的情報との比較は仮説生成である。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">Single-arm studies were pooled with RCTs to estimate treatment effect.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">推定対象が違う。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">単群データとRCTは別層に提示する。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">A synthetic control arm was used, so confounding was adjusted.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">未測定交絡は残る。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">調整可能な交絡と残余交絡を明示する。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">The external control was matched, so bias was eliminated.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">matchingはバイアス消去ではない。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">バランス、overlap、QBAを提示する。</td></tr>
+                      <tr><td style="border:1px solid #e2e8f0;padding:0.6rem;">Because the pooled proportion was statistically significant, efficacy was demonstrated.</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">割合の有意性は効果証明ではない。</td><td style="border:1px solid #e2e8f0;padding:0.6rem;">効果推定には適切な比較が必要である。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section id="singlearm-16" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">16. 推奨される書き方</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>単群 proportion の場合</strong><p style="margin-top:0.5rem;line-height:1.7;">We synthesized single-arm studies using proportional meta-analysis to summarize observed outcome frequencies. These pooled proportions were interpreted descriptively and were not considered estimates of comparative treatment effect.</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>ケースシリーズを含む場合</strong><p style="margin-top:0.5rem;line-height:1.7;">Case series were included only for descriptive purposes and hypothesis generation. Because these studies lacked an internal comparator, they were not used to estimate causal treatment effects.</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>外部対照を使う場合</strong><p style="margin-top:0.5rem;line-height:1.7;">Studies comparing single-arm trial data with external controls were treated as non-randomized comparative studies. We assessed the plausibility of exchangeability, alignment of eligibility criteria, time zero, follow-up, outcome definitions, and adjustment for prognostic factors.</p></div>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;"><strong>統合しない場合</strong><p style="margin-top:0.5rem;line-height:1.7;">Because external-control methods, eligibility criteria, outcome ascertainment, and adjustment sets differed substantially across studies, we did not calculate a pooled comparative effect estimate.</p></div>
+                </div>
+              </section>
+
+              <section id="singlearm-17" style="margin-bottom:1.2rem;">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">17. 図表</h3>
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">Figure 1. 単群データの2つの道</h4>
+                <div style="overflow-x:auto;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;margin-bottom:1rem;">
+                  <svg viewBox="0 0 980 260" role="img" aria-label="単群データの2つの道" style="width:100%;min-width:720px;height:auto;">
+                    <rect x="25" y="92" width="185" height="72" rx="8" fill="#e2e8f0" stroke="#64748b"></rect>
+                    <text x="117" y="122" text-anchor="middle" font-size="16" fill="#0f172a">単群データ</text>
+                    <text x="117" y="146" text-anchor="middle" font-size="13" fill="#334155">case series / SAT</text>
+                    <path d="M210 128 L330 70" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowSingle)"></path>
+                    <path d="M210 128 L330 188" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowSingle)"></path>
+                    <rect x="335" y="28" width="260" height="88" rx="8" fill="#eff6ff" stroke="#3b82f6"></rect>
+                    <text x="465" y="58" text-anchor="middle" font-size="15" fill="#1e3a8a">descriptive proportional</text>
+                    <text x="465" y="82" text-anchor="middle" font-size="15" fill="#1e3a8a">meta-analysis</text>
+                    <text x="465" y="103" text-anchor="middle" font-size="12" fill="#334155">観察頻度の要約</text>
+                    <rect x="335" y="145" width="260" height="88" rx="8" fill="#f5f3ff" stroke="#7c3aed"></rect>
+                    <text x="465" y="174" text-anchor="middle" font-size="15" fill="#4c1d95">comparative external-control</text>
+                    <text x="465" y="198" text-anchor="middle" font-size="15" fill="#4c1d95">analysis</text>
+                    <text x="465" y="219" text-anchor="middle" font-size="12" fill="#334155">非ランダム化比較</text>
+                    <path d="M595 72 L735 72" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowSingle)"></path>
+                    <path d="M595 189 L735 189" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowSingle)"></path>
+                    <rect x="745" y="35" width="205" height="74" rx="8" fill="#f8fafc" stroke="#94a3b8"></rect>
+                    <text x="847" y="66" text-anchor="middle" font-size="14" fill="#0f172a">言えること</text>
+                    <text x="847" y="88" text-anchor="middle" font-size="12" fill="#334155">pooled proportion</text>
+                    <rect x="745" y="152" width="205" height="74" rx="8" fill="#f8fafc" stroke="#94a3b8"></rect>
+                    <text x="847" y="182" text-anchor="middle" font-size="14" fill="#0f172a">必要なもの</text>
+                    <text x="847" y="204" text-anchor="middle" font-size="12" fill="#334155">exchangeability / time zero</text>
+                    <defs><marker id="arrowSingle" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"></path></marker></defs>
+                  </svg>
+                </div>
+
+                <h4 style="color:#1e3a8a;margin:0.8rem 0 0.5rem;">Figure 2. target trial emulation for external control</h4>
+                <div style="overflow-x:auto;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem;">
+                  <svg viewBox="0 0 980 300" role="img" aria-label="target trial emulation for external control" style="width:100%;min-width:760px;height:auto;">
+                    <rect x="30" y="30" width="920" height="240" rx="12" fill="#f8fafc" stroke="#cbd5e1"></rect>
+                    <text x="490" y="62" text-anchor="middle" font-size="18" fill="#0f172a">外部対照比較を target trial として定義する</text>
+                    <g font-size="13" fill="#0f172a">
+                      <rect x="70" y="95" width="180" height="48" rx="8" fill="#e0f2fe" stroke="#0284c7"></rect><text x="160" y="124" text-anchor="middle">eligibility</text>
+                      <rect x="290" y="95" width="180" height="48" rx="8" fill="#e0f2fe" stroke="#0284c7"></rect><text x="380" y="124" text-anchor="middle">treatment strategy</text>
+                      <rect x="510" y="95" width="180" height="48" rx="8" fill="#e0f2fe" stroke="#0284c7"></rect><text x="600" y="124" text-anchor="middle">comparator strategy</text>
+                      <rect x="730" y="95" width="180" height="48" rx="8" fill="#e0f2fe" stroke="#0284c7"></rect><text x="820" y="124" text-anchor="middle">time zero</text>
+                      <rect x="70" y="178" width="180" height="48" rx="8" fill="#ede9fe" stroke="#7c3aed"></rect><text x="160" y="207" text-anchor="middle">outcome</text>
+                      <rect x="290" y="178" width="180" height="48" rx="8" fill="#ede9fe" stroke="#7c3aed"></rect><text x="380" y="207" text-anchor="middle">follow-up</text>
+                      <rect x="510" y="178" width="180" height="48" rx="8" fill="#ede9fe" stroke="#7c3aed"></rect><text x="600" y="207" text-anchor="middle">causal contrast</text>
+                      <rect x="730" y="178" width="180" height="48" rx="8" fill="#ede9fe" stroke="#7c3aed"></rect><text x="820" y="207" text-anchor="middle">analysis plan</text>
+                    </g>
+                    <text x="490" y="254" text-anchor="middle" font-size="13" fill="#475569">どれか一つが曖昧なら、外部対照比較の信頼性は大きく下がる。</text>
+                  </svg>
+                </div>
+              </section>
+
+              <section style="margin-bottom:1.2rem;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
+                <h3 style="color:#1e293b;margin-bottom:0.7rem;">Take-home messages</h3>
+                <ol style="margin-left:1.2rem;line-height:1.8;">
+                  <li>単群・ケースシリーズの pooled proportion は、比較効果ではなく記述的要約である。</li>
+                  <li>比較群がない限り、自然経過・患者選択・時代変化・併用治療・測定バイアスを分離できない。</li>
+                  <li>外部対照・歴史的対照を使うなら、それは非ランダム化比較研究として設計・評価すべきである。</li>
+                  <li>target estimand、time zero、eligibility、outcome definition、follow-up、交絡調整、感度分析が曖昧なら、効果推定としての信頼性は低い。</li>
+                  <li>統計モデルを複雑にしても、設計上の比較可能性の欠如は救えない。</li>
+                  <li>systematic review では、単群 proportion、外部対照比較、RCT/内部対照比較を混同せず、原則として別々に提示・解釈する。</li>
+                </ol>
+              </section>
+
+              <section id="singlearm-18">
+                <h3 style="color:#1e40af;border-bottom:2px solid #bfdbfe;padding-bottom:0.4rem;margin-bottom:0.8rem;">18. References</h3>
+                <ol style="margin-left:1.2rem;line-height:1.7;font-size:0.86rem;">
+                  <li>Bailar JC 3rd, Louis TA, Lavori PW, Polansky M. Studies without internal controls. N Engl J Med. 1984;311(3):156-162. <a href="https://doi.org/10.1056/NEJM198407193110306" target="_blank">doi:10.1056/NEJM198407193110306</a>. PMID:6377068.</li>
+                  <li>Moses LE. The series of consecutive cases as a device for assessing outcomes of intervention. N Engl J Med. 1984;311(11):705-710. <a href="https://doi.org/10.1056/NEJM198409133111104" target="_blank">doi:10.1056/NEJM198409133111104</a>. PMID:6472357.</li>
+                  <li>Kempen JH. Appropriate use and reporting of uncontrolled case series in the medical literature. Am J Ophthalmol. 2011;151(1):7-10.e1. <a href="https://doi.org/10.1016/j.ajo.2010.08.047" target="_blank">doi:10.1016/j.ajo.2010.08.047</a>. PMID:21163373.</li>
+                  <li>Jabs DA. Improving the reporting of clinical case series. Am J Ophthalmol. 2005;139(5):900-905. <a href="https://doi.org/10.1016/j.ajo.2004.12.009" target="_blank">doi:10.1016/j.ajo.2004.12.009</a>. PMID:15860297.</li>
+                  <li>Murad MH, Sultan S, Haffar S, Bazerbachi F. Methodological quality and synthesis of case series and case reports. BMJ Evid Based Med. 2018;23(2):60-63. <a href="https://doi.org/10.1136/bmjebm-2017-110853" target="_blank">doi:10.1136/bmjebm-2017-110853</a>. PMID:29420178.</li>
+                  <li>Munn Z, Barker TH, Moola S, Tufanaru C, Stern C, McArthur A, Stephenson M, Aromataris E. Methodological quality of case series studies. JBI Evidence Synthesis. 2020;18(10):2127-2133. <a href="https://doi.org/10.11124/JBISRIR-D-19-00099" target="_blank">doi:10.11124/JBISRIR-D-19-00099</a>. PMID:33038125.</li>
+                  <li>Barker TH, Migliavaca CB, Stein C, Colpani V, Falavigna M, Aromataris E, Munn Z. Conducting proportional meta-analysis in different types of systematic reviews. BMC Med Res Methodol. 2021;21:189. <a href="https://doi.org/10.1186/s12874-021-01381-z" target="_blank">doi:10.1186/s12874-021-01381-z</a>. PMID:34544368.</li>
+                  <li>Barendregt JJ, Doi SA, Lee YY, Norman RE, Vos T. Meta-analysis of prevalence. J Epidemiol Community Health. 2013;67(11):974-978. <a href="https://doi.org/10.1136/jech-2013-203104" target="_blank">doi:10.1136/jech-2013-203104</a>. PMID:23963506.</li>
+                  <li>Nyaga VN, Arbyn M, Aerts M. Metaprop: a Stata command to perform meta-analysis of binomial data. Arch Public Health. 2014;72:39. <a href="https://doi.org/10.1186/2049-3258-72-39" target="_blank">doi:10.1186/2049-3258-72-39</a>. PMID:25810908.</li>
+                  <li>Schwarzer G, Chemaitelly H, Abu-Raddad LJ, Rücker G. Seriously misleading results using inverse of Freeman-Tukey double arcsine transformation in meta-analysis of single proportions. Res Synth Methods. 2019;10:476-483. <a href="https://doi.org/10.1002/jrsm.1348" target="_blank">doi:10.1002/jrsm.1348</a>. PMID:30945438.</li>
+                  <li>Lin L, Chu H. Meta-analysis of proportions using generalized linear mixed models. Epidemiology. 2020;31(5):713-717. <a href="https://doi.org/10.1097/EDE.0000000000001232" target="_blank">doi:10.1097/EDE.0000000000001232</a>. PMID:32657954.</li>
+                  <li>Ip S, Paulus J, Balk E, Dahabreh I, Avendano E, Lau J. Role of Single Group Studies in AHRQ Comparative Effectiveness Reviews. AHRQ Methods Guide. 2013. PMID:23427351.</li>
+                  <li>Paulus JK, Dahabreh IJ, Balk EM, Avendano EE, Lau J, Ip S. Opportunities and challenges in using studies without a control group in comparative effectiveness reviews. Res Synth Methods. 2014;5(2):152-161. <a href="https://doi.org/10.1002/jrsm.1101" target="_blank">doi:10.1002/jrsm.1101</a>. PMID:26052654.</li>
+                  <li>Singh J, Abrams KR, Bujkiewicz S. Incorporating single-arm studies in meta-analysis of randomised controlled trials. BMC Med Res Methodol. 2021;21:114. <a href="https://doi.org/10.1186/s12874-021-01301-1" target="_blank">doi:10.1186/s12874-021-01301-1</a>. PMID:34082702.</li>
+                  <li>Pocock SJ. The combination of randomized and historical controls in clinical trials. J Chronic Dis. 1976;29(3):175-188. <a href="https://doi.org/10.1016/0021-9681(76)90044-8" target="_blank">doi:10.1016/0021-9681(76)90044-8</a>. PMID:770493.</li>
+                  <li>ICH E10. Choice of Control Group and Related Issues in Clinical Trials. Step 4, 2000; implemented 2001. <a href="https://database.ich.org/sites/default/files/E10_Guideline.pdf" target="_blank">Official guideline PDF</a>.</li>
+                  <li>FDA. Considerations for the Design and Conduct of Externally Controlled Trials for Drug and Biological Products. Draft Guidance for Industry. February 2023. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-design-and-conduct-externally-controlled-trials-drug-and-biological-products" target="_blank">Official FDA guidance page</a>.</li>
+                  <li>EMA. Reflection paper on establishing efficacy based on single-arm trials submitted as pivotal evidence in a marketing authorisation application. EMA/CHMP/458061/2024. Adopted 9 September 2024. <a href="https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-establishing-efficacy-based-single-arm-trials-submitted-pivotal-evidence-marketing-authorisation-application_en.pdf" target="_blank">Official EMA PDF</a>.</li>
+                  <li>Ghadessi M, Tang R, Zhou J, Liu R, Wang C, Toyoizumi K, et al. A roadmap to using historical controls in clinical trials. Orphanet J Rare Dis. 2020;15:69. <a href="https://doi.org/10.1186/s13023-020-1332-x" target="_blank">doi:10.1186/s13023-020-1332-x</a>.</li>
+                  <li>Marion JD, Althouse AD. The Use of Historical Controls in Clinical Trials. JAMA. 2023;330(15):1484-1485. <a href="https://doi.org/10.1001/jama.2023.16182" target="_blank">doi:10.1001/jama.2023.16182</a>. PMID:37768654.</li>
+                  <li>Hall KT, Vase L, Tobias DK, Dashti HS, Vollert J, Kaptchuk TJ, Cook NR. Historical Controls in Randomized Clinical Trials. Clin Pharmacol Ther. 2021;109(2):343-351. <a href="https://doi.org/10.1002/cpt.1970" target="_blank">doi:10.1002/cpt.1970</a>. PMID:32602555.</li>
+                  <li>Jahanshahi M, Gregg K, Davis G, Ndu A, Miller V, Vockley J, Ollivier C, Franolic T, Sakai S. The Use of External Controls in FDA Regulatory Decision Making. Ther Innov Regul Sci. 2021. <a href="https://doi.org/10.1007/s43441-021-00302-y" target="_blank">doi:10.1007/s43441-021-00302-y</a>. PMID:34014439.</li>
+                  <li>Hernán MA, Robins JM. Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available. Am J Epidemiol. 2016;183(8):758-764. <a href="https://doi.org/10.1093/aje/kwv254" target="_blank">doi:10.1093/aje/kwv254</a>. PMID:26994063.</li>
+                  <li>ICH E9(R1). Addendum on Estimands and Sensitivity Analysis in Clinical Trials. Step 4, 2019; EU legal effective date 30 July 2020. <a href="https://www.ema.europa.eu/en/ich-e9-statistical-principles-clinical-trials-scientific-guideline" target="_blank">EMA ICH E9 page</a>.</li>
+                  <li>Hampson LV, Chu J, Zia A, Zhang J, Hsu WC, Parzynski C, Hao Y, Degtyarev E. Combining the Target Trial and Estimand Frameworks to Define the Causal Estimand. Statistics in Biopharmaceutical Research. <a href="https://doi.org/10.1080/19466315.2023.2190931" target="_blank">doi:10.1080/19466315.2023.2190931</a>.</li>
+                  <li>Gray C, Ralphs E, Fox MP, Lash TL, Liu G, Kou TD, Rivera DR, Bosco J, Braun KVN, Grimson F, et al. Use of quantitative bias analysis to evaluate single-arm trials with real-world data external controls. Pharmacoepidemiol Drug Saf. 2024. <a href="https://doi.org/10.1002/pds.5796" target="_blank">doi:10.1002/pds.5796</a>. PMID:38680093.</li>
+                  <li>Gupta A, Hsu G, Kent S, Duffield SJ, Merinopoulou E, Lockhart A, Arora P, Ray J, Wilkinson S, Scheuer N, Ramagopalan SV, Groenwold RHH, Popat S, Hernán MA. Quantitative Bias Analysis for Single-Arm Trials With External Control Arms. JAMA Netw Open. 2025;8(3):e252152. <a href="https://doi.org/10.1001/jamanetworkopen.2025.2152" target="_blank">doi:10.1001/jamanetworkopen.2025.2152</a>. PMID:40136297.</li>
+                  <li>Hogervorst MA, Soman KV, Gardarsdottir H, Goettsch WG, Bloem LT. Analytical Methods for Comparing Uncontrolled Trials With External Controls From Real-World Data. Value Health. 2025;28(1):161-174. <a href="https://doi.org/10.1016/j.jval.2024.08.002" target="_blank">doi:10.1016/j.jval.2024.08.002</a>. PMID:39241824.</li>
+                </ol>
+              </section>
+            </div>
+          </div>
+
+          <!-- Tab 6: 仮説検定とP値の誤解：佐藤俊哉先生 -->
           <div class="tab-pane">
             <div class="content-section">
               <h2 class="section-title">仮説検定とP値の誤解</h2>
