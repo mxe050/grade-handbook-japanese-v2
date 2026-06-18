@@ -102,7 +102,7 @@ function checkAuth(){
         <button class="toc-btn" data-idx="3">
           <span class="toc-num">3</span>
           <span class="toc-text">
-            GRADEの使用を主張するための要件と本邦の現状
+            GRADE使用要件・信頼できるCPG・CPGトホホ
             <span class="en">Requirements for claiming the use of GRADE and the current status in Japan</span>
           </span>
         </button>
@@ -210,8 +210,8 @@ function checkAuth(){
         <button class="toc-btn" data-idx="15">
           <span class="toc-num">★</span>
           <span class="toc-text">
-            統計・連続量・no evidence
-            <span class="en">Statistics / Continuous outcomes / No evidence</span>
+            統計・連続量
+            <span class="en">Statistics / Continuous outcomes</span>
           </span>
         </button>
       </li>
@@ -1280,6 +1280,348 @@ function checkAuth(){
 
           <!-- エビデンスがない場合 tab -->
           <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">no evidence：GRADEで「エビデンスがない」ときに何をするか</h2>
+              <p style="margin-bottom:1rem;color:#475569;line-height:1.8;">
+                この章は、Mustafa RA らの GRADE notes 論文「How to use GRADE when there is 'no' evidence?」を主軸に、直接的な公表エビデンスがない、きわめて限定的である、または対象集団・介入に対して非常に間接的である場合に、診療ガイドラインパネルがどのように透明な推奨判断へ進むかを整理します。結論を先に言うと、<strong>no evidence は「何も考えずに no recommendation」でも、「専門家の意見だけで推奨」でもありません。</strong>まず体系的検索で本当に直接エビデンスがないことを確認し、次に利用可能な最良の情報を、出所と限界を明示してEtDに入れる必要があります。
+              </p>
+
+              <div style="background:#eff6ff;border-left:5px solid #2563eb;border-radius:8px;padding:1rem;margin-bottom:1.1rem;">
+                <strong>この章の中心文献</strong>
+                <p style="margin:0.45rem 0 0;line-height:1.7;">
+                  Mustafa RA, Garcia CAC, Bhatt M, Riva JJ, Vesely S, Wiercioch W, Nieuwlaat R, Patel P, Hanson S, Newall F, Wiernikowski J, Monagle P, Schünemann HJ. <em>GRADE notes: How to use GRADE when there is "no" evidence? A case study of the expert evidence approach.</em> J Clin Epidemiol. 2021;137:231-235. DOI: <a href="https://doi.org/10.1016/j.jclinepi.2021.02.026" target="_blank" rel="noopener" style="color:#1d4ed8;">10.1016/j.jclinepi.2021.02.026</a>.
+                </p>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.8rem;margin-bottom:1.2rem;">
+                <a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;color:#1e293b;">
+                  <strong>Docswell資料</strong>
+                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#475569;">「no recommendation」の前に理解すること・行うこと・実例。</p>
+                </a>
+                <a href="https://youtu.be/ve8pc9u2YDE" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;color:#7f1d1d;">
+                  <strong>動画解説</strong>
+                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#7f1d1d;">EBM診療ガイドライン作成編：エビデンスがない場合。</p>
+                </a>
+                <a href="https://note.com/mxe05064/n/n138d7e385416" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;color:#9a3412;">
+                  <strong>note補足</strong>
+                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#9a3412;">very lowやコンセンサスとの関係、続編論文の整理。</p>
+                </a>
+              </div>
+
+              <figure style="margin:1rem 0;background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:0.9rem;">
+                <figcaption style="font-weight:800;color:#1e3a5f;margin-bottom:0.7rem;">引用図・資料1：Docswellスライド「no recommendation の判断を行う前に」</figcaption>
+                <div style="position:relative;width:100%;padding-top:75%;border-radius:8px;overflow:hidden;background:#f1f5f9;border:1px solid #e2e8f0;">
+                  <iframe src="https://www.docswell.com/slide/KXYJ6X/embed" title="Docswell no recommendation before no evidence GRADE slides" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+                </div>
+                <p style="font-size:0.84rem;color:#64748b;line-height:1.6;margin:0.6rem 0 0;">出典：<a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener">Docswell資料</a>。ページ内では資料そのものを埋め込み、本文では論文に基づく要点を解説しています。</p>
+              </figure>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">1. まず用語を分ける：no evidence、very low evidence、expert opinion は同じではない</summary>
+                <div class="accordion-body">
+                  <p>「エビデンスがない」という表現はしばしば雑に使われます。しかし、GRADEで重要なのは、どの意味で「ない」のかを分けることです。検索しても直接研究がない場合、研究はあるが対象集団が違いすぎる場合、症例報告や小規模ケースシリーズしかない場合、アウトカムが代理アウトカムしかない場合、研究はあるが確実性が非常に低い場合では、取るべき対応が異なります。</p>
+                  <div style="overflow-x:auto;margin-top:0.8rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;min-width:860px;">
+                      <thead>
+                        <tr style="background:#e0f2fe;color:#0f172a;">
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">状況</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">意味</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">GRADEでの扱い</th>
+                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">誤った対応</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>No direct evidence</strong></td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">PICOに直接答える公表研究が見つからない。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">間接エビデンス、専門家経験、レジストリ、自然史、患者価値観などを透明に検討。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">検索せずに「エビデンスなし」と書く。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Very low certainty</strong></td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">研究はあるが、効果推定への確信が非常に低い。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">EtDで不確実性を明示し、通常は条件付き推奨または推奨なしを慎重に検討。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">very lowだから自動的に推奨不能、または逆に専門家合意で強い推奨。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Expert opinion</strong></td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家の判断、信念、臨床的印象。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">意見そのものはエビデンスではない。根拠となる経験・症例・アウトカムを構造化できるかを確認。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">「専門家がそう思う」だけで推奨を作る。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Expert evidence</strong></td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家が経験した症例数、介入、アウトカムを事前・匿名・構造化して集めた情報。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">非常に低い確実性のエビデンスとして、限界を明示してEtDに入れる。</td>
+                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家経験を高確実性の代替根拠として扱う。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">2. Mustafa 2021論文の核心：専門家の「意見」ではなく、専門家の「経験データ」を集める</summary>
+                <div class="accordion-body">
+                  <p>Mustafaらの論文は、American Society of Hematology の小児静脈血栓塞栓症ガイドライン作成を例に、直接的な公表エビデンスがない場合の一つの方法として expert evidence approach を提示しました。ポイントは、パネル会議で声の大きい専門家が意見を述べ、それを合意形成することではありません。会議前に、匿名のオンライン調査で、パネルメンバーがこれまで管理した症例数、介入、アウトカムを構造化して集め、その結果をパネル全体に提示することです。</p>
+                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin:0.8rem 0;">
+                    <strong>論文の方法の要点</strong>
+                    <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.8;">
+                      <li>最初に、通常どおり公表文献と灰色文献を広く検索する。</li>
+                      <li>直接または間接エビデンスが見つからない、または重大アウトカムのエビデンスがない質問を特定する。</li>
+                      <li>パネルは、推奨を出さない、根拠を明示しない専門家意見で推奨する、推奨判断に使える一次データを作る、という選択肢に直面する。</li>
+                      <li>著者らは、専門家の未公表観察とケースシリーズを構造化して集めるexpert evidence surveyを実施した。</li>
+                      <li>集めたのは「どう思うか」ではなく、「何例を診たか、どの管理を行ったか、どのアウトカムを観察したか」である。</li>
+                      <li>調査結果は会議前に匿名で回収し、エビデンスが完全にない場合は単独で、very lowで間接的な公表データがある場合はそれと関連づけて提示した。</li>
+                    </ul>
+                  </div>
+                  <p>この方法により、パネルは個々の記憶や権威の影響を受ける「ばらばらの専門家意見」ではなく、同じ形式で集められた集合的経験を見ながら推奨を議論できます。ただし、このエビデンスは依然として非常に低い確実性であり、想起バイアス、過大申告、症例重複、アウトカム定義の不統一、利益相反、一般化可能性の限界を持ちます。したがって、専門家経験を使うことは「GRADEを諦める」ことではなく、むしろ限界を隠さずGRADEの透明性に乗せる作業です。</p>
+                </div>
+              </details>
+
+              <figure style="margin:1rem 0;background:#fff;border:1px solid #dbeafe;border-radius:10px;padding:0.9rem;">
+                <figcaption style="font-weight:800;color:#1e3a5f;margin-bottom:0.7rem;">図2：no evidence から推奨判断までの流れ（Mustafa 2021をもとに作成）</figcaption>
+                <div style="overflow-x:auto;">
+                  <svg viewBox="0 0 1040 360" role="img" aria-label="No evidence expert evidence approach flow" style="width:100%;min-width:760px;height:auto;">
+                    <defs>
+                      <marker id="noevArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#475569"></path></marker>
+                    </defs>
+                    <rect x="20" y="24" width="155" height="82" rx="10" fill="#eff6ff" stroke="#2563eb"></rect>
+                    <text x="97" y="56" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">SRを行う</text>
+                    <text x="97" y="80" text-anchor="middle" font-size="12" fill="#334155">公表文献・灰色文献</text>
+                    <path d="M175 65 L235 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
+                    <rect x="240" y="24" width="165" height="82" rx="10" fill="#fff7ed" stroke="#f97316"></rect>
+                    <text x="322" y="55" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">ギャップを分類</text>
+                    <text x="322" y="80" text-anchor="middle" font-size="12" fill="#334155">なし / 間接 / very low</text>
+                    <path d="M405 65 L465 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
+                    <rect x="470" y="24" width="175" height="82" rx="10" fill="#fef2f2" stroke="#dc2626"></rect>
+                    <text x="557" y="53" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">選択肢を明示</text>
+                    <text x="557" y="77" text-anchor="middle" font-size="12" fill="#334155">推奨なし / 意見 / データ化</text>
+                    <path d="M645 65 L705 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
+                    <rect x="710" y="24" width="145" height="82" rx="10" fill="#f0fdf4" stroke="#22c55e"></rect>
+                    <text x="782" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">専門家調査</text>
+                    <text x="782" y="78" text-anchor="middle" font-size="12" fill="#334155">症例・介入・アウトカム</text>
+                    <path d="M855 65 L915 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
+                    <rect x="920" y="24" width="100" height="82" rx="10" fill="#eef2ff" stroke="#6366f1"></rect>
+                    <text x="970" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#3730a3">EtD</text>
+                    <text x="970" y="78" text-anchor="middle" font-size="12" fill="#334155">限界込みで判断</text>
+                    <rect x="105" y="185" width="830" height="130" rx="12" fill="#f8fafc" stroke="#cbd5e1"></rect>
+                    <text x="520" y="218" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">重要なのは「専門家の意見」ではなく「明示された非常に低い確実性の情報」へ変換すること</text>
+                    <text x="520" y="251" text-anchor="middle" font-size="14" fill="#334155">会議前・匿名・構造化・症例数とアウトカム・COI管理・限界の明示</text>
+                    <text x="520" y="282" text-anchor="middle" font-size="14" fill="#334155">最終推奨は、利益と害、価値観、負担、実行可能性、研究の必要性とともにEtDで説明する</text>
+                  </svg>
+                </div>
+                <p style="font-size:0.84rem;color:#64748b;line-height:1.6;margin:0.6rem 0 0;">出典：Mustafa RA et al. J Clin Epidemiol. 2021;137:231-235 の方法をもとに、本ページで概念図として作成。</p>
+              </figure>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">3. 実例：小児VTEガイドラインで何が起きたか</summary>
+                <div class="accordion-body">
+                  <p>論文の事例では、小児静脈血栓塞栓症に関する26の優先質問のうち、12が「エビデンスなし、非常に限定的、または非常に低い確実性」であり、これらの質問に対して専門家調査が行われました。パネルは14名で構成され、異なる専門領域と国から参加し、対象となる推奨について金銭的COIのないメンバーが少なくとも50%以上であることが条件とされました。</p>
+                  <div style="overflow-x:auto;margin-top:0.8rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:820px;">
+                      <thead>
+                        <tr style="background:#f1f5f9;color:#1e293b;">
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">小児VTEの領域</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">公表症例数</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">専門家パネルが経験した概算症例数</th>
+                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">読み方</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">症候性VTE</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">1,637</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">9,294</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">公表文献だけでは見えない集合的経験が大きい。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">無症候性VTE</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">298</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">3,218</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">臨床現場の経験は多いが、公表されていない。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">中心静脈ライン関連血栓症</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">17</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">5,563</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">公表症例数と臨床経験の差が特に大きい。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">表在静脈血栓症</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">0</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">922</td>
+                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">no published evidenceでも臨床経験は存在しうる。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="font-size:0.84rem;color:#64748b;margin-top:0.5rem;">出典：Mustafa RA et al. 2021 のTable 2の数値をもとに、主要例を抜粋して本ページで再整理。</p>
+                  <p style="margin-top:0.9rem;">この表は、専門家経験を「高い確実性の証拠」として扱うためのものではありません。むしろ、公表文献の欠落がどれほど大きいか、そして推奨判断のために未公表の臨床経験を構造化して扱う意義があるかを示すものです。著者ら自身も、想起バイアスや過大推定の可能性を明記しており、専門家調査は査読済み研究の代替ではなく、エビデンスがない場面の透明な補助手段です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item" open>
+                <summary class="accordion-header">4. no recommendation にする前に考える3つの選択肢</summary>
+                <div class="accordion-body">
+                  <p>論文のMethodsで重要なのは、パネルが複数の選択肢に直面した点です。エビデンスがないからといって、すぐ「推奨なし」とするだけではありません。一方で、専門家の権威だけで推奨することも避けるべきです。</p>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.8rem;">
+                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;">
+                      <strong style="color:#991b1b;">選択肢A：推奨なし</strong>
+                      <p style="margin:0.45rem 0 0;line-height:1.7;">エビデンスが不確実すぎる場合、推奨しない判断は正当になりうる。ただし臨床家が毎日判断を迫られる領域では、推奨なしが患者害につながる可能性もある。</p>
+                    </div>
+                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;">
+                      <strong style="color:#c2410c;">選択肢B：根拠を明示しない専門家意見</strong>
+                      <p style="margin:0.45rem 0 0;line-height:1.7;">早く作れるが、何に基づく判断か追跡できない。声の大きい人、権威、慣習、COIに引きずられる危険がある。</p>
+                    </div>
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.9rem;">
+                      <strong style="color:#166534;">選択肢C：一次情報を構造化して作る</strong>
+                      <p style="margin:0.45rem 0 0;line-height:1.7;">専門家経験、レジストリ、未公表データなどを、事前計画・COI管理・透明な限界表示とともにEtDへ入れる。</p>
+                    </div>
+                  </div>
+                  <p style="margin-top:0.9rem;">Mustafa論文が示すのは、選択肢Cの一例です。つまり、「専門家が合意したから推奨」ではなく、「公表エビデンスがない領域で、専門家の集合的経験をできる限りデータとして可視化し、very low certaintyとして扱ったうえで推奨を議論する」という発想です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">5. 実務手順：ガイドライン委員会が実際に行うこと</summary>
+                <div class="accordion-body">
+                  <ol style="margin:0 0 0 1.2rem;line-height:1.85;">
+                    <li><strong>スコープ段階でno evidenceの可能性を予測する</strong>：希少疾患、小児、妊婦、高齢者、重症例、倫理的にRCT困難な介入では、最初から代替情報源を検討する。</li>
+                    <li><strong>通常のSRを省略しない</strong>：no evidenceと書くには、検索式、データベース、灰色文献、適格基準、除外理由を示す必要がある。</li>
+                    <li><strong>エビデンスギャップを分類する</strong>：完全に研究がないのか、間接エビデンスはあるのか、very lowの研究はあるのか、アウトカムだけ欠けているのかを分ける。</li>
+                    <li><strong>専門家調査を使うなら会議前に実施する</strong>：会議中の発言で集めると、集団力学や権威の影響を受けやすい。</li>
+                    <li><strong>質問は意見ではなく経験データにする</strong>：「何を推奨しますか」ではなく、「何例経験しましたか」「どの治療をしましたか」「どのアウトカムが何例ありましたか」と聞く。</li>
+                    <li><strong>匿名性とCOI管理を行う</strong>：誰の回答かが分かると、権威や対人関係が判断に影響する。COIのある専門家の経験は有用でも、推奨決定時の重みづけには注意する。</li>
+                    <li><strong>限界をEvidence ProfileまたはEtDに書く</strong>：想起バイアス、症例重複、アウトカム定義不一致、分母不明、一般化可能性、出版されない理由を明記する。</li>
+                    <li><strong>推奨の強さを抑制する</strong>：通常は条件付き推奨、研究推奨、または文脈依存の推奨になる。強い推奨にするには、害が大きい、価値観がほぼ一致、費用や実行可能性も明確など、別の強い理由が必要である。</li>
+                  </ol>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">6. EtDではどう書くか：空欄を専門家合意で埋めない</summary>
+                <div class="accordion-body">
+                  <p>no evidenceのCQで最も危険なのは、効果のエビデンス欄が空白なのに、推奨だけが突然出ることです。EtDでは、エビデンスがないこと自体を判断材料として明示し、そのうえで、どの補助情報を使ったか、どの程度信頼できないか、なぜそれでも推奨する/しないのかを書きます。</p>
+                  <div style="overflow-x:auto;margin-top:0.8rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:880px;">
+                      <thead>
+                        <tr style="background:#dcfce7;color:#064e3b;">
+                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">EtD項目</th>
+                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">no evidenceで書くべきこと</th>
+                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">悪い書き方</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">望ましい効果</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">直接研究はない。専門家調査では何例中どのアウトカムが報告されたか。確実性は非常に低い。</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">専門家は有効と考えた。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">望ましくない効果</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">有害事象が捕捉されにくい可能性、記憶に残りやすい重大害、分母不明を説明する。</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">大きな害は報告されていないので安全。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">エビデンスの確実性</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">no direct evidence、expert evidence、registry dataなど出所ごとにvery lowとして説明する。</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">コンセンサスなので確実。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">価値観・意向</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">患者が避けたいアウトカム、受け入れ可能な不確実性、侵襲性、負担を別途検討する。</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">患者も望むはず。</td>
+                        </tr>
+                        <tr>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">推奨文</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">「エビデンスは極めて限られるが」「条件付きで」「共有意思決定で」「研究登録を推奨」などを含める。</td>
+                          <td style="border:1px solid #dcfce7;padding:0.6rem;">通常行うことを推奨する。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">7. 使ってよい場面・使ってはいけない場面</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.9rem;">
+                      <strong style="color:#166534;">使う価値がある場面</strong>
+                      <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.75;">
+                        <li>希少疾患、小児、妊婦など、直接研究が今後も出にくい。</li>
+                        <li>臨床家が毎日判断を迫られ、推奨なしが実害になりうる。</li>
+                        <li>専門家が多施設・多国籍・多職種で、経験の偏りをある程度減らせる。</li>
+                        <li>症例数、介入、アウトカムを構造化して回収できる。</li>
+                        <li>COI管理と匿名化、限界の明示が可能。</li>
+                      </ul>
+                    </div>
+                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;">
+                      <strong style="color:#991b1b;">避けるべき場面</strong>
+                      <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.75;">
+                        <li>単にSRを行う時間がないだけ。</li>
+                        <li>専門家が一施設・一流派に偏っている。</li>
+                        <li>強い経済的COIがあり、回答の信頼性が疑わしい。</li>
+                        <li>記憶に頼ると重大な過大・過小評価が避けられない。</li>
+                        <li>患者重要アウトカムではなく、慣習や技術的成功だけを集めている。</li>
+                        <li>得られた情報を強い推奨の根拠にしようとしている。</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">8. 続編の考え方：専門家経験の前にレジストリから一次データを作れないか</summary>
+                <div class="accordion-body">
+                  <p>noteで紹介されている続編に相当する GRADE Notes 4 では、直接的な公表文献がない場合に、未公表レジストリデータを一次情報として使う方法が示されています。小児腹膜透析関連感染のガイドライン更新では、54の質問中25にエビデンスがなく、未公表レジストリデータが25問中12問の主な情報源となり、既存研究が少なくとも1つある9問にも追加情報を与えたと報告されています。</p>
+                  <p>これは、expert evidence approachの前に考えるべき重要な選択肢です。もし質の高いレジストリがあり、適格基準、アウトカム定義、解析計画、欠測処理、COI、データ監査可能性を明示できるなら、記憶に基づく専門家調査よりも体系的な一次データを作れる可能性があります。ただし、未公表データを使う場合は、raw dataと解析計画の透明性、事前指定、選択的報告の回避が不可欠です。</p>
+                </div>
+              </details>
+
+              <details class="accordion-item">
+                <summary class="accordion-header">9. 推奨文・脚注の書き方テンプレート</summary>
+                <div class="accordion-body">
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>条件付き推奨にする場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.75;">直接的な公表エビデンスは同定されなかった。パネルは、会議前に匿名で収集した専門家の症例経験とアウトカム情報を、非常に低い確実性の補助エビデンスとして検討した。利益と害のバランスは不確実であるため、患者の価値観と臨床状況を踏まえた共有意思決定を前提に、条件付きで提案する。</p>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>推奨なしにする場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.75;">直接エビデンスはなく、補助的な専門家経験も症例数、アウトカム定義、害の捕捉に大きな不確実性があった。利益と害のバランスを判断できず、患者価値観による選択の幅も大きいため、現時点では推奨を提示しない。</p>
+                    </div>
+                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
+                      <strong>研究推奨を併記する場合</strong>
+                      <p style="margin-top:0.5rem;line-height:1.75;">このCQでは、今後の連続症例登録、共通アウトカム定義、前向きレジストリ、可能であれば比較研究が必要である。推奨を適用する場合は、症例を登録し、患者重要アウトカムと有害事象を標準化して収集することが望ましい。</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;line-height:1.8;">
+                <strong>まとめ</strong>：no evidence の場面でGRADEを使うとは、「エビデンスがないので専門家が決める」という意味ではありません。検索でエビデンスギャップを確認し、使える補助情報を体系化し、それを非常に低い確実性の情報としてEtDに載せ、限界を明示して推奨の強さを抑制することです。専門家経験は、意見の代替名ではなく、症例・介入・アウトカムとして構造化され、COIとバイアスを管理されて初めて、推奨判断の補助情報になります。
+              </div>
+
+              <div style="margin-top:1rem;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
+                <strong style="color:#1e293b;">参考リンク</strong>
+                <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.8;font-size:0.9rem;">
+                  <li><a href="https://www.jclinepi.com/article/S0895-4356(21)00069-X/pdf" target="_blank" rel="noopener">Mustafa 2021 論文PDF（Journal of Clinical Epidemiology）</a></li>
+                  <li><a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener">Docswell資料：no recommendation の判断を行う前に</a></li>
+                  <li><a href="https://youtu.be/ve8pc9u2YDE" target="_blank" rel="noopener">YouTube動画解説</a></li>
+                  <li><a href="https://note.com/mxe05064/n/n138d7e385416" target="_blank" rel="noopener">note補足：エビデンスの確実性が非常に低でコンセンサスにしたい場合</a></li>
+                  <li><a href="https://doi.org/10.1016/j.jclinepi.2024.111578" target="_blank" rel="noopener">GRADE Notes 4：未公表レジストリデータを使う続編</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card" style="margin:1.2rem 0;background:#f8fafc;border-left:4px solid #64748b;padding:1rem;border-radius:0 8px 8px 0;">
+              <h3 style="font-size:1rem;font-weight:bold;color:#334155;margin-bottom:0.5rem;">補足：既存解説との接続</h3>
+              <p style="font-size:0.9rem;color:#475569;line-height:1.8;margin:0;">以下は、これまでChapter 2に置いていた「エビデンスがない場合」の解説です。上のMustafa 2021論文を中心としたexpert evidence approachとあわせて、未公表レジストリ、very low certaintyからの推奨、QES/CERQual、SWiMまでを一つの章として整理します。</p>
+            </div>
             <div class="card" style="background:linear-gradient(135deg,#1e3a5f,#0f766e);color:#fff;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem;">
               <h2 style="font-size:1.4rem;font-weight:bold;margin-bottom:0.5rem;">診療ガイドライン作成における「不確実性」と「定性的データ」の取り扱い</h2>
               <p style="color:#99f6e4;font-size:0.9rem;">GRADEアプローチの最前線 — エビデンスがない、または極めて乏しい場合の推奨作成</p>
@@ -1434,7 +1776,7 @@ function checkAuth(){
     <div class="page" id="page-3">
       <div class="page-header">
         <div class="chapter-badge">Chapter 3 / 16</div>
-        <h1>GRADEの使用を主張するための要件と本邦の現状</h1>
+        <h1>GRADE使用要件・信頼できるCPG・CPGトホホ</h1>
         <div class="en-title">Requirements for claiming the use of GRADE and the current status in Japan</div>
       </div>
       <div class="page-body">
@@ -1447,7 +1789,7 @@ function checkAuth(){
           <div class="tab-pane active">
 
         <div class="author-info">著者：Holger J. Schünemann, Ignacio Neumann, Sue Brennan, Joerg Meerpohl, Marina Davoli, Pablo Alonso Coello, Elie Akl, Philipp Dahm, Nicole Skoetz, Jun Xia<br>グラフィックス著者：Carlos Cuello<br>最終更新日：2025年11月12日</div>
-        <h1 class="chapter-title">GRADEの使用を主張するための要件と本邦の現状</h1>
+        <h1 class="chapter-title">GRADE使用要件・信頼できるCPG・CPGトホホ</h1>
 <p>著者：Holger J. Schünemann, Ignacio Neumann, Sue Brennan, Joerg Meerpohl, Marina Davoli, Pablo Alonso Coello, Elie Akl, Philipp Dahm, Nicole Skoetz, Jun Xia</p>
 <p>グラフィックス著者：Carlos Cuello</p>
 <p>最終更新日：2025年11月12日</p>
@@ -7708,12 +8050,12 @@ function checkAuth(){
       </div>
     </div>
 
-    <!-- page-15: 統計・連続量・no evidence -->
+    <!-- page-15: 統計・連続量 -->
     <div class="page" id="page-15">
       <div class="page-header">
         <div class="chapter-badge">Chapter 15 / 16</div>
-        <h1>統計・連続量・no evidence</h1>
-        <div class="en-title">Statistics / Continuous outcomes / No evidence</div>
+        <h1>統計・連続量</h1>
+        <div class="en-title">Statistics / Continuous outcomes</div>
       </div>
       <div class="page-body">
         <div class="tabs-nav">
@@ -7724,7 +8066,6 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 4)">非ランダム化比較試験２</button>
           <button class="tab-btn" onclick="switchTab(this, 5)">単群のメタ分析</button>
           <button class="tab-btn" onclick="switchTab(this, 6)">仮説検定とP値の誤解：佐藤俊哉先生</button>
-          <button class="tab-btn" onclick="switchTab(this, 7)">no evidence</button>
         </div>
         <div class="tab-content">
 
@@ -10531,346 +10872,6 @@ function checkAuth(){
             </div>
           </div>
 
-          <!-- Tab 7: no evidence -->
-          <div class="tab-pane">
-            <div class="content-section">
-              <h2 class="section-title">no evidence：GRADEで「エビデンスがない」ときに何をするか</h2>
-              <p style="margin-bottom:1rem;color:#475569;line-height:1.8;">
-                この章は、Mustafa RA らの GRADE notes 論文「How to use GRADE when there is 'no' evidence?」を主軸に、直接的な公表エビデンスがない、きわめて限定的である、または対象集団・介入に対して非常に間接的である場合に、診療ガイドラインパネルがどのように透明な推奨判断へ進むかを整理します。結論を先に言うと、<strong>no evidence は「何も考えずに no recommendation」でも、「専門家の意見だけで推奨」でもありません。</strong>まず体系的検索で本当に直接エビデンスがないことを確認し、次に利用可能な最良の情報を、出所と限界を明示してEtDに入れる必要があります。
-              </p>
-
-              <div style="background:#eff6ff;border-left:5px solid #2563eb;border-radius:8px;padding:1rem;margin-bottom:1.1rem;">
-                <strong>この章の中心文献</strong>
-                <p style="margin:0.45rem 0 0;line-height:1.7;">
-                  Mustafa RA, Garcia CAC, Bhatt M, Riva JJ, Vesely S, Wiercioch W, Nieuwlaat R, Patel P, Hanson S, Newall F, Wiernikowski J, Monagle P, Schünemann HJ. <em>GRADE notes: How to use GRADE when there is "no" evidence? A case study of the expert evidence approach.</em> J Clin Epidemiol. 2021;137:231-235. DOI: <a href="https://doi.org/10.1016/j.jclinepi.2021.02.026" target="_blank" rel="noopener" style="color:#1d4ed8;">10.1016/j.jclinepi.2021.02.026</a>.
-                </p>
-              </div>
-
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.8rem;margin-bottom:1.2rem;">
-                <a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;color:#1e293b;">
-                  <strong>Docswell資料</strong>
-                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#475569;">「no recommendation」の前に理解すること・行うこと・実例。</p>
-                </a>
-                <a href="https://youtu.be/ve8pc9u2YDE" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;color:#7f1d1d;">
-                  <strong>動画解説</strong>
-                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#7f1d1d;">EBM診療ガイドライン作成編：エビデンスがない場合。</p>
-                </a>
-                <a href="https://note.com/mxe05064/n/n138d7e385416" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;color:#9a3412;">
-                  <strong>note補足</strong>
-                  <p style="margin:0.35rem 0 0;line-height:1.6;color:#9a3412;">very lowやコンセンサスとの関係、続編論文の整理。</p>
-                </a>
-              </div>
-
-              <figure style="margin:1rem 0;background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:0.9rem;">
-                <figcaption style="font-weight:800;color:#1e3a5f;margin-bottom:0.7rem;">引用図・資料1：Docswellスライド「no recommendation の判断を行う前に」</figcaption>
-                <div style="position:relative;width:100%;padding-top:75%;border-radius:8px;overflow:hidden;background:#f1f5f9;border:1px solid #e2e8f0;">
-                  <iframe src="https://www.docswell.com/slide/KXYJ6X/embed" title="Docswell no recommendation before no evidence GRADE slides" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-                </div>
-                <p style="font-size:0.84rem;color:#64748b;line-height:1.6;margin:0.6rem 0 0;">出典：<a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener">Docswell資料</a>。ページ内では資料そのものを埋め込み、本文では論文に基づく要点を解説しています。</p>
-              </figure>
-
-              <details class="accordion-item" open>
-                <summary class="accordion-header">1. まず用語を分ける：no evidence、very low evidence、expert opinion は同じではない</summary>
-                <div class="accordion-body">
-                  <p>「エビデンスがない」という表現はしばしば雑に使われます。しかし、GRADEで重要なのは、どの意味で「ない」のかを分けることです。検索しても直接研究がない場合、研究はあるが対象集団が違いすぎる場合、症例報告や小規模ケースシリーズしかない場合、アウトカムが代理アウトカムしかない場合、研究はあるが確実性が非常に低い場合では、取るべき対応が異なります。</p>
-                  <div style="overflow-x:auto;margin-top:0.8rem;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;min-width:860px;">
-                      <thead>
-                        <tr style="background:#e0f2fe;color:#0f172a;">
-                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">状況</th>
-                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">意味</th>
-                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">GRADEでの扱い</th>
-                          <th style="border:1px solid #bae6fd;padding:0.6rem;text-align:left;">誤った対応</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>No direct evidence</strong></td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">PICOに直接答える公表研究が見つからない。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">間接エビデンス、専門家経験、レジストリ、自然史、患者価値観などを透明に検討。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">検索せずに「エビデンスなし」と書く。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Very low certainty</strong></td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">研究はあるが、効果推定への確信が非常に低い。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">EtDで不確実性を明示し、通常は条件付き推奨または推奨なしを慎重に検討。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">very lowだから自動的に推奨不能、または逆に専門家合意で強い推奨。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Expert opinion</strong></td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家の判断、信念、臨床的印象。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">意見そのものはエビデンスではない。根拠となる経験・症例・アウトカムを構造化できるかを確認。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">「専門家がそう思う」だけで推奨を作る。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;"><strong>Expert evidence</strong></td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家が経験した症例数、介入、アウトカムを事前・匿名・構造化して集めた情報。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">非常に低い確実性のエビデンスとして、限界を明示してEtDに入れる。</td>
-                          <td style="border:1px solid #dbeafe;padding:0.6rem;">専門家経験を高確実性の代替根拠として扱う。</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </details>
-
-              <details class="accordion-item" open>
-                <summary class="accordion-header">2. Mustafa 2021論文の核心：専門家の「意見」ではなく、専門家の「経験データ」を集める</summary>
-                <div class="accordion-body">
-                  <p>Mustafaらの論文は、American Society of Hematology の小児静脈血栓塞栓症ガイドライン作成を例に、直接的な公表エビデンスがない場合の一つの方法として expert evidence approach を提示しました。ポイントは、パネル会議で声の大きい専門家が意見を述べ、それを合意形成することではありません。会議前に、匿名のオンライン調査で、パネルメンバーがこれまで管理した症例数、介入、アウトカムを構造化して集め、その結果をパネル全体に提示することです。</p>
-                  <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:5px solid #475569;border-radius:8px;padding:1rem;margin:0.8rem 0;">
-                    <strong>論文の方法の要点</strong>
-                    <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.8;">
-                      <li>最初に、通常どおり公表文献と灰色文献を広く検索する。</li>
-                      <li>直接または間接エビデンスが見つからない、または重大アウトカムのエビデンスがない質問を特定する。</li>
-                      <li>パネルは、推奨を出さない、根拠を明示しない専門家意見で推奨する、推奨判断に使える一次データを作る、という選択肢に直面する。</li>
-                      <li>著者らは、専門家の未公表観察とケースシリーズを構造化して集めるexpert evidence surveyを実施した。</li>
-                      <li>集めたのは「どう思うか」ではなく、「何例を診たか、どの管理を行ったか、どのアウトカムを観察したか」である。</li>
-                      <li>調査結果は会議前に匿名で回収し、エビデンスが完全にない場合は単独で、very lowで間接的な公表データがある場合はそれと関連づけて提示した。</li>
-                    </ul>
-                  </div>
-                  <p>この方法により、パネルは個々の記憶や権威の影響を受ける「ばらばらの専門家意見」ではなく、同じ形式で集められた集合的経験を見ながら推奨を議論できます。ただし、このエビデンスは依然として非常に低い確実性であり、想起バイアス、過大申告、症例重複、アウトカム定義の不統一、利益相反、一般化可能性の限界を持ちます。したがって、専門家経験を使うことは「GRADEを諦める」ことではなく、むしろ限界を隠さずGRADEの透明性に乗せる作業です。</p>
-                </div>
-              </details>
-
-              <figure style="margin:1rem 0;background:#fff;border:1px solid #dbeafe;border-radius:10px;padding:0.9rem;">
-                <figcaption style="font-weight:800;color:#1e3a5f;margin-bottom:0.7rem;">図2：no evidence から推奨判断までの流れ（Mustafa 2021をもとに作成）</figcaption>
-                <div style="overflow-x:auto;">
-                  <svg viewBox="0 0 1040 360" role="img" aria-label="No evidence expert evidence approach flow" style="width:100%;min-width:760px;height:auto;">
-                    <defs>
-                      <marker id="noevArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#475569"></path></marker>
-                    </defs>
-                    <rect x="20" y="24" width="155" height="82" rx="10" fill="#eff6ff" stroke="#2563eb"></rect>
-                    <text x="97" y="56" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">SRを行う</text>
-                    <text x="97" y="80" text-anchor="middle" font-size="12" fill="#334155">公表文献・灰色文献</text>
-                    <path d="M175 65 L235 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
-                    <rect x="240" y="24" width="165" height="82" rx="10" fill="#fff7ed" stroke="#f97316"></rect>
-                    <text x="322" y="55" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">ギャップを分類</text>
-                    <text x="322" y="80" text-anchor="middle" font-size="12" fill="#334155">なし / 間接 / very low</text>
-                    <path d="M405 65 L465 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
-                    <rect x="470" y="24" width="175" height="82" rx="10" fill="#fef2f2" stroke="#dc2626"></rect>
-                    <text x="557" y="53" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">選択肢を明示</text>
-                    <text x="557" y="77" text-anchor="middle" font-size="12" fill="#334155">推奨なし / 意見 / データ化</text>
-                    <path d="M645 65 L705 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
-                    <rect x="710" y="24" width="145" height="82" rx="10" fill="#f0fdf4" stroke="#22c55e"></rect>
-                    <text x="782" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">専門家調査</text>
-                    <text x="782" y="78" text-anchor="middle" font-size="12" fill="#334155">症例・介入・アウトカム</text>
-                    <path d="M855 65 L915 65" stroke="#475569" stroke-width="3" marker-end="url(#noevArrow)"></path>
-                    <rect x="920" y="24" width="100" height="82" rx="10" fill="#eef2ff" stroke="#6366f1"></rect>
-                    <text x="970" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#3730a3">EtD</text>
-                    <text x="970" y="78" text-anchor="middle" font-size="12" fill="#334155">限界込みで判断</text>
-                    <rect x="105" y="185" width="830" height="130" rx="12" fill="#f8fafc" stroke="#cbd5e1"></rect>
-                    <text x="520" y="218" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">重要なのは「専門家の意見」ではなく「明示された非常に低い確実性の情報」へ変換すること</text>
-                    <text x="520" y="251" text-anchor="middle" font-size="14" fill="#334155">会議前・匿名・構造化・症例数とアウトカム・COI管理・限界の明示</text>
-                    <text x="520" y="282" text-anchor="middle" font-size="14" fill="#334155">最終推奨は、利益と害、価値観、負担、実行可能性、研究の必要性とともにEtDで説明する</text>
-                  </svg>
-                </div>
-                <p style="font-size:0.84rem;color:#64748b;line-height:1.6;margin:0.6rem 0 0;">出典：Mustafa RA et al. J Clin Epidemiol. 2021;137:231-235 の方法をもとに、本ページで概念図として作成。</p>
-              </figure>
-
-              <details class="accordion-item" open>
-                <summary class="accordion-header">3. 実例：小児VTEガイドラインで何が起きたか</summary>
-                <div class="accordion-body">
-                  <p>論文の事例では、小児静脈血栓塞栓症に関する26の優先質問のうち、12が「エビデンスなし、非常に限定的、または非常に低い確実性」であり、これらの質問に対して専門家調査が行われました。パネルは14名で構成され、異なる専門領域と国から参加し、対象となる推奨について金銭的COIのないメンバーが少なくとも50%以上であることが条件とされました。</p>
-                  <div style="overflow-x:auto;margin-top:0.8rem;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:820px;">
-                      <thead>
-                        <tr style="background:#f1f5f9;color:#1e293b;">
-                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">小児VTEの領域</th>
-                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">公表症例数</th>
-                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">専門家パネルが経験した概算症例数</th>
-                          <th style="border:1px solid #cbd5e1;padding:0.6rem;text-align:left;">読み方</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">症候性VTE</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">1,637</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">9,294</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">公表文献だけでは見えない集合的経験が大きい。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">無症候性VTE</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">298</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">3,218</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">臨床現場の経験は多いが、公表されていない。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">中心静脈ライン関連血栓症</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">17</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">5,563</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">公表症例数と臨床経験の差が特に大きい。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">表在静脈血栓症</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">0</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">922</td>
-                          <td style="border:1px solid #e2e8f0;padding:0.6rem;">no published evidenceでも臨床経験は存在しうる。</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <p style="font-size:0.84rem;color:#64748b;margin-top:0.5rem;">出典：Mustafa RA et al. 2021 のTable 2の数値をもとに、主要例を抜粋して本ページで再整理。</p>
-                  <p style="margin-top:0.9rem;">この表は、専門家経験を「高い確実性の証拠」として扱うためのものではありません。むしろ、公表文献の欠落がどれほど大きいか、そして推奨判断のために未公表の臨床経験を構造化して扱う意義があるかを示すものです。著者ら自身も、想起バイアスや過大推定の可能性を明記しており、専門家調査は査読済み研究の代替ではなく、エビデンスがない場面の透明な補助手段です。</p>
-                </div>
-              </details>
-
-              <details class="accordion-item" open>
-                <summary class="accordion-header">4. no recommendation にする前に考える3つの選択肢</summary>
-                <div class="accordion-body">
-                  <p>論文のMethodsで重要なのは、パネルが複数の選択肢に直面した点です。エビデンスがないからといって、すぐ「推奨なし」とするだけではありません。一方で、専門家の権威だけで推奨することも避けるべきです。</p>
-                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.8rem;">
-                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;">
-                      <strong style="color:#991b1b;">選択肢A：推奨なし</strong>
-                      <p style="margin:0.45rem 0 0;line-height:1.7;">エビデンスが不確実すぎる場合、推奨しない判断は正当になりうる。ただし臨床家が毎日判断を迫られる領域では、推奨なしが患者害につながる可能性もある。</p>
-                    </div>
-                    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:0.9rem;">
-                      <strong style="color:#c2410c;">選択肢B：根拠を明示しない専門家意見</strong>
-                      <p style="margin:0.45rem 0 0;line-height:1.7;">早く作れるが、何に基づく判断か追跡できない。声の大きい人、権威、慣習、COIに引きずられる危険がある。</p>
-                    </div>
-                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.9rem;">
-                      <strong style="color:#166534;">選択肢C：一次情報を構造化して作る</strong>
-                      <p style="margin:0.45rem 0 0;line-height:1.7;">専門家経験、レジストリ、未公表データなどを、事前計画・COI管理・透明な限界表示とともにEtDへ入れる。</p>
-                    </div>
-                  </div>
-                  <p style="margin-top:0.9rem;">Mustafa論文が示すのは、選択肢Cの一例です。つまり、「専門家が合意したから推奨」ではなく、「公表エビデンスがない領域で、専門家の集合的経験をできる限りデータとして可視化し、very low certaintyとして扱ったうえで推奨を議論する」という発想です。</p>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">5. 実務手順：ガイドライン委員会が実際に行うこと</summary>
-                <div class="accordion-body">
-                  <ol style="margin:0 0 0 1.2rem;line-height:1.85;">
-                    <li><strong>スコープ段階でno evidenceの可能性を予測する</strong>：希少疾患、小児、妊婦、高齢者、重症例、倫理的にRCT困難な介入では、最初から代替情報源を検討する。</li>
-                    <li><strong>通常のSRを省略しない</strong>：no evidenceと書くには、検索式、データベース、灰色文献、適格基準、除外理由を示す必要がある。</li>
-                    <li><strong>エビデンスギャップを分類する</strong>：完全に研究がないのか、間接エビデンスはあるのか、very lowの研究はあるのか、アウトカムだけ欠けているのかを分ける。</li>
-                    <li><strong>専門家調査を使うなら会議前に実施する</strong>：会議中の発言で集めると、集団力学や権威の影響を受けやすい。</li>
-                    <li><strong>質問は意見ではなく経験データにする</strong>：「何を推奨しますか」ではなく、「何例経験しましたか」「どの治療をしましたか」「どのアウトカムが何例ありましたか」と聞く。</li>
-                    <li><strong>匿名性とCOI管理を行う</strong>：誰の回答かが分かると、権威や対人関係が判断に影響する。COIのある専門家の経験は有用でも、推奨決定時の重みづけには注意する。</li>
-                    <li><strong>限界をEvidence ProfileまたはEtDに書く</strong>：想起バイアス、症例重複、アウトカム定義不一致、分母不明、一般化可能性、出版されない理由を明記する。</li>
-                    <li><strong>推奨の強さを抑制する</strong>：通常は条件付き推奨、研究推奨、または文脈依存の推奨になる。強い推奨にするには、害が大きい、価値観がほぼ一致、費用や実行可能性も明確など、別の強い理由が必要である。</li>
-                  </ol>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">6. EtDではどう書くか：空欄を専門家合意で埋めない</summary>
-                <div class="accordion-body">
-                  <p>no evidenceのCQで最も危険なのは、効果のエビデンス欄が空白なのに、推奨だけが突然出ることです。EtDでは、エビデンスがないこと自体を判断材料として明示し、そのうえで、どの補助情報を使ったか、どの程度信頼できないか、なぜそれでも推奨する/しないのかを書きます。</p>
-                  <div style="overflow-x:auto;margin-top:0.8rem;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:880px;">
-                      <thead>
-                        <tr style="background:#dcfce7;color:#064e3b;">
-                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">EtD項目</th>
-                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">no evidenceで書くべきこと</th>
-                          <th style="border:1px solid #bbf7d0;padding:0.6rem;text-align:left;">悪い書き方</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">望ましい効果</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">直接研究はない。専門家調査では何例中どのアウトカムが報告されたか。確実性は非常に低い。</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">専門家は有効と考えた。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">望ましくない効果</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">有害事象が捕捉されにくい可能性、記憶に残りやすい重大害、分母不明を説明する。</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">大きな害は報告されていないので安全。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">エビデンスの確実性</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">no direct evidence、expert evidence、registry dataなど出所ごとにvery lowとして説明する。</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">コンセンサスなので確実。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">価値観・意向</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">患者が避けたいアウトカム、受け入れ可能な不確実性、侵襲性、負担を別途検討する。</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">患者も望むはず。</td>
-                        </tr>
-                        <tr>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">推奨文</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">「エビデンスは極めて限られるが」「条件付きで」「共有意思決定で」「研究登録を推奨」などを含める。</td>
-                          <td style="border:1px solid #dcfce7;padding:0.6rem;">通常行うことを推奨する。</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">7. 使ってよい場面・使ってはいけない場面</summary>
-                <div class="accordion-body">
-                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
-                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.9rem;">
-                      <strong style="color:#166534;">使う価値がある場面</strong>
-                      <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.75;">
-                        <li>希少疾患、小児、妊婦など、直接研究が今後も出にくい。</li>
-                        <li>臨床家が毎日判断を迫られ、推奨なしが実害になりうる。</li>
-                        <li>専門家が多施設・多国籍・多職種で、経験の偏りをある程度減らせる。</li>
-                        <li>症例数、介入、アウトカムを構造化して回収できる。</li>
-                        <li>COI管理と匿名化、限界の明示が可能。</li>
-                      </ul>
-                    </div>
-                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.9rem;">
-                      <strong style="color:#991b1b;">避けるべき場面</strong>
-                      <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.75;">
-                        <li>単にSRを行う時間がないだけ。</li>
-                        <li>専門家が一施設・一流派に偏っている。</li>
-                        <li>強い経済的COIがあり、回答の信頼性が疑わしい。</li>
-                        <li>記憶に頼ると重大な過大・過小評価が避けられない。</li>
-                        <li>患者重要アウトカムではなく、慣習や技術的成功だけを集めている。</li>
-                        <li>得られた情報を強い推奨の根拠にしようとしている。</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">8. 続編の考え方：専門家経験の前にレジストリから一次データを作れないか</summary>
-                <div class="accordion-body">
-                  <p>noteで紹介されている続編に相当する GRADE Notes 4 では、直接的な公表文献がない場合に、未公表レジストリデータを一次情報として使う方法が示されています。小児腹膜透析関連感染のガイドライン更新では、54の質問中25にエビデンスがなく、未公表レジストリデータが25問中12問の主な情報源となり、既存研究が少なくとも1つある9問にも追加情報を与えたと報告されています。</p>
-                  <p>これは、expert evidence approachの前に考えるべき重要な選択肢です。もし質の高いレジストリがあり、適格基準、アウトカム定義、解析計画、欠測処理、COI、データ監査可能性を明示できるなら、記憶に基づく専門家調査よりも体系的な一次データを作れる可能性があります。ただし、未公表データを使う場合は、raw dataと解析計画の透明性、事前指定、選択的報告の回避が不可欠です。</p>
-                </div>
-              </details>
-
-              <details class="accordion-item">
-                <summary class="accordion-header">9. 推奨文・脚注の書き方テンプレート</summary>
-                <div class="accordion-body">
-                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
-                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
-                      <strong>条件付き推奨にする場合</strong>
-                      <p style="margin-top:0.5rem;line-height:1.75;">直接的な公表エビデンスは同定されなかった。パネルは、会議前に匿名で収集した専門家の症例経験とアウトカム情報を、非常に低い確実性の補助エビデンスとして検討した。利益と害のバランスは不確実であるため、患者の価値観と臨床状況を踏まえた共有意思決定を前提に、条件付きで提案する。</p>
-                    </div>
-                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
-                      <strong>推奨なしにする場合</strong>
-                      <p style="margin-top:0.5rem;line-height:1.75;">直接エビデンスはなく、補助的な専門家経験も症例数、アウトカム定義、害の捕捉に大きな不確実性があった。利益と害のバランスを判断できず、患者価値観による選択の幅も大きいため、現時点では推奨を提示しない。</p>
-                    </div>
-                    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.9rem;">
-                      <strong>研究推奨を併記する場合</strong>
-                      <p style="margin-top:0.5rem;line-height:1.75;">このCQでは、今後の連続症例登録、共通アウトカム定義、前向きレジストリ、可能であれば比較研究が必要である。推奨を適用する場合は、症例を登録し、患者重要アウトカムと有害事象を標準化して収集することが望ましい。</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <div style="background:#1e3a5f;color:#e2e8f0;padding:1rem;border-radius:8px;margin-top:1rem;line-height:1.8;">
-                <strong>まとめ</strong>：no evidence の場面でGRADEを使うとは、「エビデンスがないので専門家が決める」という意味ではありません。検索でエビデンスギャップを確認し、使える補助情報を体系化し、それを非常に低い確実性の情報としてEtDに載せ、限界を明示して推奨の強さを抑制することです。専門家経験は、意見の代替名ではなく、症例・介入・アウトカムとして構造化され、COIとバイアスを管理されて初めて、推奨判断の補助情報になります。
-              </div>
-
-              <div style="margin-top:1rem;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1rem;">
-                <strong style="color:#1e293b;">参考リンク</strong>
-                <ul style="margin:0.5rem 0 0 1.2rem;line-height:1.8;font-size:0.9rem;">
-                  <li><a href="https://www.jclinepi.com/article/S0895-4356(21)00069-X/pdf" target="_blank" rel="noopener">Mustafa 2021 論文PDF（Journal of Clinical Epidemiology）</a></li>
-                  <li><a href="https://www.docswell.com/s/MXE05064/KXYJ6X-2024-02-25-111701" target="_blank" rel="noopener">Docswell資料：no recommendation の判断を行う前に</a></li>
-                  <li><a href="https://youtu.be/ve8pc9u2YDE" target="_blank" rel="noopener">YouTube動画解説</a></li>
-                  <li><a href="https://note.com/mxe05064/n/n138d7e385416" target="_blank" rel="noopener">note補足：エビデンスの確実性が非常に低でコンセンサスにしたい場合</a></li>
-                  <li><a href="https://doi.org/10.1016/j.jclinepi.2024.111578" target="_blank" rel="noopener">GRADE Notes 4：未公表レジストリデータを使う続編</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
