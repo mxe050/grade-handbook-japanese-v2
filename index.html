@@ -8056,7 +8056,7 @@ function checkAuth(){
                 title="time-to-event outcomesと閾値について"
                 src="time-to-event-thresholds.html"
                 loading="lazy"
-                onload="try{this.style.height=(this.contentWindow.document.documentElement.scrollHeight+24)+'px'}catch(e){}"
+                onload="try{var f=this;var n=0;var resize=function(){f.style.height=(f.contentWindow.document.documentElement.scrollHeight+24)+'px'};resize();var id=setInterval(function(){resize();if(++n>30)clearInterval(id)},500)}catch(e){}"
                 style="width:100%;min-height:900px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;display:block;"
               ></iframe>
             </div>
