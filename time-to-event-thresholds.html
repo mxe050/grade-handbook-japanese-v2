@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>time-to-event outcomesと閾値について</title>
+  <style>
+    :root {
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --blue-700: #1d4ed8;
+      --blue-50: #eff6ff;
+      --emerald-700: #047857;
+      --emerald-50: #ecfdf5;
+      --amber-700: #b45309;
+      --amber-50: #fffbeb;
+      --rose-700: #be123c;
+      --rose-50: #fff1f2;
+      --purple-700: #7e22ce;
+      --purple-50: #faf5ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--slate-50);
+      color: var(--slate-800);
+      font-family: "Yu Gothic", "Meiryo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--blue-700); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 18px 44px; }
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eef6ff 50%, #f8fafc 100%);
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+    .eyebrow { color: var(--blue-700); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 8px 0 8px; color: var(--slate-950); font-size: 2rem; line-height: 1.25; }
+    h2 { margin: 0; color: var(--slate-950); font-size: 1.15rem; line-height: 1.45; }
+    h3 { margin: 0 0 8px; color: var(--slate-900); font-size: 1rem; }
+    p { margin: 0 0 0.9rem; }
+    .lead { color: var(--slate-600); font-size: 1rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--slate-200);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--slate-700);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 11px;
+    }
+    .toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-top: 16px; }
+    .toc a {
+      display: block;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px 10px;
+      color: var(--slate-700);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .section {
+      margin-top: 18px;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      background: #fff;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px solid var(--slate-100);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .num {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: var(--slate-900);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .card {
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      background: var(--slate-50);
+      padding: 13px;
+    }
+    .callout {
+      border: 1px solid var(--slate-200);
+      border-left-width: 5px;
+      border-radius: 8px;
+      padding: 13px 14px;
+      background: var(--slate-50);
+    }
+    .callout.blue { border-left-color: var(--blue-700); background: var(--blue-50); }
+    .callout.emerald { border-left-color: var(--emerald-700); background: var(--emerald-50); }
+    .callout.amber { border-left-color: var(--amber-700); background: var(--amber-50); }
+    .callout.rose { border-left-color: var(--rose-700); background: var(--rose-50); }
+    .formula {
+      display: block;
+      overflow-x: auto;
+      border-radius: 7px;
+      background: var(--slate-950);
+      color: #fff;
+      font-family: Consolas, "Courier New", monospace;
+      font-weight: 700;
+      padding: 10px 12px;
+      white-space: nowrap;
+    }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--slate-200); border-radius: 8px; background: #fff; }
+    table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 0.86rem; }
+    th, td { padding: 9px 10px; border-top: 1px solid var(--slate-200); text-align: left; vertical-align: top; }
+    thead th { border-top: 0; background: var(--slate-100); color: var(--slate-900); }
+    .figure { margin: 12px 0; border: 1px solid var(--slate-200); border-radius: 10px; overflow: hidden; background: #fff; }
+    .figure img { display: block; max-width: 100%; height: auto; margin: 0 auto; background: #fff; }
+    .caption { border-top: 1px solid var(--slate-200); padding: 9px 12px; color: var(--slate-600); font-size: 0.82rem; }
+    .calc-panel {
+      border: 1px solid #d8b4fe;
+      border-radius: 10px;
+      background: var(--purple-50);
+      padding: 16px;
+    }
+    label { display: block; color: var(--slate-600); font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--slate-200);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--slate-900);
+      font: inherit;
+      padding: 8px 9px;
+    }
+    .metric {
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+    .metric-title { color: var(--slate-500); font-size: 0.76rem; font-weight: 800; }
+    .metric-value { color: var(--slate-950); font-size: 1.1rem; font-weight: 800; margin-top: 3px; }
+    .small { color: var(--slate-600); font-size: 0.82rem; line-height: 1.65; }
+    .refs li { margin-bottom: 10px; }
+    @media (max-width: 680px) {
+      .wrap { padding: 14px 10px 28px; }
+      .hero, .section { padding: 14px; }
+      h1 { font-size: 1.45rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">INGUIDE Level 1 / M4</div>
+      <h1>time-to-event outcomesと閾値について</h1>
+      <p class="lead">HRを絶対効果差と臨床的重要閾値へ翻訳するGRADE実務講義</p>
+      <div class="links">
+        <a class="pill" href="https://doi.org/10.1016/j.jclinepi.2019.10.015" target="_blank" rel="noopener noreferrer">GRADE guidelines 27</a>
+        <a class="pill" href="https://doi.org/10.1136/bmj-2024-081904" target="_blank" rel="noopener noreferrer">Core GRADE 2</a>
+        <a class="pill" href="https://www.cochrane.org/evidence/CD009294_intravesical-gemcitabine-non-muscle-invasive-bladder-cancer" target="_blank" rel="noopener noreferrer">Cochrane CD009294</a>
+        <a class="pill" href="https://doi.org/10.1002/14651858.CD013773.pub2" target="_blank" rel="noopener noreferrer">Cochrane CD013773</a>
+      </div>
+      <nav class="toc" aria-label="ページ内リンク">
+        <a href="#why">HRをそのまま読まない</a>
+        <a href="#formula">GRADE 27の計算</a>
+        <a href="#calculator">計算器</a>
+        <a href="#imprecision">不精確性</a>
+        <a href="#threshold">閾値の決め方</a>
+        <a href="#examples">実例</a>
+      </nav>
+    </header>
+
+    <section class="section" id="why">
+      <div class="section-head"><span class="num">1</span><h2>まず、HR 0.80は「生存が20%増えた」ではない</h2></div>
+      <p>Time-to-event outcomeでは、効果指標としてハザード比がよく使われます。しかしHRは、ある時点のリスク比や生存割合の比ではなく、追跡中の瞬間的なイベント発生率の比です。したがって、SoF表やEtDで意思決定に使うときは、患者やパネルが理解しやすい「何年時点で1000人あたり何人少ない、または多い」という絶対効果差に直して読む必要があります。</p>
+      <div class="grid-3">
+        <div class="card"><h3>時点を固定する</h3><p class="small">1年、2年、3年など、臨床判断に使う時点を先に決めます。時点が変われば絶対効果もNNTも変わります。</p></div>
+        <div class="card"><h3>baseline riskを決める</h3><p class="small">対照群のKaplan-Meier曲線、代表的研究、レジストリ、または対象集団に近い予後情報から、その時点のイベントリスクを置きます。</p></div>
+        <div class="card"><h3>閾値と比較する</h3><p class="small">算出した絶対効果差と95%CIを、事前に定めた臨床的重要閾値に照らして判断します。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="formula">
+      <div class="section-head"><span class="num">2</span><h2>GRADE guidelines 27: HRから絶対効果を計算する</h2></div>
+      <p>GRADE guidelines 27では、time-to-event outcomeをSoF表に載せるとき、特定時点の対照群リスクまたはイベントフリー割合を使って絶対効果を計算する方法が示されています。</p>
+      <div class="figure">
+        <img src="images/time-to-event/grade-guidelines-27.jpg" alt="GRADE guidelines 27の計算式と概要">
+        <div class="caption">GRADE guidelines 27: time-to-event outcomeを絶対効果へ変換する考え方。</div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>イベントリスクで置く場合</h3>
+          <code class="formula">R1(t) = 1 - {1 - R0(t)}^HR</code>
+          <p class="small">R0(t)は対照群の時点tにおけるイベントリスク、R1(t)は介入群のイベントリスクです。</p>
+        </div>
+        <div class="card">
+          <h3>イベントフリー割合で置く場合</h3>
+          <code class="formula">S1(t) = {S0(t)}^HR</code>
+          <p class="small">S0(t)は対照群のイベントフリー割合、S1(t)は介入群のイベントフリー割合です。</p>
+        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <thead><tr><th>対照群イベントリスク</th><th>HR 0.80の介入群イベントリスク</th><th>絶対効果差</th><th>読み方</th></tr></thead>
+          <tbody>
+            <tr><td>10%</td><td>8.1%</td><td>19/1000少ない</td><td>低リスク集団では同じHRでも絶対差は小さい。</td></tr>
+            <tr><td>20%</td><td>16.3%</td><td>37/1000少ない</td><td>baseline riskが上がるほど絶対差も大きくなる。</td></tr>
+            <tr><td>40%</td><td>33.5%</td><td>65/1000少ない</td><td>HR 0.80でも臨床的に意味がある可能性が出る。</td></tr>
+            <tr><td>60%</td><td>50.8%</td><td>92/1000少ない</td><td>高リスク集団では絶対利益が大きく見える。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="num">3</span><h2>実務手順: SoF表へ落とし込む前にそろえるもの</h2></div>
+      <div class="grid-2">
+        <div class="callout blue"><strong>Step 1</strong><br>アウトカムを患者が想像できる言葉に直す。例: PFSではなく「治療後3年以内に進行または死亡が起きる」。</div>
+        <div class="callout blue"><strong>Step 2</strong><br>判断に使う時点tを決める。1年死亡、3年再発、5年DFSなど。</div>
+        <div class="callout blue"><strong>Step 3</strong><br>その時点のbaseline riskまたはevent-free率を決める。</div>
+        <div class="callout blue"><strong>Step 4</strong><br>HRの点推定値だけでなく95%CI下限・上限も絶対効果差へ変換する。</div>
+        <div class="callout blue"><strong>Step 5</strong><br>1000人あたりの差として記述する。</div>
+        <div class="callout blue"><strong>Step 6</strong><br>事前に定めた臨床的重要閾値と比較し、不精確性の判断へつなげる。</div>
+      </div>
+    </section>
+
+    <section class="section" id="calculator">
+      <div class="section-head"><span class="num">4</span><h2>HRを絶対効果差へ変換してみる</h2></div>
+      <div class="calc-panel">
+        <div class="grid-3">
+          <div><label for="tte-time">評価時点</label><input id="tte-time" value="2年" data-tte-input></div>
+          <div><label for="tte-mode">入力する値</label><select id="tte-mode" data-tte-input><option value="eventRisk">イベントリスク</option><option value="eventFree">イベントフリー割合</option></select></div>
+          <div><label for="tte-baseline">対照群の値 (%)</label><input id="tte-baseline" type="number" min="0.1" max="99.9" step="0.1" value="40" data-tte-input></div>
+          <div><label for="tte-hr">HR 点推定値</label><input id="tte-hr" type="number" min="0.001" step="0.01" value="0.80" data-tte-input></div>
+          <div><label for="tte-lower">95%CI 下限HR</label><input id="tte-lower" type="number" min="0.001" step="0.01" value="0.62" data-tte-input></div>
+          <div><label for="tte-upper">95%CI 上限HR</label><input id="tte-upper" type="number" min="0.001" step="0.01" value="1.03" data-tte-input></div>
+          <div><label for="tte-threshold">臨床的重要閾値 絶対差 (%)</label><input id="tte-threshold" type="number" min="0" step="0.1" value="5" data-tte-input></div>
+        </div>
+        <div class="grid-3" style="margin-top:12px;">
+          <div class="metric"><div class="metric-title">1. 点推定値</div><div class="metric-value" id="tte-point">-</div><p class="small" id="tte-point-detail"></p></div>
+          <div class="metric"><div class="metric-title">2. 95%CI</div><div class="metric-value" id="tte-ci">-</div><p class="small" id="tte-ci-detail"></p></div>
+          <div class="metric"><div class="metric-title">3. 閾値との比較</div><div class="metric-value" id="tte-threshold-out">-</div><p class="small" id="tte-threshold-detail"></p></div>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <thead><tr><th>入力</th><th>HR</th><th>介入群イベントリスク</th><th>イベント差</th><th>イベントフリー差</th></tr></thead>
+            <tbody id="tte-rows"></tbody>
+          </table>
+        </div>
+        <div class="callout emerald" style="margin-top:12px;">
+          <strong>SoF注釈に近い文章</strong>
+          <p id="tte-sof" style="margin-top:6px;"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="imprecision">
+      <div class="section-head"><span class="num">5</span><h2>GRADEの不精確性判断につなげる</h2></div>
+      <p>GRADEでは、HRの95%CIが1をまたぐかだけでは判断が足りません。大事なのは、絶対効果差の95%CIが「効果なし」「臨床的重要な利益」「臨床的重要な害」のどこをまたぐかです。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>絶対効果差の95%CI</th><th>解釈</th><th>不精確性の扱い</th></tr></thead>
+          <tbody>
+            <tr><td>CI全体が臨床的重要利益の閾値を超える</td><td>重要な利益が比較的確からしい。</td><td>不精確性で下げにくい。</td></tr>
+            <tr><td>CIが効果なしと重要な利益をまたぐ</td><td>重要な利益があるか不確か。</td><td>ダウングレードを検討。</td></tr>
+            <tr><td>CIが重要な利益と重要な害の両方を含む</td><td>判断が大きく不確か。</td><td>強くダウングレードを検討。</td></tr>
+            <tr><td>CI全体が閾値未満</td><td>効果はあっても小さい可能性。</td><td>文脈とアウトカム重要性で判断。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout amber" style="margin-top:12px;">
+        <strong>Core GRADE 2との接続</strong>
+        <p>Certainty ratingの対象は「何らかの効果があるか」ではなく、「重要な効果があるか」「重要な害があるか」など、あらかじめ決めた閾値に対する判断です。HRのCIではなく、1000人あたり何人の差になるかのCIを見ます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="threshold">
+      <div class="section-head"><span class="num">6</span><h2>MIDではなく、事前設定した臨床的重要閾値として扱う</h2></div>
+      <div class="callout rose">
+        <strong>注意</strong>
+        <p>ここでの閾値は、患者報告アウトカムでいうpatient-derived MIDそのものではありません。OS、PFS、DFS、再発、死亡などのtime-to-event outcomeでは、レビューまたはガイドライン作成時に事前設定した絶対効果差の臨床的重要閾値として扱うのが安全です。</p>
+      </div>
+      <p>患者価値・意向の根拠、アウトカム重要性、治療負担、有害事象、代替治療の有無、パネルの合意過程を明示し、必要なら複数の閾値で感度分析を示します。文中では「prespecified absolute-effect threshold」「clinically important threshold」「事前設定した絶対効果差の臨床的重要閾値」のように書くと誤解が少なくなります。</p>
+      <div class="grid-2">
+        <div class="card"><h3>Guyatt/Zhang系論文からの実務メッセージ</h3><p class="small">閾値は統計ソフトが自動で出す数字ではなく、患者・パネル・臨床専門家が、価値判断を隠さずに合意する境界線です。</p></div>
+        <div class="card"><h3>閾値が不確かな場合</h3><p class="small">1つに固定せず、20/1000、30/1000、50/1000などで結論が変わるかを示すと、推奨の透明性が上がります。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="examples">
+      <div class="section-head"><span class="num">7</span><h2>CochraneとASCO/ESMO-MCBSの実例</h2></div>
+      <h3>Cochrane CD009294: 膀胱内ゲムシタビン</h3>
+      <p>非筋層浸潤性膀胱癌に対する膀胱内ゲムシタビンのレビューでは、time to recurrenceやtime to progressionがHRで示され、SoF表では絶対効果差として読めます。たとえば対照群3年再発リスク40%、HR 0.36なら、介入群リスクは約17%、絶対差は約230/1000の再発減少です。</p>
+      <div class="figure">
+        <img src="images/time-to-event/cochrane-cd009294.jpeg" alt="Cochrane CD009294のSoF表例">
+        <div class="caption">Cochrane CD009294: HR、絶対効果差、閾値を同じSoF表で読む例。</div>
+      </div>
+
+      <h3>Cochrane CD013773: 転移性腎細胞癌</h3>
+      <p>転移性腎細胞癌のレビューでは、死亡や疾患進行に関するtime-to-event outcomeで、SoF表の注釈に assumed MCID として20/1000などの閾値が示されることがあります。これは患者報告アウトカムのMIDではなく、このレビューでGRADE判断に用いた絶対効果差の閾値として読みます。</p>
+      <div class="figure">
+        <img src="images/time-to-event/cochrane-cd013773.jpeg" alt="Cochrane CD013773のSoF表例">
+        <div class="caption">Cochrane CD013773: 死亡アウトカムで20/1000を閾値として扱う例。</div>
+      </div>
+
+      <h3>ASCOとESMO-MCBS</h3>
+      <p>ASCOの臨床的に意味のあるアウトカム提案やESMO-MCBSは、HRだけでなく、OS/PFSの絶対的改善、QOL、毒性、tail of curveなどを合わせて読むための補助線です。GRADEでも同様に、HRを絶対効果差と価値判断へ翻訳してから判断します。</p>
+      <div class="grid-3">
+        <div class="figure"><img src="images/time-to-event/esmo-mcbs-1.jpg" alt="ESMO-MCBS資料1"><div class="caption">ESMO-MCBS v2.0: 臨床的利益を多面的に見る。</div></div>
+        <div class="figure"><img src="images/time-to-event/esmo-mcbs-2.jpg" alt="ESMO-MCBS資料2"><div class="caption">OS/PFSだけでなく毒性やQOLも考慮する。</div></div>
+        <div class="figure"><img src="images/time-to-event/esmo-mcbs-3.jpg" alt="ESMO-MCBS資料3"><div class="caption">tail of curveや治癒設定の評価も更新。</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="num">8</span><h2>論文・ガイドラインでの書き方</h2></div>
+      <div class="grid-2">
+        <div class="card"><h3>方法</h3><p class="small">Time-to-event outcomeでは、GRADE guidelines 27に従い、事前に定めた時点tの対照群イベントリスクR0(t)から1000人あたりの絶対効果差を算出した。</p></div>
+        <div class="card"><h3>SoF注釈</h3><p class="small">対照群の3年イベントリスクを400/1000と仮定し、HR 0.80から介入群イベントリスクは335/1000、絶対差は65/1000少ないと推定した。</p></div>
+        <div class="card"><h3>閾値</h3><p class="small">本レビューの閾値はpatient-derived MIDではなく、OS/PFS/DFS/再発に対して事前設定した絶対効果差の臨床的重要閾値である。</p></div>
+        <div class="card"><h3>不精確性</h3><p class="small">95%CIが効果なしと臨床的重要利益の両方を含むため、臨床的重要性に関する判断が不確実と考え、不精確性で1段階ダウングレードした。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="num">9</span><h2>計算チェック用の期待値</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>R0(t)</th><th>HR</th><th>R1(t)</th><th>ARR</th><th>1000人あたり</th></tr></thead>
+          <tbody>
+            <tr><td>0.40</td><td>0.80</td><td>約0.335</td><td>約0.065</td><td>65人少ない/1000</td></tr>
+            <tr><td>0.40</td><td>0.62</td><td>約0.272</td><td>約0.128</td><td>128人少ない/1000</td></tr>
+            <tr><td>0.40</td><td>1.03</td><td>約0.409</td><td>約-0.009</td><td>9人多い/1000</td></tr>
+            <tr><td>0.10</td><td>0.80</td><td>約0.081</td><td>約0.019</td><td>19人少ない/1000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="num">10</span><h2>参考文献</h2></div>
+      <ul class="refs">
+        <li><strong>GRADE guidelines 27:</strong> Skoetz N, Goldkuhle M, van Dalen EC, et al. How to calculate absolute effects for time-to-event outcomes in Summary of Findings tables and Evidence Profiles. J Clin Epidemiol. 2020;118:124-131. <a href="https://doi.org/10.1016/j.jclinepi.2019.10.015" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li><strong>Cochrane CD009294:</strong> Han MA, Maisch P, Jung JH, et al. Intravesical gemcitabine for non-muscle invasive bladder cancer. Cochrane Database Syst Rev. 2021. <a href="https://www.cochrane.org/evidence/CD009294_intravesical-gemcitabine-non-muscle-invasive-bladder-cancer" target="_blank" rel="noopener noreferrer">Evidence summary</a></li>
+        <li><strong>Cochrane CD013773:</strong> Cytoreductive nephrectomy in metastatic renal cell carcinoma. Cochrane Database Syst Rev. <a href="https://doi.org/10.1002/14651858.CD013773.pub2" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li><strong>Core GRADE 2:</strong> Zeng L, Brignardello-Petersen R, Hultcrantz M, et al. Core GRADE 2: choosing the target of certainty rating and assessing imprecision. BMJ. 2025. <a href="https://doi.org/10.1136/bmj-2024-081904" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li><strong>Time-to-event methods:</strong> Tierney JF, Stewart LA, Ghersi D, Burdett S, Sydes MR. Practical methods for incorporating summary time-to-event data into meta-analysis. Trials. 2007;8:16.</li>
+        <li><strong>ASCO clinically meaningful outcomes:</strong> Ellis LM, Bernstein DS, Voest EE, et al. American Society of Clinical Oncology perspective: raising the bar for clinical trials by defining clinically meaningful outcomes. J Clin Oncol. 2014.</li>
+        <li><strong>ESMO-MCBS v2.0:</strong> Cherny NI, Oosting SF, Dafni U, et al. ESMO-Magnitude of Clinical Benefit Scale version 2.0. Ann Oncol. 2025;36(8):866-908. <a href="https://doi.org/10.1016/j.annonc.2025.04.006" target="_blank" rel="noopener noreferrer">DOI</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    function clampRisk(value) {
+      return Math.min(0.999, Math.max(0.001, value));
+    }
+    function eventFreeFromHr(baselineSurvival, hr) {
+      return Math.pow(baselineSurvival, Math.max(0.001, hr));
+    }
+    function pct(value) {
+      return (value * 100).toFixed(1) + "%";
+    }
+    function per1000(value) {
+      return Math.round(value * 1000);
+    }
+    function riskPer1000(value) {
+      return per1000(value) + " / 1000 (" + pct(value) + ")";
+    }
+    function eventDiff(diff) {
+      const n = Math.abs(per1000(diff));
+      if (n === 0) return "0人差なし";
+      return diff >= 0 ? n + "人少ない" : n + "人多い";
+    }
+    function eventFreeDiff(diff) {
+      const n = Math.abs(per1000(diff));
+      if (n === 0) return "0人差なし";
+      return diff >= 0 ? n + "人多い" : n + "人少ない";
+    }
+    function readNumber(id, fallback) {
+      const value = Number(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : fallback;
+    }
+    function calculateTimeToEvent() {
+      const timeLabel = document.getElementById("tte-time").value || "指定時点";
+      const mode = document.getElementById("tte-mode").value;
+      const baselineInput = clampRisk(readNumber("tte-baseline", 40) / 100);
+      const baselineSurvival = mode === "eventFree" ? baselineInput : 1 - baselineInput;
+      const baselineRisk = mode === "eventFree" ? 1 - baselineInput : baselineInput;
+      const hr = Math.max(0.001, readNumber("tte-hr", 0.8));
+      const ciLow = Math.max(0.001, Math.min(readNumber("tte-lower", 0.62), readNumber("tte-upper", 1.03)));
+      const ciHigh = Math.max(0.001, Math.max(readNumber("tte-lower", 0.62), readNumber("tte-upper", 1.03)));
+      const threshold = Math.max(0, readNumber("tte-threshold", 5) / 100);
+
+      const rows = [
+        ["95%CI下限", ciLow],
+        ["点推定", hr],
+        ["95%CI上限", ciHigh],
+      ].map(([label, rowHr]) => {
+        const risk = 1 - eventFreeFromHr(baselineSurvival, rowHr);
+        const diff = baselineRisk - risk;
+        return { label, rowHr, risk, diff };
+      });
+      const bestDiff = rows[0].diff;
+      const pointDiff = rows[1].diff;
+      const worstDiff = rows[2].diff;
+      const crossesNull = worstDiff <= 0 && bestDiff >= 0;
+      const crossesThreshold = worstDiff < threshold && bestDiff >= threshold;
+      const includesHarm = worstDiff < 0;
+
+      document.getElementById("tte-point").textContent = "1000人あたり" + eventDiff(pointDiff);
+      document.getElementById("tte-point-detail").textContent = timeLabel + "時点で、対照群イベントリスクを" + riskPer1000(baselineRisk) + "と仮定すると、介入群イベントリスクは" + riskPer1000(rows[1].risk) + "です。";
+      document.getElementById("tte-ci").textContent = eventDiff(bestDiff) + "から" + eventDiff(worstDiff);
+      document.getElementById("tte-ci-detail").textContent = "HR " + ciLow.toFixed(2) + "から" + ciHigh.toFixed(2) + "を絶対効果差へ換算した範囲です。効果なしを" + (crossesNull ? "またぎます。" : "またぎません。");
+      document.getElementById("tte-threshold-out").textContent = "点推定は" + pct(threshold) + "閾値を" + (pointDiff >= threshold ? "超えます" : "超えません");
+      document.getElementById("tte-threshold-detail").textContent = "95%CIは閾値を" + (crossesThreshold ? "またぎます。" : "またぎません。") + " 害の可能性は" + (includesHarm ? "含みます。" : "目立ちません。");
+      document.getElementById("tte-rows").innerHTML = rows.map((row) => (
+        "<tr>" +
+        "<td><strong>" + row.label + "</strong></td>" +
+        "<td><code>" + Number(row.rowHr).toFixed(2) + "</code></td>" +
+        "<td><code>" + riskPer1000(row.risk) + "</code></td>" +
+        "<td><strong>" + eventDiff(row.diff) + "</strong></td>" +
+        "<td>" + eventFreeDiff(row.diff) + "</td>" +
+        "</tr>"
+      )).join("");
+      document.getElementById("tte-sof").textContent = timeLabel + "時点で、対照群イベントリスクを" + riskPer1000(baselineRisk) + "と仮定すると、HR " + hr.toFixed(2) + "に基づく介入群イベントリスクは" + riskPer1000(rows[1].risk) + "であり、絶対効果差は1000人あたり" + eventDiff(pointDiff) + "です。95%CIは1000人あたり" + eventDiff(bestDiff) + "から" + eventDiff(worstDiff) + "です。";
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("[data-tte-input]").forEach(function (el) {
+        el.addEventListener("input", calculateTimeToEvent);
+        el.addEventListener("change", calculateTimeToEvent);
+      });
+      calculateTimeToEvent();
+    });
+  </script>
+</body>
+</html>
