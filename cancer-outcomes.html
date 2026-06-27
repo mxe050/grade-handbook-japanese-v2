@@ -189,10 +189,35 @@
 <body>
 <main>
   <h1>癌のアウトカム</h1>
-  <p class="lead">がん領域では、死亡、再発、進行、腫瘍縮小、症状、機能、QOL、毒性、費用が同時に問題になります。ここでは、診療ガイドラインで推奨を作る前段階として、がんアウトカムを統計学的にどう読み分け、どの論点をEvidence ProfileとEtDへ持ち込むべきかを、詳しく整理します。</p>
+  <p class="lead">がん領域では、死亡、再発、進行、腫瘍縮小、症状、機能、QOL、毒性、費用が同時に問題になります。ここでは、診療ガイドラインで推奨を作る前段階として、がんアウトカムを統計学的にどう読み分け、どの論点をEvidence ProfileとEtDへ持ち込むべきかを整理します。最初に読み方の全体像を示し、その後で統計学的な論点を一つずつ深く見ます。</p>
 
   <div class="source-note">
-    主な根拠は、HNCIGによる再発・転移性粘膜頭頸部扁平上皮癌試験のエンドポイント定義 consensus recommendations [1]、根治目的試験の companion recommendations [17]、GRADE outcome選択 [2]、time-to-eventアウトカムの絶対効果計算 [3]、EtD framework [4]、およびローカル資料フォルダ内のがん臨床試験、代理アウトカム、RECIST、PRO、Q-TWiST、utility、スクリーニング、PFSに基づく早期アクセス資料 [5-18] です。
+    主な根拠は、HNCIGによる再発・転移性粘膜頭頸部扁平上皮癌試験のエンドポイント定義 consensus recommendations [1]、根治目的試験の companion recommendations [17]、GRADE outcome選択 [2]、time-to-eventアウトカムの絶対効果計算 [3]、EtD framework [4]、ローカル資料フォルダ内のがん臨床試験、代理アウトカム、RECIST、PRO、Q-TWiST、utility、スクリーニング、PFSに基づく早期アクセス資料 [5-18]、および吉村先生のBiostat Lab note「読むASCO」2本とその原著・学会抄録 [19-24] です。
+  </div>
+
+  <h2>まず結論：4段階で読む</h2>
+  <p>がんアウトカムは、個々の用語から読み始めると混乱します。最初に治療目的を決め、その次に患者にとっての意味を確認し、その後に試験エンドポイントの定義を点検し、最後にGRADEのEvidence ProfileとEtDへ落とします。この順番にすると、OS、PFS、DFS、ORR、PRO、毒性、費用を横並びにしても、議論の軸がぶれにくくなります。</p>
+  <div class="flow">
+    <div class="step">
+      <span>1</span>
+      <b>治療目的を決める</b>
+      根治を目指すのか、延命・症状緩和を目指すのか、スクリーニングなのかで、重要アウトカムは変わります。
+    </div>
+    <div class="step">
+      <span>2</span>
+      <b>患者にとっての意味を見る</b>
+      生きる、再発しない、苦痛が減る、食べられる、話せる、通院負担が少ない、費用で困らない、に翻訳します。
+    </div>
+    <div class="step">
+      <span>3</span>
+      <b>エンドポイント定義を読む</b>
+      起点、イベント、停止日、打ち切り、評価法、欠測処理を確認します。名前だけでは同じアウトカムとは限りません。
+    </div>
+    <div class="step">
+      <span>4</span>
+      <b>GRADEで判断する</b>
+      HRを絶対効果差へ変換し、重要閾値、確実性、毒性、QOL、価値観、資源をEtDで統合します。
+    </div>
   </div>
 
   <h2>診療ガイドライン前段階：統計学的に整理する</h2>
@@ -556,7 +581,61 @@
   <p>複数試験を統合するときは、同じアウトカム名でも定義と測定が一致しているかを確認します。PFSの画像評価間隔、中央判定の有無、RECIST版、次治療開始時の扱い、DFSのイベント構成、PROの尺度と時点が違えば、統合推定値の意味は弱くなります。ランダム効果モデルを使っても、臨床的・方法論的な違いが消えるわけではありません。</p>
   <p>ネットワークメタ解析では、比較間で患者背景、治療ライン、後治療、評価時期、標準治療が十分に似ているというtransitivityが必要です。古い化学療法対照試験と新しい免疫療法時代の試験を同じネットワークに置く場合、後治療や支持療法の違いがOSに影響します。非直接比較では、効果推定の不確実性をEtDへ明示します。</p>
 
-  <h3>14. 前段階で作る統計メモ</h3>
+  <h3>14. 吉村先生のnoteから：新しい試験を統計学的に読む実例</h3>
+  <p>吉村先生のBiostat Lab note「読むASCO」2本は、がん試験の読み方を診療ガイドラインに接続するうえで有用です [19,22]。どちらも大きなOS差を示した新しい試験を扱っていますが、結論は単純な「効いた」ではありません。読み方の核は、<strong>解析が事前計画に沿っているか、OSが成熟しているか、中央値が安定しているか、多重性が制御されているか、対照群と対象集団がCQに合うか、非盲検や未治療例が推定値を歪めていないか</strong>です。</p>
+  <p>HARMONi-6では、進行扁平上皮NSCLCに対するイボネシマブ併用療法が、実薬対照のPD-1抗体併用療法に対してOS中間解析で優越を示しました [19-21]。ただし、OS解析は予定イベント数より早い時点で実施され、最終イベント数の約63%時点の中間解析でした。多重性調整は行われていましたが、中央値は不安定で、全例が中国で登録され、対照薬は国際的標準として最も広く使われるペムブロリズマブではありませんでした。さらに、VEGF阻害に関連する出血、蛋白尿、高血圧などの毒性も、患者重要アウトカムとして同時に見ます。</p>
+  <p>RASolute 302では、既治療膵がんに対するRAS(ON)阻害薬ダラクソナラシブが大きなOS差を示しました [22-24]。しかし、主要解析集団はRAS G12であり、ITT全体そのものではありません。OSは第1回中間解析で、追跡期間中央値がOS中央値より短く、試験薬群のOS中央値の上側信頼限界は未到達でした。さらに、非盲検試験で、対照群の15.1%が一度も治療を受けていない点、未治療例の一部で生存追跡が得られていない点は、内的妥当性とinformative censoringの観点から重要です。非G12集団への一般化も、探索的かつ小例数であり慎重に扱います。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:27%;">読む視点</th>
+          <th style="width:36%;">HARMONi-6での意味</th>
+          <th>RASolute 302での意味</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>中間解析</td>
+          <td>OSは検証的に読める一方、予定より早い中間解析で、最終イベントの約63%時点でした。</td>
+          <td>OSは第1回中間解析で、G12のイベントは計画314死亡の途中段階でした。</td>
+        </tr>
+        <tr>
+          <td>中央値の安定性</td>
+          <td>OS中央値は最後の1死亡で到達したと説明され、追跡延長で動きうる値です。</td>
+          <td>フォローアップ中央値がOS中央値より短く、試験薬群の上側CIは未到達でした。</td>
+        </tr>
+        <tr>
+          <td>多重性</td>
+          <td>PFS有意後にOSを検証するゲートキーピングと中間解析境界が設定されていました。</td>
+          <td>G12集団のPFS/OSにα配分し、G12から全体へ進む逐次検定でした。</td>
+        </tr>
+        <tr>
+          <td>盲検化とバイアス</td>
+          <td>二重盲検は強みで、支持療法、後治療、有害事象評価の偏りを抑えます。</td>
+          <td>非盲検で、対照群の未治療例と追跡情報の欠落が推定値を大きく見せる可能性があります。</td>
+        </tr>
+        <tr>
+          <td>一般化可能性</td>
+          <td>中国のみ、対照薬、年齢・性別構成、出血高リスク除外を確認します。</td>
+          <td>主な根拠はG12集団であり、非G12やpan-RAS全体への一般化は早いと読みます。</td>
+        </tr>
+        <tr>
+          <td>EtDへの接続</td>
+          <td>OS差だけでなく、抗VEGF関連毒性、出血リスク、標準対照との差をEtDに入れます。</td>
+          <td>大きなOS差を評価しつつ、非盲検、未治療例、成熟度、皮膚・粘膜毒性、対照治療の妥当性を入れます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout violet">
+    <strong>新しいがん試験を読む順番</strong><br>
+    まず効果量の大きさを見ます。次に、その効果量が事前計画、多重性制御、十分なイベント数、安定した中央値、適切な対照群、盲検化、十分な追跡、適切な対象集団の上に乗っているかを確認します。最後に、毒性、QOL、治療負担、費用、一般化可能性をEtDへ移します。吉村先生のnoteの価値は、まさにこの「数字の大きさ」と「数字の読み方」を分けている点にあります [19,22]。
+  </div>
+
+  <h3>15. 前段階で作る統計メモ</h3>
   <p>パネル会議に入る前に、各CQについて次の「統計メモ」を作ると、議論が読みやすくなります。</p>
   <ul>
     <li>アウトカム名、臨床概念、患者にとっての意味を分けて書く。</li>
@@ -566,6 +645,8 @@
     <li>相対効果を、代表的ベースラインリスクに基づく絶対効果差へ変換する。</li>
     <li>複合エンドポイントでは、成分別の頻度、重要性、群間差を分ける。</li>
     <li>代理アウトカムでは、疾患・病期・治療ライン・薬剤クラスごとの検証強度を示す。</li>
+    <li>中間解析では、予定イベント数、実施時点、α消費、最終解析までの残りイベント、中央値の安定性を確認する。</li>
+    <li>非盲検試験では、治療開始前脱落、未治療例、後治療、AE評価、PRO回収、informative censoringを確認する。</li>
     <li>PRO/QOLでは、MID、欠測、死亡、脱落、測定時点、症状別アウトカムを確認する。</li>
     <li>サブグループでは、事前指定、交互作用、方向の一貫性、生物学的妥当性を確認する。</li>
     <li>スクリーニングでは、発見率や5年生存率ではなく、死亡、過剰診断、偽陽性、害の累積を確認する。</li>
@@ -575,31 +656,6 @@
   <div class="callout green">
     <strong>統計学的な要点</strong><br>
     がんアウトカムは、名前が同じでも定義が同じとは限りません。HRが有意でも、絶対効果が小さい、比例ハザードが疑わしい、PFSの代理性が弱い、QOL欠測が大きい、毒性が重い、費用が高い、サブグループ解析が探索的、ということは普通に起こります。診療ガイドラインでは、統計学的に得られた推定値を、そのまま推奨の強さに変換せず、患者重要性と不確実性を明示してからEtDに進めます。
-  </div>
-
-  <h2>まず結論：4段階で読む</h2>
-  <p>がんアウトカムは、個々の用語から読み始めると混乱します。最初に治療目的を決め、その次に患者にとっての意味を確認し、その後に試験エンドポイントの定義を点検し、最後にGRADEのEvidence ProfileとEtDへ落とします。</p>
-  <div class="flow">
-    <div class="step">
-      <span>1</span>
-      <b>治療目的を決める</b>
-      根治を目指すのか、延命・症状緩和を目指すのか、スクリーニングなのかで、重要アウトカムは変わります。
-    </div>
-    <div class="step">
-      <span>2</span>
-      <b>患者にとっての意味を見る</b>
-      生きる、再発しない、苦痛が減る、食べられる、話せる、通院負担が少ない、費用で困らない、に翻訳します。
-    </div>
-    <div class="step">
-      <span>3</span>
-      <b>エンドポイント定義を読む</b>
-      起点、イベント、停止日、打ち切り、評価法、欠測処理を確認します。名前だけでは同じアウトカムとは限りません。
-    </div>
-    <div class="step">
-      <span>4</span>
-      <b>GRADEで判断する</b>
-      HRを絶対効果差へ変換し、重要閾値、確実性、毒性、QOL、価値観、資源をEtDで統合します。
-    </div>
   </div>
 
   <h2>1. 治療目的からアウトカムを選ぶ</h2>
@@ -1061,6 +1117,7 @@
   <h2>11. まとめ</h2>
   <p>がんアウトカムは、OS、PFS、DFS、ORR、PRO、毒性、費用を横並びにするだけでは理解しにくくなります。まず治療目的を決め、次に患者にとっての意味へ翻訳し、そのうえで試験エンドポイントの定義を確認します。最後に、HRを絶対効果差へ変換し、重要閾値、確実性、毒性、QOL、価値観、資源利用をEtDで統合します。</p>
   <p>HNCIGの2つの2024年論文 [1,17] は、再発・転移設定でも根治目的設定でも、同じエンドポイント名が必ずしも同じ意味で使われていないことを示しました。診療ガイドラインでは、効果量の数字だけでなく、その数字がどのように定義され、患者にどのような利益または害をもたらすのかを明確にすることが必要です。</p>
+  <p>さらに、吉村先生のBiostat Lab noteが示すように、新しいがん試験を読むときは「OSで有意」「中央値が伸びた」という見出しで止まらず、中間解析か最終解析か、イベント数は十分か、中央値は安定しているか、多重性は調整されているか、非盲検や未治療例によるバイアスはないか、対象集団と対照治療はCQに合うかを順に確認します [19,22]。この読み方を最後まで一貫させることで、統計学的な厳密さと、患者にとって意味のある推奨判断をつなげられます。</p>
 
   <h2>参考文献</h2>
   <ol class="refs">
@@ -1082,6 +1139,12 @@
     <li>Alibhai SMH. Cancer screening: the importance of outcome measures. <em>Crit Rev Oncol Hematol.</em> 2006;57(3):215-224. doi:<a href="https://doi.org/10.1016/j.critrevonc.2005.08.002" target="_blank" rel="noopener">10.1016/j.critrevonc.2005.08.002</a>.</li>
     <li>Lim AM, McDowell L, Hurt C, Le Tourneau C, Homma A, Shenouda G, Thomson DJ, et al.; HNCIG. Assessment of endpoint definitions in curative-intent trials for mucosal head and neck squamous cell carcinomas: Head and Neck Cancer International Group consensus recommendations. <em>Lancet Oncol.</em> 2024;25(7):e318-e330. doi:<a href="https://doi.org/10.1016/S1470-2045(24)00067-6" target="_blank" rel="noopener">10.1016/S1470-2045(24)00067-6</a>. PMID:38936390.</li>
     <li>Lakdawalla DN, Chou JW, Linthicum MT, MacEwan JP, Zhang J, Goldman DP. Evaluating expected costs and benefits of granting access to new treatments on the basis of progression-free survival in non-small-cell lung cancer. <em>JAMA Oncol.</em> 2015;1(2):196-202. doi:<a href="https://doi.org/10.1001/jamaoncol.2015.0203" target="_blank" rel="noopener">10.1001/jamaoncol.2015.0203</a>.</li>
+    <li>吉村先生 / Biostat Lab. 読むASCO#4 [LBA4] HARMONi-6 trial：扁平上皮NSCLCで「PD-1併用療法に勝った」OS中間解析をどう読むか. <em>note</em>. 2026年6月20日. 出典: <a href="https://note.com/biostat_lab/n/n3bd0d8cba37b?sub_rt=share_pw" target="_blank" rel="noopener">https://note.com/biostat_lab/n/n3bd0d8cba37b</a>.</li>
+    <li>Lu S, Liu B, Luo Y, et al. Ivonescimab plus chemotherapy versus tislelizumab plus chemotherapy in advanced squamous non-small-cell lung cancer (HARMONi-6): interim overall survival analysis of a randomised, double-blind, phase 3 trial in China. <em>Lancet.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1016/S0140-6736(26)00966-9" target="_blank" rel="noopener">10.1016/S0140-6736(26)00966-9</a>. 原著出典: <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)00966-9/fulltext" target="_blank" rel="noopener">Lancet full text</a>.</li>
+    <li>ASCO 2026 Abstract LBA4. Ivonescimab plus chemotherapy versus tislelizumab plus chemotherapy in previously untreated advanced squamous non-small-cell lung cancer: overall survival results of the phase 3 HARMONi-6 trial. 出典: <a href="https://ascopubs.org/doi/10.1200/JCO.2026.44.17_suppl.LBA4" target="_blank" rel="noopener">J Clin Oncol abstract</a>.</li>
+    <li>吉村先生 / Biostat Lab. 読むASCO#3 [LBA5] RASolute 302 trial：既治療膵がんで「OSがほぼ倍」をどう読むか. <em>note</em>. 2026年6月19日. 出典: <a href="https://note.com/biostat_lab/n/n87a73044559a?magazine_key=mabc2437374c8" target="_blank" rel="noopener">https://note.com/biostat_lab/n/n87a73044559a</a>.</li>
+    <li>O'Reilly EM, Wainberg ZA, Hendifar AE, Borad MJ, Pietrantonio F, Pant S, et al.; RASolute 302 Trial Investigators. Daraxonrasib or chemotherapy in previously treated metastatic pancreatic cancer. <em>N Engl J Med.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1056/NEJMoa2605555" target="_blank" rel="noopener">10.1056/NEJMoa2605555</a>. PMID:<a href="https://pubmed.ncbi.nlm.nih.gov/42223072/" target="_blank" rel="noopener">42223072</a>.</li>
+    <li>ASCO 2026 Abstract LBA5. Primary and final analysis from the phase 3 RASolute 302 study. 出典: <a href="https://www.asco.org/abstracts-presentations/268016" target="_blank" rel="noopener">ASCO abstract</a>.</li>
   </ol>
 </main>
 </body>
