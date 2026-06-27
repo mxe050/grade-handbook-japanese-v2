@@ -176,34 +176,41 @@
     .km-pattern-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 22px 0 32px;
+      gap: 12px;
+      max-width: 980px;
+      margin: 18px auto 30px;
     }
     .km-pattern-card {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
       min-width: 0;
-      padding: 14px;
+      padding: 12px;
+    }
+    .km-section-title {
+      margin: 18px 0 8px;
+      font-size: 1.06rem;
+      color: #0f172a;
     }
     .km-card-title {
       margin: 0 0 8px;
-      font-size: 1.02rem;
+      font-size: .96rem;
+      line-height: 1.45;
       color: #0f172a;
     }
     .km-chart {
       display: block;
       width: 100%;
       height: auto;
-      margin: 10px 0 12px;
+      margin: 8px 0 10px;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
       background: #fff;
     }
     .km-pattern-card p {
-      margin: 8px 0 0;
-      font-size: .92rem;
-      line-height: 1.68;
+      margin: 7px 0 0;
+      font-size: .9rem;
+      line-height: 1.64;
     }
     .km-legend {
       display: flex;
@@ -229,16 +236,16 @@
     .km-phase {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 10px;
+      gap: 7px;
+      margin-top: 9px;
     }
     .km-phase div {
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       background: #f8fafc;
-      padding: 8px;
+      padding: 7px;
       color: #334155;
-      font-size: .86rem;
+      font-size: .84rem;
       line-height: 1.55;
     }
     .km-phase b {
@@ -252,8 +259,8 @@
       color: #713f12;
       padding: 10px 12px;
       border-radius: 6px;
-      margin: 10px 0 0;
-      font-size: .92rem;
+      margin: 9px 0 0;
+      font-size: .9rem;
       line-height: 1.65;
     }
     @media (max-width: 900px) {
@@ -303,155 +310,6 @@
       <b>GRADEで判断する</b>
       HRを絶対効果差へ変換し、重要閾値、確実性、毒性、QOL、価値観、資源をEtDで統合します。
     </div>
-  </div>
-
-  <h2>KM曲線を見てからHRを読む：前期・中期・後期の型</h2>
-  <p>がんのtime-to-eventアウトカムでは、HRを読む前に、Kaplan-Meier曲線がどの時間帯で開き、どの時間帯で縮み、どこで交差しているかを見ます。HRは追跡期間全体を1つの数字に圧縮しますが、患者やパネルが知りたいのは「早く効くのか」「遅れて効くのか」「長く効く人がいるのか」「最初に害があるのか」「後治療でOS差が薄まっているのか」です。したがって、曲線を前期、中期、後期に分けて読むと、HRの意味と限界が見えやすくなります。</p>
-  <p>下の図は、上にあるほどイベントを起こしていない割合が高い、つまり望ましい状態です。疾患名や薬剤名は典型例であり、すべての試験に機械的に当てはめるものではありません。重要なのは、曲線の形から、比例ハザードの仮定、時点別絶対差、RMST、長期生存割合、後治療やクロスオーバーの影響を考えることです。</p>
-  <div class="km-legend" aria-label="KM曲線凡例">
-    <span><i class="km-swatch"></i>介入群</span>
-    <span><i class="km-swatch control"></i>対照群</span>
-    <span>薄い縦線は、前期・中期・後期の読み分けの目安です。</span>
-  </div>
-  <div class="km-pattern-grid">
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">1. ほぼ比例ハザード型：HRが比較的読みやすい</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群と対照群のKM曲線がほぼ平行に離れている図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H90 V54 H130 V74 H170 V96 H215 V121 H260 V140 H315 V153" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H90 V47 H130 V61 H170 V78 H215 V100 H260 V118 H315 V132" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>効果が追跡期間を通じて比較的一定に続く全身療法、補助療法、放射線治療の上乗せなどで見られることがあります。進行速度が均質で、早期毒性や遅発効果が大きくない試験では、この形に近づきます。</p>
-      <div class="km-phase">
-        <div><b>前期</b>すでに差が少し開き、治療効果の方向が見えます。</div>
-        <div><b>中期</b>差が維持され、HRが全体の平均効果を比較的よく表します。</div>
-        <div><b>後期</b>曲線の開きが保たれるか、リスク集合数が十分かを確認します。</div>
-      </div>
-      <p class="km-note">この型ではHRをベースラインリスクに適用して時点別絶対差を出しやすいですが、それでも2年、3年、5年など、ガイドラインで使う時点を明示して絶対効果差に翻訳します。</p>
-    </section>
-
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">2. 遅発分離型：免疫チェックポイント阻害薬で重要</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="初期は重なり中期以降に介入群が良くなるKM曲線の図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H90 V54 H130 V72 H170 V94 H215 V119 H260 V140 H315 V153" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H90 V55 H130 V70 H170 V85 H215 V96 H260 V103 H315 V108" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>悪性黒色腫、非小細胞肺癌、腎細胞癌、尿路上皮癌、再発・転移頭頸部扁平上皮癌などで、PD-1/PD-L1阻害薬、CTLA-4阻害薬、併用免疫療法を評価する試験では、初期差が小さく、後半で曲線が開くことがあります。免疫応答に時間がかかる、奏効が一部患者で長く続く、早期に進行判定される患者がいる、という事情が関係します。</p>
-      <div class="km-phase">
-        <div><b>前期</b>差が小さく、HRだけでは「効かない」と誤読しやすい時期です。早期進行や毒性中止も見ます。</div>
-        <div><b>中期</b>曲線が開き始めるかを確認します。ここで初めて臨床的な利益が見え始めることがあります。</div>
-        <div><b>後期</b>長期生存、durable response、tail of curveが重要です。ただし後半の患者数が少ないと不安定です。</div>
-      </div>
-      <p class="km-note">遅発分離では、標準的なCox HRやlog-rank検定が後期利益を十分に表さないことがあります。事前規定された解析を尊重しつつ、時点別生存割合、RMST、長期生存割合を併記して、単一HRに依存しすぎない読み方が必要です。</p>
-    </section>
-
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">3. 早期差から後期収束型：腫瘍縮小は早いが持続しない</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="前期は介入群が良いが後期に対照群との差が縮むKM曲線の図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H85 V60 H125 V82 H165 V105 H215 V125 H260 V140 H315 V150" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H85 V48 H125 V63 H165 V88 H215 V118 H260 V139 H315 V149" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>殺細胞性化学療法、腫瘍縮小効果の強い一部の分子標的薬、初回治療で反応は速いが耐性が出やすい進行固形癌では、初期のPFSや奏効率は良く見えても、後期には差が縮むことがあります。プラチナ併用療法、タキサン系、フッ化ピリミジン系を含む化学療法などでは、早期の腫瘍制御と長期維持を分けて読む必要があります。</p>
-      <div class="km-phase">
-        <div><b>前期</b>症状緩和、腫瘍縮小、早期PFS改善が患者にとって意味を持つかを見ます。</div>
-        <div><b>中期</b>差が維持されるか、毒性や治療中止で利益が相殺されないかを確認します。</div>
-        <div><b>後期</b>差が消えるなら、長期生存や治癒に近い利益とは言いにくくなります。</div>
-      </div>
-      <p class="km-note">この型では、HRが良く見えても「何カ月時点の差なのか」が重要です。早期の絶対差は大きいが2年時点では小さい、という場合、ガイドラインでは症状緩和、毒性、通院負担、費用を含めて価値判断します。</p>
-    </section>
-
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">4. 曲線交差型：比例ハザードが成り立たない</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群が前期は悪く後期に良くなって対照群と交差するKM曲線の図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H85 V52 H125 V70 H165 V90 H215 V111 H260 V130 H315 V145" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H85 V65 H125 V89 H165 V102 H215 V108 H260 V118 H315 V128" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="203" cy="108" r="5" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>強い早期毒性を伴う治療、周術期・根治目的の高侵襲治療、免疫療法で早期進行やpseudo-progressionが問題になる試験、治療関連死亡が初期に出る設定では、前期は害、後期は利益という形があり得ます。</p>
-      <div class="km-phase">
-        <div><b>前期</b>治療関連死亡、重篤毒性、早期中止、入院負担を明示します。ここを平均で消してはいけません。</div>
-        <div><b>中期</b>曲線が交差するなら、HRは「前期の害」と「後期の利益」を混ぜた値になります。</div>
-        <div><b>後期</b>長期利益が本物か、追跡後半の人数と打ち切りが十分かを確認します。</div>
-      </div>
-      <p class="km-note">曲線交差では比例ハザードの仮定が崩れます。単一のCox HRや通常のlog-rank検定だけで「全期間の平均として有効」と読むのは危険です。事前規定がある場合は、時期別HR、RMST、時点別絶対差、長期生存割合を並べて解釈します。</p>
-    </section>
-
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">5. tail型：少数の長期奏効者をどう扱うか</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群の後期が平坦化して長期生存のtailを示すKM曲線の図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H85 V55 H125 V78 H165 V105 H215 V130 H260 V145 H315 V155" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H85 V56 H125 V79 H165 V102 H215 V118 H260 V122 H315 V124" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>免疫チェックポイント阻害薬、分子標的薬が明確なバイオマーカー陽性集団に効く場合、一部の血液腫瘍や少数例で深い奏効が長く続く場合には、中央値やHRだけでは後期の平坦化を捉えにくくなります。</p>
-      <div class="km-phase">
-        <div><b>前期</b>中央値が改善しなくても、治療の価値がゼロとは限りません。</div>
-        <div><b>中期</b>反応が持続する集団が見え始めるかを、奏効期間やPFSで確認します。</div>
-        <div><b>後期</b>3年、5年生存割合や治療中止後の持続効果が患者にとって大きな意味を持ちます。</div>
-      </div>
-      <p class="km-note">tailの読みでは、後期のリスク集合数が少ないほど曲線は不安定になります。number at risk、打ち切り、信頼区間、追跡期間中央値を確認し、「長期利益がある可能性」と「不確実性」を同時に伝えます。</p>
-    </section>
-
-    <section class="km-pattern-card">
-      <h3 class="km-card-title">6. 後治療・クロスオーバーでOS差が薄まる型</h3>
-      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="中期まで介入群が良いが後期に曲線が近づくKM曲線の図">
-        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
-        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
-        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
-        <path d="M50 38 H90 V55 H130 V78 H170 V104 H215 V126 H260 V141 H315 V151" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M50 38 H90 V49 H130 V64 H170 V86 H215 V111 H260 V139 H315 V151" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
-        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
-        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
-        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
-      </svg>
-      <p><strong>多い場面：</strong>PFSでは差が出るがOSでは差が小さくなる試験、進行後に有効な救済治療が使える試験、対照群から介入薬へクロスオーバーできる試験、EGFR/ALKなど後治療が強く効く分子標的薬領域では、OS曲線が後期に近づくことがあります。</p>
-      <div class="km-phase">
-        <div><b>前期</b>PFSや症状制御の利益が見えるかを確認します。</div>
-        <div><b>中期</b>OS差が維持されるか、後治療の開始時期と内容を見ます。</div>
-        <div><b>後期</b>対照群も有効治療を受けると、OS差は縮みます。これは治療が無効という意味とは限りません。</div>
-      </div>
-      <p class="km-note">この型では、OSを最重要にしつつも、PFS、症状、毒性、QOL、後治療アクセスを合わせて判断します。クロスオーバー補正解析がある場合も、仮定が強いため、主解析と補正解析の両方を慎重に読む必要があります。</p>
-    </section>
   </div>
 
   <h2>診療ガイドライン前段階：統計学的に整理する</h2>
@@ -639,11 +497,162 @@
   </div>
 
   <h3>5. HRを正しく読む：KM曲線、比例ハザード、RMST</h3>
-  <p>HRは「ある時点でまだイベントを起こしていない患者における瞬間的なイベント発生率の比」です。HR 0.80は「死亡確率が20%減った」という意味ではありません。比例ハザードが概ね成立し、ハザード比が時間を通じて一定とみなせる場合に、全追跡期間の相対効果として使いやすい指標です。</p>
-  <p>しかし、がん治療では比例ハザードが崩れやすい場面があります。免疫療法では効果が遅れて出ることがあり、初期には差が小さく、後半で曲線が開くことがあります。重い早期毒性がある治療では、初期に害が出て後半に利益が出ることがあります。治療効果が一部の長期奏効者に集中する場合、中央値や単一HRだけでは「tail of curve」の意味を捉えにくくなります。</p>
-  <p>そのため、time-to-eventアウトカムでは、HRだけで判断せず、まずKaplan-Meier曲線を見ます。上のKM曲線パターンで示したように、KM曲線は、HRが1つの数字に圧縮している時間経過を見せてくれます。早期から差が開いているのか、途中から差が開くのか、曲線が交差しているのか、早期に害があり後期に利益があるのか、追跡後半の患者数が少なく不安定なのかを確認します。特に免疫療法、分子標的薬、強い毒性を伴う治療、維持療法、後治療が多い試験では、KM曲線を見ずにHRだけで読むのは危険です。</p>
-  <p>HRをベースラインリスクに適用して絶対効果差を出す方法は、診療ガイドラインで有用です。ただし、この変換は「単一のHRを、その時点のベースラインリスクに当てはめてよい」という前提に依存します。時間軸は消えていません。1年死亡リスク、2年死亡リスク、5年再発リスクのように、時点 <code>t</code> のベースラインリスク <code>R0(t)</code> の中に残っています。問題は、そこに全追跡期間を平均した単一HRを当てはめることが、その時点の実際の効果をよく表しているかです。</p>
-  <p>比例ハザードが疑わしい場合、単一HRから1つの絶対効果差を出すだけでは不十分です。免疫療法のように効果が遅れて出る治療では、早期時点の絶対差は小さく、後期時点で差が大きくなることがあります。逆に、早期に強い効果が出る治療では、最初に曲線が開き、その後は差が維持されるだけかもしれません。早期毒性と後期利益が併存する治療では、ある時点では害、別の時点では利益という構造も起こります。したがって、KM曲線、リスク集合数、時点別絶対差、RMST、長期生存割合をセットで見る必要があります。</p>
+  <h4 class="km-section-title">KM曲線を見てからHRを読む：前期・中期・後期の型</h4>
+  <p>がんのtime-to-eventアウトカムでは、HRを読む前に、Kaplan-Meier曲線がどの時間帯で開き、どの時間帯で縮み、どこで交差しているかを見ます。HRは追跡期間全体を1つの数字に圧縮しますが、患者やパネルが知りたいのは「早く効くのか」「遅れて効くのか」「長く効く人がいるのか」「最初に害があるのか」「後治療でOS差が薄まっているのか」です。したがって、曲線を前期、中期、後期に分けて読むと、HRの意味と限界が見えやすくなります。</p>
+  <p>下の図は、上にあるほどイベントを起こしていない割合が高い、つまり望ましい状態です。疾患名や薬剤名は典型例であり、すべての試験に機械的に当てはめるものではありません。重要なのは、曲線の形から、比例ハザードの仮定、時点別絶対差、RMST、長期生存割合、後治療やクロスオーバーの影響を考えることです。</p>
+  <div class="km-legend" aria-label="KM曲線凡例">
+    <span><i class="km-swatch"></i>介入群</span>
+    <span><i class="km-swatch control"></i>対照群</span>
+    <span>薄い縦線は、前期・中期・後期の読み分けの目安です。</span>
+  </div>
+  <div class="km-pattern-grid">
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">1. ほぼ比例ハザード型：HRが比較的読みやすい</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群と対照群のKM曲線がほぼ平行に離れている図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H90 V54 H130 V74 H170 V96 H215 V121 H260 V140 H315 V153" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H90 V47 H130 V61 H170 V78 H215 V100 H260 V118 H315 V132" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>効果が追跡期間を通じて比較的一定に続く全身療法、補助療法、放射線治療の上乗せなどで見られることがあります。進行速度が均質で、早期毒性や遅発効果が大きくない試験では、この形に近づきます。</p>
+      <div class="km-phase">
+        <div><b>前期</b>すでに差が少し開き、治療効果の方向が見えます。</div>
+        <div><b>中期</b>差が維持され、HRが全体の平均効果を比較的よく表します。</div>
+        <div><b>後期</b>曲線の開きが保たれるか、リスク集合数が十分かを確認します。</div>
+      </div>
+      <p class="km-note">この型ではHRをベースラインリスクに適用して時点別絶対差を出しやすいですが、それでも2年、3年、5年など、ガイドラインで使う時点を明示して絶対効果差に翻訳します。</p>
+    </section>
+
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">2. 遅発分離型：免疫チェックポイント阻害薬で重要</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="初期は重なり中期以降に介入群が良くなるKM曲線の図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H90 V54 H130 V72 H170 V94 H215 V119 H260 V140 H315 V153" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H90 V55 H130 V70 H170 V85 H215 V96 H260 V103 H315 V108" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>悪性黒色腫、非小細胞肺癌、腎細胞癌、尿路上皮癌、再発・転移頭頸部扁平上皮癌などで、PD-1/PD-L1阻害薬、CTLA-4阻害薬、併用免疫療法を評価する試験では、初期差が小さく、後半で曲線が開くことがあります。免疫応答に時間がかかる、奏効が一部患者で長く続く、早期に進行判定される患者がいる、という事情が関係します。</p>
+      <div class="km-phase">
+        <div><b>前期</b>差が小さく、HRだけでは「効かない」と誤読しやすい時期です。早期進行や毒性中止も見ます。</div>
+        <div><b>中期</b>曲線が開き始めるかを確認します。ここで初めて臨床的な利益が見え始めることがあります。</div>
+        <div><b>後期</b>長期生存、durable response、tail of curveが重要です。ただし後半の患者数が少ないと不安定です。</div>
+      </div>
+      <p class="km-note">遅発分離では、標準的なCox HRやlog-rank検定が後期利益を十分に表さないことがあります。事前規定された解析を尊重しつつ、時点別生存割合、RMST、長期生存割合を併記して、単一HRに依存しすぎない読み方が必要です。</p>
+    </section>
+
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">3. 早期差から後期収束型：腫瘍縮小は早いが持続しない</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="前期は介入群が良いが後期に対照群との差が縮むKM曲線の図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H85 V60 H125 V82 H165 V105 H215 V125 H260 V140 H315 V150" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H85 V48 H125 V63 H165 V88 H215 V118 H260 V139 H315 V149" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>殺細胞性化学療法、腫瘍縮小効果の強い一部の分子標的薬、初回治療で反応は速いが耐性が出やすい進行固形癌では、初期のPFSや奏効率は良く見えても、後期には差が縮むことがあります。プラチナ併用療法、タキサン系、フッ化ピリミジン系を含む化学療法などでは、早期の腫瘍制御と長期維持を分けて読む必要があります。</p>
+      <div class="km-phase">
+        <div><b>前期</b>症状緩和、腫瘍縮小、早期PFS改善が患者にとって意味を持つかを見ます。</div>
+        <div><b>中期</b>差が維持されるか、毒性や治療中止で利益が相殺されないかを確認します。</div>
+        <div><b>後期</b>差が消えるなら、長期生存や治癒に近い利益とは言いにくくなります。</div>
+      </div>
+      <p class="km-note">この型では、HRが良く見えても「何カ月時点の差なのか」が重要です。早期の絶対差は大きいが2年時点では小さい、という場合、ガイドラインでは症状緩和、毒性、通院負担、費用を含めて価値判断します。</p>
+    </section>
+
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">4. 曲線交差型：比例ハザードが成り立たない</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群が前期は悪く後期に良くなって対照群と交差するKM曲線の図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H85 V52 H125 V70 H165 V90 H215 V111 H260 V130 H315 V145" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H85 V65 H125 V89 H165 V102 H215 V108 H260 V118 H315 V128" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="203" cy="108" r="5" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>強い早期毒性を伴う治療、周術期・根治目的の高侵襲治療、免疫療法で早期進行やpseudo-progressionが問題になる試験、治療関連死亡が初期に出る設定では、前期は害、後期は利益という形があり得ます。</p>
+      <div class="km-phase">
+        <div><b>前期</b>治療関連死亡、重篤毒性、早期中止、入院負担を明示します。ここを平均で消してはいけません。</div>
+        <div><b>中期</b>曲線が交差するなら、HRは「前期の害」と「後期の利益」を混ぜた値になります。</div>
+        <div><b>後期</b>長期利益が本物か、追跡後半の人数と打ち切りが十分かを確認します。</div>
+      </div>
+      <p class="km-note">曲線交差では比例ハザードの仮定が崩れます。単一のCox HRや通常のlog-rank検定だけで「全期間の平均として有効」と読むのは危険です。事前規定がある場合は、時期別HR、RMST、時点別絶対差、長期生存割合を並べて解釈します。</p>
+    </section>
+
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">5. tail型：少数の長期奏効者をどう扱うか</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="介入群の後期が平坦化して長期生存のtailを示すKM曲線の図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H85 V55 H125 V78 H165 V105 H215 V130 H260 V145 H315 V155" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H85 V56 H125 V79 H165 V102 H215 V118 H260 V122 H315 V124" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>免疫チェックポイント阻害薬、分子標的薬が明確なバイオマーカー陽性集団に効く場合、一部の血液腫瘍や少数例で深い奏効が長く続く場合には、中央値やHRだけでは後期の平坦化を捉えにくくなります。</p>
+      <div class="km-phase">
+        <div><b>前期</b>中央値が改善しなくても、治療の価値がゼロとは限りません。</div>
+        <div><b>中期</b>反応が持続する集団が見え始めるかを、奏効期間やPFSで確認します。</div>
+        <div><b>後期</b>3年、5年生存割合や治療中止後の持続効果が患者にとって大きな意味を持ちます。</div>
+      </div>
+      <p class="km-note">tailの読みでは、後期のリスク集合数が少ないほど曲線は不安定になります。number at risk、打ち切り、信頼区間、追跡期間中央値を確認し、「長期利益がある可能性」と「不確実性」を同時に伝えます。</p>
+    </section>
+
+    <section class="km-pattern-card">
+      <h5 class="km-card-title">6. 後治療・クロスオーバーでOS差が薄まる型</h5>
+      <svg class="km-chart" viewBox="0 0 360 190" role="img" aria-label="中期まで介入群が良いが後期に曲線が近づくKM曲線の図">
+        <rect x="44" y="24" width="286" height="138" fill="#fff"/>
+        <line x1="44" y1="24" x2="44" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="44" y1="162" x2="330" y2="162" stroke="#94a3b8" stroke-width="1.2"/>
+        <line x1="139" y1="24" x2="139" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <line x1="234" y1="24" x2="234" y2="162" stroke="#cbd5e1" stroke-dasharray="4 5"/>
+        <path d="M50 38 H90 V55 H130 V78 H170 V104 H215 V126 H260 V141 H315 V151" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 38 H90 V49 H130 V64 H170 V86 H215 V111 H260 V139 H315 V151" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+        <text x="68" y="180" font-size="12" fill="#475569">前期</text>
+        <text x="168" y="180" font-size="12" fill="#475569">中期</text>
+        <text x="268" y="180" font-size="12" fill="#475569">後期</text>
+      </svg>
+      <p><strong>多い場面：</strong>PFSでは差が出るがOSでは差が小さくなる試験、進行後に有効な救済治療が使える試験、対照群から介入薬へクロスオーバーできる試験、EGFR/ALKなど後治療が強く効く分子標的薬領域では、OS曲線が後期に近づくことがあります。</p>
+      <div class="km-phase">
+        <div><b>前期</b>PFSや症状制御の利益が見えるかを確認します。</div>
+        <div><b>中期</b>OS差が維持されるか、後治療の開始時期と内容を見ます。</div>
+        <div><b>後期</b>対照群も有効治療を受けると、OS差は縮みます。これは治療が無効という意味とは限りません。</div>
+      </div>
+      <p class="km-note">この型では、OSを最重要にしつつも、PFS、症状、毒性、QOL、後治療アクセスを合わせて判断します。クロスオーバー補正解析がある場合も、仮定が強いため、主解析と補正解析の両方を慎重に読む必要があります。</p>
+    </section>
+  </div>
+
+
+  <p>上の6型を確認したうえで、HRを統計量として読みます。HRは「ある時点でまだイベントを起こしていない患者における瞬間的なイベント発生率の比」です。HR 0.80は「死亡確率が20%減った」という意味ではありません。比例ハザードが概ね成立し、ハザード比が時間を通じて一定とみなせる場合に、全追跡期間の相対効果として使いやすい指標です。</p>
+  <p>がん治療では、図で示したように、比例ハザードが崩れやすい場面が多くあります。免疫療法では遅発分離、重い早期毒性を伴う治療では曲線交差、殺細胞性化学療法や一部の分子標的薬では早期差から後期収束、長期奏効者が少数いる治療ではtail型が問題になります。これらはすべて、前期・中期・後期で効果の意味が変わる状況です。</p>
+  <p>したがって、HRをベースラインリスクに適用して絶対効果差を出す前に、単一HRが「どの時期の効果」をどれだけ代表しているかを確認します。この変換は「単一のHRを、その時点のベースラインリスクに当てはめてよい」という前提に依存します。時間軸は消えていません。1年死亡リスク、2年死亡リスク、5年再発リスクのように、時点 <code>t</code> のベースラインリスク <code>R0(t)</code> の中に残っています。問題は、全追跡期間を平均した単一HRをその時点に当てはめたとき、実際の前期・中期・後期の効果を十分に表せるかです。</p>
+  <p>比例ハザードが疑わしい場合、単一HRから1つの絶対効果差を出すだけでは不十分です。免疫療法の遅発効果では、早期時点の絶対差は小さく、後期時点で差が大きくなることがあります。早期に強い効果が出る治療では、最初に曲線が開いても、後期の差は維持または縮小するかもしれません。早期毒性と後期利益が併存する治療では、ある時点では害、別の時点では利益という構造も起こります。したがって、KM曲線、リスク集合数、時点別絶対差、RMST、長期生存割合をセットで見る必要があります。</p>
+
+  <p>次の表は、上の曲線パターンを、統計学的な意味と絶対効果差への翻訳に置き換えるためのチェック表です。図で見た形を、SoF表やEvidence Profileに記載する数値へ橋渡しするために使います。</p>
 
   <div class="table-wrap">
     <table>
@@ -661,6 +670,11 @@
           <td>事前に選んだ時点のベースラインリスクにHRを適用して絶対差を示しやすい。ただし時点とリスク集合数は明記する。</td>
         </tr>
         <tr>
+          <td>早期に曲線が開くが後期に収束する</td>
+          <td>早期の腫瘍制御、症状緩和、PFS改善はあっても、長期生存や治癒に近い利益は小さい可能性がある。</td>
+          <td>早期時点の絶対差と後期時点の絶対差を分ける。長期利益として過大評価せず、毒性、治療期間、通院負担を併記する。</td>
+        </tr>
+        <tr>
           <td>遅れて曲線が開く</td>
           <td>免疫療法などで見られる遅発効果の可能性がある。早期と後期で効果が異なる。</td>
           <td>1年、2年、5年など複数時点の絶対差を併記する。長期生存割合やRMSTも確認する。</td>
@@ -674,6 +688,11 @@
           <td>後半だけ大きく開くがリスク集合数が少ない</td>
           <td>tail of curveが魅力的に見えても、少数例に支えられた不安定な推定の可能性がある。</td>
           <td>長期生存割合を示す場合は、各時点のリスク集合数と信頼区間を必ず確認する。</td>
+        </tr>
+        <tr>
+          <td>PFSは開くがOSは後期に近づく</td>
+          <td>後治療、クロスオーバー、救済治療アクセスにより、OS差が薄まっている可能性がある。PFS改善が無意味ということではない。</td>
+          <td>OS、PFS、症状、QOL、毒性、後治療内容を並べて解釈する。クロスオーバー補正解析は仮定も併記する。</td>
         </tr>
         <tr>
           <td>中央値は変わらないが後半に差がある</td>
@@ -1253,9 +1272,10 @@
   </div>
 
   <h2>6. HRを絶対効果差へ翻訳する</h2>
-  <p>がん論文ではOS、PFS、DFSがHRで提示されます。しかし、診療ガイドラインの判断に必要なのは、HRそのものではなく「何年時点で1000人あたり何人の死亡、再発、進行が減るか」です。試験の統計結果は、絶対効果、利益と害のバランス、価値観、資源利用へ翻訳して初めて推奨判断に使いやすくなります。GRADE guidelines 27は、time-to-eventアウトカムをSoF表やEvidence Profileに示す際、特定時点のベースラインリスクを使ってHRを絶対効果へ変換する方法を示しています [3]。</p>
+  <p>ここからは、前節までの統計学的な読みを、SoF表やEvidence Profileに載せる数値へ落とし込む作業です。がん論文ではOS、PFS、DFSがHRで提示されます。しかし、診療ガイドラインの判断に必要なのは、HRそのものではなく「何年時点で1000人あたり何人の死亡、再発、進行が減るか」です。試験の統計結果は、絶対効果、利益と害のバランス、価値観、資源利用へ翻訳して初めて推奨判断に使いやすくなります。GRADE guidelines 27は、time-to-eventアウトカムをSoF表やEvidence Profileに示す際、特定時点のベースラインリスクを使ってHRを絶対効果へ変換する方法を示しています [3]。</p>
   <p>対照群の時点 <code>t</code> におけるイベントリスクを <code>R0(t)</code>、HRを <code>HR</code> とすると、比例ハザードを仮定した介入群イベントリスクは <code>R1(t) = 1 - {1 - R0(t)}^HR</code> で近似できます。イベントフリー率で表す場合は <code>S1(t) = S0(t)^HR</code> です [3]。</p>
-  <p>この方法を使う前に、KM曲線の形を確認します。比例ハザードが概ね妥当で、曲線が早期から一貫して分離している場合は、単一HRから時点別絶対差を出す説明が比較的しやすくなります。一方、曲線が遅れて開く、交差する、早期害と後期利益が混在する、後半のリスク集合数が少ない場合は、単一HRから1つの絶対差を出すだけでは不十分です。その場合は、臨床的に意味のある複数時点の絶対リスク差、KM曲線から直接読める時点生存率、RMST、長期生存割合を併記します。</p>
+  <p>この式を使う前の確認事項は3つです。第1に、ガイドライン判断に使う時点 <code>t</code> を事前に決めます。第2に、その時点の対照群リスク <code>R0(t)</code> を、対照群Kaplan-Meier曲線、代表RCT、国内データ、リスク層別データのどれから取るかを明示します。第3に、前節で確認したKM曲線の形から、単一HRをその時点に当てはめることが妥当かを判断します。</p>
+  <p>比例ハザードが概ね妥当で、曲線が早期から一貫して分離している場合は、単一HRから時点別絶対差を出す説明が比較的しやすくなります。一方、曲線が遅れて開く、早期差が後期に収束する、交差する、早期害と後期利益が混在する、後半のリスク集合数が少ない場合は、単一HRから1つの絶対差を出すだけでは不十分です。その場合は、臨床的に意味のある複数時点の絶対リスク差、KM曲線から直接読める時点生存率、RMST、長期生存割合を併記します。つまり、この節の計算は、前節のKM曲線評価を置き換えるものではなく、患者に説明できる数字へ翻訳する最終段階です。</p>
 
   <div class="table-wrap">
     <table>
