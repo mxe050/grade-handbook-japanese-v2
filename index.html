@@ -2987,6 +2987,7 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">GRADEにおけるアウトカムの解説</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">アウトカムのトピックス</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">癌のアウトカム</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -3224,6 +3225,21 @@ function checkAuth(){
                   <p style="font-size:0.85rem;color:#777;margin-top:0.8rem;">📄 参考：Guyatt GH et al. J Clin Epidemiol. 2011 / JAMA Oncology 2015 / BMC Medicine 2017</p>
                 </div>
               </details>
+            </div>
+          </div>
+
+          <!-- Tab 3: 癌のアウトカム -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">第3部：癌のアウトカム</h2>
+              <p style="margin-bottom:1rem;color:#475569;">がん領域で用いられるOS、PFS、DFS、奏効、患者報告アウトカム、毒性、費用・価値観を、GRADEのアウトカム選択とEtD判断に接続するための詳細資料です。</p>
+              <iframe
+                title="癌のアウトカム"
+                src="cancer-outcomes.html"
+                loading="lazy"
+                onload="try{var f=this;var n=0;var resize=function(){var d=f.contentWindow.document;var h=Math.max(d.body.scrollHeight,d.documentElement.scrollHeight);f.style.height=(h+24)+'px';};resize();var id=setInterval(function(){resize();if(++n>30)clearInterval(id);},500);}catch(e){}"
+                style="width:100%;min-height:900px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;display:block;"
+              ></iframe>
             </div>
           </div>
 
