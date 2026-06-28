@@ -20,7 +20,7 @@
     12. adaptive design、seamless phase II/III、platform trial
     13. Project Optimusと用量最適化
     14. スポンサー主導試験をどう読むか
-    15. 第3相試験を読むための統計学チェックリスト
+    15. ASCO 2026実例で読む：数字をそのまま受け取らない
     16. GRADE・診療ガイドラインでの扱い
     17. 読者に残す最終メッセージ
   -->
@@ -261,28 +261,6 @@
       color: #20324a;
     }
     details p { padding: 0 12px 12px; margin: 0; }
-    .checklist {
-      columns: 2;
-      column-gap: 28px;
-      margin-left: 0;
-      list-style: none;
-    }
-    .checklist li {
-      break-inside: avoid;
-      border-bottom: 1px solid #edf2f7;
-      padding: 5px 0 5px 26px;
-      position: relative;
-    }
-    .checklist li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 12px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid #64748b;
-      border-radius: 3px;
-    }
     .refs li { margin-bottom: 10px; }
     .source-note {
       border-top: 1px solid var(--line);
@@ -293,7 +271,6 @@
       .page { box-shadow: none; }
       .hero { padding: 36px 18px 26px; }
       main { padding: 20px 18px 38px; }
-      .checklist { columns: 1; }
       table { font-size: 0.82rem; }
     }
     @media print {
@@ -342,9 +319,8 @@
       <a href="#sec13">13. Project Optimus</a>
       <a href="#sec14">14. スポンサー主導試験</a>
       <a href="#sec15">15. ASCO 2026実例で読む</a>
-      <a href="#sec16">16. 統計チェックリスト</a>
-      <a href="#sec17">17. GRADEでの扱い</a>
-      <a href="#sec18">18. 最終メッセージ</a>
+      <a href="#sec16">16. GRADEでの扱い</a>
+      <a href="#sec17">17. 最終メッセージ</a>
     </nav>
 
     <section>
@@ -600,7 +576,7 @@ S1(t) = S0(t)^HR
       <h2>11. オープンラベル、BICR、画像評価、informative censoring</h2>
       <p>OSは死亡日なので比較的客観的である。一方、PFS/EFS/DFSは画像検査や進行判定に依存する。オープンラベルでは、検査時期、治療中止、次治療開始、症状報告、担当医判断が影響する。</p>
       <p>BICRは重要だが万能ではない。評価間隔が群間で違えばPFSは影響を受ける。早期中止、欠測、打ち切り理由、次治療開始によるcensoringが偏るとinformative censoringが生じる。主要解析と感度解析の一貫性を確認する。</p>
-      <ul class="checklist">
+      <ul>
         <li>BICRか investigator-assessed か。</li>
         <li>盲検化されているか。</li>
         <li>画像評価間隔は群間で同じか。</li>
@@ -700,56 +676,17 @@ S1(t) = S0(t)^HR
         <strong>4例からの統計学的まとめ</strong><br>
         第3相試験を読むときは、まず「検定手順上の成功」を確認し、次に「患者にとっての意味」を別に評価する。中間解析なら成熟度、少数イベントなら精度、サロゲートならOS/QOLへの橋渡し、画像・検査法が変わるならエンドポイントの臨床的意味、非盲検なら治療実施・打ち切り・評価バイアスを確認する。この順番を守ると、企業発表や学会速報の派手な数字に引きずられにくくなる。
       </div>
+      <h3>実例から妥当性を評価する流れ</h3>
+      <p>第3相試験を読む時に最初に確認するのは、p値の小ささでもHRの派手さでもなく、<strong>その推定値をどれくらい信じてよいか</strong>である。ここでいう妥当性は一つではない。内的妥当性、統計的妥当性、エンドポイント妥当性、外的妥当性、患者・価値妥当性を順番に見る必要がある。この順番にすると、論文のMethods、Results、Discussion、Supplement、COIをばらばらに読むのではなく、推奨判断へ接続する一本の流れとして読める。</p>
+      <p><strong>内的妥当性</strong>では、ランダム化、盲検化、治療実施状況、欠測、打ち切り、後治療を確認する。RASolute 302のように非盲検で、対照群に未治療例が多い場合、ITT解析であっても効果量が対照群不利に見える可能性を検討する。これは「試験が悪い」という意味ではない。試験の推定値が、純粋な薬剤効果だけでなく、治療開始前の辞退、患者判断、追跡脱落、医師・患者の期待の影響を含んでいるかもしれない、という読みである。内的妥当性を読まずにHRだけを見ると、効果量を過大に受け取る危険がある。<span class="ref-tag">[N2]</span></p>
+      <p><strong>統計的妥当性</strong>では、主要評価項目、解析集団、alpha配分、gatekeeping、中間解析境界、イベント数、CI幅を確認する。HARMONi-6のように中間解析境界を越えた結果は、名目p値より強く読める。一方で、最終イベント数に対するinformation fractionが約6割の段階であれば、OS中央値や後期KM曲線はまだ動く。LIBRETTO-432のように少数イベントで大きなHRが出た場合は、点推定値ではなく、イベント数と信頼区間で読む。統計的に陽性であることと、効果量が安定していることは同じではない。<span class="ref-tag">[N1]</span><span class="ref-tag">[N4]</span></p>
+      <p><strong>エンドポイント妥当性</strong>では、そのアウトカムが患者にとって何を意味するかを確認する。PROTEUSではpCR/MRDとMFSが陽性であっても、pCR/MRDが前立腺癌のOSを十分に代替するか、MFSがPSMA-PETによる早期検出にどの程度依存するかを分けて読む。EFS、DFS、MFS、pCR、MRDは、どれも「早く読める」利点を持つが、早く読めることは、そのまま長く生きること、症状が少ないこと、QOLが良いことを意味しない。だから診療ガイドラインでは、代理性の強いアウトカムは、OS、症状、QOL、安全性、治療負担へ翻訳してから扱う。<span class="ref-tag">[N3]</span></p>
+      <p><strong>外的妥当性</strong>では、対象国、標準治療、対照薬、年齢、性別、stage、バイオマーカー、除外基準をCQと照合する。HARMONi-6であれば、中国単独試験であること、対照薬が地域により標準治療と一致しない可能性、出血高リスク例が除外されていることが外的妥当性の論点になる。LIBRETTO-432では、主解析集団がstage II-IIIAであり、stage IBへの一般化は慎重に読む。外的妥当性は、統計的有意性の後に初めて問題になるものではなく、推奨を誰に適用するかを決める中心問題である。<span class="ref-tag">[N1]</span><span class="ref-tag">[N4]</span></p>
+      <p><strong>患者・価値妥当性</strong>では、患者が実際に受け取る利益と害を同じ土俵で見る。術後・周術期治療では、再発を遅らせる利益だけでなく、治癒していたかもしれない患者に長期治療を課す不利益がある。免疫療法や分子標的薬では、治療中止、慢性毒性、肝毒性、ILD、皮疹、出血、蛋白尿、高血圧、通院負担、費用が意思決定に入る。したがって「試験は陽性だった」から「強く推奨」へ直行しない。陽性試験を、絶対効果、CI、臨床的重要閾値、患者価値観、害の重みへ翻訳する作業が、GRADE/EtDでの本当の読みである。</p>
     </section>
 
     <section id="sec16">
-      <h2>16. 第3相試験を読むための統計学チェックリスト</h2>
-      <ol class="checklist">
-        <li>Primary endpointは患者に直接重要か、surrogateか。</li>
-        <li>Primary endpointはプロトコール/SAPで事前規定されているか。</li>
-        <li>Primary endpointが途中で変更されていないか。</li>
-        <li>複数primary endpointなら、co-primaryかmultiple primaryか。</li>
-        <li>多重性制御はどうなっているか。</li>
-        <li>alphaはどこに割り当てられているか。</li>
-        <li>中間解析は何回、いつ、何イベントで予定されたか。</li>
-        <li>実際の中間解析は予定イベント数どおりか、予定より早いか。</li>
-        <li>information fractionは何%か。OSイベントは十分成熟しているか。</li>
-        <li>停止境界は何か。</li>
-        <li>報告p値は名目p値か調整済みp値か。</li>
-        <li>検定階層上、次のendpointは正式に検定できるか。</li>
-        <li>OSはprimary、key secondary、safety endpoint、descriptiveのどれか。</li>
-        <li>OSは成熟しているか。</li>
-        <li>クロスオーバーや後治療はOSをどう歪めるか。</li>
-        <li>HRは絶対効果差へ変換されているか。</li>
-        <li>95%CIは臨床的重要閾値をまたぐか。</li>
-        <li>PFS/EFS/DFSの構成イベントは何か。</li>
-        <li>どの構成イベントが効果を駆動しているか。</li>
-        <li>BICRはあるか。</li>
-        <li>オープンラベルで評価バイアスが入るか。</li>
-        <li>対照群に未治療例、治療開始前中止、患者判断による辞退が偏っていないか。</li>
-        <li>生存追跡の脱落が群間で偏り、情報のある打ち切りが疑われないか。</li>
-        <li>censoring ruleは妥当か。</li>
-        <li>欠測・打ち切り・治療中止は偏っていないか。</li>
-        <li>非比例ハザードは疑われるか。</li>
-        <li>RMSTや時点別絶対差は示されているか。</li>
-        <li>QOL、症状、機能、PROは示されているか。</li>
-        <li>毒性、慢性毒性、治療中止、治療関連死亡はどうか。</li>
-        <li>用量は最適化されているか。</li>
-        <li>サブグループ解析はalpha制御されているか。</li>
-        <li>主要解析集団はITTか、バイオマーカー陽性集団か、特定stage集団か。</li>
-        <li>主要評価項目から除外された集団へ一般化していないか。</li>
-        <li>イベント数が非常に少ない場合、点推定ではなくCI幅とイベント数で読んでいるか。</li>
-        <li>pCR/MRD/EFS/MFSなどがOSの検証済みサロゲートか、疾患別に確認したか。</li>
-        <li>PSMA-PET、BICR、ctDNAなど、検出法の変化がアウトカムの意味を変えていないか。</li>
-        <li>術後・周術期治療では、治癒していたかもしれない患者への長期毒性負担を評価したか。</li>
-        <li>企業発表と論文本体で表現が違わないか。</li>
-        <li>GRADEで非直接性、不精確性、RoBを下げる理由があるか。</li>
-        <li>最終的に患者にとってどのくらいの利益と害か。</li>
-      </ol>
-    </section>
-
-    <section id="sec17">
-      <h2>17. GRADE・診療ガイドラインでの扱い</h2>
+      <h2>16. GRADE・診療ガイドラインでの扱い</h2>
       <p>診療ガイドラインでは、HRやp値をそのまま推奨判断に使わない。一定時点の絶対効果差、95%信頼区間、臨床的重要閾値、利益と害のバランスへ翻訳してからEtDへ進む。</p>
       <p>PFS/EFS/DFSはtime-to-eventアウトカムなので、HRを絶対効果差へ変換する。surrogate endpointなら非直接性を検討する。オープンラベルPFSならRoBを検討する。CIがnull、重要な利益、重要な害をまたぐなら不精確性を検討する。</p>
       <div class="grade-box">
@@ -770,8 +707,8 @@ S1(t) = S0(t)^HR
       </div>
     </section>
 
-    <section id="sec18">
-      <h2>18. 読者に残す最終メッセージ</h2>
+    <section id="sec17">
+      <h2>17. 読者に残す最終メッセージ</h2>
       <p>現代のがん第3相試験は、早く読めるようになった。しかし、早く読めることと、深く読めることは違う。p値、HR、プレスリリース、早期停止だけで結論を出さない。</p>
       <p>正しい読み方は、アウトカムの患者重要性、絶対効果差、信頼区間、臨床的重要閾値、多重性制御、中間解析、OS成熟度、QOL、毒性、用量、患者価値観をつなげることである。</p>
       <div class="take-home">統計学の役割は、企業が示す「成功」をそのまま受け入れることではない。その成功が、患者にとってどの程度の意味を持つかを翻訳することである。</div>
@@ -839,7 +776,7 @@ S1(t) = S0(t)^HR
       - Project Optimus、OS assessment、MRD/CR、ICH E9(R1)を反映した。
       - GRADE/EtDへの接続がある。
       - Biostat LabのASCO 2026解説4本を、HARMONi-6、RASolute 302、LIBRETTO-432、PROTEUSの実例として追加した。
-      - 中間解析、少数イベント、非盲検未治療、PSMA-PET、サロゲート性、一般化可能性をチェックリストとGRADE脚注へ反映した。
+      - 中間解析、少数イベント、非盲検未治療、PSMA-PET、サロゲート性、一般化可能性を妥当性評価の流れとGRADE脚注へ反映した。
     -->
   </main>
 </div>
