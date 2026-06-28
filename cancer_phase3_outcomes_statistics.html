@@ -170,6 +170,39 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
     }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .case-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      background: #fff;
+    }
+    .case-card h3 {
+      margin-top: 0;
+      border-left: 0;
+      padding-left: 0;
+      font-size: 1.03rem;
+      color: #0f3158;
+    }
+    .case-card ul { padding-left: 1.1rem; margin: 0.6rem 0 0; }
+    .case-card li { margin: 0.32rem 0; }
+    .ref-tag {
+      display: inline-block;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 0.05rem 0.42rem;
+      margin-left: 0.2rem;
+      white-space: nowrap;
+    }
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
@@ -308,9 +341,10 @@
       <a href="#sec12">12. adaptive design</a>
       <a href="#sec13">13. Project Optimus</a>
       <a href="#sec14">14. スポンサー主導試験</a>
-      <a href="#sec15">15. 統計チェックリスト</a>
-      <a href="#sec16">16. GRADEでの扱い</a>
-      <a href="#sec17">17. 最終メッセージ</a>
+      <a href="#sec15">15. ASCO 2026実例で読む</a>
+      <a href="#sec16">16. 統計チェックリスト</a>
+      <a href="#sec17">17. GRADEでの扱い</a>
+      <a href="#sec18">18. 最終メッセージ</a>
     </nav>
 
     <section>
@@ -468,6 +502,8 @@ S1(t) = S0(t)^HR
     <section id="sec7">
       <h2>7. 中間解析とgroup sequential design</h2>
       <p>中間解析は、試験途中でデータを見ることである。これは倫理的にも効率的にも重要だが、何度もデータを見ると偶然に大きく見えた結果で止まりやすくなる。そのため、通常のp&lt;0.05ではなく、事前に定めた停止境界とalpha消費に従って判断する。</p>
+      <p>ここで重要なのは、<strong>統計的に成功した中間解析</strong>と、<strong>臨床的・ガイドライン的に成熟した証拠</strong>を分けることである。例えばHARMONi-6では、OS中間解析がO'Brien-Fleming型の厳しい境界を越えていた一方で、イベント数は最終予定の約63%で、中央値の安定性、対照薬、対象集団の一般化可能性を別に吟味する必要がある。境界を越えたことは「偶然陽性を抑えた検定上の成功」を意味するが、「長期OS、毒性、適用対象まで完全に確定した」という意味ではない。<span class="ref-tag">[N1]</span></p>
+      <p>RASolute 302でも同じ構図がある。OSのHRは非常に大きく見えるが、第1回中間解析であり、フォローアップ中央値がOS中央値より短く、試験群の上側信頼区間が未到達であった。さらにオープンラベル試験で、対照群に一度も治療を受けなかった患者が偏って存在すると、ITT解析上、対照群の早期死亡が増え、治療効果が大きく見える可能性がある。したがって、早期のOS差は「強いシグナル」と読めても、成熟OS、治療実施状況、打ち切り、感度解析を確認するまで、効果量をそのまま推奨判断に持ち込まない。<span class="ref-tag">[N2]</span></p>
       <div class="figure" aria-label="中間解析とalpha消費">
         <svg viewBox="0 0 900 260" role="img">
           <line x1="80" y1="210" x2="820" y2="210" stroke="#475569" stroke-width="2"/>
@@ -495,6 +531,8 @@ S1(t) = S0(t)^HR
     <section id="sec8">
       <h2>8. 名目p値、調整済みp値、段階的p値、反復p値を区別する</h2>
       <p>名目p値は、その解析だけを単独で見たp値である。中間解析、多重性、複数集団を考慮していない場合がある。したがって、論文中のp=0.01が常に正式な成功を意味するわけではない。</p>
+      <p>p値を読む順番は、まず「そのp値が検定階層の中にいるか」を見ることである。主要評価項目、key secondary、階層から外れた副次解析、探索的サブグループ解析では、同じp=0.01でも意味が違う。PROTEUSのようにco-primary endpointへalphaが事前配分されている試験では、MFSのp値はその設計上の境界で判断する。一方、LIBRETTO-432のBICR EFSやOSのように多重性調整の外に置かれた解析は、数値が示されていても検証的結論には使えない。<span class="ref-tag">[N3]</span><span class="ref-tag">[N4]</span></p>
+      <p>中間解析ではさらに、「名目p値が小さいか」ではなく、「その時点の停止境界を越えたか」を見る。HARMONi-6では、PFS有意を受けたゲートキーピングと中間解析境界の下でOSが統計的に有意と読める。しかし、その事実はOSの成熟度、対象集団の外的妥当性、安全性、対照薬の妥当性を自動的に解決しない。p値は検定上のエラー制御の話であり、患者にとっての価値判断は別に必要である。<span class="ref-tag">[N1]</span></p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>名称</th><th>何を意味するか</th><th>いつ使われるか</th><th>正式な結論に使えるか</th><th>読み間違い</th></tr></thead>
@@ -610,7 +648,62 @@ S1(t) = S0(t)^HR
     </section>
 
     <section id="sec15">
-      <h2>15. 第3相試験を読むための統計学チェックリスト</h2>
+      <h2>15. ASCO 2026実例で読む：数字をそのまま受け取らない</h2>
+      <p>抽象的な統計用語は、実際の第3相試験に当てはめると理解しやすい。以下の4例は、いずれも「統計学的には重要なシグナルがある」が、「患者にとって何がどの程度確かに言えるか」は別に吟味する必要がある例である。Biostat Labの吉村先生によるASCO 2026解説は、原著論文・学会抄録を統計学的に読む練習素材として有用である。<span class="ref-tag">[N1]</span><span class="ref-tag">[N2]</span><span class="ref-tag">[N3]</span><span class="ref-tag">[N4]</span></p>
+      <div class="case-grid">
+        <article class="case-card">
+          <h3>HARMONi-6：OS中間解析は陽性でも、成熟度と外的妥当性を別に読む</h3>
+          <p>進行扁平上皮NSCLCで、イボネシマブ＋化学療法がPD-1抗体＋化学療法に対してOSを改善したと報告された。統計学的には、PFS有意後のゲートキーピングを経て、OS中間解析の厳しい有意境界を越えている点が重要である。</p>
+          <ul>
+            <li><strong>正式検定として読む点</strong>：中間解析用のalpha消費を考慮した境界を越えているため、単なる名目p値ではない。</li>
+            <li><strong>慎重に読む点</strong>：予定より早いイベント時点での解析で、OSイベントは最終予定の約63%。中央値や後期KM曲線は今後変わりうる。</li>
+            <li><strong>一般化可能性</strong>：中国単独試験、対照薬、年齢・性別構成、出血高リスク例の除外を確認する。</li>
+            <li><strong>EtDへの接続</strong>：OS利益の可能性と、抗VEGF関連毒性・出血・蛋白尿・高血圧などを同じ表で比較する。</li>
+          </ul>
+          <p class="caption">参照: Biostat Lab HARMONi-6解説、Lu et al. Lancet 2026. <span class="ref-tag">[N1]</span><span class="ref-tag">[T1]</span></p>
+        </article>
+        <article class="case-card">
+          <h3>RASolute 302：OSが大きく見える時ほど、非盲検と治療実施状況を見る</h3>
+          <p>既治療転移性膵がんで、ダラクソナラシブが化学療法よりOSを大きく延長したと報告された。選択肢が乏しい疾患では大きな臨床的意味を持ちうるが、解釈は「中間解析」「OS未成熟」「オープンラベル」「対照群未治療」の4点を同時に読む必要がある。</p>
+          <ul>
+            <li><strong>効果量の読み方</strong>：HR 0.40のような大きな相対効果は魅力的だが、フォローアップ中央値、イベント割合、上側CI未到達を確認する。</li>
+            <li><strong>ITTの落とし穴</strong>：対照群で一度も治療を受けない患者が多いと、実際の治療差だけでなく治療開始前の脱落・早期死亡が差を作りうる。</li>
+            <li><strong>情報のある打ち切り</strong>：未治療例の生存追跡が不完全なら、打ち切りがランダムでない可能性を考える。</li>
+            <li><strong>集団の限定</strong>：主要解析対象がRAS G12集団であるなら、非G12やpan-RAS全体へ拡張しない。</li>
+          </ul>
+          <p class="caption">参照: Biostat Lab RASolute 302解説、O'Reilly et al. NEJM 2026. <span class="ref-tag">[N2]</span><span class="ref-tag">[T2]</span></p>
+        </article>
+        <article class="case-card">
+          <h3>LIBRETTO-432：少数イベントのEFSは、点推定より信頼区間で読む</h3>
+          <p>RET融合陽性早期NSCLCで、術後セルペルカチニブはEFSを大きく改善した。HR 0.17は印象的だが、主解析は少数イベントに基づくため、点推定値の派手さではなく、イベント数、CI、設計変更、OS未成熟を一体で読む。</p>
+          <ul>
+            <li><strong>少数イベントの意味</strong>：4 vs 19のようなイベント数では、点推定は大きく振れやすい。CIが広いことは「失敗」ではなく、設計上の精度の限界を示す。</li>
+            <li><strong>EFSと治癒は違う</strong>：EFS改善は重要だが、OSは死亡が非常に少なく未成熟で、治癒・延命とは分けて語る。</li>
+            <li><strong>クロスオーバー</strong>：再発後に対照群から実薬へ移行できる場合、将来のOS差は薄まり、OSの解釈は難しくなる。</li>
+            <li><strong>毒性負担</strong>：術後治療では、治癒していたかもしれない患者に最長3年の治療と毒性を課すため、G3以上AE、減量、中止、肝毒性を重く見る。</li>
+          </ul>
+          <p class="caption">参照: Biostat Lab LIBRETTO-432解説、Wu et al. NEJM 2026. <span class="ref-tag">[N4]</span><span class="ref-tag">[T3]</span></p>
+        </article>
+        <article class="case-card">
+          <h3>PROTEUS：pCR/MRDとMFSは陽性でも、検出法とサロゲート性を読む</h3>
+          <p>高リスク限局・局所進行前立腺癌で、周術期アパルタミドはpCR/MRDとMFSを改善した。co-primary endpointとalpha配分は事前規定どおりで、統計学的には試験デザインを満たす。一方で、pCR/MRDは前立腺癌でOSの検証済みサロゲートではなく、MFSの多くがPSMA-PETで検出された点が解釈の中心になる。</p>
+          <ul>
+            <li><strong>相対指標の注意</strong>：オッズ比が大きくても、対照群イベント率が低いと相対指標は派手になる。絶対差で読む。</li>
+            <li><strong>主要評価項目とサロゲート性は別</strong>：事前規定の主要評価項目を達成したことと、OSの代替として十分かは別問題である。</li>
+            <li><strong>検出法の影響</strong>：PSMA-PETの追加により、従来画像では見えない転移が早く検出される。これはMFSを臨床的にどう翻訳するかに影響する。</li>
+            <li><strong>比較対象</strong>：手術＋ADTとの比較であり、放射線＋ADTや他の標準治療との優劣は直接には言えない。</li>
+          </ul>
+          <p class="caption">参照: Biostat Lab PROTEUS解説、Taplin et al. NEJM 2026. <span class="ref-tag">[N3]</span><span class="ref-tag">[T4]</span></p>
+        </article>
+      </div>
+      <div class="stat-box">
+        <strong>4例からの統計学的まとめ</strong><br>
+        第3相試験を読むときは、まず「検定手順上の成功」を確認し、次に「患者にとっての意味」を別に評価する。中間解析なら成熟度、少数イベントなら精度、サロゲートならOS/QOLへの橋渡し、画像・検査法が変わるならエンドポイントの臨床的意味、非盲検なら治療実施・打ち切り・評価バイアスを確認する。この順番を守ると、企業発表や学会速報の派手な数字に引きずられにくくなる。
+      </div>
+    </section>
+
+    <section id="sec16">
+      <h2>16. 第3相試験を読むための統計学チェックリスト</h2>
       <ol class="checklist">
         <li>Primary endpointは患者に直接重要か、surrogateか。</li>
         <li>Primary endpointはプロトコール/SAPで事前規定されているか。</li>
@@ -619,6 +712,8 @@ S1(t) = S0(t)^HR
         <li>多重性制御はどうなっているか。</li>
         <li>alphaはどこに割り当てられているか。</li>
         <li>中間解析は何回、いつ、何イベントで予定されたか。</li>
+        <li>実際の中間解析は予定イベント数どおりか、予定より早いか。</li>
+        <li>information fractionは何%か。OSイベントは十分成熟しているか。</li>
         <li>停止境界は何か。</li>
         <li>報告p値は名目p値か調整済みp値か。</li>
         <li>検定階層上、次のendpointは正式に検定できるか。</li>
@@ -631,6 +726,8 @@ S1(t) = S0(t)^HR
         <li>どの構成イベントが効果を駆動しているか。</li>
         <li>BICRはあるか。</li>
         <li>オープンラベルで評価バイアスが入るか。</li>
+        <li>対照群に未治療例、治療開始前中止、患者判断による辞退が偏っていないか。</li>
+        <li>生存追跡の脱落が群間で偏り、情報のある打ち切りが疑われないか。</li>
         <li>censoring ruleは妥当か。</li>
         <li>欠測・打ち切り・治療中止は偏っていないか。</li>
         <li>非比例ハザードは疑われるか。</li>
@@ -639,14 +736,20 @@ S1(t) = S0(t)^HR
         <li>毒性、慢性毒性、治療中止、治療関連死亡はどうか。</li>
         <li>用量は最適化されているか。</li>
         <li>サブグループ解析はalpha制御されているか。</li>
+        <li>主要解析集団はITTか、バイオマーカー陽性集団か、特定stage集団か。</li>
+        <li>主要評価項目から除外された集団へ一般化していないか。</li>
+        <li>イベント数が非常に少ない場合、点推定ではなくCI幅とイベント数で読んでいるか。</li>
+        <li>pCR/MRD/EFS/MFSなどがOSの検証済みサロゲートか、疾患別に確認したか。</li>
+        <li>PSMA-PET、BICR、ctDNAなど、検出法の変化がアウトカムの意味を変えていないか。</li>
+        <li>術後・周術期治療では、治癒していたかもしれない患者への長期毒性負担を評価したか。</li>
         <li>企業発表と論文本体で表現が違わないか。</li>
         <li>GRADEで非直接性、不精確性、RoBを下げる理由があるか。</li>
         <li>最終的に患者にとってどのくらいの利益と害か。</li>
       </ol>
     </section>
 
-    <section id="sec16">
-      <h2>16. GRADE・診療ガイドラインでの扱い</h2>
+    <section id="sec17">
+      <h2>17. GRADE・診療ガイドラインでの扱い</h2>
       <p>診療ガイドラインでは、HRやp値をそのまま推奨判断に使わない。一定時点の絶対効果差、95%信頼区間、臨床的重要閾値、利益と害のバランスへ翻訳してからEtDへ進む。</p>
       <p>PFS/EFS/DFSはtime-to-eventアウトカムなので、HRを絶対効果差へ変換する。surrogate endpointなら非直接性を検討する。オープンラベルPFSならRoBを検討する。CIがnull、重要な利益、重要な害をまたぐなら不精確性を検討する。</p>
       <div class="grade-box">
@@ -659,12 +762,16 @@ S1(t) = S0(t)^HR
           <li>多重性脚注: このp値は検定階層外または名目p値であり、正式な有効性結論には用いない。</li>
           <li>毒性脚注: 免疫関連有害事象、慢性毒性、治療中止、治療関連死亡をEtDで別途考慮した。</li>
           <li>閾値脚注: 使用した閾値はpatient-derived MIDではなく、パネルが事前設定した臨床的重要絶対効果閾値である。</li>
+          <li>少数イベント脚注: 効果推定は少数イベントに基づき、点推定値は大きく振れうるため、CI幅とイベント数を重視した。</li>
+          <li>検出法脚注: アウトカムの一部は高感度画像または分子検査で検出され、従来診療で患者が経験するイベントとの対応に不確実性がある。</li>
+          <li>非盲検・治療実施脚注: 非盲検試験であり、未治療例、治療中止、打ち切り、後治療の偏りが効果推定に影響した可能性がある。</li>
+          <li>一般化可能性脚注: 対象国、対照薬、stage、バイオマーカー、年齢、性別構成がCQの対象集団・標準治療と異なる可能性がある。</li>
         </ol>
       </div>
     </section>
 
-    <section id="sec17">
-      <h2>17. 読者に残す最終メッセージ</h2>
+    <section id="sec18">
+      <h2>18. 読者に残す最終メッセージ</h2>
       <p>現代のがん第3相試験は、早く読めるようになった。しかし、早く読めることと、深く読めることは違う。p値、HR、プレスリリース、早期停止だけで結論を出さない。</p>
       <p>正しい読み方は、アウトカムの患者重要性、絶対効果差、信頼区間、臨床的重要閾値、多重性制御、中間解析、OS成熟度、QOL、毒性、用量、患者価値観をつなげることである。</p>
       <div class="take-home">統計学の役割は、企業が示す「成功」をそのまま受け入れることではない。その成功が、患者にとってどの程度の意味を持つかを翻訳することである。</div>
@@ -700,6 +807,14 @@ S1(t) = S0(t)^HR
         <li>Skoetz N, Goldkuhle M, van Dalen EC, et al. GRADE guidelines 27. <em>J Clin Epidemiol.</em> 2020;118:124-131. doi:<a href="https://doi.org/10.1016/j.jclinepi.2019.10.015" target="_blank" rel="noopener">10.1016/j.jclinepi.2019.10.015</a>.</li>
         <li>Guyatt GH, Zeng L, Brignardello-Petersen R, et al. Core GRADE 2: choosing the target of certainty rating and assessing imprecision. <em>BMJ.</em> 2025;389:e081904. doi:<a href="https://doi.org/10.1136/bmj-2024-081904" target="_blank" rel="noopener">10.1136/bmj-2024-081904</a>.</li>
         <li>GRADE Guidance 42. Using thresholds for judgments on health benefits and harms in decision making. <em>Ann Intern Med.</em> 2025;178:1644-1653. doi:<a href="https://doi.org/10.7326/ANNALS-24-02013" target="_blank" rel="noopener">10.7326/ANNALS-24-02013</a>.</li>
+        <li>[N1] Biostat Lab. <a href="https://note.com/biostat_lab/n/n3bd0d8cba37b?magazine_key=mabc2437374c8" target="_blank" rel="noopener">読むASCO#4 [LBA4] HARMONi-6 trial：扁平上皮NSCLCで「PD-1併用療法に勝った」OS中間解析をどう読むか.</a> 2026年6月20日.</li>
+        <li>[N2] Biostat Lab. <a href="https://note.com/biostat_lab/n/n87a73044559a?magazine_key=mabc2437374c8" target="_blank" rel="noopener">読むASCO#3 [LBA5] RASolute 302 trial：既治療膵がんで「OSがほぼ倍」をどう読むか.</a> 2026年6月19日.</li>
+        <li>[N3] Biostat Lab. <a href="https://note.com/biostat_lab/n/n6ffb42b21e58?magazine_key=mabc2437374c8" target="_blank" rel="noopener">読むASCO#1 [LBA1] PROTEUS試験：高リスク前立腺癌の「周術期アパルタミド」をどう読むか.</a> 2026年6月18日.</li>
+        <li>[N4] Biostat Lab. <a href="https://note.com/biostat_lab/n/n91d1c3efb169?magazine_key=mabc2437374c8" target="_blank" rel="noopener">読むASCO#2 [LBA3] LIBRETTO-432 trial：RET陽性早期肺がんの「術後セルペルカチニブ」をどう読むか.</a> 2026年6月18日.</li>
+        <li>[T1] Lu S, Liu B, Luo Y, et al. Ivonescimab plus chemotherapy versus tislelizumab plus chemotherapy in advanced squamous non-small-cell lung cancer (HARMONi-6). <em>Lancet.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1016/S0140-6736(26)00966-9" target="_blank" rel="noopener">10.1016/S0140-6736(26)00966-9</a>.</li>
+        <li>[T2] O'Reilly EM, Wainberg ZA, Hendifar AE, et al. Daraxonrasib or Chemotherapy in Previously Treated Metastatic Pancreatic Cancer. <em>N Engl J Med.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1056/NEJMoa2605555" target="_blank" rel="noopener">10.1056/NEJMoa2605555</a>.</li>
+        <li>[T3] Wu Y-L, Hochmair M, Yang Y, et al. Selpercatinib in Early-Stage RET Fusion-Positive Non-Small-Cell Lung Cancer. <em>N Engl J Med.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1056/NEJMoa2602628" target="_blank" rel="noopener">10.1056/NEJMoa2602628</a>.</li>
+        <li>[T4] Taplin ME, et al. Perioperative apalutamide in high-risk localized prostate cancer. <em>N Engl J Med.</em> Published online May 31, 2026. doi:<a href="https://doi.org/10.1056/NEJMoa2603878" target="_blank" rel="noopener">10.1056/NEJMoa2603878</a>.</li>
         <li>ローカル確認資料: F:\マイドライブ\2016年works\GRADE\アウトカム 配下のOS/PFS、QOL、代理アウトカム、頭頸部がん、費用対効果、GRADEアウトカム重要性関連資料。</li>
       </ol>
       <h3>TODO: 出典確認</h3>
@@ -723,6 +838,8 @@ S1(t) = S0(t)^HR
       - 早期中止試験の効果過大評価、OS未成熟、安全性未成熟を指摘した。
       - Project Optimus、OS assessment、MRD/CR、ICH E9(R1)を反映した。
       - GRADE/EtDへの接続がある。
+      - Biostat LabのASCO 2026解説4本を、HARMONi-6、RASolute 302、LIBRETTO-432、PROTEUSの実例として追加した。
+      - 中間解析、少数イベント、非盲検未治療、PSMA-PET、サロゲート性、一般化可能性をチェックリストとGRADE脚注へ反映した。
     -->
   </main>
 </div>
