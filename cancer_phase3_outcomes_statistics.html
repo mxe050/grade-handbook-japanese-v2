@@ -171,16 +171,36 @@
       gap: 14px;
     }
     .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-      margin: 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0 24px;
+      counter-reset: case-card;
     }
     .case-card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 15px;
-      background: #fff;
+      padding: 18px 18px 18px 20px;
+      background: linear-gradient(90deg, #f8fbff 0, #fff 72%);
+      border-left: 6px solid #2563eb;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      position: relative;
+    }
+    .case-card:nth-child(2) { border-left-color: #7c3aed; background: linear-gradient(90deg, #fbfaff 0, #fff 72%); }
+    .case-card:nth-child(3) { border-left-color: #047857; background: linear-gradient(90deg, #f4fffb 0, #fff 72%); }
+    .case-card:nth-child(4) { border-left-color: #b45309; background: linear-gradient(90deg, #fffaf3 0, #fff 72%); }
+    .case-card::before {
+      counter-increment: case-card;
+      content: "実例 " counter(case-card);
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
     }
     .case-card h3 {
       margin-top: 0;
@@ -191,6 +211,17 @@
     }
     .case-card ul { padding-left: 1.1rem; margin: 0.6rem 0 0; }
     .case-card li { margin: 0.32rem 0; }
+    .term-note {
+      border: 1px solid #c7d2fe;
+      border-radius: 8px;
+      background: #f5f7ff;
+      padding: 13px 15px;
+      margin: 14px 0 18px;
+      color: #243244;
+    }
+    .term-note strong { color: #1e3a8a; }
+    .term-note ul { margin: 0.55rem 0 0; padding-left: 1.2rem; }
+    .term-note li { margin: 0.25rem 0; }
     .ref-tag {
       display: inline-block;
       border: 1px solid #bfdbfe;
@@ -248,19 +279,6 @@
     }
     .figure svg { width: 100%; height: auto; display: block; }
     .caption { font-size: 0.84rem; color: var(--muted); margin-top: 8px; }
-    details {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      margin: 8px 0;
-      background: #fff;
-    }
-    summary {
-      cursor: pointer;
-      padding: 10px 12px;
-      font-weight: 700;
-      color: #20324a;
-    }
-    details p { padding: 0 12px 12px; margin: 0; }
     .refs li { margin-bottom: 10px; }
     .source-note {
       border-top: 1px solid var(--line);
@@ -394,20 +412,35 @@
 
     <section id="sec3">
       <h2>3. PFS、DFS、EFSはなぜ使われるのか</h2>
+      <div class="term-note">
+        <strong>ここで迷いやすい用語</strong>
+        <ul>
+          <li><strong>PFS</strong>はprogression-free survival。進行がんで「画像上の進行または死亡までの時間」を見る。</li>
+          <li><strong>DFS</strong>はdisease-free survival。手術や根治治療後に「再発または死亡までの時間」を見る。</li>
+          <li><strong>iDFS</strong>はinvasive disease-free survival。乳がんなどで「浸潤性の再発・二次がん・死亡」などに焦点を絞ったDFSの一種として使われる。</li>
+          <li><strong>EFS</strong>はevent-free survival。「イベントが起きない期間」だが、何をイベントにするかは試験ごとに違う。進行、手術不能化、再発、死亡などが含まれうる。</li>
+        </ul>
+      </div>
       <h3>PFS</h3>
-      <p>PFSは、進行がん・転移がんでよく使われる。進行または死亡までの時間を測るため、OSより早く読める。患者に早く新しい治療を届ける利点がある。</p>
+      <p>PFSは、進行がん・転移がんでよく使われる。患者が亡くなるまで待つOSより早く、画像上の進行または死亡までの時間を測るため、新しい治療を早く評価しやすい。ここでの「進行」は、腫瘍が大きくなった、転移が増えた、RECISTなどの判定基準を満たした、という意味で使われることが多い。</p>
       <p>ただし、PFSは腫瘍評価や画像判定に依存する。オープンラベル試験では、評価時期、治療中止、次治療開始、担当医判断が影響しうる。PFSが延びても、OS、症状、QOLが改善するとは限らない。</p>
       <h3>DFS</h3>
-      <p>DFSは主に術後補助療法で使われる。手術・根治治療後に再発または死亡までを追う。遠隔再発が患者にとって重大な疾患では、DFSは比較的患者重要性が高い。</p>
-      <p>しかし、局所再発、遠隔再発、非癌死、二次がんの扱いを確認する必要がある。DFSという名前だけでは十分ではない。構成イベントを読む。</p>
+      <p>DFSは主に術後補助療法で使われる。手術・根治治療後に、がんが再発しない期間を追う指標で、通常は再発または死亡までの時間として扱われる。遠隔再発が患者にとって重大な疾患では、DFSは比較的患者重要性が高い。</p>
+      <p>しかし、DFSという名前だけでは十分ではない。局所再発、遠隔再発、非癌死、二次がんをイベントに入れるかどうかで、推定しているものが変わる。iDFSのように浸潤性再発へ焦点を絞る場合もあるため、論文では必ず「イベント定義」を読む。</p>
       <h3>EFS</h3>
       <p>EFSは術前治療・周術期治療で使われやすい。ランダム化が手術前に行われる場合、手術を妨げる進行、手術不能化、再発、死亡を拾える。DFSより術前戦略全体の失敗を反映しやすい。</p>
+      <p>初心者が最も混乱しやすいのはEFSである。EFSの「event」は固定された意味ではない。ある試験では進行、別の試験では手術不能、別の試験では再発や死亡まで含む。したがってEFSを見たら、まず「この試験では何が起きたらイベントなのか」を確認する。EFSが改善しても、その改善が死亡減少なのか、画像進行の遅れなのか、手術不能化の減少なのかで、患者にとっての意味は違う。</p>
       <div class="take-home">PFS/DFS/EFSは早く読める。しかし、早く読みすぎてはいけない。定義、構成イベント、評価バイアス、患者重要性、OS/QOL/毒性との整合を読む。</div>
     </section>
 
     <section id="sec4">
       <h2>4. pCR、MPR、ORR、MRD、ctDNAはなぜ増えているのか</h2>
-      <p>pCRやMPRは、術前治療の生物学的効果を早く示す。ORRとDoRは、進行がんで腫瘍縮小の大きさと持続を示す。MRDやctDNAは、分子残存病変や再発リスクの早期シグナルとして注目される。</p>
+      <p>pCRやMPRは、術前治療の生物学的効果を早く示す。pCRはpathological complete responseで、手術標本を顕微鏡で見たときに、侵襲性の生きた腫瘍が見つからない状態を指すことが多い。MPRはmajor pathological responseで、腫瘍が大きく減り、残った生きた腫瘍が少ない状態を指す。どちらも「病理で見た反応」であり、患者が長く生きることそのものではない。</p>
+      <p>ORRとDoRは、進行がんで腫瘍縮小の大きさと持続を示す。ORRはobjective response rateで、完全奏効と部分奏効を合わせた割合である。DoRはduration of responseで、奏効した患者でその反応がどのくらい続くかを見る。MRDはminimal residual diseaseで、通常の検査では見えにくいごく少量の病変を検出する考え方である。ctDNAは血液中の腫瘍由来DNAで、分子残存病変や再発リスクの早期シグナルとして注目される。</p>
+      <div class="term-note">
+        <strong>読み方の足場</strong><br>
+        pCR、MPR、MRD、ctDNAは、いずれも「早く読める」指標である。早く読めるから開発や承認には便利だが、OS、症状、QOL、毒性、治療負担をどこまで代替できるかは別問題である。初心者は、まず「これは患者が直接感じる結果か、それとも将来の患者利益を予測する代理指標か」を分ける。
+      </div>
       <p>FDAの2026年ドラフトでは、多発性骨髄腫におけるMRD陰性率とCRを、accelerated approvalを支えるprimary endpointsとして扱う方向が示されている。ただし、これは多発性骨髄腫という特定文脈でのドラフトであり、固形がん全体へそのまま一般化しない。</p>
       <div class="warning-box"><strong>有望なバイオマーカーと、検証済みsurrogate endpointは違う。</strong><br>代替アウトカムが真の患者利益を予測するかは、がん種、治療ライン、治療機序、測定時点、検査法に依存する。</div>
       <div class="table-wrap">
@@ -712,22 +745,6 @@ S1(t) = S0(t)^HR
       <p>現代のがん第3相試験は、早く読めるようになった。しかし、早く読めることと、深く読めることは違う。p値、HR、プレスリリース、早期停止だけで結論を出さない。</p>
       <p>正しい読み方は、アウトカムの患者重要性、絶対効果差、信頼区間、臨床的重要閾値、多重性制御、中間解析、OS成熟度、QOL、毒性、用量、患者価値観をつなげることである。</p>
       <div class="take-home">統計学の役割は、企業が示す「成功」をそのまま受け入れることではない。その成功が、患者にとってどの程度の意味を持つかを翻訳することである。</div>
-    </section>
-
-    <section>
-      <h2>用語集</h2>
-      <details><summary>OS</summary><p>overall survival。ランダム化から死亡までの時間。患者に最も直接的だが、イベント蓄積に時間がかかる。</p></details>
-      <details><summary>PFS</summary><p>progression-free survival。進行または死亡までの時間。画像判定とcensoringに注意する。</p></details>
-      <details><summary>DFS / EFS / iDFS</summary><p>再発、進行、手術不能化、死亡などを含む複合的time-to-eventアウトカム。定義を必ず確認する。</p></details>
-      <details><summary>pCR / MPR</summary><p>術前治療後の病理学的反応。早期に読めるが、患者利益そのものではない。</p></details>
-      <details><summary>ORR / DoR</summary><p>奏効率と奏効持続期間。腫瘍縮小の大きさと持続を見る。</p></details>
-      <details><summary>MRD / ctDNA</summary><p>分子残存病変や血中腫瘍DNA。検査法、閾値、時点、疾患文脈に依存する。</p></details>
-      <details><summary>HR / RMST</summary><p>HRは瞬間的イベント率の比。RMSTは特定期間内の平均生存時間に相当する要約量で、非比例ハザードで有用なことがある。</p></details>
-      <details><summary>information fraction / alpha-spending</summary><p>予定情報量に対して、現在どれだけ情報が集まったか。中間解析では情報量に応じてalphaを消費する。</p></details>
-      <details><summary>nominal / adjusted / stagewise / repeated / descriptive p-value</summary><p>p値には役割が異なる種類がある。正式な結論に使えるかは、検定手順と多重性制御次第である。</p></details>
-      <details><summary>gatekeeping / graphical approach</summary><p>複数仮説を順序づけ、alphaを配分・移動する方法。検定階層を外れた結果は記述的になりやすい。</p></details>
-      <details><summary>estimand / intercurrent event</summary><p>ICH E9(R1)の中核概念。何の治療効果を知りたいのか、治療中止・次治療・死亡などの介入後イベントをどう扱うかを定義する。</p></details>
-      <details><summary>clinically important threshold / decision threshold</summary><p>前者はアウトカムごとの臨床的重要絶対効果閾値。後者は推奨が変わる境界で、利益、害、負担、費用、価値観を統合する。</p></details>
     </section>
 
     <section class="source-note">
