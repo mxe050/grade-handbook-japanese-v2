@@ -138,16 +138,17 @@
     }
     .toc a:hover { border-color: #93c5fd; background: #eff6ff; }
     .five {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin: 18px 0 28px;
     }
     .card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fff;
-      padding: 14px;
+      border-left: 5px solid #cbd5e1;
+      background: #fbfdff;
+      padding: 13px 15px;
     }
     .card b {
       display: block;
@@ -166,9 +167,9 @@
     .sponsor-box { background: #f5f3ff; border-color: #ddd6fe; color: #3b0764; }
     .take-home { background: #f8fafc; border-color: #cbd5e1; color: #1e293b; font-weight: 700; }
     .grid2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .case-grid {
       display: flex;
@@ -533,8 +534,25 @@ S1(t) = S0(t)^HR
         <div class="caption">図2：早期に見るほど、偶然の勝ちを避けるために強い証拠を要求する設計がある。</div>
       </div>
       <p>情報量はカレンダー時間ではなく、通常は観察されたイベント数で決まる。予定イベント数400のうち200イベントで見るなら、information fractionは50%である。O'Brien-Fleming型では早期停止に非常に強い証拠を要求する。Pocock型では各解析で比較的一定の境界を置く。Lan-DeMets alpha-spending functionは、中間解析時点に柔軟性を持たせる。</p>
-      <div class="warning-box"><strong>中間解析で止まった試験は、効果が大きく見えやすい。</strong><br>偶然大きく見えた時点で止まるため、点推定が過大評価されやすい。OS、安全性、サブグループ、長期QOL、tail of curveの情報も未成熟になりやすい。</div>
-      <p>DMC/DSMB、firewall、unblinded interim dataへのアクセス制限は重要である。中間解析結果を知った人が試験運営に影響すると、operational biasが入る。futility boundaryにはbindingとnon-bindingがあり、conditional powerやpredictive probabilityが使われることもある。</p>
+
+      <h3>統計学的に妥当でも、効果量は暫定的である</h3>
+      <p>中間解析で重要なのは、<strong>第I種過誤を制御した検定</strong>と、<strong>効果量の安定した推定</strong>を分けることである。事前に解析時点、停止境界、alpha消費、検定階層、DMC/DSMBの手順が決められていれば、その中間解析は統計学的に妥当であり得る。FDAのadaptive design guidanceやICH E9の考え方でも、事前規定、試験のintegrity、盲検解除情報のfirewall、解析方法の明示は中心的な要件である。<span class="ref-tag">[M2]</span><span class="ref-tag">[M3]</span></p>
+      <p>しかし、統計学的に妥当であることは、HR、中央値、絶対効果差、安全性、サブグループ効果、長期QOLが十分に成熟していることを意味しない。group sequential designは「何度も見ても偽陽性が増えすぎない」ようにする設計であって、「早く止まった時点の点推定が真の効果量に近い」ことを保証する設計ではない。</p>
+      <p>早期有効中止で効果が大きく見えやすい理由は、直感的には「偶然よく見えた時点で止まる」からである。真の効果が存在しても、試験中の推定値は上下に揺れる。中間解析で停止境界を越えるのは、その揺れの中でも特に良く見えた時点であり、後からイベント数と追跡が増えると、効果量が少し小さくなることがある。これは、試験が不正確だったというより、早期停止に伴う推定上のwinner's curse、regression to the truthとして読むのがよい。Basslerらの系統的レビューでも、有効性で早期中止されたランダム化試験では、早期中止されていない試験より効果が大きく見えやすく、特にイベント数が少ない試験でその傾向が強いことが示されている。<span class="ref-tag">[M1]</span></p>
+      <div class="warning-box"><strong>「中間解析で有意」は、効果ありの強いシグナルである。しかし、効果量の大きさは暫定的である。</strong><br>境界を越えたことは検定上の成功を示す。一方で、OS、安全性、サブグループ、長期QOL、tail of curve、治療中止、後治療、交差、毒性による早期死亡は、最終解析や追加追跡で評価が変わり得る。</div>
+      <p>がん領域でこの問題が目立つのは、OS、PFS、EFSがイベント数に依存し、治療効果が時間とともに変化しやすいからである。免疫チェックポイント阻害薬では、初期には差が小さく、後半に曲線が開くことがある。逆に、細胞傷害性抗がん薬や一部の分子標的薬では、早期の腫瘍縮小やPFS差は大きくても、後治療や耐性化によりOS差が縮むことがある。したがって、中間解析の陽性結果は、前期・中期・後期のKM曲線、number at risk、打ち切り、後治療、毒性、QOLを合わせて読む必要がある。</p>
+      <p>DMC/DSMB、firewall、unblinded interim dataへのアクセス制限は重要である。中間解析結果を知った人が試験運営に影響すると、operational biasが入る。futility boundaryにはbindingとnon-bindingがあり、conditional powerやpredictive probabilityが使われることもある。統計的に計画された中間解析であっても、途中結果の知識が登録、追跡、画像評価、治療継続、クロスオーバー、後治療の選択に影響すれば、推定値は試験デザインだけでは守れない。</p>
+
+      <h3>RoB 2.0/Cochrane RoB 2で見る中間解析</h3>
+      <p>Cochrane RoB 2.0では、リスクオブバイアスは「研究全体」ではなく、<strong>特定のアウトカム・特定の推定値</strong>に対して評価する。したがって、事前規定された中間解析で早期中止されたことだけを理由に、機械的にhigh risk of biasとするのは適切ではない。むしろ、RoB 2の各ドメインで、早期中止と途中情報がどこに影響したかを確認する。<span class="ref-tag">[M4]</span><span class="ref-tag">[M5]</span></p>
+      <ol>
+        <li><strong>Domain 1: randomization process</strong>。中間解析そのものは通常、ランダム化の生成や割付隠蔽を壊さない。ただし、早期中止時点で群間の予後因子不均衡が大きく、イベント数も少ない場合は、推定値が偶然の不均衡に強く影響されていないかを確認する。</li>
+        <li><strong>Domain 2: deviations from intended interventions</strong>。中間解析情報が漏れた、非盲検で期待が変わった、治療継続や中止、クロスオーバー、後治療、支持療法が群間で変わった場合は、意図した介入からの逸脱として問題になる。RASolute 302のように、対照群で治療を受けない患者が多い場合は、ITT解析であっても推定値が純粋な薬剤効果だけを表しているかを慎重に読む。<span class="ref-tag">[N2]</span></li>
+        <li><strong>Domain 3: missing outcome data</strong>。早期中止は「欠測」そのものではない。しかし、追跡が未成熟で、QOL、長期毒性、後期イベント、画像検査、PROの欠測が多い場合、そのアウトカムの推定に欠測データの問題が入る。特に長期OS、後期PFS、慢性毒性、治療中止後QOLは、早期中止時点では情報量が不足しやすい。</li>
+        <li><strong>Domain 4: measurement of the outcome</strong>。OSは比較的客観的だが、PFS、EFS、ORR、pCR、MPR、画像上の再発は、評価時期、評価者、盲検化、BICRの有無、検査法に影響される。非盲検試験で中間解析の強いシグナルが出ると、検査頻度、治療中止、次治療開始、画像判定への期待がアウトカム測定に影響し得る。</li>
+        <li><strong>Domain 5: selection of the reported result</strong>。中間解析時点、停止境界、検定階層、解析集団、調整済みp値、感度解析が事前規定され、プロトコール/SAPと整合して報告されていれば懸念は小さい。反対に、名目p値、好ましい時点だけの提示、階層外のサブグループ、複数定義のうち有利なEFS/PFSのみの強調、未成熟OSの断定的表現は、報告結果選択の懸念になる。</li>
+      </ol>
+      <p>このように整理すると、中間解析の問題は一つではない。<strong>RoBの問題</strong>は、途中情報や非盲検が試験実施・測定・報告をゆがめたかである。<strong>不精確性の問題</strong>は、イベント数、CI幅、number at risk、追跡成熟度が不足しているかである。<strong>推定値過大評価の問題</strong>は、早期有効中止で偶然大きい効果を拾いやすいことである。GRADEでは、これらを一つの「不安」として丸めず、リスクオブバイアス、不精確性、非直接性、脚注で分けて説明する。</p>
     </section>
 
     <section id="sec8">
@@ -727,7 +745,9 @@ S1(t) = S0(t)^HR
         <ol>
           <li>time-to-event絶対効果脚注: HRと時点tのbaseline riskから1000人あたりの絶対効果差を算出した。</li>
           <li>EFS/PFS非直接性脚注: 本アウトカムは患者重要アウトカムへの代理性があり、OS/QOL/症状との関連に不確実性がある。</li>
-          <li>早期停止脚注: 中間解析で早期停止され、点推定の過大評価、OS未成熟、安全性未成熟の可能性がある。</li>
+          <li>早期停止・推定値脚注: 本結果は事前規定された中間解析境界を越えており検定上の妥当性はあるが、早期有効中止に伴い点推定値が過大に見える可能性がある。</li>
+          <li>中間解析成熟度脚注: information fraction、観察イベント数、追跡期間、number at riskが限定的であり、OS中央値、後期KM曲線、安全性、QOL、サブグループ効果は追加追跡で変わり得る。</li>
+          <li>RoB 2.0脚注: 中間解析そのものを理由にhigh riskとせず、RoB 2の結果別評価として、意図した介入からの逸脱、欠測アウトカム、アウトカム測定、報告結果選択の各ドメインで懸念を検討した。</li>
           <li>OS未成熟脚注: OSイベントが不足しており、寿命延長に関する結論は不確実である。</li>
           <li>多重性脚注: このp値は検定階層外または名目p値であり、正式な有効性結論には用いない。</li>
           <li>毒性脚注: 免疫関連有害事象、慢性毒性、治療中止、治療関連死亡をEtDで別途考慮した。</li>
@@ -752,7 +772,11 @@ S1(t) = S0(t)^HR
       <ol class="refs">
         <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-trial-endpoints-approval-cancer-drugs-and-biologics" target="_blank" rel="noopener">Clinical Trial Endpoints for the Approval of Cancer Drugs and Biologics. Guidance for Industry. December 2018.</a></li>
         <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials" target="_blank" rel="noopener">Multiple Endpoints in Clinical Trials. Guidance for Industry. October 2022.</a></li>
-        <li>FDA. <a href="https://www.fda.gov/media/78495/download" target="_blank" rel="noopener">Adaptive Designs for Clinical Trials of Drugs and Biologics. Guidance for Industry. November 2019.</a></li>
+        <li>[M1] Bassler D, Briel M, Montori VM, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/20332404/" target="_blank" rel="noopener">Stopping randomized trials early for benefit and estimation of treatment effects: systematic review and meta-regression analysis.</a> <em>JAMA.</em> 2010;303(12):1180-1187.</li>
+        <li>[M2] FDA. <a href="https://www.fda.gov/media/78495/download" target="_blank" rel="noopener">Adaptive Designs for Clinical Trials of Drugs and Biologics. Guidance for Industry. November 2019.</a></li>
+        <li>[M3] ICH E9. <a href="https://www.ema.europa.eu/en/ich-e9-statistical-principles-clinical-trials-scientific-guideline" target="_blank" rel="noopener">Statistical Principles for Clinical Trials. Scientific guideline.</a></li>
+        <li>[M4] Cochrane Handbook. <a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-08" target="_blank" rel="noopener">Chapter 8: Assessing risk of bias in a randomized trial.</a></li>
+        <li>[M5] Cochrane Bias Methods Group. <a href="https://methods.cochrane.org/bias/resources/rob-2-revised-cochrane-risk-bias-tool-randomized-trials" target="_blank" rel="noopener">RoB 2: A revised Cochrane risk-of-bias tool for randomized trials.</a></li>
         <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/approaches-assessment-overall-survival-oncology-clinical-trials" target="_blank" rel="noopener">Approaches to Assessment of Overall Survival in Oncology Clinical Trials. Draft Guidance for Industry. August 2025.</a></li>
         <li>FDA. <a href="https://www.fda.gov/about-fda/oncology-center-excellence/project-optimus" target="_blank" rel="noopener">Project Optimus.</a></li>
         <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/optimizing-dosage-human-prescription-drugs-and-biological-products-treatment-oncologic-diseases" target="_blank" rel="noopener">Optimizing the Dosage of Human Prescription Drugs and Biological Products for the Treatment of Oncologic Diseases. August 2024.</a></li>
