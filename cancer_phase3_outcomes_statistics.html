@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>癌のアウトカムアドバンス</title>
+  <!--
+    主要章立て:
+    1. がん第3相試験のアウトカムは、いま何が変わっているのか
+    2. なぜOSだけでは第3相試験が組みにくくなったのか
+    3. PFS、DFS、EFSはなぜ使われるのか
+    4. pCR、MPR、ORR、MRD、ctDNAはなぜ増えているのか
+    5. HRを患者に意味のある絶対効果差へ翻訳する
+    6. MIDではなく、臨床的重要閾値として読む
+    7. 中間解析とgroup sequential design
+    8. 名目p値、調整済みp値、段階的p値、反復p値を区別する
+    9. 階層的検定、gatekeeping、alpha配分、alphaリサイクル
+    10. 複合アウトカムの罠
+    11. オープンラベル、BICR、画像評価、informative censoring
+    12. adaptive design、seamless phase II/III、platform trial
+    13. Project Optimusと用量最適化
+    14. スポンサー主導試験をどう読むか
+    15. 第3相試験を読むための統計学チェックリスト
+    16. GRADE・診療ガイドラインでの扱い
+    17. 読者に残す最終メッセージ
+  -->
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #526071;
+      --line: #d9e0ea;
+      --soft: #f6f8fb;
+      --blue: #1d4ed8;
+      --green: #047857;
+      --amber: #b45309;
+      --red: #b91c1c;
+      --violet: #6d28d9;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+      color: var(--ink);
+      background: #eef3f8;
+      line-height: 1.78;
+      letter-spacing: 0;
+    }
+    a { color: var(--blue); }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      background: linear-gradient(135deg, #102033 0%, #15406b 55%, #0f766e 100%);
+      color: white;
+      padding: 48px 34px 34px;
+    }
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 900px;
+      margin: 18px 0 0;
+      font-size: 1.05rem;
+      color: #e8f1ff;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 0.84rem;
+    }
+    .meta span {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 6px;
+      padding: 5px 9px;
+    }
+    main { padding: 26px 34px 48px; }
+    h2 {
+      margin: 44px 0 14px;
+      padding-top: 14px;
+      border-top: 2px solid var(--line);
+      font-size: 1.55rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 28px 0 10px;
+      font-size: 1.17rem;
+      line-height: 1.4;
+    }
+    h4 { margin: 18px 0 8px; font-size: 1rem; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 14px 1.3rem; padding: 0; }
+    li { margin: 4px 0; }
+    .lead {
+      font-size: 1.04rem;
+      color: #26354a;
+      background: var(--soft);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 8px;
+      margin: 18px 0 28px;
+    }
+    .toc a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 9px 10px;
+      background: #fbfdff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #243244;
+    }
+    .toc a:hover { border-color: #93c5fd; background: #eff6ff; }
+    .five {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 18px 0 28px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+    .card b {
+      display: block;
+      color: #0f3158;
+      margin-bottom: 6px;
+    }
+    .warning-box, .stat-box, .grade-box, .sponsor-box, .take-home {
+      border-radius: 8px;
+      padding: 15px 17px;
+      margin: 16px 0;
+      border: 1px solid;
+    }
+    .warning-box { background: #fff7ed; border-color: #fed7aa; color: #7c2d12; }
+    .stat-box { background: #eff6ff; border-color: #bfdbfe; color: #14315c; }
+    .grade-box { background: #ecfdf5; border-color: #a7f3d0; color: #064e3b; }
+    .sponsor-box { background: #f5f3ff; border-color: #ddd6fe; color: #3b0764; }
+    .take-home { background: #f8fafc; border-color: #cbd5e1; color: #1e293b; font-weight: 700; }
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 16px 0 24px;
+      background: white;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 860px;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border-bottom: 1px solid #e7edf4;
+      padding: 10px 11px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #edf3f9;
+      color: #1f2a3a;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .small { font-size: 0.86rem; color: var(--muted); }
+    .formula {
+      font-family: Consolas, "Courier New", monospace;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 13px 15px;
+      overflow-x: auto;
+      margin: 10px 0 16px;
+      line-height: 1.65;
+    }
+    .figure {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 14px;
+      margin: 16px 0 24px;
+    }
+    .figure svg { width: 100%; height: auto; display: block; }
+    .caption { font-size: 0.84rem; color: var(--muted); margin-top: 8px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 8px 0;
+      background: #fff;
+    }
+    summary {
+      cursor: pointer;
+      padding: 10px 12px;
+      font-weight: 700;
+      color: #20324a;
+    }
+    details p { padding: 0 12px 12px; margin: 0; }
+    .checklist {
+      columns: 2;
+      column-gap: 28px;
+      margin-left: 0;
+      list-style: none;
+    }
+    .checklist li {
+      break-inside: avoid;
+      border-bottom: 1px solid #edf2f7;
+      padding: 5px 0 5px 26px;
+      position: relative;
+    }
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #64748b;
+      border-radius: 3px;
+    }
+    .refs li { margin-bottom: 10px; }
+    .source-note {
+      border-top: 1px solid var(--line);
+      margin-top: 42px;
+      padding-top: 20px;
+    }
+    @media (max-width: 720px) {
+      .page { box-shadow: none; }
+      .hero { padding: 36px 18px 26px; }
+      main { padding: 20px 18px 38px; }
+      .checklist { columns: 1; }
+      table { font-size: 0.82rem; }
+    }
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; max-width: none; }
+      .hero { background: white; color: black; border-bottom: 2px solid #111; }
+      .subtitle, .meta span { color: black; }
+      a { color: black; text-decoration: none; }
+      .toc { display: none; }
+      h2 { page-break-after: avoid; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="eyebrow">癌のアウトカムアドバンス</div>
+    <h1>がん第3相試験のアウトカムを統計学的に読む</h1>
+    <p class="subtitle">OS、PFS、DFS、EFS、pCR、MPR、MRD、QOL、中間解析、多重性、スポンサー主導試験の読み方</p>
+    <div class="meta">
+      <span>診療ガイドライン作成者向け</span>
+      <span>GRADE / EtD 接続</span>
+      <span>FDA・ICH・GRADE一次資料を優先</span>
+      <span>作成日: 2026-06-28</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="lead">現代のがん第3相試験は、OSだけで単純に読める構造から離れている。早く読めるアウトカム、多層的な検定階層、中間解析、バイオマーカー集団、用量最適化、安全性成熟度が重なっている。だから、p値やHRだけで結論を出さず、患者にとって何人/1000の利益と害になるかへ翻訳する。</p>
+
+    <nav class="toc" aria-label="目次">
+      <a href="#sec1">1. アウトカムは何が変わっているか</a>
+      <a href="#sec2">2. OSだけでは組みにくい理由</a>
+      <a href="#sec3">3. PFS、DFS、EFS</a>
+      <a href="#sec4">4. pCR、MPR、ORR、MRD、ctDNA</a>
+      <a href="#sec5">5. HRを絶対効果差へ翻訳する</a>
+      <a href="#sec6">6. MIDではなく臨床的重要閾値</a>
+      <a href="#sec7">7. 中間解析</a>
+      <a href="#sec8">8. p値の種類</a>
+      <a href="#sec9">9. 階層的検定とalpha制御</a>
+      <a href="#sec10">10. 複合アウトカム</a>
+      <a href="#sec11">11. BICRとcensoring</a>
+      <a href="#sec12">12. adaptive design</a>
+      <a href="#sec13">13. Project Optimus</a>
+      <a href="#sec14">14. スポンサー主導試験</a>
+      <a href="#sec15">15. 統計チェックリスト</a>
+      <a href="#sec16">16. GRADEでの扱い</a>
+      <a href="#sec17">17. 最終メッセージ</a>
+    </nav>
+
+    <section>
+      <h2>まず覚える5つ</h2>
+      <div class="five">
+        <div class="card"><b>1. OSは最重要</b>ただしprimary endpointにしにくい場面が増えている。イベント蓄積、後治療、クロスオーバーが効く。</div>
+        <div class="card"><b>2. 早期アウトカムは便利</b>PFS、EFS、pCR、MRDは早く読めるが、患者利益そのものとは限らない。</div>
+        <div class="card"><b>3. 中間解析は境界を見る</b>名目p値ではなく、事前に決めた停止境界とalpha消費を読む。</div>
+        <div class="card"><b>4. 複数endpointは階層を見る</b>小さいp値が並ぶほど、検定階層、gatekeeping、alpha配分を確認する。</div>
+        <div class="card"><b>5. HRは翻訳する</b>一定時点の絶対効果差、95%CI、臨床的重要閾値へ変換してからEtDに進む。</div>
+      </div>
+    </section>
+
+    <section id="sec1">
+      <h2>1. がん第3相試験のアウトカムは、いま何が変わっているのか</h2>
+      <p>OSは、患者にとって最も直接的なアウトカムである。死亡というイベントは客観的で、解釈も明快である。けれども、現代のがん第3相試験では、OSだけで薬剤価値を読める場面は少なくなっている。</p>
+      <p>第3相試験では、PFS、DFS、EFS、iDFS、pCR、MPR、ORR、DoR、MRD、ctDNA clearance、PRO/QOL、安全性、time to treatment discontinuation、time to next treatmentが組み合わされる。これは単なる流行ではない。薬剤開発、規制、患者アクセス、試験期間、イベント数、後治療の複雑化が絡んだ構造変化である。</p>
+      <div class="figure" aria-label="OSから早期アウトカムへの距離">
+        <svg viewBox="0 0 900 190" role="img">
+          <rect x="20" y="74" width="860" height="14" rx="7" fill="#dbeafe"/>
+          <circle cx="90" cy="81" r="30" fill="#0f766e"/>
+          <circle cx="240" cy="81" r="26" fill="#2563eb"/>
+          <circle cx="395" cy="81" r="24" fill="#7c3aed"/>
+          <circle cx="555" cy="81" r="22" fill="#d97706"/>
+          <circle cx="720" cy="81" r="20" fill="#dc2626"/>
+          <text x="90" y="86" text-anchor="middle" fill="white" font-size="15" font-weight="700">OS</text>
+          <text x="240" y="86" text-anchor="middle" fill="white" font-size="14" font-weight="700">PFS/DFS</text>
+          <text x="395" y="86" text-anchor="middle" fill="white" font-size="14" font-weight="700">EFS</text>
+          <text x="555" y="86" text-anchor="middle" fill="white" font-size="14" font-weight="700">ORR/pCR</text>
+          <text x="720" y="86" text-anchor="middle" fill="white" font-size="14" font-weight="700">MRD/ctDNA</text>
+          <text x="20" y="145" fill="#334155" font-size="14">患者利益に近い</text>
+          <text x="720" y="145" fill="#334155" font-size="14">早く読めるが代理性が強い</text>
+        </svg>
+        <div class="caption">図1：右へ行くほど早く読めるが、患者利益との距離が大きくなりやすい。</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>アウトカム</th><th>主に使われる設定</th><th>患者にとっての直接性</th><th>統計学的利点</th><th>統計学的問題</th><th>ガイドラインでの扱い</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>OS</td><td>全がん種、特に進行がん</td><td>最も直接的</td><td>客観的で測定誤差が少ない</td><td>イベント蓄積が遅い。後治療、クロスオーバーの影響を受ける</td><td>最重要。ただし未成熟なら改善と断定しない</td></tr>
+            <tr><td>PFS</td><td>進行・転移がん</td><td>中等度</td><td>OSより早く読める</td><td>画像判定、評価間隔、censoring、オープンラベルの影響</td><td>OS、症状、QOL、毒性と一緒に読む</td></tr>
+            <tr><td>DFS</td><td>術後補助療法</td><td>再発が重大なら高い</td><td>OSより早く再発抑制を読める</td><td>局所/遠隔再発、非癌死、二次がんの扱いが重要</td><td>イベント定義を確認し、絶対差で提示</td></tr>
+            <tr><td>EFS</td><td>術前・周術期治療</td><td>定義次第</td><td>戦略全体の失敗を拾える</td><td>手術不能化、進行、再発、死亡など構成が試験ごとに違う</td><td>構成要素の患者重要性を分ける</td></tr>
+            <tr><td>iDFS</td><td>乳がんなどの術後設定</td><td>中等度から高い</td><td>浸潤性再発に焦点を当てやすい</td><td>定義、二次がん、死亡の扱いを確認する</td><td>DFSと同様に構成イベントを分解する</td></tr>
+            <tr><td>pCR</td><td>術前治療</td><td>代理性が強い</td><td>早く読め、薬剤活性を示す</td><td>がん種、サブタイプ、治療機序でsurrogate性が変わる</td><td>患者利益そのものとは書かない</td></tr>
+            <tr><td>MPR</td><td>術前免疫療法など</td><td>代理性が強い</td><td>病理学的効果を早く読める</td><td>測定・閾値・標本評価に依存</td><td>検証済みsurrogateか確認</td></tr>
+            <tr><td>ORR</td><td>進行がん、単群試験</td><td>中等度</td><td>腫瘍縮小を早く読める</td><td>持続性、症状改善、OSへの接続が不明なことがある</td><td>DoR、QOL、毒性と併読</td></tr>
+            <tr><td>DoR</td><td>奏効例の評価</td><td>中等度</td><td>縮小の持続を示す</td><td>奏効した人だけの条件付き解析になりやすい</td><td>ORR単独より有用だが限界を明記</td></tr>
+            <tr><td>MRD</td><td>血液腫瘍、とくに骨髄腫</td><td>代理性が強い</td><td>深い奏効を早く捉える</td><td>検査法、感度、時点、CRとの関係に依存</td><td>疾患別の規制文書と検証状況を確認</td></tr>
+            <tr><td>ctDNA clearance</td><td>固形がんの分子モニタリング</td><td>代理性が強い</td><td>分子再発の早期シグナル</td><td>検査法、閾値、採血時点、治療介入可能性が課題</td><td>TODO: がん種別の出典確認を残す</td></tr>
+            <tr><td>PRO/QOL</td><td>全設定</td><td>非常に直接的</td><td>患者が感じる利益・害を測れる</td><td>欠測、非盲検、測定時点、MIDの扱い</td><td>EtDで重要。症状、機能、生活負担と接続</td></tr>
+            <tr><td>Grade 3以上有害事象</td><td>安全性</td><td>高い</td><td>重症毒性を定量化</td><td>慢性毒性や生活影響を捉えきれない</td><td>治療中止、QOL、TRDと一緒に読む</td></tr>
+            <tr><td>重篤有害事象</td><td>安全性</td><td>高い</td><td>入院・生命危険などを拾う</td><td>因果性、報告基準、期間に依存</td><td>望ましくない効果としてEtDへ入れる</td></tr>
+            <tr><td>治療関連死亡</td><td>安全性</td><td>最も直接的な害</td><td>重大な害を示す</td><td>頻度が低く推定が不精確になりやすい</td><td>利益が小さい治療では重く見る</td></tr>
+            <tr><td>time to deterioration</td><td>症状・QOL</td><td>高い</td><td>悪化までの時間を読める</td><td>PRO欠測、死亡の扱い、閾値設定</td><td>患者価値に近いが欠測を厳密に見る</td></tr>
+            <tr><td>time to next treatment</td><td>進行がん</td><td>中等度</td><td>実臨床上の治療維持を反映</td><td>医師判断、アクセス、地域差に左右される</td><td>補助アウトカムとして扱う</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec2">
+      <h2>2. なぜOSだけでは第3相試験が組みにくくなったのか</h2>
+      <p>OSは客観的で、患者に直接重要である。けれども、根治設定や長期生存が期待されるがんでは、死亡イベントが少ない。十分なイベント数を得るまで長い追跡が必要になり、試験は巨大化し、費用は増え、開発も遅くなる。</p>
+      <p>さらに、再発後治療、クロスオーバー、後続ラインの有効薬が増えると、初回治療のOS効果は薄まる。OSをprimary endpointにしにくい理由は、企業都合だけではない。患者アクセスが遅れるという問題もある。</p>
+      <div class="warning-box"><strong>OSが未成熟なら、OS改善とは言わない。</strong><br>PFS/EFSが陽性でも、OS改善は別の問いである。OSが未成熟なときは「OS改善を示唆」または「OSの有害シグナルは現時点で明確でない」までに留める。記述的解析だけで寿命延長を断定しない。</div>
+      <p>FDAの2025年OS評価ドラフトは、OSがprimary endpointでないランダム化がん試験でも、OSを事前規定した安全性アウトカムとして評価する考え方を示している。これは「OSを見なくてよい」ではなく、「OSを有効性claimの中心にしない場合でも、害の可能性として計画的に見る」という方向である。</p>
+    </section>
+
+    <section id="sec3">
+      <h2>3. PFS、DFS、EFSはなぜ使われるのか</h2>
+      <h3>PFS</h3>
+      <p>PFSは、進行がん・転移がんでよく使われる。進行または死亡までの時間を測るため、OSより早く読める。患者に早く新しい治療を届ける利点がある。</p>
+      <p>ただし、PFSは腫瘍評価や画像判定に依存する。オープンラベル試験では、評価時期、治療中止、次治療開始、担当医判断が影響しうる。PFSが延びても、OS、症状、QOLが改善するとは限らない。</p>
+      <h3>DFS</h3>
+      <p>DFSは主に術後補助療法で使われる。手術・根治治療後に再発または死亡までを追う。遠隔再発が患者にとって重大な疾患では、DFSは比較的患者重要性が高い。</p>
+      <p>しかし、局所再発、遠隔再発、非癌死、二次がんの扱いを確認する必要がある。DFSという名前だけでは十分ではない。構成イベントを読む。</p>
+      <h3>EFS</h3>
+      <p>EFSは術前治療・周術期治療で使われやすい。ランダム化が手術前に行われる場合、手術を妨げる進行、手術不能化、再発、死亡を拾える。DFSより術前戦略全体の失敗を反映しやすい。</p>
+      <div class="take-home">PFS/DFS/EFSは早く読める。しかし、早く読みすぎてはいけない。定義、構成イベント、評価バイアス、患者重要性、OS/QOL/毒性との整合を読む。</div>
+    </section>
+
+    <section id="sec4">
+      <h2>4. pCR、MPR、ORR、MRD、ctDNAはなぜ増えているのか</h2>
+      <p>pCRやMPRは、術前治療の生物学的効果を早く示す。ORRとDoRは、進行がんで腫瘍縮小の大きさと持続を示す。MRDやctDNAは、分子残存病変や再発リスクの早期シグナルとして注目される。</p>
+      <p>FDAの2026年ドラフトでは、多発性骨髄腫におけるMRD陰性率とCRを、accelerated approvalを支えるprimary endpointsとして扱う方向が示されている。ただし、これは多発性骨髄腫という特定文脈でのドラフトであり、固形がん全体へそのまま一般化しない。</p>
+      <div class="warning-box"><strong>有望なバイオマーカーと、検証済みsurrogate endpointは違う。</strong><br>代替アウトカムが真の患者利益を予測するかは、がん種、治療ライン、治療機序、測定時点、検査法に依存する。</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>指標</th><th>何を測っているか</th><th>どのくらい早く読めるか</th><th>患者利益との距離</th><th>統計学的注意</th><th>承認・ガイドラインでの扱い</th></tr></thead>
+          <tbody>
+            <tr><td>pCR</td><td>病理学的完全奏効</td><td>非常に早い</td><td>がん種・サブタイプ依存</td><td>個人レベルと試験レベルのsurrogate性を区別</td><td>補助的または規制上の文脈で利用</td></tr>
+            <tr><td>MPR</td><td>残存腫瘍が少ない状態</td><td>早い</td><td>まだ検証途上の場面が多い</td><td>評価者間差、標本処理、閾値</td><td>有望指標として慎重に扱う</td></tr>
+            <tr><td>ORR</td><td>腫瘍縮小割合</td><td>早い</td><td>症状・OSとは距離がある</td><td>測定頻度、RECIST、奏効持続</td><td>単群試験では重要だが限界あり</td></tr>
+            <tr><td>DoR</td><td>奏効の持続</td><td>ORRより遅い</td><td>ORRより近いが条件付き</td><td>奏効者のみの解析、選択バイアス</td><td>ORRの解釈を補う</td></tr>
+            <tr><td>MRD</td><td>残存病変の深さ</td><td>早い</td><td>疾患特異的</td><td>検査法、感度、CRとの関係</td><td>骨髄腫では2026年FDAドラフトを参照</td></tr>
+            <tr><td>ctDNA clearance</td><td>血中腫瘍DNAの消失</td><td>早い</td><td>まだ文脈依存</td><td>検査法、採血時点、閾値、介入可能性</td><td>TODO: がん種別の検証状況を確認</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <h2>5. HRを患者に意味のある絶対効果差へ翻訳する</h2>
+      <p>HRは「生存率が何%改善」という意味ではない。time-to-eventアウトカムでは、まず時点tを決める。次にbaseline riskまたはbaseline survivalを決める。最後にHRと95%CIを、1000人あたり何人少ない、または多いへ変換する。</p>
+      <div class="formula">イベントリスクを表示する場合:
+R1(t) = 1 - {1 - R0(t)}^HR
+ARR(t) = R0(t) - R1(t)
+
+イベントフリー率を表示する場合:
+S1(t) = S0(t)^HR
+差 = S1(t) - S0(t)</div>
+      <div class="figure" aria-label="HRから絶対効果差への翻訳">
+        <svg viewBox="0 0 900 170" role="img">
+          <rect x="20" y="50" width="150" height="70" rx="8" fill="#dbeafe" stroke="#60a5fa"/>
+          <rect x="220" y="50" width="150" height="70" rx="8" fill="#dcfce7" stroke="#34d399"/>
+          <rect x="420" y="50" width="150" height="70" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+          <rect x="620" y="50" width="210" height="70" rx="8" fill="#fee2e2" stroke="#f87171"/>
+          <text x="95" y="82" text-anchor="middle" font-size="15" font-weight="700">HR 0.75</text>
+          <text x="95" y="104" text-anchor="middle" font-size="12">相対効果</text>
+          <text x="295" y="82" text-anchor="middle" font-size="15" font-weight="700">3年R0=40%</text>
+          <text x="295" y="104" text-anchor="middle" font-size="12">baseline risk</text>
+          <text x="495" y="82" text-anchor="middle" font-size="15" font-weight="700">R1=29.5%</text>
+          <text x="495" y="104" text-anchor="middle" font-size="12">介入群リスク</text>
+          <text x="725" y="82" text-anchor="middle" font-size="15" font-weight="700">105人少ない/1000</text>
+          <text x="725" y="104" text-anchor="middle" font-size="12">患者に見せる単位</text>
+          <path d="M175 85 H215" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+          <path d="M375 85 H415" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+          <path d="M575 85 H615" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+          <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+        </svg>
+        <div class="caption">図4：HRをそのまま読まず、時点tのbaseline riskを介して絶対効果差へ翻訳する。</div>
+      </div>
+      <div class="stat-box">
+        <strong>ミニ計算例。</strong><br>
+        対照群3年イベントリスクを40%、HRを0.75とする。介入群リスクは 1 - (1 - 0.40)^0.75 = 約29.5%。絶対差は約10.5%、つまり1000人あたり約105人少ない。HR 95%CIが0.60から0.94なら、同じ式で絶対効果差の範囲を作り、その範囲が臨床的重要閾値をまたぐかを見る。
+      </div>
+      <p>この変換は比例ハザード仮定に基づく近似である。非比例ハザード、曲線交差、免疫療法の遅延効果、tail of curveでは、時点別絶対差、RMST、landmark survivalも確認する。KM曲線後半はnumber at risk、打ち切り、data maturityを見る。</p>
+    </section>
+
+    <section id="sec6">
+      <h2>6. MIDではなく、臨床的重要閾値として読む</h2>
+      <div class="grid2">
+        <div class="card"><b>null threshold</b>リスク差なら0、HRなら1。効果なしの境界であり、p値二元論と混同しない。</div>
+        <div class="card"><b>MID</b>QOL、症状、機能尺度など患者報告アウトカムで使うことが多い。patient-derived MIDとパネル設定閾値は違う。</div>
+        <div class="card"><b>clinically important absolute-effect threshold</b>OS、PFS、DFS、EFS、再発、死亡などで、1000人あたり何人の差なら重要かを事前に決める境界。</div>
+        <div class="card"><b>decision threshold</b>推奨が変わる境界。利益、害、負担、費用、患者価値観を総合したEtD上の境界。</div>
+      </div>
+      <p>Core GRADE 2では、確実性評価の標的を「重要な効果があるか」「重要でない、またはほとんど差がないか」のように、閾値との関係で考える。GRADE Guidance 42は、利益と害の大きさを判断する際にdecision thresholdsを使う考え方を整理している。</p>
+      <div class="grade-box">診療ガイドラインでは、CIがnull、重要な利益、重要な害の閾値をどうまたぐかを見る。MIDという言葉を使う場合は、それが患者由来MIDなのか、パネルが事前設定した絶対効果差閾値なのかを脚注で分ける。</div>
+    </section>
+
+    <section id="sec7">
+      <h2>7. 中間解析とgroup sequential design</h2>
+      <p>中間解析は、試験途中でデータを見ることである。これは倫理的にも効率的にも重要だが、何度もデータを見ると偶然に大きく見えた結果で止まりやすくなる。そのため、通常のp&lt;0.05ではなく、事前に定めた停止境界とalpha消費に従って判断する。</p>
+      <div class="figure" aria-label="中間解析とalpha消費">
+        <svg viewBox="0 0 900 260" role="img">
+          <line x1="80" y1="210" x2="820" y2="210" stroke="#475569" stroke-width="2"/>
+          <line x1="80" y1="40" x2="80" y2="210" stroke="#475569" stroke-width="2"/>
+          <path d="M90 55 C260 95, 420 140, 800 178" fill="none" stroke="#2563eb" stroke-width="4"/>
+          <path d="M90 125 C260 128, 420 135, 800 150" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 6"/>
+          <circle cx="270" cy="87" r="6" fill="#2563eb"/>
+          <circle cx="460" cy="142" r="6" fill="#2563eb"/>
+          <circle cx="690" cy="168" r="6" fill="#2563eb"/>
+          <text x="75" y="30" text-anchor="middle" font-size="13">必要な証拠の強さ</text>
+          <text x="820" y="235" text-anchor="end" font-size="13">information fraction</text>
+          <text x="240" y="70" font-size="13" fill="#1d4ed8">O'Brien-Fleming型</text>
+          <text x="450" y="126" font-size="13" fill="#b91c1c">Pocock型</text>
+          <text x="250" y="235" font-size="12">50%</text>
+          <text x="450" y="235" font-size="12">75%</text>
+          <text x="680" y="235" font-size="12">最終</text>
+        </svg>
+        <div class="caption">図2：早期に見るほど、偶然の勝ちを避けるために強い証拠を要求する設計がある。</div>
+      </div>
+      <p>情報量はカレンダー時間ではなく、通常は観察されたイベント数で決まる。予定イベント数400のうち200イベントで見るなら、information fractionは50%である。O'Brien-Fleming型では早期停止に非常に強い証拠を要求する。Pocock型では各解析で比較的一定の境界を置く。Lan-DeMets alpha-spending functionは、中間解析時点に柔軟性を持たせる。</p>
+      <div class="warning-box"><strong>中間解析で止まった試験は、効果が大きく見えやすい。</strong><br>偶然大きく見えた時点で止まるため、点推定が過大評価されやすい。OS、安全性、サブグループ、長期QOL、tail of curveの情報も未成熟になりやすい。</div>
+      <p>DMC/DSMB、firewall、unblinded interim dataへのアクセス制限は重要である。中間解析結果を知った人が試験運営に影響すると、operational biasが入る。futility boundaryにはbindingとnon-bindingがあり、conditional powerやpredictive probabilityが使われることもある。</p>
+    </section>
+
+    <section id="sec8">
+      <h2>8. 名目p値、調整済みp値、段階的p値、反復p値を区別する</h2>
+      <p>名目p値は、その解析だけを単独で見たp値である。中間解析、多重性、複数集団を考慮していない場合がある。したがって、論文中のp=0.01が常に正式な成功を意味するわけではない。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>名称</th><th>何を意味するか</th><th>いつ使われるか</th><th>正式な結論に使えるか</th><th>読み間違い</th></tr></thead>
+          <tbody>
+            <tr><td>nominal p-value</td><td>その解析だけのp値</td><td>中間解析、探索解析、企業発表</td><td>多くは不可</td><td>小さいから正式成功と読む</td></tr>
+            <tr><td>adjusted p-value</td><td>多重性や中間解析を考慮</td><td>事前規定された検定手順</td><td>可</td><td>何で調整したかを見ない</td></tr>
+            <tr><td>boundary p-value</td><td>中間解析時点で越えるべき境界</td><td>group sequential design</td><td>境界を超えた場合に可</td><td>p=0.01でも境界p=0.003なら成功でない</td></tr>
+            <tr><td>stagewise p-value</td><td>段階構造を反映</td><td>早期停止を伴う設計</td><td>設計に従えば可</td><td>通常の最終解析p値と混同する</td></tr>
+            <tr><td>repeated p-value</td><td>反復して見る構造を考慮</td><td>中間解析を繰り返す設計</td><td>定義と手順次第</td><td>名目p値と同じと思う</td></tr>
+            <tr><td>descriptive p-value</td><td>記述的な補助情報</td><td>階層から外れたsecondary、探索解析</td><td>不可</td><td>key secondaryなら正式と誤解する</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec9">
+      <h2>9. 階層的検定、gatekeeping、alpha配分、alphaリサイクル</h2>
+      <p>複数のprimary endpoint、key secondary endpoint、複数集団、バイオマーカー集団、ITT集団、複数時点があると、第I種過誤が増える。FDAのMultiple Endpoints guidanceは、endpointの群分け、順序づけ、多重性制御を事前に設計する必要を強調している。</p>
+      <div class="figure" aria-label="階層的検定の流れ">
+        <svg viewBox="0 0 900 250" role="img">
+          <rect x="55" y="35" width="190" height="55" rx="8" fill="#dbeafe" stroke="#60a5fa"/>
+          <rect x="355" y="35" width="190" height="55" rx="8" fill="#dcfce7" stroke="#34d399"/>
+          <rect x="655" y="35" width="190" height="55" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+          <text x="150" y="68" text-anchor="middle" font-size="15" font-weight="700">1. PFS</text>
+          <text x="450" y="68" text-anchor="middle" font-size="15" font-weight="700">2. OS</text>
+          <text x="750" y="68" text-anchor="middle" font-size="15" font-weight="700">3. ORR/QOL</text>
+          <path d="M250 63 H350" stroke="#64748b" stroke-width="2" marker-end="url(#b)"/>
+          <path d="M550 63 H650" stroke="#64748b" stroke-width="2" marker-end="url(#b)"/>
+          <text x="300" y="48" text-anchor="middle" font-size="12">成功なら次へ</text>
+          <text x="600" y="48" text-anchor="middle" font-size="12">成功なら次へ</text>
+          <path d="M150 92 V158" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 5"/>
+          <text x="150" y="182" text-anchor="middle" font-size="13" fill="#991b1b">ここで失敗したら以降は記述的</text>
+          <defs><marker id="b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+        </svg>
+        <div class="caption">図3：固定順序法では、前の仮説が成功して初めて次の仮説を正式に検定できる。</div>
+      </div>
+      <div class="grid2">
+        <div class="card"><b>固定順序法</b>1番目PFS、2番目OS、3番目ORR。PFSが失敗すれば、OSやORRのp値が小さくても正式検定としては解釈しない。</div>
+        <div class="card"><b>biomarker階層</b>PD-L1高発現、PD-L1陽性、全体集団の順に進む。前段階が失敗すれば後段は記述的になる。</div>
+        <div class="card"><b>dual primary endpoints</b>PFSとOSがco-primaryの場合、AND型かOR型かを確認する。OR型なら多重性補正が必須。</div>
+        <div class="card"><b>alphaリサイクル</b>PFSで成功したalphaをOSへ移すことがある。ただし、量、時点、仮説移動はSAPで事前規定される。</div>
+      </div>
+      <div class="take-home">小さいp値がたくさん並ぶ論文ほど、まず検定階層を見る。</div>
+    </section>
+
+    <section id="sec10">
+      <h2>10. 複合アウトカムの罠</h2>
+      <p>PFS、DFS、EFS、iDFSは多くの場合、複合アウトカムである。死亡、遠隔再発、局所再発、画像上の進行、手術不能進行、二次がん、非癌死などがまとめられる。統計学的にはイベント数が増え、検出力は上がる。しかし患者にとっての重みは同じではない。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>チェック項目</th><th>見る理由</th><th>危険な読み方</th></tr></thead>
+          <tbody>
+            <tr><td>構成要素は何か</td><td>死亡、遠隔再発、局所再発、検査上進行は重みが違う</td><td>複合名だけで患者利益と読む</td></tr>
+            <tr><td>患者重要性は同じか</td><td>軽いイベントが多数を占めると見かけ上成功しやすい</td><td>死亡が減っていないのに強い利益と読む</td></tr>
+            <tr><td>イベント頻度はどれが多いか</td><td>複合効果を駆動する構成要素を特定する</td><td>一番軽いイベントが主因なのに見落とす</td></tr>
+            <tr><td>効果は同じ方向か</td><td>死亡は増え、画像進行だけ減ることもありうる</td><td>複合が陽性なら全部よいと読む</td></tr>
+            <tr><td>検査頻度は同じか</td><td>画像評価の間隔はPFSに影響する</td><td>観察密度の差を治療効果と誤る</td></tr>
+            <tr><td>censoring ruleは妥当か</td><td>打ち切りが偏るとPFSが歪む</td><td>感度解析を見ない</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec11">
+      <h2>11. オープンラベル、BICR、画像評価、informative censoring</h2>
+      <p>OSは死亡日なので比較的客観的である。一方、PFS/EFS/DFSは画像検査や進行判定に依存する。オープンラベルでは、検査時期、治療中止、次治療開始、症状報告、担当医判断が影響する。</p>
+      <p>BICRは重要だが万能ではない。評価間隔が群間で違えばPFSは影響を受ける。早期中止、欠測、打ち切り理由、次治療開始によるcensoringが偏るとinformative censoringが生じる。主要解析と感度解析の一貫性を確認する。</p>
+      <ul class="checklist">
+        <li>BICRか investigator-assessed か。</li>
+        <li>盲検化されているか。</li>
+        <li>画像評価間隔は群間で同じか。</li>
+        <li>progression後の追跡はどうなっているか。</li>
+        <li>treatment discontinuationとstudy withdrawalを区別しているか。</li>
+        <li>censoring rulesはSAPで事前規定されているか。</li>
+        <li>主要解析と感度解析で結果が一貫しているか。</li>
+      </ul>
+    </section>
+
+    <section id="sec12">
+      <h2>12. adaptive design、seamless phase II/III、platform trial</h2>
+      <p>adaptive designは、試験中の蓄積データに基づいて、事前規定された範囲でデザインを変更する。症例数再推定、用量選択、対象集団の絞り込み、治療群の追加・削除、無益性中止、成功中止がありうる。</p>
+      <p>FDAのadaptive design guidanceは、適応がprospectiveに計画され、Type I error、推定バイアス、試験のintegrity、firewall、シミュレーション、報告透明性を満たす必要を示す。adaptive designは「途中で自由に変えてよい試験」ではない。</p>
+      <p>seamless phase II/IIIでは、探索と確認を一体化する。platform trialでは共通対照群を使って複数治療を同時に評価する。効率的だが、selection bias、estimation bias、operational biasが問題になる。adaptiveに選ばれた用量・集団・endpointは、効果が過大評価されやすい可能性がある。</p>
+    </section>
+
+    <section id="sec13">
+      <h2>13. Project Optimusと用量最適化</h2>
+      <p>従来の抗がん薬開発では、最大耐用量に近い用量が選ばれがちだった。分子標的薬、免疫療法、ADC、長期投与薬では、用量を上げても効果が頭打ちになり、毒性だけが増えることがある。</p>
+      <p>FDAのProject Optimusは、登録試験前に用量とスケジュールをよりよく最適化する流れである。FDAの2024年用量最適化ガイダンスは、承認申請前の臨床開発中に最適用量を特定することを支援する目的で作成されている。</p>
+      <div class="warning-box"><strong>有効な薬と、最適な用量は別の問い。</strong><br>第3相試験で陽性でも、用量が過剰なら患者にとって最適治療とは限らない。忍容性、用量減量、治療中止、慢性毒性、QOL、治療期間を確認する。</div>
+    </section>
+
+    <section id="sec14">
+      <h2>14. スポンサー主導試験をどう読むか</h2>
+      <p>がん第3相試験は多くがメーカー主導である。これは悪というより、現代の薬剤開発の構造である。ただし、企業には開発期間短縮、承認可能性、競合優位性、市場投入、適応拡大への合理的動機がある。</p>
+      <div class="sponsor-box">メーカー主導試験では、開発期間を短縮し、承認可能性を高めるアウトカム設計が選ばれやすい。これは不正という意味ではない。企業治験の構造的インセンティブである。だからこそ、読む側はプロトコール、SAP、検定階層、alpha制御、絶対効果、安全性成熟度を厳密に確認する必要がある。</div>
+      <div class="figure" aria-label="スポンサー主導試験チェックフロー">
+        <svg viewBox="0 0 900 220" role="img">
+          <rect x="40" y="40" width="160" height="60" rx="8" fill="#ede9fe" stroke="#a78bfa"/>
+          <rect x="255" y="40" width="160" height="60" rx="8" fill="#dbeafe" stroke="#60a5fa"/>
+          <rect x="470" y="40" width="160" height="60" rx="8" fill="#dcfce7" stroke="#34d399"/>
+          <rect x="685" y="40" width="160" height="60" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+          <text x="120" y="74" text-anchor="middle" font-size="14" font-weight="700">プロトコール</text>
+          <text x="335" y="74" text-anchor="middle" font-size="14" font-weight="700">SAP/階層</text>
+          <text x="550" y="74" text-anchor="middle" font-size="14" font-weight="700">絶対効果</text>
+          <text x="765" y="74" text-anchor="middle" font-size="14" font-weight="700">安全性/QOL</text>
+          <path d="M205 70 H250 M420 70 H465 M635 70 H680" stroke="#64748b" stroke-width="2" marker-end="url(#c)"/>
+          <text x="450" y="155" text-anchor="middle" font-size="14" fill="#334155">企業発表と論文本体の表現差も確認する</text>
+          <defs><marker id="c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+        </svg>
+        <div class="caption">図5：スポンサー主導試験を読むときは、設計、検定階層、患者単位の効果、安全性成熟度を順に確認する。</div>
+      </div>
+    </section>
+
+    <section id="sec15">
+      <h2>15. 第3相試験を読むための統計学チェックリスト</h2>
+      <ol class="checklist">
+        <li>Primary endpointは患者に直接重要か、surrogateか。</li>
+        <li>Primary endpointはプロトコール/SAPで事前規定されているか。</li>
+        <li>Primary endpointが途中で変更されていないか。</li>
+        <li>複数primary endpointなら、co-primaryかmultiple primaryか。</li>
+        <li>多重性制御はどうなっているか。</li>
+        <li>alphaはどこに割り当てられているか。</li>
+        <li>中間解析は何回、いつ、何イベントで予定されたか。</li>
+        <li>停止境界は何か。</li>
+        <li>報告p値は名目p値か調整済みp値か。</li>
+        <li>検定階層上、次のendpointは正式に検定できるか。</li>
+        <li>OSはprimary、key secondary、safety endpoint、descriptiveのどれか。</li>
+        <li>OSは成熟しているか。</li>
+        <li>クロスオーバーや後治療はOSをどう歪めるか。</li>
+        <li>HRは絶対効果差へ変換されているか。</li>
+        <li>95%CIは臨床的重要閾値をまたぐか。</li>
+        <li>PFS/EFS/DFSの構成イベントは何か。</li>
+        <li>どの構成イベントが効果を駆動しているか。</li>
+        <li>BICRはあるか。</li>
+        <li>オープンラベルで評価バイアスが入るか。</li>
+        <li>censoring ruleは妥当か。</li>
+        <li>欠測・打ち切り・治療中止は偏っていないか。</li>
+        <li>非比例ハザードは疑われるか。</li>
+        <li>RMSTや時点別絶対差は示されているか。</li>
+        <li>QOL、症状、機能、PROは示されているか。</li>
+        <li>毒性、慢性毒性、治療中止、治療関連死亡はどうか。</li>
+        <li>用量は最適化されているか。</li>
+        <li>サブグループ解析はalpha制御されているか。</li>
+        <li>企業発表と論文本体で表現が違わないか。</li>
+        <li>GRADEで非直接性、不精確性、RoBを下げる理由があるか。</li>
+        <li>最終的に患者にとってどのくらいの利益と害か。</li>
+      </ol>
+    </section>
+
+    <section id="sec16">
+      <h2>16. GRADE・診療ガイドラインでの扱い</h2>
+      <p>診療ガイドラインでは、HRやp値をそのまま推奨判断に使わない。一定時点の絶対効果差、95%信頼区間、臨床的重要閾値、利益と害のバランスへ翻訳してからEtDへ進む。</p>
+      <p>PFS/EFS/DFSはtime-to-eventアウトカムなので、HRを絶対効果差へ変換する。surrogate endpointなら非直接性を検討する。オープンラベルPFSならRoBを検討する。CIがnull、重要な利益、重要な害をまたぐなら不精確性を検討する。</p>
+      <div class="grade-box">
+        <strong>SoF/EtD脚注テンプレート</strong>
+        <ol>
+          <li>time-to-event絶対効果脚注: HRと時点tのbaseline riskから1000人あたりの絶対効果差を算出した。</li>
+          <li>EFS/PFS非直接性脚注: 本アウトカムは患者重要アウトカムへの代理性があり、OS/QOL/症状との関連に不確実性がある。</li>
+          <li>早期停止脚注: 中間解析で早期停止され、点推定の過大評価、OS未成熟、安全性未成熟の可能性がある。</li>
+          <li>OS未成熟脚注: OSイベントが不足しており、寿命延長に関する結論は不確実である。</li>
+          <li>多重性脚注: このp値は検定階層外または名目p値であり、正式な有効性結論には用いない。</li>
+          <li>毒性脚注: 免疫関連有害事象、慢性毒性、治療中止、治療関連死亡をEtDで別途考慮した。</li>
+          <li>閾値脚注: 使用した閾値はpatient-derived MIDではなく、パネルが事前設定した臨床的重要絶対効果閾値である。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sec17">
+      <h2>17. 読者に残す最終メッセージ</h2>
+      <p>現代のがん第3相試験は、早く読めるようになった。しかし、早く読めることと、深く読めることは違う。p値、HR、プレスリリース、早期停止だけで結論を出さない。</p>
+      <p>正しい読み方は、アウトカムの患者重要性、絶対効果差、信頼区間、臨床的重要閾値、多重性制御、中間解析、OS成熟度、QOL、毒性、用量、患者価値観をつなげることである。</p>
+      <div class="take-home">統計学の役割は、企業が示す「成功」をそのまま受け入れることではない。その成功が、患者にとってどの程度の意味を持つかを翻訳することである。</div>
+    </section>
+
+    <section>
+      <h2>用語集</h2>
+      <details><summary>OS</summary><p>overall survival。ランダム化から死亡までの時間。患者に最も直接的だが、イベント蓄積に時間がかかる。</p></details>
+      <details><summary>PFS</summary><p>progression-free survival。進行または死亡までの時間。画像判定とcensoringに注意する。</p></details>
+      <details><summary>DFS / EFS / iDFS</summary><p>再発、進行、手術不能化、死亡などを含む複合的time-to-eventアウトカム。定義を必ず確認する。</p></details>
+      <details><summary>pCR / MPR</summary><p>術前治療後の病理学的反応。早期に読めるが、患者利益そのものではない。</p></details>
+      <details><summary>ORR / DoR</summary><p>奏効率と奏効持続期間。腫瘍縮小の大きさと持続を見る。</p></details>
+      <details><summary>MRD / ctDNA</summary><p>分子残存病変や血中腫瘍DNA。検査法、閾値、時点、疾患文脈に依存する。</p></details>
+      <details><summary>HR / RMST</summary><p>HRは瞬間的イベント率の比。RMSTは特定期間内の平均生存時間に相当する要約量で、非比例ハザードで有用なことがある。</p></details>
+      <details><summary>information fraction / alpha-spending</summary><p>予定情報量に対して、現在どれだけ情報が集まったか。中間解析では情報量に応じてalphaを消費する。</p></details>
+      <details><summary>nominal / adjusted / stagewise / repeated / descriptive p-value</summary><p>p値には役割が異なる種類がある。正式な結論に使えるかは、検定手順と多重性制御次第である。</p></details>
+      <details><summary>gatekeeping / graphical approach</summary><p>複数仮説を順序づけ、alphaを配分・移動する方法。検定階層を外れた結果は記述的になりやすい。</p></details>
+      <details><summary>estimand / intercurrent event</summary><p>ICH E9(R1)の中核概念。何の治療効果を知りたいのか、治療中止・次治療・死亡などの介入後イベントをどう扱うかを定義する。</p></details>
+      <details><summary>clinically important threshold / decision threshold</summary><p>前者はアウトカムごとの臨床的重要絶対効果閾値。後者は推奨が変わる境界で、利益、害、負担、費用、価値観を統合する。</p></details>
+    </section>
+
+    <section class="source-note">
+      <h2>主要参考資料</h2>
+      <ol class="refs">
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-trial-endpoints-approval-cancer-drugs-and-biologics" target="_blank" rel="noopener">Clinical Trial Endpoints for the Approval of Cancer Drugs and Biologics. Guidance for Industry. December 2018.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials" target="_blank" rel="noopener">Multiple Endpoints in Clinical Trials. Guidance for Industry. October 2022.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/media/78495/download" target="_blank" rel="noopener">Adaptive Designs for Clinical Trials of Drugs and Biologics. Guidance for Industry. November 2019.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/approaches-assessment-overall-survival-oncology-clinical-trials" target="_blank" rel="noopener">Approaches to Assessment of Overall Survival in Oncology Clinical Trials. Draft Guidance for Industry. August 2025.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/about-fda/oncology-center-excellence/project-optimus" target="_blank" rel="noopener">Project Optimus.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/optimizing-dosage-human-prescription-drugs-and-biological-products-treatment-oncologic-diseases" target="_blank" rel="noopener">Optimizing the Dosage of Human Prescription Drugs and Biological Products for the Treatment of Oncologic Diseases. August 2024.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/minimal-residual-disease-and-complete-response-multiple-myeloma-use-endpoints-support-accelerated" target="_blank" rel="noopener">Minimal Residual Disease and Complete Response in Multiple Myeloma. Draft Guidance. January 2026.</a></li>
+        <li>FDA. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/e9r1-statistical-principles-clinical-trials-addendum-estimands-and-sensitivity-analysis-clinical" target="_blank" rel="noopener">ICH E9(R1): Estimands and Sensitivity Analysis in Clinical Trials. May 2021.</a></li>
+        <li>Skoetz N, Goldkuhle M, van Dalen EC, et al. GRADE guidelines 27. <em>J Clin Epidemiol.</em> 2020;118:124-131. doi:<a href="https://doi.org/10.1016/j.jclinepi.2019.10.015" target="_blank" rel="noopener">10.1016/j.jclinepi.2019.10.015</a>.</li>
+        <li>Guyatt GH, Zeng L, Brignardello-Petersen R, et al. Core GRADE 2: choosing the target of certainty rating and assessing imprecision. <em>BMJ.</em> 2025;389:e081904. doi:<a href="https://doi.org/10.1136/bmj-2024-081904" target="_blank" rel="noopener">10.1136/bmj-2024-081904</a>.</li>
+        <li>GRADE Guidance 42. Using thresholds for judgments on health benefits and harms in decision making. <em>Ann Intern Med.</em> 2025;178:1644-1653. doi:<a href="https://doi.org/10.7326/ANNALS-24-02013" target="_blank" rel="noopener">10.7326/ANNALS-24-02013</a>.</li>
+        <li>ローカル確認資料: F:\マイドライブ\2016年works\GRADE\アウトカム 配下のOS/PFS、QOL、代理アウトカム、頭頸部がん、費用対効果、GRADEアウトカム重要性関連資料。</li>
+      </ol>
+      <h3>TODO: 出典確認</h3>
+      <ul>
+        <li>ctDNA clearanceを主要endpointとして扱うがん種別の規制・査読文献。</li>
+        <li>pCR/MPRのsurrogate妥当性は、がん種、治療ライン、治療機序ごとに追加確認する。</li>
+        <li>EMA、NICE、ASCO、ESMO、AACRの2024年以降の関連文書は、今後の更新時に一次資料を追加確認する。</li>
+      </ul>
+    </section>
+
+    <!--
+      セルフチェック:
+      - OS、PFS、DFS、EFS、pCR、MPR、ORR、MRD、QOL、安全性をすべて扱った。
+      - 中間解析、group sequential design、alpha消費、停止境界を説明した。
+      - 名目p値、調整済みp値、段階的p値、反復p値、記述的p値を区別した。
+      - 階層的検定、gatekeeping、alphaリサイクル、graphical approachを説明した。
+      - メーカー主導試験の構造的インセンティブを説明した。
+      - p値二元論に戻っていない。
+      - HRを絶対効果差へ翻訳した。
+      - clinically important thresholdとMIDを混同していない。
+      - 早期中止試験の効果過大評価、OS未成熟、安全性未成熟を指摘した。
+      - Project Optimus、OS assessment、MRD/CR、ICH E9(R1)を反映した。
+      - GRADE/EtDへの接続がある。
+    -->
+  </main>
+</div>
+</body>
+</html>
