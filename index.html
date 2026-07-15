@@ -1132,6 +1132,15 @@ function checkAuth(){
             <div class="card" style="margin-bottom:1rem;background:#f0fdf4;border-left:4px solid #22c55e;padding:1rem;border-radius:0 8px 8px 0;">
               <p style="color:#374151;font-size:0.9rem;">本解説は「GRADE guidance 39」の論文内容を深く掘り下げ、より解像度の高い具体的な基準と手順を解説します。現実の複雑なシナリオに立ち向かうための、全15ステップの厳密なプロセスと具体的な評価ツール（AGREE IIやAMSTAR 2など）のカットオフ基準を整理しました。</p>
             </div>
+            <div class="card" style="margin-bottom:1.5rem;background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid #f97316;padding:1rem 1.1rem;border-radius:0 10px 10px 0;">
+              <h3 style="font-size:1.05rem;font-weight:bold;color:#9a3412;margin:0 0 0.55rem;border-left:none;padding-left:0;">既存SRの質を評価する：AMSTAR 2をまず事例で学ぶ</h3>
+              <p style="font-size:0.92rem;color:#7c2d12;line-height:1.85;margin:0 0 0.65rem;">GRADE-ADOLOPMENTでは、既存の診療ガイドラインだけでなく、その根拠になっている既存のシステマティックレビュー（SR）の質も確認します。チェックリストは複数ありますが、ADAの歯科保存CPGで採用されているものと同じく、まずはAMSTAR 2で十分です。最初に実例を見て、どの項目が「yes」「partial yes」になっているかを観察すると、評価の感覚がつかみやすくなります。</p>
+              <div style="display:flex;flex-direction:column;gap:0.55rem;">
+                <a href="https://jada.ada.org/article/S0002-8177(23)00258-1/fulltext" target="_blank" rel="noopener" style="display:block;background:#ffffff;border:1px solid #fed7aa;border-radius:8px;padding:0.75rem 0.9rem;color:#9a3412;text-decoration:none;font-weight:bold;">歯科の保存CPG：JADA full text（eFigure 2のAMSTAR 2評価図を見る）</a>
+                <div style="background:rgba(255,255,255,0.75);border:1px solid #fed7aa;border-radius:8px;padding:0.75rem 0.9rem;color:#7c2d12;font-size:0.9rem;line-height:1.75;">確認する図：<strong>eFigure 2. A MeaSurement Tool to Assess systematic Reviews 2 assessment of included systematic reviews</strong>。緑は「yes」、黄色は「partial yes」を示します。どのSRがどの項目で弱いかを、色のパターンとして読むのが学習の第一歩です。</div>
+                <a href="https://www.bmj.com/content/358/bmj.j4008" target="_blank" rel="noopener" style="display:block;background:#ffffff;border:1px solid #fed7aa;border-radius:8px;padding:0.75rem 0.9rem;color:#9a3412;text-decoration:none;font-weight:bold;">AMSTAR 2原著：BMJ 2017</a>
+              </div>
+            </div>
 
             <!-- フローチャート図 -->
             <div class="card" style="margin-bottom:1.5rem;">
@@ -1784,6 +1793,7 @@ function checkAuth(){
           <button class="tab-btn active" onclick="switchTab(this, 0)">GRADE Book</button>
           <button class="tab-btn" onclick="switchTab(this, 1)">信頼できるCPG</button>
           <button class="tab-btn" onclick="switchTab(this, 2)">本邦のCPGのあるあるトホホ</button>
+          <button class="tab-btn" onclick="switchTab(this, 3)">あらさがしシリーズ</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -2332,6 +2342,35 @@ function checkAuth(){
                 <p style="margin-bottom:0;">本邦CPGを読むときの焦点は、「GRADEやMindsという名前があるか」ではなく、「推奨に至る判断の道筋が、アウトカム別エビデンスからEtDまで透明に説明されているか」です。形式は入口、実質は追跡可能性です。</p>
               </div>
             </section>
+          </div>
+          <!-- あらさがしシリーズ tab -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">あらさがしシリーズ</h2>
+              <p style="color:#475569;margin-bottom:1rem;line-height:1.85;">診療ガイドラインを読むときの「問題点の見つけ方」を、動画・論文・note・スライドでまとめた教材リンク集です。単なる批判ではなく、PICO、SR、GRADE、EtD、推奨文、COI、外的妥当性、エビデンスレベル表記などを、実例から学ぶための入口として使います。</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+                <a href="https://www.youtube.com/watch?v=W0p3ux9E07o" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>特別編：診療ガイドライン作成上の問題点まとめ</strong><br><span style="font-size:0.88rem;color:#64748b;">概要欄も読む</span></a>
+                <a href="https://www.jclinepi.com/article/S0895-4356(25)00295-1/fulltext" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #0f766e;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>世界のCPGの質：Trustworthiness survey</strong><br><span style="font-size:0.88rem;color:#64748b;">J Clin Epidemiol full text</span></a>
+                <a href="https://youtu.be/-vX1KS126Jk" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ1：心不全診療ガイドライン2025改訂版</strong><br><span style="font-size:0.88rem;color:#64748b;">JCSとAHA、エビデンスレベル用語の違い</span></a>
+                <a href="https://www.youtube.com/watch?v=oF30ixz4gEU" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ2：骨粗鬆症の予防と治療GL 2025</strong></a>
+                <a href="https://www.youtube.com/watch?v=XQ9X0f6ioqA" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ3：糖尿病診療ガイドライン2024</strong></a>
+                <a href="https://youtu.be/Kgk1BwadtgY" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ4：乳癌診療ガイドライン2022年版</strong></a>
+                <a href="https://www.youtube.com/watch?v=rAB58ORfCcs" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ5：関節リウマチ診療GL 2024改訂</strong></a>
+                <a href="https://www.youtube.com/watch?v=HgQ2OGESBaY" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ6：甲状腺腫瘍診療ガイドライン2024</strong></a>
+                <a href="https://www.youtube.com/watch?v=_SOQAFpTeSY" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ7：障害者歯科診療 行動調整GL 2024</strong></a>
+                <a href="https://www.youtube.com/watch?v=mulV86JmzVA" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ8：高血圧管理・治療ガイドライン2025</strong></a>
+                <a href="https://www.youtube.com/watch?v=IkaUe15pb1c" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ9：膵癌診療ガイドライン2025</strong></a>
+                <a href="https://www.youtube.com/watch?v=5cld0e6bNNA" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ10：ASH/ISTH 2024 pediatric VTE</strong></a>
+                <a href="https://note.com/mxe05064/n/n5db741f43efe?app_launch=false" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #7c3aed;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ11：成人肺炎診療GL 2024</strong><br><span style="font-size:0.88rem;color:#64748b;">「口腔のケアと肺炎」が弱い推奨になったことを誤解しないために。全体のエビデンスの確実性とメタ分析の問題も扱うnote。</span></a>
+                <a href="https://note.com/mxe05064/n/n27c80eebd41d?app_launch=false" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #7c3aed;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ12：JRC蘇生ガイドライン2025</strong><br><span style="font-size:0.88rem;color:#64748b;">AHAのCPGは米国用でGRADEアプローチではないため、ハイライトの読み方にも注意。CoSTR側で見つかる問題も含めて読む。</span></a>
+                <a href="https://note.com/mxe05064/n/n93fc1c6c455c?app_launch=false" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #7c3aed;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ13：FDI Consensus on Toothbrushing</strong><br><span style="font-size:0.88rem;color:#64748b;">コンセンサスレポートではなく診療ガイドラインとして吟味した教材。</span></a>
+                <a href="https://www.docswell.com/s/MXE05064/5RERRR-2025-11-30-175950" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #0891b2;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ14：歯周病のEFP S3 level CPG</strong><br><span style="font-size:0.88rem;color:#64748b;">AWMFの最高ランクS3 level CPGとして、SRと構造化コンセンサスの両方を確認する。</span></a>
+                <a href="https://x.com/05_mxe92273/status/2005482687184957865" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #111827;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ15：うつ病診療GL 2025</strong><br><span style="font-size:0.88rem;color:#64748b;">Mindsの手引きの推奨分類を改変しているのか、X投稿で確認。</span></a>
+                <a href="https://note.com/mxe05064/n/n8a2026000cb5?app_launch=false" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #7c3aed;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ16：肺癌診療GL 2025 謎の線</strong><br><span style="font-size:0.88rem;color:#64748b;">図表や推奨表示に現れる「謎の線」の意味を読む。</span></a>
+                <a href="https://note.com/mxe05064/n/n7afebcc11993?app_launch=false" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #7c3aed;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ17：認知症疾患診療GL 2026</strong><br><span style="font-size:0.88rem;color:#64748b;">説明不足すぎる点を、読者がどこで困るかという視点で確認する。</span></a>
+                <a href="https://www.youtube.com/watch?v=Nx3ZL7U6E0I" target="_blank" rel="noopener" style="display:block;border:1px solid #e2e8f0;border-left:5px solid #2563eb;border-radius:8px;padding:0.85rem;text-decoration:none;color:#1f2937;background:#fff;"><strong>シリーズ18：NCCNを一般的CPGと考えてはいけない理由</strong><br><span style="font-size:0.88rem;color:#64748b;">NCCNの診療ガイドラインを、一般的なCPGと同じものとして扱わない理由を学ぶ。</span></a>
+              </div>
+            </div>
           </div>
         </div>
 </div>
@@ -2989,6 +3028,7 @@ function checkAuth(){
           <button class="tab-btn" onclick="switchTab(this, 2)">アウトカムのトピックス</button>
           <button class="tab-btn" onclick="switchTab(this, 3)">癌のアウトカム</button>
           <button class="tab-btn" onclick="switchTab(this, 4)">癌のアウトカムアドバンス</button>
+          <button class="tab-btn" onclick="switchTab(this, 5)">初心者用教材</button>
         </div>
         <div class="tab-content">
           <div class="tab-pane active">
@@ -3259,6 +3299,17 @@ function checkAuth(){
             </div>
           </div>
 
+          <!-- Tab 5: 初心者用教材 -->
+          <div class="tab-pane">
+            <div class="content-section">
+              <h2 class="section-title">初心者用教材</h2>
+              <div class="card" style="background:#eff6ff;border-left:5px solid #2563eb;border-radius:0 10px 10px 0;padding:1rem 1.1rem;margin-bottom:1rem;">
+                <h3 style="margin:0 0 0.45rem;color:#1e3a8a;border-left:none;padding-left:0;">EBMにおけるアウトカムの考え方</h3>
+                <p style="margin:0 0 0.75rem;color:#334155;line-height:1.8;">SR作成の時にも役立つ、初心者向けのアウトカム教材です。患者重要アウトカム、相対的重要度、代理アウトカム、特に癌のアウトカムの考え方まで含めて学べます。</p>
+                <a href="https://www.youtube.com/watch?v=ywkTp2d865E" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.45rem;background:#2563eb;color:#fff;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;font-weight:bold;">動画を開く</a>
+              </div>
+            </div>
+          </div>
         </div>
 </div>
       <div class="page-nav">
