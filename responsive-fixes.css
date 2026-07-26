@@ -1,0 +1,35 @@
+/* Flex children must be allowed to shrink around wide, scrollable teaching tables. */
+.main-content {
+  min-width: 0;
+  width: calc(100% - var(--sidebar-width));
+}
+
+.main-content.full {
+  width: 100%;
+}
+
+.page,
+.page-body,
+.tab-content,
+.tab-pane,
+.content-section {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.page-body {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    width: 100%;
+  }
+
+  #nma-ranking-tcc div[style*="overflow-x:auto"],
+  #mid-sweden-thresholds div[style*="overflow-x:auto"] {
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}

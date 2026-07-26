@@ -1,0 +1,2752 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>非ランダム化比較研究のための現代的因果推論入門</title>
+<style>
+:root{
+ --bg:#f3f6fa;--paper:#fff;--ink:#172234;--muted:#5b687b;
+ --navy:#123c69;--blue:#176daf;--line:#d5deea;
+ --red:#ae2d3d;--redbg:#fff0f2;--green:#087253;--greenbg:#eaf8f2;
+ --amber:#945900;--amberbg:#fff7df;--info:#e9f5ff;--radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:105px}
+body{
+ margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",
+ "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif
+}
+a{color:var(--blue);text-underline-offset:3px;overflow-wrap:anywhere}
+header{
+ padding:42px 18px 32px;color:#fff;
+ background:linear-gradient(135deg,#102d51,#176daf 70%,#158b8d)
+}
+.hero{max-width:1050px;margin:auto}
+h1{font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.3;margin:.3rem 0}
+h2{font-size:clamp(1.45rem,4vw,2rem);line-height:1.4;color:var(--navy)}
+h3{color:var(--navy);margin-top:1.8rem}
+button,summary{font:inherit}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;min-height:54px;
+ padding:12px 17px;border:0;border-radius:14px;font-weight:850;
+ text-decoration:none;cursor:pointer
+}
+.btn-light{background:#fff;color:#123c69}
+.btn-yellow{background:#ffe08a;color:#342500}
+.btn-primary{background:var(--blue);color:#fff;width:100%;margin-top:10px}
+nav{
+ position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);
+ border-bottom:1px solid var(--line);backdrop-filter:blur(10px)
+}
+.tabs{
+ max-width:1160px;margin:auto;padding:9px 11px;display:flex;gap:7px;
+ overflow-x:auto
+}
+.tabs a{
+ flex:0 0 auto;padding:9px 13px;border-radius:999px;background:#edf3f9;
+ text-decoration:none;color:var(--navy);font-weight:800;white-space:nowrap
+}
+#progress{position:fixed;top:0;left:0;height:4px;background:#ffd75b;z-index:50}
+main{max-width:1020px;margin:auto;padding:24px 11px 90px}
+section{
+ margin:21px 0;padding:clamp(18px,4vw,36px);background:var(--paper);
+ border:1px solid var(--line);border-radius:var(--radius);
+ box-shadow:0 9px 25px rgba(20,45,75,.08)
+}
+.kicker{font-size:.82rem;font-weight:900;letter-spacing:.09em;color:var(--blue)}
+.lead{font-size:1.1rem}
+.callout{padding:15px 17px;border-radius:13px;border-left:6px solid;margin:17px 0}
+.warn{background:var(--amberbg);border-color:#d89c17}
+.danger{background:var(--redbg);border-color:var(--red)}
+.good{background:var(--greenbg);border-color:var(--green)}
+.info{background:var(--info);border-color:var(--blue)}
+.flow,.viz{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.node{
+ flex:1 1 125px;min-height:55px;padding:10px;border:2px solid #91afce;
+ border-radius:12px;background:#f8fbff;text-align:center;font-weight:800
+}
+.node.bad{background:var(--redbg);border-color:var(--red)}
+.node.good{background:var(--greenbg);border-color:var(--green)}
+.arrow{font-size:1.45rem;color:var(--blue);font-weight:900}
+.quiz{
+ padding:17px;margin:18px 0;border:1px solid #c8d5e4;border-radius:17px;
+ background:linear-gradient(180deg,#fff,#fbfdff)
+}
+.qno{color:var(--blue);font-size:.82rem;font-weight:900;letter-spacing:.1em}
+.question{font-size:1.07rem;font-weight:750;margin:8px 0 14px}
+details.answer{border-top:1px dashed #b7c7d9;padding-top:12px}
+details.answer summary{
+ list-style:none;min-height:56px;padding:14px;border-radius:14px;
+ background:#8bcaf2;color:#102d51;font-weight:900;cursor:pointer;
+ border:1px solid #4b9ed4;
+ display:flex;align-items:center;justify-content:center
+}
+
+
+details.answer summary::-webkit-details-marker{display:none}
+details.answer summary::after{content:" ＋"}
+details.answer[open] summary::after{content:" −"}
+.body{padding:16px 1px 2px}
+.verdict{
+ padding:13px 15px;border-left:5px solid var(--red);border-radius:12px;
+ background:var(--redbg);font-weight:850
+}
+.verdict.ok{background:var(--greenbg);border-color:var(--green)}
+.history{color:#2f2452;
+ padding:13px 15px;background:#f3efff;border-left:5px solid #6d55af;
+ border-radius:12px
+}
+.timeline{position:relative;padding:42px 5px 18px;margin:18px 0}
+.timeline:before{
+ content:"";position:absolute;left:5%;right:5%;top:55px;height:5px;background:#315b83
+}
+.point{position:relative;display:inline-block;width:30%;text-align:center;vertical-align:top}
+.point:before{
+ content:"";display:block;width:17px;height:17px;border-radius:50%;
+ background:var(--blue);margin:5px auto 18px;position:relative;z-index:2
+}
+.dag{
+ display:grid;grid-template-columns:repeat(5,1fr);align-items:center;
+ gap:6px;margin:16px 0;padding:15px;border:1px solid var(--line);
+ border-radius:14px;background:#fbfdff;text-align:center
+}
+.circle{
+ width:62px;height:62px;margin:auto;border:2px solid var(--blue);
+ border-radius:50%;display:grid;place-items:center;background:var(--info);
+ font-weight:900
+}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid var(--line);padding:10px;vertical-align:top;text-align:left}
+th{background:#edf3f9;color:var(--navy)}
+.formula{
+ padding:14px;border-radius:12px;background:#142033;color:#fff;
+ overflow-x:auto;font-family:ui-monospace,Consolas,monospace
+}
+.chapter-nav{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:25px}
+.chapter-nav a{
+ min-height:52px;padding:12px;background:#edf3f9;border-radius:12px;
+ display:grid;place-items:center;text-decoration:none;font-weight:850
+}
+.cite{text-decoration:none;font-size:.8em;font-weight:900}
+.ref li{margin-bottom:17px}
+.chapter-references{
+ margin-top:34px;padding:18px 20px;border-top:2px solid var(--line);
+ border-radius:10px;background:#f7fafc
+}
+.chapter-references h3{margin-top:0;font-size:1.08rem}
+.chapter-references .ref{margin-bottom:0;padding-left:1.7rem}
+.chapter-references .ref li{margin-bottom:14px;font-size:.94rem}
+.chapter-references .ref li:last-child{margin-bottom:0}
+.check li{margin:.6rem 0}
+footer{padding:28px 15px;background:#102d51;color:#fff;text-align:center}
+footer a{color:#b8dcff;font-weight:800}
+.worked-example,.worked-question{
+ padding:15px 17px;margin:17px 0;border-left:5px solid var(--blue);
+ background:var(--info);border-radius:10px
+}
+.causal-figure{
+ margin:20px 0;padding:14px;background:#f8fbff;border:1px solid var(--line);
+ border-radius:12px;color:var(--ink)
+}
+.causal-figure svg{display:block;width:100%;height:auto;overflow:visible}
+.causal-figure text{fill:currentColor;font:700 20px -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
+.causal-figure .causal-symbol{font-weight:900;fill:var(--blue)}
+.causal-figure .causal-letter{font-size:46px;font-weight:900}
+.causal-legend{margin:8px 0 10px;padding-left:1.35rem}
+.causal-legend li{margin:.35rem 0}
+.causal-figure .causal-node{fill:var(--paper);stroke:var(--blue);stroke-width:3}
+.causal-figure .causal-node-u{stroke:var(--red)}
+.causal-figure .causal-arrow{fill:none;stroke-width:4}
+.causal-figure .causal-arrow.confounding{stroke:var(--red)}
+.causal-figure .causal-arrow.treatment{stroke:var(--blue)}
+.causal-figure marker path{fill:var(--blue)}
+.causal-figure figcaption{margin-top:10px;color:var(--muted);font-size:.94rem}
+.reading-bridge{
+ margin:18px 0;padding:16px 18px;border:1px solid #b9cee2;border-radius:12px;
+ background:var(--info)
+}
+.reading-bridge strong{color:var(--navy)}
+.overlap-figure .axis-label{font-size:17px;font-weight:800}
+.overlap-figure .zone-label{font-size:18px;font-weight:900}
+.overlap-figure{
+ background:#f8fbff!important;color:#172234!important
+}
+.overlap-figure svg{background:#fff;border-radius:10px}
+.overlap-figure text{fill:#172234!important}
+.method-evolution{
+ margin:22px 0;padding:22px;background:#f8fbff;border:1px solid #b9cee2;
+ border-radius:14px;color:#172234
+}
+.evolution-steps{
+ list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:34px
+}
+.evolution-steps li{position:relative;padding-top:48px}
+.evolution-steps li:not(:last-child)::after{
+ content:"→";position:absolute;right:-28px;top:54px;color:#176daf;
+ font-size:1.8rem;font-weight:900
+}
+.evolution-steps .era{
+ position:absolute;top:0;left:0;padding:5px 10px;border-radius:999px;
+ background:#176daf;color:#fff;font-weight:900;font-size:.82rem
+}
+.evolution-steps strong{display:block;margin-bottom:7px;color:#123c69;font-size:1.03rem}
+.evolution-steps p{margin:0;line-height:1.65}
+.method-evolution figcaption{margin-top:18px;color:#52667c;font-size:.94rem}
+.missingness-intro{font-size:1.04rem}
+.missingness-grid{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0
+}
+.missing-card{
+ padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--paper)
+}
+.missing-card h4{margin:0 0 8px;color:var(--navy);font-size:1.05rem}
+.missing-card p{margin:.45rem 0}
+.missing-card svg{display:block;width:100%;height:auto;margin:8px 0}
+.missing-card .mechanism{font-weight:800;color:var(--navy)}
+@media(max-width:650px){.missingness-grid{grid-template-columns:1fr}}
+@media(max-width:650px){
+
+ main{padding-left:8px;padding-right:8px}
+ section{padding:18px 14px}
+ .chapter-nav{grid-template-columns:1fr}
+ table.mobile,table.mobile tbody,table.mobile tr,table.mobile td{display:block;width:100%}
+ table.mobile thead{display:none}
+ table.mobile tr{border:1px solid var(--line);border-radius:11px;margin:11px 0;overflow:hidden}
+ table.mobile td{border:0;border-bottom:1px solid var(--line)}
+ table.mobile td:before{content:attr(data-label);display:block;font-weight:900;color:var(--navy)}
+ .causal-figure{margin-left:0;margin-right:0;padding:8px 5px}
+ .causal-figure text{font-size:21px}
+ .method-evolution{padding:18px 15px}
+ .evolution-steps{grid-template-columns:1fr;gap:24px}
+ .evolution-steps li{padding:2px 0 2px 76px;min-height:64px}
+ .evolution-steps li:not(:last-child)::after{
+  content:"↓";left:29px;right:auto;top:60px;font-size:1.35rem
+ }
+ .evolution-steps .era{top:0;left:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(prefers-color-scheme:dark){
+ :root{--bg:#0d1521;--paper:#151f2e;--ink:#edf3fa;--line:#364459;
+ --navy:#b8dcff;--blue:#74baff;--info:#163148;--redbg:#351c23;
+ --greenbg:#14342a;--amberbg:#3a3018}
+ nav{background:rgba(14,22,33,.96)}
+ .tabs a,.chapter-nav a{background:#202d3e;color:#e4f1ff}
+ .chapter-references{background:#172234;border-color:#3b4b61}
+ .quiz,.causal-figure{background:#151f2e}
+ th{background:#202d3e}
+}
+@media print{
+ nav,.actions,#progress,.chapter-nav{display:none!important}
+ body{background:#fff;color:#000;font-size:10.5pt}
+ header{background:#fff;color:#000}
+ section{box-shadow:none;border:0;margin:0;padding:10px}
+ details>summary{display:none}
+ details:not([open])>.body{display:block}
+ a{color:#000}
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+
+<header id="top">
+<div class="hero">
+  <div class="kicker" style="color:#c2e8ff">OBSERVATIONAL CAUSAL INFERENCE</div>
+  <h1>「2群に分けて多変量解析」で終わらない<br>非ランダム化比較研究の基本</h1>
+  <p class="lead">
+    ターゲット試験、estimand、time zero、DAG、傾向スコア、
+    g-methods、生存時間解析を、図と臨床例から学ぶ教材です。
+  </p>
+  <div class="actions">
+    <a class="btn btn-light" href="#quiz">自己診断を始める</a>
+    <a class="btn btn-light" href="#ch1">本編を順番に読む</a>
+
+  </div>
+</div>
+</header>
+
+<nav aria-label="主要章">
+<div class="tabs">
+  <a href="#quiz">自己診断</a>
+  <a href="#ch1">因果的な問い</a>
+  <a href="#ch2">Estimand</a>
+  <a href="#ch3">Target trial</a>
+  <a href="#ch4">Time zero</a>
+  <a href="#ch5">DAG</a>
+  <a href="#ch7">変数選択</a>
+  <a href="#ch8">傾向スコア</a>
+  <a href="#ch10">g-methods</a>
+  <a href="#ch11">生存解析</a>
+  <a href="#checklist">チェック</a>
+  <a href="#closing">まとめ</a>
+</div>
+</nav>
+
+<main>
+
+
+
+
+<section id="quiz">
+<div class="kicker">SELF-AUDIT</div>
+<h2>研究責任者・指導者・査読者として判断してください</h2>
+
+<article class="quiz" id="q1">
+<div class="qno">QUESTION 01</div>
+<div class="question">
+後ろ向き研究の論文を読むと、臨床知識と既存研究に基づいて交絡因子が慎重に選ばれ、
+治療A群と治療B群が多変量解析で比較され、背景因子にも大きな群間差がないことが示されている。
+このように丁寧に解析された研究なら、治療効果について相応に信頼できる結論を得られる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">その慎重さは重要な出発点です。しかし、現在の因果推論では、それだけで治療効果を識別できたとは判断しません。</p>
+<p class="history">
+この問いに「はい」と答えたくなるのは自然です。経験豊富な臨床家ほど、病態を理解し、候補変数を吟味し、
+回帰モデルを丁寧に構築してきたはずです。その仕事は無意味ではありません。問題は、従来の丁寧さが
+「測定した変数をモデルへ入れること」に集中しやすく、比較を成立させる研究設計そのものが明文化されていなかった点です。
+</p>
+<p>
+多変量回帰が直接できるのは、モデルに正しく入った測定済み変数について条件付きの関連を計算することです。
+重症度、フレイル、患者の希望、医師の臨床判断、治療へのアクセス、施設方針などが記録されていない、
+粗く測定されている、または誤った関数形で扱われていれば、交絡による適応は残ります。
+背景表で差が見えないことも、未測定交絡がないことや、両群が交換可能であることの証明にはなりません。
+</p>
+<p>
+さらに、適格性を満たす日、治療を選ぶ日、追跡開始日がずれていれば、通常のロジスティック回帰やCox回帰を
+精緻化しても時間構造の誤りは直りません。治療変更や時間とともに変わる交絡因子がある場合には、
+ベースラインだけの回帰では答えられない問いもあります。
+</p>
+<p>
+芝孝一郎・川原拓也は、因果推論を、まず何を推定するかを定め、次にその効果をデータから識別できる条件を検討し、
+最後に推定法を選ぶ三段階として整理しています
+<a class="cite" href="#r21">[21]</a>。回帰、傾向スコア、重み付け、g-methodsは、この最後の段階にある道具です。
+</p>
+<div class="reading-bridge">
+<strong>現代的な順序：</strong>
+臨床上の意思決定を一文にし、対象集団と比較戦略、time zero、アウトカム、追跡期間、estimandを定めます。
+次にDAGで必要な仮定を外に出し、交換可能性、positivity、測定、追跡の成立を検討してから、問いに合うモデルを選びます。
+</div>
+<p>
+したがって、必要なのは「昔の解析はすべて誤りだった」と切り捨てることではありません。
+長年培われた臨床知識を、ターゲット試験、DAG、estimand、モデル診断、感度分析という現在の共通言語へ
+移し替えることです。高度なモデルを一つ追加すれば解決するのではなく、研究の問いから報告までを一続きに設計します。
+</p>
+<a class="btn btn-primary" href="#ch1">本編：因果的な問いから順に学ぶ →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q2">
+<div class="qno">QUESTION 02</div>
+<div class="question">
+多変量モデルに入れる候補を整理するため、まず各項目について単変量解析を行い、
+関連が認められた項目を中心に最終モデルを構築することは、解析過程を明確に示すうえで重要である。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">広く使われてきましたが、交絡因子を選ぶ方法としては不適切です。</p>
+<p class="history">
+単変量解析と多変量解析を並べる方法は、多くの医学論文で標準的に使用されてきました。
+しかし、広く使用されていたことと、因果的に正当化されていたことは同じではありません。
+</p>
+<p>
+単変量解析で有意でなくても重要な交絡因子はあります。
+反対に、有意でも媒介因子、コライダー、単なる予後因子なら、
+調整が不適切なことがあります。未調整結果の提示と、P値による変数選択は別問題です。
+</p>
+<p>
+P値によるふるいは、「この標本で単独の関連が強く見えた変数」を選ぶだけです。
+治療選択とアウトカムの共通原因である重要な交絡因子を落とす一方、
+媒介因子やコライダーを拾うことがあります。調整変数は、測定時点と因果方向を確認し、
+DAGでどの経路を閉じる必要があるかを考えて選びます。
+</p>
+
+<a class="btn btn-primary" href="#ch7">本編：単変量スクリーニングの問題へ →</a>
+</div>
+</details>
+</article>
+
+<article class="quiz" id="q3">
+<div class="qno">QUESTION 03</div>
+<div class="question">
+交絡因子は、治療選択や予後に関係すると考えられる項目を、
+その領域に詳しい研究者が既存文献と臨床経験から選び、多変量解析へ組み入れる方法が実務的である。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">専門知識は不可欠です。ただし、頭の中の変数一覧を、時間と矢印を持つ因果仮説へ変える必要があります。</p>
+<p class="history">
+「専門家が重要な変数を選ぶ」という考えには大切な部分があります。DAGは臨床知識の代用品ではなく、
+その知識を研究チームで読める形にする道具です。SRのように客観性を自動的に保証する手続きでも、
+データから正解の因果構造を生成する装置でもありません。
+</p>
+<p>
+DAGはDirected Acyclic Graph、有向非巡回グラフの略です。変数を点で置き、
+原因から結果へ矢印を引きます。同じ変数へ戻る循環を作らないため「非巡回」と呼びます。
+医学書院の因果推論レクチャーは、DAGによって交絡因子、媒介因子、コライダーを区別し、
+どの経路を閉じ、どの経路を壊してはいけないかを検討する考え方を具体例で示しています
+<a class="cite" href="#r22">[22]</a><a class="cite" href="#r23">[23]</a>。
+</p>
+<p>
+治療Aと転帰Yだけを見て「AはYと関連した」と考えると、治療を選ばせた共通原因を見落とします。
+次の図では、赤い経路が治療効果ではない関連を混ぜ、緑の経路は治療効果の途中を表します。
+</p>
+<figure class="causal-figure">
+<svg viewBox="0 0 520 510" role="img" aria-labelledby="q3-title q3-desc">
+  <title id="q3-title">治療と転帰の背後にある因果経路</title>
+  <desc id="q3-desc">重症度や患者希望などの治療前要因が治療選択と転帰の双方に影響し、治療反応は治療効果を伝える途中にあることを示すDAG</desc>
+  <defs>
+    <marker id="q3-red-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ae2d3d"></path>
+    </marker>
+    <marker id="q3-blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#176daf"></path>
+    </marker>
+    <marker id="q3-green-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#087253"></path>
+    </marker>
+  </defs>
+  <rect x="70" y="24" width="380" height="96" rx="18" fill="var(--redbg)" stroke="#ae2d3d" stroke-width="3"></rect>
+  <text x="260" y="57" text-anchor="middle">治療前の共通原因 L</text>
+  <text x="260" y="87" text-anchor="middle" font-size="17">重症度・患者の希望・医師判断・施設方針</text>
+  <circle class="causal-node" cx="115" cy="250" r="55"></circle>
+  <text class="causal-letter" x="115" y="267" text-anchor="middle">A</text>
+  <text x="115" y="328" text-anchor="middle">治療選択</text>
+  <circle class="causal-node" cx="405" cy="250" r="55"></circle>
+  <text class="causal-letter" x="405" y="267" text-anchor="middle">Y</text>
+  <text x="405" y="328" text-anchor="middle">転帰</text>
+  <rect x="190" y="390" width="140" height="70" rx="16" fill="#eaf8f2" stroke="#087253" stroke-width="3"></rect>
+  <text x="260" y="420" text-anchor="middle">治療反応 M</text>
+  <text x="260" y="447" text-anchor="middle" font-size="17">媒介因子</text>
+  <path d="M210 109 L143 195" fill="none" stroke="#ae2d3d" stroke-width="4" marker-end="url(#q3-red-arrow)"></path>
+  <path d="M310 109 L377 195" fill="none" stroke="#ae2d3d" stroke-width="4" marker-end="url(#q3-red-arrow)"></path>
+  <path d="M174 250 L342 250" fill="none" stroke="#176daf" stroke-width="4" marker-end="url(#q3-blue-arrow)"></path>
+  <path d="M143 299 L213 387" fill="none" stroke="#087253" stroke-width="4" marker-end="url(#q3-green-arrow)"></path>
+  <path d="M307 390 L377 299" fill="none" stroke="#087253" stroke-width="4" marker-end="url(#q3-green-arrow)"></path>
+</svg>
+<ul class="causal-legend">
+  <li><strong>赤：</strong>A←L→Yはバックドア経路です。Lを測定せずにAとYを比べると、治療選択の違いが混ざります。</li>
+  <li><strong>青：</strong>A→Yは知りたい治療効果の経路です。</li>
+  <li><strong>緑：</strong>A→M→Yは効果が伝わる媒介経路です。総効果を知りたいときにMを機械的に調整すると、効果の一部を消します。</li>
+</ul>
+<figcaption>「あなたはAとYしか考えていないのでは？」という問いから、治療前の共通原因と治療後の変数を分けて考えます。</figcaption>
+</figure>
+<p>
+単に「交絡因子の特定は困難である」と書くだけでは、どの変数がAとYの共通原因なのか、
+どの矢印を根拠に調整するのか、治療後変数を誤って入れていないかを読者は確認できません。
+DAGを描けば正解になるわけではありませんが、誤っているかもしれない仮定を、少なくとも議論できる形にできます。
+</p>
+<p>
+研究者としてDAGを描くことは飾りではありません。因果効果を主張するなら、
+時間的に先行する原因、治療選択、転帰、選択過程を図にして考えることは研究設計の基本です。
+作成したDAGは、矢印の根拠となる臨床知識や文献とともに示し、別の妥当なDAGで結論が変わるかも検討します。
+</p>
+<div class="callout info">
+<strong>DAGを作るときの実務：</strong>
+まず治療前・治療後で変数を分け、治療選択と転帰の共通原因を置きます。
+次に媒介因子と、条件付けることで経路を開くコライダーを区別し、必要な最小調整集合を検討します。
+</div>
+<a class="btn btn-primary" href="#ch5">本編：DAGを基礎から学ぶ →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q4">
+<div class="qno">QUESTION 04</div>
+<div class="question">
+治療後の検査で分かった所見でも、その所見を持つ患者ほど
+再発や病状悪化が多い場合は、
+多変量解析へ加えることで、患者の状態の違いをより丁寧に調整できる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">経過と関係する変数が、交絡因子とは限りません。</p>
+<p class="history">
+「重要な予後情報は調整した方が公平になる」という考えは自然です。
+予測を目的とする場合には、治療後情報が役立つ場合もあります。
+</p>
+<p>
+しかし因果効果の推定では、治療後変数は媒介因子やコライダーかもしれません。
+総治療効果を求める際に媒介因子を調整すると、治療効果の一部を消してしまいます。
+</p>
+<p>
+治療Aが治療後所見Mを変え、MがアウトカムYを変えるなら、MはAからYへ効果を伝える途中の変数です。
+総治療効果を知りたい解析でMを調整すると、知りたい効果の一部を自分で取り除いてしまいます。
+</p>
+
+<a class="btn btn-primary" href="#postvar">本編：治療後変数・媒介・コライダーへ →</a>
+</div>
+</details>
+</article>
+
+<article class="quiz" id="q5">
+<div class="qno">QUESTION 05</div>
+<div class="question">
+診断当日に治療方針が確定しない患者も多いため、診断後90日以内に切除を受けた患者を切除群、
+それ以外を経過観察群とし、診断日から両群を比較する方法は実際の診療過程を反映している。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">臨床的には自然ですが、将来情報で診断時の群を決めています。</p>
+<p class="history">
+現実には追加検査、患者との相談、紹介、手術日程の調整が必要です。
+したがって、猶予期間を設ける考え自体は正当です。
+</p>
+<p>
+問題は90日後までの情報で群を決めながら、診断日から追跡することです。
+切除群へ入るには切除日まで生存・追跡される必要があり、
+不適切な扱いはimmortal time biasを生みます
+<a class="cite" href="#r5">[5]</a>。
+</p>
+<div class="timeline" aria-label="診断から切除までの時間軸">
+  <span class="point">診断<br>追跡開始</span>
+  <span class="point">将来情報で<br>群を決定</span>
+  <span class="point">切除</span>
+</div>
+<div class="callout danger">
+切除群に入るためには、診断から切除まで生存している必要があります。
+</div>
+<a class="btn btn-primary" href="#ch4">本編：Time zeroと猶予期間へ →</a>
+</div>
+</details>
+</article>
+
+<article class="quiz" id="q6">
+<div class="qno">QUESTION 06</div>
+<div class="question">
+治療後の病理所見、治療反応、追加治療の有無などで患者を2群に分け、
+診断時からKaplan–Meier曲線を描くことは、それぞれの患者の長期経過を視覚的に示すうえで有用である。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">図は分かりやすくても、将来の情報で過去の群を定義すると、時間そのものが比較をゆがめます。</p>
+<p class="history">
+Kaplan–Meier曲線は長期経過を示す優れた方法です。しかし、統計手法の知名度は、
+群分けの時点が妥当であることを保証しません。
+</p>
+<p>
+追加治療群に入るには、その日まで生存し追跡される必要があります。将来情報で群を作り、
+診断時まで遡るとguarantee-time biasが生じます。病理結果が得られた患者だけを選ぶ場合には、
+検査や手術へ進めた患者を選ぶ選択の問題も重なります。
+</p>
+<div class="timeline" aria-label="追加治療時点で初めて群が決まる">
+  <span class="point">診断</span>
+  <span class="point">追加治療<br>ここで群が決まる</span>
+  <span class="point">最終結果</span>
+</div>
+<div class="reading-bridge">
+<strong>Q1との違い：</strong>
+Q1の中心は、治療開始前から存在する治療選択の交絡を、測定済み変数の多変量解析だけで解決できるかです。
+Q6の中心は、治療後に初めて分かる情報で群を作り、その群を診断時から存在したように扱う時間依存性バイアスです。
+両者は併存しますが、同じ問題ではありません。
+</div>
+<p>
+この場合は、診断時に将来の群を割り当てません。あらかじめ定めた時点まで生存した患者を比べるランドマーク解析、
+治療前後の時間を分ける時間依存曝露、状態の移行を扱うmulti-state modelなどから、
+臨床上の問いに合う方法を選びます。それぞれ対象集団と答える問いが異なります。
+</p>
+<a class="btn btn-primary" href="#postkm">本編：事後情報と生存曲線へ →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q7">
+<div class="qno">QUESTION 07</div>
+<div class="question">
+後ろ向き比較研究を読む際に、対象患者、背景因子、多変量解析、感度分析が詳しく示され、
+査読を経て公表されていれば、通常の批判的吟味としてこれらを確認することで、
+治療Aと治療Bの比較の信頼性を相応に判断できる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">詳しい方法記載と査読通過は重要な情報ですが、それだけで因果的妥当性は保証されません。</p>
+<p class="history">
+ここまで確認した読者は、論文を丁寧に読んでいます。実際、この形式の研究は現在も多く、
+著名な研究者から発表され、一流誌へ掲載されています。だからこそ「十分に査読されている」と考えるのは自然です。
+</p>
+<p>
+しかし、査読は研究の全データと全判断を再現する監査ではありません。すべての査読者が、
+target trial emulation、DAG、positivity、時間依存性バイアス、g-methodsに習熟しているとも限りません。
+従来から見慣れた「二群化、背景表、多変量解析、adjusted HR」という形式が、
+設計上の問いを十分に検討しないまま受け入れられることがあります。
+</p>
+<p>
+読者が確かめるのは、測定済み背景因子の見た目だけではありません。誰が両治療を受け得たのか、
+適格性判定・治療開始・追跡開始がそろっているか、治療前の共通原因が十分に測定されたか、
+治療後変数やコライダーを調整していないか、重なりとeffective sample sizeが保たれているかを確認します。
+</p>
+<p>
+これはQ6とも異なります。Q6は将来情報で群を作って過去へ遡る時間構造の問題です。
+Q7は、権威、査読、背景表、adjustedという表示から、研究全体の妥当性まで推測してよいかという読解の問題です。
+一つの論文に、ベースライン交絡と時間依存性バイアスの両方が含まれることはあります。
+</p>
+<div class="callout warn">
+<strong>査読者個人を非難する話ではありません。</strong>
+因果推論の専門性を査読へ組み込み、著者がDAG、time zero、estimand、診断、感度分析を透明に示し、
+読者が設計を再検討できる報告へ変える必要があるという問題です。
+</div>
+<a class="btn btn-primary" href="#ch3">本編：Target trial、時間軸、DAGを確認する →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q8">
+<div class="qno">QUESTION 08</div>
+<div class="question">
+傾向スコアマッチングで、年齢、性別、重症度などの群間差が認められない場合は、
+適切に患者背景が調整されていたことが確認できる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">測定済み変数のバランスを確かめたことは一歩前進です。しかし、それで「患者背景を調整できた」とは言い切れません。</p>
+<p class="history">
+「傾向スコアを使った」だけで安心せず、マッチング後の背景まで確認した読み方は丁寧です。
+多くの読者は、表のP値が非有意になれば、慎重な研究だと感じるでしょう。そこまでは自然な判断です。
+</p>
+<p>
+最初に崩れるのは、P値による安心です。マッチング後は人数が減るため、同じ差が残っていてもP値は大きくなり得ます。
+バランス診断では標準化平均差（SMD）を中心に、平均だけでなく分布、分散比、連続変数の形を確認します
+<a class="cite" href="#r6">[6]</a>。
+</p>
+<p>
+次に、表へ載せた変数だけを見ている限界があります。傾向スコアも多変量回帰も、
+未測定交絡を自動的に消す手法ではありません。患者の希望、医師の直感、フレイル、アクセスなどが測定されていなければ、
+見かけ上きれいな背景表の外に交絡が残ります
+<a class="cite" href="#r21">[21]</a>。
+</p>
+<p>
+さらに、両群の傾向スコア分布が十分に重なるか、何人がマッチできず除外されたか、
+極端な重みがないか、effective sample sizeが保たれたかを確認します。
+マッチングで除外された患者が多ければ、推定対象は元の全患者ではなく、比較可能だった一部の患者へ変わります。
+</p>
+<div class="reading-bridge">
+<strong>浅い安心から一段深く読む：</strong>
+「PSを使い、背景差も消えた」ではなく、「どの測定済み変数について、どの集団で、
+どの程度の重なりと実効情報量を保ってバランスを改善したか」と読み替えます。
+</div>
+<a class="btn btn-primary" href="#psdiag">本編：傾向スコア診断へ →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q9">
+<div class="qno">QUESTION 09</div>
+<div class="question">
+一方の治療しか現実に選ばれない患者が多い場合は、いずれの治療も選択され得た患者に対象を限定し、
+その限定集団に対する効果として解釈する方法が考えられる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict ok">妥当な選択肢です。ただし、比較しやすくなる代わりに、答えを適用する患者集団が変わります。</p>
+<p>
+治療Aをほぼ必ず選ぶ患者と、治療Bをほぼ必ず選ぶ患者の間には、現実の比較相手がいません。
+その領域までモデルで補うと、データの乏しい場所へ強く外挿することになります。
+</p>
+<p>
+次の図で中央の緑色は、似た患者に治療Aも治療Bも実際に選ばれている領域です。
+左右の薄い領域は、一方の治療しかほとんど選ばれず、反対治療の結果をデータから学びにくい領域です。
+</p>
+<figure class="causal-figure overlap-figure">
+<svg viewBox="0 0 720 360" role="img" aria-labelledby="q9-title q9-desc">
+  <title id="q9-title">傾向スコア分布の重なりと比較対象集団</title>
+  <desc id="q9-desc">治療Aと治療Bの傾向スコア分布が中央で重なり、両端では一方の治療しか選択されにくいことを示す</desc>
+  <rect x="48" y="36" width="624" height="244" rx="18" fill="#ffffff" stroke="#b9cee2" stroke-width="2"></rect>
+  <rect x="278" y="36" width="174" height="244" fill="#eaf8f2"></rect>
+  <path d="M70 258 C130 250,155 85,276 82 C348 80,365 213,420 258 Z" fill="#65a9df" fill-opacity=".65" stroke="#176daf" stroke-width="4"></path>
+  <path d="M300 258 C355 214,372 81,450 84 C575 88,592 248,650 258 Z" fill="#d87882" fill-opacity=".55" stroke="#ae2d3d" stroke-width="4"></path>
+  <line x1="70" y1="260" x2="650" y2="260" stroke="#52667c" stroke-width="3"></line>
+  <text class="zone-label" x="365" y="68" text-anchor="middle">両治療を比較できる重なり</text>
+  <text class="axis-label" x="160" y="307" text-anchor="middle">治療Aが選ばれやすい</text>
+  <text class="axis-label" x="560" y="307" text-anchor="middle">治療Bが選ばれやすい</text>
+  <text x="150" y="337" text-anchor="middle" font-size="16">Bの比較相手が乏しい</text>
+  <text x="570" y="337" text-anchor="middle" font-size="16">Aの比較相手が乏しい</text>
+</svg>
+<figcaption>中央へ限定すれば無理な外挿は減りますが、推定対象は「すべての患者」から「両治療が選ばれ得た患者」へ変わります。</figcaption>
+</figure>
+<p>
+両治療の比較対象が存在する領域へ限定すれば、極端な外挿や不安定な重みを減らせます。
+一方、結果は元の全患者ではなく、治療選択に重なりのある集団へ適用されます。
+除外人数と除外患者の特徴を示し、overlap population、ATTなど、実際に変化したestimandを明記します。
+</p>
+<a class="btn btn-primary" href="#positivity">本編：Positivityと対象集団へ →</a>
+</div>
+</details>
+</article>
+
+
+<article class="quiz" id="q10">
+<div class="qno">QUESTION 10</div>
+<div class="question">
+最初は経過観察で、途中で病変が悪化して切除を受けた患者は切除群へ分類し、
+病変悪化も多変量解析へ加えることで、実際の診療経過に即した治療成績を評価できる。
+</div>
+<details class="answer">
+<summary>回答を読む</summary>
+<div class="body">
+<p class="verdict">最終的な治療だけで分類すると、治療までの経過を誤って扱う可能性があります。</p>
+<p class="history">
+最終的に受けた治療を重視する考えは直感的です。
+しかし病変悪化は次の治療を決め、最終結果にも影響し、
+さらに過去の治療方針にも影響される場合があります。
+</p>
+<p>
+例えば、過去の治療が現在の病変状態を変え、その病変状態が次の治療選択と最終結果の双方を左右します。
+病変状態は調整したい交絡因子である一方、過去の治療の結果でもあるため、
+通常の回帰へ単純に入れると過去の治療効果まで取り除くことがあります。
+</p>
+<p>
+この治療–交絡フィードバックでは、通常の回帰調整だけでなく、
+parametric g-formulaやmarginal structural modelを検討します
+<a class="cite" href="#r7">[7]</a>。
+</p>
+<a class="btn btn-primary" href="#ch10">本編：g-methodsへ →</a>
+</div>
+</details>
+</article>
+</section>
+
+<!-- 第1部終了：第2部をこの直後へ連結 -->
+<section id="ch1">
+<div class="kicker">CHAPTER 1</div>
+<h2>なぜ今、非ランダム化研究を学び直すのか</h2>
+
+<p class="lead">
+カルテやレジストリを使う研究が問題なのではありません。
+問題は、無作為化されていない二群の差から、どの条件のもとで治療の因果効果を推定できるのかを明示しないまま、
+「多変量解析で調整した」と結論してしまうことです。
+</p>
+
+<h3>まず、研究デザインを同じ地図に置く</h3>
+
+<p>
+治療効果を調べるランダム化比較試験（RCT）では、適格な参加者を治療戦略へ無作為に割り付けます。
+十分な標本で割付が保たれれば、測定した因子だけでなく、測定していない因子も平均的に比較可能になります。
+一方、日常診療のカルテやレジストリでは、重症度、患者の希望、医師の判断、施設の方針などが治療選択を決めます。
+研究者が治療を無作為に割り付けていないため、その比較は出発点から同じではありません。
+</p>
+
+<p>
+この教材では、介入の利益や害を推定しようとする研究を
+<strong>非ランダム化介入研究（non-randomized study of interventions: NRSI）</strong>と呼びます。
+「観察研究」は、予後、診断、病因、曝露なども含む広い言葉で、使われ方が一定しません。
+Cochrane Handbookも、介入効果を扱う場面では曖昧な「観察研究」という呼称より、
+何を推定し、無作為割付がないことを明示するNRSIを用いています
+<a class="cite" href="#r25">[25]</a>。
+</p>
+
+<p>
+NRSIは「RCTではない研究を一括した低い階層」という名前ではありません。
+通常診療で治療が選ばれたコホート、準ランダム化研究、前後比較、時系列研究など、
+異なる設計が含まれます。重要なのはラベルではなく、誰が、いつ、なぜ各治療へ入り、
+どの比較なら因果効果を識別できるかという設計上の特徴です。
+</p>
+
+<h3>この転換は、突然始まったものではない</h3>
+
+<p>
+1963年、CampbellとStanleyは、無作為化が難しい教育・社会研究を含め、
+「準実験（quasi-experiment）」という枠組みで内的妥当性への脅威を整理しました。
+選択、時間経過、成熟、平均への回帰、測定の変化などを、検定を行う前に研究デザインで考えるという発想です
+<a class="cite" href="#r24">[24]</a>。
+現代のtarget trial、time zero、DAG、estimand、g-methodsは、この中心思想を捨てたのではなく、
+因果的な問い、時間、仮定、推定対象をより明示的にした発展形と理解できます。
+</p>
+
+<figure class="method-evolution" aria-labelledby="evolution-caption">
+<ol class="evolution-steps">
+  <li>
+    <span class="era">1960年代</span>
+    <strong>準実験と内的妥当性</strong>
+    <p>無作為化できないとき、選択や時間経過など「別の説明」を設計段階で洗い出す。</p>
+  </li>
+  <li>
+    <span class="era">従来型</span>
+    <strong>二群比較と回帰調整</strong>
+    <p>背景表を示し、測定した候補変数を多変量モデルへ入れて群間差を補正する。</p>
+  </li>
+  <li>
+    <span class="era">現在</span>
+    <strong>因果的な問いから設計する</strong>
+    <p>target trial、time zero、DAG、estimandを定め、成立条件を診断してから推定法を選ぶ。</p>
+  </li>
+</ol>
+<figcaption id="evolution-caption">
+方法の名称が増えたのではなく、解析より前に明示すべき設計と仮定が具体化しました。
+</figcaption>
+</figure>
+
+<h3>「丁寧な多変量解析」から、設計を読める研究へ</h3>
+
+<p>
+従来の回帰調整は、測定済み交絡を扱う重要な道具であり、不要になったわけではありません。
+しかし、治療後の変数を入れた、将来の治療情報で群を作った、比較相手のいない患者へ外挿した、
+重要な治療選択理由が記録されていない、といった問題は、モデルを精緻にしても自動的には直りません。
+ROBINS-IはNRSIを「仮想的な実践的RCTを模倣しようとする研究」と捉え、
+交絡だけでなく選択、介入分類、逸脱、欠測、アウトカム測定、選択的報告まで評価します
+<a class="cite" href="#r26">[26]</a>。
+</p>
+
+<p>
+国際的な主要ハンドブックとバイアス評価は、すでに「研究デザイン名とadjustedの表示を確認する」段階から、
+因果的な問いと個々の推定結果を評価する段階へ移っています。
+一方、日本の臨床研究では今も、二群化、背景表、単変量解析、多変量解析という従来形式を頻繁に目にします。
+したがって、本教材では日本の読者にとって今が移行期であるという立場から、
+過去の臨床知識を否定せず、それを現代的な設計の共通言語へ移し替えます。
+</p>
+
+<div class="callout info">
+<strong>このページを読む理由：</strong>
+有名な手法、整った背景表、大きな症例数、査読済みという情報だけでは、
+比較が同じ患者の反実仮想を近似しているか分かりません。
+読者自身が、問い、time zero、DAG、estimand、positivity、測定、追跡を順に確認できるようになることが目的です。
+</div>
+
+<h3>ここから本編：関連と因果効果を区別する</h3>
+
+<p class="lead">
+治療群の転帰が良かったとしても、それだけで「治療したから良くなった」とは言えません。
+治療を受けた患者と経過観察された患者では、治療前から条件が違う可能性があるからです。
+</p>
+
+<h3>観察された差を分解する</h3>
+
+<p>
+観察された群間差は、真の治療効果だけではありません。治療を選んだ患者の違いによる交絡、
+研究対象に入る過程の選択、測定方法の違い、追跡開始や群決定の時間のずれも混ざった結果です。
+これらをデータから機械的に分解できるわけではないため、解析前の設計が必要になります。
+</p>
+
+<p>
+例えば、重症患者ほど切除を受けやすい場合、切除群の悪性化率が高くても、
+切除によって悪性化したとは限りません。反対に、全身状態が良く、通院を継続できる患者ほど
+治療を受けているなら、治療群が見かけ上有利になることもあります。
+</p>
+
+<h3>反実仮想という考え方</h3>
+
+<p>
+患者 <em>i</em> が切除された場合の結果を
+<strong>Y<sub>i</sub>(1)</strong>、同じ患者が経過観察された場合の結果を
+<strong>Y<sub>i</sub>(0)</strong>と表します。個人の因果効果は次の差です。
+</p>
+
+<div class="formula">個人の因果効果 = Yᵢ(1) − Yᵢ(0)</div>
+
+<p>
+しかし、同じ患者について実際に観察できるのは、切除か経過観察のどちらか一方だけです。
+これを因果推論の基本問題と呼びます。そこで集団の平均的な効果を推定します
+<a class="cite" href="#r1">[1]</a>。
+</p>
+
+<div class="formula">ATE = E{Y(1) − Y(0)}</div>
+
+<h3>予測研究と因果研究を混同しない</h3>
+
+<p>
+<strong>予測研究</strong>が尋ねるのは「誰が悪性化するか」です。
+予測時点で利用できる情報を使い、識別能、較正、外部検証によって、
+未知の患者の転帰をどの程度正確に予測できるかを評価します。
+</p>
+<p>
+これに対して<strong>因果研究</strong>が尋ねるのは
+「同じような患者が切除を受けた場合と経過観察された場合で、悪性化リスクがどれだけ変わるか」です。
+評価するのは因果効果と、その識別に必要な仮定、バイアス、感度分析です。
+変数は予測力の高さではなく、治療前後の時間的順序と因果構造に基づいて扱います。
+</p>
+
+<div class="callout danger">
+<strong>重要：</strong>
+アウトカムをよく予測する変数が、因果効果を推定するために調整すべき交絡因子とは限りません。
+</div>
+
+
+<div class="chapter-references" aria-labelledby="ch1-references-title">
+<h3 id="ch1-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r1" value="1">
+<strong>Hernán MA, Robins JM. Causal Inference: What If.</strong><br>
+反実仮想、交絡、標準化、IP weighting、g-methods、ターゲット試験を体系的に扱う無料オンライン書籍。<br>
+<a href="https://miguelhernan.org/whatifbook" target="_blank" rel="noopener">
+https://miguelhernan.org/whatifbook
+</a>
+</li>
+
+<li id="r24" value="24">
+<strong>Campbell DT, Stanley JC. Experimental and Quasi-Experimental Designs for Research. Boston: Houghton Mifflin; 1963.</strong><br>
+準実験デザインと内的・外的妥当性への脅威を体系化した古典。<br>
+<a href="https://books.google.com/books?id=ThC7jtICXH8C" target="_blank" rel="noopener">
+https://books.google.com/books?id=ThC7jtICXH8C
+</a>
+</li>
+
+<li id="r25" value="25">
+<strong>Reeves BC, Deeks JJ, Higgins JPT, et al. Chapter 24: Including non-randomized studies on intervention effects. Cochrane Handbook for Systematic Reviews of Interventions. Version 6.5. 2024.</strong><br>
+NRSIの定義、適格基準、交絡を考慮した推定値の選択、統合可否を扱う公式ハンドブック。<br>
+<a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-24" target="_blank" rel="noopener">
+https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-24
+</a>
+</li>
+
+<li id="r26" value="26">
+<strong>Sterne JAC, Hernán MA, Reeves BC, et al. ROBINS-I: a tool for assessing risk of bias in non-randomised studies of interventions. BMJ. 2016;355:i4919.</strong><br>
+NRSIを目標試験の模倣として捉え、特定の推定結果に対する7領域のバイアスを評価する。<br>
+<a href="https://www.bmj.com/content/355/bmj.i4919" target="_blank" rel="noopener">
+https://www.bmj.com/content/355/bmj.i4919
+</a><br>
+DOI:
+<a href="https://doi.org/10.1136/bmj.i4919" target="_blank" rel="noopener">
+https://doi.org/10.1136/bmj.i4919
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#quiz">← 自己診断</a>
+<a href="#ch2">次：Estimandを決める →</a>
+</div>
+</section>
+
+<section id="ch2">
+<div class="kicker">CHAPTER 2</div>
+<h2>モデルより先にEstimandを定める</h2>
+
+<p>
+<span title="推定したい因果効果を具体的に定義したもの"><strong>Estimand</strong></span>とは、
+「誰について、何と何を比較し、いつまでに、何を、どの尺度で評価するのか」を
+具体的に定めたものです。
+</p>
+
+<div class="worked-example">
+<p><strong>まず、完成した問いを一文で書きます。</strong></p>
+<p>
+「新たに診断された切除可能な口腔病変の患者について、診断後30日以内に切除する戦略と
+構造化経過観察を開始する戦略を比べたとき、診断から5年以内の悪性化リスクは
+1000人当たり何人変わるか。経過観察中の救済切除は、あらかじめ定めた規則に従うものとする。」
+</p>
+</div>
+<p>
+この一文がestimandの実体です。<strong>「誰について」</strong>は、新規診断され、両戦略を選べる切除可能な患者です。
+ここを曖昧にすると、結果を進行例や既治療例へ適用できるか判断できません。
+</p>
+<p>
+<strong>「何と何を比較するか」</strong>は、単なる「切除群対非切除群」ではなく、
+30日以内の切除と、診察間隔や生検基準を定めた構造化経過観察という二つの戦略です。
+患者ごとに治療内容が違うままでは、介入の意味が定まりません。
+</p>
+<p>
+<strong>「いつから、いつまで」</strong>は、診断を起点とした5年間です。
+短期の合併症と長期の悪性化を同じ時間枠で扱わないようにします。
+<strong>「何を測るか」</strong>は、同じ判定基準で確認した悪性化です。
+検査頻度が群によって違えば、発見されやすさの差が生じます。
+</p>
+<p>
+<strong>「どの尺度で示すか」</strong>は、5年リスク差やリスク比です。
+患者とパネルにとっては、1000人当たりの悪性化が何人増減するかという絶対効果が理解しやすいことがあります。
+さらに、経過観察中に救済切除へ移る患者をどの戦略の結果として扱うかを事前に決めなければ、
+最終的に何の効果を推定したのか分からなくなります。
+</p>
+
+<h3>代表的な対象集団</h3>
+
+<ul>
+<li><strong>ATE：</strong>対象集団全体における平均治療効果</li>
+<li><strong>ATT：</strong>実際に治療を受けた集団における平均治療効果</li>
+<li><strong>ATC：</strong>実際に対照戦略を受けた集団における平均治療効果</li>
+<li><strong>Overlap effect：</strong>両方の治療が選択され得た患者における効果</li>
+</ul>
+
+<h3>何を比較するか</h3>
+
+<p>
+開始時に選んだ戦略を、その後の治療変更も含めて比較するのが<strong>ITT-like効果</strong>です。
+観察研究では無作為割付ではありませんが、「開始時の方針を選ぶこと」の効果として解釈します。
+</p>
+<p>
+定めた戦略を守った場合を比べる<strong>per-protocol効果</strong>では、
+遵守や戦略逸脱による選択を扱う必要があります。
+実際に受けた治療で比較する<strong>as-treated効果</strong>は直感的ですが、
+治療変更の時点とそれ以前の追跡時間を誤ると大きな時間依存性バイアスが生じます。
+</p>
+<p>
+患者状態に応じて「悪化すれば切除する」のように治療を変える<strong>動的戦略</strong>を比べる場合は、
+縦断データとg-methodsが必要になることがあります。名称を選ぶことが目的ではなく、
+診療上のどの意思決定に答えるのかを先に定めることが重要です。
+</p>
+
+<div class="callout info">
+「傾向スコアマッチングを行う」という記述はestimandではありません。
+マッチングによって誰が除外され、最終的にどの集団の効果を推定するのかを明示します。
+</div>
+
+<div class="chapter-nav">
+<a href="#ch1">← 前：因果的な問い</a>
+<a href="#ch3">次：Target trial →</a>
+</div>
+</section>
+
+<section id="ch3">
+<div class="kicker">CHAPTER 3</div>
+<h2>観察データを見る前にターゲット試験を書く</h2>
+
+<p>
+Target trial emulationは、観察データを解析する前に、
+「理想的にはどのようなランダム化試験を行いたいか」を明確にする枠組みです。
+TARGET Statementは、その報告を透明にするための指針です
+<a class="cite" href="#r2">[2]</a><a class="cite" href="#r8">[8]</a>。
+</p>
+
+<p>
+まず<strong>適格基準</strong>を定めます。この例なら、新規診断で過去に切除を受けておらず、
+切除と経過観察のどちらも現実に選べる患者です。次に、30日以内の切除と規定間隔の経過観察という
+<strong>二つの治療戦略</strong>を、患者ごとの解釈に委ねず具体的に記述します。
+</p>
+<p>
+理想的な試験なら治療は無作為に割り付けます。観察研究では無作為化できないため、
+測定した治療前因子で条件付けた後に群が交換可能である、という強い仮定が必要です。
+適格性の確認、戦略の割り当て、追跡開始を同じ<strong>time zero</strong>に置き、
+そこから5年間、中央判定した悪性化、全死亡、有害事象などを追います。
+</p>
+<p>
+最後に、開始戦略の効果をみるITT-likeか、戦略を守った場合のper-protocolかという
+<strong>因果対比</strong>を定めます。標準化、重み付け、g-formulaなどの
+<strong>解析方法</strong>は、このプロトコルとestimandを実現するために選びます。
+</p>
+
+<h3>口腔白板症の例</h3>
+
+<p class="worked-question">
+<strong>口腔白板症の具体例：</strong>
+新規診断され、切除可能で、両戦略を選べる患者を対象に、
+診断後30日以内の切除と構造化経過観察を比較し、5年悪性化リスクの差を推定します。
+</p>
+
+<p>
+「経過観察」は何もしないことではありません。診察間隔、生検基準、救済切除の条件などを定義します。
+「切除」についても、術式、切除範囲、断端、追加治療を明確にします。
+</p>
+
+<div class="callout danger">
+<strong>Consistencyの問題：</strong>
+同じ「切除群」に、臨床的に異なる複数の処置が混在している場合、
+「切除を受けた場合」という反実仮想の意味が曖昧になります。
+</div>
+
+<h3>観察データで完全には再現できない点を報告する</h3>
+
+<ul>
+<li>治療割り付けは無作為ではない</li>
+<li>測定されていない治療選択理由がある</li>
+<li>診断日と治療方針決定日の記録精度が異なる</li>
+<li>経過観察の間隔が患者ごとに違う</li>
+<li>アウトカム判定が治療群を知った状態で行われる</li>
+</ul>
+
+<div class="callout good">
+Target trial emulationは、観察研究をRCTへ変える方法ではありません。
+RCTとの違いと、必要な仮定を明確にする方法です。
+</div>
+
+
+<div class="chapter-references" aria-labelledby="ch3-references-title">
+<h3 id="ch3-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r2" value="2">
+<strong>Cashin AG, et al. Transparent reporting of observational studies emulating a target trial: the TARGET Statement. BMJ. 2025;390:e087179.</strong><br>
+<a href="https://www.bmj.com/content/390/bmj-2025-087179" target="_blank" rel="noopener">
+https://www.bmj.com/content/390/bmj-2025-087179
+</a><br>
+DOI:
+<a href="https://doi.org/10.1136/bmj-2025-087179" target="_blank" rel="noopener">
+https://doi.org/10.1136/bmj-2025-087179
+</a>
+</li>
+
+<li id="r8" value="8">
+<strong>Fu EL, et al. Target trial emulation to improve causal inference from observational data: what, why, and how?</strong><br>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10400102/" target="_blank" rel="noopener">
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10400102/
+</a>
+</li>
+
+<li id="r18" value="18">
+<strong>Hernán MA, Robins JM. Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available. American Journal of Epidemiology. 2016.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/26994063/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/26994063/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1093/aje/kwv254" target="_blank" rel="noopener">
+https://doi.org/10.1093/aje/kwv254
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch2">← 前：Estimand</a>
+<a href="#ch4">次：Time zero →</a>
+</div>
+</section>
+
+<section id="ch4">
+<div class="kicker">CHAPTER 4</div>
+<h2>Time zeroをそろえる</h2>
+
+<p>
+因果比較では、次の3つの時点を原則として一致させます。
+</p>
+
+<p>
+具体的には、患者が適格基準を満たした日を起点に、その日に比較する治療戦略を割り当てたものとして、
+同じ日からアウトカムの追跡を始めます。この三つがずれると、患者がまだ治療を受けていない時間を
+治療群へ入れるなど、群間で公平でない生存時間が生じます。
+</p>
+
+<h3>Immortal time bias</h3>
+
+<p>
+診断後90日以内に切除を受けた患者を切除群とし、診断日から追跡する場合、
+切除群に分類されるためには切除日まで生存し、追跡されている必要があります。
+この期間の誤分類は、切除群を見かけ上有利にすることがあります
+<a class="cite" href="#r5">[5]</a>。
+</p>
+
+<div class="timeline" aria-label="immortal timeの時間軸">
+  <span class="point">診断・適格</span>
+  <span class="point">治療待機期間</span>
+  <span class="point">切除開始</span>
+</div>
+
+<div class="callout danger">
+将来の治療情報を使って群を決めながら、その治療より前の時間を治療群の追跡時間へ含めてはいけません。
+</div>
+
+<h3>猶予期間は設定できる</h3>
+
+<p>
+「診断後30日以内に切除を開始する」のような戦略は臨床的に妥当です。
+問題は猶予期間そのものではなく、その期間中の治療開始、死亡、脱落、アウトカムをどう扱うかです。
+</p>
+
+<h3>Clone–censor–weight法</h3>
+
+<ol>
+<li><strong>Clone：</strong>適格患者を、開始時に適合する各戦略へ複製する</li>
+<li><strong>Censor：</strong>戦略から逸脱した複製を人工的に打ち切る</li>
+<li><strong>Weight：</strong>人工的打ち切りで生じる選択を逆確率重みで補正する</li>
+</ol>
+
+<p>
+この三段階は一続きの設計です。各患者を開始時に適合する複数の戦略へ複製し、
+実際の経過がある戦略から外れた時点でその複製を打ち切ります。
+その人工的打ち切りで残る患者が偏らないよう、打ち切られずに残る確率の逆数で重み付けします。
+</p>
+
+<div class="callout warn">
+この方法にも、治療と打ち切りを決める因子が十分測定されていること、
+positivity、正しい重みモデル、時間単位の整合性が必要です。
+複製された記録の非独立性も標準誤差で考慮します。
+</div>
+
+<h3>ランドマーク解析との違い</h3>
+
+<p>
+ランドマーク解析では、あらかじめ決めた時点まで生存・追跡された患者を対象に、
+その時点での情報から群を定義して以後を比較します。分かりやすい一方、
+ランドマーク前の早期イベントは対象外となり、推定対象も変わります。
+</p>
+
+
+<div class="chapter-references" aria-labelledby="ch4-references-title">
+<h3 id="ch4-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r5" value="5">
+<strong>Suissa S. Immortal time bias in pharmacoepidemiology. American Journal of Epidemiology.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/17252614/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/17252614/
+</a>
+</li>
+
+<li id="r17" value="17">
+<strong>Hernán MA, Sauer BC, Hernández-Díaz S, Platt R, Shrier I. Specifying a target trial prevents immortal time bias and other self-inflicted injuries in observational analyses. Journal of Clinical Epidemiology. 2016.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/27237061/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/27237061/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1016/j.jclinepi.2016.04.014" target="_blank" rel="noopener">
+https://doi.org/10.1016/j.jclinepi.2016.04.014
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch3">← 前：Target trial</a>
+<a href="#ch5">次：DAG →</a>
+</div>
+</section>
+
+<section id="ch5">
+<div class="kicker">CHAPTER 5</div>
+<h2>DAGで時間と因果方向を明示する</h2>
+
+<p>
+DAG（Directed Acyclic Graph：有向非巡回グラフ）は、変数間に想定する因果関係を矢印で表した図です
+<a class="cite" href="#r3">[3]</a>。無料の
+<a href="https://www.dagitty.net/" target="_blank" rel="noopener">DAGitty</a>
+でも作成できます<a class="cite" href="#r4">[4]</a>。
+</p>
+<p>
+DAGは、システマティックレビューで評価者間の客観性を形式的に担保するためのチェック表とは目的が異なります。
+観察データから因果効果を推定しようとする研究者が、治療が選ばれる過程とアウトカムが生じる過程を
+解析前に考え、図として明示するための基本的な研究設計です。
+因果関係を頭の中だけに置いたまま多変量解析を始めるのでは、
+何を交絡因子と考え、なぜ調整したのかを説明できません。
+</p>
+<p>
+これは高度な専門家だけが追加で行う作業ではありません。因果研究を行うなら、
+研究者として当然求められる初歩です。少なくとも、主要な変数がいつ測定され、
+何が治療選択を決め、何がアウトカムへ影響し、どの変数が治療後に生じるのかを矢印で検討します。
+DAGを描かずに解析へ進めば、研究の基礎となる因果構造を検討していないと批判されても仕方がありません。
+</p>
+<div class="callout info">
+DAGは相関データから自動生成する図ではありません。臨床知識、患者の診療経路、既存文献、
+測定時点に基づく因果仮説です。図を描く目的は「正しさを証明すること」ではなく、
+研究者の仮定を見える形にし、共同研究者や読者が矢印の妥当性を批判できるようにすることです。
+</div>
+
+<h3>まず、交絡を一つの図で理解する</h3>
+<figure class="causal-figure">
+<svg viewBox="0 0 620 285" role="img" aria-labelledby="ch5-title ch5-desc">
+  <title id="ch5-title">治療選択に伴う交絡のDAG</title>
+  <desc id="ch5-desc">共通原因Uが治療選択AとアウトカムYの両方へ影響し、治療AもアウトカムYへ影響する因果図</desc>
+  <defs>
+    <marker id="ch5-red-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ae2d3d"></path>
+    </marker>
+    <marker id="ch5-blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#176daf"></path>
+    </marker>
+  </defs>
+  <circle class="causal-node causal-node-u" cx="310" cy="65" r="46"></circle>
+  <text class="causal-letter" x="310" y="79" text-anchor="middle">U</text>
+  <circle class="causal-node" cx="135" cy="224" r="46"></circle>
+  <text class="causal-letter" x="135" y="238" text-anchor="middle">A</text>
+  <circle class="causal-node" cx="485" cy="224" r="46"></circle>
+  <text class="causal-letter" x="485" y="238" text-anchor="middle">Y</text>
+  <path class="causal-arrow confounding" d="M276 97 L169 188" marker-end="url(#ch5-red-arrow)"></path>
+  <path class="causal-arrow confounding" d="M344 97 L451 188" marker-end="url(#ch5-red-arrow)"></path>
+  <path class="causal-arrow treatment" d="M187 224 L427 224" marker-end="url(#ch5-blue-arrow)"></path>
+</svg>
+<ul class="causal-legend">
+  <li><strong>U：</strong>重症度、患者の希望、医師判断など、治療選択と転帰の共通原因</li>
+  <li><strong>A：</strong>治療Aまたは治療Bという実際の治療選択</li>
+  <li><strong>Y：</strong>死亡、再発、合併症などのアウトカム</li>
+</ul>
+<figcaption>赤い矢印が作るA←U→Yは交絡経路です。青い矢印A→Yとして知りたい治療効果に、この別経路の関連が混ざります。</figcaption>
+</figure>
+<p>
+例えばUに含まれる重症度が高いほど治療Aが選ばれ、同時に死亡リスクも高いとします。
+このとき、観察されたAとYの関連には、治療AからYへの効果だけでなく、
+A←U→Yという治療へ後ろ向きに入る経路が混ざります。
+Uを治療前に十分な精度で測定し、適切に調整できれば、このバックドア経路を閉じる候補になります。
+</p>
+
+<h3>変数の役割は、名称ではなく矢印で決まる</h3>
+<p>
+<strong>交絡因子</strong>は、Uのように治療AとアウトカムYの共通原因です。
+一方、<strong>予後因子</strong>はYを予測してもAを生じさせる原因ではない場合があり、
+精度向上には役立っても、必ずしも交絡調整に必要とは限りません。
+</p>
+<p id="postvar">
+<strong>媒介因子</strong>は、治療後所見Mのように、Aの影響を受けてYへ影響する変数です。
+因果方向はA→M→Yです。総治療効果を知りたいモデルへMを入れると、
+治療効果を伝える経路の一部を取り除く可能性があります。
+</p>
+<p>
+<strong>コライダー</strong>は、二つの矢印がぶつかる変数です。
+治療Aと病変変化Uの両方が再検査Cを生じさせるなら、構造はA→C←Uです。
+再検査を受けた患者だけに限定したりCを調整したりすると、
+閉じていたAとUの関連を新たに作り、選択バイアスを生じさせることがあります。
+</p>
+<p>
+<strong>操作変数候補</strong>Zは治療Aへ影響し、アウトカムYへはAを介してのみ影響することなど、
+通常の交絡調整とは異なる強い仮定を必要とします。
+単に施設差や医師の好みと呼べる変数があれば成立するわけではありません。
+</p>
+
+<h3>実際にDAGを作る手順</h3>
+<p>
+まず臨床家が、治療を選ぶ理由、予後を左右する状態、検査や紹介が行われる理由を挙げます。
+次に各変数の測定時点を確認し、治療前、治療時、治療後へ並べます。
+その後、文献と診療過程に照らして、原因から結果へ矢印を引きます。
+最後に、AとYの間にある全経路を確認し、閉じるべきバックドア経路と、
+閉じたままにすべき媒介・コライダー経路を区別します。
+</p>
+<p>
+非常に優れた専門家でも、頭の中の判断は他者が点検できません。
+DAGとして示せば、矢印の根拠、欠けている変数、代替DAGを共同で議論できます。
+ただし、DAGを描いた事実が正しい因果関係を保証するわけではありません。
+誤った知識から作ったDAGには誤った矢印が入るため、複数の合理的なDAGによる感度分析も検討します。
+</p>
+
+
+<div class="chapter-references" aria-labelledby="ch5-references-title">
+<h3 id="ch5-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r3" value="3">
+<strong>Williamson EJ, et al. Introduction to causal diagrams for confounder selection. Respirology. 2014;19:303–311.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/24447391/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/24447391/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1111/resp.12238" target="_blank" rel="noopener">
+https://doi.org/10.1111/resp.12238
+</a>
+</li>
+
+<li id="r4" value="4">
+<strong>DAGitty: graphical analysis of structural causal models.</strong><br>
+ブラウザ上でDAGを作成し、調整集合や経路を検討できる無料ツール。<br>
+<a href="https://www.dagitty.net/" target="_blank" rel="noopener">
+https://www.dagitty.net/
+</a>
+</li>
+
+<li id="r19" value="19">
+<strong>Textor J, van der Zander B, Gilthorpe MS, Liśkiewicz M, Ellison GTH. Robust causal inference using directed acyclic graphs: the R package dagitty. International Journal of Epidemiology. 2016.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/28089956/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/28089956/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1093/ije/dyw341" target="_blank" rel="noopener">
+https://doi.org/10.1093/ije/dyw341
+</a>
+</li>
+
+<li id="r22" value="22">
+<strong>井上浩輔、杉山雄大、後藤温．因果推論にDAGを活用する．週刊医学界新聞 第3423号．2021.</strong><br>
+DAGで因果仮説を可視化し、交絡因子、媒介因子、コライダーと調整の考え方を解説。<br>
+<a href="https://www.igaku-shoin.co.jp/paper/archive/y2021/3423_06" target="_blank" rel="noopener">
+https://www.igaku-shoin.co.jp/paper/archive/y2021/3423_06
+</a>
+</li>
+
+<li id="r23" value="23">
+<strong>井上浩輔、杉山雄大、後藤温．医学研究のための因果推論レクチャー．医学書院．2024.</strong><br>
+反実仮想、DAG、交絡、選択バイアス、時間依存性交絡などを臨床研究の流れに沿って解説する教科書。<br>
+<a href="https://www.igaku-shoin.co.jp/book/detail/112204" target="_blank" rel="noopener">
+https://www.igaku-shoin.co.jp/book/detail/112204
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch4">← 前：Time zero</a>
+<a href="#ch6">次：設計で交絡を減らす →</a>
+</div>
+</section>
+
+<section id="ch6">
+<div class="kicker">CHAPTER 6</div>
+<h2>統計モデルより前に、比較可能な患者を設計する</h2>
+
+<h3>Active-comparator new-user design</h3>
+
+<p>
+無治療者と治療者を比較するより、同じ治療適応を持ち、
+同じ時点で現実的な代替治療を開始した患者同士を比較します。
+</p>
+
+<p>
+例えば、同じ適応で治療開始を検討された患者のうち、同じ時点で治療Aを新規開始した患者と
+治療Bを新規開始した患者を比較します。「治療を受けた患者」と
+「治療を受ける必要がなかった患者」を比べるより、治療選択に至る背景を近づけやすくなります。
+</p>
+
+<p>
+この設計により、治療適応、重症度、医療アクセス、
+治療を希望する傾向などの差を小さくできる可能性があります。
+ただし、未測定交絡がなくなるわけではありません。
+</p>
+
+<h3>Prevalent-user bias</h3>
+
+<p>
+すでに治療を長期間継続している患者は、治療開始直後に副作用や無効で中止した患者を含みません。
+新規開始者と長期継続者を混在させると、治療開始直後のリスクを評価できず、
+治療に耐えた患者が選択される可能性があります。
+</p>
+
+<h3>その他の設計段階の工夫</h3>
+
+<p>
+<strong>Restriction</strong>では、両治療が現実に選べる患者へ対象を限定して比較可能性を高めます。
+その代わり、結果を一般化できる患者集団は狭くなります。
+</p>
+<p>
+<strong>Washout期間</strong>を設けると新規使用者を定義できますが、
+その期間の治療記録が完全でなければ、既使用者を新規使用者と誤分類します。
+両群で同じbaseline期間を使い、同じ機会に共変量を測定することも必要です。
+</p>
+<p>
+アウトカムの確認方法も群間でそろえます。検査頻度や検査適応が異なれば、
+真の発生率ではなく発見されやすさを比較することになります。
+一人に複数病変がある、患者が施設に属するなどの階層構造があれば、
+すべてを独立した観測として扱わず、解析と標準誤差で考慮します。
+</p>
+
+<div class="callout danger">
+再生検を受けた患者だけに対象を限定すると、
+治療、症状、病変変化、医師判断に影響された選択を条件にする可能性があります。
+</div>
+
+<div class="chapter-nav">
+<a href="#ch5">← 前：DAG</a>
+<a href="#ch7">次：変数選択 →</a>
+</div>
+</section>
+
+<section id="ch7">
+<div class="kicker">CHAPTER 7</div>
+<h2>単変量解析とステップワイズ法で交絡因子を選ばない</h2>
+
+<h3>未調整解析の提示と変数選択は別問題</h3>
+
+<p>
+単変量解析は、各変数とアウトカムの未調整の関連を記述できます。
+未調整効果と調整後効果を透明に示すことにも意味があります。
+しかし、単変量解析のP値を、多変量モデルへ入るための選抜試験として使ってはいけません。
+</p>
+
+<div class="formula">
+「単変量解析で有意」 ≠ 「因果効果の推定で調整すべき変数」
+</div>
+
+<p>
+単変量解析で有意でない理由は、交絡因子ではないからとは限りません。
+標本数不足、非線形関係、交互作用、測定誤差などでも有意にならないことがあります。
+</p>
+
+<h3>なぜP値で交絡因子を決められないのか</h3>
+
+<ul>
+<li>交絡は変数単独のアウトカムとの関連ではなく、因果構造で決まる</li>
+<li>弱い関連でも、治療選択とアウトカムの双方へ関係すれば重要な場合がある</li>
+<li>治療後変数やコライダーが有意になることもある</li>
+<li>標本ごとの偶然で選択結果が変わる</li>
+<li>非線形性や交互作用を単純なP値が捉えないことがある</li>
+</ul>
+
+<h3>ステップワイズ法の問題</h3>
+
+<ul>
+<li>標本が少し変わるだけで残る変数が変わる</li>
+<li>係数やP値が選択過程を反映せず、過度に楽観的になる</li>
+<li>因果的に必要な交絡因子が除外される</li>
+<li>媒介因子やコライダーが選択されることがある</li>
+<li>研究者が本当に推定したい効果とは無関係にモデルが決まる</li>
+</ul>
+
+<div class="callout warn">
+ステップワイズ法が「客観的」に見えるのは、
+コンピュータが一定の規則で変数を選ぶからです。
+しかし、その規則は因果関係を理解していません。
+</div>
+
+<h3>現在の基本手順</h3>
+
+<p>
+現在の基本手順は、まずestimandを文章で定め、その患者と比較戦略に対応する時間軸を作ることです。
+次にDAGで治療とアウトカムの共通原因を特定し、閉じるべき経路に必要な調整集合を決めます。
+変数を選んだ後で、連続変数の非線形性や臨床的に妥当な交互作用など、
+モデル内で各変数をどの形で表すかを検討します。
+</p>
+
+<h3>回帰モデルを使うときの統計学的注意</h3>
+
+<ul>
+<li>連続変数を医学的根拠なく二値化しない</li>
+<li>スプラインなどで非線形性を検討する</li>
+<li>事前に妥当な交互作用を定める</li>
+<li>イベント数、パラメータ数、過適合を考慮する</li>
+<li>施設、患者、病変のクラスタリングを考慮する</li>
+<li>オッズ比をリスク比として説明しない</li>
+<li>モデル適合度と因果的妥当性を混同しない</li>
+</ul>
+
+<h3>線形回帰とロジスティック回帰は目的変数が違う</h3>
+
+<p>
+モデル名を選ぶ前に、アウトカムが何で、最終的にどの効果を患者へ説明したいかを確認します。
+例えば血圧のような連続値を扱う<strong>線形回帰</strong>は、
+他の変数を一定とした条件付き平均の差を推定します。
+</p>
+<p>
+悪性化したかどうかの二値アウトカムに<strong>ロジスティック回帰</strong>を使うと、
+モデルの治療係数は条件付きオッズ比です。これはリスク比やリスク差ではありません。
+患者1000人当たり何人変わるかを知りたいなら、各患者について両治療下の確率を予測して平均する
+標準化などを用い、求める絶対リスクとリスク差へ変換します。
+</p>
+<p>
+二値アウトカムや発生率には、仮定とデータに応じて<strong>Poisson回帰</strong>や
+<strong>log-binomial回帰</strong>を使い、リスク比または率比を推定することがあります。
+イベントまでの時間には<strong>Cox回帰</strong>がよく使われますが、
+治療係数は比例ハザードを仮定した条件付きハザード比であり、
+固定時点の生存割合や絶対リスク差そのものではありません。
+</p>
+<p>
+したがって、「二値だからロジスティック」「生存時間だからCox」で作業を終えず、
+そのモデルがestimandに対応するか、必要なら標準化して臨床的な尺度へ変換できるかを確認します。
+</p>
+
+<p>
+アウトカムの型に合うモデルを選ぶだけでも不十分です。
+求める効果尺度がリスク差なら、ロジスティック回帰の係数をそのまま示すのではなく、
+標準化してリスク差を推定するなど、estimandに合わせます。
+</p>
+
+<div class="chapter-nav">
+<a href="#ch6">← 前：研究デザイン</a>
+<a href="#ch8">次：推定方法 →</a>
+</div>
+</section>
+
+<section id="ch8">
+<div class="kicker">CHAPTER 8</div>
+<h2>ベースライン交絡を調整する主な推定方法</h2>
+
+<p>
+ベースライン交絡の調整法は、ボタンのように一つを選べばよいものではありません。
+<strong>Outcome regression</strong>は、アウトカムYを治療Aと治療前因子Lでモデル化します。
+非線形性、交互作用、モデル誤指定を検討し、必要なら各患者の両治療下の結果を予測して平均する
+<strong>標準化</strong>により、集団のリスク差やリスク比を求めます。
+</p>
+<p>
+<strong>傾向スコアマッチング</strong>は、測定したLのもとで治療を受ける確率が近い患者を比べます。
+マッチされなかった患者を除くため、最終的な対象集団が変わることに注意します。
+<strong>IPTW</strong>は実際に受けた治療の逆確率で重み付けし、
+測定済み交絡因子が均衡した疑似母集団を作りますが、極端な重みとpositivityを診断する必要があります。
+</p>
+<p>
+<strong>Overlap weighting</strong>は、両治療が選ばれ得る患者を重視するため、
+推定対象はoverlap集団へ変わります。<strong>AIPW</strong>や<strong>TMLE</strong>は、
+アウトカムモデルと治療モデルを組み合わせる二重ロバスト推定ですが、
+未測定交絡を解決する方法ではありません。TMLEではtarget parameterに向けて初期推定を更新し、
+実装、positivity、cross-fittingなども適切に扱います。
+</p>
+
+<h3>標準化</h3>
+
+<ol>
+<li>アウトカムを治療Aと交絡因子Lでモデル化する</li>
+<li>全患者が治療A=1を受けた場合の予測値を求める</li>
+<li>全患者が治療A=0を受けた場合の予測値を求める</li>
+<li>それぞれを平均し、リスク差やリスク比を計算する</li>
+</ol>
+
+<div class="formula">
+Risk₁ = n⁻¹ Σ Ŷᵢ(A=1,Lᵢ)<br>
+Risk₀ = n⁻¹ Σ Ŷᵢ(A=0,Lᵢ)<br>
+Risk difference = Risk₁ − Risk₀
+</div>
+
+<h3>傾向スコア</h3>
+
+<div class="formula">e(L) = P(A=1｜L)</div>
+
+<p>
+傾向スコアは、測定された治療前変数Lのもとで治療を受ける確率です。
+アウトカムを予測するスコアではありません。
+</p>
+
+<h3>IPTW</h3>
+
+<div class="formula">
+ATE weight = A/e(L) + (1−A)/{1−e(L)}
+</div>
+
+<p>
+治療を受けにくかったのに治療を受けた患者や、
+治療を受けやすかったのに受けなかった患者へ大きな重みを与え、
+測定された交絡因子が治療群間で均衡した疑似母集団を作ります。
+</p>
+
+<div class="callout danger">
+傾向スコアは、未測定交絡、immortal time bias、治療後変数、
+測定誤差、検出バイアス、不明確な介入定義を自動的に解決しません。
+</div>
+
+<h3 id="psdiag">傾向スコア使用後の診断</h3>
+
+<ul>
+<li>各共変量の標準化平均差（SMD）</li>
+<li>平均だけでなく分布、分散、極端値</li>
+<li>治療群別の傾向スコア分布</li>
+<li>マッチされなかった患者の数と特徴</li>
+<li>重みの平均、標準偏差、最小、最大、パーセンタイル</li>
+<li>重み付け後のeffective sample size</li>
+<li>マッチングや重み付け構造に対応した標準誤差</li>
+</ul>
+
+<div class="formula">
+SMD = (平均₁ − 平均₀) ÷ pooled SD<br>
+ESS ≈ (Σwᵢ)² ÷ Σwᵢ²
+</div>
+
+<p>
+|SMD|＜0.1はしばしば目安に使われますが、機械的な合格基準ではありません。
+重要変数の残存差、分布全体、臨床的な差も確認します
+<a class="cite" href="#r6">[6]</a>。
+</p>
+
+<h3 id="positivity">Positivity</h3>
+
+<p>
+調整変数Lの各組合せにおいて、比較する両治療を受ける可能性が必要です。
+</p>
+
+<div class="formula">0 ＜ P(A=a｜L=l) ＜ 1</div>
+
+<ul>
+<li><strong>構造的違反：</strong>禁忌などにより一方の治療が絶対に行われない</li>
+<li><strong>実務的違反：</strong>理論上は可能だが、データ内ではほぼ一方しかいない</li>
+</ul>
+
+<p>
+トリミング、対象制限、overlap weightingは選択肢ですが、
+推定対象集団が変わることを明示します
+<a class="cite" href="#r9">[9]</a>。
+</p>
+
+<h3>二重ロバスト推定</h3>
+
+<p>
+AIPWやTMLEは、一定条件下で、アウトカムモデルまたは治療モデルの
+どちらか一方が正しく特定されていれば一貫性を持つ性質があります。
+ただし、両モデルに同じ重要な未測定交絡因子が欠けていれば解決しません。
+</p>
+
+
+<div class="chapter-references" aria-labelledby="ch8-references-title">
+<h3 id="ch8-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r6" value="6">
+<strong>Austin PC. Balance diagnostics for comparing the distribution of baseline covariates between treatment groups in propensity-score matched samples. Statistics in Medicine. 2009.</strong><br>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3472075/" target="_blank" rel="noopener">
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3472075/
+</a><br>
+PubMed:
+<a href="https://pubmed.ncbi.nlm.nih.gov/19757444/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/19757444/
+</a>
+</li>
+
+<li id="r9" value="9">
+<strong>Zhu Y, et al. Violations of the positivity assumption in the causal analysis of observational data.</strong><br>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8492528/" target="_blank" rel="noopener">
+https://pmc.ncbi.nlm.nih.gov/articles/PMC8492528/
+</a>
+</li>
+
+<li id="r21" value="21">
+<strong>Shiba K, Kawahara T. Using Propensity Scores for Causal Inference: Pitfalls and Tips. Journal of Epidemiology. 2021;31:457–463.</strong><br>
+Estimand、識別条件、推定という三段階と、傾向スコアを使う際の診断・対象集団の変化を整理した解説。<br>
+<a href="https://doi.org/10.2188/jea.JE20210145" target="_blank" rel="noopener">
+https://doi.org/10.2188/jea.JE20210145
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch7">← 前：変数選択</a>
+<a href="#ch9">次：仮定と診断 →</a>
+</div>
+</section>
+
+<section id="ch9">
+<div class="kicker">CHAPTER 9</div>
+<h2>識別仮定とモデル診断</h2>
+
+<h3>交換可能性</h3>
+
+<div class="formula">Y(a) ⫫ A ｜ L</div>
+
+<p>
+測定されたLで条件付ければ、治療群と対照群の反実仮想アウトカムが交換可能になるという仮定です。
+簡単に言えば、Lをそろえた患者では治療選択が「無作為に近い」とみなせる必要があります。
+これはデータだけでは証明できません。
+</p>
+
+<h3>Consistency</h3>
+
+<p>
+患者が実際に受けた治療A=aの結果は、その治療戦略aの反実仮想結果Y(a)と一致するという仮定です。
+「切除」の内容が患者ごとに大きく異なる場合、この仮定が曖昧になります。
+</p>
+
+<h3>No interference</h3>
+
+<p>
+ある患者の治療が、別の患者のアウトカムへ影響しないという仮定です。
+感染症、施設レベル介入、医療資源の競合などでは成立しない可能性があります。
+</p>
+
+<h3>モデル診断</h3>
+
+<ul>
+<li>線形性・非線形性</li>
+<li>交互作用</li>
+<li>外れ値・高影響点</li>
+<li>予測範囲と外挿</li>
+<li>過適合</li>
+<li>クラスタリング</li>
+<li>標準誤差の推定方法</li>
+<li>Coxモデルなら比例ハザード性</li>
+</ul>
+
+<div class="callout warn">
+予測性能が高いモデルであっても、因果的に必要な変数が欠けていたり、
+治療後変数やコライダーを調整していたりすれば、因果効果推定として妥当とは限りません。
+</div>
+
+<h3>感度分析は「都合のよい結果探し」ではない</h3>
+
+<p>
+感度分析では、合理的な別の仮定や仕様で結論がどの程度変わるかを評価します。
+主要解析を事前に定め、次の結果を一貫して報告します。
+</p>
+
+<ul>
+<li>別の合理的なDAG・調整集合</li>
+<li>異なる関数形</li>
+<li>トリミング閾値</li>
+<li>アウトカム定義</li>
+<li>猶予期間やlag period</li>
+<li>欠測データの仮定</li>
+<li>未測定交絡に対する定量的評価</li>
+</ul>
+
+<div class="chapter-nav">
+<a href="#ch8">← 前：推定方法</a>
+<a href="#ch10">次：g-methods →</a>
+</div>
+</section>
+
+<section id="ch10">
+<div class="kicker">CHAPTER 10</div>
+<h2>状態と治療が時間とともに変わる場合のg-methods</h2>
+
+<p>
+患者の状態が悪化すると治療が変更され、その状態自体が過去の治療にも影響されている場合、
+通常の時間依存回帰調整だけでは扱いにくい構造が生じます。
+</p>
+
+<p>
+具体例を考えます。初回治療A<sub>0</sub>が、その後の病変状態L<sub>1</sub>を変えます。
+L<sub>1</sub>は次の治療A<sub>1</sub>を決めると同時に、最終結果Yにも影響します。
+したがってL<sub>1</sub>はA<sub>1</sub>とYの交絡因子ですが、
+過去の治療A<sub>0</sub>の結果でもあります。この二つの役割を同時に持つことが、
+通常の回帰調整だけでは扱いにくい理由です。
+</p>
+
+<p>
+現在の病変状態は、次の治療と最終結果の共通原因なので調整したくなります。
+しかし、過去の治療効果を伝える変数でもあるため、通常の回帰で調整すると、
+過去の治療効果の一部を消す可能性があります。
+</p>
+
+<h3>時間順に因果関係を読む</h3>
+<p>
+時点0の状態L<sub>0</sub>を踏まえて初回治療A<sub>0</sub>が選ばれ、
+A<sub>0</sub>とL<sub>0</sub>の影響を受けて時点1の状態L<sub>1</sub>が生じます。
+そのL<sub>1</sub>を見て次の治療A<sub>1</sub>が選ばれ、これらが最終結果Yへつながります。
+研究計画では、この順序と矢印を一枚のDAGに描いて検討します。
+本文では記号の列だけを示すのではなく、各時点で何を測定し、次の治療を誰が何に基づいて決めたかを記述することが重要です。
+</p>
+
+<h3>Parametric g-formula</h3>
+
+<ol>
+<li>各時点の状態とアウトカムを過去の治療・状態からモデル化する</li>
+<li>比較したい治療戦略を全患者へ仮想的に適用する</li>
+<li>時間経過を順にシミュレーションする</li>
+<li>戦略ごとの平均アウトカムを比較する</li>
+</ol>
+
+<p>
+例えば、次の動的治療戦略を比較できます。
+</p>
+
+<ul>
+<li>診断後直ちに切除する</li>
+<li>構造化経過観察を継続する</li>
+<li>病変サイズが基準を超えた時点で切除する</li>
+<li>病理所見が基準を満たした時点で切除する</li>
+</ul>
+
+<h3>Marginal Structural Model：MSM</h3>
+
+<p>
+各時点で実際に受けた治療の条件付き確率から重みを作り、
+過去の測定された交絡因子と治療との関連を重み付けで切断した疑似母集団を作ります
+<a class="cite" href="#r7">[7]</a>。
+</p>
+
+<div class="formula">
+Treatment weight =
+Πₜ P(Aₜ｜Āₜ₋₁) ÷ P(Aₜ｜Āₜ₋₁,L̄ₜ)
+</div>
+
+<p>
+追跡脱落や戦略逸脱が情報依存なら、治療重みに加えて
+inverse probability of censoring weightを組み合わせます。
+</p>
+
+<h3>MSMの必須診断</h3>
+
+<ul>
+<li>時点ごとの治療確率と重み分布</li>
+<li>極端な重み</li>
+<li>重みの平均とパーセンタイル</li>
+<li>重み付け後の共変量バランス</li>
+<li>effective sample size</li>
+<li>positivity</li>
+<li>重みモデルの関数形</li>
+<li>重み切り詰め前後の感度分析</li>
+</ul>
+
+<h3>Structural Nested Model</h3>
+
+<p>
+Structural nested modelとg-estimationは、治療を開始・変更した時点における
+治療効果を構造的にモデル化する別のg-methodです。強力ですが、
+estimandとモデル仮定を明確にし、専門家と共同で実装する必要があります。
+</p>
+
+<div class="callout danger">
+g-methodsは、未測定交絡を消す魔法ではありません。
+各時点で治療とアウトカムを決める十分な情報が測定され、
+測定時点が正確で、治療戦略に十分な重なりがある必要があります。
+</div>
+
+<div class="callout good">
+最も複雑な方法を使うことが目的ではありません。
+因果的な問いとデータ生成過程に合う、最も単純で透明な方法を選びます。
+</div>
+
+
+<div class="chapter-references" aria-labelledby="ch10-references-title">
+<h3 id="ch10-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r7" value="7">
+<strong>Robins JM, Hernán MA, Brumback B. Marginal structural models and causal inference in epidemiology. Epidemiology. 2000;11:550–560.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/10955408/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/10955408/
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch9">← 前：仮定と診断</a>
+<a href="#ch11">次：生存時間解析 →</a>
+</div>
+</section>
+
+<!-- 第2部終了：第3部をこの直後へ連結 -->
+
+<section id="ch11">
+<div class="kicker">CHAPTER 11</div>
+<h2>生存時間解析を正しく設計・解釈する</h2>
+
+<p>
+悪性化、再発、死亡など、イベントまでの時間を扱う研究では、
+単にイベントの有無を比較するだけでなく、追跡期間と打ち切りを考慮します。
+</p>
+
+<h3>最初に定義すべき項目</h3>
+
+<ul>
+<li>追跡を開始する時点</li>
+<li>イベントの定義</li>
+<li>追跡終了日</li>
+<li>打ち切りの定義</li>
+<li>競合イベント</li>
+<li>固定時点のリスク</li>
+<li>評価する時間範囲</li>
+</ul>
+
+<h3>Kaplan–Meier法</h3>
+
+<p>
+Kaplan–Meier法は、イベント発生時点ごとの条件付き生存確率を積み重ねます。
+</p>
+
+<div class="formula">
+Ŝ(t) = Πₜⱼ≤t {1 − dⱼ/nⱼ}
+</div>
+
+<p>
+ここで、d<sub>j</sub>は時点t<sub>j</sub>のイベント数、
+n<sub>j</sub>はその直前のリスク集合です。
+</p>
+
+<div class="callout warn">
+Kaplan–Meier曲線を描いたこと自体は、群分け、time zero、
+打ち切り、競合リスクが適切であることの証明にはなりません。
+</div>
+
+<h3 id="postkm">治療後の結果で群を分け、診断時まで遡らない</h3>
+
+<p>
+治療反応、追加治療、再生検、治療後病理など、追跡開始後に判明した情報で患者を分類し、
+診断時からKaplan–Meier曲線を描くと、将来情報で過去の所属群を決めることになります。
+</p>
+
+<div class="timeline" aria-label="事後情報を使った誤った群分け">
+  <span class="point">診断<br>追跡開始</span>
+  <span class="point">治療反応を判定<br>ここで群が決まる</span>
+  <span class="point">最終結果</span>
+</div>
+
+<p>
+診断時から反応群と非反応群を比較する代わりに、問いに応じて三つの方法を検討します。
+ランドマーク解析は、決めた時点まで生存し評価できた患者のその後を比べます。
+時間依存曝露は、反応や治療が生じる前後で患者の追跡時間を分けます。
+Multi-state modelは、診断、反応、再発、死亡などの状態間の移行を扱います。
+</p>
+
+<h3>ランドマーク解析</h3>
+
+<p>
+事前にランドマーク時点を定め、その時点まで生存・追跡された患者を、
+その時点で利用可能な情報によって分類し、以後のアウトカムを比較します。
+</p>
+
+<div class="callout info">
+ランドマーク解析が答えるのは、
+「ランドマーク時点まで生存し、評価可能だった患者における、その後の予後」です。
+診断時点の全患者に対する効果とは異なります。
+</div>
+
+<h3>時間依存曝露</h3>
+
+<p>
+追加治療のように経過中に状態が変わる場合、治療前の時間を非治療として、
+治療後の時間を治療として扱う方法があります。ただし、治療変更を決める患者状態が
+過去の治療にも影響されているなら、通常の時間依存Cox回帰だけでは不十分なことがあります。
+</p>
+
+<h3>Cox比例ハザードモデル</h3>
+
+<div class="formula">
+h(t｜A,L) = h₀(t) exp(β₁A + β₂L + …)
+</div>
+
+<p>
+Coxモデルの治療係数は、他の変数を一定とした条件付きハザード比です。
+ハザードは瞬間的なイベント発生率であり、累積リスクそのものではありません。
+</p>
+
+<ul>
+<li>比例ハザード性をSchoenfeld残差や時間交互作用で確認する</li>
+<li>比例ハザード性が成立しない場合は時間別効果を検討する</li>
+<li>ハザード比だけでなく固定時点リスクを示す</li>
+<li>絶対リスク差と信頼区間を示す</li>
+<li>リスク集合の構成が時間とともに変わることに注意する</li>
+</ul>
+
+<h3>固定時点リスク</h3>
+
+<p>
+臨床的には、次のような表現が理解しやすいことがあります。
+</p>
+
+<div class="callout good">
+5年悪性化リスクは、切除戦略で8%、経過観察戦略で12%だった。<br>
+5年リスク差は−4パーセントポイントだった。
+</div>
+
+<p>
+ただし、これらは適切な標準化または重み付けを行い、
+推定対象集団と仮定を明示したうえで解釈します。
+</p>
+
+<h3>Restricted Mean Survival Time：RMST</h3>
+
+<div class="formula">
+RMST(τ) = ∫₀ᵗ S(u)du
+</div>
+
+<p>
+RMSTは、時点τまでの平均イベントなし時間です。
+比例ハザード性に依存せず、「5年間で平均何か月イベントなし期間が延びたか」
+という形で表現できます
+<a class="cite" href="#r10">[10]</a>。
+</p>
+
+<h3>競合リスク</h3>
+
+<p>
+悪性化を評価するとき、悪性化前の死亡は競合イベントです。
+死亡した患者はその後に悪性化を経験できません。
+</p>
+
+<table class="mobile">
+<thead><tr><th>方法</th><th>主な問い</th><th>注意</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="方法">Cause-specific hazard</td>
+<td data-label="問い">現在イベントなしの患者における原因別発生率</td>
+<td data-label="注意">病因的な問いに使われることが多い</td>
+</tr>
+<tr>
+<td data-label="方法">Cumulative incidence</td>
+<td data-label="問い">競合イベントを考慮した実際の累積発生確率</td>
+<td data-label="注意">絶対リスクの提示に重要</td>
+</tr>
+<tr>
+<td data-label="方法">Fine–Gray model</td>
+<td data-label="問い">累積発生関数に対応するsubdistribution hazard</td>
+<td data-label="注意">係数の解釈をcause-specific HRと混同しない</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+死亡を通常の打ち切りとしてKaplan–Meier法を用いると、
+死亡後も悪性化し得るかのような仮想世界に対応し、
+実際の累積発生確率を過大評価する場合があります
+<a class="cite" href="#r11">[11]</a>。
+</p>
+
+<h3>打ち切り</h3>
+
+<p>
+通常の生存解析では、測定された条件のもとで打ち切りがアウトカムと独立であることを仮定します。
+</p>
+
+<div class="formula">
+T ⫫ C ｜ A,L
+</div>
+
+<p>
+重症化した患者ほど転院や脱落が多い場合、この仮定は成立しない可能性があります。
+必要に応じてinverse probability of censoring weightingを検討します。
+</p>
+
+
+<div class="chapter-references" aria-labelledby="ch11-references-title">
+<h3 id="ch11-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r10" value="10">
+<strong>Uno H, et al. Moving beyond the hazard ratio in quantifying the between-group difference in survival analysis. Journal of Clinical Oncology. 2014.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/24297907/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/24297907/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1200/JCO.2013.53.2058" target="_blank" rel="noopener">
+https://doi.org/10.1200/JCO.2013.53.2058
+</a>
+</li>
+
+<li id="r11" value="11">
+<strong>Fine JP, Gray RJ. A proportional hazards model for the subdistribution of a competing risk. Journal of the American Statistical Association. 1999.</strong><br>
+DOI:
+<a href="https://doi.org/10.1080/01621459.1999.10474144" target="_blank" rel="noopener">
+https://doi.org/10.1080/01621459.1999.10474144
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch10">← 前：g-methods</a>
+<a href="#ch12">次：欠測・誤測定・感度分析 →</a>
+</div>
+</section>
+
+<section id="ch12">
+<div class="kicker">CHAPTER 12</div>
+<h2>欠測、測定誤差、未測定交絡を扱う</h2>
+
+<h3>欠測データ</h3>
+
+<p class="missingness-intro">
+欠測とは、単にセルが空欄になっていることではありません。なぜ記録されなかったのかによって、
+完全症例解析や多重代入が妥当になる条件が変わります。まず、欠測を生んだ臨床過程を文章にします。
+検査機器の偶発的な故障なのか、施設や年齢によって検査されにくいのか、
+重症で回答できなかったのかを区別してから、MCAR、MAR、MNARという名前を当てます。
+</p>
+
+<div class="missingness-grid" aria-label="MCAR、MAR、MNARの違い">
+  <article class="missing-card">
+    <h4>MCAR：患者と無関係な偶発</h4>
+    <svg viewBox="0 0 240 120" role="img" aria-label="患者情報と無関係な機器故障で記録が欠ける">
+      <rect x="12" y="35" width="72" height="52" rx="9" fill="#e9f5ff" stroke="#176daf" stroke-width="3"></rect>
+      <text x="48" y="66" text-anchor="middle" font-size="16">患者記録</text>
+      <path d="M91 61 L145 61" stroke="#52667c" stroke-width="3"></path>
+      <rect x="154" y="22" width="70" height="76" rx="9" fill="#fff7df" stroke="#d89c17" stroke-width="3"></rect>
+      <text x="189" y="53" text-anchor="middle" font-size="15">機器故障</text>
+      <text x="189" y="78" text-anchor="middle" font-size="22">×</text>
+    </svg>
+    <p class="mechanism">欠測は患者の観測情報にも真の値にも関係しない。</p>
+    <p>例：無作為な書類紛失、患者状態と無関係な機器故障。</p>
+  </article>
+  <article class="missing-card">
+    <h4>MAR：観測済み情報で説明</h4>
+    <svg viewBox="0 0 240 120" role="img" aria-label="観測済みの年齢や施設が検査欠測に影響する">
+      <rect x="12" y="16" width="82" height="36" rx="8" fill="#e9f5ff" stroke="#176daf" stroke-width="3"></rect>
+      <text x="53" y="40" text-anchor="middle" font-size="15">年齢・施設</text>
+      <path d="M95 38 L154 67" stroke="#176daf" stroke-width="3"></path>
+      <rect x="151" y="52" width="76" height="48" rx="8" fill="#fff7df" stroke="#d89c17" stroke-width="3"></rect>
+      <text x="189" y="82" text-anchor="middle" font-size="15">検査欠測</text>
+    </svg>
+    <p class="mechanism">観測済み情報で条件付ければ、欠測は未観測値と独立と仮定する。</p>
+    <p>例：高齢者や特定施設で検査率が低いが、その情報は記録されている。</p>
+  </article>
+  <article class="missing-card">
+    <h4>MNAR：欠けた値自体と関連</h4>
+    <svg viewBox="0 0 240 120" role="img" aria-label="記録されていない重い症状が回答欠測を生む">
+      <rect x="12" y="16" width="90" height="42" rx="8" fill="var(--redbg)" stroke="#ae2d3d" stroke-width="3"></rect>
+      <text x="57" y="42" text-anchor="middle" font-size="15">重い症状</text>
+      <path d="M103 43 L157 70" stroke="#ae2d3d" stroke-width="3"></path>
+      <rect x="151" y="52" width="76" height="48" rx="8" fill="#fff7df" stroke="#d89c17" stroke-width="3"></rect>
+      <text x="189" y="82" text-anchor="middle" font-size="15">回答欠測</text>
+    </svg>
+    <p class="mechanism">観測済み情報で調整しても、欠測が未観測の真の値に依存する。</p>
+    <p>例：症状が特に重い患者ほど質問票へ回答できない。</p>
+  </article>
+</div>
+
+<p>
+三分類はデータセットの見た目だけで決められません。次の表は定義の要約であり、
+実際の判断には、誰が、いつ、どの理由で測定されなかったかという臨床・運用情報が必要です。
+</p>
+
+<table class="mobile">
+<thead><tr><th>分類</th><th>意味</th><th>例</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="分類">MCAR</td>
+<td data-label="意味">欠測が観測・未観測データと無関係</td>
+<td data-label="例">患者状態と無関係な偶発的記録損失</td>
+</tr>
+<tr>
+<td data-label="分類">MAR</td>
+<td data-label="意味">観測済み情報で条件付ければ欠測が未観測値と独立</td>
+<td data-label="例">年齢や施設により検査欠測率が異なり、その情報は観測済み</td>
+</tr>
+<tr>
+<td data-label="分類">MNAR</td>
+<td data-label="意味">観測済み情報で条件付けても欠測値自体と関連</td>
+<td data-label="例">重い症状を持つ患者ほど回答しない</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="callout warn">
+MARやMNARは、観測データだけから証明できません。
+欠測が発生した臨床過程を考え、感度分析を行います。
+</div>
+
+<h3>完全症例解析の限界</h3>
+
+<p>
+欠測のある患者を除外する完全症例解析は簡単ですが、
+対象患者数が減り、欠測が治療やアウトカムに関係する場合には選択バイアスを生じます。
+</p>
+
+<h3>欠測カテゴリーを作る方法</h3>
+
+<p>
+連続変数やカテゴリー変数の欠測を「不明」という一つのカテゴリーにする方法は、
+欠測者が一つの均質な集団であるかのように扱います。
+交絡調整として一般的に安全な方法ではありません。
+</p>
+
+<h3>多重代入</h3>
+
+<ol>
+<li>欠測値を複数回代入し、m個の完全データを作る</li>
+<li>各データで同じ解析を行う</li>
+<li>推定値と分散をRubinのルールで統合する</li>
+</ol>
+
+<p>代入モデルには、通常次の情報を含めます。</p>
+
+<ul>
+<li>治療</li>
+<li>アウトカム</li>
+<li>解析モデルの交絡因子</li>
+<li>欠測と関係する補助変数</li>
+<li>非線形項と交互作用</li>
+<li>施設や患者内のクラスタリング</li>
+<li>生存時間解析ならイベント指標と追跡時間に関する情報</li>
+</ul>
+
+<div class="callout danger">
+多重代入は、測定されていない交絡因子を新たに作り出す方法ではありません。
+元のデータに十分な情報がなければ、その問題は残ります。
+</div>
+
+<h3>測定誤差と誤分類</h3>
+
+<p>
+値が記録されていても、正しく測られているとは限りません。どの変数が、どの群で、どの時点に、
+どの精度で測られたかを確認します。誤差が両群で同程度か、治療や転帰によって測定機会そのものが違うかで、
+推定への影響は変わります。次の表は、誤差の場所から問題をたどるための整理です。
+</p>
+
+<table class="mobile">
+
+<thead><tr><th>対象</th><th>問題例</th><th>影響</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="対象">治療</td>
+<td data-label="問題例">治療開始日や術式の誤記録</td>
+<td data-label="影響">Time zeroのずれ、曝露誤分類</td>
+</tr>
+<tr>
+<td data-label="対象">交絡因子</td>
+<td data-label="問題例">喫煙量や病変サイズの不正確な記録</td>
+<td data-label="影響">残余交絡</td>
+</tr>
+<tr>
+<td data-label="対象">アウトカム</td>
+<td data-label="問題例">群によって生検頻度が異なる</td>
+<td data-label="影響">差別的誤分類、検出バイアス</td>
+</tr>
+<tr>
+<td data-label="対象">治療後変数</td>
+<td data-label="問題例">治療群だけで病理所見が得られる</td>
+<td data-label="影響">比較不能、選択バイアス</td>
+</tr>
+</tbody>
+</table>
+
+<h3>未測定交絡</h3>
+
+<p>
+口腔病変の治療比較では、次のような変数が十分に測定されていない可能性があります。
+</p>
+
+<ul>
+<li>医師が診察時に感じた悪性らしさ</li>
+<li>患者の治療希望や不安</li>
+<li>微細な画像・病理所見</li>
+<li>治療担当施設の経験</li>
+<li>通院継続能力</li>
+<li>社会経済的状況</li>
+<li>併存疾患の詳細</li>
+</ul>
+
+<h3>E-value</h3>
+
+<p>
+リスク比尺度で、観察された関連を説明するために、
+未測定交絡因子が治療とアウトカムの双方にどの程度強く関連する必要があるかを表す指標です。
+</p>
+
+<div class="formula">
+E-value = RR + √{RR(RR−1)}　（RR≧1の場合）
+</div>
+
+<p>
+E-valueは未測定交絡がないことを証明せず、
+未測定交絡の構造、方向、複数交絡因子、選択バイアス、測定誤差をすべて表すものでもありません
+<a class="cite" href="#r12">[12]</a>。
+</p>
+
+<h3>定量的バイアス分析</h3>
+
+<p>
+未測定交絡因子の有病割合、治療との関連、アウトカムとの関連について
+妥当な範囲を設定し、補正後の効果がどの程度変わるかを計算します。
+確率的バイアス分析では、各パラメータに分布を設定します。
+</p>
+
+<h3>Negative control</h3>
+
+<ul>
+<li><strong>Negative-control outcome：</strong>治療によって影響されないはずだが、同じ交絡構造を持つアウトカム</li>
+<li><strong>Negative-control exposure：</strong>対象アウトカムへ影響しないはずだが、同じ交絡構造を持つ曝露</li>
+</ul>
+
+<p>
+関連が認められれば残余交絡やバイアスを示唆しますが、
+関連がないことだけで主要解析の妥当性が証明されるわけではありません。
+</p>
+
+<h3>MNAR感度分析</h3>
+
+<ul>
+<li>Pattern-mixture model</li>
+<li>Delta adjustment</li>
+<li>欠測患者のアウトカムリスクを一定範囲で変化させる</li>
+<li>Best-case／worst-case analysis</li>
+</ul>
+
+<h3>感度分析の報告表</h3>
+
+<p>
+感度分析は、解析名を並べて「結果は同じだった」と述べるための儀式ではありません。
+仮定をどこまで動かすと結論が変わるのかを示します。解析ごとに対象患者やestimandが変わっていないかを確認できるよう、
+少なくとも次の情報を並べます。
+</p>
+
+<table class="mobile">
+
+<thead><tr><th>解析</th><th>対象数</th><th>Estimand</th><th>推定値</th><th>95%信頼区間</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="解析">主要解析</td>
+<td data-label="対象数">明記</td>
+<td data-label="Estimand">ATE等</td>
+<td data-label="推定値">リスク差等</td>
+<td data-label="95%信頼区間">明記</td>
+</tr>
+<tr>
+<td data-label="解析">別の調整集合</td>
+<td data-label="対象数">明記</td>
+<td data-label="Estimand">同一か確認</td>
+<td data-label="推定値">明記</td>
+<td data-label="95%信頼区間">明記</td>
+</tr>
+<tr>
+<td data-label="解析">トリミング</td>
+<td data-label="対象数">明記</td>
+<td data-label="Estimand">変化を明記</td>
+<td data-label="推定値">明記</td>
+<td data-label="95%信頼区間">明記</td>
+</tr>
+<tr>
+<td data-label="解析">MNAR仮定</td>
+<td data-label="対象数">明記</td>
+<td data-label="Estimand">明記</td>
+<td data-label="推定値">範囲</td>
+<td data-label="95%信頼区間">明記</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="chapter-references" aria-labelledby="ch12-references-title">
+<h3 id="ch12-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r12" value="12">
+<strong>VanderWeele TJ, Ding P. Sensitivity analysis in observational research: introducing the E-value. Annals of Internal Medicine. 2017.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/28693043/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/28693043/
+</a><br>
+DOI:
+<a href="https://doi.org/10.7326/M16-2607" target="_blank" rel="noopener">
+https://doi.org/10.7326/M16-2607
+</a>
+</li>
+
+<li id="r20" value="20">
+<strong>Schneeweiss S. Sensitivity analysis and external adjustment for unmeasured confounders in epidemiologic database studies of therapeutics. Pharmacoepidemiology and Drug Safety. 2006.</strong><br>
+<a href="https://pubmed.ncbi.nlm.nih.gov/16447304/" target="_blank" rel="noopener">
+https://pubmed.ncbi.nlm.nih.gov/16447304/
+</a><br>
+DOI:
+<a href="https://doi.org/10.1002/pds.1200" target="_blank" rel="noopener">
+https://doi.org/10.1002/pds.1200
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch11">← 前：生存時間解析</a>
+<a href="#ch13">次：解釈と報告 →</a>
+</div>
+</section>
+
+<section id="ch13">
+<div class="kicker">CHAPTER 13</div>
+<h2>結果を過大解釈せず、透明に報告する</h2>
+
+<h3>P値は因果関係の判定装置ではない</h3>
+
+<p>
+P値は、特定の統計モデルと帰無仮説のもとで、
+観察された値以上に極端なデータが得られる確率です。
+次のことを直接示しません。
+</p>
+
+<ul>
+<li>帰無仮説が正しい確率</li>
+<li>研究仮説が正しい確率</li>
+<li>効果の大きさ</li>
+<li>臨床的重要性</li>
+<li>交絡や選択バイアスがないこと</li>
+<li>因果関係が成立すること</li>
+</ul>
+
+<p>
+ASAの声明・補足も、P値だけによる二分法的判断を避けるよう促しています
+<a class="cite" href="#r13">[13]</a>。
+</p>
+
+<h3>信頼区間</h3>
+
+<p>
+信頼区間は推定の不確実性を示しますが、
+通常は標本変動を中心とする不確実性です。
+未測定交絡、測定誤差、選択バイアス、モデル誤指定による不確実性が
+自動的に含まれるわけではありません。
+</p>
+
+<div class="callout good">
+「統計学的に有意だった」ではなく、効果の大きさ、絶対リスク、
+信頼区間、臨床的重要性、必要な仮定を一緒に報告します。
+</div>
+
+<h3>複数のアウトカムと選択的報告</h3>
+
+<p>
+多数のアウトカム、時点、サブグループ、モデルを試し、
+有意だった結果だけを示すと、偶然の結果が強調されます。
+主要estimand、主要アウトカム、主要解析を事前に定めます。
+</p>
+
+<ul>
+<li>研究計画書を作成する</li>
+<li>可能なら事前登録する</li>
+<li>主要解析と探索的解析を区別する</li>
+<li>実施した解析を透明に報告する</li>
+<li>結果を見て変更した点を明示する</li>
+</ul>
+
+<h3>報告ガイドライン</h3>
+
+<ul>
+<li>
+<strong>TARGET：</strong>ターゲット試験を明示的にエミュレートする観察研究
+<a class="cite" href="#r2-reporting">[2]</a><a class="cite" href="#r14">[14]</a>
+</li>
+<li>
+<strong>STROBE：</strong>一般的な観察研究の報告
+<a class="cite" href="#r15">[15]</a>
+</li>
+<li>
+<strong>RECORD：</strong>日常的に収集された医療データを用いる研究
+<a class="cite" href="#r16">[16]</a>
+</li>
+</ul>
+
+<h3>因果的な結論の書き方</h3>
+
+<table class="mobile">
+<thead><tr><th>避けたい表現</th><th>より適切な表現</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="避けたい表現">傾向スコアで交絡を完全に除去した</td>
+<td data-label="適切な表現">測定されたベースライン変数についてバランスを改善した</td>
+</tr>
+<tr>
+<td data-label="避けたい表現">治療はアウトカムを改善した</td>
+<td data-label="適切な表現">明示した仮定のもとで、治療戦略は低いリスクと推定された</td>
+</tr>
+<tr>
+<td data-label="避けたい表現">有意差がないため両治療は同等である</td>
+<td data-label="適切な表現">推定値と信頼区間は、臨床的に重要な差を含んでいた／含まなかった</td>
+</tr>
+<tr>
+<td data-label="避けたい表現">多変量解析で独立した危険因子だった</td>
+<td data-label="適切な表現">指定したモデルと調整集合のもとで条件付き関連が認められた</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout danger">
+「独立した危険因子」という表現だけでは、
+何から独立なのか、どの変数を調整したのか、
+その調整が因果的に妥当なのかが分かりません。
+</div>
+
+
+<div class="chapter-references" aria-labelledby="ch13-references-title">
+<h3 id="ch13-references-title">参考文献・オンライン資料</h3>
+<ol class="ref">
+<li id="r2-reporting" value="2">
+<strong>Cashin AG, et al. Transparent reporting of observational studies emulating a target trial: the TARGET Statement. BMJ. 2025;390:e087179.</strong><br>
+<a href="https://www.bmj.com/content/390/bmj-2025-087179" target="_blank" rel="noopener">
+https://www.bmj.com/content/390/bmj-2025-087179
+</a><br>
+DOI:
+<a href="https://doi.org/10.1136/bmj-2025-087179" target="_blank" rel="noopener">
+https://doi.org/10.1136/bmj-2025-087179
+</a>
+</li>
+
+<li id="r13" value="13">
+<strong>Wasserstein RL, Lazar NA. The ASA Statement on p-Values: Context, Process, and Purpose. The American Statistician. 2016.</strong><br>
+<a href="https://doi.org/10.1080/00031305.2016.1154108" target="_blank" rel="noopener">
+https://doi.org/10.1080/00031305.2016.1154108
+</a><br>
+ASA:
+<a href="https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf" target="_blank" rel="noopener">
+https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf
+</a>
+</li>
+
+<li id="r14" value="14">
+<strong>EQUATOR Network. TARGET reporting guideline.</strong><br>
+<a href="https://www.equator-network.org/reporting-guidelines/22462/" target="_blank" rel="noopener">
+https://www.equator-network.org/reporting-guidelines/22462/
+</a>
+</li>
+
+<li id="r15" value="15">
+<strong>STROBE Statement: Strengthening the Reporting of Observational Studies in Epidemiology.</strong><br>
+<a href="https://www.strobe-statement.org/" target="_blank" rel="noopener">
+https://www.strobe-statement.org/
+</a><br>
+Checklist:
+<a href="https://www.strobe-statement.org/checklists/" target="_blank" rel="noopener">
+https://www.strobe-statement.org/checklists/
+</a>
+</li>
+
+<li id="r16" value="16">
+<strong>RECORD Statement: Reporting of studies Conducted using Observational Routinely-collected health Data.</strong><br>
+<a href="https://www.record-statement.org/" target="_blank" rel="noopener">
+https://www.record-statement.org/
+</a>
+</li>
+</ol>
+</div>
+
+<div class="chapter-nav">
+<a href="#ch12">← 前：欠測・感度分析</a>
+<a href="#checklist">次：実践チェックリスト →</a>
+</div>
+</section>
+
+
+<section id="checklist">
+<div class="kicker">FINAL CHECKLIST</div>
+<h2>研究計画・論文読解の実践チェックリスト</h2>
+
+<h3>1．問いとEstimand</h3>
+
+<ul class="check">
+<li>□ 研究目的が予測か因果効果推定か明記されている</li>
+<li>□ 対象集団が定義されている</li>
+<li>□ 比較する治療戦略が具体的である</li>
+<li>□ アウトカムと追跡期間が定義されている</li>
+<li>□ ATE、ATT、overlap population等の対象が分かる</li>
+<li>□ 効果尺度が臨床的に解釈できる</li>
+</ul>
+
+<h3>2．Target trialとTime zero</h3>
+
+<ul class="check">
+<li>□ 適格基準、治療戦略、追跡、因果対比がプロトコル表にされている</li>
+<li>□ 適格性判定、治療割り当て、追跡開始が一致している</li>
+<li>□ 将来情報で診断時の群を決めていない</li>
+<li>□ 猶予期間中のイベントと治療開始が適切に扱われている</li>
+<li>□ Immortal time biasが検討されている</li>
+</ul>
+
+<h3>3．DAGと変数選択</h3>
+
+<ul class="check">
+<li>□ 時間軸が図示されている</li>
+<li>□ DAGまたは同等の因果モデルが示されている</li>
+<li>□ 交絡因子、媒介因子、コライダーを区別している</li>
+<li>□ 治療後変数をベースライン交絡因子として扱っていない</li>
+<li>□ 単変量解析のP値で調整変数を選んでいない</li>
+<li>□ ステップワイズ法を交絡因子選択に使っていない</li>
+<li>□ 調整集合をアウトカムを見る前に定めている</li>
+</ul>
+
+<h3>4．研究デザイン</h3>
+
+<ul class="check">
+<li>□ 比較対照が臨床的に現実的である</li>
+<li>□ New-user designが検討されている</li>
+<li>□ 両群でbaseline期間と測定機会がそろっている</li>
+<li>□ 検査頻度とアウトカム発見機会の違いを検討している</li>
+<li>□ 再検査患者などへの限定による選択を検討している</li>
+<li>□ 患者、病変、施設の階層構造を扱っている</li>
+</ul>
+
+<h3>5．傾向スコアと重み付け</h3>
+
+<ul class="check">
+<li>□ 傾向スコアの目的とestimandが明記されている</li>
+<li>□ マッチング・重み付け後のSMDが示されている</li>
+<li>□ P値だけでバランスを判定していない</li>
+<li>□ 傾向スコアのoverlapが図示されている</li>
+<li>□ 除外された患者の数と特徴が報告されている</li>
+<li>□ 重みの分布、極端値、ESSが報告されている</li>
+<li>□ トリミングで対象集団が変わることを説明している</li>
+</ul>
+
+<h3>6．経時的治療</h3>
+
+<ul class="check">
+<li>□ 経過中の状態変化と治療変更を時系列で示している</li>
+<li>□ 最終的に受けた治療だけで開始時の群を決めていない</li>
+<li>□ 過去の治療に影響された交絡因子を検討している</li>
+<li>□ 必要ならg-formula、MSM、clone–censor–weightを検討している</li>
+<li>□ g-methodsの重みとpositivityを診断している</li>
+</ul>
+
+<h3>7．生存時間解析</h3>
+
+<ul class="check">
+<li>□ 追跡開始、終了、打ち切りが定義されている</li>
+<li>□ 治療後の結果で群を作って過去へ遡っていない</li>
+<li>□ 比例ハザード性を確認している</li>
+<li>□ ハザード比だけでなく固定時点リスクを示している</li>
+<li>□ 競合リスクを適切に扱っている</li>
+<li>□ 情報依存打ち切りを検討している</li>
+</ul>
+
+<h3>8．欠測・測定誤差・感度分析</h3>
+
+<ul class="check">
+<li>□ 欠測の量とパターンが報告されている</li>
+<li>□ 完全症例解析の仮定を検討している</li>
+<li>□ 多重代入モデルが解析モデルと整合している</li>
+<li>□ 治療、交絡因子、アウトカムの測定誤差を検討している</li>
+<li>□ 未測定交絡に対する感度分析がある</li>
+<li>□ 感度分析ごとの対象数とestimandが示されている</li>
+</ul>
+
+<h3>9．解釈と報告</h3>
+
+<ul class="check">
+<li>□ 効果量、絶対リスク、信頼区間を示している</li>
+<li>□ P値だけで結論を決めていない</li>
+<li>□ 主要解析と探索的解析を区別している</li>
+<li>□ 結果を見て変更した解析を明示している</li>
+<li>□ 必要な因果仮定を明記している</li>
+<li>□ 何が言えて、何が言えないかを明記している</li>
+</ul>
+
+
+
+<div class="callout good">
+<strong>最終原則：</strong><br>
+高度な統計手法を使ったことではなく、因果的な問い、時間軸、DAG、
+対象集団、仮定、診断、感度分析が一貫していることが重要です。
+</div>
+
+<p>
+最後に、作業の順序を文章で確認します。臨床上の問いを一文にし、
+理想のtarget trialとして適格基準、比較戦略、time zero、アウトカム、追跡期間を定めます。
+次にDAGで因果構造を検討し、誰について何を比較するestimandなのかを確定します。
+</p>
+
+<p>
+その後にestimandへ対応する推定法を選び、バランス、重み、モデル仮定、positivityなどを診断します。
+合理的な別の仮定で感度分析を行い、結果だけでなく、成立に必要な因果仮定と限界を透明に報告します。
+</p>
+
+<div class="chapter-nav">
+<a href="#ch13">← 前：解釈と報告</a>
+<a href="#closing">まとめへ →</a>
+</div>
+</section>
+
+
+<section id="closing">
+<div class="kicker">TAKE-HOME MESSAGE</div>
+<h2>観察研究では「分析」より前の設計が結論を決める</h2>
+
+<div class="callout good">
+<p><strong>覚えるべき順序</strong></p>
+<ol>
+<li>因果的な問いを決める</li>
+<li>Estimandを定義する</li>
+<li>ターゲット試験を書く</li>
+<li>Time zeroをそろえる</li>
+<li>時間軸とDAGを作る</li>
+<li>比較可能な対象集団を設計する</li>
+<li>問いに合う推定方法を選ぶ</li>
+<li>バランス、overlap、重み、モデルを診断する</li>
+<li>感度分析を行う</li>
+<li>仮定と限界を透明に報告する</li>
+</ol>
+</div>
+
+<p class="lead">
+ロジスティック回帰、Cox回帰、傾向スコア、TMLE、g-methodsのどれを使うかは、
+この手順を踏んだ後に決めます。
+</p>
+
+<p>
+非常に優れた研究者であっても、因果構造を頭の中だけで扱うのではなく、
+タイムラインとDAGとして明示する必要があります。
+図を作る目的は研究者の知識を疑うことではなく、
+その知識を検証可能で再現可能な研究設計へ変えることです。
+</p>
+
+<div class="actions">
+<a class="btn btn-light" style="background:#edf3f9" href="#quiz">自己診断を読み直す</a>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>
+さらに非RCTの統計手法を勉強したい方は、私自身の24年前の非RCT論文を題材に、
+冒頭のQuestionで扱った問題が満載だったことを明らかにし、
+現代の手法で<strong>批判的に再構築しながら学習</strong>する
+「<a href="https://mxe050.github.io/AI-DataStat/">AI時代のデータ解析</a>」を参考にしてください。
+</p>
+</footer>
+
+<script>
+/* 読書位置を示す進捗バー */
+(function(){
+  const bar=document.getElementById("progress");
+  function update(){
+    const h=document.documentElement;
+    const max=h.scrollHeight-h.clientHeight;
+    const value=max>0?(h.scrollTop/max)*100:0;
+    bar.style.width=value+"%";
+  }
+  addEventListener("scroll",update,{passive:true});
+  addEventListener("resize",update);
+  update();
+})();
+
+
+</script>
+
+</body>
+</html>
