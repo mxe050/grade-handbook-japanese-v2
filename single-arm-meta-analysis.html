@@ -1,0 +1,1349 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>単群メタ分析：絶対アウトカムの統合と比較の限界</title>
+<style>
+:root{
+ --nav:#102a43;--blue:#2563eb;--green:#047857;--red:#b91c1c;
+ --orange:#c2410c;--purple:#6d28d9;--gray:#64748b;--bg:#eef3f8
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:#1e293b;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic",Meiryo,sans-serif;
+ line-height:1.85
+}
+header{
+ padding:52px 20px;color:white;
+ background:linear-gradient(125deg,#102a43,#155e75,#2563eb)
+}
+header>div,nav>div,main{max-width:1120px;margin:auto}
+h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.25;margin:.2em 0}
+header p{max-width:900px;color:#e0f2fe;font-size:1.08rem}
+nav{
+ position:sticky;top:0;z-index:10;background:white;
+ overflow:auto;white-space:nowrap;box-shadow:0 2px 12px #0002
+}
+nav div{padding:8px}
+nav a{
+ display:inline-block;padding:7px 9px;color:#334155;
+ text-decoration:none;font-size:.86rem;font-weight:bold
+}
+button{
+ padding:10px 16px;margin:4px;border:0;border-radius:8px;
+ background:white;color:#174ea6;font-weight:bold;cursor:pointer
+}
+main{padding:18px 14px 70px}
+section{
+ margin:23px 0;padding:clamp(20px,5vw,43px);
+ background:white;border-radius:17px;box-shadow:0 7px 25px #0f172a12
+}
+h2{color:var(--nav);font-size:clamp(1.55rem,4vw,2.25rem);line-height:1.4}
+h3{color:#17456f;margin-top:1.9em}
+h4{color:#334155;margin-bottom:.35em}
+a{color:#1d4ed8}
+.lead,.box,.warn,.good,.adv,.neutral,.fatal{
+ margin:18px 0;padding:15px 18px;border-radius:9px
+}
+.lead,.box{background:#eff6ff;border-left:6px solid var(--blue)}
+.good{background:#ecfdf5;border-left:6px solid var(--green)}
+.warn{background:#fff7ed;border-left:6px solid var(--orange)}
+.fatal{background:#fef2f2;border-left:6px solid var(--red)}
+.adv{background:#f5f3ff;border-left:6px solid var(--purple)}
+.neutral{background:#f8fafc;border-left:6px solid var(--gray)}
+.eq{
+ padding:14px;margin:18px 0;text-align:center;background:#f8fafc;
+ border:1px solid #cbd5e1;border-radius:8px;
+ font-family:Georgia,"Times New Roman",serif;font-size:1.08rem
+}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+ gap:13px
+}
+.card{
+ padding:16px;border:1px solid #cbd5e1;
+ border-radius:11px;background:#f8fafc
+}
+.card h3,.card h4{margin-top:0}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.91rem}
+th,td{padding:9px;border:1px solid #cbd5e1;vertical-align:top}
+th{background:#e2e8f0}
+tr.bad td:first-child{border-left:6px solid var(--red)}
+tr.maybe td:first-child{border-left:6px solid var(--orange)}
+tr.ok td:first-child{border-left:6px solid var(--green)}
+pre{
+ padding:18px;overflow:auto;background:#0f172a;color:#e2e8f0;
+ border-radius:9px;font-size:.84rem;line-height:1.55
+}
+figure{
+ margin:22px 0;padding:18px;border:1px solid #cbd5e1;
+ border-radius:12px;background:#fff
+}
+.caption{font-size:.84rem;color:#64748b}
+.flow{
+ display:flex;align-items:stretch;justify-content:center;
+ gap:8px;flex-wrap:wrap
+}
+.node{
+ min-width:170px;max-width:245px;padding:14px;text-align:center;
+ border:2px solid var(--blue);border-radius:12px;background:#eff6ff
+}
+.node.red{border-color:var(--red);background:#fef2f2}
+.node.green{border-color:var(--green);background:#ecfdf5}
+.node.orange{border-color:var(--orange);background:#fff7ed}
+.arrow{align-self:center;color:var(--blue);font-size:1.7rem;font-weight:bold}
+.signal{
+ display:grid;grid-template-columns:70px 1fr;gap:13px;
+ align-items:start;margin:11px 0;padding:13px;border-radius:10px;background:#f8fafc
+}
+.light{
+ width:55px;height:55px;border-radius:50%;display:grid;
+ place-items:center;color:white;font-weight:bold
+}
+.redlight{background:var(--red)}
+.yellowlight{background:#d97706}
+.greenlight{background:var(--green)}
+.step{display:flex;gap:12px;padding:12px;margin:9px 0;background:#f8fafc;border-radius:9px}
+.n{
+ flex:0 0 35px;height:35px;border-radius:50%;display:grid;
+ place-items:center;background:var(--blue);color:white;font-weight:bold
+}
+.badge{
+ display:inline-block;padding:2px 8px;border-radius:999px;
+ font-size:.78rem;font-weight:bold;color:white
+}
+.b-red{background:var(--red)}.b-orange{background:var(--orange)}
+.b-green{background:var(--green)}.b-purple{background:var(--purple)}
+.small{font-size:.85rem;color:#64748b}
+li{margin:.38em 0}
+hr{border:0;border-top:1px solid #cbd5e1;margin:28px 0}
+
+body{overflow-x:hidden}
+p,li,td,th{overflow-wrap:anywhere;word-break:normal}
+.scroll{max-width:100%;min-width:0;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain}
+.concept-figure{margin:24px 0;padding:20px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc}
+.concept-title{margin:0 0 14px;color:#102a43;font-weight:800;font-size:1.05rem}
+.compare-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.diagram-panel{min-width:0;padding:16px;border:1px solid #cbd5e1;border-radius:10px;background:white}
+.diagram-panel h4{margin:0 0 12px;color:#17456f}
+.track{display:grid;gap:10px}
+.track-row{display:grid;grid-template-columns:minmax(92px,.7fr) 28px minmax(0,1.3fr);gap:8px;align-items:center}
+.track-label{padding:8px 10px;border-radius:8px;background:#e2e8f0;font-weight:700;text-align:center}
+.track-value{padding:8px 10px;border-radius:8px;background:#eff6ff;border:1px solid #93c5fd}
+.track-value.danger{background:#fef2f2;border-color:#fca5a5}
+.track-value.safe{background:#ecfdf5;border-color:#6ee7b7}
+.track-arrow{text-align:center;color:#2563eb;font-weight:900}
+.trial-frame{padding:16px;border:2px solid #2563eb;border-radius:12px;background:#eff6ff}
+.randomize{width:max-content;max-width:100%;margin:0 auto 14px;padding:8px 14px;border-radius:999px;background:#102a43;color:white;font-weight:800;text-align:center}
+.arm-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.arm{padding:12px 8px;border:2px solid #2563eb;border-radius:9px;background:white;text-align:center;font-weight:800}
+.contrast-line{margin-top:12px;padding:10px;border-radius:8px;background:#dbeafe;text-align:center;font-weight:700;color:#17456f}
+.island-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.island{padding:15px 8px;border:2px dashed #b91c1c;border-radius:10px;background:#fef2f2;text-align:center;font-weight:800}
+.no-edge{margin:12px 0 0;text-align:center;color:#b91c1c;font-weight:800}
+.method-ladder{counter-reset:method;display:grid;gap:10px;margin:18px 0}
+.method-rung{position:relative;padding:14px 14px 14px 52px;border:1px solid #cbd5e1;border-radius:10px;background:#fff}
+.method-rung::before{counter-increment:method;content:counter(method);position:absolute;left:12px;top:14px;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#2563eb;color:white;font-weight:800}
+@media(max-width:650px){
+ header{padding:28px 14px 24px}header p{font-size:.98rem;line-height:1.75}
+ nav>div{padding:7px 5px}nav a{padding:8px 10px}main{padding:10px 5px 60px}
+ section{margin:12px 0;padding:19px 13px;border-radius:10px}
+ .lead,.box,.warn,.good,.adv,.neutral,.fatal{padding:14px 13px}
+ .grid,.compare-panels{grid-template-columns:minmax(0,1fr)}
+ .concept-figure{padding:14px 11px}
+ .track-row{grid-template-columns:minmax(78px,.75fr) 20px minmax(0,1.25fr);font-size:.88rem}
+ .arm-row,.island-row{grid-template-columns:minmax(0,1fr)}
+ .arm,.island{padding:10px 8px}table{font-size:.84rem}th,td{padding:8px}
+ pre{font-size:.78rem;padding:13px}.node{min-width:0;width:100%;max-width:none}.arrow{transform:rotate(90deg)}
+}
+
+@media print{
+ nav,button{display:none}body{background:white}
+ section{box-shadow:none;break-inside:auto}
+ h2,h3{break-after:avoid}table,figure{break-inside:avoid}
+}
+</style>
+</head>
+
+<body>
+<header><div>
+<p><b>CRITICAL METHODOLOGICAL TUTORIAL</b></p>
+<h1>単群メタ分析：絶対アウトカムの統合と比較の限界</h1>
+<p>
+治療Aの単群研究と治療Bの単群研究を、あたかも比較試験の二群であるかのように統合・比較してよいのか。
+原則としてなぜ因果的治療効果を同定できないのか、例外的に正当化し得る条件は何かを、
+メタ回帰、arm-based NMA、外部対照、MAIC、STC、傾向スコア、Bayesian borrowingを含めて検討します。
+</p>
+
+
+</div></header>
+
+<nav><div>
+<a href="#summary">結論</a>
+<a href="#basic">基本原理</a>
+<a href="#pseudo">擬似二群比較</a>
+<a href="#patterns">問題パターン</a>
+<a href="#adjustment-limit">時代・施設差</a>
+<a href="#multiarm">多群RCTとの違い</a>
+<a href="#methods">高度な手法</a>
+<a href="#possible">可能とする立場</a>
+<a href="#tga-case">TGA事例</a>
+<a href="#impossible">不可能とする立場</a>
+<a href="#external">外部対照</a>
+<a href="#decision">判定基準</a>
+<a href="#review">査読</a>
+<a href="#writing">結論文</a>
+<a href="#refs">文献</a>
+</div></nav>
+
+<main>
+
+<section id="summary">
+<h2>1．先に結論：ほぼ駄目なのか</h2>
+
+<div class="lead">
+<strong>治療Aの単群研究群と治療Bの単群研究群について、それぞれ統合奏効率・生存率などを計算し、
+その差や比をそのまま「A対Bの治療効果」と解釈する方法は、原則として妥当ではありません。</strong>
+比較しているのは治療だけではなく、患者、時代、施設、診断、追跡、支持療法、評価方法など、
+研究間のすべての違いだからです。
+</div>
+
+<p>
+ただし、「単群研究を用いた比較は例外なく100%不可能」とまで述べるのも正確ではありません。
+外部情報を導入し、対象となる仮想試験を明確に定義し、必要な交絡因子を十分測定し、
+time zero、適格基準、アウトカム測定を整合させた外部対照研究では、
+<strong>明示した因果仮定の下で</strong>比較効果を推定できる可能性があります。
+</p>
+
+<div class="fatal">
+<b>最も重要な区別</b><br>
+①単群研究の結果を単純に並べることと、②因果推論の枠組みで外部対照研究を設計することは、
+同じではありません。①を②であるかのように解釈するのが主要な誤りです。
+</div>
+
+<div class="signal">
+<div class="light redlight">赤</div>
+<div><b>原則不適切：</b>治療別に統合した単群割合を引き算・割り算する、患者を単純合算する、
+異なる時代の群を無調整で比較する、単群KM曲線から単純にHRを計算する。</div>
+</div>
+<div class="signal">
+<div class="light yellowlight">黄</div>
+<div><b>強い仮定の下で探索的：</b>研究レベルメタ回帰、arm-based NMA、
+unanchored MAIC/STC、disconnected NMA、Bayesian borrowing。</div>
+</div>
+<div class="signal">
+<div class="light greenlight">緑</div>
+<div><b>条件付きで比較可能：</b>事前規定されたtarget trialに基づき、
+適切な同時外部対照、個人データ、十分な交絡調整、共通領域、同一time zero、
+同一アウトカム評価を備えた研究。ただしRCTと同等とは限らない。</div>
+</div>
+</section>
+
+<section id="basic">
+<h2>2．なぜ単群だけでは治療効果が決まらないのか</h2>
+
+<p>因果的治療効果は、同じ対象集団について治療Aを受けた場合とBを受けた場合の転帰の差です。</p>
+
+<div class="eq">ATE ＝ E{Y(A) − Y(B)}</div>
+
+<p>
+治療Aの単群研究はY(A)を、治療Bの別の単群研究はY(B)を観察しているように見えます。
+しかし、A研究の患者とB研究の患者は同じ集団から無作為に割り付けられた患者ではありません。
+したがって、実際に計算される差は概念的に次のようになります。
+</p>
+
+<div class="eq">
+観察差 ＝ 真の治療差 ＋ 基礎リスク差 ＋ 時代差 ＋ 施設差 ＋ 測定差 ＋ 選択差 ＋ その他の交絡
+</div>
+
+<figure>
+<div class="flow">
+<div class="node"><b>A単群研究群</b><br>奏効率70%</div>
+<div class="arrow">−</div>
+<div class="node"><b>B単群研究群</b><br>奏効率45%</div>
+<div class="arrow">＝</div>
+<div class="node red"><b>25ポイント</b><br>治療差とは限らない</div>
+</div>
+<p class="caption">
+図1．算術的な差は計算できる。しかし、その差が治療の因果効果であるためには、
+両研究群の交換可能性が必要である。
+</p>
+</figure>
+
+<div class="adv">
+<b>非同定性：</b>
+観察された単群割合だけからは、治療効果と基礎リスク差を分離できません。
+異なる真の治療効果と異なる基礎リスクの組合せが、同じ観察データを生み得ます。
+標本数を増やしても、この問題は解消しません。狭い信頼区間は、交絡の小ささを意味しません。
+</div>
+
+<p>
+EMAは、単群試験には治療を受けなかった場合の反実仮想がなく、
+デザイン自体は本来的な因果解釈を支持しないと整理しています。
+一方で、治療なしでは起こり得ない個人転帰が観察される例外的状況では、
+治療効果を「isolate」できる可能性も認めています。
+</p>
+</section>
+
+<section id="pseudo">
+<h2>3．本来は単群なのに二群のように扱う「擬似二群比較」</h2>
+
+<div class="fatal">
+<b>定義：</b>
+比較群を研究内に持たない複数の単群研究を、治療名、時代、施設、投与法などで二群に分け、
+その研究間差を研究内の治療比較のように解釈する分析を、ここでは「擬似二群比較」と呼びます。
+</div>
+
+<h3>3.1 治療Aと治療Bを別々に単群メタ分析する</h3>
+
+<div class="eq">
+p̂<sub>A</sub>＝A研究の統合割合、　
+p̂<sub>B</sub>＝B研究の統合割合、　
+見かけの差＝p̂<sub>A</sub>−p̂<sub>B</sub>
+</div>
+
+<p>
+p̂<sub>A</sub>とp̂<sub>B</sub>自体は、それぞれの研究集合における絶対アウトカムとして推定可能です。
+しかし、その差には治療だけでなく研究集合の構成差が含まれます。
+この差を「AはBより優れる」と解釈した場合、通常は方法論的に支持されません。
+</p>
+
+<div class="warn">
+<b>計算が間違いなのではなく、estimandと解釈が間違っています。</b><br>
+「A研究群の統合奏効割合」と「B研究群の統合奏効割合」を記述することは可能です。
+しかし、その差を比較治療効果と呼ぶには追加の因果仮定が必要です。
+</div>
+
+<h3>3.2 全患者をA群とB群として単純合算する</h3>
+
+<div class="eq">
+A粗割合＝Σx<sub>Ai</sub>/Σn<sub>Ai</sub>、　
+B粗割合＝Σx<sub>Bj</sub>/Σn<sub>Bj</sub>
+</div>
+
+<p>
+これは研究内クラスタリング、研究間異質性、患者背景、追跡期間を無視します。
+大規模研究が結果をほぼ決定し、Simpsonのパラドックスが生じ得ます。
+通常の独立二群検定やFisher検定を、別々の研究から集めた患者数へ直接適用するのも不適切です。
+</p>
+
+<h3>3.3 「Aでは有意、Bでは非有意」だからAが優れる</h3>
+
+<div class="fatal">
+Aの統合値が基準値に対して有意で、Bが有意でなかったとしても、
+AとBの差が有意であるとは限りません。
+「有意」と「非有意」の差は、それ自体が有意差ではありません。
+</div>
+
+<h3>3.4 二つの統合値の95%信頼区間が重なるかを見る</h3>
+
+<p>
+信頼区間の重なりだけで群間差を判定する方法は正式な群間検定ではありません。
+そもそも研究群間の交換可能性がなければ、差の検定を精密にしても因果的妥当性は得られません。
+</p>
+
+<h3>3.5 治療別サブグループ解析</h3>
+
+<p>
+治療A研究と治療B研究をサブグループとしてQ検定やメタ回帰を行えば、
+「研究群として結果が異なるか」は検定できます。しかしこれは通常、
+ランダム化された治療比較ではなく、研究レベルの関連です。
+治療と年代、疾患重症度、研究デザインが重なれば、それらを分離できません。
+</p>
+</section>
+
+<section id="patterns">
+<h2>4．実際にみられる比較パターンと評価</h2>
+
+<div class="scroll">
+<table>
+<thead>
+<tr>
+<th>分析パターン</th><th>何をしているか</th><th>主な問題</th><th>評価</th>
+</tr>
+</thead>
+<tbody>
+<tr class="bad">
+<td><b>AとBの統合割合を直接比較</b></td>
+<td>A研究とB研究を別々に単群メタ分析し、差・RR・ORを計算</td>
+<td>研究集合と治療が完全に交絡</td>
+<td><span class="badge b-red">原則不適切</span></td>
+</tr>
+<tr class="bad">
+<td><b>患者数の単純合算</b></td>
+<td>全研究のイベント数と分母を治療別に合算</td>
+<td>研究クラスタリング、異質性、Simpsonのパラドックス</td>
+<td><span class="badge b-red">不適切</span></td>
+</tr>
+<tr class="bad">
+<td><b>異なる時代のA群対B群</b></td>
+<td>過去年代をA、近年をBとして比較</td>
+<td>診断、支持療法、予後、紹介経路の時代変化。治療と年代が完全に一致すれば統計モデルでも分離不能</td>
+<td><span class="badge b-red">通常は比較不能。調整しただけでは適切にならない</span></td>
+</tr>
+<tr class="bad">
+<td><b>異なる施設のA群対B群</b></td>
+<td>A実施施設とB実施施設を比較</td>
+<td>施設経験、紹介バイアス、症例構成が治療と交絡。各施設で片方しか実施されなければ施設効果と治療効果を分離不能</td>
+<td><span class="badge b-red">通常は比較不能。施設調整だけでは救えない</span></td>
+</tr>
+<tr class="bad">
+<td><b>単群KM曲線の単純比較</b></td>
+<td>別論文のKM曲線を重ね、log-rank検定やCox回帰</td>
+<td>time zero、適格基準、打切り、共変量の不整合</td>
+<td><span class="badge b-red">原則不適切</span></td>
+</tr>
+<tr class="bad">
+<td><b>中央値生存期間の比較</b></td>
+<td>各治療の統合中央値を比較</td>
+<td>曲線形状、追跡、未到達、打切りが異なる</td>
+<td><span class="badge b-red">治療差には不適切</span></td>
+</tr>
+<tr class="maybe">
+<td><b>治療指標によるメタ回帰</b></td>
+<td>研究レベル治療変数で割合を回帰</td>
+<td>生態学的バイアス、残余交絡、少数研究</td>
+<td><span class="badge b-orange">探索的</span></td>
+</tr>
+<tr class="maybe">
+<td><b>Arm-based NMA</b></td>
+<td>治療別絶対アウトカム分布をモデル化</td>
+<td>armを別行で入力しても、同じRCTに属するarmのクラスタリングと相関を保持する必要がある。独立した単群研究の横比較とは別物</td>
+<td><span class="badge b-orange">RCT由来と相関構造を必ず確認</span></td>
+</tr>
+<tr class="maybe">
+<td><b>Disconnected NMA</b></td>
+<td>基準治療の応答を予測して孤立治療をモデル上で接続</td>
+<td>実際のランダム化比較の線が増えるわけではない。基礎リスクの交換可能性と予測モデルに依存し、切断部分のバイアスが残る</td>
+<td><span class="badge b-orange">予測による接続・方法論的研究段階</span></td>
+</tr>
+<tr class="maybe">
+<td><b>Unanchored MAIC/STC</b></td>
+<td>一方のIPDを他方の集計特性へ調整</td>
+<td>全予後因子・効果修飾因子の測定が必要</td>
+<td><span class="badge b-orange">非常に強い仮定</span></td>
+</tr>
+<tr class="ok">
+<td><b>事前設計された外部対照</b></td>
+<td>同一target trialを模倣し個人データで調整</td>
+<td>未測定交絡は残るが、因果推論として設計可能</td>
+<td><span class="badge b-green">条件付きで可能</span></td>
+</tr>
+<tr class="ok">
+<td><b>治療なしでは起こらない転帰</b></td>
+<td>自然回復が事実上ない状況で劇的反応を観察</td>
+<td>自然歴と測定の確実性が必要</td>
+<td><span class="badge b-green">例外的に因果示唆</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="adjustment-limit">4.1 時代・施設が違うA群とB群は、調整すれば比較できるのか</h3>
+
+<p>
+後期群で生存が良くても、治療のほかに画像診断、病期分類、早期発見、
+支持療法、救済治療、感染管理、追跡技術が改善している可能性があります。
+これをhistorical control biasまたはsecular trendの問題として検討します。
+</p>
+
+<div class="eq">
+年代差 ＝ 治療変更 ＋ 診断変更 ＋ 支持療法変更 ＋ 患者選択変更 ＋ 測定変更
+</div>
+
+<p>
+年代そのものを回帰モデルへ入れても、治療Aが古い時代、Bが新しい時代にしか存在しなければ、
+治療と年代はほぼ完全に共線です。モデルは存在しない情報を作れません。
+</p>
+
+<div class="fatal">
+<b>「無調整なら不適切」は、「調整すれば適切」という意味ではありません。</b><br>
+治療Aが過去年代だけ、治療Bが近年だけに存在する場合、治療と年代は同じ情報を表します。
+同様に、Aが施設1だけ、Bが施設2だけなら、治療と施設も同じ情報です。
+この完全またはほぼ完全な重なりでは、回帰モデル、傾向スコア、施設ランダム効果を追加しても、
+データの中に存在しない反対治療の転帰を復元できません。これは解析技術の不足ではなく、
+positivityと同定可能性の問題です。
+</div>
+
+<figure class="concept-figure" aria-labelledby="overlap-figure-title">
+<p class="concept-title" id="overlap-figure-title">図3．統計調整が情報を利用できる場合と、利用できない場合</p>
+<div class="compare-panels">
+ <div class="diagram-panel"><h4>治療と時代・施設が完全に一致</h4><div class="track">
+  <div class="track-row"><div class="track-label">過去年代</div><div class="track-arrow">→</div><div class="track-value danger">治療Aしかない</div></div>
+  <div class="track-row"><div class="track-label">近年</div><div class="track-arrow">→</div><div class="track-value danger">治療Bしかない</div></div>
+  <div class="track-row"><div class="track-label">施設1</div><div class="track-arrow">→</div><div class="track-value danger">治療Aしかない</div></div>
+  <div class="track-row"><div class="track-label">施設2</div><div class="track-arrow">→</div><div class="track-value danger">治療Bしかない</div></div>
+ </div><p><b>結論：</b>年代・施設と治療を分離する比較情報がない。モデルを複雑にしても識別できない。</p></div>
+ <div class="diagram-panel"><h4>各時代・施設で両治療に重なりがある</h4><div class="track">
+  <div class="track-row"><div class="track-label">過去年代</div><div class="track-arrow">→</div><div class="track-value safe">治療AとBがある</div></div>
+  <div class="track-row"><div class="track-label">近年</div><div class="track-arrow">→</div><div class="track-value safe">治療AとBがある</div></div>
+  <div class="track-row"><div class="track-label">施設1</div><div class="track-arrow">→</div><div class="track-value safe">治療AとBがある</div></div>
+  <div class="track-row"><div class="track-label">施設2</div><div class="track-arrow">→</div><div class="track-value safe">治療AとBがある</div></div>
+ </div><p><b>結論：</b>層内比較の情報はある。ただし測定済み交絡、共通領域、正しいモデルなどの条件が残る。</p></div>
+</div>
+<p class="caption">左では治療効果と年代・施設効果が同じ方向に完全に重なります。右では統計調整に使える比較情報がありますが、ランダム化されたわけではありません。</p>
+</figure>
+
+<h4>どのような条件なら、調整を検討できるか</h4>
+<p>
+調整を検討できるのは、原則として個人データがあり、同じ適格基準、同じtime zero、同じアウトカム定義で、
+各年代または各施設の中にAとBの双方を受けた患者が十分存在するときです。
+そのうえで、治療選択と転帰の双方に関係する変数を事前にDAGで定め、次の順で解析します。
+</p>
+
+<div class="method-ladder">
+ <div class="method-rung"><b>設計でそろえる：</b>同時期の患者へ制限し、共通の適格基準、index date、追跡、転帰評価を適用する。可能なら同一施設内または同一時期内の比較を中心にする。</div>
+ <div class="method-rung"><b>測定済み交絡をそろえる：</b>exact matching、傾向スコアによるmatching・stratification・IPTW、overlap weighting、entropy balancingなどを使い、標準化差と重み分布を確認する。</div>
+ <div class="method-rung"><b>転帰をモデル化する：</b>多変量回帰、標準化・g-computation、AIPW、TMLEなどをestimandに合わせて使う。二重ロバスト法も、両方のモデルが誤ってよいという意味ではない。</div>
+ <div class="method-rung"><b>時代・施設構造を扱う：</b>治療の重なりがある場合に限り、施設固定効果、階層モデル、カレンダー時間のスプライン、controlled interrupted time series、差の差法を検討する。差の差法には比較群と平行トレンド仮定が必要である。</div>
+ <div class="method-rung"><b>残る偏りを数値化する：</b>未測定交絡の定量的バイアス分析、negative control、異なるtime zero・施設・年代幅での感度分析を行う。</div>
+</div>
+
+<div class="warn">
+<b>高度な手法にも越えられない線があります。</b><br>
+施設をランダム効果にした階層モデルは施設内に治療の重なりがあるときに有用ですが、
+「施設1は全員A、施設2は全員B」なら施設効果と治療効果を分離できません。
+差の差法やcontrolled interrupted time seriesも、十分な介入前後データ、同時対照、平行トレンドなどが必要です。
+施設方針を操作変数として使う方法も、関連性・排除制約・独立性など強い仮定を要し、一般的な解決策ではありません。
+したがって、単群研究を年代や施設で分けただけのメタ分析は、通常、調整済み因果比較へ昇格しません。
+</div>
+
+<p>
+FDAの外部対照ガイダンスは、過去対照だけでなく別施設の同時対照でも、対象集団、治療、診断、予後因子、
+アウトカム測定、追跡を事前に整合させる必要があるとしています。
+EMAも、単群試験が観察するのは介入下の転帰であり、比較の問いへ答えるには反実仮想に関する外部知識が必要だと整理しています。
+つまり「年代または施設を共変量に入れた」という一行では、比較可能性の根拠になりません。
+</p>
+
+<h3>4.2 単群Kaplan–Meier曲線を合成して比較する</h3>
+
+<p>
+KM曲線から再構築した擬似IPDは、元論文の生存曲線を再現する手段です。
+しかし、患者レベルの予後因子や選択過程は復元されません。
+二つの曲線を結合してCox回帰を行うと狭い信頼区間が得られることがありますが、
+それは研究間交絡を調整したことを意味しません。
+</p>
+
+<div class="fatal">
+<b>KM再構築はデータ形式を復元する技術であり、ランダム化を復元する技術ではありません。</b>
+</div>
+
+<h3 id="multiarm">4.3 多群RCTをarm別に扱うことと、単群研究を並べることは違う</h3>
+<p>
+メタ分析のデータ表では、一つの3群RCTを治療A、治療B、対照Cの3行に分けて入力することがあります。
+しかし、行が分かれているから3つの独立した単群研究になったわけではありません。
+患者は同じ研究プロトコルの下で同じ時期に登録され、A、B、Cへランダムに割り付けられています。
+解析の根拠は、あくまで研究内ランダム化によって得られたA対C、B対C、A対Bなどのcontrastです。
+</p>
+
+<figure class="concept-figure" aria-labelledby="multiarm-figure-title">
+<p class="concept-title" id="multiarm-figure-title">図4．同じ「arm別データ」でも、証拠構造は全く異なる</p>
+<div class="compare-panels">
+ <div class="diagram-panel"><h4>3群RCT：一つの研究内でランダム化</h4>
+  <div class="trial-frame"><div class="randomize">共通プロトコル・同時登録・ランダム割付</div>
+   <div class="arm-row"><div class="arm">治療A arm</div><div class="arm">治療B arm</div><div class="arm">対照C arm</div></div>
+   <div class="contrast-line">研究内contrastを作る。共通対照を共有する比較同士は相関する</div>
+  </div>
+ </div>
+ <div class="diagram-panel"><h4>独立した単群研究：研究間に比較の線がない</h4>
+  <div class="island-row"><div class="island">A単群研究<br>時代・施設・患者A</div><div class="island">B単群研究<br>時代・施設・患者B</div><div class="island">C単群研究<br>時代・施設・患者C</div></div>
+  <p class="no-edge">研究内ランダム化contrastは存在しない</p>
+ </div>
+</div>
+<p class="caption">右側の単群研究を同じ表へarm別に入力しても、左側のランダム化比較構造は生まれません。</p>
+</figure>
+
+<h4>3群RCTから2群だけを使うとき</h4>
+<p>
+レビュー質問に関係しない第3群を除き、適格な2群だけを使うことはあり得ます。
+これは、残した2群の間にもともと行われたランダム化を利用する分析です。
+解析結果を見て都合のよい群だけを選ぶのではなく、プロトコルの適格基準と比較定義に基づいて決めます。
+複数の比較で同じ対照群を繰り返し使う場合は参加者の二重計上と相関が生じるため、
+対照群の結合・分割、別解析、または多群相関を扱うモデルが必要です。
+Cochrane Handbook Chapter 23も、多群試験では関連しないarmを除外できる一方、
+共有対照を含む複数比較を独立として扱うunit-of-analysis errorを避けるよう求めています。
+</p>
+
+<div class="lead">
+<b>NMAは「治療ごとの単群値を持ち寄る方法」ではありません。</b><br>
+標準的なcontrast-based NMAの線は、RCT内の直接比較を表します。
+間接比較A対Bは、A対CとB対Cという研究内ランダム化contrastを、transitivityの仮定の下で結びます。
+Cochrane Handbook Chapter 11が述べるように、この方法は研究内ランダム化を保持します。
+単群Aと単群Bをノードとして置くだけでは、比較の線もランダム化も追加されません。
+</div>
+</section>
+
+<section id="methods">
+<h2>5．高度な統計手法を使えば解決するのか</h2>
+
+<h3>5.1 研究レベルメタ回帰</h3>
+
+<div class="eq">
+logit(p<sub>i</sub>)＝β₀＋β₁Treatment<sub>i</sub>＋β₂Year<sub>i</sub>＋β₃MeanAge<sub>i</sub>＋u<sub>i</sub>
+</div>
+
+<p>
+β₁は、モデルに含めた研究レベル変数が同じと仮定した場合の治療ラベルとアウトカムの関連です。
+患者レベルの交絡調整効果ではありません。平均年齢が同じ研究でも、
+年齢分布や重症度との相関構造は異なります。
+</p>
+
+<pre><code>library(metafor)
+
+fit <- rma.glmm(
+  measure = "PLO",
+  xi = events,
+  ni = total,
+  mods = ~ treatment + publication_year +
+           mean_age + severe_proportion,
+  data = dat,
+  method = "ML"
+)
+
+summary(fit)</code></pre>
+
+<div class="warn">
+このコードが実行でき、治療係数にp&lt;0.05が得られても、
+それだけで治療AとBの因果比較が成立したことにはなりません。
+</div>
+
+<h3>5.2 Arm-based model</h3>
+
+<p>
+arm-based modelは各治療armの絶対アウトカム分布を階層的にモデル化します。
+ここで大切なのは、<b>入力表の1行が1armであることと、armが統計学的に独立であることは同じではない</b>という点です。
+同じ多群RCTから出たarmは研究IDを共有し、共通の選択過程、基礎リスク、追跡、測定を持ちます。
+したがって、研究レベルのランダム効果や多群相関を適切に表現しなければなりません。
+</p>
+
+<p>
+一方、Aの単群研究とBの単群研究は、同じ研究IDの下でランダム化されたarmではありません。
+arm-based modelへ両者を入れられる場合があっても、比較を支える情報は主として研究間の絶対リスク差です。
+年代、施設、患者選択、アウトカム測定が治療と交絡していれば、
+精密な階層モデルはその交絡を自動的に研究内contrastへ変換しません。
+</p>
+
+<p>
+Chuらのレビューは、arm-based NMAを全面否定するのではなく、
+データ生成仮定によってarm-basedとcontrast-basedの性能が変わり得るため、
+補完的感度分析として検討する立場を示しています。
+しかし、これは単群研究間の無条件比較を無偏化できるという意味ではありません。
+分析者は、RCT由来のarm、非ランダム化比較研究のarm、純粋な単群研究を区別し、
+どの情報が研究内contrastで、どの情報が研究間予測なのかを明示する必要があります。
+</p>
+
+<div class="warn">
+<b>Disconnected NMAにも同じ注意が必要です。</b><br>
+孤立した治療をreference predictionなどで接続する方法は、未観察の基準治療応答をモデルで予測します。
+これは有用な方法論研究ですが、実際のRCT比較が新たに発生するわけではありません。
+切断部分の結果は、基礎リスクの交換可能性、調整変数、関数形、外挿範囲に強く依存します。
+通常の接続されたRCTネットワークとは分けて提示し、仮定を変えた感度分析を示す必要があります。
+</div>
+
+<h3>5.3 Disconnected networkを接続するモデル</h3>
+
+<p>
+Thomらはreference predictionやaggregate-level matchingにより、
+単群研究や切断されたネットワークを分析する方法を提案しました。
+シミュレーションでは切断治療の推定が可能でしたが、
+切断部分ではバイアスが残り、条件によってcoverageも低下しました。
+</p>
+
+<div class="neutral">
+したがって、これらは「絶対に使えない方法」ではありませんが、
+通常の接続されたRCTネットワークと同じ確実性を持つ方法でもありません。
+モデルが予測した未観察対照に比較結果が依存します。
+</div>
+
+<h3>5.4 Bayesian borrowing</h3>
+
+<p>
+power prior、commensurate prior、MAP priorなどは外部研究を割り引いて利用します。
+整合しない外部情報の借用量を減らす方法もあります。
+しかし動的借用は、未測定交絡、異なるtime zero、異なる転帰定義を自動的に発見できません。
+</p>
+
+<div class="fatal">
+Bayesianモデルは「仮定を確率分布で表現する」ことはできますが、
+観察されていない反実仮想を仮定なしに同定することはできません。
+</div>
+</section>
+
+<section id="possible">
+<h2>6．「条件付きで因果推論できる」とする立場</h2>
+
+<p>
+因果推論研究の立場では、ランダム化がなくても、必要な条件が満たされれば
+観察データから因果効果を同定できるとされます。
+これは単群研究そのものから無条件に推論するという主張ではなく、
+外部対照と因果仮定を導入した研究として再定義する立場です。
+</p>
+
+<div class="eq">
+Y(a) ⫫ A｜X
+</div>
+
+<p>
+これは、測定した共変量Xで条件付ければ治療選択と潜在転帰が独立になるという
+conditional exchangeabilityです。加えてconsistencyとpositivityが必要です。
+</p>
+
+<div class="grid">
+<div class="card">
+<h4>Consistency</h4>
+治療A、Bが十分明確に定義され、観察された転帰が対応する潜在転帰と一致する。
+</div>
+<div class="card">
+<h4>Conditional exchangeability</h4>
+調整後に未測定交絡が残らない。
+</div>
+<div class="card">
+<h4>Positivity</h4>
+各共変量層でAとBの双方を受け得る患者が存在する。
+</div>
+<div class="card">
+<h4>Measurement alignment</h4>
+交絡因子、転帰、追跡、打切りが両データ源で比較可能である。
+</div>
+</div>
+
+<h3>6.1 Unanchored MAICが無偏になり得るという研究</h3>
+
+<p>
+Jiangらのシミュレーションでは、time-to-eventアウトカムについて、
+転帰または治療効果に影響するすべての因子が測定・調整された場合、
+unanchored MAICは小さなバイアスを示しました。
+一方、予後因子や効果修飾因子を省略するとバイアスが増大し、
+完全調整時でも信頼区間coverageは理想値を下回る場合がありました。
+</p>
+
+<div class="good">
+<b>この研究が示すこと：</b>
+仮定がデータ生成上完全に満たされれば、単群研究間の調整比較が機能する可能性がある。
+</div>
+<div class="warn">
+<b>この研究が示さないこと：</b>
+実データで「すべての予後因子と効果修飾因子を測定した」と確認できること。
+</div>
+
+<h3>6.2 RCTと単群研究を統合するモデル</h3>
+
+<p>
+Singhら、Zhangら、BeggとPiloteらは、RCTと単群研究を統合し、
+単群研究のバイアスや交換可能性をモデル化する方法を検討しています。
+単群情報をdown-weightするpower priorやcommensurate priorにより、
+仮定が適切な場合に精度を改善できる可能性があります。
+</p>
+
+<p>
+ただし、RCTが一つもなくA単群研究とB単群研究だけの場合、
+比較効果は基礎リスクモデルへの依存が一段と強くなります。
+「単群研究を含める方法がある」ことと
+「単群だけで頑健な因果効果を得られる」ことは別です。
+</p>
+
+<h3>6.3 劇的効果・自然歴が固定的な場合</h3>
+
+<p>
+EMAは、治療なしでは対象期間内に起こり得ない転帰を観察した場合、
+例外的に治療効果をisolateできるという概念を提示しています。
+FDAも、自然歴が十分に定義され、無治療では改善しない疾患や、
+非常に大きな効果が期待される状況では外部対照が説得力を持ち得るとしています。
+</p>
+
+<div class="good">
+例：自然寛解が事実上ない状態での客観的かつ持続的な病原体消失、
+治療なしでは獲得不可能と十分確立された運動機能の獲得など。
+</div>
+
+<div class="warn">
+疼痛、QOL、疲労、可変性の高い症状、自然に増悪・寛解する疾患、
+主観的奏効判定では、この例外を適用しにくくなります。
+</div>
+
+<h3 id="tga-case">6.4 希少疾患の実例：TGAに対するASO</h3>
+
+<p>
+完全大動脈転位症（transposition of the great arteries：TGA）は、
+大動脈と肺動脈のつながりが入れ替わり、全身循環と肺循環が並列になる重篤な先天性心疾患です。
+大動脈スイッチ手術（arterial switch operation：ASO）は、この解剖学的異常を新生児期に修復する手術です。
+添付の方法論資料では、単群エビデンスでも治療効果が非常に説得的となり得る事例として、
+歴史的自然歴とASO後の生存が対比されています。
+</p>
+
+<figure aria-labelledby="tga-case-title">
+<p class="concept-title" id="tga-case-title">TGAの自然歴とASO後の生存：効果の大きさと持続性を見る</p>
+<div class="flow">
+<div class="node orange"><b>歴史的自然歴</b><br>1年生存<br><strong>11%</strong><br><span class="small">95% CI 9–13%</span></div>
+<div class="arrow" aria-hidden="true">→</div>
+<div class="node green"><b>ASO後・短期</b><br>生存<br><strong>92%</strong><br><span class="small">95% CI 91–93%</span></div>
+<div class="arrow" aria-hidden="true">→</div>
+<div class="node green"><b>ASO後・長期</b><br>20年以上生存<br><strong>87%</strong><br><span class="small">95% CI 80–92%</span></div>
+</div>
+<p class="caption">
+図3．添付資料とMorfawらのレビューに示された数値。3つの値は同じ研究内の無作為化比較ではなく、
+異なる時代・集団・追跡時点の推定値です。矢印は経時的な同一コホートの推移や直接比較を意味しません。
+</p>
+</figure>
+
+<p>
+歴史的自然歴の1年生存11%とASO後の短期生存92%の差は約81パーセントポイントです。
+この差を、そのまま無作為化試験のリスク差と呼ぶことはできません。
+それでも、アウトカムが客観的な生存であり、未治療時の自然歴が重篤で、
+改善の絶対量が極めて大きく、長期の術後コホートでも高い生存が観察されるため、
+通常の単群研究間比較よりはるかに強い治療効果の根拠になります。
+</p>
+
+<div class="good">
+<b>この事例が例外的に説得的な4つの理由</b><br>
+①転帰が死亡・生存という客観的アウトカムである、
+②無治療の自然歴が重篤で比較的よく定義されている、
+③観察された絶対差が非常に大きい、
+④短期だけでなく20年以上の術後成績でも高い生存が観察されている、という点です。
+</div>
+
+<h4>このレビューは、まさに単群割合のメタ分析である</h4>
+<p>
+Morfawらは245研究を採用し、ASOを受けた患者の生存割合を短期（1年未満）、
+中期（1～20年）、長期（20年超）に分けてランダム効果モデルで統合しました。
+短期生存92%は151研究・30,186人から得られ、I²は85.8%、GRADEの確実性は中でした。
+一方、長期生存87%は4研究・933人に限られ、I²は84.5%、確実性は非常に低いと評価されています。
+同じ「高い生存率」でも、情報量、異質性、追跡期間が違えば確実性は同じではありません。
+</p>
+
+<div class="fatal">
+<b>92%と11%を引けば、治療効果81%になるわけではありません。</b><br>
+92%はASO後コホートの統合生存割合、11%は別時代の自然歴推定です。
+計算上の差は示せても、研究内でランダム化された比較効果ではありません。
+この事例の説得力は、形式的な二群メタ分析からではなく、
+自然歴、効果の極端な大きさ、客観的転帰、再現性を合わせた因果的判断から生まれます。
+</div>
+
+<h4>単群メタ分析では、何を統合するのか</h4>
+<p>
+この事例をメタ分析に組み込むときも、歴史的自然歴群とASO群を擬似的な二群試験にしてはいけません。
+まず「院内死亡」「30日生存」「1年生存」「20年生存」のように時点と転帰定義を固定し、
+ASOを受けた各コホートの同じ時点の生存割合を単群として統合します。
+歴史的自然歴は別の外部ベンチマークとして提示し、両者の差は間接的な研究間比較であると明記します。
+1年の自然歴と20年の術後生存を同じモデルに入れたり、
+別研究の分母からOR、RR、HRを作ったりしてはいけません。
+</p>
+
+<ol>
+<li><b>対象とtime zeroをそろえる：</b>出生時、診断時、手術時のどこから追跡したかを区別します。</li>
+<li><b>同じ時点だけを統合する：</b>早期死亡と20年生存を一つの統合割合に混ぜません。</li>
+<li><b>時代と症例構成を確認する：</b>出生前診断、搬送、集中治療、手術手技、施設経験、解剖学的重症度の変化を評価します。</li>
+<li><b>外部対照を別に扱う：</b>自然歴との比較は、同時対照を持つRCTの比較効果ではありません。</li>
+<li><b>感度分析を行う：</b>手術年代、施設、複雑病変、早期死亡の算入方法、追跡完全性で結果が変わるかを検討します。</li>
+</ol>
+
+<div class="warn">
+<b>劇的効果は、時代差を消す免許ではありません。</b><br>
+ASO後の成績は手術年代、周術期管理、集中治療、紹介経路、症例選択によっても改善します。
+Morfawらのサブグループ解析でも短期・中期生存は新しい手術年代でやや高く、
+Koubskýらの全国コホートでも1990年代の手術はその後の時期より生存が不良でした。
+したがって「差のすべてがASOによる」と断定するのではなく、
+これらの交絡だけで約81パーセントポイントという大きさを説明できるかを検討します。
+</div>
+
+<h4>GRADEでどう読むか</h4>
+<p>
+このような観察研究は、研究デザインだけで自動的に高い確実性になるわけではありません。
+まずリスク・オブ・バイアス、非直接性、不精確性、非一貫性、出版バイアスを評価します。
+そのうえで、残余交絡が観察された効果を十分に説明しにくいほど効果が大きいか、
+同じ方向の結果が複数の時代・施設で再現されているかを判断します。
+「効果が大きい」ことは格上げを検討する材料ですが、それだけで格上げを決める条件ではありません。
+実際にMorfawらは、短期生存の確実性を中、研究数が少なく異質性も大きい長期生存を非常に低いと評価しました。
+</p>
+
+<p class="small">
+事例の位置づけ：Germini et al. GRADE concept paper manuscript, 2026（添付資料）。
+統合生存割合：Morfaw et al., 2020。
+公表コホートによる補足として、KoubskýらはASO後20年生存94.9%を報告し、手術年代による成績差も示しています。
+</p>
+</section>
+
+<section id="impossible">
+<h2>7．「原則として因果推論できない」とする根拠</h2>
+
+<h3>7.1 反実仮想が観察されない</h3>
+
+<p>
+純粋な単群データが提供するのは治療下のアウトカム分布だけです。
+比較対象となる潜在転帰分布はデータ内に存在しません。
+したがって、外部情報や構造仮定なしには治療効果は非同定です。
+</p>
+
+<h3>7.2 未測定交絡を検証できない</h3>
+
+<p>
+傾向スコア、MAIC、STC、回帰調整は測定変数しか調整できません。
+しかも単群試験とRWDでは、同じ名称の変数でも測定精度が異なることがあります。
+Webster-Clarkらは、交絡因子の測定誤差がデータ源間で異なる場合、
+調整後推定値が粗推定値より真値から遠ざかることを示しました。
+</p>
+
+<h3>7.3 研究間差と治療差が分離できない</h3>
+
+<figure>
+<div class="flow">
+<div class="node orange"><b>研究集合</b><br>年代・施設・選択</div>
+<div class="arrow">→</div>
+<div class="node"><b>治療</b><br>AまたはB</div>
+<div class="arrow">→</div>
+<div class="node green"><b>転帰</b></div>
+</div>
+<p class="caption">
+図2．治療AがA研究でしか、治療BがB研究でしか観察されない場合、
+研究集合が治療と完全またはほぼ完全に重なる。
+</p>
+</figure>
+
+<h3>7.4 精密性はバイアスを救わない</h3>
+
+<p>
+単群研究を多数集めれば標準誤差は小さくなることがあります。
+しかし、共通する交絡や時代差がある場合、誤った値へ精密に収束する可能性があります。
+メタ分析はバイアスを平均して消す装置ではありません。
+</p>
+
+<h3>7.5 規制・方法論ガイダンスの位置づけ</h3>
+
+<p>
+EMAはRCTを確認的有効性評価の標準とし、単群試験の因果解釈は外部知識と
+検証不能な仮定に依存するとしています。
+NICE DSUに基づくPhillippoらは、共通対照のないunanchored比較には、
+すべての予後因子と効果修飾因子を知り調整するという、
+広く実現困難とみなされる強い仮定が必要だと整理しています。
+</p>
+
+<div class="fatal">
+<b>総合すると：</b>
+純粋な単群データだけから一般的な比較治療効果を同定することはできません。
+「できる」とする手法は、外部対照、自然歴、交換可能性、アウトカムモデルなどの
+追加情報・追加仮定によって未観察対照を補っています。
+</div>
+</section>
+
+<section id="external">
+<h2>8．単群の擬似比較と、正規の外部対照研究の境界</h2>
+
+<p>
+外部対照を使った時点で、分析はもはや単なる「単群メタ分析」ではありません。
+非ランダム化比較研究、externally controlled trial、
+target trial emulationとして評価すべきです。
+</p>
+
+<h3>8.1 最低限そろえるべきtarget trial要素</h3>
+
+<div class="scroll">
+<table>
+<tr><th>要素</th><th>必要な内容</th><th>典型的な失敗</th></tr>
+<tr><td>適格基準</td><td>両データ源へ同じ基準を適用</td><td>試験群だけ詳細な検査で選択</td></tr>
+<tr><td>治療戦略</td><td>AとB、支持療法、切替を定義</td><td>B群の標準治療が不均一</td></tr>
+<tr><td>割付時点</td><td>治療決定時点をそろえる</td><td>Aは治療開始者だけを選ぶ</td></tr>
+<tr><td>time zero</td><td>適格判定・割付・追跡開始を整合</td><td>immortal-time bias</td></tr>
+<tr><td>アウトカム</td><td>定義、頻度、判定方法を統一</td><td>中央判定対カルテ記載</td></tr>
+<tr><td>追跡</td><td>打切り、追加治療、脱落を整合</td><td>一方だけ追跡が密</td></tr>
+<tr><td>因果対比</td><td>ITT型、per-protocol型などを明示</td><td>解析後に都合よく変更</td></tr>
+</table>
+</div>
+
+<h3>8.2 FDAが強調する問題</h3>
+
+<ul>
+<li>外部対照を単群試験終了後に結果を見て選ばない</li>
+<li>プロトコルと解析計画を事前規定する</li>
+<li>重要な予後因子が両データ源で測定可能か確認する</li>
+<li>診断、予後、治療、支持療法、地域、年代を比較する</li>
+<li>index dateを整合しimmortal timeを避ける</li>
+<li>アウトカムの定義と評価頻度をそろえる</li>
+<li>複雑な統計モデルは追加の検証不能仮定を必要とし得る</li>
+</ul>
+
+<h3>8.3 Unanchored MAIC/STCの特に強い仮定</h3>
+
+<p>
+共通対照があるanchored比較では主として効果修飾因子の調整が問題になります。
+共通対照がないunanchored比較では絶対アウトカムを研究間で比較するため、
+効果修飾因子だけでなく、すべての予後因子を調整する必要があります。
+</p>
+
+<div class="eq">
+Unanchored比較の要件 ＝ 全予後因子 ＋ 全効果修飾因子 ＋ 正しいモデル ＋ 共通領域
+</div>
+
+<p>
+この条件は理論上は定義できますが、実際に満たされたかをデータから証明することはできません。
+したがって、unanchored MAIC/STCは「単純比較より洗練されている」一方で、
+「RCTに近い証拠」と自動的に評価してはいけません。
+</p>
+</section>
+
+<section id="decision">
+<h2>9．どの時点で「間違った方法」と判定するか</h2>
+
+<div class="step">
+<span class="n">1</span>
+<div><b>比較対象は研究内に存在するか。</b><br>
+存在すれば研究内contrastを優先する。存在しなければ次へ進む。</div>
+</div>
+<div class="step">
+<span class="n">2</span>
+<div><b>単にA研究とB研究を分けただけか。</b><br>
+そうであれば、その差を治療効果と呼ぶのは原則として誤り。</div>
+</div>
+<div class="step">
+<span class="n">3</span>
+<div><b>明確なtarget trialと外部対照プロトコルがあるか。</b><br>
+なければ探索的な研究間比較に留める。</div>
+</div>
+<div class="step">
+<span class="n">4</span>
+<div><b>time zero、適格基準、転帰測定、追跡が整合しているか。</b><br>
+一つでも重大な不整合があれば、因果解釈は危険。</div>
+</div>
+<div class="step">
+<span class="n">5</span>
+<div><b>重要な予後因子・効果修飾因子が両群で測定されているか。</b><br>
+未測定の可能性が高ければ、残余交絡を主要限界とする。</div>
+</div>
+<div class="step">
+<span class="n">6</span>
+<div><b>共通領域と重みの安定性があるか。</b><br>
+極端な重みや小さいESSでは、推定対象が少数患者へ依存する。</div>
+</div>
+<div class="step">
+<span class="n">7</span>
+<div><b>未測定交絡に対する感度分析があるか。</b><br>
+定量的バイアス分析、negative control、代替time zeroなどを確認する。</div>
+</div>
+<div class="step">
+<span class="n">8</span>
+<div><b>結論が仮定の強さに対応しているか。</b><br>
+強い仮定の分析から断定的優越性を述べていれば、結論は過剰。</div>
+</div>
+
+<div class="fatal">
+<b>明確に「誤り」と言ってよい状況</b>
+<ul>
+<li>単群Aと単群Bの統合割合の差を、そのまま無調整の治療効果と記載する</li>
+<li>別研究の患者数を一つの二群試験のように扱う</li>
+<li>研究内比較がないのに通常の独立二群検定だけで因果結論を出す</li>
+<li>時代・施設・適格基準・追跡の差を無視する</li>
+<li>「Aは有意、Bは非有意」だけでAとBに差があると結論する</li>
+<li>モデルの収束やp値だけを妥当性の根拠にする</li>
+</ul>
+</div>
+
+<div class="warn">
+<b>「誤り」と断定する前に区別すべき状況</b>
+<ul>
+<li>著者が因果効果ではなく記述的な研究間差として報告している</li>
+<li>十分設計された外部対照研究として因果仮定を明示している</li>
+<li>方法論研究としてモデル性能をシミュレーションしている</li>
+<li>自然歴が極めて固定的で劇的効果が観察されている</li>
+</ul>
+</div>
+</section>
+
+<section id="review">
+<h2>10．論文を読む・査読するためのチェックリスト</h2>
+
+<div class="grid">
+<div class="card">
+<h4>比較構造</h4>
+<ul>
+<li>研究内比較か研究間比較か</li>
+<li>共通対照があるか</li>
+<li>単群を二群試験のように扱っていないか</li>
+</ul>
+</div>
+<div class="card">
+<h4>対象集団</h4>
+<ul>
+<li>適格基準は同一か</li>
+<li>重症度、前治療、バイオマーカーは同じか</li>
+<li>紹介経路・施設レベルは同じか</li>
+</ul>
+</div>
+<div class="card">
+<h4>時間</h4>
+<ul>
+<li>同時代か</li>
+<li>time zeroは同一か</li>
+<li>immortal timeはないか</li>
+<li>追跡期間は比較可能か</li>
+</ul>
+</div>
+<div class="card">
+<h4>測定</h4>
+<ul>
+<li>転帰定義と評価頻度は同じか</li>
+<li>中央判定か担当医判定か</li>
+<li>交絡因子の測定精度は同じか</li>
+</ul>
+</div>
+<div class="card">
+<h4>統計解析</h4>
+<ul>
+<li>estimandが明示されているか</li>
+<li>positivityとoverlapを示したか</li>
+<li>重み、ESS、バランスを示したか</li>
+<li>研究クラスタリングを考慮したか</li>
+</ul>
+</div>
+<div class="card">
+<h4>頑健性</h4>
+<ul>
+<li>未測定交絡の感度分析があるか</li>
+<li>代替対照・代替time zeroで再現するか</li>
+<li>低バイアス研究限定でも同じか</li>
+</ul>
+</div>
+</div>
+
+<h3>危険な表現</h3>
+<ul>
+<li>「Aの統合奏効率はBより高かったため、Aが優れている」</li>
+<li>「メタ回帰で治療係数が有意だったので交絡は除去された」</li>
+<li>「ベースライン平均値が近かったため両群は比較可能である」</li>
+<li>「傾向スコアで調整したためランダム化試験と同等である」</li>
+<li>「Bayesian法により外部対照のバイアスが解消された」</li>
+</ul>
+
+<h3>より適切な表現</h3>
+<ul>
+<li>「研究間の調整済み関連であり、残余交絡を除外できない」</li>
+<li>「比較結果はconditional exchangeabilityに依存する」</li>
+<li>「未測定予後因子が存在する場合、推定値は因果効果として解釈できない」</li>
+<li>「仮説生成的結果であり、同時対照試験による確認が必要である」</li>
+</ul>
+</section>
+
+<section id="writing">
+<h2>11．公平でニュートラルな最終結論</h2>
+
+<div class="good">
+<b>条件付き肯定：</b><br>
+方法論研究は、単群研究間であっても、外部対照を因果推論の枠組みに組み込み、
+すべての関連予後因子と効果修飾因子が測定され、群間の共通領域があり、
+time zeroとアウトカム測定が整合し、モデルが正しく規定されている場合には、
+比較効果を無偏または低バイアスで推定できる可能性を示している。
+</div>
+
+<div class="fatal">
+<b>原則的否定：</b><br>
+しかし、純粋な単群研究は未治療・代替治療下の反実仮想を観察しないため、
+単群データだけから比較治療効果を同定することはできない。
+治療別統合割合、研究レベルメタ回帰、arm-based modelなどを用いても、
+未測定交絡と研究間差は自動的には解消されない。
+</div>
+
+<div class="lead">
+<b>総合結論：</b><br>
+治療Aの単群研究と治療Bの単群研究を別々に集め、
+統合奏効率、生存率、前後変化量などを比較して
+A対Bの治療効果を結論する方法は、通常は妥当ではない。
+これは比較試験の代替ではなく、原則として記述的・仮説生成的な研究間比較である。
+<br><br>
+例外は、自然歴が極めて明確で劇的かつ客観的な転帰が観察される場合、
+または事前規定された外部対照研究として、
+因果推論に必要な設計・測定・解析条件が高度に満たされる場合である。
+それでも結論の確実性は仮定に依存し、一般には同時ランダム化対照試験より低い。
+</div>
+
+<h3>論文へ使用できる記載例</h3>
+
+<div class="neutral">
+本解析では治療Aおよび治療Bの単群研究における絶対アウトカムをそれぞれ統合した。
+両治療の統合値の差は研究間比較であり、研究内で無作為化された治療比較ではない。
+対象患者、研究時代、前治療、支持療法、転帰評価および追跡期間の差が
+治療選択と交絡している可能性があるため、この差を因果的治療効果として解釈することはできない。
+本結果は記述的・仮説生成的所見として提示し、比較有効性の確認には
+同時対照試験または適切に設計された外部対照研究が必要である。
+</div>
+</section>
+
+<section id="refs">
+<h2>12．主要参考文献・ガイダンス</h2>
+
+<ol>
+<li>
+European Medicines Agency.
+<i>Reflection paper on establishing efficacy based on single-arm trials submitted as pivotal evidence in a marketing authorisation application.</i>
+2024.
+<a href="https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-establishing-efficacy-based-single-arm-trials-submitted-pivotal-evidence-marketing-authorisation-application_en.pdf">PDF</a>
+</li>
+
+<li>
+U.S. Food and Drug Administration.
+<i>Considerations for the Design and Conduct of Externally Controlled Trials for Drug and Biological Products.</i>
+Draft Guidance.
+<a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-design-and-conduct-externally-controlled-trials-drug-and-biological-products">FDA</a>
+</li>
+
+<li>
+Phillippo DM, Ades AE, Dias S, Palmer S, Abrams KR, Welton NJ.
+Methods for population-adjusted indirect comparisons in health technology appraisal.
+<i>Med Decis Making.</i> 2018;38:200–211.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5774635/">Full text</a>
+</li>
+
+<li>
+NICE Decision Support Unit.
+<i>Technical Support Document 18: Methods for population-adjusted indirect comparisons.</i>
+<a href="https://sheffield.ac.uk/nice-dsu/tsds/population-adjusted">NICE DSU</a>
+</li>
+
+<li>
+Jiang Y, Ni W.
+Performance of unanchored matching-adjusted indirect comparison for time-to-event outcomes.
+<i>BMC Med Res Methodol.</i> 2020;20.
+<a href="https://link.springer.com/article/10.1186/s12874-020-01124-6">Full text</a>
+</li>
+
+<li>
+Thom H, et al.
+Network meta-analysis on disconnected evidence networks when only aggregate data are available.
+<i>Med Decis Making.</i> 2022.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9459361/">Full text</a>
+</li>
+
+<li>
+Chu H, et al.
+A review and comparison of arm-based versus contrast-based models for network meta-analysis.
+<i>WIREs Comput Stat.</i> 2024;16:e1639.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11134325/">Full text</a>
+</li>
+
+<li>
+Singh J, et al.
+Incorporating single-arm studies in meta-analysis of randomised controlled trials.
+<i>BMC Med Res Methodol.</i> 2021.
+<a href="https://link.springer.com/article/10.1186/s12874-021-01301-1">Full text</a>
+</li>
+
+<li>
+Zhang J, Ko CW, Nie L, Chen Y, Tiwari R.
+Bayesian hierarchical methods for meta-analysis combining randomized-controlled and single-arm studies.
+<i>Stat Methods Med Res.</i> 2019;28:1293–1310.
+</li>
+
+<li>
+Begg CB, Pilote L.
+A model for incorporating historical controls into a meta-analysis.
+<i>Biometrics.</i> 1991;47:899–906.
+</li>
+
+<li>
+Webster-Clark M, et al.
+Single-arm trials with external comparators and confounder misclassification.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7665993/">Full text</a>
+</li>
+
+<li>
+Viele K, Berry S, Neuenschwander B, et al.
+Use of historical control data for assessing treatment effects in clinical trials.
+<i>Pharm Stat.</i> 2014;13:41–54.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3951812/">Full text</a>
+</li>
+
+<li>
+Lambert J, et al.
+Enriching single-arm clinical trials with external controls: a three-step framework.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10539876/">Full text</a>
+</li>
+
+<li>
+Guyot P, Ades AE, Ouwens MJNM, Welton NJ.
+Enhanced secondary analysis of survival data: reconstructing data from published Kaplan–Meier curves.
+<i>BMC Med Res Methodol.</i> 2012;12:9.
+</li>
+
+<li>
+Liu N, et al.
+IPDfromKM: reconstructing individual patient data from published Kaplan–Meier curves.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8168323/">Full text</a>
+</li>
+
+<li>
+Jahanshahi M, et al.
+The use of external controls in FDA regulatory decision making.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8332598/">Full text</a>
+</li>
+
+<li>
+Hernán MA, Robins JM.
+<i>Causal Inference: What If.</i>
+Chapman & Hall/CRC.
+<a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Book site</a>
+</li>
+
+<li>
+Cochrane Handbook.
+Chapter 10: Analysing data and undertaking meta-analyses.
+<a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-10">Cochrane</a>
+</li>
+
+<li>
+Higgins JPT, Eldridge S, Li T.
+Cochrane Handbook Chapter 23: Including variants on randomized trials.
+多群RCTのarm選択、共有対照、相関、二重計上の扱い。
+<a href="https://training.cochrane.org/handbook/current/chapter-23">Cochrane</a>
+</li>
+
+<li>
+Chaimani A, Caldwell DM, Li T, Higgins JPT, Salanti G.
+Cochrane Handbook Chapter 11: Undertaking network meta-analyses.
+研究内ランダム化を保持するcontrast-based NMAとtransitivityの解説。
+<a href="https://training.cochrane.org/handbook/current/chapter-11">Cochrane</a>
+</li>
+
+<li>
+Germini et al.
+<i>GRADE concept paper manuscript.</i> 2026.
+TGAの歴史的自然歴とASO後生存を用いた劇的効果の方法論的事例（添付資料）。
+</li>
+
+<li>
+Morfaw F, Leenus A, Mbuagbaw L, et al.
+Outcomes after corrective surgery for congenital dextro-transposition of the arteries using the arterial switch technique:
+a scoping systematic review.
+<i>Systematic Reviews.</i> 2020;9:231.
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7542944/">Full text</a>
+</li>
+
+<li>
+Koubský K, Gebauer R, Tláskal T, et al.
+Long-Term Survival and Freedom From Coronary Artery Reintervention After Arterial Switch Operation for Transposition of the Great Arteries:
+A Population-Based Nationwide Study.
+<i>J Am Heart Assoc.</i> 2021;10:e020479.
+<a href="https://pubmed.ncbi.nlm.nih.gov/34169727/">PubMed</a>
+</li>
+</ol>
+
+<div class="small">
+<p><b>文献解釈上の注意：</b>
+方法論論文が単群研究を含むモデルを提案していることは、
+そのモデルがあらゆる実データで妥当な因果効果を与えることを意味しません。
+シミュレーションで仮定が満たされた場合の性能と、
+実世界で仮定が成立しているかという問題は分けて評価する必要があります。</p>
+
+<p>
+本資料は統計学的方法論の教育用です。
+個別の研究計画・解析では、臨床疫学、因果推論、メタ分析の専門家による
+プロトコル段階からの検討が必要です。
+</p>
+</div>
+</section>
+
+</main>
+
+
+</body>
+</html>

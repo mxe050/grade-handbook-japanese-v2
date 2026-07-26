@@ -1,0 +1,4526 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+
+<title>非RCTメタ分析</title>
+
+<style>
+:root{
+  --bg:#f4f7fb;
+  --paper:#ffffff;
+  --text:#172235;
+  --muted:#596777;
+  --line:#d7e1eb;
+  --blue:#075ca8;
+  --blue2:#eaf4ff;
+  --green:#08756c;
+  --green2:#e5f8f4;
+  --red:#b42318;
+  --red2:#fff0ee;
+  --orange:#9b4b00;
+  --orange2:#fff3e5;
+  --purple:#6842a5;
+  --purple2:#f2edff;
+  --shadow:0 10px 28px rgba(21,45,76,.08);
+  --max:1100px;
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0e1722;
+    --paper:#182331;
+    --text:#eef5fc;
+    --muted:#bdc9d7;
+    --line:#344356;
+    --blue:#70bcff;
+    --blue2:#173650;
+    --green:#67d3c7;
+    --green2:#173b38;
+    --red:#ff948a;
+    --red2:#4d2425;
+    --orange:#ffc078;
+    --orange2:#4b321d;
+    --purple:#c6a8ff;
+    --purple2:#342750;
+    --shadow:none;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:17px/1.85 -apple-system,BlinkMacSystemFont,
+  "Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+}
+a{color:var(--blue);text-underline-offset:3px}
+header{
+  padding:58px 18px 50px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(90,190,255,.34),transparent 36%),
+    linear-gradient(135deg,#073b6b,#067486);
+}
+.hero,main,.tabs{max-width:var(--max);margin:auto}
+h1{
+  font-size:clamp(2rem,6vw,4.1rem);
+  line-height:1.14;
+  margin:.2em 0;
+}
+h2{
+  font-size:clamp(1.55rem,4vw,2.5rem);
+  line-height:1.32;
+  margin-top:0;
+}
+h3{margin-top:2em;line-height:1.45}
+h4{margin-top:1.5em}
+.lead{font-size:1.2rem;max-width:880px}
+.kicker{
+  color:var(--green);
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-height:52px;
+  padding:10px 18px;
+  margin:4px;
+  border:1px solid transparent;
+  border-radius:12px;
+  background:#fff;
+  color:#073b6b;
+  text-decoration:none;
+  font-weight:850;
+}
+.btn-blue{background:var(--blue);color:#fff}
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:color-mix(in srgb,var(--paper) 95%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.tabs{
+  display:flex;
+  gap:5px;
+  overflow-x:auto;
+  padding:8px;
+}
+.tabs a{
+  white-space:nowrap;
+  padding:8px 10px;
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:750;
+  font-size:.9rem;
+}
+.tabs a:hover{background:var(--blue2)}
+main{padding:20px 14px 85px}
+section{
+  scroll-margin-top:72px;
+  margin:22px 0;
+  padding:clamp(20px,4vw,44px);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:14px;
+}
+.card,.figure{
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper);
+}
+.callout{
+  margin:20px 0;
+  padding:17px 19px;
+  border-left:6px solid;
+  border-radius:12px;
+}
+.info{background:var(--blue2);border-color:var(--blue)}
+.good{background:var(--green2);border-color:var(--green)}
+.warn{background:var(--orange2);border-color:var(--orange)}
+.danger{background:var(--red2);border-color:var(--red)}
+.purple{background:var(--purple2);border-color:var(--purple)}
+table{
+  display:block;
+  width:100%;
+  overflow-x:auto;
+  border-collapse:collapse;
+  margin:19px 0;
+}
+th,td{
+  min-width:135px;
+  padding:12px;
+  border:1px solid var(--line);
+  vertical-align:top;
+  text-align:left;
+}
+th{background:var(--blue2)}
+details{
+  margin:15px 0;
+  border:1px solid var(--line);
+  border-radius:13px;
+  overflow:hidden;
+}
+summary{
+  min-height:58px;
+  padding:15px 17px;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+  background:var(--blue2);
+  font-weight:850;
+  list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+summary:after{
+  content:"＋";
+  margin-left:auto;
+  font-size:1.25rem;
+}
+details[open] summary:after{content:"−"}
+.inside{padding:17px}
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin:21px 0;
+}
+.box{
+  flex:1 1 165px;
+  min-height:72px;
+  padding:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:2px solid var(--blue);
+  border-radius:13px;
+  background:var(--blue2);
+  font-weight:850;
+}
+.arrow{
+  font-size:1.45rem;
+  color:var(--blue);
+  font-weight:900;
+}
+.math{
+  padding:14px;
+  background:var(--blue2);
+  border-radius:10px;
+  font-family:Georgia,serif;
+  overflow-x:auto;
+}
+.badge{
+  display:inline-block;
+  padding:3px 9px;
+  margin:2px;
+  border-radius:999px;
+  background:var(--blue2);
+  color:var(--blue);
+  font-size:.78rem;
+  font-weight:900;
+}
+.caption,.small{color:var(--muted);font-size:.9rem}
+.chapter-goals{
+  margin:18px 0;
+  padding:17px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:var(--green2);
+}
+.chapter-goals strong{color:var(--green)}
+.takeaway{
+  margin-top:26px;
+  padding:18px;
+  border:2px solid var(--green);
+  border-radius:14px;
+  background:var(--green2);
+}
+svg{max-width:100%;height:auto}
+pre{
+  overflow-x:auto;
+  padding:17px;
+  color:#eef7ff;
+  background:#101923;
+  border-radius:13px;
+  line-height:1.6;
+}
+code{
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+@media(max-width:620px){
+  body{font-size:16px}
+  .btn{width:100%}
+  .arrow{width:100%;text-align:center;transform:rotate(90deg)}
+  section{padding:20px 16px}
+}
+
+/* 後半章を含む全ページ共通の可読性・モバイル補正 */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{overflow-wrap:anywhere}
+a,p,li,dd,td,th{overflow-wrap:anywhere}
+.hero,main,.tabs,header,nav,section,footer{min-width:0}
+.hero,main,.tabs{width:100%}
+.hero-subtitle{max-width:900px;margin:.55rem 0 1.4rem;color:#dff6ff;font-size:1.22rem;font-weight:750;line-height:1.65}
+img,svg,video,canvas{display:block;max-width:100%;height:auto}
+table,pre,.math,.forest-demo{max-width:100%;overscroll-behavior-inline:contain}
+pre{width:100%;touch-action:pan-x}
+.chapter-kicker{color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:.12em}
+.learning-box,.chapter-summary,.reference-note,.take-home{margin:20px 0;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--green2)}
+.learning-box h3,.chapter-summary h3,.take-home h3{margin-top:0}
+.warning,.note{margin:20px 0;padding:17px 19px;border-left:6px solid var(--orange);border-radius:10px;background:var(--orange2)}
+.note{border-color:var(--blue);background:var(--blue2)}
+.code-wrap{position:relative;width:100%;max-width:100%;min-width:0;margin:20px 0}
+.code-wrap pre{margin:0}
+.copy-btn{position:absolute;top:10px;right:10px;z-index:2;min-height:38px;padding:7px 12px;border:1px solid #6e8297;border-radius:7px;background:#edf5fc;color:#18334e;font-weight:800;cursor:pointer}
+.copy-btn.copied{background:#d9f7ef;color:#075f56}
+.flow-grid,.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}
+.flow-step,.decision-card{min-width:0;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.4rem;font-weight:900}
+.forest-demo{width:100%;overflow-x:auto}
+.workflow-vertical,.checklist{display:grid;gap:10px;margin:20px 0}
+.workflow-item{min-width:0;padding:17px 18px;border-left:5px solid var(--blue);border-radius:8px;background:var(--blue2)}
+.checklist label{display:flex;align-items:flex-start;gap:10px;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
+.checklist input{flex:0 0 auto;width:20px;height:20px;margin-top:.25rem}
+.references li{margin-bottom:12px}
+#backToTop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;width:48px;height:48px;border:1px solid var(--line);border-radius:50%;opacity:0;pointer-events:none;transform:translateY(8px);background:var(--blue);color:#fff;font-size:1.35rem;font-weight:900;transition:opacity .2s,transform .2s}
+#backToTop.show{opacity:1;pointer-events:auto;transform:none}
+@media(max-width:620px){
+  body{font-size:16px;line-height:1.8}
+  header{padding:34px 14px 28px}
+  h1{font-size:1.95rem;line-height:1.3}
+  h2{font-size:1.45rem;line-height:1.45}
+  h3{font-size:1.13rem;line-height:1.55}
+  .lead,.hero-subtitle{font-size:1rem}
+  main{padding:12px 6px 64px}
+  section{margin:14px 0;padding:19px 13px;border-radius:11px}
+  .grid,.decision-grid,.flow-grid{grid-template-columns:minmax(0,1fr)}
+  .card,.figure{padding:14px 12px}
+  .callout,.warning,.note,.learning-box,.chapter-summary,.reference-note,.take-home{padding:15px 13px}
+  .tabs{width:100%;padding:8px 6px;scroll-snap-type:x proximity;touch-action:pan-x}
+  .tabs a{font-size:.84rem;scroll-snap-align:start}
+  table{font-size:.9rem;touch-action:pan-x}
+  th,td{min-width:125px;padding:10px}
+  pre{padding:54px 13px 15px;font-size:.79rem;line-height:1.55}
+  .copy-btn{top:8px;right:8px}
+  .flow-arrow{transform:rotate(90deg)}
+  .math{font-size:.88rem;touch-action:pan-x}
+}
+@media print{
+  nav{display:none}
+  body{background:#fff;color:#000}
+  section{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+
+<body>
+
+<header id="top">
+<div class="hero">
+<div class="kicker" style="color:#c5f6ff">OBSERVATIONAL EVIDENCE SYNTHESIS</div>
+<h1>非RCTメタ分析</h1>
+<p class="hero-subtitle">非ランダム化比較研究を、RCTのように数字だけで統合しないための実践講義</p>
+
+<p class="lead">
+非ランダム化比較研究では、論文に書かれたイベント数やオッズ比を
+フォレストプロットへ入力する前に、その数字が何を比較し、
+どのような交絡調整を経て、誰に対するどの効果を表しているのかを
+確認しなければなりません。
+</p>
+
+<p class="lead">
+本教材では、粗イベント数、調整済みOR・RR・HR、異なる交絡調整、
+target trial、DAG、time zero、ランダム効果モデル、Rによる実装、
+ROBINS-IとGRADEまでを、臨床例と図を使って順番に説明します。
+</p>
+
+<a class="btn" href="#start">最初から読む</a>
+<a class="btn" href="#raw">粗データの問題へ</a>
+<a class="btn" href="#statistics">統計解析へ</a>
+<a class="btn" href="#grade">GRADEへ</a>
+</div>
+</header>
+
+<nav aria-label="章ナビゲーション">
+<div class="tabs">
+<a href="#start">はじめに</a>
+<a href="#news">最新動向</a>
+<a href="#core">核心</a>
+<a href="#raw">粗データ</a>
+<a href="#adjusted">調整済み効果</a>
+<a href="#causal-roles">変数の役割</a>
+<a href="#time">Time zero</a>
+<a href="#measures">OR・RR・HR</a>
+<a href="#confounders">調整因子</a>
+<a href="#statistics">統計モデル</a>
+<a href="#r">AI＋R実装</a>
+<a href="#grade">GRADE</a>
+<a href="#references">文献</a>
+</div>
+</nav>
+
+<main>
+
+<section id="start">
+<div class="kicker">INTRODUCTION</div>
+<h2>この教材で最も伝えたいこと</h2>
+
+<p>
+メタ分析は、複数研究の数字を集めて平均する作業だと思われがちです。
+しかし、特に非ランダム化比較研究では、
+「数字が報告されていること」と「その数字を統合できること」は別です。
+</p>
+
+<p>
+例えば、ある研究が手術Aと手術Bの術後合併症を比較し、
+別の研究も同じ手術Aと手術Bを比較していたとします。
+研究名や治療名が同じなら、同じ臨床的問いに答えているように見えます。
+しかし、実際には次のような違いがあり得ます。
+</p>
+
+<ul>
+<li>研究Aでは重症患者ほど手術Aを受けている</li>
+<li>研究Bでは軽症患者ほど手術Aを受けている</li>
+<li>研究Aは治療開始日から追跡している</li>
+<li>研究Bは診断日から追跡し、将来の治療情報で群分けしている</li>
+<li>研究Aは1年リスク比を報告している</li>
+<li>研究Bは追跡期間全体のハザード比を報告している</li>
+<li>研究Aは治療前重症度を調整している</li>
+<li>研究Bは術後反応まで調整している</li>
+</ul>
+
+<p>
+これらの数字は、同じ治療名を比較していても、
+統計学的・因果的には同じ意味を持ちません。
+ランダム効果モデルに入れれば自動的に同じ意味になるわけでもありません。
+</p>
+
+<div class="callout danger">
+<strong>本教材の中心原則：</strong><br>
+フォレストプロットを作る前に、
+各研究が同じ対象集団における同じ治療戦略の
+同じ因果効果を推定しているかを確認します。
+</div>
+
+<h3>予測と因果効果を区別する</h3>
+
+<p>
+「ある因子を持つ患者は将来悪化しやすいか」という予後・予測の問いと、
+「その因子を介入によって変えれば将来の転帰が改善するか」という
+因果効果の問いは異なります。
+</p>
+
+<p>
+例えば、術後1か月の強い疼痛は6か月後の持続痛を強く予測するかもしれません。
+しかし、術後1か月疼痛は手術前の交絡因子ではありません。
+また、術後1か月疼痛を一時的に減らすことが、
+必ず6か月後の疼痛を減らすとも限りません。
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>予測の問い</h3>
+<p>術後1か月の疼痛が強い患者は、6か月後も疼痛が残りやすいか。</p>
+</div>
+<div class="card">
+<h3>因果の問い</h3>
+<p>術後1か月の疼痛を減らす介入を行うと、6か月後の持続痛が減るか。</p>
+</div>
+</div>
+
+<div class="takeaway">
+<strong>導入のまとめ</strong>
+<p>
+メタ分析の前に、レビューが予測、発生率、治療効果、害の検出の
+どれを目的にしているのかを明確にします。
+本教材は主として、非ランダム化研究を用いて
+介入の比較因果効果を推定する場合を扱います。
+</p>
+</div>
+</section>
+
+<section id="news">
+<div class="kicker">2025–2026 UPDATE</div>
+<h2>最近の重要な方法論的更新</h2>
+
+<div class="chapter-goals">
+<strong>この節で理解すること</strong>
+<ul>
+<li>非RCTのメタ分析に関する最近の警告</li>
+<li>TARGET Statementの意義</li>
+<li>Core GRADEとROBINS-I V2の現在地</li>
+</ul>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge">Core GRADE 2025</span>
+<h3>非RCTは原則「低」から開始</h3>
+<p>
+2025年に公表されたCore GRADEは、
+介入効果を扱う通常の非ランダム化研究について、
+残余交絡への懸念を踏まえて原則的に低から開始する
+簡潔な運用方式を採用しました。
+</p>
+<p>
+これは、ROBINS-Iを用いて形式上高から開始し、
+risk of biasに応じて下げる方式とは異なります。
+ただし、適切に評価すれば最終的なcertaintyは
+大きく矛盾すべきではありません。
+</p>
+<a target="_blank" rel="noopener"
+href="https://www.bmj.com/content/389/bmj-2024-083864">
+Core GRADE 4を読む
+</a>
+</div>
+
+<div class="card">
+<span class="badge">TARGET 2025</span>
+<h3>target trialの透明報告</h3>
+<p>
+TARGET Statementは、観察データを使って
+target trialをエミュレートした研究について、
+適格基準、治療戦略、time zero、アウトカム、
+因果比較、解析計画などを明確に報告するよう求めています。
+</p>
+<p>
+単に「後ろ向きコホート研究」と記載するのではなく、
+どのような理想的ランダム化試験を模倣しようとしたのかを
+読者が確認できるようにする考え方です。
+</p>
+<a target="_blank" rel="noopener"
+href="https://www.bmj.com/content/390/bmj-2025-087179">
+TARGET Statementを読む
+</a>
+</div>
+
+<div class="card">
+<span class="badge">ROBINS-I V2</span>
+<h3>2025年11月改訂ドラフト</h3>
+<p>
+ROBINS-I V2では、判定アルゴリズム、
+Critical riskを早期に判断するトリアージ、
+immortal timeへの質問、欠測データ、
+time-varying confoundingなどが整理されました。
+</p>
+<p>
+ただし、2025年11月20日改訂版は、
+公式ページ上では現在もドラフトとされています。
+レビューでは使用した版と日付を明示する必要があります。
+</p>
+<a target="_blank" rel="noopener"
+href="https://www.riskofbias.info/welcome/robins-i-v2">
+ROBINS-I V2公式ページ
+</a>
+</div>
+
+<div class="card">
+<span class="badge">Meta-analysis 2025</span>
+<h3>未調整結果への警告</h3>
+<p>
+観察研究のシステマティックレビューが、
+各研究の粗い未調整結果を統合し、
+調整済み結果とは異なる結論に至り得ることが
+改めて指摘されました。
+</p>
+<p>
+これは、ランダム効果モデルを使用したかどうかとは別問題です。
+入力した各研究の推定値が交絡で偏っていれば、
+統合値も偏る可能性があります。
+</p>
+<a target="_blank" rel="noopener"
+href="https://doi.org/10.1016/j.jclinepi.2025.111840">
+Paul et al.を読む
+</a>
+</div>
+
+</div>
+
+<div class="callout warn">
+<strong>最新だから正しい、複雑だから優れている、という意味ではありません。</strong>
+ROBINS-I V2、Core GRADE、TARGETは目的が異なります。
+TARGETは報告、ROBINS-Iは個別結果のrisk of bias、
+GRADEはbody of evidenceのcertaintyを扱います。
+</div>
+</section>
+
+<section id="core">
+<div class="kicker">CORE MESSAGE</div>
+<h2>フォレストプロットは解析の出発点ではない</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>RCTと非RCTで群間差の意味が違う理由</li>
+<li>交絡がどのように治療効果へ混入するか</li>
+<li>メタ分析の前に定義すべき項目</li>
+</ul>
+</div>
+
+<p>
+RCTでは、十分な人数と適切なランダム化があれば、
+既知・未知の予後因子が治療群間で平均的に均衡します。
+そのため、割付後の群間差を治療戦略の効果として解釈しやすくなります。
+</p>
+
+<p>
+非RCTでは、患者や医師が治療を選びます。
+治療選択に影響する理由が、同時に転帰にも影響すると交絡が生じます。
+</p>
+
+<h3>臨床例：重症患者ほど積極的治療を受ける</h3>
+
+<p>
+重症患者ほど積極的治療Aを受け、
+軽症患者ほど標準治療Bを受ける状況を考えます。
+治療Aが実際には有効でも、治療A群には最初から予後の悪い患者が多いため、
+粗い死亡率では治療Aが悪く見える可能性があります。
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 880 270" role="img" aria-label="交絡のDAG">
+<defs>
+<marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3z" fill="#1769aa"/>
+</marker>
+</defs>
+
+<rect x="30" y="90" width="205" height="75" rx="16"
+fill="#fff3e5" stroke="#9b4b00" stroke-width="3"/>
+<text x="132" y="125" text-anchor="middle" font-size="24">基礎重症度</text>
+<text x="132" y="150" text-anchor="middle" font-size="17">治療前の予後因子</text>
+
+<rect x="340" y="30" width="190" height="75" rx="16"
+fill="#eaf4ff" stroke="#075ca8" stroke-width="3"/>
+<text x="435" y="76" text-anchor="middle" font-size="24">治療選択</text>
+
+<rect x="650" y="90" width="190" height="75" rx="16"
+fill="#fff0ee" stroke="#b42318" stroke-width="3"/>
+<text x="745" y="136" text-anchor="middle" font-size="24">転帰</text>
+
+<line x1="235" y1="105" x2="338" y2="78"
+stroke="#1769aa" stroke-width="4" marker-end="url(#a)"/>
+<line x1="235" y1="145" x2="648" y2="145"
+stroke="#1769aa" stroke-width="4" marker-end="url(#a)"/>
+<line x1="530" y1="78" x2="680" y2="110"
+stroke="#1769aa" stroke-width="4" marker-end="url(#a)"/>
+</svg>
+
+<div class="caption">
+重症度が治療選択と転帰の共通原因になると、
+治療と転帰の粗い関連にはバックドア経路が開きます。
+</div>
+</div>
+
+<div class="callout danger">
+<strong>観察された群間差</strong><br>
+＝ 治療の因果効果<br>
+＋ 交絡<br>
+＋ 選択バイアス<br>
+＋ 測定バイアス<br>
+＋ 時間設定の問題<br>
+＋ 偶然誤差
+</div>
+
+<h3>精度と妥当性を区別する</h3>
+
+<p>
+大規模データでは標準誤差が小さくなり、
+信頼区間が狭くなります。しかし、交絡による偏りは
+標本数を増やすだけでは小さくなりません。
+</p>
+
+<p>
+例えば、真のリスク比が0.80であるのに、
+交絡によって観察上のリスク比が1.20になる状況を考えます。
+患者数が100人から100万人に増えると、
+1.20の周囲の信頼区間は非常に狭くなります。
+しかし、0.80へ近づくとは限りません。
+</p>
+
+<div class="callout info">
+<strong>ランダム誤差が小さいこと</strong>と
+<strong>バイアスが小さいこと</strong>は別です。
+大規模観察研究は「精密に間違う」可能性があります。
+</div>
+
+<h3>正しい検討順序</h3>
+
+<div class="flow">
+<div class="box">Target PICO<br>誰に何を比較するか</div>
+<div class="arrow">→</div>
+<div class="box">Target trial<br>理想試験を定義</div>
+<div class="arrow">→</div>
+<div class="box">Time zero<br>時間軸をそろえる</div>
+<div class="arrow">→</div>
+<div class="box">DAG<br>交絡構造を描く</div>
+</div>
+
+<div class="flow">
+<div class="box">Estimand<br>どの効果か</div>
+<div class="arrow">→</div>
+<div class="box">推定値選択<br>OR・RR・HR等</div>
+<div class="arrow">→</div>
+<div class="box">統合可能性<br>同じ意味か</div>
+<div class="arrow">→</div>
+<div class="box">メタ分析<br>最後に実行</div>
+</div>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+非RCTのメタ分析では、フォレストプロットへ数字を入力する前に、
+各研究の比較が同じ因果的問いに対応しているか確認します。
+ランダム効果モデルは、この確認作業を代行しません。
+</p>
+</div>
+</section>
+
+<section id="raw">
+<div class="kicker">CHAPTER 1</div>
+<h2>非RCTの2×2表をそのまま統合してはいけない</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>粗オッズ比が何を表しているか</li>
+<li>なぜ研究数を増やしても交絡が消えないか</li>
+<li>粗データを使用できる場面と使用できない場面</li>
+</ul>
+</div>
+
+<h3>単純な2×2表</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>イベントあり</th>
+<th>イベントなし</th>
+<th>合計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>治療A</th>
+<td>30</td>
+<td>70</td>
+<td>100</td>
+</tr>
+<tr>
+<th>治療B</th>
+<td>10</td>
+<td>90</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+この表から、治療A群のイベントリスクは30%、
+治療B群は10%と計算できます。
+粗リスク比は3.0であり、粗オッズ比は約3.86です。
+</p>
+
+<p>
+しかし、この計算では患者がなぜ治療AまたはBを受けたのかを考慮していません。
+治療A群に重症患者が集中していれば、
+この値は治療Aの有害作用だけを表すものではありません。
+</p>
+
+<h3>層別すると逆転する例</h3>
+
+<p>
+重症度別に見ると、両方の重症度層で治療Aの方が良好であるにもかかわらず、
+全患者をまとめると治療Aが悪く見える場合があります。
+これはSimpsonのパラドックスとして知られる現象の一例です。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>重症度</th>
+<th>治療Aイベント率</th>
+<th>治療Bイベント率</th>
+<th>解釈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重症</td>
+<td>30%</td>
+<td>40%</td>
+<td>重症患者内ではAが低い</td>
+</tr>
+<tr>
+<td>軽症</td>
+<td>5%</td>
+<td>10%</td>
+<td>軽症患者内でもAが低い</td>
+</tr>
+<tr>
+<td>全体</td>
+<td>25%</td>
+<td>12%</td>
+<td>A群に重症患者が多いと全体では逆転し得る</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout danger">
+全体の2×2表だけを見ると、
+治療効果と患者構成の違いを区別できません。
+これが非RCTの粗イベント数をRCTと同じように扱えない基本理由です。
+</div>
+
+<h3>研究を統合すれば交絡が相殺されるのか</h3>
+
+<p>
+交絡の方向が研究ごとに完全にランダムで平均ゼロになるなら、
+理論上は一部が相殺される可能性があります。
+しかし、実際の医療では「重症患者ほど積極的治療を受ける」など、
+治療選択の仕組みが複数研究で共通していることがあります。
+</p>
+
+<p>
+その場合、各研究のバイアスは同じ方向に働きます。
+研究数を増やすほど、偏った平均値の信頼区間が狭くなる可能性があります。
+</p>
+
+<div class="math">
+観察推定値 yᵢ ＝ 対象効果 θᵢ ＋ バイアス bᵢ ＋ 標本誤差 εᵢ
+</div>
+
+<p>
+通常のメタ分析が直接扱うのは、主として標本誤差εᵢと
+研究間の対象効果の分布です。バイアスbᵢがゼロであるとは仮定できません。
+</p>
+
+<h3>ランダム効果モデルでも交絡は修正されない</h3>
+
+<p>
+ランダム効果モデルは、研究ごとに真の対象効果が異なる可能性を認めます。
+しかし、各研究が偏っている理由を特定し、その偏りを取り除くモデルではありません。
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>ランダム効果モデルが扱うもの</h3>
+<ul>
+<li>研究内の標本誤差</li>
+<li>研究間の対象効果のばらつき</li>
+<li>平均効果の不確実性</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>自動的には扱わないもの</h3>
+<ul>
+<li>未測定交絡</li>
+<li>immortal time bias</li>
+<li>選択バイアス</li>
+<li>治療後変数の誤調整</li>
+<li>異なるestimandの混在</li>
+</ul>
+</div>
+</div>
+
+<details>
+<summary>粗データを利用できる場面</summary>
+<div class="inside">
+
+<p>
+粗データが常に無価値という意味ではありません。
+目的によっては、粗イベント数そのものが必要です。
+</p>
+
+<ul>
+<li>適切に実施されたRCTの割付群比較</li>
+<li>特定集団における記述的な発生率の提示</li>
+<li>安全性シグナルの探索</li>
+<li>単群でのみ定義できる手技固有合併症の頻度</li>
+<li>調整済み結果と粗結果の差を検討する補助解析</li>
+</ul>
+
+<p>
+一方、非RCTで治療AとBの比較因果効果を主張する場合、
+粗い2×2表だけでは通常不十分です。
+</p>
+
+</div>
+</details>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+非RCTの粗イベント数は、治療効果だけでなく患者背景の違いを含みます。
+研究数、症例数、ランダム効果モデルは、
+この問題を自動的に解決しません。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://mentalhealth.bmj.com/content/23/2/83">
+Metelli &amp; Chaimani, Challenges in meta-analyses with observational studies
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/26053537/">
+Valentine &amp; Thompson
+</a>
+</p>
+</section>
+
+<section id="adjusted">
+<div class="kicker">CHAPTER 2</div>
+<h2>調整済みOR・RR・HRなら安全なのか</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>「調整済み」という表示だけでは不十分な理由</li>
+<li>最大調整モデルが最良とは限らない理由</li>
+<li>論文からどの推定値を抽出すべきか</li>
+</ul>
+</div>
+
+<p>
+粗推定値よりも、適切に調整された推定値を優先することは合理的です。
+しかし、「adjusted OR」「multivariable HR」と書かれているだけでは、
+妥当な因果効果を推定しているとは判断できません。
+</p>
+
+<p>
+調整済み推定値の妥当性は、
+どの変数を、どの時点で測定し、なぜ調整したかに依存します。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>確認項目</th>
+<th>問題のある例</th>
+<th>望ましい考え方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>変数選択</td>
+<td>単変量P&lt;0.05の変数だけを投入</td>
+<td>DAGと治療前知識で事前指定</td>
+</tr>
+<tr>
+<td>測定時点</td>
+<td>術後所見を背景因子と同様に調整</td>
+<td>治療前・治療後を区別</td>
+</tr>
+<tr>
+<td>time zero</td>
+<td>将来の治療情報で診断日に遡って群分け</td>
+<td>適格判定・治療決定・追跡開始をそろえる</td>
+</tr>
+<tr>
+<td>estimand</td>
+<td>ATE、ATT、条件付きORが混在</td>
+<td>誰に対する何の効果かを明示</td>
+</tr>
+<tr>
+<td>モデル選択</td>
+<td>最も有意なモデルを採用</td>
+<td>事前指定された因果モデルを採用</td>
+</tr>
+</tbody>
+</table>
+
+<h3>なぜ単変量解析による選択が問題なのか</h3>
+
+<p>
+ある変数が単変量解析で治療または転帰と有意に関連しなかったとしても、
+交絡因子ではないとは限りません。
+P値は標本数、測定誤差、変数分布に依存します。
+</p>
+
+<p>
+逆に、転帰を強く予測する変数であっても、
+治療と転帰の共通原因でなければ交絡因子ではありません。
+治療後に生じた強い予測因子は、媒介因子である可能性があります。
+</p>
+
+<div class="callout warn">
+<strong>予測力の高い変数をすべて入れること</strong>と
+<strong>交絡を適切に調整すること</strong>は同じではありません。
+</div>
+
+<h3>最大調整モデルが最良ではない</h3>
+
+<p>
+論文にはModel 1、Model 2、Model 3と、
+段階的に変数を追加した結果が示されることがあります。
+そのとき、最も多くの変数を含むModel 3を
+自動的に選ぶのは危険です。
+</p>
+
+<ul>
+<li>媒介因子を調整して総効果の一部を除く</li>
+<li>コライダーを調整して新しい非因果経路を開く</li>
+<li>治療後情報を調整する</li>
+<li>測定誤差の大きい変数を追加する</li>
+<li>少数イベントに対して変数を入れ過ぎる</li>
+<li>条件付きORの非collapsibilityにより値が変わる</li>
+</ul>
+
+<h3>メタ分析で採用する推定値の優先順位</h3>
+
+<ol>
+<li>レビューのtarget trialとestimandに対応する</li>
+<li>重要な治療前交絡因子を調整している</li>
+<li>治療後変数や明らかな媒介因子を含まない</li>
+<li>time zeroが適切である</li>
+<li>アウトカム時点がレビューの定義に一致する</li>
+<li>効果尺度が主解析の尺度に一致する</li>
+<li>事前指定された主解析である</li>
+</ol>
+
+<div class="callout info">
+調整変数の数ではなく、
+レビューの因果構造に対して適切かどうかで選びます。
+</div>
+
+<details>
+<summary>論文に複数の調整済み結果がある場合の抽出表</summary>
+<div class="inside">
+
+<table>
+<thead>
+<tr>
+<th>モデル</th>
+<th>調整因子</th>
+<th>治療後変数</th>
+<th>DAG適合</th>
+<th>採否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model 1</td>
+<td>年齢、性別</td>
+<td>なし</td>
+<td>重症度不足</td>
+<td>部分調整</td>
+</tr>
+<tr>
+<td>Model 2</td>
+<td>年齢、性別、治療前重症度</td>
+<td>なし</td>
+<td>十分</td>
+<td>主解析候補</td>
+</tr>
+<tr>
+<td>Model 3</td>
+<td>Model 2＋術後反応</td>
+<td>あり</td>
+<td>総効果に不適切</td>
+<td>主解析には不採用</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+この例ではModel 3が最大調整モデルですが、
+総効果を推定する主解析にはModel 2の方が適切です。
+</p>
+
+</div>
+</details>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+調整済み推定値を使うことは出発点にすぎません。
+どの変数をなぜ調整したのかをDAGと時間軸で確認し、
+レビューのestimandに対応する推定値を選びます。
+</p>
+</div>
+</section>
+
+<section id="causal-roles">
+<div class="kicker">CHAPTER 3</div>
+<h2>交絡因子・媒介因子・コライダーを区別する</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>変数の役割は時間軸と矢印で決まること</li>
+<li>治療後の強い予測因子が交絡因子ではない理由</li>
+<li>DAGを使うことの実務的意味</li>
+</ul>
+</div>
+
+<p>
+交絡因子は、単に「転帰と関連する変数」ではありません。
+治療と転帰の共通原因となり、
+治療より前に存在する変数が基本です。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>測定時点</th>
+<th>考えられる役割</th>
+<th>総効果での扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>治療前重症度</td>
+<td>治療前</td>
+<td>交絡因子</td>
+<td>必要なら調整</td>
+</tr>
+<tr>
+<td>術後疼痛</td>
+<td>治療後</td>
+<td>媒介因子・予後因子</td>
+<td>通常は調整しない</td>
+</tr>
+<tr>
+<td>再検査の実施</td>
+<td>治療後</td>
+<td>選択因子・コライダー</td>
+<td>機械的に限定しない</td>
+</tr>
+<tr>
+<td>治療前施設方針</td>
+<td>治療前</td>
+<td>交絡因子または操作変数候補</td>
+<td>DAGで判断</td>
+</tr>
+</tbody>
+</table>
+
+<h3>媒介因子</h3>
+
+<div class="figure">
+<svg viewBox="0 0 900 230" role="img" aria-label="媒介経路">
+<defs>
+<marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3z" fill="#075ca8"/>
+</marker>
+</defs>
+
+<rect x="40" y="70" width="190" height="75" rx="16"
+fill="#eaf4ff" stroke="#075ca8" stroke-width="3"/>
+<text x="135" y="115" text-anchor="middle" font-size="23">治療</text>
+
+<rect x="350" y="70" width="200" height="75" rx="16"
+fill="#f2edff" stroke="#6842a5" stroke-width="3"/>
+<text x="450" y="103" text-anchor="middle" font-size="22">術後反応</text>
+<text x="450" y="130" text-anchor="middle" font-size="17">強い予測因子</text>
+
+<rect x="670" y="70" width="190" height="75" rx="16"
+fill="#fff0ee" stroke="#b42318" stroke-width="3"/>
+<text x="765" y="115" text-anchor="middle" font-size="23">最終転帰</text>
+
+<line x1="230" y1="108" x2="348" y2="108"
+stroke="#075ca8" stroke-width="4" marker-end="url(#b)"/>
+<line x1="550" y1="108" x2="668" y2="108"
+stroke="#075ca8" stroke-width="4" marker-end="url(#b)"/>
+</svg>
+
+<div class="caption">
+術後反応が最終転帰を強く予測しても、
+治療の後に生じていれば治療前交絡因子ではありません。
+</div>
+</div>
+
+<p>
+術後反応を調整すると、
+「術後反応を通じて生じる治療効果」を取り除く可能性があります。
+その結果、総効果ではなく、術後反応を一定に固定した
+別の効果に近づきます。
+</p>
+
+<h3>コライダー</h3>
+
+<p>
+治療と別の予後因子の両方によって影響される変数を
+コライダーと呼びます。
+コライダーで条件付けると、それまで閉じていた経路が開くことがあります。
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 900 240" role="img" aria-label="コライダー">
+<defs>
+<marker id="c" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3z" fill="#075ca8"/>
+</marker>
+</defs>
+
+<rect x="60" y="50" width="185" height="70" rx="15"
+fill="#eaf4ff" stroke="#075ca8" stroke-width="3"/>
+<text x="152" y="93" text-anchor="middle" font-size="22">治療</text>
+
+<rect x="355" y="120" width="190" height="70" rx="15"
+fill="#f2edff" stroke="#6842a5" stroke-width="3"/>
+<text x="450" y="150" text-anchor="middle" font-size="21">再検査</text>
+<text x="450" y="176" text-anchor="middle" font-size="16">選択・コライダー</text>
+
+<rect x="650" y="50" width="190" height="70" rx="15"
+fill="#fff3e5" stroke="#9b4b00" stroke-width="3"/>
+<text x="745" y="80" text-anchor="middle" font-size="21">潜在的重症化</text>
+<text x="745" y="105" text-anchor="middle" font-size="16">転帰にも影響</text>
+
+<line x1="245" y1="90" x2="365" y2="135"
+stroke="#075ca8" stroke-width="4" marker-end="url(#c)"/>
+<line x1="650" y1="90" x2="535" y2="135"
+stroke="#075ca8" stroke-width="4" marker-end="url(#c)"/>
+</svg>
+
+<div class="caption">
+再検査を受けた患者だけに限定すると、
+治療と潜在的重症化の間に人工的な関連が生じる可能性があります。
+</div>
+</div>
+
+<h3>なぜ頭の中だけで判断してはいけないのか</h3>
+
+<p>
+経験豊富な臨床家は、多くの重要な予後因子を理解しています。
+その知識はDAG作成に不可欠です。
+しかし、頭の中だけで変数を選ぶと、時間的順序や
+媒介・コライダー構造が第三者から確認できません。
+</p>
+
+<p>
+DAGは臨床知識の代わりではなく、
+臨床知識を検証可能な形で外部化するための道具です。
+非常に経験豊富な研究者であっても、
+図にすることで見落としていた経路に気付くことがあります。
+</p>
+
+<div class="callout good">
+<strong>重要なのは「DAGを知っている」と言うことではなく、</strong>
+研究開始前に時間軸とDAGを実際に作成し、
+その図から調整集合と解析方法を決めることです。
+</div>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+変数は予測力ではなく、時間軸と因果方向によって役割が決まります。
+治療前交絡因子、媒介因子、コライダーを区別した上で、
+統計モデルへ入れる変数を決めます。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/24447391/">
+Introduction to causal diagrams for confounder selection
+</a>；
+<a target="_blank" rel="noopener"
+href="https://www.dagitty.net/">
+DAGitty
+</a>
+</p>
+</section>
+
+<section id="time">
+<div class="kicker">CHAPTER 4</div>
+<h2>調整済みHRをメタ分析してよいか：time zeroから決める</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>同じHRでも統合できない場合を見分ける</li>
+<li>time zeroの誤りを調整済みHRやランダム効果モデルが救えない理由</li>
+<li>主解析、別解析、感度分析、統合しない研究へ分類する</li>
+</ul>
+</div>
+
+<p>
+この章の目的は、immortal time biasという用語を覚えることではありません。
+論文から調整済みHRを抽出した後、そのHRを他研究と同じフォレストプロットへ
+入れてよいかを判断することです。メタ分析ソフトは、入力された対数HRと標準誤差を
+計算上は統合できます。しかし、適格性判定、治療戦略の開始、追跡開始がそろっていない
+研究を混ぜると、同じ治療効果を精密化するのではなく、異なる問いと異なる偏りを平均します。
+</p>
+
+<h3>臨床例：診断後90日以内の治療</h3>
+
+<p>
+「診断後90日以内に治療Aを受けた患者」を治療群、
+「90日以内に治療Aを受けなかった患者」を対照群と定義し、
+診断日から生存期間を比較する研究を考えます。
+</p>
+
+<p>
+治療群に分類されるためには、患者は治療開始日まで生存していなければなりません。
+診断直後に死亡した患者は、治療を受ける機会がないため対照群へ入りやすくなります。
+この治療開始前の期間が、治療群に有利な不死時間となります。
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 900 275" role="img" aria-label="immortal time bias">
+<line x1="80" y1="95" x2="820" y2="95"
+stroke="#596777" stroke-width="5"/>
+
+<circle cx="110" cy="95" r="11" fill="#075ca8"/>
+<circle cx="420" cy="95" r="11" fill="#9b4b00"/>
+<circle cx="790" cy="95" r="11" fill="#b42318"/>
+
+<text x="110" y="65" text-anchor="middle" font-size="20">診断日</text>
+<text x="420" y="65" text-anchor="middle" font-size="20">治療開始</text>
+<text x="790" y="65" text-anchor="middle" font-size="20">転帰</text>
+
+<rect x="120" y="130" width="290" height="66" rx="12"
+fill="#fff3e5" stroke="#9b4b00" stroke-width="3"/>
+
+<text x="265" y="158" text-anchor="middle" font-size="19">治療群になるには</text>
+<text x="265" y="184" text-anchor="middle" font-size="19">この期間の生存が必要</text>
+
+<text x="450" y="240" text-anchor="middle" font-size="19">
+将来の治療情報で診断日に遡って群分けしている
+</text>
+</svg>
+</div>
+
+<div class="callout danger">
+年齢、性別、重症度をCox回帰へ入れても、
+将来情報による群分類と不死時間は自動的に修正されません。
+これは単なるベースライン交絡ではなく、
+研究デザインと時間設定の問題です。
+</div>
+
+<h3>3つの時点をそろえる</h3>
+
+<table>
+<thead>
+<tr>
+<th>時点</th>
+<th>意味</th>
+<th>ずれた場合の問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>適格性判定</td>
+<td>研究対象に入れる条件を満たした時点</td>
+<td>治療後情報で選択する可能性</td>
+</tr>
+<tr>
+<td>治療戦略の開始</td>
+<td>治療AまたはBを開始する時点</td>
+<td>治療前期間の誤分類</td>
+</tr>
+<tr>
+<td>追跡開始</td>
+<td>転帰観察を開始する時点</td>
+<td>immortal timeや選択バイアス</td>
+</tr>
+</tbody>
+</table>
+
+<h3>事後情報でKaplan–Meier曲線を分ける問題</h3>
+
+<p>
+治療後に生じた反応や処置完了の有無によって患者を2群に分け、
+治療開始時点まで遡ってKaplan–Meier曲線を描く解析も同じ問題を持ちます。
+</p>
+
+<p>
+例えば、「治療を6回完遂した群」と「完遂しなかった群」を
+初回治療日から比較すると、完遂群に入るには6回目まで
+生存・通院を継続する必要があります。
+</p>
+
+<div class="callout warn">
+Kaplan–Meier法自体が間違いなのではありません。
+未来の情報で群を定義し、その群を過去の時点へ遡って固定したことが問題です。
+</div>
+
+<h3>解決策</h3>
+
+<p>研究目的に応じて、次の方法を検討します。</p>
+
+<ul>
+<li><strong>新規使用者デザイン：</strong>治療開始時点をtime zeroにする</li>
+<li><strong>Active comparator：</strong>同じ適応で別治療を開始した患者と比較する</li>
+<li><strong>ランドマーク解析：</strong>一定時点まで生存した患者に限定し、そこから比較する</li>
+<li><strong>時間依存曝露：</strong>治療開始前後で曝露状態を更新する</li>
+<li><strong>Clone–censor–weight：</strong>複数の治療戦略への適合を複製・打ち切り・重み付けで扱う</li>
+<li><strong>Target trial emulation：</strong>適格基準、戦略、time zero、追跡を理想試験に合わせる</li>
+</ul>
+
+<h3>メタ分析での判断：HRの数字より先に時間設計をそろえる</h3>
+
+<p>
+time zeroが不適切な研究のHRを、time zeroが適切な研究のHRと
+同じ主解析へ入れるべきではありません。HRという効果尺度が同じでも、
+推定している比較と偏りの入り方が異なります。ランダム効果モデルは研究間差を
+分散として表現しますが、immortal time biasのように一定方向へ生じる構造的な偏りを
+取り除く方法ではありません。偏りのあるHRへ小さな重みを与えるだけでも、
+妥当なHRへ変換されたことにはなりません。
+</p>
+
+<h3>各研究から先に抽出する6項目</h3>
+
+<p>
+メタ分析用のHRと標準誤差を転記する前に、次の6項目を研究ごとに一行で記録します。
+一つでも論文から確認できなければ、「調整済みHRあり」とだけ記録せず、著者照会または
+情報不十分として扱います。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>抽出項目</th>
+<th>確認する内容</th>
+<th>統合に直結する理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>適格性判定日</td>
+<td>どの日に研究対象となる条件を満たしたか</td>
+<td>治療後情報による選択を見つける</td>
+</tr>
+<tr>
+<td>治療戦略の定義</td>
+<td>開始、非開始、猶予期間、切替をどう扱ったか</td>
+<td>比較している戦略が研究間で同じかを判断する</td>
+</tr>
+<tr>
+<td>追跡開始日</td>
+<td>診断日、登録日、処方日、手術日など</td>
+<td>time zeroの整合性を確認する</td>
+</tr>
+<tr>
+<td>曝露の扱い</td>
+<td>ベースライン固定か、時間依存か、ランドマークか</td>
+<td>将来情報による誤分類を見つける</td>
+</tr>
+<tr>
+<td>解析対象効果</td>
+<td>開始戦略、実際の継続、反応者、完遂者のどれか</td>
+<td>HRが答えるestimandをそろえる</td>
+</tr>
+<tr>
+<td>打ち切りと調整</td>
+<td>切替、脱落、競合イベント、重み付けの処理</td>
+<td>同じHRでも必要な仮定が異なるため</td>
+</tr>
+</tbody>
+</table>
+
+<h3>主解析へ入れる研究、分ける研究、統合しない研究</h3>
+
+<table>
+<thead>
+<tr>
+<th>研究の時間設計</th>
+<th>メタ分析での扱い</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>適格性判定、治療開始、追跡開始が一致したnew-user・active-comparator設計</td>
+<td>同じestimandであれば主解析候補</td>
+<td>比較開始時点がそろい、将来情報で群分けしていない</td>
+</tr>
+<tr>
+<td>猶予期間をclone–censor–weightなどで扱い、目的と解析が明示されている</td>
+<td>estimandと仮定を確認し、主解析または別プール</td>
+<td>単純なベースライン固定曝露とは異なる推定量になり得る</td>
+</tr>
+<tr>
+<td>ランドマーク解析</td>
+<td>同じランドマーク時点・条件の研究だけで別プール</td>
+<td>ランドマークまで生存した患者に対象集団が限定される</td>
+</tr>
+<tr>
+<td>治療を受けるまでの期間を治療群へ遡って割り当てた解析</td>
+<td>因果効果の主解析から除外し、構造化して記述</td>
+<td>調整済みHRでもimmortal time biasが残る</td>
+</tr>
+<tr>
+<td>反応、完遂、治療後検査で事後的に群分けした解析</td>
+<td>同様の事後群解析として別記し、開始戦略のHRとは統合しない</td>
+<td>治療後の経過で選ばれた集団を比較している</td>
+</tr>
+<tr>
+<td>時間設定が報告されていない</td>
+<td>著者照会し、解決しなければ主解析外</td>
+<td>統合可能性そのものを判定できない</td>
+</tr>
+</tbody>
+</table>
+
+<h3>実務例：3本の調整済みHRをどう扱うか</h3>
+
+<p>
+研究Aは治療開始日にA対Bを定義してその日から追跡し、研究Bは「診断後90日以内に
+治療を受けた患者」を診断日へ遡って治療群とし、研究Cは6か月時点の反応で群分けして
+治療開始日から追跡しているとします。3本とも年齢、病期、併存疾患を調整し、HRと95% CIを
+報告していても、三つの対数HRを一つのランダム効果モデルへ入力してはいけません。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>研究</th>
+<th>推定している比較</th>
+<th>解析上の判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>治療開始時点で選べたA開始対B開始</td>
+<td>主解析候補</td>
+</tr>
+<tr>
+<td>B</td>
+<td>将来90日間の治療情報で事後分類</td>
+<td>immortal time biasのある推定値として主解析外</td>
+</tr>
+<tr>
+<td>C</td>
+<td>6か月まで生存し反応を評価できた患者内の予後比較</td>
+<td>予後因子解析として別記し、治療開始戦略の効果と統合しない</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Aだけになれば統合値は作れません。この場合は「研究が3本あるのにメタ分析できなかった」
+のではなく、「同じ因果的問いへ答える研究は1本だった」と報告します。研究BとCを加えて
+精度を上げたように見せる方が、結論を誤らせます。
+</p>
+
+<h3>感度分析で確認できること、できないこと</h3>
+
+<p>
+複数の適切なtime zero研究がある場合は、主解析を時間設計が整合する研究へ限定し、
+別の妥当な設計を追加する感度分析を行えます。例えば、new-user設計のみ、
+ランドマーク解析のみ、時間依存曝露解析のみを別々に示します。一方、明白なimmortal time biasを
+含む研究を主解析へ混ぜ、「除外しても方向は同じだった」と示すことは、偏りを修正する解析ではありません。
+方法別サブグループやメタ回帰も、研究数が少ない場合や方法と患者背景・時代が重なる場合には、
+方法の差だけを識別できません。
+</p>
+
+<div class="callout danger">
+<strong>統合中止の基準：</strong>
+同じtime zero、比較戦略、対象集団を持つHRが複数得られなければ、
+統合ダイヤモンドを作りません。HRの表、時間設計の表、risk of biasの判断を並べて、
+なぜ数量的統合を行わなかったかを説明します。
+</div>
+
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+調整済みHRを統合できるのは、数値の形式だけでなく、time zero、対象集団、比較戦略、
+estimandがそろう場合です。時間設計に構造的な誤りがあるHRは、ランダム効果モデル、
+共変量調整、研究数の増加では救えません。主解析から外す判断もメタ分析の重要な一部です。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://miguelhernan.org/whatifbook">
+Hernán &amp; Robins, Causal Inference: What If
+</a>；
+<a target="_blank" rel="noopener"
+href="https://www.bmj.com/content/390/bmj-2025-087179">
+TARGET Statement
+</a>；
+<a target="_blank" rel="noopener"
+href="https://www.riskofbias.info/welcome/robins-i-v2">
+ROBINS-I V2
+</a>；
+<a target="_blank" rel="noopener"
+href="https://training.cochrane.org/handbook/current/chapter-24">
+Cochrane Handbook Chapter 24：非ランダム化研究の統合
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12373649/">
+immortal time biasが統合結果へ与える影響のメタ疫学研究
+</a>
+</p>
+</section>
+
+<!-- 増補改訂版・第1部終了。第2部をこの直後に連結する -->
+
+
+<section id="measures">
+<div class="kicker">CHAPTER 5</div>
+<h2>OR・RR・HR・RDをどう統合するか</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>メタ分析前に効果尺度、時点、estimandをそろえる</li>
+<li>OR、RR、HR、RDを別プールにする条件と、変換を検討できる条件</li>
+<li>同じORでもロジスティック回帰と傾向スコア法を機械的に混ぜない理由</li>
+<li>主解析、方法別感度分析、IPD再解析、統合断念を選ぶ</li>
+</ul>
+</div>
+
+<p>
+非ランダム化研究では、論文ごとに異なる効果尺度が報告されます。
+ある研究は調整済みOR、別の研究は調整済みRR、
+さらに別の研究はCox回帰によるHRを報告しているかもしれません。
+レビューで必要なのは用語の暗記ではなく、各推定値が同じメタ分析の一行になれるかを
+決めることです。そのため、効果尺度だけでなく、対象集団、追跡時点、条件付きか周辺か、
+ATE・ATTなどの対象効果、調整方法、標準誤差の算出方法を同時に抽出します。
+</p>
+
+<p>
+これらはすべて1を帰無値とする比の指標ですが、
+同じ対象効果を表しているわけではありません。
+対数変換して数値として同じモデルへ入力できることと、
+統計学的に統合してよいことは別です。
+</p>
+
+<table>
+<thead>
+<tr>
+<th>効果尺度</th>
+<th>何を比較しているか</th>
+<th>臨床的解釈</th>
+<th>主な注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>リスク比（RR）</td>
+<td>一定期間内の累積発生リスクの比</td>
+<td>治療群のリスクが対照群の何倍か</td>
+<td>追跡時点と対象集団をそろえる</td>
+</tr>
+<tr>
+<td>オッズ比（OR）</td>
+<td>一定期間内のオッズの比</td>
+<td>リスクの比ではない</td>
+<td>非collapsibility、頻度が高い転帰でRRから乖離</td>
+</tr>
+<tr>
+<td>ハザード比（HR）</td>
+<td>リスク集合内の瞬間的発生率の比</td>
+<td>追跡中の瞬間ハザードの相対比較</td>
+<td>比例ハザード、time zero、打ち切り</td>
+</tr>
+<tr>
+<td>リスク差（RD）</td>
+<td>一定期間内の絶対リスクの差</td>
+<td>100人当たり何人増減するか</td>
+<td>ベースラインリスクと期間に依存</td>
+</tr>
+<tr>
+<td>RMST差</td>
+<td>指定期間までの平均イベントなし時間の差</td>
+<td>平均して何日・何か月延びるか</td>
+<td>共通の制限時間τが必要</td>
+</tr>
+</tbody>
+</table>
+
+<h3>リスク比</h3>
+
+<div class="math">
+RR ＝ P(Y＝1｜A＝1) ÷ P(Y＝1｜A＝0)
+</div>
+
+<p>
+例えば、1年死亡リスクが治療群で10%、対照群で20%なら、
+リスク比は0.50です。これは、1年間という特定の期間について、
+治療群の累積死亡リスクが対照群の半分であることを表します。
+</p>
+
+<p>
+しかし、6か月RRと5年RRは同じ量ではありません。
+同じ研究テーマであっても、追跡期間が違えば別のestimandです。
+</p>
+
+<h3>オッズ比</h3>
+
+<div class="math">
+OR ＝ {p₁ ÷ (1−p₁)} ÷ {p₀ ÷ (1−p₀)}
+</div>
+
+<p>
+治療群のイベントリスクが40%、対照群が20%の場合、
+リスク比は2.0ですが、オッズ比は約2.67です。
+イベントが多いほど、ORはRRより1から遠い値になりやすくなります。
+</p>
+
+<div class="callout warn">
+OR＝2.0を「リスクが2倍」と表現できるのは、
+転帰が非常にまれでORがRRに近い特殊な場合に限られます。
+一般には「オッズが2倍」です。
+</div>
+
+<h3>ハザード比</h3>
+
+<p>
+ハザードは、ある時点までイベントを経験していない人の中で、
+次のごく短い時間にイベントが生じる瞬間的な発生率です。
+</p>
+
+<p>
+HR＝0.70は、比例ハザード仮定などが成り立つ状況で、
+各時点の瞬間ハザードが治療群で対照群の0.70倍であることを要約します。
+これは「累積リスクが30%減った」と同じ意味ではありません。
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 920 310" role="img" aria-label="リスク比とハザード比の違い">
+<line x1="90" y1="250" x2="860" y2="250" stroke="#596777" stroke-width="3"/>
+<line x1="90" y1="250" x2="90" y2="35" stroke="#596777" stroke-width="3"/>
+
+<text x="475" y="292" text-anchor="middle" font-size="20">追跡時間</text>
+<text x="28" y="145" text-anchor="middle" font-size="20" transform="rotate(-90 28 145)">累積イベント</text>
+
+<path d="M90,250 C220,230 320,190 430,145 C570,90 690,72 850,60"
+fill="none" stroke="#b42318" stroke-width="5"/>
+<path d="M90,250 C220,238 330,215 450,185 C600,150 720,130 850,112"
+fill="none" stroke="#075ca8" stroke-width="5"/>
+
+<text x="735" y="62" font-size="18" fill="#b42318">対照群</text>
+<text x="735" y="133" font-size="18" fill="#075ca8">治療群</text>
+
+<line x1="650" y1="250" x2="650" y2="130"
+stroke="#9b4b00" stroke-width="3" stroke-dasharray="7 7"/>
+<text x="650" y="278" text-anchor="middle" font-size="17">指定時点</text>
+</svg>
+
+<div class="caption">
+RRやRDは指定時点の累積リスクを比較します。
+HRは追跡期間中のリスク集合内の瞬間ハザードを要約します。
+</div>
+</div>
+
+<h3>比例ハザード仮定が破れる場合</h3>
+
+<p>
+治療効果が時間とともに変化し、生存曲線が交差する場合、
+単一のHRは時間的に変化する効果を一つの数値へ圧縮します。
+</p>
+
+<p>
+例えば、治療直後には手術合併症が増えるが、
+長期的には再発を減らす治療を考えます。
+初期にはHRが1を超え、後期には1を下回る可能性があります。
+このとき単一HRだけでは、いつ利益や害が生じたか分かりません。
+</p>
+
+<p>補助的または代替的に、次を検討します。</p>
+
+<ul>
+<li>特定時点の標準化リスク</li>
+<li>特定時点のRRまたはRD</li>
+<li>期間別HR</li>
+<li>時間依存効果モデル</li>
+<li>RMST差</li>
+</ul>
+
+<h3>異なる効果尺度を見つけたときの統合手順</h3>
+
+<p>
+OR、RR、HR、RDは、いずれも治療AとBの差を表しますが、同じ統計量ではありません。
+メタ分析では「すべて1を帰無値とする」「対数変換できる」という理由だけで混ぜません。
+次の順番で、共通のestimandを回収できるかを確認します。
+</p>
+
+<ol>
+<li><strong>対象集団と比較戦略をそろえる：</strong>ATE、ATT、overlap population、new-userなどが同じか確認します。</li>
+<li><strong>アウトカムと時点をそろえる：</strong>12か月死亡と5年死亡、追跡期間全体のHRを同じ量とみなしません。</li>
+<li><strong>同じ効果尺度を探す：</strong>本文、付録、レジストリ、解析計画書、調整済み生存曲線を確認し、必要なら著者へ照会します。</li>
+<li><strong>変換の仮定を記録する：</strong>変換に必要なベースラインリスク、時点、比例ハザードなどが得られるか確認します。</li>
+<li><strong>そろわなければ分ける：</strong>OR、RR、HRを別々に表示し、各尺度で2研究以上なければ統合値を作りません。</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>状況</th>
+<th>推奨する扱い</th>
+<th>避けること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同じ時点、同じ対象集団の調整済みRRが複数</td>
+<td>対数RRと標準誤差を用いて統合候補</td>
+<td>未調整RRと一括して「RR」と扱う</td>
+</tr>
+<tr>
+<td>調整済みORと調整済みRRが混在</td>
+<td>別プール。共通の標準化リスクが得られれば再表現を検討</td>
+<td>ORを自動的にRRと読み替える</td>
+</tr>
+<tr>
+<td>HRと固定時点RR・RDが混在</td>
+<td>別プール。調整済み生存曲線やIPDから共通時点の効果を再計算できる場合のみ統一</td>
+<td>HRを「リスクが何%減った」と変換して混ぜる</td>
+</tr>
+<tr>
+<td>同じ尺度だが追跡時点が違う</td>
+<td>臨床的に事前指定した時点ごとに別プール</td>
+<td>6か月と5年の効果を一つの平均へする</td>
+</tr>
+<tr>
+<td>共通estimandを復元できない</td>
+<td>構造化した表と文章で統合し、統合ダイヤモンドを作らない</td>
+<td>研究数を確保するためだけの機械的変換</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout danger">
+<strong>原則：</strong>
+効果尺度、追跡時点、対象集団、条件付き・周辺効果のいずれかが重要に異なり、
+共通のestimandへ再表現できなければ、別のフォレストプロットにします。
+「統合しない」は情報を捨てることではなく、違う問いを一つの精密な数字に見せないための解析判断です。
+</div>
+
+
+
+<h3>低リスク研究が3本あり、OR・RR・HRが1本ずつならどうするか</h3>
+
+<p>
+ここで実務上よく起こる例を考えます。ROBINS-Iで比較的よく設計された研究が3本見つかり、
+研究Aは12か月の調整済みOR、研究Bは12か月の調整済みRR、研究Cは追跡期間全体の調整済みHRを報告していたとします。
+3本ともrisk of biasが低いことは重要ですが、それだけで3つの推定値が同じ問いへの答えになるわけではありません。
+</p>
+
+<p>
+最初に行うのは数式変換ではなく、本文、付録、プロトコル、解析計画書を探して、3研究から共通のestimandを取り出せないか確認することです。
+著者へ、同じ時点の標準化リスク、RRまたはRD、あるいは調整済み生存曲線を照会できる場合もあります。
+</p>
+
+<ol>
+<li><strong>共通の時点別リスクが得られる：</strong>同じ対象集団・同じ追跡時点・同じ周辺効果へそろえて統合を検討します。</li>
+<li><strong>IPDが得られる：</strong>共通の適格基準、time zero、交絡集合、estimandを定めて各研究を再解析します。</li>
+<li><strong>公表されたOR・RR・HRしか得られない：</strong>OR、RR、HRを別々に表示し、各1研究として構造化した文章で統合します。統合ダイヤモンドは作りません。</li>
+</ol>
+
+<p>
+条件付きORを周辺RRへ機械的に変換すると、非collapsibilityと標準化集団の違いが残ります。
+HRを固定時点RRへ変換するには、少なくとも対応するベースライン生存、時点、モデル仮定が必要で、比例ハザードが崩れていれば単純変換は特に危険です。
+</p>
+
+<div class="callout danger">
+<strong>結論：</strong>3本の良い研究を見つけても、共通の効果尺度とestimandを復元できなければ、統計学的統合はしません。
+「メタ分析をしない」は失敗ではなく、意味の違う3つの数字から偽の精密さを作らないための正しい結論です。
+</div>
+
+<h3>条件付き効果と周辺効果</h3>
+
+<p>
+同じORであっても、推定方法によって意味が異なります。
+通常の多変量ロジスティック回帰で治療係数をそのまま報告したORは、
+モデルに含めた共変量を固定した条件付きORです。一方、標準化、g-computation、
+IPTWなどで得られるORは、特定の対象集団へ平均化した周辺ORであることが多くなります。
+PSマッチング後のORも、誰をマッチさせ、マッチ後にどのモデルで解析したかによって、
+ATTなどの対象集団と条件付き・周辺という意味が変わります。
+</p>
+
+<p>
+したがって、「両方とも調整済みOR」「調整した交絡因子もほぼ同じ」という情報だけでは、
+同じメタ分析へ入れてよいとは判断できません。多変量ロジスティック回帰と
+傾向スコア法は、単なる二つの調整手段ではなく、実装によって異なる対象集団とestimandを作ります。
+</p>
+
+<h3>同じOR：ロジスティック回帰と傾向スコア法をどう扱うか</h3>
+
+<table>
+<thead>
+<tr>
+<th>報告された方法</th>
+<th>典型的に推定するもの</th>
+<th>メタ分析前の確認</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共変量を入れた通常のロジスティック回帰</td>
+<td>その共変量で条件付けた条件付きOR</td>
+<td>非線形項・交互作用、変数選択、欠測処理、モデル適合</td>
+</tr>
+<tr>
+<td>PSを一つの共変量として回帰へ投入</td>
+<td>多くはPSへ条件付けた条件付きOR</td>
+<td>PSの関数形、残余交絡、対象効果が明記されているか</td>
+</tr>
+<tr>
+<td>PSマッチング後の回帰</td>
+<td>マッチされた集団、しばしばATTに近い効果。ただし解析法で解釈が変わる</td>
+<td>マッチ比、置換、caliper、除外人数、マッチを考慮した標準誤差</td>
+</tr>
+<tr>
+<td>IPTW</td>
+<td>重みの定義に応じたATE、ATTなどの周辺効果</td>
+<td>重みの式、極端な重み、打切り、positivity、effective sample size</td>
+</tr>
+<tr>
+<td>overlap weighting</td>
+<td>両治療が選ばれ得るoverlap populationの周辺効果（ATO）</td>
+<td>元集団全体のATEではないこと、重なり領域の定義</td>
+</tr>
+<tr>
+<td>PS層別化</td>
+<td>層別推定値の統合方法に依存</td>
+<td>層数、各層の残余不均衡、統合の重み</td>
+</tr>
+</tbody>
+</table>
+
+<h3>交絡因子が似ていても、同じ推定値とは限らない</h3>
+
+<p>
+研究1が年齢、性別、重症度を入れたロジスティック回帰のORを報告し、研究2が同じ三項目で
+PSマッチングした後のORを報告したとします。交絡ドメインが似ていることは統合可能性を
+支持する一条件ですが、十分条件ではありません。研究1は元集団での条件付きOR、研究2は
+マッチ可能だった治療患者に近い集団でのATTを推定しているかもしれません。ORは
+noncollapsibleなので、交絡が完全に除かれていて真の効果が同じでも、条件付きORと周辺ORは
+数値として一致しないことがあります。
+</p>
+
+<p>
+さらに、同じ変数名でも測定時点、定義、欠測補完、連続変数の関数形、交互作用が違えば、
+実際の調整は同じではありません。PS法では、マッチ後の標準化差、共通サポート、除外された患者、
+極端な重み、effective sample size、マッチングや重みを考慮した標準誤差が重要です。
+「PSを使った」というラベル自体は、通常の回帰より妥当であることを保証しません。
+</p>
+
+<h3>二つのORを主解析で統合するための判断</h3>
+
+<ol>
+<li><strong>同じ対象効果か：</strong>ATE、ATT、ATO、条件付きORのどれを推定したかを確認します。</li>
+<li><strong>同じ対象集団か：</strong>PSマッチングで多数が除外されていないか、回帰研究の元集団と臨床的に対応するかを確認します。</li>
+<li><strong>同じアウトカム時点か：</strong>院内死亡、30日死亡、1年死亡などを分けます。</li>
+<li><strong>交絡制御が十分か：</strong>事前指定した重要交絡ドメイン、測定時点、治療後変数の混入を確認します。</li>
+<li><strong>分散が正しいか：</strong>マッチ、重み、施設内相関を考慮した標準誤差かを確認します。</li>
+<li><strong>一研究一推定値か：</strong>同じ研究の回帰ORとPS-ORを二つの独立研究として入れません。</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>確認結果</th>
+<th>推奨する統合方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方法は異なるが、同じ対象集団に対する同じ周辺ORへ標準化され、重要交絡と分散推定も妥当</td>
+<td>主解析の候補。対数ORと標準誤差をgeneric inverse variance法で統合</td>
+</tr>
+<tr>
+<td>条件付きロジスティックORと、PS重み付けによる周辺OR</td>
+<td>原則として別プール。IPDまたは追加集計から共通の周辺効果へ再標準化できる場合のみ統一</td>
+</tr>
+<tr>
+<td>PSマッチングのATTと、IPTWのATE</td>
+<td>対象集団が異なるため別プール。効果一定・transportabilityを安易に仮定しない</td>
+</tr>
+<tr>
+<td>同じ対象効果と考えられるが、調整方法だけが異なる</td>
+<td>事前規定した主解析で統合し、回帰法のみ・PS法のみの感度分析を追加</td>
+</tr>
+<tr>
+<td>方法、estimand、標準誤差の算出が不明</td>
+<td>著者照会。解決しなければ主解析外または統合しない記述的提示</td>
+</tr>
+</tbody>
+</table>
+
+<h3>実際の統計解析はどう組むか</h3>
+
+<p>
+統合可能と判断したORは対数変換し、報告された95% CIから対数ORの標準誤差を求めて、
+generic inverse variance法で統合します。非RCTでは臨床的・方法論的な差が予想されるため、
+ランダム効果モデルを使う場面が多くなりますが、ランダム効果モデルを選ぶこと自体は
+estimandの不一致を解決しません。研究数が少ない場合は、分散推定の不安定性を考慮し、
+REMLとHartung–Knapp型の推論などを検討し、予測区間も解釈します。
+</p>
+
+<p>
+同一研究がロジスティック回帰ORと複数のPS解析を報告している場合は、プロトコルで
+一つを選ぶ優先順位を定めます。例えば、正しいtime zero、目的と一致するestimand、
+事前指定した交絡集合、十分なoverlap、妥当な分散推定を満たす推定値を優先します。
+最も有意な推定値や、信頼区間が最も狭い推定値を選んではいけません。複数推定値を同時に
+利用するなら、研究内相関を扱う多変量・多水準メタ分析またはrobust variance estimationが
+必要ですが、相関情報が乏しい少数研究では、一つの事前指定推定値を選ぶ方が透明です。
+</p>
+
+<h3>方法別サブグループとメタ回帰の限界</h3>
+
+<p>
+研究数が十分なら、ロジスティック回帰、PSマッチング、IPTWなどで層別し、結果の頑健性を
+探索できます。ただし、PS法の研究が新しい時代・大規模データベースに偏り、回帰研究が
+古い時代・単施設に偏る場合、方法別差は時代、患者背景、データ品質との交絡を受けます。
+研究レベルのメタ回帰は、各研究内の未測定交絡やestimandの違いを修復せず、少数研究では
+検出力も極めて低くなります。方法別解析は「どの方法が優れるか」を証明するものではなく、
+統合結果が解析方法へ依存していないかを見る感度分析として位置付けます。
+</p>
+
+<div class="callout warn">
+<strong>実務上の結論：</strong>
+ロジスティック回帰ORと傾向スコアORは、方法名が違うだけで自動的に分ける必要はありません。
+しかし、同じORというだけで自動的に混ぜることもできません。対象集団、estimand、条件付き・周辺、
+交絡制御、overlap、標準誤差が整合すると確認できた場合にだけ主解析候補とし、方法別感度分析を添えます。
+整合を確認できなければ別プール、再標準化、IPD再解析、または統合しない判断を選びます。
+</div>
+
+
+
+<h3>ORとHRの非collapsibility</h3>
+
+<p>
+ORやHRは、交絡がなくても強い予後因子をモデルへ追加すると
+値が変化することがあります。これを非collapsibilityといいます。
+</p>
+
+<p>
+したがって、未調整ORが1.4、調整ORが1.8になった場合、
+その差0.4のすべてを「交絡の除去」と解釈できません。
+追加した変数が治療と無関係な純粋な予後因子であっても、
+条件付きORが1から遠ざかる場合があります。
+</p>
+
+<div class="callout warn">
+調整前後のORの変化量だけを使って、
+交絡因子を選んだり、調整の成功を判断したりしてはいけません。
+</div>
+
+<h3>異なる共変量集合の条件付きOR</h3>
+
+<p>
+研究Aは年齢・性別で調整し、研究Bは年齢・性別・重症度で調整しているとします。
+研究BのORが研究Aより大きくても、
+その違いが重症度交絡の除去によるのか、
+非collapsibilityによるのかを集計値だけで完全には区別できません。
+</p>
+
+<p>
+可能であれば、各研究で共通の対象集団へ標準化した
+周辺リスク、RR、RDを作る方が比較しやすくなります。
+</p>
+
+<details>
+<summary>条件付き推定値を周辺効果へ標準化する基本概念</summary>
+<div class="inside">
+
+<ol>
+<li>治療前交絡因子を含むアウトカムモデルを作る</li>
+<li>各患者について治療Aを受けた場合の予測転帰を計算する</li>
+<li>同じ患者について治療Bを受けた場合の予測転帰を計算する</li>
+<li>対象集団内で治療Aの予測転帰を平均する</li>
+<li>対象集団内で治療Bの予測転帰を平均する</li>
+<li>二つの平均からRRまたはRDを求める</li>
+</ol>
+
+<p>
+この方法により、同じ対象集団に平均化した効果を得られます。
+ただし、アウトカムモデルの誤設定や未測定交絡は残ります。
+</p>
+
+</div>
+</details>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+メタ分析では、効果尺度の名称だけでなく、追跡時点、対象集団、estimand、条件付き・周辺、
+調整方法、分散推定をそろえます。ロジスティック回帰と傾向スコア法が異なっても、
+同じ周辺効果へ整合できれば統合候補です。整合できなければ別プールまたは統合しない判断とし、
+ランダム効果モデルやメタ回帰で意味の違いを覆いません。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/33314251/">
+Daniel et al., Making apples from oranges
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8530151/">
+Whitcomb &amp; Naimi, Noncollapsibility
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7515812/">
+Differentiating RR, OR, and HR
+</a>；
+<a target="_blank" rel="noopener"
+href="https://training.cochrane.org/handbook/current/chapter-06">
+Cochrane Handbook Chapter 6：効果尺度の選択
+</a>；
+<a target="_blank" rel="noopener"
+href="https://training.cochrane.org/handbook/current/chapter-24">
+Cochrane Handbook Chapter 24：調整済み推定値の選択と統合
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/24108272/">
+Pang et al., marginal structural modelとlogistic回帰のOR
+</a>；
+<a target="_blank" rel="noopener"
+href="https://journals.sagepub.com/doi/10.1177/0962280215601134">
+Austin &amp; Stuart, PS matchingと周辺効果
+</a>
+</p>
+</section>
+
+<section id="confounders">
+<div class="kicker">CHAPTER 6</div>
+<h2>研究ごとに交絡調整が違う場合</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>調整因子が完全に同じでなくても統合できる場合</li>
+<li>異なる最小十分調整集合の考え方</li>
+<li>重要交絡因子が欠落した研究をどう扱うか</li>
+<li>調整の十分性をメタ分析で分類する方法</li>
+</ul>
+</div>
+
+<p>
+観察研究のメタ分析では、研究ごとに測定された変数が異なります。
+ある研究は疾患重症度を詳細に測定している一方、
+別の研究は年齢と性別しか調整していないかもしれません。
+</p>
+
+<p>
+単に「すべて調整済み」として一つにまとめると、
+十分に交絡を調整した研究と、重要交絡因子を欠いた研究が混在します。
+</p>
+
+<h3>完全に同じ変数名が必要なのか</h3>
+
+<p>
+すべての研究が完全に同じ変数名で調整していなければならない、
+というわけではありません。
+一つのDAGに、複数の最小十分調整集合が存在する場合があります。
+</p>
+
+<p>
+最小十分調整集合とは、治療と転帰の間の非因果的な
+バックドア経路を閉じるために十分であり、
+そこから一つでも変数を除くと不十分になる変数集合です。
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 920 340" role="img" aria-label="異なる十分調整集合">
+<defs>
+<marker id="d" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3z" fill="#075ca8"/>
+</marker>
+</defs>
+
+<rect x="50" y="35" width="180" height="65" rx="14"
+fill="#fff3e5" stroke="#9b4b00" stroke-width="3"/>
+<text x="140" y="74" text-anchor="middle" font-size="21">年齢</text>
+
+<rect x="50" y="225" width="180" height="65" rx="14"
+fill="#fff3e5" stroke="#9b4b00" stroke-width="3"/>
+<text x="140" y="264" text-anchor="middle" font-size="21">併存疾患</text>
+
+<rect x="355" y="125" width="190" height="70" rx="14"
+fill="#eaf4ff" stroke="#075ca8" stroke-width="3"/>
+<text x="450" y="168" text-anchor="middle" font-size="22">治療選択</text>
+
+<rect x="690" y="125" width="180" height="70" rx="14"
+fill="#fff0ee" stroke="#b42318" stroke-width="3"/>
+<text x="780" y="168" text-anchor="middle" font-size="22">転帰</text>
+
+<line x1="230" y1="75" x2="360" y2="135"
+stroke="#075ca8" stroke-width="3" marker-end="url(#d)"/>
+<line x1="230" y1="75" x2="690" y2="140"
+stroke="#075ca8" stroke-width="3" marker-end="url(#d)"/>
+
+<line x1="230" y1="255" x2="360" y2="185"
+stroke="#075ca8" stroke-width="3" marker-end="url(#d)"/>
+<line x1="230" y1="255" x2="690" y2="180"
+stroke="#075ca8" stroke-width="3" marker-end="url(#d)"/>
+
+<line x1="545" y1="160" x2="688" y2="160"
+stroke="#075ca8" stroke-width="4" marker-end="url(#d)"/>
+
+<text x="310" y="318" font-size="18">
+異なる研究で異なる測定指標を使っても、
+同じ交絡ドメインを十分に捉える場合がある
+</text>
+</svg>
+</div>
+
+<p>
+例えば、「基礎疾患負荷」という交絡ドメインを、
+研究AはCharlson Comorbidity Indexで測定し、
+研究Bは個別併存疾患の組み合わせで測定しているかもしれません。
+変数名は違いますが、同じ交絡構造を十分に捉える可能性があります。
+</p>
+
+<div class="callout good">
+統合の判断では、変数名の一致だけでなく、
+交絡ドメイン、測定時点、測定精度、
+DAG上の役割、estimandを確認します。
+</div>
+
+<h3>異なる十分調整集合を統合できる条件</h3>
+
+<ul>
+<li>共通の合理的なDAGを想定できる</li>
+<li>各研究の調整集合がバックドア経路を十分に閉じる</li>
+<li>治療後変数を含まない</li>
+<li>同じ対象集団または解釈可能な対象集団を扱う</li>
+<li>同じestimandを推定する</li>
+<li>同じ効果尺度へ標準化されている</li>
+<li>positivityが大きく破れていない</li>
+</ul>
+
+<h3>ロジスティック回帰ではさらに注意する</h3>
+
+<p>
+Hamraらのシミュレーションでは、
+異なる最小十分調整集合を用いても、
+線形モデル、log-binomialモデル、IPWなどでは
+概ね同じ効果を推定できる状況が示されました。
+</p>
+
+<p>
+一方、ロジスティック回帰の条件付きORは非collapsibilityの影響を受け、
+異なる調整集合で値が変わりやすいことが示されました。
+</p>
+
+<div class="callout warn">
+「どの研究も十分調整されている」だけでは、
+異なる共変量集合の条件付きORをそのまま統合できるとは限りません。
+周辺効果への標準化を検討します。
+</div>
+
+<h3>重要交絡因子が欠落した研究</h3>
+
+<p>
+レビューで最重要と定義した治療前重症度が、
+一部研究で全く測定されていない場合を考えます。
+年齢と性別を調整していても、重症度交絡は残る可能性があります。
+</p>
+
+<p>
+この研究を「調整済み」という理由だけで主解析へ入れると、
+十分調整研究と残余交絡の大きい研究が同じ重み付け規則で統合されます。
+</p>
+
+<h3>調整の十分性を3段階に分類する</h3>
+
+<div class="grid">
+<div class="card">
+<span class="badge">十分</span>
+<p>
+事前指定した重要交絡ドメインが測定・調整され、
+治療後変数を含まず、time zeroも適切です。
+</p>
+</div>
+
+<div class="card">
+<span class="badge">部分的</span>
+<p>
+一部の重要交絡因子は調整されていますが、
+基礎重症度などが欠ける、または測定精度が低い状態です。
+</p>
+</div>
+
+<div class="card">
+<span class="badge">不十分</span>
+<p>
+未調整、調整因子不明、単変量P値選択のみ、
+重要交絡因子欠落、治療後因子への依存などがあります。
+</p>
+</div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>状況</th>
+<th>主要な問題</th>
+<th>解析上の扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>異なるが十分な調整集合</td>
+<td>非collapsibility、標準化集団の違い</td>
+<td>同じ周辺効果なら主解析候補</td>
+</tr>
+<tr>
+<td>重症度が欠落</td>
+<td>残余交絡</td>
+<td>部分調整として感度分析</td>
+</tr>
+<tr>
+<td>治療後因子入り</td>
+<td>過剰調整、媒介経路の遮断</td>
+<td>総効果の主解析から分離</td>
+</tr>
+<tr>
+<td>単変量P値選択</td>
+<td>重要交絡因子の脱落</td>
+<td>部分的または不十分</td>
+</tr>
+<tr>
+<td>調整因子不明</td>
+<td>推定値の意味を確認できない</td>
+<td>著者照会、取得不能なら主解析外</td>
+</tr>
+</tbody>
+</table>
+
+<h3>「十分に調整された研究だけ」でも生じる選択</h3>
+
+<p>
+十分調整された研究だけを主解析にすると、
+研究数が減り、精度が低下することがあります。
+また、調整済み結果を報告した研究だけが選ばれる
+selective availabilityの問題も考えられます。
+</p>
+
+<p>
+したがって、除外するだけでなく、
+次の階層的な解析を事前に計画します。
+</p>
+
+<div class="flow">
+<div class="box">主解析<br>十分調整</div>
+<div class="arrow">→</div>
+<div class="box">感度分析1<br>部分調整を追加</div>
+<div class="arrow">→</div>
+<div class="box">感度分析2<br>未調整を別表示</div>
+<div class="arrow">→</div>
+<div class="box">感度分析3<br>バイアス定量化</div>
+</div>
+
+<h3>調整因子の違いをメタ回帰で修正できるか</h3>
+
+<p>
+「重症度を調整したか」という研究レベルの変数を
+メタ回帰に入れることはできます。
+しかし、これは各研究内部の未測定重症度を調整する方法ではありません。
+</p>
+
+<p>
+メタ回帰は、重症度調整の有無によって研究の効果量が
+系統的に異なるかを探索する方法です。
+研究数が少ない場合、検出力も低くなります。
+</p>
+
+<div class="callout danger">
+研究レベルのメタ回帰を、
+患者レベルの交絡調整の代わりに使用してはいけません。
+</div>
+
+<h3>結論：研究ごとの交絡調整の違いは、完全には解決できないことがある</h3>
+
+<p>
+この問題には、統計モデルを高度にすれば必ず解決するという答えはありません。
+同じ因果構造を想定でき、各研究がそれぞれ十分な調整集合を測定し、同じ対象集団・time zero・追跡期間・estimand・効果尺度を扱っているなら、変数名が完全に同じでなくても統合できる可能性があります。
+</p>
+
+<p>
+一方、重要な治療前重症度を測定していない研究、治療後変数を調整した研究、条件付きORの調整集合が研究ごとに異なる研究、time zeroがずれた研究では、集計値だけから同じ因果効果へ戻すことはできない場合があります。
+ランダム効果モデルはこの違いを吸収せず、メタ回帰も各研究内の未測定交絡を取り除きません。
+</p>
+
+<p>
+IPDメタ分析なら、各研究に共通して測定された変数を使い、共通のestimandへ再解析できることがあります。
+しかし、元研究が測定しなかった交絡因子、保存しなかったtime zero情報、得られない研究内共分散は、IPDやAIを用いても復元できません。
+</p>
+
+<div class="callout danger">
+<strong>解決不能なら、解決不能と報告します。</strong>
+主解析から分離する、調整十分性ごとに別表示する、定量的バイアス分析を感度分析として示す、構造化ナラティブに切り替える、という選択をします。
+無理に一つの平均値へまとめてはいけません。
+</div>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+各研究で変数名が異なっても、同じDAG上で十分な調整集合なら
+統合できる可能性があります。
+ただし、条件付きORの非collapsibility、
+標準化対象集団、重要交絡因子の欠落を確認します。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/33591054/">
+Hamra et al., Sufficient adjustment sets
+</a>；
+<a target="_blank" rel="noopener"
+href="https://link.springer.com/article/10.1186/s12874-022-01614-9">
+Ray et al., Imbalance in measurement of confounders
+</a>
+</p>
+</section>
+
+<section id="statistics">
+<div class="kicker">CHAPTER 7</div>
+<h2>非RCTメタ分析におけるランダム効果の意味</h2>
+
+<p>
+非RCTのランダム効果メタ分析は、粗い観察研究を大量に集めて平均するための手法ではありません。
+まず、各研究が同じ因果的な問いを扱い、交絡調整が主解析に耐え、効果尺度・追跡時点・対象集団・estimandが比較可能であることを確認します。
+その確認後にも、患者構成、医療制度、治療の実装、比較治療、測定方法などによって、妥当な効果が研究間で異なり得ます。その残る分布を表現するのがランダム効果モデルです。
+</p>
+
+<p>
+例えば、3か国の新規使用者コホートが、同じactive comparatorを用い、共通の治療前交絡ドメインを調整し、12か月の周辺RRを推定したとします。
+医療制度や支持療法が異なるため、真のRRが完全に同じとは限りません。このような「同じ種類の効果に残る妥当な違い」はランダム効果で扱う候補です。
+反対に、12か月RR、条件付きOR、追跡全体のHR、未調整研究を混ぜた差は、単なる研究間分散ではありません。
+</p>
+
+<div class="callout info">
+<strong>順番が重要です：</strong>統合可能性を判断する → 共通の効果量へそろえる → それでも残る研究間変動をランダム効果で表す、という順に進みます。
+</div>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>ランダム効果モデルが何を仮定しているか</li>
+<li>REMLとDerSimonian–Laird法の違い</li>
+<li>Hartung–Knapp法の役割</li>
+<li>I²、τ²、予測区間の解釈</li>
+<li>メタ回帰の限界</li>
+</ul>
+</div>
+
+<h3>ランダム効果モデルの基本</h3>
+
+<div class="math">
+yᵢ｜θᵢ ～ N(θᵢ, vᵢ)<br>
+θᵢ ～ N(μ, τ²)
+</div>
+
+<ul>
+<li><strong>yᵢ：</strong>研究iで観察された対数効果量</li>
+<li><strong>vᵢ：</strong>研究iの標本分散</li>
+<li><strong>θᵢ：</strong>研究iにおける対象効果</li>
+<li><strong>μ：</strong>対象効果分布の平均</li>
+<li><strong>τ²：</strong>研究間分散</li>
+</ul>
+
+<p>
+ランダム効果モデルは、
+すべての研究に完全に同じ一つの真の効果があるとは仮定せず、
+研究ごとに対象効果θᵢが異なることを許します。
+</p>
+
+<p>
+しかし、θᵢが異なることを許すことと、
+異なるestimandを混ぜることは別です。
+1年RRと条件付きHRは、同じ効果の異質な実現ではなく、
+そもそも別の量かもしれません。
+</p>
+
+<div class="callout danger">
+ランダム効果モデルは
+「何でも混ぜてよいモデル」ではありません。
+臨床的・因果的に同じ種類の効果であることを先に確認します。
+</div>
+
+<h3>逆分散重み付け</h3>
+
+<p>
+通常のメタ分析では、標準誤差が小さい研究ほど大きな重みを持ちます。
+ランダム効果モデルの代表的な重みは次の形です。
+</p>
+
+<div class="math">
+wᵢ ＝ 1 ÷ (vᵢ ＋ τ²)
+</div>
+
+<p>
+大規模な観察研究はvᵢが小さいため、大きな重みを持ちやすくなります。
+しかし、統計的精度が高いことはrisk of biasが低いことを意味しません。
+</p>
+
+<p>
+通常の逆分散法は、研究の質や交絡調整の十分性を
+自動的に重みへ反映しません。
+Critical riskの大規模研究が統合値を支配する可能性があります。
+</p>
+
+<h3>DerSimonian–Laird法</h3>
+
+<p>
+DerSimonian–Laird法は計算が簡単で広く利用されています。
+しかし、研究数が少ない場合や異質性が大きい場合、
+τ²を過小評価し、平均効果の信頼区間を狭くすることがあります。
+</p>
+
+<p>
+「ランダム効果モデルを使ったから保守的」という理解は正しくありません。
+使用するτ²推定法と信頼区間の構成法によって結果が異なります。
+</p>
+
+<h3>REML</h3>
+
+<p>
+REMLはrestricted maximum likelihoodの略で、
+研究間分散τ²を推定する代表的な方法です。
+多くの一般的状況でDerSimonian–Laird法より良好な性質を持つため、
+基本解析の候補になります。
+</p>
+
+<div class="callout info">
+本教材のRコードでは、原則として
+<code>method="REML"</code>を使用します。
+ただし、REMLを使うことは交絡調整ではありません。
+</div>
+
+<h3>Hartung–Knapp法</h3>
+
+<p>
+通常のランダム効果メタ分析では、
+推定したτ²の不確実性が十分反映されず、
+特に研究数が少ない場合に信頼区間が狭すぎることがあります。
+</p>
+
+<p>
+Hartung–Knapp法は、平均効果の分散推定と
+t分布を利用して、この問題を軽減します。
+</p>
+
+<p>
+ただし、Hartung–Knapp法も万能ではありません。
+研究規模が極端に異なる場合、τ²が非常に小さい場合、
+研究数が極端に少ない場合には不安定なことがあります。
+</p>
+
+<h3>I²</h3>
+
+<div class="math">
+I² ＝ max{0, (Q−df) ÷ Q} × 100%
+</div>
+
+<p>
+I²は、観察された効果量の変動のうち、
+標本誤差だけでは説明しにくい割合を表します。
+効果が臨床的にどれだけ広く分布しているかを
+効果尺度上で直接示すものではありません。
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>I²が高い</h3>
+<p>
+標本誤差に比べて研究間変動が大きい可能性があります。
+ただし原因は臨床差、方法差、bias、estimand差など多様です。
+</p>
+</div>
+
+<div class="card">
+<h3>I²が低い</h3>
+<p>
+バイアスが小さいことを意味しません。
+すべての研究が同じ方向に偏っていればI²は低くなり得ます。
+</p>
+</div>
+</div>
+
+<h3>τ²とτ</h3>
+
+<p>
+τ²は研究間分散、τはその平方根です。
+τは対数効果尺度上の標準偏差なので、
+I²よりも効果量の分布に近い情報を持ちます。
+</p>
+
+<p>
+例えば、対数RRのτが0.20なら、
+研究ごとの真のRRが平均からどの程度散らばるかを
+比尺度へ戻して考えることができます。
+</p>
+
+<h3>予測区間</h3>
+
+<div class="math">
+平均効果 ± t × √{SE(平均効果)² ＋ τ²}
+</div>
+
+<p>
+平均効果の95%信頼区間は、
+対象効果分布の平均μについての不確実性を示します。
+予測区間は、類似した新しい研究の対象効果が
+入り得る範囲を示します。
+</p>
+
+<p>
+例えば、平均RRが0.80で95%信頼区間が0.72～0.89でも、
+予測区間が0.55～1.17なら、
+新しい環境では無効または有害となる可能性も残ります。
+</p>
+
+<div class="callout warn">
+研究数が少ない場合、τ²と予測区間は非常に不安定です。
+予測区間を示す場合は、研究数と推定の不確実性を併記します。
+</div>
+
+<h3>メタ回帰</h3>
+
+<p>
+メタ回帰は、研究間異質性が研究レベルの特徴によって
+説明されるかを探索します。
+</p>
+
+<p>候補となる研究レベル変数には次があります。</p>
+
+<ul>
+<li>十分調整か部分調整か</li>
+<li>新規使用者デザインか</li>
+<li>active comparatorか</li>
+<li>追跡期間</li>
+<li>研究地域</li>
+<li>アウトカム定義</li>
+</ul>
+
+<p>
+しかし、平均年齢や女性割合を研究レベルで入れても、
+患者レベルの年齢・性別交絡を調整できるとは限りません。
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>患者レベルの問い</h3>
+<p>
+同じ年齢・重症度の患者同士で、治療AとBを比較する。
+</p>
+</div>
+
+<div class="card">
+<h3>研究レベルのメタ回帰</h3>
+<p>
+平均年齢70歳の研究と平均年齢60歳の研究を比較する。
+</p>
+</div>
+</div>
+
+<p>
+この二つは異なる比較です。
+研究レベルの関連を患者レベルへ当てはめると、
+生態学的バイアスが生じ得ます。
+</p>
+
+
+<h3>メタ回帰をどう設計し、どう報告するか</h3>
+
+<div class="math">
+yᵢ ＝ β₀ ＋ β₁xᵢ ＋ uᵢ ＋ εᵢ
+</div>
+
+<p>
+この式でβ₁は、研究レベルの特徴xが1単位違うとき、平均的な効果推定値がどれだけ違うかを表します。
+例えばxを「重要な重症度を十分調整した研究＝1、部分調整＝0」とすれば、β₁は二群の研究レベル差です。
+これは、部分調整研究の患者データへ重症度を後から追加した効果ではありません。
+</p>
+
+<p>
+非RCTでは、調整十分性、active comparator、新規使用者デザイン、time zero、アウトカム測定、追跡期間が互いに関連しやすくなります。
+例えば十分調整された研究だけが新しいデータベースを使い、追跡も短い場合、どの特徴が差を生んだか分離できません。
+</p>
+
+<ol>
+<li>結果を見る前に、臨床的・因果的に重要な少数の修飾因子を事前指定します。</li>
+<li>研究数が少ない解析では行いません。Cochrane Handbookは、一般に10研究未満でのメタ回帰を避けるよう注意していますが、10研究あれば十分という保証でもありません。</li>
+<li>多数の候補を自動選択すると偶然の関連を拾うため、変数数と多重性を抑えます。</li>
+<li>研究レベルの平均値から患者レベルの効果修飾を断定せず、生態学的バイアスを明記します。</li>
+<li>外れ値、影響研究、共線性、残差異質性、修飾因子の測定誤差を確認します。</li>
+</ol>
+
+<p>
+報告では、β係数と信頼区間だけでなく、研究数、事前指定の有無、残差τ²、モデル前後の異質性、影響分析を示します。
+説明されなかった異質性が大きい場合は、平均効果を単純化せず、予測区間と研究特性を併記します。
+</p>
+
+<div class="callout warn">
+メタ回帰は異質性の探索手段です。異なる交絡調整、異なるestimand、未測定交絡を「統計的に補正して統合可能にする装置」ではありません。
+</div>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+ランダム効果モデルは研究間異質性を扱いますが、
+交絡、選択バイアス、estimandの不一致を修正しません。
+REML、Hartung–Knapp、τ²、予測区間を用いながら、
+各指標の限界を理解して解釈します。
+</p>
+</div>
+
+<p class="small">
+参考：
+<a target="_blank" rel="noopener"
+href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5157768/">
+Partlett &amp; Riley
+</a>；
+<a target="_blank" rel="noopener"
+href="https://pubmed.ncbi.nlm.nih.gov/28058794/">
+Borenstein et al.
+</a>；
+<a target="_blank" rel="noopener"
+href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-10">
+Cochrane Handbook Chapter 10
+</a>
+</p>
+</section>
+
+<section id="r">
+<div class="kicker">CHAPTER 8</div>
+<h2>Rによる実装：調整済み効果量を統合する</h2>
+
+<div class="chapter-goals">
+<strong>この章で理解すること</strong>
+<ul>
+<li>論文から抽出すべきデータ構造</li>
+<li>調整済みOR・HRの標準誤差の求め方</li>
+<li>REML＋Hartung–Knappによる基本解析</li>
+<li>粗値、OR、HR、異なる追跡時点を混ぜない方法</li>
+<li>Rコードが動いても解析が妥当とは限らない理由</li>
+</ul>
+</div>
+
+<div class="callout info">
+以下のコードは解析テンプレートです。
+コードを実行する前に、プロトコル、target trial、DAG、
+estimand、研究適格性、推定値選択規則を決めてください。
+</div>
+
+<h3 id="ai-implementation">コードを書く前に、AIへ「解析仕様」を渡す</h3>
+
+<p>
+現在は、Rに詳しくない研究者でも、生成AIに依頼してREML、Hartung–Knapp、予測区間、メタ回帰、多水準モデルなどのコードを作れます。
+これは大きな利点です。しかし、「非RCTの効果量をメタ分析して」という短い指示だけでは、AIは与えられた列を計算可能な形で平均しようとします。
+統合可能性、estimand、交絡調整の十分性をAIが自動的に保証するわけではありません。
+</p>
+
+<p>
+先に研究チームが解析仕様を文章で固定し、その仕様をAIへ渡します。次のプロンプトは、そのまま使うための雛形です。
+角括弧の部分をレビューに合わせて置き換え、AIが勝手に欠測値や研究情報を補わないよう明示します。
+</p>
+
+<div class="code-wrap">
+<button class="copy-btn" type="button">プロンプトをコピー</button>
+<pre><code>あなたは、因果推論と非ランダム化比較研究のメタ分析に詳しいR統計家です。
+以下の解析仕様を満たす、再現可能なRコードを書いてください。
+
+【臨床上の問い】
+対象集団：[対象患者]
+介入と比較：[治療A] 対 [治療B]
+アウトカム：[アウトカム定義]
+追跡開始：[time zero]
+追跡時点：[例：12か月]
+対象効果：[例：対象集団における12か月周辺RR]
+
+【主解析へ含める条件】
+・調整済み推定値である
+・事前指定した重要交絡ドメインを十分に調整している
+・治療後変数を調整していない
+・time zeroが適切である
+・対象集団、追跡時点、estimandが上記と整合する
+
+【効果尺度】
+OR、RR、HRを同じモデルへ入れないでください。
+主解析は[RRなど]だけに限定し、他尺度は別解析または構造化ナラティブにしてください。
+
+【データ列】
+study_id、author、year、measure、estimate、lower、upper、
+adj_class、estimand、followup、time_zero_ok、post_treatment_adjustment
+
+【実装】
+1. 入力値、重複study_id、尺度、追跡時点、欠測を検証する。
+2. 比尺度は対数変換し、Wald型95%CIである場合だけCIからSEを復元する。
+3. metaforでREMLランダム効果モデルを作り、Hartung–Knapp型推論を用いる。
+4. 平均効果、95%CI、tau^2、I^2、予測区間、研究別重みを出す。
+5. leave-one-out解析と影響診断を行う。
+6. 十分調整研究を主解析、部分調整研究を感度分析として分ける。
+7. 研究数が不足する場合、メタ回帰を実行せず、その理由を表示する。
+8. 警告、収束、パッケージのバージョン、sessionInfo()を出力する。
+
+【禁止事項】
+・存在しない値、共分散、交絡因子、ベースラインリスクを補完しない。
+・OR、RR、HRを便宜的に変換して混合しない。
+・ランダム効果やメタ回帰で未測定交絡が解決したと説明しない。
+・統合条件を満たす研究が2本未満なら、統合値を作らず一覧表を返す。
+
+コードの各部分に、日本語で「何を確認しているか」と「この処理で解決できない問題」をコメントしてください。</code></pre>
+</div>
+
+<h3>メタ回帰をAIへ依頼するときに追加する指示</h3>
+
+<p>
+メタ回帰では、変数を増やすほど高度になるのではありません。研究数、共線性、生態学的バイアス、多重性を考慮し、
+事前指定した少数の研究レベル修飾因子だけを扱わせます。例えば次の追記を使います。
+</p>
+
+<div class="code-wrap">
+<button class="copy-btn" type="button">追記をコピー</button>
+<pre><code>メタ回帰は、主解析と同じ効果尺度・estimandを持つ研究だけで行ってください。
+候補修飾因子は、事前指定した adj_class と followup のみに限定します。
+研究数が10未満、各カテゴリーが極端に少ない、修飾因子間の共線性が強い場合は実行を中止してください。
+係数、95%CI、残差tau^2、影響診断を出し、患者レベル交絡の調整ではないことを結果文へ明記してください。</code></pre>
+</div>
+
+<h3>AIで難しい手法を書ける時代に、何が変わり、何が変わらないか</h3>
+
+<p>
+AIによって、これまで専門家しか実装しにくかった手法のコードへ到達しやすくなりました。
+ただし、手法を実行できることと、その手法に必要な情報が論文やデータに存在することは別です。
+新しい統計手法が公表されていても、一次研究が必要な変数や共分散を保存・報告していなければ、レビュー段階からは使えません。
+</p>
+
+<table>
+<thead><tr><th>AIがコードを書ける手法</th><th>最低限必要な情報</th><th>情報がないとき</th></tr></thead>
+<tbody>
+<tr><td>多水準・多変量メタ分析</td><td>研究内の複数推定値と、その分散共分散または妥当な相関仮定</td><td>独立とみなして投入せず、代表推定値を事前規則で選ぶ</td></tr>
+<tr><td>cluster-robust variance</td><td>研究ID、複数推定値、十分な研究クラスター数</td><td>小標本補正を使っても研究数不足は解消しない</td></tr>
+<tr><td>ベイズ階層モデル</td><td>臨床的に正当化できる尤度、階層構造、事前分布</td><td>便利な事前分布をAIに自動選択させない</td></tr>
+<tr><td>IPDの標準化、IPTW、g-methods</td><td>個人データ、共通定義、治療前交絡因子、time zero</td><td>公表された集計値だけでは再解析できない</td></tr>
+<tr><td>定量的バイアス分析</td><td>未測定交絡の強さに関する外部根拠または感度範囲</td><td>根拠のない値を「補正値」として確定的に扱わない</td></tr>
+</tbody>
+</table>
+
+<div class="callout danger">
+<strong>AIが作れないもの：</strong>測定されなかった交絡因子、失われたtime zero、報告されない研究内共分散、存在しないIPD、異なるestimandを同じにする根拠です。
+高度なコードは、欠けた研究設計を後から作り直しません。
+</div>
+
+<h3>AI生成コードを採用する前の検証</h3>
+
+<ol>
+<li>小さな模擬データで、手計算または公式パッケージ例と方向・尺度が一致するか確認します。</li>
+<li><code>metafor</code>などの公式文書で、引数、既定値、返される推定量を確認します。</li>
+<li>警告、収束、τ²、重み、予測区間、影響研究を確認し、数字だけを転記しません。</li>
+<li>尺度や追跡時点を意図的に混ぜたテストデータで、コードが停止するか確認します。</li>
+<li>最終解析は、因果推論とメタ分析を理解する統計家が、仕様とコードの両方をレビューします。</li>
+</ol>
+
+<p class="small">
+方法論の確認先：
+<a href="https://training.cochrane.org/handbook/current/chapter-10" target="_blank" rel="noopener">Cochrane Handbook Chapter 10</a>、
+<a href="https://training.cochrane.org/handbook/current/chapter-24" target="_blank" rel="noopener">Chapter 24</a>、
+<a href="https://wviechtb.github.io/metafor/reference/metafor-package.html" target="_blank" rel="noopener">metafor公式リファレンス</a>。
+</p>
+
+<h3>1．パッケージ</h3>
+
+<pre><code>install.packages(c(
+  "metafor",
+  "clubSandwich",
+  "dplyr",
+  "readr"
+))
+
+library(metafor)
+library(clubSandwich)
+library(dplyr)
+library(readr)</code></pre>
+
+<p>
+<code>metafor</code>は効果量計算、ランダム効果モデル、
+メタ回帰、フォレストプロットなどを扱います。
+<code>clubSandwich</code>は同一研究内に複数推定値がある場合の
+cluster-robust inferenceに利用できます。
+</p>
+
+<h3>2．推奨するデータ構造</h3>
+
+<pre><code>dat &lt;- tribble(
+  ~study_id, ~author, ~year, ~measure,
+  ~estimate, ~lower, ~upper,
+  ~adjusted, ~adj_class,
+  ~estimand, ~followup,
+  ~time_zero_ok, ~post_treatment_adjustment,
+
+  1, "Sato", 2021, "OR",
+  0.72, 0.55, 0.95,
+  TRUE, "sufficient",
+  "conditional_OR", "12_months",
+  TRUE, FALSE,
+
+  2, "Tanaka", 2022, "OR",
+  0.81, 0.62, 1.07,
+  TRUE, "partial",
+  "conditional_OR", "12_months",
+  TRUE, FALSE,
+
+  3, "Yamada", 2023, "OR",
+  0.58, 0.40, 0.84,
+  FALSE, "none",
+  "crude_OR", "12_months",
+  FALSE, FALSE,
+
+  4, "Suzuki", 2024, "HR",
+  0.76, 0.61, 0.95,
+  TRUE, "sufficient",
+  "conditional_HR", "36_months",
+  TRUE, FALSE,
+
+  5, "Ito", 2025, "OR",
+  0.65, 0.48, 0.88,
+  TRUE, "overadjusted",
+  "controlled_direct_effect", "12_months",
+  TRUE, TRUE
+)</code></pre>
+
+<h4>各列の意味</h4>
+
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>study_id</td>
+<td>研究を一意に識別するID</td>
+</tr>
+<tr>
+<td>measure</td>
+<td>OR、RR、HRなどの効果尺度</td>
+</tr>
+<tr>
+<td>estimate</td>
+<td>論文で報告された効果推定値</td>
+</tr>
+<tr>
+<td>lower、upper</td>
+<td>95%信頼区間の下限と上限</td>
+</tr>
+<tr>
+<td>adjusted</td>
+<td>調整済みか未調整か</td>
+</tr>
+<tr>
+<td>adj_class</td>
+<td>十分、部分的、不十分、過剰調整など</td>
+</tr>
+<tr>
+<td>estimand</td>
+<td>条件付きOR、周辺RR、ATE、ATTなど</td>
+</tr>
+<tr>
+<td>followup</td>
+<td>12か月、36か月など</td>
+</tr>
+<tr>
+<td>time_zero_ok</td>
+<td>time zeroが適切か</td>
+</tr>
+<tr>
+<td>post_treatment_adjustment</td>
+<td>治療後変数を調整しているか</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout good">
+効果量だけでなく、
+その効果量がどの解析から作られたかを
+データセットの列として保存することが重要です。
+</div>
+
+<h3>3．入力値を検証する</h3>
+
+<pre><code>required &lt;- c(
+  "study_id",
+  "author",
+  "year",
+  "measure",
+  "estimate",
+  "lower",
+  "upper",
+  "adjusted",
+  "adj_class",
+  "estimand",
+  "followup",
+  "time_zero_ok",
+  "post_treatment_adjustment"
+)
+
+stopifnot(
+  all(required %in% names(dat))
+)
+
+stopifnot(
+  all(dat$estimate &gt; 0, na.rm = TRUE),
+  all(dat$lower &gt; 0, na.rm = TRUE),
+  all(dat$upper &gt; 0, na.rm = TRUE),
+  all(dat$lower &lt; dat$estimate, na.rm = TRUE),
+  all(dat$estimate &lt; dat$upper, na.rm = TRUE)
+)
+
+table(dat$measure, useNA = "ifany")
+table(dat$adj_class, useNA = "ifany")
+table(dat$estimand, useNA = "ifany")
+table(dat$followup, useNA = "ifany")</code></pre>
+
+<p>
+OR、RR、HRは0より大きい必要があります。
+また、推定値は信頼区間の下限と上限の間にある必要があります。
+</p>
+
+<p>
+<code>table()</code>で各尺度、調整状態、追跡期間を確認すると、
+誤って異なる尺度を混ぜることを防ぎやすくなります。
+</p>
+
+<h3>4．対数効果量と標準誤差</h3>
+
+<pre><code>dat &lt;- dat |&gt;
+  mutate(
+    yi = log(estimate),
+
+    sei = (
+      log(upper) - log(lower)
+    ) / (
+      2 * qnorm(0.975)
+    ),
+
+    vi = sei^2
+  )</code></pre>
+
+<p>
+比尺度のメタ分析では、通常はOR、RR、HRを対数変換します。
+例えばOR＝1はlog(1)＝0となり、
+OR＝2とOR＝0.5が対数尺度上で対称になります。
+</p>
+
+<div class="math">
+SE ＝ {log(上限) − log(下限)} ÷ {2 × 1.96}
+</div>
+
+<p>
+この式は、95%信頼区間が対数尺度上で
+推定値±1.96×SEというWald型区間から作られた場合に利用できます。
+</p>
+
+<div class="callout warn">
+profile likelihood、bootstrap、ロバスト分散、
+小標本t分布などで作られた信頼区間は、
+対数尺度上で完全に対称とは限りません。
+可能なら元論文のSEまたは分散を取得します。
+</div>
+
+<h3>5．誤った解析：非RCTの粗い2×2表</h3>
+
+<pre><code>raw_es &lt;- escalc(
+  measure = "OR",
+  ai = event_treated,
+  bi = non_event_treated,
+  ci = event_control,
+  di = non_event_control,
+  data = raw_dat
+)
+
+wrong_model &lt;- rma.uni(
+  yi = yi,
+  vi = vi,
+  data = raw_es,
+  method = "REML"
+)
+
+forest(
+  wrong_model,
+  atransf = exp,
+  xlab = "Crude odds ratio"
+)</code></pre>
+
+<p>
+このコードは計算としては正常に動きます。
+しかし、<code>escalc()</code>は年齢、重症度、治療適応などを知りません。
+2×2表から粗ORを計算しているだけです。
+</p>
+
+<p>
+さらに、<code>method="REML"</code>は研究間分散の推定方法であって、
+患者背景を調整する方法ではありません。
+</p>
+
+<div class="callout danger">
+<strong>コードがエラーなく動くこと</strong>と
+<strong>因果効果を妥当に推定していること</strong>は別です。
+</div>
+
+<h3>6．十分調整されたORだけを選ぶ</h3>
+
+<pre><code>or_main &lt;- dat |&gt;
+  filter(
+    measure == "OR",
+    adjusted == TRUE,
+    adj_class == "sufficient",
+    followup == "12_months",
+    time_zero_ok == TRUE,
+    post_treatment_adjustment == FALSE
+  )
+
+stopifnot(
+  !anyDuplicated(or_main$study_id)
+)</code></pre>
+
+<p>
+このフィルターでは次を要求しています。
+</p>
+
+<ul>
+<li>ORである</li>
+<li>調整済みである</li>
+<li>重要交絡因子を十分に調整している</li>
+<li>12か月アウトカムである</li>
+<li>time zeroが適切である</li>
+<li>治療後変数を調整していない</li>
+</ul>
+
+<p>
+<code>anyDuplicated()</code>は、
+同じ研究から複数の推定値を誤って入れていないか確認します。
+</p>
+
+<h3>7．REML＋Hartung–Knapp</h3>
+
+<pre><code>res_or &lt;- rma.uni(
+  yi = yi,
+  vi = vi,
+  data = or_main,
+  method = "REML",
+  test = "knha"
+)
+
+print(res_or)</code></pre>
+
+<p>
+<code>method="REML"</code>は研究間分散τ²をREMLで推定します。
+<code>test="knha"</code>は平均効果の検定と信頼区間に
+Hartung–Knapp型調整を用います。
+</p>
+
+<h3>8．ORへ戻して予測区間を表示する</h3>
+
+<pre><code>predict(
+  res_or,
+  transf = exp,
+  digits = 3
+)</code></pre>
+
+<p>
+モデルは対数ORで解析されています。
+<code>transf=exp</code>により、平均効果、信頼区間、
+予測区間をOR尺度へ戻します。
+</p>
+
+<h3>9．フォレストプロット</h3>
+
+<pre><code>forest(
+  res_or,
+  slab = paste(
+    or_main$author,
+    or_main$year
+  ),
+  atransf = exp,
+  refline = 1,
+  xlab = "Adjusted odds ratio"
+)</code></pre>
+
+<p>
+<code>atransf=exp</code>は表示だけをOR尺度へ戻します。
+<code>refline=1</code>はORの帰無値を示します。
+</p>
+
+<h3>10．HRは別に解析する</h3>
+
+<pre><code>hr_main &lt;- dat |&gt;
+  filter(
+    measure == "HR",
+    adjusted == TRUE,
+    adj_class == "sufficient",
+    time_zero_ok == TRUE,
+    post_treatment_adjustment == FALSE
+  )
+
+stopifnot(
+  !anyDuplicated(hr_main$study_id)
+)
+
+res_hr &lt;- rma.uni(
+  yi = yi,
+  vi = vi,
+  data = hr_main,
+  method = "REML",
+  test = "knha"
+)
+
+forest(
+  res_hr,
+  slab = paste(
+    hr_main$author,
+    hr_main$year
+  ),
+  atransf = exp,
+  refline = 1,
+  xlab = "Adjusted hazard ratio"
+)</code></pre>
+
+<div class="callout danger">
+ORとHRを同じ<code>rma.uni()</code>へ入れません。
+HRからORへの機械的変換も、通常は正当化できません。
+</div>
+
+<h3>11．十分調整と部分調整の比較</h3>
+
+<pre><code>or_adjusted &lt;- dat |&gt;
+  filter(
+    measure == "OR",
+    adjusted == TRUE,
+    adj_class %in% c(
+      "sufficient",
+      "partial"
+    ),
+    followup == "12_months",
+    time_zero_ok == TRUE,
+    post_treatment_adjustment == FALSE
+  ) |&gt;
+  mutate(
+    adj_class = factor(
+      adj_class,
+      levels = c(
+        "sufficient",
+        "partial"
+      )
+    )
+  )
+
+res_adj &lt;- rma.uni(
+  yi = yi,
+  vi = vi,
+  mods = ~ adj_class,
+  data = or_adjusted,
+  method = "REML",
+  test = "knha"
+)
+
+print(res_adj)</code></pre>
+
+<p>
+このモデルは、十分調整研究と部分調整研究で
+平均効果が異なるかを探索します。
+</p>
+
+<p>
+しかし、部分調整研究内部の未測定交絡を
+このメタ回帰が取り除くわけではありません。
+また、研究数が少ない場合は推定が不安定です。
+</p>
+
+<h3>12．粗値と調整値を同じ研究集合で比較する</h3>
+
+<pre><code>paired_ids &lt;- dat_long |&gt;
+  group_by(study_id) |&gt;
+  summarise(
+    has_crude =
+      any(version == "crude"),
+    has_adjusted =
+      any(version == "adjusted"),
+    .groups = "drop"
+  ) |&gt;
+  filter(
+    has_crude,
+    has_adjusted
+  ) |&gt;
+  pull(study_id)
+
+paired_dat &lt;- dat_long |&gt;
+  filter(
+    study_id %in% paired_ids
+  ) |&gt;
+  mutate(
+    yi = log(estimate),
+
+    sei = (
+      log(upper) - log(lower)
+    ) / (
+      2 * qnorm(0.975)
+    ),
+
+    vi = sei^2
+  ) |&gt;
+  arrange(
+    study_id,
+    version
+  )</code></pre>
+
+<p>
+粗値と調整値を比較するときは、
+両方を報告した同じ研究集合で比較します。
+</p>
+
+<p>
+20研究の粗値と、調整済み結果を報告した3研究の値を比較すると、
+交絡調整の影響と研究選択の影響を区別できません。
+</p>
+
+<div class="callout warn">
+同じ研究の粗値と調整値は相関しています。
+独立した別研究として通常のメタ分析へ同時投入しません。
+</div>
+
+<h3>13．絶対効果へ変換する</h3>
+
+<pre><code># 周辺RRと適切なベースラインリスク
+rr &lt;- 0.75
+p0 &lt;- 0.20
+
+p1 &lt;- rr * p0
+rd &lt;- p1 - p0
+
+c(
+  baseline_risk = p0,
+  intervention_risk = p1,
+  risk_difference = rd
+)</code></pre>
+
+<p>
+この例では、対照群リスク20%にRR＝0.75を適用すると、
+治療群リスクは15%、RDは−5%です。
+100人当たり5人少ないという絶対効果になります。
+</p>
+
+<p>
+ただし、ベースラインリスクは
+対象患者と追跡期間に対応していなければなりません。
+高リスク患者のベースラインリスクを低リスク患者へ
+そのまま適用してはいけません。
+</p>
+
+<h3>ORからリスクへの数値変換</h3>
+
+<pre><code>or &lt;- 0.70
+p0 &lt;- 0.20
+
+p1_from_or &lt;-
+  (or * p0) /
+  (1 - p0 + or * p0)</code></pre>
+
+<div class="callout warn">
+条件付きORをこの式へ入れても、
+共通集団における周辺リスクが得られるとは限りません。
+適切な絶対効果には、対応する周辺効果と
+対象集団のベースラインリスクが必要です。
+</div>
+
+<h3>14．ゼロイベント研究</h3>
+
+<p>
+両群ゼロイベントの研究は、ORやRRを通常の方法で計算できません。
+しかし、両群ゼロだから治療効果がないという意味でもありません。
+単にその研究規模・追跡期間ではイベントを観察できなかった可能性があります。
+</p>
+
+<p>
+さらに、調整済み効果のメタ分析に、
+ゼロイベント研究だけ粗い連続性補正ORを作って追加すると、
+調整状態とestimandが変わります。
+</p>
+
+<ul>
+<li>調整済み効果の主解析と粗2×2表解析を分ける</li>
+<li>ゼロイベント研究の存在を記述する</li>
+<li>希少事象モデルを使っても交絡は解消されない</li>
+<li>安全性シグナルと比較因果効果を区別する</li>
+</ul>
+
+<div class="takeaway">
+<strong>この章のまとめ</strong>
+<p>
+Rは与えられた数字を正確に計算しますが、
+その数字が統合可能かは判断しません。
+効果尺度、調整状態、time zero、追跡期間、estimandを
+データ列として管理し、主解析に入る研究を明示的に選びます。
+</p>
+</div>
+
+<p class="small">
+R実装参考：
+<a target="_blank" rel="noopener"
+href="https://www.metafor-project.org/">
+metafor project
+</a>；
+<a target="_blank" rel="noopener"
+href="https://www.jstatsoft.org/article/view/v036i03">
+Viechtbauer, Conducting Meta-Analyses in R with metafor
+</a>
+</p>
+</section>
+
+<!-- 増補改訂版・第2部終了。第3部をこの直後に連結する -->
+
+<!-- =========================================================
+ 増補改訂版・第3部
+ CHAPTER 9–13、参考文献、JavaScript、HTML終端
+========================================================= -->
+
+<section id="advanced" class="chapter">
+  <div class="chapter-kicker">CHAPTER 9｜ADVANCED METHODS</div>
+  <h2>同一研究の複数推定値・重複コホート・IPD・未測定交絡</h2>
+
+  <div class="lead">
+    <p>
+      ここまでの説明では、便宜上「1研究から1つの独立した効果推定値が得られる」と仮定してきました。
+      しかし、実際の非ランダム化研究では、同じ研究から複数のアウトカム、複数時点、
+      複数の調整モデル、複数の治療比較が報告されることが少なくありません。
+    </p>
+    <p>
+      これらをすべて独立した研究として通常のメタ分析に投入すると、
+      同じ参加者を何度も数えることになり、標準誤差を過小評価する可能性があります。
+      反対に、恣意的に都合のよい推定値だけを選ぶと、選択的報告バイアスをメタ分析側で再現してしまいます。
+    </p>
+  </div>
+
+  <div class="learning-box">
+    <h3>この章で理解すること</h3>
+    <ul>
+      <li>同一研究の複数推定値が、なぜ独立ではないのか</li>
+      <li>事前に1推定値を選択する方法と、多変量モデルを用いる方法の違い</li>
+      <li>cluster-robust variance estimation が解決する問題と、解決しない問題</li>
+      <li>同じデータベース・コホートを用いた論文の重複をどう見抜くか</li>
+      <li>IPDメタ分析によって統一できるものと、統一できないもの</li>
+      <li>未測定交絡に対する定量的感度分析の位置づけ</li>
+    </ul>
+  </div>
+
+  <h3>9.1 同一研究から複数の効果推定値が報告される場合</h3>
+
+  <p>
+    たとえば、1つのコホート研究が30日死亡、90日死亡、1年死亡についてそれぞれHRを報告していたとします。
+    これらの効果推定値は、同じ参加者とイベント情報から計算されているため相関しています。
+    また、同じ90日死亡について「年齢・性別のみ調整したモデル」と
+    「重症度・併存疾患まで調整したモデル」が報告されている場合、
+    2つの推定値はほぼ同じデータに基づいており、当然ながら独立ではありません。
+  </p>
+
+  <div class="warning">
+    <strong>重要：</strong>
+    同一研究の複数モデルを「別々の研究」として通常のランダム効果メタ分析に投入してはいけません。
+    研究数を人工的に増やし、その研究の重みを過大にする可能性があります。
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>複数推定値が生じる理由</th>
+        <th>推定値間の関係</th>
+        <th>基本的な対応</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>同じアウトカムの複数調整モデル</td>
+        <td>強く相関する</td>
+        <td>事前規則により1モデルを選択する</td>
+      </tr>
+      <tr>
+        <td>30日・90日・1年など複数時点</td>
+        <td>同じ参加者を共有する</td>
+        <td>時点別に別メタ分析とする</td>
+      </tr>
+      <tr>
+        <td>複数の関連アウトカム</td>
+        <td>臨床的・統計的に相関する</td>
+        <td>アウトカム別解析、または多変量メタ分析</td>
+      </tr>
+      <tr>
+        <td>複数治療群が共通対照群を共有</td>
+        <td>共通対照により相関する</td>
+        <td>群の統合、比較の選択、多変量モデルなど</td>
+      </tr>
+      <tr>
+        <td>サブグループ別推定値</td>
+        <td>相互排他的なら条件付きで独立に近い</td>
+        <td>対象集団とestimandを確認して判断する</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>推奨される第1選択：事前に選択規則を定める</h4>
+
+  <ol>
+    <li>レビューのtarget PICOと追跡期間に最も合う推定値を選ぶ。</li>
+    <li>事前に定めた最小十分調整集合を満たすモデルを優先する。</li>
+    <li>治療後変数、媒介因子、colliderを調整したモデルは優先しない。</li>
+    <li>推定精度やP値ではなく、因果的妥当性に基づいて選ぶ。</li>
+    <li>複数の同等なモデルがある場合の優先順位をプロトコルに記載する。</li>
+  </ol>
+
+  <div class="note">
+    「最も多くの変数を調整したモデル」が自動的に最良なのではありません。
+    重要なのは変数の数ではなく、交絡経路を適切に閉じ、
+    かつ媒介経路やcolliderを不適切に条件付けていないことです。
+  </div>
+
+  <h3>9.2 多変量メタ分析とcluster-robust variance</h3>
+
+  <p>
+    臨床的理由から複数の効果推定値を残す必要がある場合は、
+    推定値が研究内でクラスター化していることを解析で考慮します。
+    一つの方法が、多変量ランダム効果モデルと
+    cluster-robust variance estimationを組み合わせる方法です。
+  </p>
+
+  <p>
+    ただし、robust varianceは「同じ研究内の推定値が独立ではない」という
+    分散推定上の問題に対応するものであり、異なるestimandを同じ因果効果に変換する方法ではありません。
+    30日リスク比と1年ハザード比、条件付きORと周辺RRなどを混ぜてよいという意味ではありません。
+  </p>
+
+  <div class="code-wrap">
+    <button class="copy-btn" type="button">コピー</button>
+<pre><code class="language-r">library(metafor)
+library(clubSandwich)
+library(dplyr)
+
+# dat_multi に必要な列の例
+# study_id : 研究を識別するID
+# effect_id: 研究内の推定値ID
+# yi       : 対数効果量（log OR、log RR、log HRなど）
+# vi       : yiの分散
+# followup : 追跡時点
+# outcome  : アウトカム名
+
+dat_multi &lt;- dat_multi %&gt;%
+  mutate(
+    study_id  = factor(study_id),
+    effect_id = factor(effect_id)
+  )
+
+# 研究内に複数推定値を含む多水準ランダム効果モデル
+fit_mv &lt;- rma.mv(
+  yi     = yi,
+  V      = vi,
+  random = ~ 1 | study_id/effect_id,
+  method = "REML",
+  data   = dat_multi
+)
+
+summary(fit_mv)
+
+# 研究単位でクラスタリングしたCR2ロバスト標準誤差
+fit_mv_cr2 &lt;- coef_test(
+  fit_mv,
+  vcov    = "CR2",
+  cluster = dat_multi$study_id
+)
+
+fit_mv_cr2</code></pre>
+  </div>
+
+  <h4>コードの読み方</h4>
+  <ul>
+    <li><code>yi</code> は通常、OR・RR・HRなどを自然対数に変換した値です。</li>
+    <li><code>vi</code> はその対数効果量の分散です。</li>
+    <li><code>study_id/effect_id</code> は、推定値が研究内に入れ子になっている構造を表します。</li>
+    <li><code>CR2</code> は、研究をクラスターとした小標本補正付きロバスト分散推定です。</li>
+  </ul>
+
+  <div class="warning">
+    研究クラスター数が非常に少ない場合、cluster-robust varianceも安定しません。
+    「複数推定値があるから自動的にrobust varianceを使う」のではなく、
+    まず不要な重複推定値を除き、臨床的に意味のある推定値だけを残してください。
+  </div>
+
+  <h3>9.3 同じコホートを用いた重複論文</h3>
+
+  <p>
+    論文の著者名やタイトルが異なっていても、同じ保険データベース、
+    同じ病院ネットワーク、同じ登録期間、ほぼ同じ適格基準を用いている場合があります。
+    これらを別研究として扱うと、同じ患者がメタ分析内で重複して数えられる可能性があります。
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>確認項目</th>
+        <th>重複を疑う所見</th>
+        <th>対応</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>データソース</td>
+        <td>同一データベース、同一レジストリ</td>
+        <td>登録期間と施設を追加確認する</td>
+      </tr>
+      <tr>
+        <td>参加者登録期間</td>
+        <td>期間が完全または大部分重複</td>
+        <td>対象者数・ベースライン特性を比較する</td>
+      </tr>
+      <tr>
+        <td>適格基準</td>
+        <td>年齢、疾患定義、治療定義が同じ</td>
+        <td>同一コホートの別解析と考える</td>
+      </tr>
+      <tr>
+        <td>施設・地域</td>
+        <td>同一施設群、同一地域</td>
+        <td>著者への問い合わせも検討する</td>
+      </tr>
+      <tr>
+        <td>著者</td>
+        <td>主要著者や研究グループが共通</td>
+        <td>研究プロジェクト名・助成番号も確認する</td>
+      </tr>
+      <tr>
+        <td>参加者数・イベント数</td>
+        <td>数値が同じ、またはわずかに異なる</td>
+        <td>更新解析やサブコホートの可能性を検討する</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    重複が疑われる場合は、原則としてレビューのPICOとestimandに最も合い、
+    追跡が適切で、交絡調整が十分な報告を代表として選びます。
+    ただし、異なるアウトカムや追跡時点について別論文から情報を得ることは可能です。
+    その場合も「論文単位」ではなく「基礎となるコホート単位」で管理します。
+  </p>
+
+  <h3>9.4 IPDメタ分析は何を改善できるか</h3>
+
+  <p>
+    Individual Participant Data Meta-analysis（IPDメタ分析）では、
+    各研究から参加者レベルのデータを収集し、変数定義と解析方法を可能な範囲で統一します。
+    研究ごとに異なる交絡調整モデルが報告されている問題に対して、
+    共通の適格基準、共通のtime zero、共通のアウトカム定義、
+    共通の調整集合を適用できる点が大きな利点です。
+  </p>
+
+  <div class="flow-grid">
+    <div class="flow-step"><span>1</span><strong>変数調和</strong><small>年齢、重症度、治療、アウトカム定義を対応づける</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><span>2</span><strong>共通適格基準</strong><small>各研究で同じ対象集団を再構成する</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><span>3</span><strong>time zero統一</strong><small>治療開始・適格判定・追跡開始をそろえる</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><span>4</span><strong>共通解析</strong><small>同じestimandと調整方法を適用する</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><span>5</span><strong>研究間統合</strong><small>一段階または二段階モデルで統合する</small></div>
+  </div>
+
+  <h4>IPDで統一しやすいもの</h4>
+  <ul>
+    <li>連続変数のカテゴリ分けや単位</li>
+    <li>アウトカムの判定期間</li>
+    <li>適格基準と除外基準</li>
+    <li>共通して測定されている交絡因子の調整</li>
+    <li>欠測値処理の基本方針</li>
+    <li>条件付き効果または標準化した周辺効果の推定方法</li>
+  </ul>
+
+  <h4>IPDでも自動的には解決しないもの</h4>
+  <ul>
+    <li>ある研究では測定されていない交絡因子</li>
+    <li>測定方法が研究間で大きく異なる重症度指標</li>
+    <li>診療慣行や治療選択機序の違い</li>
+    <li>治療開始以前のデータが存在しない研究</li>
+    <li>不適切なtime zeroによって既に生じた選択バイアス</li>
+    <li>研究ごとに異なる未測定交絡</li>
+  </ul>
+
+  <div class="code-wrap">
+    <button class="copy-btn" type="button">コピー</button>
+<pre><code class="language-r">library(metafor)
+library(dplyr)
+
+# 二段階IPDメタ分析の第2段階を想定
+# 第1段階では、各研究に同一の解析方針を適用して
+# estimate, lower, upper を得ておく
+
+ipd_stage2 &lt;- ipd_results %&gt;%
+  mutate(
+    yi = log(estimate),
+    sei = (log(upper) - log(lower)) / (2 * qnorm(0.975)),
+    vi = sei^2
+  )
+
+fit_ipd_2stage &lt;- rma.uni(
+  yi     = yi,
+  vi     = vi,
+  method = "REML",
+  test   = "knha",
+  data   = ipd_stage2
+)
+
+summary(fit_ipd_2stage)
+predict(fit_ipd_2stage, transf = exp)</code></pre>
+  </div>
+
+  <div class="note">
+    二段階IPDメタ分析では、まず各研究内で同じ方針により効果を推定し、
+    次に研究別推定値をメタ分析します。一段階モデルでは参加者データを同時に解析します。
+    どちらが適切かは、研究数、データ構造、効果修飾、計算可能性によって異なります。
+  </div>
+
+  <h3>9.5 未測定交絡に対する定量的感度分析</h3>
+
+  <p>
+    十分に調整された研究でも、測定されなかった重症度、健康行動、
+    医師の治療選択、社会経済的要因などが残っている可能性があります。
+    定量的感度分析は、「未測定交絡が存在しない」と証明するものではありません。
+    観察された関連を説明するには、どの程度強い未測定交絡が必要かを数値化する方法です。
+  </p>
+
+  <div class="warning">
+    E-valueが大きいことだけを理由に、因果関係が証明されたと結論してはいけません。
+    E-valueは未測定交絡の実際の大きさを推定する値ではなく、
+    特定の関連を説明し得る交絡強度の一つの尺度です。
+    選択バイアス、測定誤差、immortal-time bias、誤ったtime zeroを自動的に補正するものでもありません。
+  </div>
+
+  <h4>実務的な感度分析の順序</h4>
+  <ol>
+    <li>主解析を十分調整された研究に限定する。</li>
+    <li>部分調整研究を追加した場合の変化を確認する。</li>
+    <li>粗推定値と調整済み推定値の方向・大きさを比較する。</li>
+    <li>重要交絡因子を含む研究だけに限定する。</li>
+    <li>time zeroが適切な研究だけに限定する。</li>
+    <li>未測定交絡に対する定量的感度分析を追加する。</li>
+    <li>想定した交絡強度が臨床的に現実的かを検討する。</li>
+  </ol>
+
+  <div class="chapter-summary">
+    <h3>CHAPTER 9 まとめ</h3>
+    <p>
+      複数推定値、重複コホート、異なる調整モデルは、
+      単純なランダム効果モデルだけでは処理できません。
+      最初に推定値の臨床的・因果的重複を整理し、
+      必要な場合に多変量モデルやロバスト分散を用います。
+      高度な統計モデルは、誤ったestimandや未測定交絡を消去する魔法ではありません。
+    </p>
+  </div>
+</section>
+
+
+<section id="forest" class="chapter">
+  <div class="chapter-kicker">CHAPTER 10｜FOREST PLOT</div>
+  <h2>正しいフォレストプロットは「統合しない情報」も示す</h2>
+
+  <p>
+    フォレストプロットの目的は、すべての研究を一つのダイヤモンドに押し込むことではありません。
+    研究デザイン、効果尺度、調整の十分性、追跡期間、estimandの違いを可視化し、
+    どの研究をどの統合値に含めたかを読者が理解できるようにすることが重要です。
+  </p>
+
+  <div class="warning">
+    RCTとNRSIを同じ一覧に表示すること自体は可能ですが、
+    同じ統合ダイヤモンドに入れることとは別問題です。
+    原則として、RCTとNRSIは別パネル・別モデルとして提示してください。
+  </div>
+
+  <h3>10.1 推奨するパネル構成</h3>
+
+  <div class="forest-demo" aria-label="推奨フォレストプロットの模式図">
+    <svg viewBox="0 0 980 520" role="img" aria-labelledby="forestTitle forestDesc">
+      <title id="forestTitle">RCTとNRSIを分離したフォレストプロット</title>
+      <desc id="forestDesc">RCT、十分調整NRSI、部分調整NRSI、粗推定値を別パネルで示す模式図</desc>
+
+      <rect x="10" y="10" width="960" height="500" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+      <line x1="650" y1="45" x2="650" y2="475" stroke="#64748b" stroke-width="2"/>
+      <text x="650" y="30" text-anchor="middle" font-size="13" fill="#475569">効果なし</text>
+
+      <text x="25" y="65" font-size="18" font-weight="700" fill="#0f172a">A. RCT</text>
+      <text x="45" y="100" font-size="14">RCT 1</text>
+      <line x1="580" y1="95" x2="700" y2="95" stroke="#2563eb" stroke-width="3"/>
+      <rect x="625" y="88" width="14" height="14" fill="#2563eb"/>
+      <text x="45" y="130" font-size="14">RCT 2</text>
+      <line x1="610" y1="125" x2="735" y2="125" stroke="#2563eb" stroke-width="3"/>
+      <rect x="660" y="118" width="14" height="14" fill="#2563eb"/>
+      <polygon points="620,150 650,138 680,150 650,162" fill="#1d4ed8"/>
+
+      <line x1="25" y1="185" x2="950" y2="185" stroke="#e2e8f0"/>
+
+      <text x="25" y="220" font-size="18" font-weight="700" fill="#0f172a">B. 十分調整されたNRSI</text>
+      <text x="45" y="255" font-size="14">NRSI 1</text>
+      <line x1="550" y1="250" x2="675" y2="250" stroke="#059669" stroke-width="3"/>
+      <circle cx="610" cy="250" r="8" fill="#059669"/>
+      <text x="45" y="285" font-size="14">NRSI 2</text>
+      <line x1="590" y1="280" x2="720" y2="280" stroke="#059669" stroke-width="3"/>
+      <circle cx="655" cy="280" r="8" fill="#059669"/>
+      <polygon points="585,310 625,296 665,310 625,324" fill="#047857"/>
+
+      <line x1="25" y1="345" x2="950" y2="345" stroke="#e2e8f0"/>
+
+      <text x="25" y="380" font-size="18" font-weight="700" fill="#0f172a">C. 部分調整・不十分調整NRSI</text>
+      <text x="45" y="415" font-size="14">NRSI 3</text>
+      <line x1="500" y1="410" x2="680" y2="410" stroke="#d97706" stroke-width="3" stroke-dasharray="6 4"/>
+      <polygon points="585,402 593,410 585,418 577,410" fill="#d97706"/>
+      <text x="45" y="445" font-size="14">NRSI 4（粗値）</text>
+      <line x1="470" y1="440" x2="640" y2="440" stroke="#dc2626" stroke-width="3" stroke-dasharray="6 4"/>
+      <polygon points="550,432 558,440 550,448 542,440" fill="#dc2626"/>
+
+      <text x="485" y="490" font-size="13" fill="#475569">介入に有利</text>
+      <text x="760" y="490" font-size="13" fill="#475569">対照に有利</text>
+    </svg>
+  </div>
+
+  <h3>10.2 フォレストプロットに追加したい列</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>列</th>
+        <th>表示する内容</th>
+        <th>必要な理由</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>研究デザイン</td>
+        <td>RCT、new-user cohort、case-controlなど</td>
+        <td>異なるバイアス構造を識別する</td>
+      </tr>
+      <tr>
+        <td>効果尺度</td>
+        <td>adjusted OR、RR、HRなど</td>
+        <td>異なる尺度の混在を防ぐ</td>
+      </tr>
+      <tr>
+        <td>追跡期間</td>
+        <td>30日、1年、中央値など</td>
+        <td>同じ時間軸の効果か確認する</td>
+      </tr>
+      <tr>
+        <td>time zero</td>
+        <td>適切、不明、不適切</td>
+        <td>immortal-time biasを可視化する</td>
+      </tr>
+      <tr>
+        <td>調整方法</td>
+        <td>回帰、PS weighting、matchingなど</td>
+        <td>推定方法の違いを把握する</td>
+      </tr>
+      <tr>
+        <td>主要調整因子</td>
+        <td>重症度、年齢、併存疾患など</td>
+        <td>調整十分性を判断する</td>
+      </tr>
+      <tr>
+        <td>estimand</td>
+        <td>条件付き、周辺、ITT類似、per-protocol類似</td>
+        <td>同一因果効果を推定しているか確認する</td>
+      </tr>
+      <tr>
+        <td>RoB</td>
+        <td>低・中等・重大・致命的など</td>
+        <td>統合値の信頼性を解釈する</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>10.3 「統合しない」という結論も正しい</h3>
+
+  <p>
+    効果尺度、追跡期間、アウトカム定義、対象集団、time zero、
+    交絡調整、estimandが大きく異なる場合、
+    ナラティブな比較や層別表示にとどめる方が科学的に妥当です。
+    統合値を作らないことは解析の失敗ではありません。
+  </p>
+
+  <div class="good">
+    <strong>よい結論例：</strong>
+    「研究間で調整集合と追跡開始時点が著しく異なり、
+    同一の因果estimandを推定していると判断できなかったため、
+    統計的統合は実施せず、研究別結果を層別して提示した。」
+  </div>
+</section>
+
+
+<section id="reporting-bias" class="chapter">
+  <div class="chapter-kicker">CHAPTER 11｜REPORTING BIAS</div>
+  <h2>出版バイアスと「有意な調整済み結果だけ」の問題</h2>
+
+  <p>
+    NRSIでは、同じデータに対して多数のアウトカム定義、追跡期間、
+    サブグループ、交絡調整モデルを試すことができます。
+    その中から統計学的に有意で、方向も望ましい結果だけが報告されると、
+    メタ分析は「選ばれた結果」をさらに統合することになります。
+  </p>
+
+  <h3>11.1 選択的報告を疑う所見</h3>
+  <ul>
+    <li>方法に記載されたアウトカムが結果に報告されていない。</li>
+    <li>複数の追跡時点が測定されたはずだが、一時点しか示されていない。</li>
+    <li>調整因子の選択理由が説明されていない。</li>
+    <li>粗値と調整値の一方しか報告されていない。</li>
+    <li>本文と補足資料で異なるモデルが示され、主モデルが不明である。</li>
+    <li>有意なサブグループだけが強調されている。</li>
+    <li>事前のプロトコルや解析計画書を確認できない。</li>
+  </ul>
+
+  <h3>11.2 粗値と調整値の比較は何を示すか</h3>
+
+  <p>
+    粗推定値と調整済み推定値の違いは、交絡の影響を考えるための有用な情報です。
+    ただし、調整によって推定値が変化したからといって、
+    調整後の値が必ず真の因果効果に近いとは限りません。
+    過剰調整、collider調整、モデル誤指定によって変化した可能性もあります。
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>観察された変化</th>
+        <th>考えられる説明</th>
+        <th>必要な確認</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>調整後に効果が弱くなる</td>
+        <td>適応による交絡が除かれた可能性</td>
+        <td>主要な治療前重症度を調整しているか</td>
+      </tr>
+      <tr>
+        <td>調整後に効果が強くなる</td>
+        <td>負の交絡を除いた可能性</td>
+        <td>過剰調整やcollider調整がないか</td>
+      </tr>
+      <tr>
+        <td>方向が逆転する</td>
+        <td>強い交絡、Simpsonのパラドックス</td>
+        <td>層別分布と治療選択機序を確認する</td>
+      </tr>
+      <tr>
+        <td>ほとんど変わらない</td>
+        <td>交絡が小さい、または調整が機能していない</td>
+        <td>交絡因子の測定精度とモデルを確認する</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>11.3 ファンネルプロットの限界</h3>
+
+  <p>
+    ファンネルプロットの非対称性は、出版バイアスだけでなく、
+    小規模研究の質の低さ、対象集団の違い、調整不足、
+    真の効果修飾などでも生じます。特に研究数が少ない場合、
+    形状や統計学的検定を過度に解釈すべきではありません。
+  </p>
+
+  <div class="note">
+    一般に、ファンネルプロットやEgger型検定は研究数が少ないと検出力が低く、
+    研究数が十分であっても非対称性の原因を特定できません。
+    登録情報、プロトコル、規制資料、学位論文、補足資料の確認を組み合わせてください。
+  </div>
+</section>
+
+
+<section id="grade" class="chapter">
+  <div class="chapter-kicker">CHAPTER 12｜GRADE</div>
+  <h2>ROBINS-I連動の高開始方式とCore GRADEの低開始方式</h2>
+
+  <p>
+    NRSIの確実性評価には、似ているようで出発点の異なる二つの考え方があります。
+    一つはROBINS-Iを用いてRCT相当の基準と比較し、GRADEの開始点を高としたうえで、
+    交絡や選択バイアスを含むrisk of biasに応じて下げる方式です。
+    もう一つは、Core GRADEが明確に採用する、
+    NRSIを低から開始して必要に応じてさらに下げ、限定的な条件で上げる方式です。
+  </p>
+
+  <div class="warning">
+    <strong>「高から開始する」ことは、「NRSIの確実性が高い」という意味ではありません。</strong>
+    ROBINS-I連動方式では、交絡と選択バイアスをrisk-of-bias評価の中で詳細に扱うため、
+    形式上の開始点を高とします。実際には、多くの通常のNRSIは
+    2段階以上下がり、最終的に低または非常に低となることが想定されています。
+  </div>
+
+  <h3>12.1 2026年時点での整理</h3>
+
+  <ul>
+    <li>
+      Cochrane Handbookは、NRSIのrisk of bias評価にROBINS-Iを推奨しています。
+    </li>
+    <li>
+      GRADEガイドライン18は、ROBINS-Iを使用する場合、
+      NRSIのGRADE評価を高から開始してrisk of biasで下げる枠組みを提示しました。
+    </li>
+    <li>
+      Core GRADE 2025は、NRSIを低から開始する簡潔な方式を明示し、
+      Newcastle–Ottawa Scaleやその修正版など、比較的簡便な評価手段も選択肢としています。
+    </li>
+    <li>
+      ROBINS-I V2は2025年11月20日版が公表されていますが、
+      公式ページ上では現在も<strong>draft version</strong>であり、変更の可能性があります。
+    </li>
+  </ul>
+
+  <h3>12.2 ROBINS-I V2の主要な更新点</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>更新</th>
+        <th>実務上の意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>シグナリング質問から判定へのアルゴリズム</td>
+        <td>判断過程を明示し、評価者間の一貫性を高めることを目指す</td>
+      </tr>
+      <tr>
+        <td>strong yes/noとweak yes/no</td>
+        <td>回答の確信度をより細かく判定に反映する</td>
+      </tr>
+      <tr>
+        <td>critical riskのトリアージ</td>
+        <td>詳細評価の前に、統合に不適切な研究を迅速に識別する</td>
+      </tr>
+      <tr>
+        <td>ITT類似効果とper-protocol効果の区別</td>
+        <td>estimandに応じて必要な交絡評価を変える</td>
+      </tr>
+      <tr>
+        <td>ベースライン交絡と時間依存性交絡の区別</td>
+        <td>治療変更・遵守を扱う解析の妥当性を評価する</td>
+      </tr>
+      <tr>
+        <td>immortal-time biasに関する質問の追加</td>
+        <td>治療分類・研究参加者選択に由来する時間関連バイアスを明示する</td>
+      </tr>
+      <tr>
+        <td>欠測データ領域の拡張</td>
+        <td>アウトカム以外の共変量欠測なども詳細に評価する</td>
+      </tr>
+      <tr>
+        <td>事前解析計画の確認</td>
+        <td>報告結果選択のリスクをより明確に評価する</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>12.3 二つの方式の比較</h3>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>ROBINS-I連動・高開始方式</th>
+          <th>Core GRADE・低開始方式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>形式上の開始点</td>
+          <td>高</td>
+          <td>低</td>
+        </tr>
+        <tr>
+          <td>交絡の扱い</td>
+          <td>ROBINS-Iのrisk-of-bias評価内で詳細に扱う</td>
+          <td>NRSIを低開始とすることで残余交絡を包括的に反映する</td>
+        </tr>
+        <tr>
+          <td>想定RoBツール</td>
+          <td>ROBINS-I</td>
+          <td>簡便なNRSI評価ツールも選択可能</td>
+        </tr>
+        <tr>
+          <td>長所</td>
+          <td>target trialと因果構造を詳細に評価できる</td>
+          <td>簡潔で実装しやすく、二重減点を避けやすい</td>
+        </tr>
+        <tr>
+          <td>短所</td>
+          <td>時間と専門知識を要し、誤用される可能性がある</td>
+          <td>研究間の因果的品質差を粗く分類する可能性がある</td>
+        </tr>
+        <tr>
+          <td>残余交絡の二重計上</td>
+          <td>適切に使えば、RoB領域で一度だけ扱う</td>
+          <td>低開始に既に反映されるため、未知交絡だけを理由に再度下げない</td>
+        </tr>
+        <tr>
+          <td>通常想定される最終評価</td>
+          <td>多くのNRSIで低または非常に低</td>
+          <td>低または非常に低。条件を満たせばrating upを検討</td>
+        </tr>
+        <tr>
+          <td>向いている場面</td>
+          <td>因果推論の詳細評価が必要で専門家と時間を確保できる場合</td>
+          <td>教育、迅速評価、ガイドライン作成などで簡潔性を重視する場合</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>12.4 どちらを選ぶべきか</h3>
+
+  <p>
+    どちらの方式を選んでも、最終的な確実性評価は原則として整合することが期待されています。
+    重要なのは、開始点の名称ではなく、交絡、選択、測定、欠測、報告選択を
+    どこでどのように評価したかを明示し、同じ問題を二重に減点しないことです。
+  </p>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <h4>ROBINS-I連動方式が適する場合</h4>
+      <ul>
+        <li>target trialを明確に設定できる</li>
+        <li>因果推論と臨床領域の専門家が参加する</li>
+        <li>研究結果ごとの詳細評価が可能である</li>
+        <li>交絡とtime zeroを厳密に評価したい</li>
+      </ul>
+    </div>
+    <div class="decision-card">
+      <h4>Core GRADE方式が適する場合</h4>
+      <ul>
+        <li>簡潔で再現可能な評価を優先する</li>
+        <li>評価者の訓練時間が限られている</li>
+        <li>NRSIを低開始とする前提を明示できる</li>
+        <li>RoBとGRADEの二重減点を管理できる</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>12.5 実務的なGRADE評価手順</h3>
+
+  <ol>
+    <li><strong>アウトカムごとに評価する：</strong>研究全体に一つのGRADEを付けない。</li>
+    <li><strong>採用方式を宣言する：</strong>高開始方式か低開始方式かをプロトコルに記載する。</li>
+    <li><strong>risk of biasを評価する：</strong>個々の研究だけでなく、統合結果への寄与も考える。</li>
+    <li><strong>非一貫性を評価する：</strong>数値的異質性だけでなく、方向と臨床的説明可能性を検討する。</li>
+    <li><strong>非直接性を評価する：</strong>対象、治療、比較、アウトカム、estimandのずれを確認する。</li>
+    <li><strong>不精確性を評価する：</strong>信頼区間が意思決定閾値をまたぐか確認する。</li>
+    <li><strong>出版バイアスを評価する：</strong>未公表研究と選択的モデル報告を検討する。</li>
+    <li><strong>rating upを慎重に検討する：</strong>大きな効果、用量反応、バイアスが効果を弱める方向である場合など。</li>
+  </ol>
+
+  <div class="warning">
+    ORやHRについて「大きな効果」を判断するときも、
+    非collapsibility、アウトカム頻度、追跡期間、比例ハザード仮定を無視して、
+    RRの閾値を機械的に適用しないでください。
+  </div>
+</section>
+
+
+<section id="workflow" class="chapter">
+  <div class="chapter-kicker">CHAPTER 13｜FINAL WORKFLOW</div>
+  <h2>フォレストプロットを作る前の完全ワークフロー</h2>
+
+  <div class="workflow-vertical">
+    <div class="workflow-item">
+      <span>STEP 1</span>
+      <div><strong>Target PICOを定義する</strong><p>対象集団、介入、比較、アウトカム、追跡期間を明確にする。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 2</span>
+      <div><strong>Target trialを記述する</strong><p>適格基準、治療戦略、割付時点、追跡開始、estimandを定める。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 3</span>
+      <div><strong>DAGと交絡領域を事前指定する</strong><p>治療前交絡因子、媒介因子、colliderを区別する。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 4</span>
+      <div><strong>適格な研究デザインを決める</strong><p>研究ラベルではなく、new-user、active comparator、time zeroなどの設計特徴で判断する。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 5</span>
+      <div><strong>同じestimandの推定値を抽出する</strong><p>効果尺度、条件付き・周辺効果、追跡期間をそろえる。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 6</span>
+      <div><strong>調整の十分性を分類する</strong><p>十分、部分的、不十分、過剰調整の疑いを区別する。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 7</span>
+      <div><strong>統計的統合を実施する</strong><p>尺度別・デザイン別にREML、Hartung–Knapp、予測区間を用いる。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 8</span>
+      <div><strong>感度分析を実施する</strong><p>十分調整研究、time zero適切研究、低RoB研究などに限定する。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 9</span>
+      <div><strong>RoBとGRADEを評価する</strong><p>採用した開始方式と最終certaintyを区別して報告する。</p></div>
+    </div>
+    <div class="workflow-item">
+      <span>STEP 10</span>
+      <div><strong>分離型フォレストプロットを作成する</strong><p>RCT、十分調整NRSI、部分調整NRSI、粗値を分けて示す。</p></div>
+    </div>
+  </div>
+
+  <h3>最終チェックリスト</h3>
+
+  <div class="checklist">
+    <label><input type="checkbox"> レビューのPICOが明確である</label>
+    <label><input type="checkbox"> 追跡期間を含むtarget estimandを定義した</label>
+    <label><input type="checkbox"> target trialの適格基準を記述した</label>
+    <label><input type="checkbox"> 治療開始・適格判定・追跡開始のtime zeroが一致している</label>
+    <label><input type="checkbox"> immortal-time biasの可能性を確認した</label>
+    <label><input type="checkbox"> prevalent userではなくnew-user設計を優先した</label>
+    <label><input type="checkbox"> active comparatorの妥当性を確認した</label>
+    <label><input type="checkbox"> 主要な交絡領域を事前指定した</label>
+    <label><input type="checkbox"> DAGまたは明示的な因果仮定を用いた</label>
+    <label><input type="checkbox"> 治療後変数を交絡因子として扱っていない</label>
+    <label><input type="checkbox"> 媒介因子とcolliderを確認した</label>
+    <label><input type="checkbox"> 調整変数の数だけでモデルを選んでいない</label>
+    <label><input type="checkbox"> 各研究の調整十分性を分類した</label>
+    <label><input type="checkbox"> 同一研究の複数推定値を独立と扱っていない</label>
+    <label><input type="checkbox"> 重複コホートを確認した</label>
+    <label><input type="checkbox"> OR・RR・HRを同じ統合値に混ぜていない</label>
+    <label><input type="checkbox"> 条件付き効果と周辺効果の違いを確認した</label>
+    <label><input type="checkbox"> ORの非collapsibilityを考慮した</label>
+    <label><input type="checkbox"> HRの比例ハザード仮定を確認した</label>
+    <label><input type="checkbox"> アウトカム定義と追跡期間が比較可能である</label>
+    <label><input type="checkbox"> RCTとNRSIを別解析・別パネルで提示した</label>
+    <label><input type="checkbox"> 粗2×2データをNRSIの主解析にしていない</label>
+    <label><input type="checkbox"> 効果量を対数尺度で解析した</label>
+    <label><input type="checkbox"> 信頼区間からSEを正しく復元した</label>
+    <label><input type="checkbox"> τ²推定にREMLを検討した</label>
+    <label><input type="checkbox"> Hartung–Knapp調整を検討した</label>
+    <label><input type="checkbox"> I²をバイアス指標として解釈していない</label>
+    <label><input type="checkbox"> 予測区間を提示し、その不確実性も説明した</label>
+    <label><input type="checkbox"> メタ回帰を研究レベルの因果関係と解釈していない</label>
+    <label><input type="checkbox"> 出版バイアスと選択的モデル報告を評価した</label>
+    <label><input type="checkbox"> 未測定交絡の感度分析を検討した</label>
+    <label><input type="checkbox"> GRADEの開始点と最終certaintyを混同していない</label>
+    <label><input type="checkbox"> 統合しない研究を透明に提示した</label>
+  </div>
+
+  <div class="take-home">
+    <h3>最終メッセージ</h3>
+    <p>
+      非ランダム化研究のメタ分析では、研究数を増やすことよりも、
+      各研究が同じ因果的問いに答えているかを確認することが重要です。
+    </p>
+    <p>
+      「調整済み」と書かれているだけでは十分ではありません。
+      何を調整したか、いつ測定したか、どの集団に対する、
+      どの時間軸の、どのestimandを推定したかを確認してください。
+    </p>
+    <p>
+      フォレストプロットのダイヤモンドは、入力された推定値を数学的に平均した結果にすぎません。
+      入力された研究が異なる因果効果を推定していれば、
+      そのダイヤモンドを精密に計算しても、臨床的意味は明確になりません。
+    </p>
+  </div>
+</section>
+
+
+<section id="references" class="chapter references">
+  <div class="chapter-kicker">REFERENCES</div>
+  <h2>参考文献・方法論資料</h2>
+
+  <ol>
+    <li>
+      Guyatt G, et al. Core GRADE 1: overview of the Core GRADE approach.
+      <a href="https://www.bmj.com/content/389/bmj-2024-081903" target="_blank" rel="noopener">
+        BMJ 2025;389:e081903
+      </a>.
+    </li>
+    <li>
+      Guyatt G, et al. Core GRADE 4: rating certainty of evidence—risk of bias,
+      publication bias, and reasons for rating up certainty.
+      <a href="https://www.bmj.com/content/389/bmj-2024-083864" target="_blank" rel="noopener">
+        BMJ 2025;389:e083864
+      </a>.
+    </li>
+    <li>
+      Schünemann HJ, et al. GRADE guidelines 18: How ROBINS-I and other tools
+      should be used to rate the certainty of a body of evidence.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6692166/" target="_blank" rel="noopener">
+        Journal of Clinical Epidemiology
+      </a>.
+    </li>
+    <li>
+      Cochrane Handbook, Chapter 24: Including non-randomized studies on intervention effects.
+      <a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-24"
+         target="_blank" rel="noopener">Cochrane</a>.
+    </li>
+    <li>
+      Cochrane Handbook, Chapter 25: Assessing risk of bias in a non-randomized study.
+      <a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-25"
+         target="_blank" rel="noopener">Cochrane</a>.
+    </li>
+    <li>
+      ROBINS-I V2, November 2025 draft.
+      <a href="https://www.riskofbias.info/welcome/robins-i-v2" target="_blank" rel="noopener">
+        Risk of Bias
+      </a>.
+    </li>
+    <li>
+      Sterne JAC, et al. ROBINS-I: a tool for assessing risk of bias in
+      non-randomised studies of interventions.
+      <a href="https://www.bmj.com/content/355/bmj.i4919" target="_blank" rel="noopener">
+        BMJ 2016;355:i4919
+      </a>.
+    </li>
+    <li>
+      Hernán MA, Robins JM. Causal Inference: What If.
+      <a href="https://miguelhernan.org/whatifbook" target="_blank" rel="noopener">
+        Free online book
+      </a>.
+    </li>
+    <li>
+      TARGET Statement: transparent reporting of target trial emulation.
+      <a href="https://www.bmj.com/content/390/bmj-2025-087179" target="_blank" rel="noopener">
+        BMJ
+      </a>.
+    </li>
+    <li>
+      Hamra GB, et al. Combining effect estimates across cohorts and sufficient
+      adjustment sets for collaborative research.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/33591054/" target="_blank" rel="noopener">
+        PubMed
+      </a>.
+    </li>
+    <li>
+      Ray D, et al. Meta-analysis under imbalance in measurement of confounders
+      in cohort studies using summary-level data.
+      <a href="https://link.springer.com/article/10.1186/s12874-022-01614-9"
+         target="_blank" rel="noopener">BMC Medical Research Methodology 2022</a>.
+    </li>
+    <li>
+      Mathur MB, VanderWeele TJ. Methods to address confounding and other biases
+      in meta-analyses.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8959012/"
+         target="_blank" rel="noopener">Annual Review of Public Health</a>.
+    </li>
+    <li>
+      Mathur MB, VanderWeele TJ. Sensitivity analysis for unmeasured confounding
+      in meta-analyses.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7518377/"
+         target="_blank" rel="noopener">Epidemiology</a>.
+    </li>
+    <li>
+      Daniel R, et al. Making apples from oranges: comparing non-collapsible
+      effect estimators and their standard errors after adjustment.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/33314251/"
+         target="_blank" rel="noopener">Biometrical Journal</a>.
+    </li>
+    <li>
+      Whitcomb BW, Naimi AI. Things don’t always collapse:
+      the noncollapsibility of effect measures.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8530151/"
+         target="_blank" rel="noopener">International Journal of Epidemiology</a>.
+    </li>
+    <li>
+      Chang BH, et al. Meta-analysis of odds ratios: current good practices.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/28169977/"
+         target="_blank" rel="noopener">Medical Care 2017;55:328–335</a>.
+    </li>
+    <li>
+      Partlett C, Riley RD. Random effects meta-analysis:
+      coverage performance of 95% confidence and prediction intervals.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5157768/"
+         target="_blank" rel="noopener">Statistics in Medicine</a>.
+    </li>
+    <li>
+      Viechtbauer W. Conducting meta-analyses in R with the metafor package.
+      <a href="https://www.metafor-project.org/" target="_blank" rel="noopener">
+        metafor project
+      </a>.
+    </li>
+    <li>
+      metafor documentation: assembling data for meta-analysis of odds ratios.
+      <a href="https://www.metafor-project.org/doku.php/tips:assembling_data_or"
+         target="_blank" rel="noopener">metafor documentation</a>.
+    </li>
+    <li>
+      Pustejovsky JE. clubSandwich: cluster-robust variance estimation.
+      <a href="https://cran.r-project.org/package=clubSandwich"
+         target="_blank" rel="noopener">CRAN</a>.
+    </li>
+    <li>
+      Riley RD, et al. A guide to systematic review and meta-analysis of
+      prognostic factor studies.
+      <a href="https://keele-repository.worktribe.com/OutputFile/457493"
+         target="_blank" rel="noopener">BMJ</a>.
+    </li>
+    <li>
+      Reeves BC, et al. Issues relating to confounding and meta-analysis when
+      including non-randomized studies in systematic reviews.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/26053537/"
+         target="_blank" rel="noopener">Research Synthesis Methods</a>.
+    </li>
+    <li>
+      Borenstein M, et al. Basics of meta-analysis: I² is not an absolute
+      measure of heterogeneity.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/28058794/"
+         target="_blank" rel="noopener">Research Synthesis Methods</a>.
+    </li>
+    <li>
+      VanderWeele TJ, Ding P. Sensitivity analysis in observational research:
+      introducing the E-value.
+      <a href="https://pubmed.ncbi.nlm.nih.gov/28693043/"
+         target="_blank" rel="noopener">Annals of Internal Medicine</a>.
+    </li>
+    <li>
+      Newcastle–Ottawa Scale.
+      <a href="https://ohri.ca/en/who-we-are/core-facilities-and-platforms/ottawa-methods-centre/newcastle-ottawa-scale"
+         target="_blank" rel="noopener">Ottawa Hospital Research Institute</a>.
+    </li>
+  </ol>
+
+  <div class="reference-note">
+    <p>
+      <strong>資料の位置づけ：</strong>
+      本教材は統計解析・因果推論・エビデンス評価の教育用資料です。
+      個別レビューでは、対象領域の専門家、因果推論の専門家、
+      メタ分析の専門家、情報検索専門家を含むチームでプロトコルを作成してください。
+    </p>
+    <p>
+      ROBINS-I V2については、2025年11月20日版が公式ページに掲載されていますが、
+      2026年7月現在もdraftと明記されています。
+      実際の評価では公式ページで最新版と適用対象を確認してください。
+    </p>
+  </div>
+</section>
+
+</main>
+
+<button id="backToTop" type="button" aria-label="ページ上部へ戻る">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  /* コードコピー */
+  document.querySelectorAll(".copy-btn").forEach(function (button) {
+    button.addEventListener("click", async function () {
+      var wrapper = button.closest(".code-wrap");
+      var code = wrapper ? wrapper.querySelector("code") : null;
+      if (!code) return;
+
+      try {
+        await navigator.clipboard.writeText(code.innerText);
+        var original = button.textContent;
+        button.textContent = "コピーしました";
+        button.classList.add("copied");
+
+        setTimeout(function () {
+          button.textContent = original;
+          button.classList.remove("copied");
+        }, 1800);
+      } catch (error) {
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = "選択しました";
+      }
+    });
+  });
+
+  /* チェックリストの状態をブラウザ内に保存 */
+  var checklistBoxes = document.querySelectorAll(".checklist input[type='checkbox']");
+
+  checklistBoxes.forEach(function (box, index) {
+    var key = "nrs-meta-check-" + index;
+
+    try {
+      box.checked = localStorage.getItem(key) === "true";
+    } catch (error) {
+      /* localStorageが利用できない場合は保存しない */
+    }
+
+    box.addEventListener("change", function () {
+      try {
+        localStorage.setItem(key, String(box.checked));
+      } catch (error) {
+        /* 保存できなくても教材の利用には影響しない */
+      }
+    });
+  });
+
+  /* ページ上部へ戻るボタン */
+  var backToTop = document.getElementById("backToTop");
+
+  if (backToTop) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 700) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+
+  /* ページ内リンクを滑らかに移動 */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (event) {
+      var targetId = anchor.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+
+      var target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  });
+
+  /* 印刷時にdetailsを展開 */
+  window.addEventListener("beforeprint", function () {
+    document.querySelectorAll("details").forEach(function (item) {
+      item.setAttribute("open", "open");
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
