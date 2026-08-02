@@ -11344,16 +11344,30 @@ function checkAuth(){
     <!-- page-15-qualitative-sr: 質的・メタ分析なしのSR -->
     <div class="page" id="page-15-qualitative-sr">
       <style>
-        #page-15-qualitative-sr .qualitative-sr-intro{margin-bottom:1.25rem;padding:clamp(1rem,3vw,1.6rem);border:1px solid #99f6e4;border-radius:14px;background:linear-gradient(135deg,#f0fdfa 0%,#eff6ff 100%)}
-        #page-15-qualitative-sr .qualitative-sr-intro h2{margin:0 0 .55rem;color:#134e4a;font-size:1.35rem}
-        #page-15-qualitative-sr .qualitative-sr-intro p{margin:.45rem 0;color:#334155;line-height:1.8}
-        #page-15-qualitative-sr .qualitative-sr-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0 1.25rem}
-        #page-15-qualitative-sr .qualitative-sr-actions a{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.75rem 1rem;border-radius:9px;text-decoration:none;font-weight:700}
-        #page-15-qualitative-sr .qualitative-sr-actions a.primary{color:#fff;background:#0f766e}
-        #page-15-qualitative-sr .qualitative-sr-actions a.secondary{color:#0f3f3a;border:1px solid #99f6e4;background:#fff}
-        #page-15-qualitative-sr .qualitative-sr-frame{display:block;width:100%;height:min(1120px,calc(100vh - 130px));min-height:760px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.08)}
-        #page-15-qualitative-sr .qualitative-sr-note{margin-top:1rem;padding:.9rem 1rem;border-left:4px solid #0f766e;border-radius:0 8px 8px 0;background:#f0fdfa;color:#134e4a;font-size:.9rem;line-height:1.7}
-        @media(max-width:720px){#page-15-qualitative-sr .qualitative-sr-frame{height:78vh;min-height:660px}#page-15-qualitative-sr .qualitative-sr-actions a{width:100%}}
+        #page-15-qualitative-sr{min-height:100vh;min-height:100dvh;padding:0;background:#f8fafc}
+        #page-15-qualitative-sr.active{display:flex;height:100vh;height:100dvh;flex-direction:column;overflow:hidden}
+        #page-15-qualitative-sr .page-header{flex:0 0 auto;padding:15px clamp(20px,3.5vw,48px) 13px}
+        #page-15-qualitative-sr .chapter-badge{margin-bottom:4px;padding:4px 9px;font-size:.7rem}
+        #page-15-qualitative-sr .page-header h1{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.25}
+        #page-15-qualitative-sr .page-header .en-title{margin-top:3px;font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        #page-15-qualitative-sr .page-body{display:flex;flex:1 1 auto;min-height:0;max-width:none;width:100%;margin:0;padding:0}
+        #page-15-qualitative-sr .qualitative-sr-reader{display:flex;flex:1 1 auto;min-height:0;flex-direction:column;background:#fff}
+        #page-15-qualitative-sr .qualitative-sr-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:.65rem;flex:0 0 auto;padding:.55rem clamp(.75rem,2vw,1.5rem);border-bottom:1px solid #99f6e4;background:#f0fdfa}
+        #page-15-qualitative-sr .qualitative-sr-toolbar button,#page-15-qualitative-sr .qualitative-sr-toolbar a{display:inline-flex;min-width:0;align-items:center;justify-content:center;gap:.35rem;padding:.52rem .78rem;border-radius:8px;font-size:.82rem;font-weight:700;line-height:1.25;text-decoration:none;cursor:pointer}
+        #page-15-qualitative-sr .qualitative-sr-toolbar button{border:1px solid #99f6e4;background:#fff;color:#0f3f3a}
+        #page-15-qualitative-sr .qualitative-sr-toolbar a{border:1px solid #0f766e;background:#0f766e;color:#fff}
+        #page-15-qualitative-sr .qualitative-sr-prev{justify-self:start}
+        #page-15-qualitative-sr .qualitative-sr-open{justify-self:center}
+        #page-15-qualitative-sr .qualitative-sr-next{justify-self:end}
+        #page-15-qualitative-sr .qualitative-sr-frame{display:block;flex:1 1 auto;min-height:0;width:100%;height:auto;border:0;background:#fff}
+        @media(max-width:720px){
+          #page-15-qualitative-sr .page-header{padding:12px 16px 10px}
+          #page-15-qualitative-sr .qualitative-sr-toolbar{grid-template-columns:1fr 1fr;grid-template-areas:'open open' 'prev next';gap:.45rem;padding:.5rem .65rem}
+          #page-15-qualitative-sr .qualitative-sr-open{grid-area:open;justify-self:center}
+          #page-15-qualitative-sr .qualitative-sr-prev{grid-area:prev;justify-self:stretch}
+          #page-15-qualitative-sr .qualitative-sr-next{grid-area:next;justify-self:stretch}
+          #page-15-qualitative-sr .qualitative-sr-toolbar button,#page-15-qualitative-sr .qualitative-sr-toolbar a{font-size:.76rem;padding:.5rem .55rem}
+        }
       </style>
       <div class="page-header">
         <div class="chapter-badge">Chapter 15 / 16・追加ページ</div>
@@ -11361,22 +11375,14 @@ function checkAuth(){
         <div class="en-title">Qualitative evidence synthesis / Systematic review without meta-analysis</div>
       </div>
       <div class="page-body">
-        <div class="qualitative-sr-intro">
-          <h2>QESと、メタ分析を行わない量的SRを混同しない</h2>
-          <p>質的エビデンス統合（QES）は、患者・家族・医療者の経験、意味、受容性、実装上の障壁と促進因子を統合します。一方、量的研究をメタ分析せずに統合するSRは、SWiM、effect direction plot、統計的復元、GRADEを用いて効果推定を透明に扱います。</p>
-          <p>下の完全版教材では、QESを全10章で学ぶコースと、メタ分析なしの量的SRを深掘りするコースを切り替えられます。図版、参照文献、CERQual、GRADE、EtDへの接続をすべて移植しています。</p>
+        <div class="qualitative-sr-reader">
+          <nav class="qualitative-sr-toolbar" aria-label="質的・メタ分析なしのSR 操作">
+            <button class="qualitative-sr-prev" type="button" onclick="showPage(16)">← 非RCT・観察研究</button>
+            <a class="qualitative-sr-open" href="qualitative-sr/index.html" target="_blank" rel="noopener">↗ 別タブで開く</a>
+            <button class="qualitative-sr-next" type="button" onclick="showPage(18)">NMA・マルチ介入 →</button>
+          </nav>
+          <iframe class="qualitative-sr-frame" src="qualitative-sr/index.html" title="質的・メタ分析なしのSR 完全教材" loading="eager"></iframe>
         </div>
-        <div class="qualitative-sr-actions">
-          <a class="primary" href="qualitative-sr/index.html" target="_blank" rel="noopener">↗ 全画面で完全版を開く</a>
-          <a class="secondary" href="https://github.com/mxe050/core-grade-guide-1" target="_blank" rel="noopener">移植元：core-grade-guide-1</a>
-        </div>
-        <iframe class="qualitative-sr-frame" src="qualitative-sr/index.html" title="質的・メタ分析なしのSR 完全教材" loading="lazy"></iframe>
-        <div class="qualitative-sr-note"><strong>使い方：</strong>教材内の最初の画面で、①質的エビデンス統合（QES）と、②メタ分析を行わない量的SRの2つから選びます。埋め込み内で読みづらい場合は「全画面で完全版を開く」を使ってください。</div>
-      </div>
-      <div class="page-nav">
-        <button class="nav-btn secondary nav-prev">← 前の章</button>
-        <span class="page-indicator">Chapter 15・追加</span>
-        <button class="nav-btn nav-next">次の章 →</button>
       </div>
     </div>
     <!-- page-16: ネットワークメタ分析・マルチ介入 -->
