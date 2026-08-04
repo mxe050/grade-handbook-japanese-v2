@@ -238,13 +238,22 @@ function checkAuth(){
         <button class="toc-btn" data-idx="18">
           <span class="toc-num">★</span>
           <span class="toc-text">
+            予後・prognosis
+            <span class="en">Overall prognosis / Prognostic factors / Prediction models</span>
+          </span>
+        </button>
+      </li>
+      <li class="toc-item">
+        <button class="toc-btn" data-idx="19">
+          <span class="toc-num">★</span>
+          <span class="toc-text">
             ネットワークメタ分析・マルチ介入
             <span class="en">Network Meta-analysis / Multiple interventions</span>
           </span>
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="19">
+        <button class="toc-btn" data-idx="20">
           <span class="toc-num">Seminar</span>
           <span class="toc-text">
             2026年CohcranGRADEセミナー
@@ -253,7 +262,7 @@ function checkAuth(){
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="20">
+        <button class="toc-btn" data-idx="21">
           <span class="toc-num">🆕</span>
           <span class="toc-text">
             最新情報(2026.4.1.～）
@@ -262,15 +271,14 @@ function checkAuth(){
         </button>
       </li>
       <li class="toc-item">
-        <button class="toc-btn" data-idx="21">
+        <button class="toc-btn" data-idx="22">
           <span class="toc-num">Q&amp;A</span>
           <span class="toc-text">
             Q&amp;A
             <span class="en">Questions and Answers</span>
           </span>
         </button>
-      </li>
-    </ul>
+      </li>    </ul>
   </nav>
 
   <!-- メインコンテンツ -->
@@ -11379,13 +11387,56 @@ function checkAuth(){
           <nav class="qualitative-sr-toolbar" aria-label="質的・メタ分析なしのSR 操作">
             <button class="qualitative-sr-prev" type="button" onclick="showPage(16)">← 非RCT・観察研究</button>
             <a class="qualitative-sr-open" href="qualitative-sr/index.html" target="_blank" rel="noopener">↗ 別タブで開く</a>
-            <button class="qualitative-sr-next" type="button" onclick="showPage(18)">NMA・マルチ介入 →</button>
+            <button class="qualitative-sr-next" type="button" onclick="showPage(18)">予後・prognosis →</button>
           </nav>
           <iframe class="qualitative-sr-frame" src="qualitative-sr/index.html" title="質的・メタ分析なしのSR 完全教材" loading="eager"></iframe>
         </div>
       </div>
     </div>
-    <!-- page-16: ネットワークメタ分析・マルチ介入 -->
+    <!-- page-15-prognosis: 予後・prognosis -->
+    <div class="page" id="page-15-prognosis">
+      <style>
+        #page-15-prognosis{min-height:100vh;min-height:100dvh;padding:0;background:#f8fafc}
+        #page-15-prognosis.active{display:flex;height:100vh;height:100dvh;flex-direction:column;overflow:hidden}
+        #page-15-prognosis .page-header{flex:0 0 auto;padding:15px clamp(20px,3.5vw,48px) 13px}
+        #page-15-prognosis .chapter-badge{margin-bottom:4px;padding:4px 9px;font-size:.7rem}
+        #page-15-prognosis .page-header h1{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.25}
+        #page-15-prognosis .page-header .en-title{margin-top:3px;font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        #page-15-prognosis .page-body{display:flex;flex:1 1 auto;min-height:0;max-width:none;width:100%;margin:0;padding:0}
+        #page-15-prognosis .prognosis-reader{display:flex;flex:1 1 auto;min-height:0;flex-direction:column;background:#fff}
+        #page-15-prognosis .prognosis-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:.65rem;flex:0 0 auto;padding:.55rem clamp(.75rem,2vw,1.5rem);border-bottom:1px solid #c7d2fe;background:#eef2ff}
+        #page-15-prognosis .prognosis-toolbar button,#page-15-prognosis .prognosis-toolbar a{display:inline-flex;min-width:0;align-items:center;justify-content:center;gap:.35rem;padding:.52rem .78rem;border-radius:8px;font-size:.82rem;font-weight:700;line-height:1.25;text-decoration:none;cursor:pointer}
+        #page-15-prognosis .prognosis-toolbar button{border:1px solid #c7d2fe;background:#fff;color:#312e81}
+        #page-15-prognosis .prognosis-toolbar a{border:1px solid #4338ca;background:#4338ca;color:#fff}
+        #page-15-prognosis .prognosis-prev{justify-self:start}
+        #page-15-prognosis .prognosis-open{justify-self:center}
+        #page-15-prognosis .prognosis-next{justify-self:end}
+        #page-15-prognosis .prognosis-frame{display:block;flex:1 1 auto;min-height:0;width:100%;height:auto;border:0;background:#fff}
+        @media(max-width:720px){
+          #page-15-prognosis .page-header{padding:12px 16px 10px}
+          #page-15-prognosis .prognosis-toolbar{grid-template-columns:1fr 1fr;grid-template-areas:'open open' 'prev next';gap:.45rem;padding:.5rem .65rem}
+          #page-15-prognosis .prognosis-open{grid-area:open;justify-self:center}
+          #page-15-prognosis .prognosis-prev{grid-area:prev;justify-self:stretch}
+          #page-15-prognosis .prognosis-next{grid-area:next;justify-self:stretch}
+          #page-15-prognosis .prognosis-toolbar button,#page-15-prognosis .prognosis-toolbar a{font-size:.76rem;padding:.5rem .55rem}
+        }
+      </style>
+      <div class="page-header">
+        <div class="chapter-badge">Chapter 15 / 16・追加ページ</div>
+        <h1>予後・prognosis</h1>
+        <div class="en-title">Overall prognosis / Prognostic factors / Prediction models</div>
+      </div>
+      <div class="page-body">
+        <div class="prognosis-reader">
+          <nav class="prognosis-toolbar" aria-label="予後・prognosis 操作">
+            <button class="prognosis-prev" type="button" onclick="showPage(17)">← 質的・メタ分析なしのSR</button>
+            <a class="prognosis-open" href="prognosis/index.html" target="_blank" rel="noopener">↗ 別タブで開く</a>
+            <button class="prognosis-next" type="button" onclick="showPage(19)">NMA・マルチ介入 →</button>
+          </nav>
+          <iframe class="prognosis-frame" src="prognosis/index.html" title="予後・prognosis 完全教材" loading="eager"></iframe>
+        </div>
+      </div>
+    </div>    <!-- page-16: ネットワークメタ分析・マルチ介入 -->
     <div class="page" id="page-16">
       <div class="page-header">
         <div class="chapter-badge">Chapter 16 / 16</div>
